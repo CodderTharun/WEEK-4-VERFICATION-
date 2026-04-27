@@ -1,0 +1,72 @@
+---
+title: OOPS - Week 2
+description: Inheritance and Polymorphism
+---
+
+# Object-Oriented Programming - Week 2
+
+## Inheritance
+
+Inheritance allows a class to inherit properties and methods from another class.
+
+### Types of Inheritance
+
+1. **Single Inheritance**
+   - Child inherits from one parent
+
+2. **Multi-level Inheritance**
+   - Grandparent → Parent → Child
+
+3. **Multiple Inheritance** (not in Java)
+   - Child inherits from multiple parents
+
+### Polymorphism
+
+Polymorphism means "many forms".
+
+### Types of Polymorphism
+
+1. **Compile-time (Static) Polymorphism**
+   - Method Overloading
+   - Operator Overloading
+
+2. **Runtime (Dynamic) Polymorphism**
+   - Method Overriding
+   - Achieved through inheritance
+
+### Method Overloading
+
+Same method name with different parameters.
+
+```java
+void display(int x) { }
+void display(String s) { }
+void display(int x, int y) { }
+```
+
+### Method Overriding
+
+Child class provides implementation of parent method.
+
+```java
+class Animal {
+    void sound() { }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() { System.out.println("Bark"); }
+}
+```
+
+### This Week
+
+- Inheritance implementation
+- Method overloading and overriding
+- Super keyword usage
+- Constructors in inheritance
+
+### Practice
+
+- Create inheritance hierarchies
+- Implement polymorphic methods

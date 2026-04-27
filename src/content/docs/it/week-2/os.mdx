@@ -1,0 +1,63 @@
+---
+title: OS - Week 2
+description: Process Scheduling and Synchronization
+---
+
+# Operating Systems - Week 2
+
+## Process Scheduling
+
+Process scheduling determines which process runs on CPU at a given time.
+
+### Scheduling Algorithms
+
+1. **FCFS (First Come First Served)**
+   - Non-preemptive
+   - Simple but can have long wait times
+
+2. **SJF (Shortest Job First)**
+   - Minimizes average waiting time
+   - Can be preemptive or non-preemptive
+
+3. **Round Robin (RR)**
+   - Each process gets time slice (quantum)
+   - Fair and prevents starvation
+
+4. **Priority Scheduling**
+   - Processes with higher priority run first
+   - Can be preemptive or non-preemptive
+
+### Synchronization
+
+Synchronization ensures proper access to shared resources.
+
+### Synchronization Problems
+
+1. **Race Condition**
+   - Multiple processes accessing shared resource
+   - Results depend on execution order
+
+2. **Deadlock**
+   - Processes waiting for resources indefinitely
+
+3. **Starvation**
+   - Process never gets CPU time
+
+### Synchronization Mechanisms
+
+- **Mutex** - Mutual exclusion lock
+- **Semaphore** - Counter-based locking
+- **Monitor** - High-level synchronization
+
+### This Week
+
+- Scheduling algorithm analysis
+- Context switching
+- Critical section problem
+- Mutex and semaphore usage
+
+### Practice
+
+- Calculate turnaround and waiting times
+- Identify race conditions
+- Implement basic locks

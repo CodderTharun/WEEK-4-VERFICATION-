@@ -1,0 +1,16 @@
+@import "@fontsource-variable/inter/index.css";
+@import "katex/dist/katex.min.css";
+
+:root {
+  --sl-font: "inter";
+  --sl-font-sans: "Inter", serif;
+}
+
+body,
+html,
+h1, h2, h3, h4, h5, h6,
+.sidebar,
+.sl-markdown-content {
+  font-family: "Inter", serif !important;
+}
+

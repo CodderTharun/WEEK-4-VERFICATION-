@@ -1,0 +1,63 @@
+---
+title: DBMS - Week 2
+description: SQL Queries and Joins
+---
+
+# Database Management Systems - Week 2
+
+## SQL Queries
+
+SQL (Structured Query Language) is used to interact with databases.
+
+### DML Operations
+
+1. **SELECT** - Retrieve data
+   ```sql
+   SELECT name, age FROM Students WHERE age > 20;
+   ```
+
+2. **INSERT** - Add new data
+   ```sql
+   INSERT INTO Students VALUES (1, 'John', 22);
+   ```
+
+3. **UPDATE** - Modify existing data
+   ```sql
+   UPDATE Students SET age = 23 WHERE id = 1;
+   ```
+
+4. **DELETE** - Remove data
+   ```sql
+   DELETE FROM Students WHERE id = 1;
+   ```
+
+### SQL Joins
+
+Joins combine rows from multiple tables.
+
+1. **INNER JOIN** - Only matching records
+2. **LEFT JOIN** - All from left, matching from right
+3. **RIGHT JOIN** - All from right, matching from left
+4. **FULL JOIN** - All records from both tables
+5. **CROSS JOIN** - Cartesian product
+
+### Aggregate Functions
+
+- COUNT() - Count records
+- SUM() - Sum of values
+- AVG() - Average value
+- MAX() - Maximum value
+- MIN() - Minimum value
+
+### This Week
+
+- Complex SELECT queries
+- Multiple table joins
+- Aggregate and GROUP BY queries
+- ORDER BY and HAVING clauses
+
+### Practice
+
+- Write complex queries
+- Join multiple tables
+- Analyze query results
