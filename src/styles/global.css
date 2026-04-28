@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6,
   font-family: "Inter", serif !important;
 }
 
-//* ============================================================
+/* ============================================================
    Burnt Orange Theme — Starlight + starlight-theme-rapide
    Smooth, refined UI. Verdana everywhere. No flashiness.
    Import in astro.config.mjs:
