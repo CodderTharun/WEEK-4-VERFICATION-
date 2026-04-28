@@ -98,7 +98,7 @@ export default defineConfig({
                 { label: "Digital Logic", link: "/ece/week-1/digital-logic" },
                 { label: "Microprocessors", link: "/ece/week-1/microprocessors" },
                 { label: "Signals & Systems", link: "/ece/week-1/signals-systems" },
-                { label: "networkanalysis", link: "/ece/week-1/networkanalysis" },
+                { label: "Network Analysis", link: "/ece/week-1/networkanalysis" },
                 { label: "Power Electronics", link: "/ece/week-1/power-electronics" },
               ],
             },
@@ -110,7 +110,7 @@ export default defineConfig({
                 { label: "Digital Logic", link: "/ece/week-2/digital-logic" },
                 { label: "Microprocessors", link: "/ece/week-2/microprocessors" },
                 { label: "Signals & Systems", link: "/ece/week-2/signals-systems" },
-                { label: "networkanalysis", link: "/ece/week-2/networkanalysis" },
+                { label: "Network Analysis", link: "/ece/week-2/networkanalysis" },
                 { label: "Power Electronics", link: "/ece/week-2/power-electronics" },
               ],
             },
@@ -122,7 +122,7 @@ export default defineConfig({
                 { label: "Digital Logic", link: "/ece/week-3/digital-logic" },
                 { label: "Microprocessors", link: "/ece/week-3/microprocessors" },
                 { label: "Signals & Systems", link: "/ece/week-3/signals-systems" },
-                { label: "networkanalysis", link: "/ece/week-3/networkanalysis" },
+                { label: "Network Analysis", link: "/ece/week-3/networkanalysis" },
                 { label: "Power Electronics", link: "/ece/week-3/power-electronics" },
               ],
             },
@@ -134,7 +134,7 @@ export default defineConfig({
                 { label: "Digital Logic", link: "/ece/week-4/digital-logic" },
                 { label: "Microprocessors", link: "/ece/week-4/microprocessors" },
                 { label: "Signals & Systems", link: "/ece/week-4/signals-systems" },
-                { label: "networkanalysis", link: "/ece/week-4/networkanalysis" },
+                { label: "Network Analysis", link: "/ece/week-4/networkanalysis" },
                 { label: "Power Electronics", link: "/ece/week-4/power-electronics" },
               ],
             },
@@ -146,7 +146,7 @@ export default defineConfig({
                 { label: "Digital Logic", link: "/ece/week-5/digital-logic" },
                 { label: "Microprocessors", link: "/ece/week-5/microprocessors" },
                 { label: "Signals & Systems", link: "/ece/week-5/signals-systems" },
-                { label: "networkanalysis", link: "/ece/week-5/networkanalysis" },
+                { label: "Network Analysis", link: "/ece/week-5/networkanalysis" },
                 { label: "Power Electronics", link: "/ece/week-5/power-electronics" },
               ],
             },
@@ -359,7 +359,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              label: "IT Department",
+              label: "IT",
               items: [
                 { label: "Week 1", link: "/answer-keys/it/week-1" },
                 { label: "Week 2", link: "/answer-keys/it/week-2" },
@@ -369,7 +369,7 @@ export default defineConfig({
               ],
             },
             {
-              label: "ECE Department",
+              label: "ECE",
               items: [
                 { label: "Week 1", link: "/answer-keys/ece/week-1" },
                 { label: "Week 2", link: "/answer-keys/ece/week-2" },
@@ -379,7 +379,7 @@ export default defineConfig({
               ],
             },
             {
-              label: "EEE Department",
+              label: "EEE",
               items: [
                 { label: "Week 1", link: "/answer-keys/eee/week-1" },
                 { label: "Week 2", link: "/answer-keys/eee/week-2" },
@@ -389,7 +389,7 @@ export default defineConfig({
               ],
             },
             {
-              label: "Mechanical Engineering",
+              label: "Mechanical",
               items: [
                 { label: "Week 1", link: "/answer-keys/mech/week-1" },
                 { label: "Week 2", link: "/answer-keys/mech/week-2" },
