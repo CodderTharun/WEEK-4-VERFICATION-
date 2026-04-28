@@ -15,15 +15,17 @@ export default defineConfig({
       sidebar: [
         {
           label: "Introduction",
+          collapsed: false,
           items: [{ label: "Overview", link: "/" }],
         },
 
         {
           label: "Aptitude",
-          collapsed: false,
+          collapsed: true,
           items: [
             {
               label: "Week 1",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/aptitude/week-1/" },
                 { label: "Quantitative Ability", link: "/aptitude/week-1/quantitative-ability" },
@@ -35,6 +37,7 @@ export default defineConfig({
             },
             {
               label: "Week 2",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/aptitude/week-2/" },
                 { label: "Quantitative Ability", link: "/aptitude/week-2/quantitative-ability" },
@@ -46,6 +49,7 @@ export default defineConfig({
             },
             {
               label: "Week 3",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/aptitude/week-3/" },
                 { label: "Quantitative Ability", link: "/aptitude/week-3/quantitative-ability" },
@@ -57,6 +61,7 @@ export default defineConfig({
             },
             {
               label: "Week 4",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/aptitude/week-4/" },
                 { label: "Quantitative Ability", link: "/aptitude/week-4/quantitative-ability" },
@@ -68,6 +73,7 @@ export default defineConfig({
             },
             {
               label: "Week 5",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/aptitude/week-5/" },
                 { label: "Quantitative Ability", link: "/aptitude/week-5/quantitative-ability" },
@@ -82,10 +88,11 @@ export default defineConfig({
 
         {
           label: "ECE Department",
-          collapsed: false,
+          collapsed: true,
           items: [
             {
               label: "Week 1",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/ece/week-1/" },
                 { label: "Digital Logic", link: "/ece/week-1/digital-logic" },
@@ -97,6 +104,7 @@ export default defineConfig({
             },
             {
               label: "Week 2",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/ece/week-2/" },
                 { label: "Digital Logic", link: "/ece/week-2/digital-logic" },
@@ -108,6 +116,7 @@ export default defineConfig({
             },
             {
               label: "Week 3",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/ece/week-3/" },
                 { label: "Digital Logic", link: "/ece/week-3/digital-logic" },
@@ -119,6 +128,7 @@ export default defineConfig({
             },
             {
               label: "Week 4",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/ece/week-4/" },
                 { label: "Digital Logic", link: "/ece/week-4/digital-logic" },
@@ -130,6 +140,7 @@ export default defineConfig({
             },
             {
               label: "Week 5",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/ece/week-5/" },
                 { label: "Digital Logic", link: "/ece/week-5/digital-logic" },
@@ -144,10 +155,11 @@ export default defineConfig({
 
         {
           label: "EEE Department",
-          collapsed: false,
+          collapsed: true,
           items: [
             {
               label: "Week 1",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/eee/week-1/" },
                 { label: "Circuit Theory", link: "/eee/week-1/circuit-theory" },
@@ -159,6 +171,7 @@ export default defineConfig({
             },
             {
               label: "Week 2",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/eee/week-2/" },
                 { label: "Circuit Theory", link: "/eee/week-2/circuit-theory" },
@@ -170,6 +183,7 @@ export default defineConfig({
             },
             {
               label: "Week 3",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/eee/week-3/" },
                 { label: "Circuit Theory", link: "/eee/week-3/circuit-theory" },
@@ -181,6 +195,7 @@ export default defineConfig({
             },
             {
               label: "Week 4",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/eee/week-4/" },
                 { label: "Circuit Theory", link: "/eee/week-4/circuit-theory" },
@@ -192,6 +207,7 @@ export default defineConfig({
             },
             {
               label: "Week 5",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/eee/week-5/" },
                 { label: "Circuit Theory", link: "/eee/week-5/circuit-theory" },
@@ -206,10 +222,11 @@ export default defineConfig({
 
         {
           label: "IT Department",
-          collapsed: false,
+          collapsed: true,
           items: [
             {
               label: "Week 1",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/it/week-1/" },
                 { label: "DSA", link: "/it/week-1/dsa" },
@@ -221,6 +238,7 @@ export default defineConfig({
             },
             {
               label: "Week 2",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/it/week-2/" },
                 { label: "DSA", link: "/it/week-2/dsa" },
@@ -232,6 +250,7 @@ export default defineConfig({
             },
             {
               label: "Week 3",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/it/week-3/" },
                 { label: "DSA", link: "/it/week-3/dsa" },
@@ -243,6 +262,7 @@ export default defineConfig({
             },
             {
               label: "Week 4",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/it/week-4/" },
                 { label: "DSA", link: "/it/week-4/dsa" },
@@ -254,6 +274,7 @@ export default defineConfig({
             },
             {
               label: "Week 5",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/it/week-5/" },
                 { label: "DSA", link: "/it/week-5/dsa" },
@@ -268,10 +289,11 @@ export default defineConfig({
 
         {
           label: "Mechanical",
-          collapsed: false,
+          collapsed: true,
           items: [
             {
               label: "Week 1",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/mech/week-1/" },
                 { label: "Thermodynamics", link: "/mech/week-1/thermodynamics" },
@@ -283,6 +305,7 @@ export default defineConfig({
             },
             {
               label: "Week 2",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/mech/week-2/" },
                 { label: "Thermodynamics", link: "/mech/week-2/thermodynamics" },
@@ -294,6 +317,7 @@ export default defineConfig({
             },
             {
               label: "Week 3",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/mech/week-3/" },
                 { label: "Thermodynamics", link: "/mech/week-3/thermodynamics" },
@@ -305,6 +329,7 @@ export default defineConfig({
             },
             {
               label: "Week 4",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/mech/week-4/" },
                 { label: "Thermodynamics", link: "/mech/week-4/thermodynamics" },
@@ -316,6 +341,7 @@ export default defineConfig({
             },
             {
               label: "Week 5",
+              collapsed: true,
               items: [
                 { label: "Overview", link: "/mech/week-5/" },
                 { label: "Thermodynamics", link: "/mech/week-5/thermodynamics" },

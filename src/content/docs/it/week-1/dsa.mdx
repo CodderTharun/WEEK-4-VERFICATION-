@@ -2,6 +2,163 @@
 title: "DSA"
 ---
 
+import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
+
 # DSA
 
-Working page
+## Array
+
+<Tabs>
+  <TabItem label="JavaScript">
+    <Code code={`function sumArray(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}`} lang="javascript" title="Sum Array" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`def sum_array(arr):
+    total = 0
+    for num in arr:
+        total += num
+    return total`} lang="python" title="Sum Array" />
+  </TabItem>
+  <TabItem label="Java">
+    <Code code={`public static int sumArray(int[] arr) {
+    int sum = 0;
+    for (int num : arr) {
+        sum += num;
+    }
+    return sum;
+}`} lang="java" title="Sum Array" />
+  </TabItem>
+  <TabItem label="C++">
+    <Code code={`int sumArray(vector<int>& arr) {
+    int sum = 0;
+    for (int num : arr) {
+        sum += num;
+    }
+    return sum;
+}`} lang="cpp" title="Sum Array" />
+  </TabItem>
+</Tabs>
+
+## Linked List
+
+<Tabs>
+  <TabItem label="JavaScript">
+    <Code code={`class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+  
+  insert(data) {
+    const newNode = new Node(data);
+    if (this.head === null) {
+      this.head = newNode;
+    } else {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = newNode;
+    }
+  }
+}`} lang="javascript" title="Linked List Implementation" />
+  </TabItem>
+  <TabItem label="Python">
+    <Code code={`class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def insert(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node`} lang="python" title="Linked List Implementation" />
+  </TabItem>
+  <TabItem label="Java">
+    <Code code={`class Node {
+    int data;
+    Node next;
+    
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+    
+    LinkedList() {
+        this.head = null;
+    }
+    
+    void insert(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+}`} lang="java" title="Linked List Implementation" />
+  </TabItem>
+  <TabItem label="C++">
+    <Code code={`struct Node {
+    int data;
+    Node* next;
+    
+    Node(int data) {
+        this->data = data;
+        this->next = nullptr;
+    }
+};
+
+class LinkedList {
+private:
+    Node* head;
+    
+public:
+    LinkedList() {
+        head = nullptr;
+    }
+    
+    void insert(int data) {
+        Node* newNode = new Node(data);
+        if (head == nullptr) {
+            head = newNode;
+        } else {
+            Node* current = head;
+            while (current->next) {
+                current = current->next;
+            }
+            current->next = newNode;
+        }
+    }
+}`} lang="cpp" title="Linked List Implementation" />
+  </TabItem>
+</Tabs>

@@ -1,48 +1,121 @@
 ---
-title: Communications - Week 1
-description: Communication systems fundamentals
+title: Network Analysis - Week 1
+description: Network Analysis fundamentals
 ---
 
-# Communications - Week 1
+#  Electrical Units and Measurement Conventions in DC Systems
 
-## Communication System
+##  Fundamental Electrical Quantities
 
-Sending information from transmitter to receiver.
+- **Voltage ($V$ or $E$)**  
+  Represents the potential energy required to move electrons between two points (nodes).  
+  Measured in **Volts (V)**.
 
-### Components
+- **Current ($I$ or $i$)**  
+  The continuous flow of electrical charge through a circuit.  
+  Measured in **Amperes (A)**.
 
-1. **Source** - Information originator
-2. **Transmitter** - Encodes message
-3. **Channel** - Transmission medium
-4. **Receiver** - Decodes message
-5. **Destination** - Information user
+- **Resistance ($R$)**  
+  The capacity of a material to resist or prevent the flow of electric charge.  
+  Measured in **Ohms ($\Omega$)** and is always positive.
 
-### Signal Types
+- **Conductance ($G$)**  
+  The reciprocal of resistance, representing how easily current flows.  
+  Measured in **Siemens (S)** or **mhos ($\mho$)**.  
 
-- **Analog** - Continuous amplitude
-- **Digital** - Discrete values
+  $$
+  G = \frac{1}{R}
+  $$
 
-### Modulation
+![Fundamentals](/fundamentals.png) 
 
-Encoding information into carrier signal.
+---
 
-### This Week
+##  Ohm’s Law
 
-- Communication basics
-- Signal representation
-- Noise and SNR
-- Channel capacity
-- Information theory basics
+At constant temperature, the current flowing through a conductor is directly proportional to the voltage across it.
 
-### Key Concepts
+$$
+V = IR
+$$
 
-- Shannon's theorem
-- Nyquist theorem
-- Bandwidth requirements
-- Signal-to-Noise Ratio (SNR)
+$$
+I = \frac{V}{R}
+$$
 
-### Practice
+$$
+R = \frac{V}{I}
+$$
 
-- Design communication systems
-- Calculate channel capacity
-- Analyze signal quality
+---
+
+##  Power Formulas
+
+To calculate electrical power:
+
+$$
+P = VI
+$$
+
+$$
+P = \frac{V^2}{R}
+$$
+
+$$
+P = I^2 R
+$$
+
+---
+
+##  Common DC Circuit Theory Terms
+
+- **Circuit**  
+  A closed loop conducting path in which electrical current flows.
+
+- **Path**  
+  A single line of connecting elements or sources.
+
+- **Node**  
+  A junction or connection point where two or more circuit elements meet.  
+  Represented by a dot.
+
+- **Branch**  
+  A single component or group of components connected between two nodes.
+
+- **Loop**  
+  A simple closed path in a circuit where no element or node is encountered more than once.
+
+- **Mesh**  
+  A closed loop that does not contain any other loops inside it.
+
+---
+
+##  Kirchhoff’s Current Law (KCL)
+
+Kirchhoff’s Current Law states that the total current entering a node is equal to the total current leaving the node.
+
+**Principle:** Conservation of Charge  
+
+$$
+\sum I = 0
+$$
+
+$$
+\sum I_{\text{in}} = \sum I_{\text{out}}
+$$
+
+![KCL](/kcl.png) 
+---
+
+## Kirchhoff’s Voltage Law (KVL)
+
+Kirchhoff’s Voltage Law states that in any closed loop, the total voltage supplied is equal to the sum of all voltage drops.
+
+**Principle:** Conservation of Energy  
+
+$$
+\sum V = 0
+$$
+![KVL](/kvl.png) 
+---
+
