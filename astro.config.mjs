@@ -87,7 +87,7 @@ export default defineConfig({
         },
 
         {
-          label: "ECE Department",
+          label: "ECE",
           collapsed: true,
           items: [
             {
@@ -98,7 +98,7 @@ export default defineConfig({
                 { label: "Digital Logic", link: "/ece/week-1/digital-logic" },
                 { label: "Microprocessors", link: "/ece/week-1/microprocessors" },
                 { label: "Signals & Systems", link: "/ece/week-1/signals-systems" },
-                { label: "Communications", link: "/ece/week-1/communications" },
+                { label: "networkanalysis", link: "/ece/week-1/networkanalysis" },
                 { label: "Power Electronics", link: "/ece/week-1/power-electronics" },
               ],
             },
@@ -110,7 +110,7 @@ export default defineConfig({
                 { label: "Digital Logic", link: "/ece/week-2/digital-logic" },
                 { label: "Microprocessors", link: "/ece/week-2/microprocessors" },
                 { label: "Signals & Systems", link: "/ece/week-2/signals-systems" },
-                { label: "Communications", link: "/ece/week-2/communications" },
+                { label: "networkanalysis", link: "/ece/week-2/networkanalysis" },
                 { label: "Power Electronics", link: "/ece/week-2/power-electronics" },
               ],
             },
@@ -122,7 +122,7 @@ export default defineConfig({
                 { label: "Digital Logic", link: "/ece/week-3/digital-logic" },
                 { label: "Microprocessors", link: "/ece/week-3/microprocessors" },
                 { label: "Signals & Systems", link: "/ece/week-3/signals-systems" },
-                { label: "Communications", link: "/ece/week-3/communications" },
+                { label: "networkanalysis", link: "/ece/week-3/networkanalysis" },
                 { label: "Power Electronics", link: "/ece/week-3/power-electronics" },
               ],
             },
@@ -134,7 +134,7 @@ export default defineConfig({
                 { label: "Digital Logic", link: "/ece/week-4/digital-logic" },
                 { label: "Microprocessors", link: "/ece/week-4/microprocessors" },
                 { label: "Signals & Systems", link: "/ece/week-4/signals-systems" },
-                { label: "Communications", link: "/ece/week-4/communications" },
+                { label: "networkanalysis", link: "/ece/week-4/networkanalysis" },
                 { label: "Power Electronics", link: "/ece/week-4/power-electronics" },
               ],
             },
@@ -146,7 +146,7 @@ export default defineConfig({
                 { label: "Digital Logic", link: "/ece/week-5/digital-logic" },
                 { label: "Microprocessors", link: "/ece/week-5/microprocessors" },
                 { label: "Signals & Systems", link: "/ece/week-5/signals-systems" },
-                { label: "Communications", link: "/ece/week-5/communications" },
+                { label: "networkanalysis", link: "/ece/week-5/networkanalysis" },
                 { label: "Power Electronics", link: "/ece/week-5/power-electronics" },
               ],
             },
@@ -154,7 +154,7 @@ export default defineConfig({
         },
 
         {
-          label: "EEE Department",
+          label: "EEE",
           collapsed: true,
           items: [
             {
@@ -221,7 +221,7 @@ export default defineConfig({
         },
 
         {
-          label: "IT Department",
+          label: "IT",
           collapsed: true,
           items: [
             {
