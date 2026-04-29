@@ -11,6 +11,16 @@ export default defineConfig({
        customCss: ['./src/styles/global.css'],
       title: "Let's Get Placed - 2027",
       description: "Structured preparation for placements",
+      head: [
+  {
+    tag: 'link',
+    attrs: { rel: 'icon', href: '/favicon.png' },
+  },
+  {
+    tag: 'link',
+    attrs: { rel: 'shortcut icon', href: '/favicon.png' },
+  },
+],
 
       sidebar: [
         {
@@ -100,7 +110,7 @@ export default defineConfig({
                 { label: "Signals & Systems", link: "/ece/week-1/signals-systems" },
                 { label: "Network Analysis", link: "/ece/week-1/networkanalysis" },
                 { label: "Power Electronics", link: "/ece/week-1/power-electronics" },
-              ],
+              ], 
             },
             {
               label: "Week 2",

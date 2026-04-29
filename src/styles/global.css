@@ -1,183 +1,175 @@
 @import "@fontsource-variable/inter/index.css";
 @import "katex/dist/katex.min.css";
 
-:root {
-  --sl-font: "inter";
-  --sl-font-sans: "Inter", serif;
-}
-
-body,
-html,
-h1, h2, h3, h4, h5, h6,
-.sidebar,
-.sl-markdown-content {
-  font-family: "Inter", serif !important;
-}
-
 /* ============================================================
-   Burnt Orange Theme — Starlight + starlight-theme-rapide
-   Smooth, refined UI. Verdana everywhere. No flashiness.
-   Import in astro.config.mjs:
-     customCss: ['./src/styles/global.css']
+   Theme — Starlight + starlight-theme-rapide
+   Light: Blue palette | Dark: Orange-yellow palette
+   Font: Inter throughout
    ============================================================ */
 
 /* ----------------------------------------------------------
-   VERDANA — applied universally via every possible hook
+   INTER FONT — import + apply universally
    ---------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
-  --sl-font:        Verdana, Geneva, Tahoma, sans-serif;
-  --sl-font-mono:   'Courier New', Courier, monospace;
+  --sl-font:      'Inter', system-ui, sans-serif;
+  --sl-font-mono: 'Inter', system-ui, sans-serif;
 }
 
+/* Inter on absolutely everything — sidebar, search, nav, content, code */
 *,
 *::before,
 *::after {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-code,
-kbd,
-samp,
-pre,
-pre *,
-.expressive-code * {
-  font-family: 'Courier New', Courier, monospace !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
 }
 
 /* ----------------------------------------------------------
-   LIGHT MODE
+   LIGHT MODE — blues (#023047 navy, #219ebc teal, #8ecae6 sky)
    ---------------------------------------------------------- */
 :root,
 [data-theme='light'] {
-  --sl-color-accent-low:     #fceade;
-  --sl-color-accent:         #c04a0a;
-  --sl-color-accent-high:    #7b2e05;
+  --sl-color-accent-low:     #daf0f7;
+  --sl-color-accent:         #219ebc;
+  --sl-color-accent-high:    #023047;
 
-  --sl-color-bg:             #fdf8f5;
-  --sl-color-bg-nav:         #f6ece4;
-  --sl-color-bg-sidebar:     #f9f0ea;
-  --sl-color-bg-inline-code: #fce8d5;
-  --sl-color-hairline-light: #ead4c2;
-  --sl-color-hairline-shade: #d6b89e;
+  --sl-color-bg:             #f4fafd;
+  --sl-color-bg-nav:         #e8f4f9;
+  --sl-color-bg-sidebar:     #edf6fb;
+  --sl-color-bg-inline-code: #d6ecf5;
+  --sl-color-hairline-light: #b8dced;
+  --sl-color-hairline-shade: #8ecae6;
 
-  --rapide-accent:           #c04a0a;
-  --rapide-accent-dark:      #7b2e05;
-  --accent:                  #c04a0a;
-  --accent-2:                #d95e1a;
-  --accent-3:                #ed7c3a;
+  --rapide-accent:           #219ebc;
+  --rapide-accent-dark:      #023047;
+  --accent:                  #219ebc;
+  --accent-2:                #1a86a0;
+  --accent-3:                #8ecae6;
 }
 
 /* ----------------------------------------------------------
-   DARK MODE
+   DARK MODE — orange-yellows (#fb8500, #ffb703)
    ---------------------------------------------------------- */
 [data-theme='dark'] {
-  --sl-color-accent-low:     #1e0d00;
-  --sl-color-accent:         #e05a00;
-  --sl-color-accent-high:    #ff9040;
+  --sl-color-accent-low:     #1f1200;
+  --sl-color-accent:        #e5e5e5;
+  --sl-color-accent-high:    #e5e5e5;
 
-  --sl-color-bg:             #111008;
-  --sl-color-bg-nav:         #160e05;
-  --sl-color-bg-sidebar:     #130c04;
-  --sl-color-bg-inline-code: #1e1100;
-  --sl-color-hairline-light: #2e1a08;
-  --sl-color-hairline-shade: #221205;
+  --sl-color-bg:             #001d3d;
+  --sl-color-bg-nav:         #00172f;
+  --sl-color-bg-sidebar:     #001830;
+  --sl-color-bg-inline-code: #002a57;
+  --sl-color-hairline-light: #003366;
+  --sl-color-hairline-shade: #002550;
 
-  --rapide-accent:           #e05a00;
-  --rapide-accent-dark:      #ff9040;
-  --accent:                  #e05a00;
-  --accent-2:                #f07020;
-  --accent-3:                #ff9040;
+  /* White text */
+  --sl-color-white:          #e5e5e5;
+  --sl-color-gray-1:         #e5e5e5;
+  --sl-color-gray-2:         #c8c8c8;
+  --sl-color-gray-3:         #8aaac8;
+  --sl-color-gray-4:         #4a6a88;
+  --sl-color-gray-5:         #1e3a58;
+  --sl-color-gray-6:         #001528;
+  --sl-color-black:          #001d3d;
+
+  --rapide-accent:          #e5e5e5;
+  --rapide-accent-dark:      #e5e5e5;
+  --accent:                 #e5e5e5;
+  --accent-2:                #e5e5e5;
+  --accent-3:                #cccccc;
 }
 
 /* ----------------------------------------------------------
-   SMOOTH TRANSITIONS — everything eases gently
+   SMOOTH TRANSITIONS
    ---------------------------------------------------------- */
 *,
 *::before,
 *::after {
   transition-property: background-color, border-color, box-shadow, opacity;
-  transition-duration: 200ms;
+  transition-duration: 180ms;
   transition-timing-function: ease;
 }
 
 /* ----------------------------------------------------------
-   HEADER — clean bar with a soft orange underline
+   HEADER
    ---------------------------------------------------------- */
 header.header {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--sl-color-hairline-light);
-}
-
-[data-theme='dark'] header.header {
-  background-color: rgba(17, 10, 4, 0.85);
-  border-bottom: 1px solid rgba(224, 90, 0, 0.18);
-  box-shadow: 0 1px 0 rgba(224, 90, 0, 0.08),
-              0 4px 24px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 [data-theme='light'] header.header {
-  background-color: rgba(253, 248, 245, 0.88);
-  border-bottom: 1px solid rgba(192, 74, 10, 0.15);
-  box-shadow: 0 1px 0 rgba(192, 74, 10, 0.06),
-              0 4px 16px rgba(0, 0, 0, 0.06);
+  background-color: rgba(244, 250, 253, 0.9);
+  border-bottom: 1px solid rgba(33, 158, 188, 0.15);
+  box-shadow: 0 1px 0 rgba(33, 158, 188, 0.08),
+              0 4px 20px rgba(2, 48, 71, 0.06);
+}
+
+[data-theme='dark'] header.header {
+  background-color: rgba(0, 29, 61, 0.92);
+  border-bottom: 1px solid rgba(251, 133, 0, 0.14);
+  box-shadow: 0 1px 0 rgba(251, 133, 0, 0.07),
+              0 4px 24px rgba(0, 0, 0, 0.5);
 }
 
 /* ----------------------------------------------------------
    LEFT SIDEBAR
    ---------------------------------------------------------- */
 [data-theme='light'] .sidebar {
-  background-color: #f9f0ea;
-  border-right: 1px solid rgba(192, 74, 10, 0.1);
+  background-color: #edf6fb;
+  border-right: 1px solid rgba(33, 158, 188, 0.12);
 }
 
 [data-theme='dark'] .sidebar {
-  background-color: #130c04;
-  border-right: 1px solid rgba(224, 90, 0, 0.1);
+  background-color: #001830;
+  border-right: 1px solid rgba(251, 133, 0, 0.08);
 }
 
-/* Sidebar nav links — hover state */
 .sidebar a {
   border-radius: 6px;
-  transition: background-color 180ms ease, padding-inline-start 180ms ease;
+  transition: background-color 160ms ease;
 }
 
-.sidebar a:hover {
-  background-color: var(--sl-color-accent-low);
+[data-theme='light'] .sidebar a:hover {
+  background-color: rgba(33, 158, 188, 0.08);
 }
 
 [data-theme='dark'] .sidebar a:hover {
-  background-color: rgba(224, 90, 0, 0.07);
+  background-color: rgba(251, 133, 0, 0.07);
 }
 
-/* Active page item */
-.sidebar a[aria-current='page'],
-nav a[aria-current='page'] {
-  border-inline-start-color: var(--sl-color-accent) !important;
-  background-color: var(--sl-color-accent-low) !important;
+/* Active item */
+[data-theme='light'] .sidebar a[aria-current='page'],
+[data-theme='light'] nav a[aria-current='page'] {
+  border-inline-start-color: #219ebc !important;
+  background-color: rgba(33, 158, 188, 0.1) !important;
   border-radius: 0 6px 6px 0;
 }
 
 [data-theme='dark'] .sidebar a[aria-current='page'],
 [data-theme='dark'] nav a[aria-current='page'] {
-  border-inline-start-color: #e05a00 !important;
-  background-color: rgba(224, 90, 0, 0.09) !important;
-  box-shadow: inset 3px 0 0 #e05a00;
+  border-inline-start-color:#e5e5e5 !important;
+  background-color: rgba(251, 133, 0, 0.09) !important;
+  border-radius: 0 6px 6px 0;
 }
 
 /* ----------------------------------------------------------
-   RIGHT SIDEBAR (Table of Contents)
+   RIGHT SIDEBAR (ToC)
    ---------------------------------------------------------- */
 [data-theme='light'] .right-sidebar {
-  border-left: 1px solid rgba(192, 74, 10, 0.1);
+  border-left: 1px solid rgba(33, 158, 188, 0.12);
 }
 
 [data-theme='dark'] .right-sidebar {
-  border-left: 1px solid rgba(224, 90, 0, 0.1);
+  border-left: 1px solid rgba(251, 133, 0, 0.1);
+}
+
+[data-theme='light'] .right-sidebar a[aria-current='true'] {
+  border-inline-start-color: #219ebc !important;
 }
 
 [data-theme='dark'] .right-sidebar a[aria-current='true'] {
-  border-inline-start-color: #e05a00 !important;
+  border-inline-start-color:#e5e5e5 !important;
 }
 
 /* ----------------------------------------------------------
@@ -187,70 +179,78 @@ nav a[aria-current='page'] {
 .hero .action a {
   background-color: var(--sl-color-accent);
   border-color: var(--sl-color-accent);
-  border-radius: 8px;
+  border-radius: 7px;
+  font-weight: 500;
   letter-spacing: 0.01em;
-  transition: background-color 200ms ease, box-shadow 200ms ease, transform 150ms ease;
+  transition: background-color 180ms ease, box-shadow 180ms ease, transform 140ms ease;
 }
 
 .sl-button:hover,
 .hero .action a:hover {
-  background-color: var(--sl-color-accent-high);
-  border-color: var(--sl-color-accent-high);
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(192, 74, 10, 0.25);
+}
+
+[data-theme='light'] .sl-button:hover,
+[data-theme='light'] .hero .action a:hover {
+  background-color: #023047;
+  border-color: #023047;
+  box-shadow: 0 4px 14px rgba(2, 48, 71, 0.22);
 }
 
 [data-theme='dark'] .sl-button,
 [data-theme='dark'] .hero .action a {
-  background-color: #e05a00;
-  border-color: #e05a00;
-  box-shadow: 0 2px 12px rgba(224, 90, 0, 0.3);
+  background-color:#e5e5e5;
+  border-color:#e5e5e5;
+  box-shadow: 0 2px 10px rgba(251, 133, 0, 0.25);
 }
 
 [data-theme='dark'] .sl-button:hover,
 [data-theme='dark'] .hero .action a:hover {
-  background-color: #f07020;
-  border-color: #f07020;
-  box-shadow: 0 4px 20px rgba(224, 90, 0, 0.45);
-  transform: translateY(-1px);
+  background-color: #e5e5e5;
+  border-color: #e5e5e5;
+  box-shadow: 0 4px 18px rgba(229, 229, 229, 0.2);
 }
 
 /* ----------------------------------------------------------
    BADGES
    ---------------------------------------------------------- */
 .sl-badge {
-  background-color: var(--sl-color-accent-low);
-  border: 1px solid rgba(192, 74, 10, 0.3);
   border-radius: 4px;
   font-size: 0.72em;
+  font-weight: 500;
   letter-spacing: 0.04em;
 }
 
+[data-theme='light'] .sl-badge {
+  background-color: #daf0f7;
+  border: 1px solid rgba(33, 158, 188, 0.35);
+}
+
 [data-theme='dark'] .sl-badge {
-  background-color: rgba(224, 90, 0, 0.1);
-  border: 1px solid rgba(224, 90, 0, 0.3);
+  background-color: rgba(251, 133, 0, 0.1);
+  border: 1px solid rgba(251, 133, 0, 0.3);
 }
 
 /* ----------------------------------------------------------
-   CODE BLOCKS — understated orange left rule
+   CODE BLOCKS
    ---------------------------------------------------------- */
 .expressive-code .frame,
 pre {
-  border-left: 3px solid var(--sl-color-accent) !important;
   border-radius: 0 8px 8px 0;
-}
-
-[data-theme='dark'] .expressive-code .frame,
-[data-theme='dark'] pre {
-  border-left: 3px solid #e05a00 !important;
-  box-shadow: -3px 0 12px rgba(224, 90, 0, 0.15),
-              0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme='light'] .expressive-code .frame,
 [data-theme='light'] pre {
-  box-shadow: -2px 0 8px rgba(192, 74, 10, 0.08),
-              0 2px 12px rgba(0, 0, 0, 0.06);
+  border-left: 3px solid #219ebc !important;
+  box-shadow: -2px 0 8px rgba(33, 158, 188, 0.1),
+              0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .expressive-code .frame,
+[data-theme='dark'] pre {
+  border-left: 3px solid#e5e5e5 !important;
+  box-shadow: -2px 0 10px rgba(251, 133, 0, 0.12),
+              0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* ----------------------------------------------------------
@@ -258,72 +258,74 @@ pre {
    ---------------------------------------------------------- */
 mark,
 ::highlight(search-result) {
-  background-color: rgba(192, 74, 10, 0.18);
   color: inherit;
   border-radius: 2px;
 }
 
+[data-theme='light'] mark {
+  background-color: rgba(142, 202, 230, 0.45);
+}
+
 [data-theme='dark'] mark {
-  background-color: rgba(224, 90, 0, 0.2);
-  color: inherit;
+  background-color: rgba(229, 229, 229, 0.15);
 }
 
 /* ----------------------------------------------------------
-   CONTENT AREA — gentle card feel
+   CONTENT
    ---------------------------------------------------------- */
 .sl-markdown-content {
-  line-height: 1.75;
+  line-height: 1.8;
   font-size: 0.93rem;
 }
 
-/* Headings — just slightly warmer, no color override */
 .sl-markdown-content h1,
 .sl-markdown-content h2,
 .sl-markdown-content h3,
 .sl-markdown-content h4 {
-  letter-spacing: -0.01em;
-  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
 }
 
-/* Horizontal rules */
 .sl-markdown-content hr {
   border-color: var(--sl-color-hairline-light);
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
-/* Blockquote — warm left bar */
-.sl-markdown-content blockquote {
-  border-inline-start: 3px solid var(--sl-color-accent);
-  background-color: var(--sl-color-accent-low);
+[data-theme='light'] .sl-markdown-content blockquote {
+  border-inline-start: 3px solid #219ebc;
+  background-color: rgba(33, 158, 188, 0.06);
   border-radius: 0 6px 6px 0;
   padding: 0.75em 1.25em;
-  opacity: 0.9;
 }
 
 [data-theme='dark'] .sl-markdown-content blockquote {
-  background-color: rgba(224, 90, 0, 0.06);
-  border-inline-start-color: #e05a00;
+  border-inline-start: 3px solid#e5e5e5;
+  background-color: rgba(251, 133, 0, 0.05);
+  border-radius: 0 6px 6px 0;
+  padding: 0.75em 1.25em;
 }
 
 /* ----------------------------------------------------------
-   SCROLLBAR — thin & themed (webkit)
+   SCROLLBAR
    ---------------------------------------------------------- */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--sl-color-accent-low);
+[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background-color: rgba(33, 158, 188, 0.25);
   border-radius: 99px;
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb {
-  background-color: rgba(224, 90, 0, 0.25);
+  background-color: rgba(251, 133, 0, 0.2);
+  border-radius: 99px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -331,7 +333,7 @@ mark,
 }
 
 /* ----------------------------------------------------------
-   FOCUS RING — accessible & on-brand
+   FOCUS RING
    ---------------------------------------------------------- */
 :focus-visible {
   outline: 2px solid var(--sl-color-accent);
