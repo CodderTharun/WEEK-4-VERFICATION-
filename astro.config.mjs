@@ -307,7 +307,7 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/mech/week-1/" },
                 { label: "Thermodynamics", link: "/mech/week-1/thermodynamics" },
-                { label: "Mechanics of Materials", link: "/mech/week-1/mechanics-materials" },
+                { label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
                 { label: "Machine Design", link: "/mech/week-1/machine-design" },
                 { label: "Fluid Mechanics", link: "/mech/week-1/fluid-mechanics" },
                 { label: "Manufacturing", link: "/mech/week-1/manufacturing" },
@@ -319,7 +319,7 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/mech/week-2/" },
                 { label: "Thermodynamics", link: "/mech/week-2/thermodynamics" },
-                { label: "Mechanics of Materials", link: "/mech/week-2/mechanics-materials" },
+                { label: "Strength of Materials", link: "/mech/week-2/strength-materials" },
                 { label: "Machine Design", link: "/mech/week-2/machine-design" },
                 { label: "Fluid Mechanics", link: "/mech/week-2/fluid-mechanics" },
                 { label: "Manufacturing", link: "/mech/week-2/manufacturing" },
@@ -331,7 +331,7 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/mech/week-3/" },
                 { label: "Thermodynamics", link: "/mech/week-3/thermodynamics" },
-                { label: "Mechanics of Materials", link: "/mech/week-3/mechanics-materials" },
+                { label: "Strength of Materials", link: "/mech/week-3/strength-materials" },
                 { label: "Machine Design", link: "/mech/week-3/machine-design" },
                 { label: "Fluid Mechanics", link: "/mech/week-3/fluid-mechanics" },
                 { label: "Manufacturing", link: "/mech/week-3/manufacturing" },
@@ -343,7 +343,7 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/mech/week-4/" },
                 { label: "Thermodynamics", link: "/mech/week-4/thermodynamics" },
-                { label: "Mechanics of Materials", link: "/mech/week-4/mechanics-materials" },
+                { label: "Strength of Materials", link: "/mech/week-4/strength-materials" },
                 { label: "Machine Design", link: "/mech/week-4/machine-design" },
                 { label: "Fluid Mechanics", link: "/mech/week-4/fluid-mechanics" },
                 { label: "Manufacturing", link: "/mech/week-4/manufacturing" },
@@ -355,7 +355,7 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/mech/week-5/" },
                 { label: "Thermodynamics", link: "/mech/week-5/thermodynamics" },
-                { label: "Mechanics of Materials", link: "/mech/week-5/mechanics-materials" },
+                { label: "Strength of Materials", link: "/mech/week-5/strength-materials" },
                 { label: "Machine Design", link: "/mech/week-5/machine-design" },
                 { label: "Fluid Mechanics", link: "/mech/week-5/fluid-mechanics" },
                 { label: "Manufacturing", link: "/mech/week-5/manufacturing" },
