@@ -1,0 +1,1124 @@
+---
+title: AIML Week 1
+---
+
+import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Python
+
+Python is a high-level, interpreted programming language known for its simplicity and versatility. It is widely used in various fields such as artificial intelligence, web development, automation, and data analysis.
+
+Its easy-to-read syntax makes it an excellent choice for beginners and experienced programmers alike.
+
+Understanding the fundamental concepts of Python is essential for effective programming. These basics include:
+
+- Variables and data types
+- Input/output operations
+- Operators
+- Control flow statements
+- Functions
+- Data structures
+
+---
+
+## 1. Variables and Data Types
+
+Python is dynamically typed, meaning you don't need to declare a variable's type. The interpreter figures it out at runtime.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Basic Assignments
+age = 25
+pi = 3.14159
+name = "Python"
+is_easy = True
+
+# Type Checking
+print(type(age))
+
+# int
+# float
+# string
+# boolean
+# Output: <class 'int'>`}
+      lang="python"
+      title="Variables and Data Types"
+    />
+  </TabItem>
+</Tabs>
+
+### Data Structures (Collections)
+
+These are containers used to group data together.
+
+| Type | Syntax | Mutable? | Unique? |
+|---|---|---|---|
+| List | `[1, 2, 2]` | Yes | No |
+| Tuple | `(1, 2, 2)` | No | No |
+| Set | `{1, 2, 3}` | Yes | Yes |
+| Dictionary | `{"a": 1}` | Yes | Keys are unique |
+
+---
+
+## 2. Input and Output
+
+Python handles user interaction through functions like `print()` for output and `input()` for input.
+
+Type casting may be necessary when converting input data to the desired type, such as `int()` or `float()`.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`name = input("Enter your name: ")
+
+age = int(input("Enter your age: "))
+# Converting string to integer
+
+print(f"Hello {name}, next year you will be {age + 1}.")`}
+      lang="python"
+      title="Input and Output"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 3. Control Flow
+
+### Conditional Statements
+
+Conditional statements allow the program to make decisions based on certain conditions.
+
+The main structures are:
+
+- **if** – executes code if condition is true
+- **elif** – checks additional conditions
+- **else** – executes if none of the above conditions are true
+
+### Loops
+
+Loops enable repeated execution of code blocks.
+
+Python provides:
+
+- **for** – iterates over a sequence or range
+- **while** – repeats as long as a condition is true
+
+Control statements like `break`, `continue`, and `pass` modify loop behavior.
+
+Python uses indentation (usually 4 spaces) instead of curly braces `{}` to define blocks of code.
+
+### Conditional Statements Example
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`score = 85
+
+if score >= 90:
+    print("Grade: A")
+
+elif score >= 80:
+    print("Grade: B")
+
+else:
+    print("Grade: C")`}
+      lang="python"
+      title="Conditional Statements"
+    />
+  </TabItem>
+</Tabs>
+
+### Loop Example
+
+- For loops are used when you know the number of iterations.
+- While loops run as long as a condition remains `True`.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# For loop with range
+for i in range(3):
+    print(f"Attempt {i}")
+
+# While loop
+count = 0
+
+while count < 3:
+    print("Counting...")
+    count += 1`}
+      lang="python"
+      title="Loops"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 4. Functions
+
+Functions help you follow the DRY (Don't Repeat Yourself) principle.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`def greet(user_name="Guest"):
+    return f"Welcome, {user_name}!"
+
+# Calling the function
+message = greet("Bob")
+
+print(message)
+
+# Lambda (Anonymous) Function
+square = lambda x: x * x
+
+print(square(5)) # Output: 25`}
+      lang="python"
+      title="Functions"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 5. List Comprehension
+
+List comprehension is a way to create lists in a single line.
+
+It is faster and more readable than a standard loop for simple transformations.
+
+### Syntax
+
+`[expression for item in iterable if condition]`
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`numbers = [1, 2, 3, 4, 5, 6]
+
+# Create a list of squares for even numbers only
+even_squares = [x**2 for x in numbers if x % 2 == 0]
+
+print(even_squares) # Output: [4, 16, 36]`}
+      lang="python"
+      title="List Comprehension"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 6. String Manipulation
+
+Strings in Python are objects with powerful built-in methods.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`text = "  python programming  "
+
+print(text.strip().capitalize())
+# "Python programming"
+
+print(text.replace("python", "Java"))
+
+print("python"[0:4])
+# Slicing: "pyth"`}
+      lang="python"
+      title="String Manipulation"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## Video Reference
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eWRfhZUzrAc?si=68vJhyuQAQ-3pOIX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
+# NumPy and Pandas
+
+---
+
+# NumPy
+
+NumPy (Numerical Python) is a fundamental library for numerical computing in Python.
+
+It provides support for arrays, matrices, and a collection of mathematical functions to operate on these data structures efficiently.
+
+NumPy is particularly useful for scientific computing and data analysis because it allows operations on large multi-dimensional arrays and matrices with high performance.
+
+While NumPy structures look similar to standard Python lists, they are much more efficient.
+
+The broadcasting capabilities are also extremely useful for quickly applying functions to datasets.
+
+---
+
+## Key Features of NumPy
+
+### 1. N-dimensional Array (ndarray)
+
+NumPy’s primary data structure is the ndarray, which allows efficient storage and manipulation of large datasets in multiple dimensions such as 1D, 2D, and 3D arrays.
+
+### 2. Mathematical Functions
+
+NumPy provides a wide range of mathematical operations such as:
+
+- Linear algebra functions
+- Statistical functions
+- Random number generation
+
+### 3. Broadcasting
+
+Broadcasting allows NumPy to perform element-wise operations on arrays of different shapes without explicitly reshaping them.
+
+### 4. Integration with Other Libraries
+
+NumPy is commonly used alongside:
+
+- Pandas
+- SciPy
+- Matplotlib
+
+It forms the foundation for scientific computing in Python.
+
+### 5. Efficiency
+
+NumPy operations are faster and more memory-efficient compared to traditional Python lists because they are implemented using lower-level languages.
+
+---
+
+## Working with NumPy
+
+### 1. Array Creation Functions
+
+These functions allow you to generate arrays with specific initial values or patterns.
+
+#### np.arange()
+
+Generates an array of values within a given interval using a specific step size.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`import numpy as np
+
+# Start at 0, stop before 10, step by 2
+arr = np.arange(0, 10, 2)
+
+print(arr) # [0 2 4 6 8]`}
+      lang="python"
+      title="np.arange()"
+    />
+  </TabItem>
+</Tabs>
+
+#### np.zeros() and np.ones()
+
+Creates arrays filled entirely with 0s or 1s.
+
+Useful for initializing weights or placeholders.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`zeros = np.zeros((2, 3))
+# 2 rows, 3 columns
+
+ones = np.ones(4)
+# 1D array of 4 ones`}
+      lang="python"
+      title="np.zeros() and np.ones()"
+    />
+  </TabItem>
+</Tabs>
+
+#### np.linspace()
+
+Returns evenly spaced numbers over a specified interval.
+
+Unlike `arange`, you specify the number of points instead of the step size.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# 5 points evenly spaced between 0 and 1
+lin = np.linspace(0, 1, 5)
+
+print(lin)
+# [0. 0.25 0.5 0.75 1.]`}
+      lang="python"
+      title="np.linspace()"
+    />
+  </TabItem>
+</Tabs>
+
+#### np.eye()
+
+Creates an identity matrix.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`identity = np.eye(4)
+# 4x4 identity matrix`}
+      lang="python"
+      title="np.eye()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 2. Random Number Generation
+
+NumPy’s random module is essential for:
+
+- Simulations
+- Shuffling data
+- Initializing machine learning models
+
+#### np.random.rand() and np.random.randn()
+
+- `rand()` creates values from a uniform distribution.
+- `randn()` creates values from a standard normal distribution.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`u = np.random.rand(3)
+# Uniform
+
+n = np.random.randn(3,3)
+# Normal (3x3 matrix)`}
+      lang="python"
+      title="np.random.rand() and np.random.randn()"
+    />
+  </TabItem>
+</Tabs>
+
+#### np.random.randint()
+
+Returns random integers from a specified range.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# 5 random integers between 1 and 100
+r_int = np.random.randint(1, 100, 5)`}
+      lang="python"
+      title="np.random.randint()"
+    />
+  </TabItem>
+</Tabs>
+
+#### np.random.seed()
+
+Sets the starting point for the random number generator, making results reproducible.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`np.random.seed(42)
+
+print(np.random.rand(1))
+# Will always be 0.37454012`}
+      lang="python"
+      title="np.random.seed()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+---
+
+## 3. Manipulation and Attributes
+
+### shape and dtype
+
+These attributes tell you:
+
+- The dimensions of the array
+- The data type of its elements
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`arr = np.array([[1, 2], [3, 4]])
+
+print(arr.shape)
+# (2, 2)
+
+print(arr.dtype)
+# int64`}
+      lang="python"
+      title="shape and dtype"
+    />
+  </TabItem>
+</Tabs>
+
+### reshape()
+
+Changes the shape of an array without changing its data.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`arr = np.arange(6)
+# [0, 1, 2, 3, 4, 5]
+
+new_arr = arr.reshape(2, 3)
+# Becomes 2 rows, 3 columns`}
+      lang="python"
+      title="reshape()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 4. Indexing and Slicing
+
+Retrieving specific elements or chunks of data from an array.
+
+### 2D Indexing and Slicing
+
+Data is accessed using `[row, col]` notation.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`mat = np.array([[5, 10, 15], [20, 25, 30]])
+
+print(mat[1, 2])
+# 30 (second row, third column)
+
+print(mat[:, 1:])
+# All rows, columns from index 1 to the end`}
+      lang="python"
+      title="2D Indexing and Slicing"
+    />
+  </TabItem>
+</Tabs>
+
+### Conditional Selection
+
+Boolean logic is used to filter arrays.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`arr = np.array([1, 2, 10, 20])
+
+print(arr[arr > 5])
+# [10, 20]`}
+      lang="python"
+      title="Conditional Selection"
+    />
+  </TabItem>
+</Tabs>
+
+### Broadcasting
+
+Broadcasting allows NumPy to treat arrays with different shapes during arithmetic operations.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`arr = np.array([1, 2, 3])
+
+print(arr + 10)
+# [11, 12, 13]
+
+# The '10' is broadcasted to match shape`}
+      lang="python"
+      title="Broadcasting"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 5. Mathematical and Statistical Operations
+
+### Universal Functions (ufunc)
+
+Operations are applied element-wise across the array.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`arr = np.array([0, 1, 4])
+
+print(np.sqrt(arr))
+# [0, 1, 2]
+
+print(np.exp(arr))
+# e^0, e^1, e^4`}
+      lang="python"
+      title="Universal Functions"
+    />
+  </TabItem>
+</Tabs>
+
+### Statistical Functions
+
+Statistical functions aggregate data to find insights.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`arr = np.array([1, 5, 10])
+
+print(arr.sum())
+# 16
+
+print(arr.mean())
+# 5.33`}
+      lang="python"
+      title="Statistical Functions"
+    />
+  </TabItem>
+</Tabs>
+
+### Axis-based Operations
+
+Calculations can be performed along rows or columns.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`mat = np.array([[1, 2], [3, 4]])
+
+print(mat.sum(axis=0))
+# [4, 6] (Sum of columns)
+
+print(mat.sum(axis=1))
+# [3, 7] (Sum of rows)`}
+      lang="python"
+      title="Axis-based Operations"
+    />
+  </TabItem>
+</Tabs>
+
+### argmax() and argmin()
+
+Returns the index of the maximum or minimum value.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`arr = np.array([10, 50, 20])
+
+print(arr.argmax())
+# 1 (index of 50)`}
+      lang="python"
+      title="argmax() and argmin()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## Video Reference
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QUT1VHiLmmI?si=KRBl8txUMsKzX5Lt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+---
+
+# Pandas
+
+Pandas is the most popular Python library for data analysis.
+
+It acts as a bridge between raw data such as CSVs or SQL databases and the mathematical power of NumPy.
+
+Pandas introduces two primary data structures:
+
+- Series (1D)
+- DataFrame (2D)
+
+These structures allow you to manipulate tabular data with the same ease as an Excel spreadsheet but with the speed and scalability of Python.
+
+---
+
+## Core Data Structures
+
+### Pandas Series
+
+A Series is a one-dimensional labeled array.
+
+It is essentially a single column of data where every value is assigned a label called an index.
+
+#### Key Feature
+
+You can access data using labels instead of just numerical positions.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`import pandas as pd
+
+# Creating a Series from a list
+ser = pd.Series([10, 20, 30], index=['a', 'b', 'c'])
+
+print(ser['b'])
+# Accessing by label returns 20`}
+      lang="python"
+      title="Pandas Series"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+### Pandas DataFrame
+
+A DataFrame is a two-dimensional, size-mutable, and heterogeneous tabular data structure.
+
+Think of it as a collection of Series objects sharing the same index.
+
+#### Key Feature
+
+It can handle different data types such as:
+
+- Integers
+- Strings
+- Floats
+- Booleans
+
+in different columns simultaneously.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`data = {
+    'Product': ['Laptop', 'Mouse', 'Monitor'],
+    'Price': [1200, 25, 300],
+    'In_Stock': [True, True, False]
+}
+
+df = pd.DataFrame(data)`}
+      lang="python"
+      title="Pandas DataFrame"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## Essential Data Operations
+
+### Data Exploration
+
+When a dataset is loaded, it is important to inspect its contents without printing thousands of rows.
+
+Common methods include:
+
+- `df.head(n)` → Displays the first n rows
+- `df.info()` → Shows data types, memory usage, and null counts
+- `df.describe()` → Provides a statistical summary of numerical columns
+
+---
+
+### Data Cleaning
+
+Real-world data is often missing or incorrectly formatted.
+
+#### Handling Missing Data
+
+Use:
+
+- `df.isnull()` to identify missing values
+- `df.fillna(value)` to replace missing values
+- `df.dropna()` to remove missing data
+
+---
+
+### Filtering
+
+Conditional logic is used to extract subsets of data.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Get only products where Price is greater than 100
+expensive_items = df[df['Price'] > 100]`}
+      lang="python"
+      title="Filtering Data"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## Data Merging and Grouping
+
+Pandas excels at combining data from multiple sources, similar to SQL operations.
+
+### Merging (Joining)
+
+Two DataFrames can be combined using a common key with `pd.merge()`.
+
+It supports:
+
+- Left Join
+- Right Join
+- Inner Join
+- Outer Join
+
+### Grouping (Split-Apply-Combine)
+
+The `groupby()` function groups rows based on a column and performs calculations on those groups.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Calculate the average price per product category
+avg_price = df.groupby('Category')['Price'].mean()`}
+      lang="python"
+      title="Grouping"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## Working with Pandas
+
+### 1. Data Exploration & Metadata
+
+Before manipulating data, you should understand its structure and data types.
+
+### df.info()
+
+Provides a concise summary of the DataFrame including:
+
+- Column names
+- Non-null counts
+- Memory usage
+- Data types
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`import pandas as pd
+
+data = {
+    'Fruits': ['Mango', 'Apple'],
+    'Quantity': [40, 20]
+}
+
+df = pd.DataFrame(data)
+
+df.info()
+
+# Shows column names, non-null counts,
+# and dtypes (int64, object, etc.)`}
+      lang="python"
+      title="df.info()"
+    />
+  </TabItem>
+</Tabs>
+
+### df.describe()
+
+Generates descriptive statistics for numerical columns.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`print(df.describe())`}
+      lang="python"
+      title="df.describe()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+---
+
+## 2. Selection and Slicing
+
+Selection and slicing help navigate through data using labels or positions.
+
+### .loc[] and .iloc[]
+
+- `loc[]` → Accesses data using labels (row names and column names)
+- `iloc[]` → Accesses data using integer positions (index numbers)
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Accessing row index 1, column 'Fruits'
+print(df.loc[1, 'Fruits'])
+# 'Apple'
+
+# Accessing first row, first column by position
+print(df.iloc[0, 0])
+# 'Mango'`}
+      lang="python"
+      title=".loc[] and .iloc[]"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+### .at[] and .iat[]
+
+These are used for fast access to a single scalar value.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Fast access by label
+print(df.at[0, 'Quantity'])
+# 40`}
+      lang="python"
+      title=".at[] and .iat[]"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 3. Data Cleaning and Transformation
+
+Preparing data for analysis often requires changing data types or renaming columns.
+
+### .astype()
+
+Converts a column from one data type to another.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Convert Quantity to float for calculations
+df['Quantity'] = df['Quantity'].astype('float64')`}
+      lang="python"
+      title=".astype()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+### .rename()
+
+Changes column or index labels.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`df.rename(columns={'Fruits': 'Item_Name'}, inplace=True)`}
+      lang="python"
+      title=".rename()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 4. Sorting and Filtering
+
+Sorting and filtering help organize data and extract insights.
+
+### .sort_values()
+
+Sorts the DataFrame based on the values of a specific column.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Sort by Quantity descending
+df.sort_values(by='Quantity', ascending=False, inplace=True)`}
+      lang="python"
+      title=".sort_values()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+### .query()
+
+Filters data using a logical string expression.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Select rows where Quantity is greater than 30
+filtered_df = df.query('Quantity > 30')`}
+      lang="python"
+      title=".query()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 5. Reshaping Data
+
+Reshaping changes the layout of data for visualization or modeling purposes.
+
+### .melt()
+
+Converts a DataFrame from wide format to long format.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Converts columns into rows
+melted = pd.melt(
+    df,
+    id_vars=['Item_Name'],
+    value_vars=['Quantity']
+)`}
+      lang="python"
+      title=".melt()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+### .pivot()
+
+Creates a new table structure based on column values.
+
+It is the reverse operation of `melt()`.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Create a summary table
+pivot_table = df.pivot(
+    index='Item_Name',
+    columns='Quantity'
+)`}
+      lang="python"
+      title=".pivot()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 6. Combining Datasets
+
+Combining data from different sources is a common task in data analysis.
+
+### .merge()
+
+Joins two DataFrames using a common key column.
+
+This works similar to SQL joins.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Inner Join:
+# Only keeps rows where the fruit exists
+# in both DataFrames
+
+merged_df = pd.merge(
+    df1,
+    df2,
+    on='Fruits',
+    how='inner'
+)`}
+      lang="python"
+      title=".merge()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+### .concat()
+
+Stacks DataFrames together either vertically or horizontally.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Stack df2 on top of df1
+combined = pd.concat([df1, df2], axis=0)`}
+      lang="python"
+      title=".concat()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 7. Handling Missing Values
+
+In real-world datasets, `NaN` (Not a Number) represents missing data.
+
+### .isnull() and .sum()
+
+These methods detect and count missing values.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`print(df.isnull().sum())`}
+      lang="python"
+      title=".isnull() and .sum()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+### .fillna() and .dropna()
+
+- `fillna()` → Replaces missing values with a specified value
+- `dropna()` → Removes rows or columns containing missing values
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`df['Quantity'] = df['Quantity'].fillna(0)`}
+      lang="python"
+      title=".fillna() and .dropna()"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## 8. Statistical Aggregations
+
+Statistical aggregation functions help quickly calculate insights from data.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`print(df['Quantity'].sum())
+# Total of all quantities
+
+print(df['Quantity'].mean())
+# Average quantity
+
+print(df['Quantity'].max())
+# Highest value
+
+print(df['Quantity'].cumsum())
+# Running total (Cumulative Sum)`}
+      lang="python"
+      title="Statistical Aggregations"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## Video Reference
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gtjxAH8uaP0?si=uYfXgtEGN1tpPE2z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

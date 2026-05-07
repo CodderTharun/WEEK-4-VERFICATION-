@@ -4,9 +4,13 @@ import mdx from '@astrojs/mdx';
 import starlightThemeRapide from 'starlight-theme-rapide'
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+
 export default defineConfig({
   integrations: [
     starlight({
+      expressiveCode: {
+  themes: ['github-dark', 'github-light'],
+},
        plugins: [starlightThemeRapide()],
        customCss: ['./src/styles/global.css'],
       title: "Let's Get Placed - 2027",
@@ -238,6 +242,7 @@ export default defineConfig({
               label: "Week 1",
               collapsed: true,
               items: [
+                { label: "AIML", link: "/it/week-1/aiml" },
                 { label: "Overview", link: "/it/week-1/" },
                 { label: "DSA", link: "/it/week-1/dsa" },
                 { label: "CN", link: "/it/week-1/cn" },
@@ -250,7 +255,9 @@ export default defineConfig({
               label: "Week 2",
               collapsed: true,
               items: [
+                
                 { label: "Overview", link: "/it/week-2/" },
+                { label: "AIML", link: "/it/week-1/aiml" },
                 { label: "DSA", link: "/it/week-2/dsa" },
                 { label: "CN", link: "/it/week-2/cn" },
                 { label: "OOPS", link: "/it/week-2/oops" },
@@ -263,6 +270,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "Overview", link: "/it/week-3/" },
+                { label: "AIML", link: "/it/week-1/aiml" },
                 { label: "DSA", link: "/it/week-3/dsa" },
                 { label: "CN", link: "/it/week-3/cn" },
                 { label: "OOPS", link: "/it/week-3/oops" },
@@ -275,6 +283,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "Overview", link: "/it/week-4/" },
+                { label: "AIML", link: "/it/week-1/aiml" },
                 { label: "DSA", link: "/it/week-4/dsa" },
                 { label: "CN", link: "/it/week-4/cn" },
                 { label: "OOPS", link: "/it/week-4/oops" },
@@ -287,6 +296,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "Overview", link: "/it/week-5/" },
+                { label: "AIML", link: "/it/week-1/aiml" },
                 { label: "DSA", link: "/it/week-5/dsa" },
                 { label: "CN", link: "/it/week-5/cn" },
                 { label: "OOPS", link: "/it/week-5/oops" },
