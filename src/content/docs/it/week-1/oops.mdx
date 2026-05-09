@@ -1,5 +1,5 @@
 ---
-title: OOPS - Week 1
+title: Object-Oriented Programming
 description: Object-Oriented Programming fundamentals
 ---
 
@@ -18,16 +18,12 @@ It organizes code as a sequence of instructions that operate on data.
 - Data can be shared across functions using global variables.
 - Data is often exposed to multiple functions.
 
----
-
 ## Advantages of POP
 
 - Simple and easy to understand.
 - Suitable for small programs.
 - Code reuse through functions.
 - Faster execution (less overhead than OOP).
-
----
 
 ## Disadvantages of POP
 
@@ -36,7 +32,6 @@ It organizes code as a sequence of instructions that operate on data.
 - Hard to modify and debug complex systems.
 - No real-world modeling.
 
----
 
 # Object Oriented Programming (OOP)
 
@@ -51,7 +46,6 @@ OOPS is a programming approach that organizes code into objects, which contain d
 - Reusing properties and methods from another class.
 - Protecting data from unauthorized access.
 
----
 
 ## Advantages of OOP
 
@@ -62,7 +56,6 @@ OOPS is a programming approach that organizes code into objects, which contain d
 - Easy to extend and modify programs.
 - Represents real-life objects clearly.
 
----
 
 ## Disadvantages of OOP
 
@@ -72,7 +65,6 @@ OOPS is a programming approach that organizes code into objects, which contain d
 - Extra effort needed for design (classes, objects).
 - Simple problems do not need OOP structure.
 
----
 
 # Difference Between POP and OOP
 
@@ -84,7 +76,6 @@ OOPS is a programming approach that organizes code into objects, which contain d
 | Reusability | Limited | High |
 | Example Languages | C, Pascal | Java, Python, C++ |
 
----
 
 ## Characteristics of OOP
 
@@ -95,7 +86,6 @@ OOPS is a programming approach that organizes code into objects, which contain d
 - Polymorphism
 - Inheritance
 
----
 
 # Class and Object
 
@@ -105,13 +95,13 @@ A class is a user-defined blueprint or prototype from which objects are created.
 It represents the set of properties or methods that are common to all objects of one type.
 Using classes, you can create multiple objects with the same behavior instead of writing their code multiple times.
 
-### Important Points About Classes
+#### Important Points About Classes
 
 - A class can have members defined as `public`, `private`, or `protected` to control accessibility.
 - The class name should follow naming conventions, usually starting with a capital letter.
 - The class body is enclosed with braces `{}` and defines data members and member functions.
 
----
+
 
 ## Object
 
@@ -121,26 +111,33 @@ The objects are what perform your code and are visible to the user.
 
 ### Features of an Object
 
-#### 1. State
-
+1. **State**
 It is represented by the attributes of an object.
 It reflects the properties of an object.
 
-#### 2. Behavior
-
+2. **Behavior**
 It is represented by the methods of an object.
 It reflects the response of an object to other objects.
 
-#### 3. Identity
-
+3. **Identity**
 It is a unique name given to an object that enables it to interact with other objects.
 
-#### 4. Method
-
+4. **Method**
 A method is a collection of statements that perform some specific task and return the result to the caller.
 
----
-![Link](/IT/oops1.png)
+<br />
+
+<img
+  src="/IT/oops1.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+<br />
 
 # Encapsulation
 
@@ -154,14 +151,25 @@ The idea of encapsulation is to bind the data members and methods into a single 
 - Helps achieve abstraction.
 - Hides implementation details and exposes only required functionalities.
 
----
-![Link](/IT/oops2.png)
+<br />
+
+<img
+  src="/IT/oops2.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+<br />
 
 ### Real-Life Example
 
 You can use an ATM machine, but the internal details are hidden.
 
----
+
 
 ### Encapsulation Example
 
@@ -227,7 +235,7 @@ public:
 
 Data is hidden and accessed using getter/setter methods.
 
----
+
 
 ## Advantages of Encapsulation
 
@@ -238,7 +246,7 @@ Data is hidden and accessed using getter/setter methods.
 - Encapsulated classes can be reused easily.
 - Promotes organized and modular code.
 
----
+
 
 ## Disadvantages of Encapsulation
 
@@ -246,7 +254,7 @@ Data is hidden and accessed using getter/setter methods.
 - Accessing data through methods adds slight performance overhead.
 - Too much restriction may limit flexibility.
 
----
+
 
 # Abstraction
 
@@ -258,14 +266,25 @@ It means showing only the important details and hiding the complex implementatio
 - What to do (functionality)
 - Not how it is done (implementation)
 
----
-![Link](/IT/oops3.png)
+<br />
+
+<img
+  src="/IT/oops3.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+<br />
 
 ### Real-Life Example
 
 You drive the car (what), but you do not know how the engine works internally (how).
 
----
+
 
 ### Abstraction Example
 
@@ -332,7 +351,7 @@ class Dog(Animal):
 
 The abstract method defines what to do, not how.
 
----
+
 
 ## Advantages of Abstraction
 
@@ -342,7 +361,7 @@ The abstract method defines what to do, not how.
 - Common structure can be reused.
 - Changes in implementation do not affect users.
 
----
+
 
 ## Disadvantages of Abstraction
 
@@ -351,7 +370,7 @@ The abstract method defines what to do, not how.
 - Can increase complexity if overused.
 - Indirect calls may slightly affect performance.
 
----
+
 
 # Inheritance
 
@@ -362,7 +381,7 @@ Inheritance allows:
 - Extension of existing classes
 - Hierarchical classification
 
----
+
 
 ## Features of Inheritance
 
@@ -371,7 +390,7 @@ Inheritance allows:
 - Promotes code reusability.
 - Represents real-world relationships.
 
----
+
 
 ### Inheritance Example
 
@@ -446,59 +465,75 @@ d.bark()`}
 
 Dog inherits properties of Animal.
 
----
+
 ## Types of Inheritance
 
 There are 5 types of inheritance.
 
-![Link](/IT/oops5.png)
----
+<br />
 
-### 1. Single Inheritance
+<img
+  src="/IT/oops5.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
+<br />
+
+1. **Single Inheritance**
 In single inheritance, a subclass is derived from only one superclass.
 It inherits properties and behavior from a single parent class.
 It is also known as simple inheritance.
 
----
 
-### 2. Multiple Inheritance
 
+2. **Multiple Inheritance**
 In multiple inheritance, one class can have more than one superclass and inherit features from all parent classes.
 
----
 
-### 3. Hierarchical Inheritance
 
+3. **Hierarchical Inheritance**
 In hierarchical inheritance, more than one subclass is inherited from a single base class.
 That means multiple derived classes are created from one base class.
 
----
 
-### 4. Multilevel Inheritance
 
+4. **Multilevel Inheritance**
 Multilevel inheritance means a class is derived from another derived class, forming a chain of inheritance.
 
----
-
-### 5. Hybrid Inheritance
-
-Hybrid inheritance occurs when two or more inheritance types are combined in one program.
-Example:
-
-- Multiple inheritance
-- Multilevel inheritance
 
 
----
+5. **Hybrid Inheritance**
+Hybrid inheritance occurs when two or more inheritance types are combined in one program.<br />
+  Example:
+    - Multiple inheritance
+    - Multilevel inheritance
+
+
+
 
 # Polymorphism
 
 Polymorphism allows the same method to perform different actions.
 The word polymorphism means "many forms".
 
-![Link](/IT/oops6.png)
----
+<br />
+
+<img
+  src="/IT/oops6.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+<br />
 
 ## Compile-Time Polymorphism
 
@@ -513,15 +548,11 @@ This type of polymorphism is achieved using:
 
 - Function Overloading
 - Operator Overloading
-----
-### Function Overloading
 
+### 1] Function Overloading
 Function overloading allows multiple functions with the same name but different parameters.
-
----
-
-#### Function Overloading Example
-
+<br />
+**Function Overloading Example**
 <Tabs>
   <TabItem label="Java">
     <Code
@@ -599,26 +630,18 @@ obj.add(10, 20, 30)`}
   </TabItem>
 </Tabs>
 
----
 
-### Operator Overloading
 
+### 2] Operator Overloading
 Programming languages can provide operators with special meanings for particular data types.
-
-This ability is known as **Operator Overloading**.
-
+This ability is known as Operator Overloading.
 For example:
-
 - The `+` operator is used to add integers.
 - The `+` operator is also used to concatenate strings.
 - The `<<` and `>>` operators are used as binary shift operators and also with input/output streams.
-
 This is possible because of operator overloading.
-
----
-
-#### Operator Overloading Example
-
+<br />
+**Operator Overloading Example**
 <Tabs>
   <TabItem label="Java">
     <Code
@@ -720,20 +743,18 @@ c3.display()`}
   </TabItem>
 </Tabs>
 
----
+
 
 ## Runtime Polymorphism
 
 It is also known as late binding and dynamic polymorphism, the function call in runtime polymorphism is resolved at runtime in contrast with compile time polymorphism, where the compiler determines which function call to bind at compilation. Runtime polymorphism is implemented using function overriding with virtual functions.
 
 
----
-
 ### Function Overriding
 
 Function Overriding occurs when a derived class defines one or more member functions of the base class. That base function is said to be overridden. The base class function must be declared as a virtual function for runtime polymorphism to happen.
 
----
+
 #### Function Overriding Example
 
 <Tabs>
@@ -826,21 +847,19 @@ d.sound()`}
   </TabItem>
 </Tabs>
 
----
 
-## Advantages of Runtime Polymorphism
+
+### Advantages of Runtime Polymorphism
 
 - Increases flexibility in programs.
 - Supports method overriding.
 - Enables dynamic method dispatch.
 - Makes code reusable and extensible.
 
----
 
-## Disadvantages of Runtime Polymorphism
+
+### Disadvantages of Runtime Polymorphism
 
 - Slightly slower because method calls are resolved at runtime.
 - Increases program complexity.
 - Debugging may become difficult in large systems.
-
----
