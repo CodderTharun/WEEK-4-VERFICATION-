@@ -4,9 +4,13 @@ import mdx from '@astrojs/mdx';
 import starlightThemeRapide from 'starlight-theme-rapide'
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+
 export default defineConfig({
   integrations: [
     starlight({
+      expressiveCode: {
+  themes: ['github-dark', 'github-light'],
+},
        plugins: [starlightThemeRapide()],
        customCss: ['./src/styles/global.css'],
       title: "Let's Get Placed - 2027",
@@ -238,6 +242,7 @@ export default defineConfig({
               label: "Week 1",
               collapsed: true,
               items: [
+                { label: "AIML", link: "/it/week-1/aiml" },
                 { label: "Overview", link: "/it/week-1/" },
                 { label: "DSA", link: "/it/week-1/dsa" },
                 { label: "CN", link: "/it/week-1/cn" },
@@ -250,7 +255,9 @@ export default defineConfig({
               label: "Week 2",
               collapsed: true,
               items: [
+                
                 { label: "Overview", link: "/it/week-2/" },
+                { label: "AIML", link: "/it/week-1/aiml" },
                 { label: "DSA", link: "/it/week-2/dsa" },
                 { label: "CN", link: "/it/week-2/cn" },
                 { label: "OOPS", link: "/it/week-2/oops" },
@@ -263,6 +270,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "Overview", link: "/it/week-3/" },
+                { label: "AIML", link: "/it/week-1/aiml" },
                 { label: "DSA", link: "/it/week-3/dsa" },
                 { label: "CN", link: "/it/week-3/cn" },
                 { label: "OOPS", link: "/it/week-3/oops" },
@@ -275,6 +283,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "Overview", link: "/it/week-4/" },
+                { label: "AIML", link: "/it/week-1/aiml" },
                 { label: "DSA", link: "/it/week-4/dsa" },
                 { label: "CN", link: "/it/week-4/cn" },
                 { label: "OOPS", link: "/it/week-4/oops" },
@@ -287,6 +296,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "Overview", link: "/it/week-5/" },
+                { label: "AIML", link: "/it/week-1/aiml" },
                 { label: "DSA", link: "/it/week-5/dsa" },
                 { label: "CN", link: "/it/week-5/cn" },
                 { label: "OOPS", link: "/it/week-5/oops" },
@@ -307,7 +317,7 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/mech/week-1/" },
                 { label: "Thermodynamics", link: "/mech/week-1/thermodynamics" },
-                { label: "Mechanics of Materials", link: "/mech/week-1/mechanics-materials" },
+                { label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
                 { label: "Machine Design", link: "/mech/week-1/machine-design" },
                 { label: "Fluid Mechanics", link: "/mech/week-1/fluid-mechanics" },
                 { label: "Manufacturing", link: "/mech/week-1/manufacturing" },
@@ -319,7 +329,7 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/mech/week-2/" },
                 { label: "Thermodynamics", link: "/mech/week-2/thermodynamics" },
-                { label: "Mechanics of Materials", link: "/mech/week-2/mechanics-materials" },
+                { label: "Strength of Materials", link: "/mech/week-2/strength-materials" },
                 { label: "Machine Design", link: "/mech/week-2/machine-design" },
                 { label: "Fluid Mechanics", link: "/mech/week-2/fluid-mechanics" },
                 { label: "Manufacturing", link: "/mech/week-2/manufacturing" },
@@ -331,7 +341,7 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/mech/week-3/" },
                 { label: "Thermodynamics", link: "/mech/week-3/thermodynamics" },
-                { label: "Mechanics of Materials", link: "/mech/week-3/mechanics-materials" },
+                { label: "Strength of Materials", link: "/mech/week-3/strength-materials" },
                 { label: "Machine Design", link: "/mech/week-3/machine-design" },
                 { label: "Fluid Mechanics", link: "/mech/week-3/fluid-mechanics" },
                 { label: "Manufacturing", link: "/mech/week-3/manufacturing" },
@@ -343,7 +353,7 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/mech/week-4/" },
                 { label: "Thermodynamics", link: "/mech/week-4/thermodynamics" },
-                { label: "Mechanics of Materials", link: "/mech/week-4/mechanics-materials" },
+                { label: "Strength of Materials", link: "/mech/week-4/strength-materials" },
                 { label: "Machine Design", link: "/mech/week-4/machine-design" },
                 { label: "Fluid Mechanics", link: "/mech/week-4/fluid-mechanics" },
                 { label: "Manufacturing", link: "/mech/week-4/manufacturing" },
@@ -355,7 +365,7 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/mech/week-5/" },
                 { label: "Thermodynamics", link: "/mech/week-5/thermodynamics" },
-                { label: "Mechanics of Materials", link: "/mech/week-5/mechanics-materials" },
+                { label: "Strength of Materials", link: "/mech/week-5/strength-materials" },
                 { label: "Machine Design", link: "/mech/week-5/machine-design" },
                 { label: "Fluid Mechanics", link: "/mech/week-5/fluid-mechanics" },
                 { label: "Manufacturing", link: "/mech/week-5/manufacturing" },
