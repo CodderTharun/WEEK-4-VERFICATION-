@@ -1,0 +1,732 @@
+---
+title: Complete Git & GitHub Guide
+sidebar_position: 1
+description: Complete professional Git and GitHub documentation notes.
+---
+
+# Git & GitHub
+
+## 1. Introduction to Git
+
+Git is a Distributed Version Control System (DVCS) used to track changes in files and collaborate with multiple developers.
+
+Git helps developers:
+
+- Track code history
+- Restore previous versions
+- Work on multiple features simultaneously
+- Collaborate efficiently
+- Manage software development professionally
+
+![Distributed Git Architecture](./img/distributed-git-architecture.png)
+
+---
+
+## 2. Version Control System
+
+A Version Control System (VCS) records changes made to files over time.
+
+### Without Version Control
+
+- Previous code versions are lost
+- Collaboration becomes difficult
+- Bugs are hard to trace
+- Recovery becomes impossible
+
+### With Git
+
+- Every change is tracked
+- Developers can collaborate safely
+- Previous versions can be restored anytime
+
+---
+
+## 3. Distributed Version Control System
+
+Git is distributed because every developer has a complete copy of the repository.
+
+### Advantages
+
+- Faster operations
+- Offline work possible
+- Better backup system
+- Easy branching and merging
+
+![Centralized vs Distributed VCS](./img/centralized-vs-distributed-vcs.png)
+
+---
+
+## 4. Installing Git
+
+### Linux
+
+```bash
+sudo apt-get install git
+```
+
+### Windows
+
+Download from:
+
+```text
+https://git-scm.com/downloads
+```
+
+### Verify Installation
+
+```bash
+git --version
+```
+
+---
+
+## 5. First-Time Git Configuration
+
+### Set Username
+
+```bash
+git config --global user.name "Your Name"
+```
+
+### Set Email
+
+```bash
+git config --global user.email "your@email.com"
+```
+
+### Check Configuration
+
+```bash
+git config --list
+```
+
+---
+
+## 6. Git Workflow
+
+Git workflow consists of three main stages:
+
+```text
+Working Directory → Staging Area → Repository
+```
+
+### Workflow Steps
+
+1. Create or modify files
+2. Add files to staging area
+3. Commit changes permanently
+
+![Git Workflow Diagram](./img/git-workflow-diagram.png)
+
+---
+
+## 7. File States in Git
+
+Files in Git can exist in three states.
+
+### Modified
+
+The file has been changed but not staged.
+
+### Staged
+
+The file is prepared for the next commit.
+
+### Committed
+
+The file snapshot is permanently stored in Git history.
+
+![Git File States](./img/git-file-states.png)
+
+---
+
+## 8. Repository Initialization
+
+Initialize a new Git repository.
+
+```bash
+git init
+```
+
+This creates a hidden `.git` directory that stores all Git metadata.
+
+---
+
+## 9. Staging and Committing
+
+### Add Files
+
+Add a single file:
+
+```bash
+git add filename
+```
+
+Add all files:
+
+```bash
+git add .
+```
+
+### Commit Changes
+
+```bash
+git commit -m "Commit message"
+```
+
+Example:
+
+```bash
+git commit -m "Added login functionality"
+```
+
+
+---
+
+## 10. Git Status
+
+Check repository status.
+
+```bash
+git status
+```
+
+This shows:
+
+- Modified files
+- Staged files
+- Untracked files
+- Current branch
+![Git Status Output](./img/git-status-output.png)
+
+---
+
+## 11. Git Log
+
+View commit history.
+
+```bash
+git log
+```
+
+Compact version:
+
+```bash
+git log --oneline
+```
+
+Graph view:
+
+```bash
+git log --oneline --graph --all
+```
+
+![Git Log Graph](./img/git-log-graph.png)
+
+---
+
+## 12. The Staging Area
+
+The staging area acts as a temporary preparation zone before committing.
+
+### Important Concept
+
+```text
+git add creates a snapshot of the current file state
+```
+
+Even after staging, files can still be modified.
+
+---
+
+## 13. Undoing Changes
+
+### Unstage a File
+
+```bash
+git reset HEAD filename
+```
+
+Removes file from staging area while keeping modifications.
+
+### Discard Changes
+
+```bash
+git checkout -- filename
+```
+
+### Warning
+
+This permanently removes changes.
+
+---
+
+## 14. Removing Files
+
+### Remove File Completely
+
+```bash
+git rm filename
+```
+
+Removes:
+
+- File from working directory
+- File from Git tracking
+
+### Remove Only from Git
+
+```bash
+git rm --cached filename
+```
+
+The file remains on the computer but Git stops tracking it.
+
+---
+
+## 15. Viewing Differences
+
+### Compare Working Directory and Staging Area
+
+```bash
+git diff
+```
+
+### Compare Staging Area and Last Commit
+
+```bash
+git diff --cached
+```
+
+### Compare Working Directory and Last Commit
+
+```bash
+git diff HEAD
+```
+
+![Git Diff Workflow](./img/git-diff-workflow.png)
+
+---
+
+## 16. .gitignore
+
+The `.gitignore` file tells Git which files or folders should not be tracked.
+
+### Example
+
+```gitignore
+node_modules/
+.env
+*.log
+*.pyc
+```
+
+### Commonly Ignored Files
+
+- Temporary files
+- Build files
+- Environment variables
+- Logs
+- Dependencies
+
+---
+
+## 17. Branching
+
+Branches allow developers to work on features independently.
+
+### Default Branch Names
+
+```text
+main
+```
+
+Older naming:
+
+```text
+master
+```
+
+### View Branches
+
+```bash
+git branch
+```
+
+### Create Branch
+
+```bash
+git branch feature-login
+```
+
+### Switch Branch
+
+```bash
+git checkout feature-login
+```
+
+### Create and Switch Branch
+
+```bash
+git checkout -b feature-login
+```
+
+### Delete Branch
+
+```bash
+git branch -d feature-login
+```
+
+![Git Branching Diagram](./img/git-branching-diagram.png)
+
+---
+
+## 18. Git Stash
+
+Git stash temporarily stores unfinished changes.
+
+### Save Changes
+
+```bash
+git stash
+```
+
+### Restore Changes
+
+```bash
+git stash pop
+```
+
+Useful when switching branches quickly.
+
+
+---
+
+## 19. HEAD Pointer
+
+HEAD is a special pointer that refers to the current branch or commit.
+
+### Example
+
+```text
+HEAD → main
+```
+
+When switching branches, HEAD moves automatically.
+
+
+---
+
+## 20. Merging
+
+Merging combines two branches together.
+
+### Example
+
+```bash
+git checkout main
+git merge feature-login
+```
+
+Git creates a merge commit that combines histories.
+
+![Git Merge Diagram](./img/git-merge-diagram.png)
+
+---
+
+## 21. Merge Conflicts
+
+Merge conflicts happen when two branches modify the same section of code differently.
+
+### Conflict Markers
+
+```text
+<<<<<<< HEAD
+Current branch code
+=======
+Incoming branch code
+>>>>>>> branch-name
+```
+
+### Steps to Resolve Conflicts
+
+1. Open conflicting file
+2. Edit manually
+3. Remove conflict markers
+4. Add file
+5. Commit changes
+
+```bash
+git add filename
+git commit
+```
+
+---
+
+## 22. Rebasing
+
+Rebasing moves commits from one branch onto another base branch.
+
+### Command
+
+```bash
+git rebase main
+```
+
+### Advantages
+
+- Cleaner history
+- Linear commit structure
+
+### Important Warning
+
+Never rebase shared or public branches.
+
+### Reason
+
+Rebasing rewrites commit history and can break collaboration.
+
+![Merge vs Rebase](./img/merge-vs-rebase.png)
+
+---
+
+## 23. Git Reset
+
+Git reset moves HEAD to another commit.
+
+### Soft Reset
+
+```bash
+git reset --soft commitID
+```
+
+Keeps:
+
+- Staging area
+- Working files
+
+### Mixed Reset
+
+```bash
+git reset --mixed commitID
+```
+
+Keeps:
+
+- Working files
+
+Removes:
+
+- Staging area
+
+### Hard Reset
+
+```bash
+git reset --hard commitID
+```
+
+Deletes:
+
+- Staging area
+- Working directory changes
+
+### Warning
+
+This operation can permanently delete work.
+
+---
+
+## 24. Remote Repositories
+
+Remote repositories are repositories hosted online.
+
+### Example Platforms
+
+- GitHub
+- GitLab
+- Bitbucket
+
+### Add Remote
+
+```bash
+git remote add origin repositoryURL
+```
+
+### View Remotes
+
+```bash
+git remote -v
+```
+
+### Remove Remote
+
+```bash
+git remote remove origin
+```
+
+---
+
+## 25. GitHub SSH Setup
+
+SSH authentication avoids repeated password entry.
+
+### Generate SSH Key
+
+```bash
+ssh-keygen -t rsa -C "your@email.com"
+```
+
+### Add SSH Key
+
+```bash
+ssh-add ~/.ssh/id_rsa
+```
+
+### View Public Key
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+Paste this key into GitHub SSH settings.
+
+![GitHub SSH Setup](./img/github-ssh-setup1.png)
+![GitHub SSH Setup](./img/github-ssh-setup2.png)
+
+---
+
+## 26. Creating a GitHub Repository
+
+### Steps
+
+1. Open GitHub
+2. Click "New Repository"
+3. Enter repository name
+4. Copy repository URL
+
+![Create GitHub Repository](./img/github-create-repository.png)
+
+### Push Existing Project
+
+```bash
+git remote add origin URL
+git push -u origin main
+```
+
+
+---
+
+## 27. Push, Pull, and Fetch
+
+### Push
+
+Uploads commits to remote repository.
+
+```bash
+git push origin main
+```
+
+### Fetch
+
+Downloads latest changes without merging.
+
+```bash
+git fetch origin
+```
+
+### Pull
+
+Fetches and merges changes.
+
+```bash
+git pull origin main
+```
+
+
+---
+
+## 28. Remote Tracking Branches
+
+### Example
+
+```text
+origin/main
+```
+
+Tracks the remote branch locally.
+
+### After Fetching
+
+```bash
+git merge origin/main
+```
+
+or:
+
+```bash
+git rebase origin/main
+```
+
+
+---
+
+## 29. Team Workflow
+
+### Standard Team Workflow
+
+1. Clone repository
+2. Create feature branch
+3. Make changes
+4. Commit changes
+5. Push branch
+6. Create Pull Request
+7. Code Review
+8. Merge into main
+
+![Team Workflow Git](./img/team-workflow-git.png)
+
+---
+
+## 30. Best Practices
+
+### Commit Frequently
+
+Small commits are easier to manage.
+
+### Write Clear Commit Messages
+
+Bad:
+
+```text
+fixed stuff
+```
+
+Good:
+
+```text
+Fixed authentication bug in login module
+```
+
+### Use Feature Branches
+
+Avoid direct work on the main branch.
+
+### Pull Before Push
+
+Reduces merge conflicts.
+
+### Never Push Secrets
+
+Do not push:
+
+- API keys
+- Passwords
+- Environment files
+
+---
+
+## 31. Git Cheat Sheet
+
+![Git Cheat Sheet](./img/git-cheat-sheet.png)
+
+![Solo Workflow Git](./img/solo-workflow-git.png)
