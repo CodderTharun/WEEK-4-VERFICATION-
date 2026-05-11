@@ -3,119 +3,75 @@ title: Network Analysis - Week 1
 description: Network Analysis fundamentals
 ---
 
-#  Electrical Units and Measurement Conventions in DC Systems
+# Electrical Units and Measurement Conventions in DC Systems
 
-##  Fundamental Electrical Quantities
+## Fundamental Electrical Quantities
 
-- **Voltage ($V$ or $E$)**  
-  Represents the potential energy required to move electrons between two points (nodes).  
-  Measured in **Volts (V)**.
+Voltage (V/E): Represents the potential energy required to move electrons between two points (nodes). It is measured in Volts (V).
+Current (I/i): The continuous flow of electrical  charge through a is measured in Amperes (A).
+Resistance (R): The capacity of a material to resist or prevent the flow of electric charge. It is measured in Ohms (Ω) and is always positive.
+Conductance (G): The reciprocal of resistance (1/R), representing the ease with which current flows. It is measured in Siemens (S) or mhos (℧).
 
-- **Current ($I$ or $i$)**  
-  The continuous flow of electrical charge through a circuit.  
-  Measured in **Amperes (A)**.
+## Ohm’s Law
 
-- **Resistance ($R$)**  
-  The capacity of a material to resist or prevent the flow of electric charge.  
-  Measured in **Ohms ($\Omega$)** and is always positive.
+At a constant temperature, the current flowing through a conductor is directly proportional to the voltage across it.
 
-- **Conductance ($G$)**  
-  The reciprocal of resistance, representing how easily current flows.  
-  Measured in **Siemens (S)** or **mhos ($\mho$)**.  
+V = IR | I = V/R | R = V/I
 
-  $$
-  G = \frac{1}{R}
-  $$
+To find the Power (P)
+P = VI    |  P = V^2 * R   |  P = I^2 * R
 
-![Fundamentals](/fundamentals.png) 
+## Common DC Circuit Theory Terms:
 
----
+- Circuit – a circuit is a closed loop conducting path in which an electrical current flows.
+• Path – a single line of connecting elements or sources.
+• Node – a node is a junction, connection or terminal within a circuit were two or more circuit elements are connected or joined together giving a connection point between two or more branches. A node is indicated by a dot.
+• Branch – a branch is a single or group of components such as resistors or a source which are connected between two nodes.
+• Loop – a loop is a simple closed path in a circuit in which no circuit element or node is encountered more than once.
+• Mesh – a mesh is a single closed loop series path that does not contain any other paths. There are no loops inside a mesh.
 
-##  Ohm’s Law
+## Kirchhoff’s Current Law (KCL)
 
-At constant temperature, the current flowing through a conductor is directly proportional to the voltage across it.
+At any moment, the algebraic sum of flowing currents through a point (or junction) in a network is Zero (0) or in any electrical network, the algebraic sum of the currents meeting at a point (or junction) is Zero (0). This law is also known as Point Law or Current law.
+Principle: Conservation of Charge.
 
-$$
-V = IR
-$$
 
-$$
-I = \frac{V}{R}
-$$
 
-$$
-R = \frac{V}{I}
-$$
+## Kirchhoff’s Voltage Law
 
----
+Kirchoff’s Voltage Law states that in any closed loop network being driven by a voltage source, the total voltage around the loop is equal to the sum of all the voltage drops within the same loop.
+Principle: Conservation of Energy.
 
-##  Power Formulas
+1. Introduction to Network Transformation
+The 3-phase networks have three wires and usually, the networks are connected in star & delta configuration. The 3 phase supply or the load connected in either formation can be converted into its equivalent counterpart. We use such conversion to simplify the mathematical calculations required for circuit analysis of a complex electrical network.
+Delta Connected Network
 
-To calculate electrical power:
+The delta connected network is formed when three network branches or impedances are connected to form a loop in such a way that their heads are connected to the tails of the adjacent branch. The resultant network forms a triangle shape that resembles a Greek letter Delta “Δ” which is why it’s named after it. It is also known as π (pi) network because it resembles the letter after rearranging the branches.
+Star Connected Network
 
-$$
-P = VI
-$$
+The Star connected network is formed when three branches or impedances are connected together at a common point. The other ends of the branch networks are free. The resultant shape resembles the letter “Y” which is why it is also called “Y” or “Wye” connected network. It is also known as “T” connected network due to its shape after rearranging the network branches.
 
-$$
-P = \frac{V^2}{R}
-$$
+# Network Transformation
 
-$$
-P = I^2 R
-$$
+## Thevenin’s Theorem
 
----
+Any linear electric network or a complex circuit with current and voltage sources can be replaced by an equivalent circuit containing a single independent voltage source VTH and a Series Resistance RTH.
 
-##  Common DC Circuit Theory Terms
+## Norton’s Theorem
 
-- **Circuit**  
-  A closed loop conducting path in which electrical current flows.
+Norton Theorem says that any circuitry which has many  power supplies and  resistors can be swapped with the circuit which has a current source and one  resistor in its parallel.
 
-- **Path**  
-  A single line of connecting elements or sources.
+Norton’s Theorem says that any complex linear circuit with voltage sources and resistors can be simplified into:
+A current source (IN) in parallel with
+A single equivalent resistance (RN)
+This makes circuit analysis easier, especially when finding current through a load.
 
-- **Node**  
-  A junction or connection point where two or more circuit elements meet.  
-  Represented by a dot.
 
-- **Branch**  
-  A single component or group of components connected between two nodes.
+## Maximum Power Transfer Theorem for DC Circuits
 
-- **Loop**  
-  A simple closed path in a circuit where no element or node is encountered more than once.
+This theorem describes the condition for maximum power transfer from an active network to an external load resistance. It states that in a linear, active, bilateral DC network, the maximum power will be transferred from source to the load when the external load resistance equals the internal resistance of the source.
 
-- **Mesh**  
-  A closed loop that does not contain any other loops inside it.
-
----
-
-##  Kirchhoff’s Current Law (KCL)
-
-Kirchhoff’s Current Law states that the total current entering a node is equal to the total current leaving the node.
-
-**Principle:** Conservation of Charge  
-
-$$
-\sum I = 0
-$$
-
-$$
-\sum I_{\text{in}} = \sum I_{\text{out}}
-$$
-
-![KCL](/kcl.png) 
----
-
-## Kirchhoff’s Voltage Law (KVL)
-
-Kirchhoff’s Voltage Law states that in any closed loop, the total voltage supplied is equal to the sum of all voltage drops.
-
-**Principle:** Conservation of Energy  
-
-$$
-\sum V = 0
-$$
-![KVL](/kvl.png) 
----
-
+Maximum power transfer theorem can be applied to both DC and AC circuits, but the only difference is that the resistance is replaced with impedance in AC circuit.
+In an AC electrical network the maximum power will be transferred from source section to the load section when the impedance of the load is complex conjugate of the source impedance.
+It is important to note that in AC circuit, source also possesses an internal reactance. Therefore in order to have maximum power transfer the load must possess same value of reactance but it should be of opposite type. This means that the load must have an equivalent capacitive reactance, if source has inductive reactance, and vice versa.
+The efficiency is 50 percent only at maximum power transfer condition. So in power system network, this condition causes a large voltage drop in the lines. But the goal of the power system network is to increase the efficiency rather than maximum power. Therefore, power system never operated under maximum power transfer.
