@@ -316,11 +316,9 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "Overview", link: "/mech/week-1/" },
-                { label: "Thermodynamics", link: "/mech/week-1/thermodynamics" },
+                { label: "Basic Thermodynamics", link: "/mech/week-1/thermodynamics" },
                 { label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
-                { label: "Machine Design", link: "/mech/week-1/machine-design" },
-                { label: "Fluid Mechanics", link: "/mech/week-1/fluid-mechanics" },
-                { label: "Manufacturing", link: "/mech/week-1/manufacturing" },
+                
               ],
             },
             {
