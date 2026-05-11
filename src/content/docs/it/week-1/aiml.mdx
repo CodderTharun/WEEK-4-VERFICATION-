@@ -48,7 +48,7 @@ print(type(age))
   </TabItem>
 </Tabs>
 
-### Data Structures (Collections)
+###  Data Structures (Collections)
 
 These are containers used to group data together.
 
@@ -189,9 +189,6 @@ List comprehension is a way to create lists in a single line.
 
 It is faster and more readable than a standard loop for simple transformations.
 
-### Syntax
-
-`[expression for item in iterable if condition]`
 
 <Tabs>
   <TabItem label="Python">
@@ -255,7 +252,7 @@ print("python"[0:4])
 
 ---
 
-# NumPy
+## NumPy
 
 NumPy (Numerical Python) is a fundamental library for numerical computing in Python.
 
@@ -271,11 +268,11 @@ The broadcasting capabilities are also extremely useful for quickly applying fun
 
 ## Key Features of NumPy
 
-### 1. N-dimensional Array (ndarray)
+### N-dimensional Array (ndarray)
 
 NumPy’s primary data structure is the ndarray, which allows efficient storage and manipulation of large datasets in multiple dimensions such as 1D, 2D, and 3D arrays.
 
-### 2. Mathematical Functions
+### Mathematical Functions
 
 NumPy provides a wide range of mathematical operations such as:
 
@@ -283,11 +280,11 @@ NumPy provides a wide range of mathematical operations such as:
 - Statistical functions
 - Random number generation
 
-### 3. Broadcasting
+### Broadcasting
 
 Broadcasting allows NumPy to perform element-wise operations on arrays of different shapes without explicitly reshaping them.
 
-### 4. Integration with Other Libraries
+### Integration with Other Libraries
 
 NumPy is commonly used alongside:
 
@@ -297,7 +294,7 @@ NumPy is commonly used alongside:
 
 It forms the foundation for scientific computing in Python.
 
-### 5. Efficiency
+### Efficiency
 
 NumPy operations are faster and more memory-efficient compared to traditional Python lists because they are implemented using lower-level languages.
 
@@ -305,11 +302,11 @@ NumPy operations are faster and more memory-efficient compared to traditional Py
 
 ## Working with NumPy
 
-### 1. Array Creation Functions
+## 1. Array Creation Functions
 
 These functions allow you to generate arrays with specific initial values or patterns.
 
-#### np.arange()
+### np.arange()
 
 Generates an array of values within a given interval using a specific step size.
 
@@ -328,7 +325,7 @@ print(arr) # [0 2 4 6 8]`}
   </TabItem>
 </Tabs>
 
-#### np.zeros() and np.ones()
+### np.zeros() and np.ones()
 
 Creates arrays filled entirely with 0s or 1s.
 
@@ -348,7 +345,7 @@ ones = np.ones(4)
   </TabItem>
 </Tabs>
 
-#### np.linspace()
+### np.linspace()
 
 Returns evenly spaced numbers over a specified interval.
 
@@ -368,7 +365,7 @@ print(lin)
   </TabItem>
 </Tabs>
 
-#### np.eye()
+### np.eye()
 
 Creates an identity matrix.
 
@@ -393,7 +390,7 @@ NumPy’s random module is essential for:
 - Shuffling data
 - Initializing machine learning models
 
-#### np.random.rand() and np.random.randn()
+### np.random.rand() and np.random.randn()
 
 - `rand()` creates values from a uniform distribution.
 - `randn()` creates values from a standard normal distribution.
@@ -412,7 +409,7 @@ n = np.random.randn(3,3)
   </TabItem>
 </Tabs>
 
-#### np.random.randint()
+### np.random.randint()
 
 Returns random integers from a specified range.
 
@@ -427,7 +424,7 @@ r_int = np.random.randint(1, 100, 5)`}
   </TabItem>
 </Tabs>
 
-#### np.random.seed()
+### np.random.seed()
 
 Sets the starting point for the random number generator, making results reproducible.
 
@@ -444,7 +441,6 @@ print(np.random.rand(1))
   </TabItem>
 </Tabs>
 
----
 ---
 
 ## 3. Manipulation and Attributes
@@ -668,7 +664,7 @@ These structures allow you to manipulate tabular data with the same ease as an E
 
 ---
 
-## Core Data Structures
+## 1. Core Data Structures
 
 ### Pandas Series
 
@@ -733,7 +729,7 @@ df = pd.DataFrame(data)`}
 
 ---
 
-## Essential Data Operations
+## 2. Essential Data Operations
 
 ### Data Exploration
 
@@ -778,7 +774,7 @@ expensive_items = df[df['Price'] > 100]`}
 
 ---
 
-## Data Merging and Grouping
+### Data Merging and Grouping
 
 Pandas excels at combining data from multiple sources, similar to SQL operations.
 
@@ -810,13 +806,13 @@ avg_price = df.groupby('Category')['Price'].mean()`}
 
 ---
 
-## Working with Pandas
+## 3. Working with Pandas
 
-### 1. Data Exploration & Metadata
+### Data Exploration & Metadata
 
 Before manipulating data, you should understand its structure and data types.
 
-### df.info()
+#### df.info()
 
 Provides a concise summary of the DataFrame including:
 
@@ -847,7 +843,7 @@ df.info()
   </TabItem>
 </Tabs>
 
-### df.describe()
+#### df.describe()
 
 Generates descriptive statistics for numerical columns.
 
@@ -864,11 +860,11 @@ Generates descriptive statistics for numerical columns.
 ---
 ---
 
-## 2. Selection and Slicing
+### Selection and Slicing
 
 Selection and slicing help navigate through data using labels or positions.
 
-### .loc[] and .iloc[]
+#### .loc[] and .iloc[]
 
 - `loc[]` → Accesses data using labels (row names and column names)
 - `iloc[]` → Accesses data using integer positions (index numbers)
@@ -891,7 +887,7 @@ print(df.iloc[0, 0])
 
 ---
 
-### .at[] and .iat[]
+#### .at[] and .iat[]
 
 These are used for fast access to a single scalar value.
 
@@ -909,11 +905,11 @@ print(df.at[0, 'Quantity'])
 
 ---
 
-## 3. Data Cleaning and Transformation
+### Data Cleaning and Transformation
 
 Preparing data for analysis often requires changing data types or renaming columns.
 
-### .astype()
+#### .astype()
 
 Converts a column from one data type to another.
 
@@ -930,7 +926,7 @@ df['Quantity'] = df['Quantity'].astype('float64')`}
 
 ---
 
-### .rename()
+#### .rename()
 
 Changes column or index labels.
 
@@ -946,11 +942,11 @@ Changes column or index labels.
 
 ---
 
-## 4. Sorting and Filtering
+### Sorting and Filtering
 
 Sorting and filtering help organize data and extract insights.
 
-### .sort_values()
+#### .sort_values()
 
 Sorts the DataFrame based on the values of a specific column.
 
@@ -967,7 +963,7 @@ df.sort_values(by='Quantity', ascending=False, inplace=True)`}
 
 ---
 
-### .query()
+#### .query()
 
 Filters data using a logical string expression.
 
@@ -984,11 +980,11 @@ filtered_df = df.query('Quantity > 30')`}
 
 ---
 
-## 5. Reshaping Data
+### Reshaping Data
 
 Reshaping changes the layout of data for visualization or modeling purposes.
 
-### .melt()
+#### .melt()
 
 Converts a DataFrame from wide format to long format.
 
@@ -1009,7 +1005,7 @@ melted = pd.melt(
 
 ---
 
-### .pivot()
+#### .pivot()
 
 Creates a new table structure based on column values.
 
@@ -1031,11 +1027,11 @@ pivot_table = df.pivot(
 
 ---
 
-## 6. Combining Datasets
+### Combining Datasets
 
 Combining data from different sources is a common task in data analysis.
 
-### .merge()
+#### .merge()
 
 Joins two DataFrames using a common key column.
 
@@ -1062,7 +1058,7 @@ merged_df = pd.merge(
 
 ---
 
-### .concat()
+#### .concat()
 
 Stacks DataFrames together either vertically or horizontally.
 
@@ -1079,11 +1075,11 @@ combined = pd.concat([df1, df2], axis=0)`}
 
 ---
 
-## 7. Handling Missing Values
+### Handling Missing Values
 
 In real-world datasets, `NaN` (Not a Number) represents missing data.
 
-### .isnull() and .sum()
+#### .isnull() and .sum()
 
 These methods detect and count missing values.
 
@@ -1099,7 +1095,7 @@ These methods detect and count missing values.
 
 ---
 
-### .fillna() and .dropna()
+#### .fillna() and .dropna()
 
 - `fillna()` → Replaces missing values with a specified value
 - `dropna()` → Removes rows or columns containing missing values
@@ -1116,7 +1112,7 @@ These methods detect and count missing values.
 
 ---
 
-## 8. Statistical Aggregations
+### Statistical Aggregations
 
 Statistical aggregation functions help quickly calculate insights from data.
 
@@ -1162,11 +1158,11 @@ print(df['Quantity'].cumsum())
 
 Matplotlib is a powerful and versatile open-source plotting library for Python, designed to help users visualize data in a variety of formats. It is designed to work with NumPy arrays and pandas dataframes. The library makes it easy to make graphs from tabular data.
 
-## **Matplotlib Pyplot**
+## **1. Matplotlib Pyplot**
 
 Pyplot is a Matplotlib module that provides simple functions for adding plot elements, such as lines, images, text, etc. to the axes in the current figure.
 
-## **Installation:**
+### **Installation:**
 
  <Code
       code={`pip install matplotlib`}
@@ -1184,7 +1180,7 @@ Pyplot is a Matplotlib module that provides simple functions for adding plot ele
 
 **Syntax:** matplotlib.pyplot.plot()
 
-## **Parts of Matplotlib**
+## **2. Parts of Matplotlib**
 
 **Figure:** Whole area chosen for plotting
 
@@ -1233,7 +1229,7 @@ plt.show()`}
 
 ---
 
-## **Create titles and axis label as method**
+## **3. Create titles and axis label as method**
 
 <Tabs>
   <TabItem label="Python">
@@ -1261,7 +1257,7 @@ plt.show()`}
 </div>
 ---
 
-## **Create Multiple Subplots**
+## **4. Create Multiple Subplots**
 
 <Tabs>
   <TabItem label="Python">
@@ -1288,7 +1284,7 @@ plt.show()`}
 </div>
 ---
 
-## **Create Legends**
+## **5. Create Legends**
 
 A matplotlib legend is a small box that describes the various elements of the plot in terms of lines and markers that have distinct styles or colors.
 
@@ -1334,7 +1330,7 @@ plt.show()`}
 
 ---
 
-## **Line Plot**
+## **6. Line Plot**
 
 Line Plot is used to visualize a trend in data and is also used to compare two variables.
 
@@ -1428,7 +1424,7 @@ plt.show()`}
 ---
 
 
-## **Scatter Graph**
+## **7. Scatter Graph**
 
 It similar to a line graph which is used to show how one variable is related to another. It consists of data points, if it is linear then it is highly correlated and only marks the data point.
 
@@ -1483,7 +1479,7 @@ plt.show()`}
 ---
 
 
-## **Bar Chart**
+## **8. Bar Chart**
 
 It is mostly used to compare categories, for vertical bar plots and horizontal bar plots.
 
@@ -1592,7 +1588,7 @@ plt.show()`}
 ---
 
 
-## **Pie Plot**
+## **9. Pie Plot**
 
 It is effective in showing the proportion of categories and is best suited for comparing fewer categories. It is used to highlight the proportion of one or a group of categories.
 
@@ -1641,7 +1637,7 @@ plt.show()`}
   </div>
 ---
 
-## **Histogram Chart**
+## **10. Histogram Chart**
 
 It is used to visualize the spread of data in a distribution
 
@@ -1695,7 +1691,7 @@ plt.show()`}
   </div>
 ---
 
-## **3-Dimensional Line Graph**
+## **11. 3-Dimensional Line Graph**
 
 <Tabs>
   <TabItem label="3D Axes Setup">
@@ -1763,7 +1759,7 @@ plt.show()`}
 
 ---
 
-## **Working with Images using Matplotlib**
+## **12. Working with Images using Matplotlib**
 
 The image module in matplotlib library is used for working with images in Python.
 The image module also includes two useful methods
@@ -1801,7 +1797,7 @@ plt.show()`}
 ---
 
 
-## **Display an Image in Grayscale in Matplotlib**
+## **13. Display an Image in Grayscale in Matplotlib**
 
 Open the image using PIL image method and convert it to L mode.L mode image is a single-channel image - normally interpreted as grayscale.
 
@@ -1841,7 +1837,7 @@ plt.show()`}
 ---
 
 
-## **Display an OpenCV image in Python with Matplotlib**
+## **14. Display an OpenCV image in Python with Matplotlib**
 
 The OpenCV module is an open-source computer vision and machine learning software library. It is a huge open-source library for computer vision, machine learning, and image processing.
 OpenCV images with Matplotlib module for that you just need to convert colored image into a gray scale image.
