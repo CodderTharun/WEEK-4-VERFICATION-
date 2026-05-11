@@ -340,3 +340,21 @@ mark,
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+
+
+/* Override Starlight theme font sizes */
+:root {
+  --sl-sidebar-item-font-size: 13px;
+  --sl-sidebar-group-font-size: 16px;
+}
+
+/* Target nested (Week level) specifically */
+.sl-sidebar .sl-sidebar-group .sl-sidebar-group summary {
+  font-size: 13px !important;
+}
+
+/* Top level (Departments) */
+.sl-sidebar > ul > li > details > summary {
+  font-size: 16px !important;
+}
