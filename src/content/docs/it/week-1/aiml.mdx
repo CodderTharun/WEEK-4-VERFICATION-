@@ -236,8 +236,19 @@ print("python"[0:4])
 
 ## Video Reference
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/eWRfhZUzrAc?si=68vJhyuQAQ-3pOIX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+<div style="display: flex; justify-content: center;">
+  <iframe
+    width="350"
+    height="350"
+    style="display: block;"
+    src="https://www.youtube.com/embed/eWRfhZUzrAc?si=68vJhyuQAQ-3pOIX"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+</div>
 ---
 
 # NumPy and Pandas
@@ -626,7 +637,19 @@ print(arr.argmax())
 
 ## Video Reference
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QUT1VHiLmmI?si=KRBl8txUMsKzX5Lt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div style="display: flex; justify-content: center;">
+  <iframe
+    width="310"
+    height="310"
+    style="display: block;"
+    src="https://www.youtube.com/embed/QUT1VHiLmmI?si=KRBl8txUMsKzX5Lt"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+  ></iframe>
+</div>
 
 ---
 
@@ -1121,4 +1144,750 @@ print(df['Quantity'].cumsum())
 
 ## Video Reference
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gtjxAH8uaP0?si=uYfXgtEGN1tpPE2z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <iframe
+    width="350"
+    height="350"
+    src="https://www.youtube.com/embed/gtjxAH8uaP0?si=uYfXgtEGN1tpPE2z"
+    title="YouTube video player"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerPolicy="strict-origin-when-cross-origin"
+    allowFullScreen
+  ></iframe>
+</div>
+---
+
+# **Python - Matplotlib**
+
+Matplotlib is a powerful and versatile open-source plotting library for Python, designed to help users visualize data in a variety of formats. It is designed to work with NumPy arrays and pandas dataframes. The library makes it easy to make graphs from tabular data.
+
+## **Matplotlib Pyplot**
+
+Pyplot is a Matplotlib module that provides simple functions for adding plot elements, such as lines, images, text, etc. to the axes in the current figure.
+
+## **Installation:**
+
+ <Code
+      code={`pip install matplotlib`}
+      lang="bash"
+      title="Matplotlib Installation"
+    />
+
+### **Steps to Use Pyplot:**
+
+1. **Import Matplotlib:** Start by importing matplotlib.pyplot as plt.
+2. **Create Data:** Prepare your data in the form of lists or arrays.
+3. **Plot Data:** Use plt.plot() to create the plot.
+4. **Customize Plot:** Add titles, labels, and other elements using methods like plt.title(), plt.xlabel(), and plt.ylabel().
+5. **Display Plot:** Use plt.show() to display the plot.
+
+**Syntax:** matplotlib.pyplot.plot()
+
+## **Parts of Matplotlib**
+
+**Figure:** Whole area chosen for plotting
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`fig = plt.figure()
+plt.show()`}
+      lang="python"
+      title="Create Figure"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+**Axes:** Area where data is plotted and it can be added by using methods add_subplot(nrows, ncols, index) return axes object
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`fig = plt.figure()
+ax = fig.add_subplot()
+plt.show()`}
+      lang="python"
+      title="Add Subplot"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+**Figure size:** Adjusting Figure Size => plt.figure(figsize=(x, y))
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`fig = plt.figure(figsize=(3, 3))
+ax = fig.add_subplot(1, 1, 1)
+plt.show()`}
+      lang="python"
+      title="Figure Size"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## **Create titles and axis label as method**
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`fig = plt.figure(figsize=(3,3))
+ax = fig.add_subplot(111)
+
+ax.set_title("Figure")
+ax.set_xlabel("X-Axis")
+ax.set_ylabel("Y-Axis")
+
+ax.set_xlim([0,5])
+ax.set_ylim([0,10])
+
+plt.show()`}
+      lang="python"
+      title="Titles and Axis Labels"
+    />
+  </TabItem>
+</Tabs>
+<div align="center" style={{ margin: "15px" }}>
+
+![AIML-1](/public/IT/w1-aiml1.png)
+
+</div>
+---
+
+## **Create Multiple Subplots**
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4]
+y = [1, 2, 3, 4]
+
+plt.plot(x, y)
+plt.show()`}
+      lang="python"
+      title="Simple Line Plot"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml2.png"
+    alt="AIML-1"
+    width="500px"
+    height="400px"
+  />
+</div>
+---
+
+## **Create Legends**
+
+A matplotlib legend is a small box that describes the various elements of the plot in terms of lines and markers that have distinct styles or colors.
+
+**Attributes:**
+
+1. **shadow:** [None or bool] Whether to draw a shadow behind the legend.It’s Default value is None.
+2. **markerscale:** [None or int or float] The relative size of legend markers compared with the originally drawn ones.The Default is None.
+3. **numpoints:** [None or int] The number of marker points in the legend when creating a legend entry for a Line2D (line).The Default is None.
+4. **fontsize:** The font size of the legend.If the value is numeric the size will be the absolute font size in points.
+5. **facecolor:** [None or “inherit” or color] The legend’s background color.
+6. **edgecolor:** [None or “inherit” or color] The legend’s background patch edge color.
+
+
+`#adding legend in graph => plt.legend(x, y, label='legend');
+#plt.legend() will use
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`x = list(range(0, 5))
+y = list(range(0, 10, 2))
+
+fig = plt.figure(figsize=(3, 3))
+ax = fig.add_subplot(1, 1, 1)
+
+ax.set(
+    title="Figure",
+    xlabel="x-axis",
+    ylabel="y-axis",
+    xlim=(0, 5),
+    ylim=(0, 10)
+)
+
+plt.plot(x, y, label="legend")
+
+plt.legend()
+plt.show()`}
+      lang="python"
+      title="Create Legend"
+    />
+  </TabItem>
+</Tabs>
+
+---
+
+## **Line Plot**
+
+Line Plot is used to visualize a trend in data and is also used to compare two variables.
+
+**Syntax:** `plt.plot(x,y)`
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`x = [1, 5, 8, 12, 15, 19, 22, 26, 29]
+y = [29.3, 30.1, 30.4, 31.5, 32.3, 32.6, 31.8, 32.4, 32.7]
+
+fig = plt.figure(figsize=(8, 6))
+ax = fig.add_subplot(1, 1, 1)
+
+ax.set(
+    title="Line Plot Graph",
+    xlabel="X-Axis",
+    ylabel="Y-Axis",
+    xlim=(0, 30),
+    ylim=(25, 35)
+)
+
+ax.plot(x, y)
+
+plt.show()`}
+      lang="python"
+      title="Line Plot Graph"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml3.png"
+    alt="AIML-3"
+    width="500px"
+    height="400px"
+  />
+</div>
+---
+
+
+### **Parameter for Plot**
+
+1. **color** - Sets the color of the line.
+2. **linestyle** - Sets the line style, e.g., solid, dashed, etc.
+3. **linewidth** - Sets the thickness of a line.
+4. **marker** - Chooses a marker for data points, e.g., circle, triangle, etc.
+5. **markersize** - Sets the size of the chosen marker.
+6. **label** - Names the line, which will come in legend.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`fig = plt.figure(figsize=(6, 3))
+ax = fig.add_subplot(1, 1, 1)
+
+ax.set(
+    title="Line Plot Graph",
+    xlabel="X-Axis",
+    ylabel="Y-Axis",
+    xlim=(0, 30),
+    ylim=(25, 35)
+)
+
+ax.plot(
+    x,
+    y,
+    color="black",
+    linestyle="dotted",
+    linewidth=1,
+    marker="o",
+    markersize=10,
+    label="label"
+)
+
+plt.legend()
+plt.show()`}
+      lang="python"
+      title="Styled Line Plot"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml4.png"
+    alt="AIML-3"
+    width="500px"
+    height="400px"
+  />
+</div>
+---
+
+
+## **Scatter Graph**
+
+It similar to a line graph which is used to show how one variable is related to another. It consists of data points, if it is linear then it is highly correlated and only marks the data point.
+
+**Syntax:** `plt.scatter(x,y)`
+
+### **Parameter of Scatter Graph**
+
+1. **c:** Sets color of markers.
+2. **s:** Sets the size of markers.
+3. **marker:** Select a marker. e.g.: circle, triangle, etc
+4. **edgecolor:** Sets the color of lines on the edges of markers.
+
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`x = [1, 4, 6, 4, 2]
+y = [10, 10, 1, 5, 0]
+
+fig = plt.figure(figsize=(8, 4))
+ax = fig.add_subplot()
+
+ax.scatter(
+    x,
+    y,
+    c="blue",
+    s=500,
+    marker="o",
+    edgecolor="black",
+    label="Scatter"
+)
+
+ax.set_title("Scatter Graph")
+ax.set_xlabel("X-Axis")
+ax.set_ylabel("Y-Axis")
+
+plt.legend()
+plt.show()`}
+      lang="python"
+      title="Scatter Plot"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml5.png"
+    alt="AIML-3"
+    width="500px"
+    height="400px"
+  />
+</div>
+---
+
+
+## **Bar Chart**
+
+It is mostly used to compare categories, for vertical bar plots and horizontal bar plots.
+
+**Syntax:** `bar(x, height) or bar(y,width)`
+
+### **Parameter of Bar Graph**
+
+1. **Color:** Sets the color of bars.
+2. **edgecolor:** Sets the color of the borderline of bars.
+3. **label:** Sets label to a bar, appearing in legend.
+4. **color:** The color of the bar.
+5. **align:** Aligns the bars with respect to x-coordinates.
+
+
+<Tabs>
+  <TabItem label="Vertical Bar Graph">
+    <Code
+      code={`# Vertical Bar Graph
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3]
+y = [10, 20, 30]
+
+fig = plt.figure(figsize=(8, 4))
+ax = fig.add_subplot()
+
+ax.set(
+    title="Bar Graph",
+    xlabel="X-Axis",
+    ylabel="Y-Axis",
+    xticks=x,
+    label="label",
+    xticklabels=["first", "second", "third"]
+)
+
+ax.bar(
+    x,
+    y,
+    color="blue",
+    edgecolor="black",
+    width=0.5,
+    align="edge",
+    label="label",
+    linewidth=3
+)
+
+plt.legend()
+plt.show()`}
+      lang="python"
+      title="Vertical Bar Graph"
+    />
+  </TabItem>
+
+  <TabItem label="Horizontal Bar Graph">
+    <Code
+      code={`# Horizontal Bar Graph
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3]
+y = [10, 20, 30]
+
+fig = plt.figure(figsize=(8, 4))
+ax = fig.add_subplot()
+
+ax.set(
+    title="Bar Graph",
+    xlabel="X-Axis",
+    ylabel="Y-Axis",
+    xticks=x,
+    label="label",
+    xticklabels=["first", "second", "third"]
+)
+
+plt.barh(
+    x,
+    y,
+    color="blue",
+    edgecolor="black",
+    height=0.5,
+    align="edge",
+    label="label"
+)
+
+plt.legend()
+plt.show()`}
+      lang="python"
+      title="Horizontal Bar Graph"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml6.png"
+    alt="AIML-3"
+    width="500px"
+    height="400px"
+  />
+  <img 
+    src="/public/IT/w1-aiml7.png"
+    alt="AIML-3"
+    width="500px"
+    height="400px"
+  />
+</div>
+
+---
+
+
+## **Pie Plot**
+
+It is effective in showing the proportion of categories and is best suited for comparing fewer categories. It is used to highlight the proportion of one or a group of categories.
+
+**Syntax:** pie(x), x: size of portions, passed as fraction or number
+
+### **Parameter of Pie**
+
+1. **colors:** Sets the colors of portions.
+2. **labels:** Sets the labels of portions.
+3. **startangle:** Sets the start angle at which the portion drawing starts.
+4. **autopct:** Sets the percentage display format of an area, covering portions.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+
+fig = plt.figure(figsize=(4, 4))
+ax = fig.add_subplot()
+
+ax.set(title="Pie Chart")
+
+plt.pie(
+    x,
+    colors=["brown", "red", "green", "yellow", "blue"],
+    labels=["first", "second", "third", "fourth", "fifth"],
+    startangle=0,
+    autopct="%1.1f%%"
+)
+
+plt.show()`}
+      lang="python"
+      title="Pie Chart"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml9.png"
+    alt="AIML-3"
+    width="300px"
+    height="300px"
+  />
+  </div>
+---
+
+## **Histogram Chart**
+
+It is used to visualize the spread of data in a distribution
+
+**Syntax:** hist(x)
+
+where x is the data values
+
+### **Parameter of Histogram**
+
+1. **Color:** Sets the color of bars.
+2. **bins:** Sets the number of bins to be used.
+3. **density:** Sets to True where bins display fraction and not the count.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4, 5]
+
+fig = plt.figure(figsize=(10, 4))
+ax = fig.add_subplot()
+
+ax.set(
+    title="Histogram",
+    xlabel="X-Axis",
+    ylabel="Y-Axis"
+)
+
+ax.hist(
+    x,
+    color="blue",
+    bins=10,
+    density=True,
+    orientation="vertical"
+)
+
+plt.show()`}
+      lang="python"
+      title="Histogram"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml10.png"
+    alt="AIML-3"
+    width="500px"
+    height="500px"
+  />
+  </div>
+---
+
+## **3-Dimensional Line Graph**
+
+<Tabs>
+  <TabItem label="3D Axes Setup">
+    <Code
+      code={`import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+
+ax = plt.axes(projection='3d')`}
+      lang="python"
+      title="3D Axes Setup"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml11.png"
+    alt="AIML-3"
+    width="300px"
+    height="300px"
+  />
+  </div>
+---
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Importing mplot3d toolkits
+from mpl_toolkits import mplot3d
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+
+# Syntax for 3D projection
+ax = plt.axes(projection='3d')
+
+# Defining axes
+z = np.linspace(0, 1, 100)
+x = z * np.sin(25 * z)
+y = z * np.cos(25 * z)
+
+c = x + y
+
+ax.scatter(x, y, z, c=c)
+
+# Plot title
+ax.set_title("3D Scatter Plot")
+
+plt.show()`}
+      lang="python"
+      title="3D Scatter Plot"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml12.png"
+    alt="AIML-3"
+    width="300px"
+    height="300px"
+  />
+  </div>
+
+---
+
+## **Working with Images using Matplotlib**
+
+The image module in matplotlib library is used for working with images in Python.
+The image module also includes two useful methods
+-> imread which is used to read images
+-> imshow which is used to display the image.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Importing required libraries
+import matplotlib.pyplot as plt
+import matplotlib.image as img
+
+# Reading the image
+testImage = img.imread(r'/content/image.jpg')
+
+# Displaying the image
+plt.imshow(testImage)
+
+plt.show()`}
+      lang="python"
+      title="Display Image using Matplotlib"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml13.png"
+    alt="AIML-3"
+    width="400px"
+    height="400px"
+  />
+  </div>
+
+---
+
+
+## **Display an Image in Grayscale in Matplotlib**
+
+Open the image using PIL image method and convert it to L mode.L mode image is a single-channel image - normally interpreted as grayscale.
+
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`from PIL import Image
+import matplotlib.pyplot as plt
+
+# Storing image path
+fname = r'/content/image.jpg'
+
+# Opening image using PIL and converting to grayscale
+image = Image.open(fname).convert("L")
+
+# Displaying the grayscale image
+plt.imshow(image, cmap='gray')
+
+# Optional: hides axis ticks
+plt.axis('off')
+
+plt.show()`}
+      lang="python"
+      title="Display Grayscale Image"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml14.avif"
+    alt="AIML-3"
+    width="350px"
+    height="350px"
+  />
+  </div>
+---
+
+
+## **Display an OpenCV image in Python with Matplotlib**
+
+The OpenCV module is an open-source computer vision and machine learning software library. It is a huge open-source library for computer vision, machine learning, and image processing.
+OpenCV images with Matplotlib module for that you just need to convert colored image into a gray scale image.
+
+<Tabs>
+  <TabItem label="Python">
+    <Code
+      code={`# Import required modules
+import cv2
+import matplotlib.pyplot as plt
+
+# Read the image
+image = cv2.imread(r'/content/image.jpg')
+
+# Convert color image into grayscale image
+img1 = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+
+# Plot grayscale image using Matplotlib
+# cmap stands for colormap
+plt.imshow(img1, cmap='gray')
+
+# Display the image
+plt.show()`}
+      lang="python"
+      title="Display OpenCV Image with Matplotlib"
+    />
+  </TabItem>
+</Tabs>
+<div align="center">
+  <img 
+    src="/public/IT/w1-aiml15.avif"
+    alt="AIML-3"
+    width="350px"
+    height="350px"
+  />
+  </div>
+---
+#    Video Reference
+<div style="display: flex; justify-content: center;">
+  <iframe
+    width="350"
+    height="350"
+    src="https://www.youtube.com/embed/3Xc3CA655Y4"
+    title="YouTube video player"
+    frameborder="0"
+    allowfullscreen
+  ></iframe>
+</div>
+---
