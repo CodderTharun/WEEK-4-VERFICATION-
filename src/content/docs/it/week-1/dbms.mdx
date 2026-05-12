@@ -5,9 +5,7 @@ title: Database Management Systems
 import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
 
 Database Management System (DBMS) is software that helps users create, manage, and manipulate databases efficiently.
-
 It provides a systematic way to store, retrieve, update, and manage data while ensuring security, consistency, and reliability.
-
 DBMS is widely used in applications such as banking systems, hospital management systems, airline reservation systems, e-commerce platforms, and educational institutions.
 
 ---
@@ -15,95 +13,60 @@ DBMS is widely used in applications such as banking systems, hospital management
 ## Introduction
 
 ### What is Data?
-
 Data consists of raw, distinct units of information like text, numbers, images or audio.
-
 It exists in physical forms such as paper or digital formats on computers and storage devices.
-
 Derived from the Latin "datum" (a single fact), data becomes meaningful when processed into information.
 
----
-
 ### What is Database?
-
 Database is a collection of interrelated data which is used to retrieve, insert and delete the data efficiently.
-
 It is also used to organize the data in the form of a table, schema, views, and reports, etc.
 
----
-
 ### What is a Database Management System?
-
 A database-management system (DBMS) is a collection of interrelated data and a set of programs to access that data.
-
 The collection of data, usually referred to as the database, contains information relevant to an enterprise.
-
 The primary goal of a DBMS is to provide a way to store and retrieve database information that is both convenient and efficient.
 
-#### Example
-
+Example:
 A hospital database organizes information about patients, doctors, appointments, and medical records.
 
 ---
 
 ## More About DBMS
 
-### Characteristics of Database approach
+### A. Characteristics of Database approach
 
 Database management approach uses a centralized repository to store data defined once, accessible by multiple users and applications, unlike traditional file processing.
 
----
-
-### Vs File Processing
+#### 1. Vs File Processing
 
 In file systems, each application creates separate files for its needs, causing data redundancy, inconsistent updates and wasted storage.
-
 Database approach eliminates this by maintaining one shared repository, reducing duplication and maintenance efforts.
 
----
-
-### Self-Describing Nature
+#### 2. Self-Describing Nature
 
 Database systems store not just data but also metadata (structure, constraints, file formats) in the DBMS catalog.
-
 This allows any general-purpose DBMS to work with diverse applications (e.g., university, banking) by referencing the catalog, unlike file programs hardcoded for specific structures.
 
----
+#### 3. Data Insulation & Abstraction
 
-### Data Insulation & Abstraction
+Program-data independence: File changes don't require rewriting all programs since structure is in catalog, not embedded in code.
+Data abstraction: Data abstraction hides storage details (e.g., byte positions, indexes) behind conceptual views like entities/relationships.
 
-#### Program-data independence
-
-File changes don't require rewriting all programs since structure is in catalog, not embedded in code.
-
-#### Data abstraction
-
-Data abstraction hides storage details (e.g., byte positions, indexes) behind conceptual views like entities/relationships.
-
----
-
-### Multiple Views Support
+#### 4. Multiple Views Support
 
 DBMS supports user-specific views from the same database.
-
 Hides irrelevant data, allows personalized perspectives without affecting others.
 
----
-
-### Data Sharing & Transactions
+#### 5. Data Sharing & Transactions
 
 Enables concurrent multiuser access with concurrency control for correct updates (e.g., airline seat assignments).
-
 Transactions ensure ACID properties:
-
 - Atomicity (all or none)
 - Isolation (no interference)
 - Consistency
 - Durability
 
----
-
-## Advantages of Database approach
+### B. Advantages of Database approach
 
 - Controls database redundancy: It can control data redundancy because it stores all the data in one single database file and that recorded data is placed in the database.
 - Data sharing: In DBMS, the authorized users of an organization can share the data among multiple users.
@@ -112,9 +75,7 @@ Transactions ensure ACID properties:
 - Backup: It provides backup and recovery subsystems which create automatic backup of data from hardware and software failures and restores the data if required.
 - Multiple user interface: It provides different types of user interfaces like graphical user interfaces, application program interfaces.
 
----
-
-## Disadvantages of Database approach
+### C. Disadvantages of Database approach
 
 - Cost of Hardware and Software: It requires a high speed of data processor and large memory size to run DBMS software.
 - Size: It occupies a large space of disks and large memory to run them efficiently.
@@ -125,18 +86,15 @@ Transactions ensure ACID properties:
 
 ## Database System Concepts
 
-### Data Models
+### A. Data Models
 
 Data models provide conceptual tools to describe data structure, relationships, semantics and constraints across physical, logical and view levels.
 
 Some of the types include:
 
----
-
-### Relational Model
+#### 1. Relational Model
 
 Uses tables (relations) with rows (records/tuples) and columns (attributes) to represent data and relationships via keys.
-
 Most popular for RDBMS like MySQL, record-based with fixed fields per type, supports complex queries and ACID.
 
 <br />
@@ -151,12 +109,9 @@ Most popular for RDBMS like MySQL, record-based with fixed fields per type, supp
   }}
 />
 
----
-
-### Entity-Relationship (ER) Model
+#### 2. Entity-Relationship (ER) Model
 
 High-level conceptual model with entities (real-world objects), relationships and attributes.
-
 Used for database design, diagrams show cardinality (1:1, 1:N, M:N) and participation, converted to relational schema.
 
 <br />
@@ -171,54 +126,34 @@ Used for database design, diagrams show cardinality (1:1, 1:N, M:N) and particip
   }}
 />
 
----
-
-### Object-Based Models
+#### 3. Object-Based Models
 
 Extend ER with OOP concepts: encapsulation, methods, object identity (e.g., Java/C++ objects stored directly).
-
 Object-relational combines relational tables with objects; suits complex data like multimedia.
 
----
-
-### Hierarchical Model
+#### 4. Hierarchical Model
 
 The hierarchical model organizes data in a tree-like structure with parent-child relationships.
-
 Each record (node) in the hierarchy has one parent record and zero or more child records.
-
 The hierarchical model is hierarchical in nature and is commonly used in hierarchical database management systems (HDBMS) such as IBM's IMS (Information Management System).
 
----
-
-### Semistructured Model
+#### 5. Semistructured Model
 
 Allows varying attributes per data item (unlike rigid schemas), uses XML/JSON for hierarchical, flexible data like documents or web content.
-
 Good for evolving data; no fixed structure required.
 
----
-
-## Database Architecture
+### B. Database Architecture
 
 A DBMS architecture defines how users interact with the database to read, write, or update information.
-
 A well-designed architecture and schema (a blueprint detailing tables, fields, and relationships) ensures data consistency, improves performance, and keeps data secure.
 
----
-
-## 1-Tier Architecture
+#### 1. 1-Tier Architecture
 
 The user works directly with the database on the same system.
-
 This means the client, server and database are all in one application.
-
 A common example is MS Access.
-
 Everything from the user interface to the logic and data storage happens on the same device.
-
 The user enters data, performs calculations and saves files directly on their computer.
-
 This setup is simple and easy to use, making it ideal for personal or standalone applications.
 
 <br />
@@ -233,34 +168,24 @@ This setup is simple and easy to use, making it ideal for personal or standalone
   }}
 />
 
----
-
-## 2-Tier Architecture
+#### 2. 2-Tier Architecture
 
 The 2-tier architecture is similar to a basic client-server model.
-
 The application at the client end directly communicates with the database on the server side.
-
 On the client side, the user interfaces and application programs are run.
-
 The application on the client side establishes a connection with the server side to communicate with the DBMS.
 
-### Example
+##### Example
 
 A Library Management System used in schools or small organizations is a classic example of two-tier architecture.
 
-### Client Layer (Tier 1)
-
+##### Client Layer (Tier 1)
 This is the user interface that library staff or users interact with.
-
 For example they might use a desktop application to search for books, issue them, or check due dates.
 
-### Database Layer (Tier 2)
-
+##### Database Layer (Tier 2)
 The database server stores all the library records such as book details, user information and transaction logs.
-
 The client layer sends a request (like searching for a book) to the database layer which processes it and sends back the result.
-
 This separation allows the client to focus on the user interface, while the server handles data storage and retrieval.
 
 <br />
@@ -275,20 +200,13 @@ This separation allows the client to focus on the user interface, while the serv
   }}
 />
 
----
-
-## 3-Tier Architecture
+#### 3. 3-Tier Architecture
 
 The 3-Tier architecture contains another layer between the client and server.
-
 In this architecture, the client can't directly communicate with the server.
-
 The application on the client-end interacts with an application server which further communicates with the database system.
-
 The end user has no idea about the existence of the database beyond the application server.
-
 The database also has no idea about any other user beyond the application.
-
 The 3-Tier architecture is used in case of large web applications.
 
 <br />
@@ -303,48 +221,30 @@ The 3-Tier architecture is used in case of large web applications.
   }}
 />
 
----
-
-## 3-schema Architecture
+#### 4. 3-schema Architecture
 
 In DBMS, the 3-tier architecture is a client-server architecture that separates the user interface, application processing, and data management into three distinct tiers or layers.
 
----
-
-### External Tier (User Interface Layer)
+##### External Tier (User Interface Layer)
 
 The External Tier is the user interface or client layer of the application.
-
 It is responsible for presenting data to the user and receiving input from the user.
-
 This tier communicates with the Application Tier to process user requests and display relevant information.
-
 This tier can be a web browser, mobile app, or desktop application.
 
----
-
-### Application Tier (Conceptual Layer)
+##### Application Tier (Conceptual Layer)
 
 The application tier is the middle layer of the 3-tier architecture.
-
 It acts as the intermediary between the External Tier and the Internal Tier.
-
 It is responsible for processing and managing the business logic of the application.
-
 This tier communicates with the external tier to receive user input and communicates with the internal tier to retrieve or store data.
-
 This tier may include application servers, web servers, or APIs.
 
----
-
-### Internal Tier (Database Layer)
+##### Internal Tier (Database Layer)
 
 The internal tier is the bottom layer of the 3-tier architecture.
-
 It is responsible for managing and storing data.
-
 This tier can include databases, data warehouses or any other persistent data storage solution.
-
 The internal tier communicates with the application tier to save, retrieve or manipulate data according to the business logic.
 
 <br />
@@ -359,57 +259,40 @@ The internal tier communicates with the application tier to save, retrieve or ma
   }}
 />
 
----
+##### 5. Objectives of 3-schema architecture
 
-## Objectives of 3-schema architecture
-
-### Scalability
-
+###### a. Scalability
 The separation of the three tiers allows each layer to scale independently.
-
 For instance, if the number of users increases, you can scale the external Tier by adding more web servers or you can enhance the Data Management Tier by optimizing or adding additional databases without affecting the internal Tier.
 
----
-
-### Flexibility
+###### b. Flexibility
 
 Each layer is loosely coupled, meaning you can modify or upgrade any of the layers without disrupting the others.
 
----
-
-### Security
+###### c. Security
 
 By isolating the internal Tier, you can enforce better security practices, such as restricting direct access to the database and protecting sensitive data.
 
----
-
-### Maintainability
+###### d. Maintainability
 
 Because the architecture is modular, it’s easier to maintain and update.
 
----
-
-### Improved Performance
+###### e. Improved Performance
 
 The layered approach improves system performance by ensuring that each tier is optimized for its specific function.
 
----
-
-## Database Languages
+### C. Database Languages
 
 Database languages, often known as query languages, are programming languages for creating and accessing databases.
-
 They enable users to save, organise and retrieve the data.
 
----
+Types of DBMS Languages:
 
-## Types of DBMS Languages
-
-### Data Definition Language (DDL)
+#### 1. Data Definition Language (DDL)
 
 The main focus of Data Definition Language (DDL) is on specifying and controlling the database’s structure.
 
-#### Key Commands in DDL
+##### Key Commands in DDL
 
 | Command | Description |
 |---|---|
@@ -438,15 +321,12 @@ RENAME TABLE Student TO Students;`}
   </TabItem>
 </Tabs>
 
----
-
-### Data Manipulation Language (DML)
+#### 2. Data Manipulation Language (DML)
 
 We can use DML commands to manipulate data in a database.
-
 We can insert new data, update existing data, delete unwanted data and even retrieve data using DML.
 
-#### Key Commands in DML
+##### Key Commands in DML
 
 | Command | Description |
 |---|---|
@@ -477,15 +357,12 @@ WHERE Roll_No = 1;`}
   </TabItem>
 </Tabs>
 
----
-
-### Data Control Language (DCL)
+#### 3. Data Control Language (DCL)
 
 DCL commands manage user permissions.
-
 We can grant or revoke access to our data, ensuring security and control.
 
-#### Key Commands in DCL
+##### Key Commands in DCL
 
 | Command | Description |
 |---|---|
@@ -508,13 +385,11 @@ FROM user1;`}
   </TabItem>
 </Tabs>
 
----
-
-### Transaction Control Language (TCL)
+#### 4. Transaction Control Language (TCL)
 
 TCL commands ensure that database transactions are processed reliably.
 
-#### Key Commands in TCL
+##### Key Commands in TCL
 
 | Command | Description |
 |---|---|
@@ -560,119 +435,69 @@ COMMIT;`}
 ## ER Model
 
 The Entity-Relationship Model (ER Model) is a conceptual model for designing a database.
-
 This model represents the logical structure of a database, including entities, their attributes, and relationships between them.
 
----
+### Notations of ER Model
 
-## Notations of ER Model
-
-### Entity
+#### 1. Entity
 
 It represents a real-world object, concept or thing about which data is stored in a database.
-
 It acts as a building block of a database.
-
 Tables in relational databases represent these entities.
 
----
+##### Types of entities
 
-### Types of entities
-
-#### Strong entity
-
+###### a. Strong entity
 A type of entity that has a key Attribute that can uniquely identify each instance of the entity.
-
 A Strong Entity does not depend on any other Entity in the Schema for its identification.
-
 It has a primary key that ensures its uniqueness and is represented by a rectangle in an ER diagram.
 
----
-
-#### Weak entity
-
+###### b. Weak entity
 It cannot be uniquely identified by its own attributes alone.
-
 It depends on a strong entity to be identified.
-
 A weak entity is associated with an identifying entity (strong entity), which helps in its identification.
-
 A weak entity is represented by a double rectangle.
-
 The participation of weak entity types is always total.
-
 The relationship between the weak entity type and its identifying strong entity type is called identifying relationship and it is represented by a double diamond.
 
----
-
-## Attributes
+#### 2. Attributes
 
 Attributes are the properties that define the entity type.
-
 For example, for a Student entity Roll_No, Name, DOB, Age, Address and Mobile_No are the attributes that define entity type Student.
-
 The attribute is represented by an oval.
 
----
+##### Types of attributes
 
-### Types of attributes
-
-#### Key Attribute
-
+###### a. Key Attribute
 The attribute which uniquely identifies each entity in the entity set is called the key attribute.
-
 For example, Roll_No will be unique for each student.
-
 The key attribute is represented by an oval with an underline.
 
----
-
-#### Composite Attribute
-
+###### b. Composite Attribute
 An attribute composed of many other attributes is called a composite attribute.
-
 For example, the Address attribute of the student Entity type consists of Street, City, State, and Country.
-
 The composite attribute is represented by an oval consisting of ovals.
 
----
-
-#### Multivalued Attribute
-
+###### c. Multivalued Attribute
 An attribute consisting of more than one value for a given entity.
-
 For example, Phone_No (can be more than one for a given student).
-
 A multivalued attribute is represented by a double oval.
 
----
-
-#### Derived Attribute
-
+###### d. Derived Attribute
 An attribute that can be derived from other attributes of the entity type is known as a derived attribute.
-
 e.g.; Age (can be derived from DOB).
-
 The derived attribute is represented by a dashed oval.
 
----
-
-## Relationship
+#### 3. Relationship
 
 A Relationship Type represents the association between entity types.
-
 For example, ‘Enrolled in’ is a relationship type that exists between entity type Student and Course.
-
 The relationship type is represented by a diamond and connects the entities with lines.
 
----
+##### Types of relationship
 
-## Types of relationship
-
-### Unary relationship
-
+###### a. Unary relationship
 When there is only ONE entity set participating in a relation.
-
 For example, one person is married to only one person.
 
 <br />
@@ -687,12 +512,8 @@ For example, one person is married to only one person.
   }}
 />
 
----
-
-### Binary relationship
-
+###### b. Binary relationship
 When there are TWO entities set participating in a relationship.
-
 For example, a Student is enrolled in a Course.
 
 <br />
@@ -707,12 +528,8 @@ For example, a Student is enrolled in a Course.
   }}
 />
 
----
-
-### Ternary relationship
-
+###### c. Ternary relationship
 When there are three entity sets participating in a relationship.
-
 <br />
 
 <img
@@ -725,10 +542,7 @@ When there are three entity sets participating in a relationship.
   }}
 />
 
----
-
-### N-ary relationship
-
+###### d. N-ary relationship
 When there are n entities set participating in a relationship, the relationship is called an n-ary relationship.
 
 <br />
@@ -743,16 +557,11 @@ When there are n entities set participating in a relationship, the relationship 
   }}
 />
 
----
-
-## Types of Cardinality
-
+##### Types of Cardinality
 The maximum number of times an entity of an entity set participates in a relationship set is known as cardinality.
 
-### One-to-One (1:1)
-
+###### a. One-to-One (1:1)
 One entity is linked to only one.
-
 <br />
 
 <img
@@ -765,10 +574,8 @@ One entity is linked to only one.
   }}
 />
 
-### One-to-Many (1:M)
-
+###### b. One-to-Many (1:M)
 One is linked to many others.
-
 <br />
 
 <img
@@ -781,10 +588,8 @@ One is linked to many others.
   }}
 />
 
-### Many-to-Many (M:N)
-
+###### c. Many-to-Many (M:N)
 Many linked to many.
-
 <br />
 
 <img
@@ -797,28 +602,17 @@ Many linked to many.
   }}
 />
 
----
-
-## Participation Constraint
+#### 4. Participation Constraint
 
 The maximum number of times an entity of an entity set participates in a relationship set is known as cardinality.
 
----
-
-### Total Participation
-
+##### Total Participation
 Each entity in the entity set must participate in the relationship.
-
 If each student must enroll in a course, the participation of students will be total.
-
 Total participation is shown by a double line in the ER diagram.
 
----
-
-### Partial Participation
-
+##### Partial Participation
 The entity in the entity set may or may NOT participate in the relationship.
-
 If some courses are not enrolled by any of the students, the participation in the course will be partial.
 
 <br />
@@ -848,17 +642,11 @@ If some courses are not enrolled by any of the students, the participation in th
 ---
 
 ## Steps to draw an ER Diagram
-
 1. Identify Entities: The very first step is to identify all the Entities. Represent these entities in a Rectangle and label them accordingly.
-
 2. Identify Relationships: The next step is to identify the relationship between them and represent them accordingly using the Diamond shape. Ensure that relationships are not directly connected to each other.
-
 3. Add Attributes: Attach attributes to the entities by using ovals. Each entity can have multiple attributes (such as name, age, etc.), which are connected to the respective entity.
-
 4. Define Primary Keys: Assign primary keys to each entity. These are unique identifiers that help distinguish each instance of the entity. Represent them with underlined attributes.
-
 5. Remove Redundancies: Review the diagram and eliminate unnecessary or repetitive entities and relationships.
-
 6. Review for Clarity: Review the diagram to make sure it is clear and effectively conveys the relationships between the entities.
 
 <br />
