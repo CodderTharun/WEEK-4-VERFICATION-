@@ -180,7 +180,7 @@ export default defineConfig({
                 { label: "Power Systems", link: "/eee/week-1/power-systems" },
                 { label: "Electrical Machines", link: "/eee/week-1/electrical-machines" },
                 { label: "Control Systems", link: "/eee/week-1/control-systems" },
-                { label: "Power Generation", link: "/eee/week-1/power-generation" },
+                { label: "Power Generation", link: "/eee/week-1/power-electronics" },
               ],
             },
             {
@@ -192,7 +192,7 @@ export default defineConfig({
                 { label: "Power Systems", link: "/eee/week-2/power-systems" },
                 { label: "Electrical Machines", link: "/eee/week-2/electrical-machines" },
                 { label: "Control Systems", link: "/eee/week-2/control-systems" },
-                { label: "Power Generation", link: "/eee/week-2/power-generation" },
+                { label: "Power Generation", link: "/eee/week-2/power-electronics" },
               ],
             },
             {
@@ -204,7 +204,7 @@ export default defineConfig({
                 { label: "Power Systems", link: "/eee/week-3/power-systems" },
                 { label: "Electrical Machines", link: "/eee/week-3/electrical-machines" },
                 { label: "Control Systems", link: "/eee/week-3/control-systems" },
-                { label: "Power Generation", link: "/eee/week-3/power-generation" },
+                { label: "Power Generation", link: "/eee/week-3/power-electronics" },
               ],
             },
             {
@@ -216,7 +216,7 @@ export default defineConfig({
                 { label: "Power Systems", link: "/eee/week-4/power-systems" },
                 { label: "Electrical Machines", link: "/eee/week-4/electrical-machines" },
                 { label: "Control Systems", link: "/eee/week-4/control-systems" },
-                { label: "Power Generation", link: "/eee/week-4/power-generation" },
+                { label: "Power Generation", link: "/eee/week-4/power-electronics" },
               ],
             },
             {
@@ -228,7 +228,7 @@ export default defineConfig({
                 { label: "Power Systems", link: "/eee/week-5/power-systems" },
                 { label: "Electrical Machines", link: "/eee/week-5/electrical-machines" },
                 { label: "Control Systems", link: "/eee/week-5/control-systems" },
-                { label: "Power Generation", link: "/eee/week-5/power-generation" },
+                { label: "Power Generation", link: "/eee/week-5/power-electronics" },
               ],
             },
           ],
@@ -317,11 +317,9 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "Overview", link: "/mech/week-1/" },
-                { label: "Thermodynamics", link: "/mech/week-1/thermodynamics" },
+                { label: "Basic Thermodynamics", link: "/mech/week-1/thermodynamics" },
                 { label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
-                { label: "Machine Design", link: "/mech/week-1/machine-design" },
-                { label: "Fluid Mechanics", link: "/mech/week-1/fluid-mechanics" },
-                { label: "Manufacturing", link: "/mech/week-1/manufacturing" },
+                
               ],
             },
             {
