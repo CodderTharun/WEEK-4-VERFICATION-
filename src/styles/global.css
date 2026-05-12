@@ -16,6 +16,9 @@
   --sl-font:      'Inter', system-ui, sans-serif;
   --sl-font-mono: 'Inter', system-ui, sans-serif;
 }
+table tr:nth-child(even) {
+  background: transparent !important;
+}
 
 /* Inter on absolutely everything — sidebar, search, nav, content, code */
 *,
