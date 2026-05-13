@@ -3,52 +3,45 @@ title: Basic Thermodynamics
 description: Fundamentals of Thermodynamics Notes
 ---
 
-# Thermodynamics
-
+## Thermodynamics
 Thermodynamics is a branch of physics and science that focuses on the relationship between heat, work, temperature, and other forms of energy.
 The term itself is derived from:
 - **Thermo** → Heat  
 - **Dynamics** → Mechanical motion involving work  
 
 
-
 ## Laws of Thermodynamics
 The four laws of thermodynamics define the fundamental physical quantities such as energy, temperature, and entropy and explain how they behave under different conditions.
 
 
-
-1. **Zeroth law of thermodynamics**
+### A. Zeroth law of thermodynamics
 This law states that if two thermodynamic systems are each in thermal equilibrium with a third system, then they are also in thermal equilibrium with each other.
 This principle forms the fundamental basis for temperature measurement.
 
-2. **First law of thermodynamics**
+### B. First law of thermodynamics
 Often called the law of conservation of energy, this principle dictates that energy can neither be created nor destroyed; it can only be transferred or transformed from one form to another.
 A consequence of this law is that for a closed system undergoing a cyclic process, the net heat interaction is exactly equal to the net work interaction.
 
-3. **Second law of thermodynamics**
+### C. Second law of thermodynamics
 This law establishes that the entropy of any isolated system always increases.
 It acts as a "directional law" indicating the natural direction of a process.
 
-
     - **Kelvin-Planck statement**<br />
       It is impossible for a system to operate in a thermodynamic cycle and deliver net work to its surroundings while receiving heat from only a single thermal energy reservoir.
-
 
     - **Clausius statement**<br />
       It is impossible for a system to operate in such a way that the sole result could be heat transfer from a cooler body to a hotter body.
 
 
-4. **Third law of thermodynamics**
+### D. Third law of thermodynamics
 This law states that as the temperature of a system approaches absolute zero, its entropy approaches a constant value.
 Specifically, the entropy of a pure crystalline substance at nearly absolute zero temperature is exactly zero.
 
 
-
-# System
+## System
 In thermodynamics, a system is defined as a specific quantity of matter or a region in space that is under investigation.
 
-
-1. **Closed System (Control Mass)**
+### A. Closed System (Control Mass)
 In a closed system, energy (such as heat and work) can cross the boundary, but mass cannot.
 This means the amount of matter within the system stays constant.
 Common examples include air trapped in a rigid container or a piston-cylinder arrangement that has no valves.
@@ -63,7 +56,7 @@ Common examples include air trapped in a rigid container or a piston-cylinder ar
   }}
 /><br />
 
-2. **Isolated System**
+### B. Isolated System
  An isolated system is completely sealed off from its environment, meaning neither mass nor energy interactions can take place across its boundary
 While energy cannot be transferred in or out, energy transformations can still occur inside the system A stationary, well-insulated thermos flask serves as a practical example of an isolated system
 (Control Mass) In a closed system, energy (such as heat and work) can cross the boundary, but mass cannot This means the amount of matter within the system stays constant. Common examples include air trapped in a rigid
@@ -79,7 +72,7 @@ container or a piston-cylinder arrangement that has no valves.
   }}
 /><br />
 
-3. **Open System (Control Volume)**
+### C. Open System (Control Volume)
 In an open system, both mass and energy are permitted to cross the boundary.
 Open systems are incredibly common in engineering applications, such as pumps, boilers, turbines, superheaters, and condensers.
 Furthermore, an open system is referred to as a "steady flow open system" if its properties at any specific location remain constant over time.
@@ -98,11 +91,9 @@ Furthermore, an open system is referred to as a "steady flow open system" if its
 ## Surroundings
 The mass or region outside the system is called surroundings.
 
-
 ## Boundary
 A boundary is the interface that is shared between a system and its surroundings.
 <br />
-
 <img
   src="/Mech/therm3.png"
   alt="Diagram"
@@ -120,14 +111,14 @@ This distinguishes it from a closed system (or control mass), which only allows 
 
 ### Key characteristics of a control volume
 
-1. **Control Surface**<br />
+#### A. Control Surface
 The boundary that encloses the control volume is referred to as the control surface.
 Mass and energy cross this surface to enter or leave the control volume.
 
-2. **Flow Work**<br />
+#### B. Flow Work
 Because mass continuously flows in and out, control volumes involve "flow work" (or flow energy), which is the energy required to push a fluid into or out of the control volume.
 
-3. **Control Volume Work**<br />
+#### C. Control Volume Work
 A control volume is a specific region in space chosen for analysis where both mass and energy are permitted to cross its boundary  This distinguishes it from a closed system (or control mass), which only allows energy to cross its boundary
 
 ## The Macroscopic Approach (Classical Thermodynamics)
@@ -135,7 +126,8 @@ A control volume is a specific region in space chosen for analysis where both ma
 The macroscopic approach focuses on the behavior of a system in bulk.
 It is entirely concerned with the overall, internal macroscopic state of a body and does not consider the molecular constitution of the matter.
 Instead, this approach relies on globally observable and measurable physical units such as temperature, pressure, and volume to evaluate the system and predict how it will behave during a given process.
-### Example
+
+**Example**  
 Imagine checking the air inside a car tire.
 Using the macroscopic approach, you simply attach a gauge to read the overall air pressure.
 You are measuring a bulk characteristic of the system without needing to know what any individual air molecule is doing inside the tire.
@@ -146,7 +138,8 @@ You are measuring a bulk characteristic of the system without needing to know wh
 Conversely, the microscopic approach examines a system at the atomic or molecular level, putting every individual molecule "under the spotlight".
 It evaluates the specific properties, motions, and interactions of individual particles to characterize the collective behavior of the entire group.
 For instance, a system's internal energy is understood microscopically as the sum total of the kinetic and potential energies possessed by its continuously moving atoms and molecules.
-### Example
+
+**Example**  
 Looking at that same car tire, the microscopic approach would focus on the countless individual nitrogen and oxygen molecules zooming around inside.
 It would analyze how fast these particles are moving and how frequently they collide with the rubber walls of the tire.
 By applying statistical math to these tiny molecular impacts, physicists can deduce the overall macroscopic pressure of the tire.
@@ -172,12 +165,12 @@ By applying statistical math to these tiny molecular impacts, physicists can ded
 | Action Observed | A single reading representing the average state of the gas. | Countless tiny impacts against the inner rubber walls of the tire. |
 
 
-# Thermodynamic equilibrium
+## Thermodynamic equilibrium
 Thermodynamic equilibrium describes a state where all properties of a system have fixed, unchanging values.
 If a system in equilibrium is completely isolated from its surroundings, you will observe zero changes in the values of its properties.
 Essentially, in this state, there is no tendency for the system to change spontaneously.
 The system can only be forced into a new state by an external influence, such as adding heat to change its temperature or physically altering its volume.
-## Example
+**Example**
 A practical example is gas enclosed in a cylinder with a movable piston.
 The gas is in equilibrium if:
 - Its internal temperature is completely uniform  
@@ -185,35 +178,33 @@ The gas is in equilibrium if:
 - The force acting on the outside of the piston is just enough to keep it perfectly still  
 
 
-
-## Types of Thermodynamic Equilibrium
+### Types of Thermodynamic Equilibrium
 For a system to be considered in complete thermodynamic equilibrium, it must simultaneously satisfy four different types of equilibrium.
 
-1. **Thermal Equilibrium**<br />
+#### A. Thermal Equilibrium
 This means the temperature is exactly the same throughout the entire system.
 
-2. **Mechanical Equilibrium**<br />
+#### B. Mechanical Equilibrium 
 This occurs when there is no change in pressure at any point within the system.
 
-3. **Chemical Equilibrium**<br />
+#### C. Chemical Equilibrium
 This state is reached when the chemical composition of the system is stable and does not vary over time.
 
-4. **Phase Equilibrium**<br />
+#### D. Phase Equilibrium
 If the system contains more than one phase (such as a mixture of liquid and vapour), it is in phase equilibrium when the mass of each individual phase reaches a constant level.
-
 Ultimately, if a thermodynamic system satisfies thermal, mechanical, chemical, and phase equilibrium meaning its relevant parameters cease to vary with time it has achieved full thermodynamic equilibrium.
 
 
-# Reversible Processes
+## Reversible Processes
 A reversible process is an idealized, theoretical scenario comparable to motion without friction in mechanics.
 In a totally reversible process, both the system and its surroundings can be exactly restored to their respective initial states after the process has taken place.
 Because the process happens infinitesimally slowly, the system remains at (or very near) thermodynamic equilibrium at each step along its path, meaning the direction of the change can be reversed at any point.
 
 
-## Types of Reversibility
+### Types of Reversibility
 Reversibility is broken down into two components.
 
-1. **Internally Reversible**<br />
+#### A. Internally Reversible
 A process is internally reversible if no irreversibility such as friction, turbulence, or viscous losses occurs inside the system boundary.
 The system passes through a series of uniform equilibrium states, meaning the forward and reverse paths coincide perfectly on a property diagram.
 
@@ -222,7 +213,7 @@ The system passes through a series of uniform equilibrium states, meaning the fo
 
 
 
-2. **Externally Reversible**<br />
+#### B. Externally Reversible
 A process is externally reversible if no irreversibility occurs outside the system boundary in the surroundings.
 
    - **Key Example:**  
@@ -233,7 +224,7 @@ $$
 
 
 
-3. **Totally Reversible**<br />
+#### C. Totally Reversible
 A process that is both internally and externally reversible.
 This is a theoretical ideal where both the system and the surroundings can be returned to their original states without leaving any net change in the universe.
 <br />
@@ -248,13 +239,11 @@ This is a theoretical ideal where both the system and the surroundings can be re
   }}
 />
 
-# Irreversible process
+## Irreversible process
 An irreversible process is one where the system adjusts to an abrupt change and cannot be reversed without leaving a permanent net change in the universe.
 Most real-world processes are irreversible.
 
-
-## Examples
-
+**Examples**  
 - **Balloon Analogy:**  
   A bursting balloon causes gas to expand suddenly and uncontrollably; reversing this requires significant external effort.
 
@@ -264,7 +253,7 @@ Most real-world processes are irreversible.
 ## Thermodynamic Indicators
 The distinction between reversible and irreversible processes is defined by key mathematical principles.
 
-1. **Entropy Generation ($S_{gen}$)**
+### A. Entropy Generation ($S_{gen}$)
 For irreversible processes, $S_{gen}$ is always positive, increasing the entropy of the universe.
 In internally reversible processes:
 $$
@@ -272,7 +261,7 @@ S_{gen} = 0
 $$
 
 
-2. **Clausius Inequality**
+### B. Clausius Inequality
 For an internally irreversible cycle, the cyclic integral of heat transfer divided by temperature is always less than zero:
 $$
 \oint \frac{\delta Q}{T} < 0
@@ -287,7 +276,7 @@ $$
 According to the Gouy-Stodola theorem, this lost work potential is directly proportional to the total entropy generated in the universe.
 
 
-# Quasi-static process
+## Quasi-static process
 In thermodynamics, a quasi-static process is defined as an infinitely slow process in which the intensive properties such as pressure and temperature remain completely uniform throughout the entire system at any given moment.
 Because the process occurs at such an infinitesimally slow rate, the system essentially passes through a continuous series of equilibrium states, never deviating significantly from thermodynamic equilibrium.
 <br />
@@ -303,12 +292,12 @@ Because the process occurs at such an infinitesimally slow rate, the system esse
 />
 
 
-## Relationship to Reversibility
+### Relationship to Reversibility
 While all internally reversible processes are quasi-static, the reverse is not always true not all quasi-static processes are internally reversible.
 For a closed system, a quasi-static process is only considered internally reversible if viscous losses like friction are neglected.
 
 
-## Significance in Calculating Work
+### Significance in Calculating Work
 Assuming a process is quasi-static is crucial for mathematically calculating the work done by a system.
 For example, calculating displacement work using the integral formula:
 $$
@@ -318,22 +307,22 @@ $$
 relies on the process being quasi-static and internally reversible.
 
 
-# Non-Quasi-Static Example
+## Non-Quasi-Static Example
 A prime example of a process that is not quasi-static is free expansion when a gas expands into an absolute vacuum.
 Because the expansion is sudden and uncontrolled, the intensive properties are not uniform, meaning you cannot use the $\int PdV$ formula to calculate work for it.
 
 
-# State
+## State
 In thermodynamics, the state is the specific condition of a system that is completely defined and specified by various parameters known as state variables such as temperature, pressure, volume, and entropy.
 
 
-# Property
+## Property
 A property is defined as any observable characteristic of a system.
 Because properties depend only on the state and are completely independent of the path followed during a process, they are considered state functions or point functions.
 The change in a property between two states is always the same regardless of the path taken whether reversible or irreversible, making them exact differentials.
 For any cyclic process, the net change in a property is always zero.
 
-1. **Intensive Properties**
+### A. Intensive Properties
 These are independent of the system's size, mass, or extent, and they are not additive in nature.
 Additionally, any specific property or the ratio of two extensive properties is classified as an intensive property.
 
@@ -346,7 +335,7 @@ Additionally, any specific property or the ratio of two extensive properties is 
 
 
 
-2. **Extensive Properties**
+### B. Extensive Properties
 These depend directly on the extent, size, or mass of the system.
 Extensive properties are additive, meaning the total value for the overall system is the sum of the values of its individual parts.
 
@@ -360,9 +349,9 @@ Extensive properties are additive, meaning the total value for the overall syste
        - Entropy
 
 
-# The Zeroth Law of Thermodynamics
+## The Zeroth Law of Thermodynamics
 
-## 1. Fundamental Principle
+### A. Fundamental Principle
 If two thermodynamic systems are each in thermal equilibrium with a third system separately, then they are also in thermal equilibrium with each other.
 $$
 (A = B) \text{ and } (A = C) \Rightarrow (B = C)
@@ -384,16 +373,16 @@ This law guarantees that systems B and C will inherently be in thermal equilibri
 />
 
 
-## 2. Significance in Temperature Measurement
+### B. Significance in Temperature Measurement
 The Zeroth Law allows us to use thermometers as the "third system."
 If a thermometer reaches equilibrium with Object 1 and then Object 2 at the same reading, both objects share the same temperature.
 
 
-# Thermometry
+## Thermometry
 Thermometry is the branch of thermodynamics focused on the quantitative measurement of temperature.
 Since temperature is not a directly measurable quantity like mass or length, we must measure it indirectly by observing the physical changes it causes in certain materials.
 
-# Thermometric Properties
+### Thermometric Properties
 To measure equilibrium, thermometers rely on specific properties that change consistently with temperature.
 
 | Thermometer Type | Thermometric Property |
@@ -405,8 +394,8 @@ To measure equilibrium, thermometers rely on specific properties that change con
 | Thermocouple | Thermal e.m.f. |
 
 
-# Work and Heat as path functions
-## Fundamental Definitions
+## Work and Heat as path functions
+### Fundamental Definitions
 - **Heat ($Q$)**<br />
 Energy in transit between systems due solely to a temperature difference.
 It is often described as a "less organized" or disordered process at the molecular level.
@@ -415,9 +404,9 @@ It is often described as a "less organized" or disordered process at the molecul
 Energy in transit through any mechanism other than temperature difference.
 In classical terms, a transfer is classified as work if its sole effect on the surroundings could be equivalent to raising a weight.
 
-# Path Functions vs. State Functions
+## Path Functions vs. State Functions
 To understand why work and heat are path functions, we must distinguish them from state functions.
-## State Functions
+### State Functions
 Properties that depend only on the current state of the system, not how it got there.
 - **Examples**
     - Pressure ($P$)  
@@ -425,14 +414,14 @@ Properties that depend only on the current state of the system, not how it got t
     - Temperature ($T$)  
     - Internal Energy ($U$)  
 
-## Path Functions
+### Path Functions
 Quantities whose magnitude depends on the specific route (path) taken between the initial and final states.<br />
 
-**Key Takeaway**
+**Key Takeaway**  
 Work and heat are path functions.
 Their values are not determined by the start and end points alone, but by the specific process used to transition between them.
 
-### 1. Work ($W$) as a Path Function
+#### 1. Work ($W$) as a Path Function
 Work is defined as energy in transit due to a force acting through a distance.
 In a closed system, the boundary work is calculated as:
 $$
@@ -463,7 +452,7 @@ This creates a very small area under the curve, meaning less work is done.<br />
 -> **Conclusion**<br />
 Even though the start and end points $(P, V)$ are identical, the work done changes depending on the "road" taken.
 
-### 2. Heat ($Q$) as a Path Function
+#### 2. Heat ($Q$) as a Path Function
 Heat is energy in transit due to a temperature difference.
 While it doesn't have a simple "area" representation like work on a $P-V$ diagram, its dependency on the path is proven by the First Law of Thermodynamics:
 $$
@@ -517,7 +506,7 @@ The final state (the temperature) is the same, but the amount of heat added vari
   }}
 />
 
-## Comparison Between State Functions and Path Functions
+#### Comparison Between State Functions and Path Functions
 
 | Feature | State Functions (e.g., $P,V,T,U$) | Path Functions ($Q$ and $W$) |
 |---|---|---|
@@ -525,14 +514,14 @@ The final state (the temperature) is the same, but the amount of heat added vari
 | Analogy | Altitude: Your height at the top of a mountain is the same regardless of your trail | Distance: The number of steps you took depends on whether you climbed straight up or spiraled around |
 | Equation | $\Delta U = U_2 - U_1$ | $W_{1-2} = \int \delta W$ (Never $\Delta W$) |
 
-# Cyclic process
+## Cyclic process
 A cyclic process (or thermodynamic cycle) is a process, or a combination of multiple processes, carried out in such a way that the system's initial and final states are exactly the same.
 
-## Key characteristics of a cyclic process
-1. **Purpose**
+### Key characteristics of a cyclic process
+#### A. Purpose
 Cyclic processes are designed to produce a continuous, ongoing effect.
 
-2. **Change in Properties**
+#### B. Change in Properties
 Because the system ultimately returns to its exact starting condition, the net change in any thermodynamic property such as internal energy, volume, or pressure over the complete cycle is always exactly zero.
     - **First Law Application**<br />
 According to the First Law of Thermodynamics, the net heat transferred into the closed system during a cycle is exactly equal to the net work done by the system.
@@ -555,12 +544,12 @@ On a pressure-volume ($P-V$) diagram, cycles can be visualized by the direction 
   }}
 />
 
-# Non-cyclic process
+## Non-cyclic process
 A non-cyclic process occurs when a system undergoes a change from an initial state to a completely different final state.
 
-## Key characteristics of a non-cyclic process
+### Key characteristics of a non-cyclic process
 
-1. **Change in Properties**<br />
+#### A. Change in Properties
 Because the system does not return to its original state, an energetic change occurs within the system, which is associated with actual changes in measurable properties like pressure, volume, and internal energy.
 
     - **First Law Application**<br />
@@ -591,7 +580,7 @@ Common examples include:
   }}
 />
 
-# Enthalpy
+## Enthalpy
 Enthalpy ($H$) is essentially a measurement of the total energy within a thermodynamic system.
 Mathematically:
 $$
@@ -605,12 +594,12 @@ Where:
 - $V$ = Volume  
 
 
-### Practical Context
+**Practical Context**  
 A great way to understand enthalpy is by looking at a constant-pressure (isobaric) process.
 If you add heat to a stationary system while keeping its pressure perfectly constant, the exact amount of heat supplied is equal to the increase in the system's enthalpy.
 Because it measures total energy, it is an extensive property, meaning its value depends entirely on the size or mass of the system.
 
-# Entropy
+## Entropy
 Entropy ($S$) is a thermodynamic function used to measure the molecular randomness, disorder, or unpredictability within a system.
 It essentially quantifies the number of possible arrangements the atoms or molecules in a system can have.
 
@@ -624,12 +613,12 @@ Entropy is the driving concept behind the Second Law of Thermodynamics.
 While the First Law says energy is conserved, the Second Law dictates that entropy is not conserved in real-world irreversible processes.
 Every actual process generates new entropy, meaning the entropy of the universe continuously increases.
 
-# The First Law of Thermodynamics: Conservation of Energy
+## The First Law of Thermodynamics: Conservation of Energy
 The First Law states that energy can neither be created nor destroyed.
 It can only be transferred or transformed from one form to another.
 Its mathematical application depends on whether the system undergoes a cyclic or non-cyclic process.
 
-## 1. The First Law for a Cyclic Process
+### A. The First Law for a Cyclic Process
 A thermodynamic cycle is a series of processes where the initial and final states are identical.
 For a closed system in a cycle, the net heat interaction equals the net work interaction.
 - **Mathematical Expression**
@@ -657,10 +646,10 @@ $$
 \Sigma Q = \Sigma W
 $$
 
-## 2. The First Law for a Non-Cyclic Process (Change of State)
+### B. The First Law for a Non-Cyclic Process (Change of State)
 When a system moves from State 1 to State 2, the law accounts for how heat and work interactions affect the energy stored inside the system.
 
-### A. Closed Systems
+#### 1. Closed Systems
 - **Mathematical Expression**<br />
 $$
 Q = W + \Delta E
@@ -703,7 +692,7 @@ $$
 While heat ($Q$) and work ($W$) are path functions, their difference ($dE$) is independent of path.
 Therefore, energy ($E$) is a thermodynamic property and a state function.
 
-### B. Open Systems (Control Volume)
+#### 2. Open Systems (Control Volume)
 Open systems allow mass to cross their boundaries, requiring the law to account for the energy carried by the flowing fluid.
 
 - **Rate Equation**<br />
@@ -729,11 +718,11 @@ $$
 H = U + PV
 $$
 
-# Steady Flow Energy Equation (SFEE)
+## Steady Flow Energy Equation (SFEE)
 The Steady Flow Energy Equation (SFEE) is one of the most practical and widely used equations in thermodynamics.
 It is the First Law of Thermodynamics (law of conservation of energy) applied to an open system or control volume, where fluid continuously flows in and out at a steady rate.
 
-1. **What is Steady Flow?**<br />
+### A. What is Steady Flow?
 A system is said to have steady flow when the thermodynamic properties at any fixed point inside the control volume do not change with time.
 
     - Conditions for Steady Flow
@@ -754,7 +743,7 @@ A system is said to have steady flow when the thermodynamic properties at any fi
             This means there is no accumulation of energy inside the system.
 
 
-2. **Steady Flow Energy Equation**<br />
+### B. Steady Flow Energy Equation
 Since energy inside the control volume remains constant, the total rate of energy entering the system must equal the total rate of energy leaving the system.
 The general form of SFEE is:
 $$
@@ -768,7 +757,7 @@ $$
 q = w_{cv} + \Delta ke + \Delta pe + \Delta h
 $$
 
-3. **Meaning of Each Term**<br />
+### C. Meaning of Each Term
 
     - **Heat Transfer**<br />
         $$
@@ -818,7 +807,7 @@ $$
             - Internal energy of the fluid  
             - Flow work required to push fluid into and out of the control volume  
 
-4. **Complete SFEE Form**<br />
+### D. Complete SFEE Form
 The expanded form of the Steady Flow Energy Equation is:
 $$
 \dot{Q} - \dot{W}_{cv} =
@@ -833,39 +822,33 @@ g(z_2 - z_1)
 $$
 
 
-# 5. How SFEE Works
+### E. How SFEE Works
 
 The SFEE acts like an energy accounting equation.
-
 Imagine a factory where:
 - Materials continuously enter and leave
 - The factory does not store materials permanently
 - Power entering equals power leaving
-
 Similarly, in a thermodynamic system:
 - Heat energy enters or leaves
 - Fluid carries energy into and out of the system
 - Mechanical work may be produced or consumed
-
 The SFEE balances all these forms of energy.
-
 By measuring quantities such as:
 - Pressure
 - Temperature
 - Velocity
 - Elevation
-
 Engineers can determine unknown quantities like:
 - Work output of a turbine
 - Power required by a compressor
 - Heat transfer in heat exchangers
 
-## The derivation of steady flow equations for common engineering devices
+### F. The derivation of steady flow equations for common engineering devices
 The derivation of steady flow equations for common engineering devices begins with the general Steady Flow Energy Equation (SFEE) per unit mass:
 $$
 q = w_{cv} + \Delta ke + \Delta pe + \Delta h
 $$
-
 **Variable Definitions**
 - $q$: Heat transfer per unit mass  
 - $w_{cv}$: Control volume (mechanical) work per unit mass  
@@ -882,7 +865,7 @@ $$
 (h_o - h_i)
 $$
 
-### 1] Nozzle
+#### 1. Nozzle
 A nozzle is designed to increase the velocity of a fluid.
 - Assumptions & Logic:
 
@@ -915,7 +898,7 @@ The fluid's kinetic energy increases specifically by consuming its enthalpy.
   }}
 />
 
-### 2] Turbine
+#### 2. Turbine
 A turbine extracts energy from a flowing fluid to produce mechanical shaft work.
 - Assumptions & Logic:
   | Feature | Assumptions & Logic |
@@ -947,7 +930,7 @@ A turbine extracts energy from a flowing fluid to produce mechanical shaft work.
   }}
 />
 
-### 3] Compressor
+#### 3. Compressor
 A compressor consumes mechanical work to increase the pressure and enthalpy of a fluid.
 - Assumptions & Logic:
   | Feature | Assumptions & Logic |
