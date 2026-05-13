@@ -21,7 +21,7 @@ Understanding the fundamental concepts of Python is essential for effective prog
 
 ---
 
-## 1. Variables and Data Types
+## Variables and Data Types
 
 Python is dynamically typed, meaning you don't need to declare a variable's type. The interpreter figures it out at runtime.
 
@@ -61,7 +61,7 @@ These are containers used to group data together.
 
 ---
 
-## 2. Input and Output
+## Input and Output
 
 Python handles user interaction through functions like `print()` for output and `input()` for input.
 
@@ -84,9 +84,9 @@ print(f"Hello {name}, next year you will be {age + 1}.")`}
 
 ---
 
-## 3. Control Flow
+## Control Flow
 
-### Conditional Statements
+### A. Conditional Statements
 
 Conditional statements allow the program to make decisions based on certain conditions.
 
@@ -96,7 +96,7 @@ The main structures are:
 - **elif** – checks additional conditions
 - **else** – executes if none of the above conditions are true
 
-### Loops
+### B. Loops
 
 Loops enable repeated execution of code blocks.
 
@@ -109,7 +109,7 @@ Control statements like `break`, `continue`, and `pass` modify loop behavior.
 
 Python uses indentation (usually 4 spaces) instead of curly braces `{}` to define blocks of code.
 
-### Conditional Statements Example
+### C. Conditional Statements Example
 
 <Tabs>
   <TabItem label="Python">
@@ -130,7 +130,7 @@ else:
   </TabItem>
 </Tabs>
 
-### Loop Example
+### D. Loop Example
 
 - For loops are used when you know the number of iterations.
 - While loops run as long as a condition remains `True`.
@@ -156,7 +156,7 @@ while count < 3:
 
 ---
 
-## 4. Functions
+## Functions
 
 Functions help you follow the DRY (Don't Repeat Yourself) principle.
 
@@ -183,7 +183,7 @@ print(square(5)) # Output: 25`}
 
 ---
 
-## 5. List Comprehension
+## List Comprehension
 
 List comprehension is a way to create lists in a single line.
 
@@ -207,7 +207,7 @@ print(even_squares) # Output: [4, 16, 36]`}
 
 ---
 
-## 6. String Manipulation
+## String Manipulation
 
 Strings in Python are objects with powerful built-in methods.
 
@@ -268,11 +268,11 @@ The broadcasting capabilities are also extremely useful for quickly applying fun
 
 ## Key Features of NumPy
 
-### N-dimensional Array (ndarray)
+### A. N-dimensional Array (ndarray)
 
 NumPy’s primary data structure is the ndarray, which allows efficient storage and manipulation of large datasets in multiple dimensions such as 1D, 2D, and 3D arrays.
 
-### Mathematical Functions
+### B. Mathematical Functions
 
 NumPy provides a wide range of mathematical operations such as:
 
@@ -280,11 +280,11 @@ NumPy provides a wide range of mathematical operations such as:
 - Statistical functions
 - Random number generation
 
-### Broadcasting
+### C. Broadcasting
 
 Broadcasting allows NumPy to perform element-wise operations on arrays of different shapes without explicitly reshaping them.
 
-### Integration with Other Libraries
+### D. Integration with Other Libraries
 
 NumPy is commonly used alongside:
 
@@ -294,7 +294,7 @@ NumPy is commonly used alongside:
 
 It forms the foundation for scientific computing in Python.
 
-### Efficiency
+### E. Efficiency
 
 NumPy operations are faster and more memory-efficient compared to traditional Python lists because they are implemented using lower-level languages.
 
@@ -302,11 +302,11 @@ NumPy operations are faster and more memory-efficient compared to traditional Py
 
 ## Working with NumPy
 
-## 1. Array Creation Functions
+## A. Array Creation Functions
 
 These functions allow you to generate arrays with specific initial values or patterns.
 
-### np.arange()
+### 1. np.arange()
 
 Generates an array of values within a given interval using a specific step size.
 
@@ -325,7 +325,7 @@ print(arr) # [0 2 4 6 8]`}
   </TabItem>
 </Tabs>
 
-### np.zeros() and np.ones()
+### 2. np.zeros() and np.ones()
 
 Creates arrays filled entirely with 0s or 1s.
 
@@ -345,7 +345,7 @@ ones = np.ones(4)
   </TabItem>
 </Tabs>
 
-### np.linspace()
+### 3. np.linspace()
 
 Returns evenly spaced numbers over a specified interval.
 
@@ -365,7 +365,7 @@ print(lin)
   </TabItem>
 </Tabs>
 
-### np.eye()
+### 4. np.eye()
 
 Creates an identity matrix.
 
@@ -382,7 +382,7 @@ Creates an identity matrix.
 
 ---
 
-## 2. Random Number Generation
+## B. Random Number Generation
 
 NumPy’s random module is essential for:
 
@@ -390,7 +390,7 @@ NumPy’s random module is essential for:
 - Shuffling data
 - Initializing machine learning models
 
-### np.random.rand() and np.random.randn()
+### 1. np.random.rand() and np.random.randn()
 
 - `rand()` creates values from a uniform distribution.
 - `randn()` creates values from a standard normal distribution.
@@ -409,7 +409,7 @@ n = np.random.randn(3,3)
   </TabItem>
 </Tabs>
 
-### np.random.randint()
+### 2. np.random.randint()
 
 Returns random integers from a specified range.
 
@@ -424,7 +424,7 @@ r_int = np.random.randint(1, 100, 5)`}
   </TabItem>
 </Tabs>
 
-### np.random.seed()
+### 3. np.random.seed()
 
 Sets the starting point for the random number generator, making results reproducible.
 
@@ -443,9 +443,9 @@ print(np.random.rand(1))
 
 ---
 
-## 3. Manipulation and Attributes
+## C. Manipulation and Attributes
 
-### shape and dtype
+### 1. shape and dtype
 
 These attributes tell you:
 
@@ -468,7 +468,7 @@ print(arr.dtype)
   </TabItem>
 </Tabs>
 
-### reshape()
+### 2. reshape()
 
 Changes the shape of an array without changing its data.
 
@@ -488,11 +488,11 @@ new_arr = arr.reshape(2, 3)
 
 ---
 
-## 4. Indexing and Slicing
+## D. Indexing and Slicing
 
 Retrieving specific elements or chunks of data from an array.
 
-### 2D Indexing and Slicing
+### 1. 2D Indexing and Slicing
 
 Data is accessed using `[row, col]` notation.
 
@@ -512,7 +512,7 @@ print(mat[:, 1:])
   </TabItem>
 </Tabs>
 
-### Conditional Selection
+### 2. Conditional Selection
 
 Boolean logic is used to filter arrays.
 
@@ -529,7 +529,7 @@ print(arr[arr > 5])
   </TabItem>
 </Tabs>
 
-### Broadcasting
+### 3. Broadcasting
 
 Broadcasting allows NumPy to treat arrays with different shapes during arithmetic operations.
 
@@ -550,9 +550,9 @@ print(arr + 10)
 
 ---
 
-## 5. Mathematical and Statistical Operations
+## E. Mathematical and Statistical Operations
 
-### Universal Functions (ufunc)
+### 1. Universal Functions (ufunc)
 
 Operations are applied element-wise across the array.
 
@@ -572,7 +572,7 @@ print(np.exp(arr))
   </TabItem>
 </Tabs>
 
-### Statistical Functions
+### 2. Statistical Functions
 
 Statistical functions aggregate data to find insights.
 
@@ -592,7 +592,7 @@ print(arr.mean())
   </TabItem>
 </Tabs>
 
-### Axis-based Operations
+### 3. Axis-based Operations
 
 Calculations can be performed along rows or columns.
 
@@ -612,7 +612,7 @@ print(mat.sum(axis=1))
   </TabItem>
 </Tabs>
 
-### argmax() and argmin()
+### 4. argmax() and argmin()
 
 Returns the index of the maximum or minimum value.
 
@@ -664,9 +664,9 @@ These structures allow you to manipulate tabular data with the same ease as an E
 
 ---
 
-## 1. Core Data Structures
+## A. Core Data Structures
 
-### Pandas Series
+### 1. Pandas Series
 
 A Series is a one-dimensional labeled array.
 
@@ -694,7 +694,7 @@ print(ser['b'])
 
 ---
 
-### Pandas DataFrame
+### 2. Pandas DataFrame
 
 A DataFrame is a two-dimensional, size-mutable, and heterogeneous tabular data structure.
 
@@ -729,9 +729,9 @@ df = pd.DataFrame(data)`}
 
 ---
 
-## 2. Essential Data Operations
+## B. Essential Data Operations
 
-### Data Exploration
+### 1. Data Exploration
 
 When a dataset is loaded, it is important to inspect its contents without printing thousands of rows.
 
@@ -743,7 +743,7 @@ Common methods include:
 
 ---
 
-### Data Cleaning
+### 2. Data Cleaning
 
 Real-world data is often missing or incorrectly formatted.
 
@@ -757,7 +757,7 @@ Use:
 
 ---
 
-### Filtering
+### 3. Filtering
 
 Conditional logic is used to extract subsets of data.
 
@@ -774,11 +774,11 @@ expensive_items = df[df['Price'] > 100]`}
 
 ---
 
-### Data Merging and Grouping
+### 4. Data Merging and Grouping
 
 Pandas excels at combining data from multiple sources, similar to SQL operations.
 
-### Merging (Joining)
+#### a. Merging (Joining)
 
 Two DataFrames can be combined using a common key with `pd.merge()`.
 
@@ -789,7 +789,7 @@ It supports:
 - Inner Join
 - Outer Join
 
-### Grouping (Split-Apply-Combine)
+#### b. Grouping (Split-Apply-Combine)
 
 The `groupby()` function groups rows based on a column and performs calculations on those groups.
 
@@ -806,13 +806,13 @@ avg_price = df.groupby('Category')['Price'].mean()`}
 
 ---
 
-## 3. Working with Pandas
+## C. Working with Pandas
 
-### Data Exploration & Metadata
+### 1. Data Exploration & Metadata
 
 Before manipulating data, you should understand its structure and data types.
 
-#### df.info()
+#### a. df.info()
 
 Provides a concise summary of the DataFrame including:
 
@@ -843,7 +843,7 @@ df.info()
   </TabItem>
 </Tabs>
 
-#### df.describe()
+#### b. df.describe()
 
 Generates descriptive statistics for numerical columns.
 
@@ -860,11 +860,11 @@ Generates descriptive statistics for numerical columns.
 ---
 ---
 
-### Selection and Slicing
+### 2. Selection and Slicing
 
 Selection and slicing help navigate through data using labels or positions.
 
-#### .loc[] and .iloc[]
+#### a. .loc[] and .iloc[]
 
 - `loc[]` → Accesses data using labels (row names and column names)
 - `iloc[]` → Accesses data using integer positions (index numbers)
@@ -887,7 +887,7 @@ print(df.iloc[0, 0])
 
 ---
 
-#### .at[] and .iat[]
+#### b. .at[] and .iat[]
 
 These are used for fast access to a single scalar value.
 
@@ -905,11 +905,11 @@ print(df.at[0, 'Quantity'])
 
 ---
 
-### Data Cleaning and Transformation
+### 3. Data Cleaning and Transformation
 
 Preparing data for analysis often requires changing data types or renaming columns.
 
-#### .astype()
+#### a. .astype()
 
 Converts a column from one data type to another.
 
@@ -926,7 +926,7 @@ df['Quantity'] = df['Quantity'].astype('float64')`}
 
 ---
 
-#### .rename()
+#### b. .rename()
 
 Changes column or index labels.
 
@@ -942,11 +942,11 @@ Changes column or index labels.
 
 ---
 
-### Sorting and Filtering
+### 4. Sorting and Filtering
 
 Sorting and filtering help organize data and extract insights.
 
-#### .sort_values()
+#### a. .sort_values()
 
 Sorts the DataFrame based on the values of a specific column.
 
@@ -963,7 +963,7 @@ df.sort_values(by='Quantity', ascending=False, inplace=True)`}
 
 ---
 
-#### .query()
+#### b. .query()
 
 Filters data using a logical string expression.
 
@@ -980,11 +980,11 @@ filtered_df = df.query('Quantity > 30')`}
 
 ---
 
-### Reshaping Data
+### 5. Reshaping Data
 
 Reshaping changes the layout of data for visualization or modeling purposes.
 
-#### .melt()
+#### a. .melt()
 
 Converts a DataFrame from wide format to long format.
 
@@ -1005,7 +1005,7 @@ melted = pd.melt(
 
 ---
 
-#### .pivot()
+#### b. .pivot()
 
 Creates a new table structure based on column values.
 
@@ -1027,11 +1027,11 @@ pivot_table = df.pivot(
 
 ---
 
-### Combining Datasets
+### 6. Combining Datasets
 
 Combining data from different sources is a common task in data analysis.
 
-#### .merge()
+#### a. .merge()
 
 Joins two DataFrames using a common key column.
 
@@ -1058,7 +1058,7 @@ merged_df = pd.merge(
 
 ---
 
-#### .concat()
+#### b. .concat()
 
 Stacks DataFrames together either vertically or horizontally.
 
@@ -1075,11 +1075,11 @@ combined = pd.concat([df1, df2], axis=0)`}
 
 ---
 
-### Handling Missing Values
+### 7. Handling Missing Values
 
 In real-world datasets, `NaN` (Not a Number) represents missing data.
 
-#### .isnull() and .sum()
+#### a. .isnull() and .sum()
 
 These methods detect and count missing values.
 
@@ -1095,7 +1095,7 @@ These methods detect and count missing values.
 
 ---
 
-#### .fillna() and .dropna()
+#### b. .fillna() and .dropna()
 
 - `fillna()` → Replaces missing values with a specified value
 - `dropna()` → Removes rows or columns containing missing values
@@ -1112,7 +1112,7 @@ These methods detect and count missing values.
 
 ---
 
-### Statistical Aggregations
+### 8. Statistical Aggregations
 
 Statistical aggregation functions help quickly calculate insights from data.
 
