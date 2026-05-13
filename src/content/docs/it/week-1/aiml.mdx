@@ -4,7 +4,7 @@ title: Artificial Intelligence and Machine Learning
 
 import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
 
-# Python
+## Python
 
 Python is a high-level, interpreted programming language known for its simplicity and versatility. It is widely used in various fields such as artificial intelligence, web development, automation, and data analysis.
 
@@ -19,9 +19,8 @@ Understanding the fundamental concepts of Python is essential for effective prog
 - Functions
 - Data structures
 
----
 
-## Variables and Data Types
+### Variables and Data Types
 
 Python is dynamically typed, meaning you don't need to declare a variable's type. The interpreter figures it out at runtime.
 
@@ -59,9 +58,8 @@ These are containers used to group data together.
 | Set | `{1, 2, 3}` | Yes | Yes |
 | Dictionary | `{"a": 1}` | Yes | Keys are unique |
 
----
 
-## Input and Output
+### Input and Output
 
 Python handles user interaction through functions like `print()` for output and `input()` for input.
 
@@ -82,11 +80,10 @@ print(f"Hello {name}, next year you will be {age + 1}.")`}
   </TabItem>
 </Tabs>
 
----
 
-## Control Flow
+### Control Flow
 
-### A. Conditional Statements
+#### A. Conditional Statements
 
 Conditional statements allow the program to make decisions based on certain conditions.
 
@@ -96,7 +93,7 @@ The main structures are:
 - **elif** – checks additional conditions
 - **else** – executes if none of the above conditions are true
 
-### B. Loops
+#### B. Loops
 
 Loops enable repeated execution of code blocks.
 
@@ -109,7 +106,7 @@ Control statements like `break`, `continue`, and `pass` modify loop behavior.
 
 Python uses indentation (usually 4 spaces) instead of curly braces `{}` to define blocks of code.
 
-### C. Conditional Statements Example
+#### C. Conditional Statements Example
 
 <Tabs>
   <TabItem label="Python">
@@ -130,7 +127,7 @@ else:
   </TabItem>
 </Tabs>
 
-### D. Loop Example
+#### D. Loop Example
 
 - For loops are used when you know the number of iterations.
 - While loops run as long as a condition remains `True`.
@@ -154,9 +151,8 @@ while count < 3:
   </TabItem>
 </Tabs>
 
----
 
-## Functions
+### Functions
 
 Functions help you follow the DRY (Don't Repeat Yourself) principle.
 
@@ -181,9 +177,8 @@ print(square(5)) # Output: 25`}
   </TabItem>
 </Tabs>
 
----
 
-## List Comprehension
+### List Comprehension
 
 List comprehension is a way to create lists in a single line.
 
@@ -205,9 +200,8 @@ print(even_squares) # Output: [4, 16, 36]`}
   </TabItem>
 </Tabs>
 
----
 
-## String Manipulation
+### String Manipulation
 
 Strings in Python are objects with powerful built-in methods.
 
@@ -229,9 +223,7 @@ print("python"[0:4])
   </TabItem>
 </Tabs>
 
----
-
-## Video Reference
+### Video Reference
 
 <div style="display: flex; justify-content: center;">
   <iframe
@@ -246,33 +238,27 @@ print("python"[0:4])
     allowfullscreen
   ></iframe>
 </div>
----
 
-# NumPy and Pandas
 
----
+## NumPy and Pandas
 
-## NumPy
+
+### NumPy
 
 NumPy (Numerical Python) is a fundamental library for numerical computing in Python.
-
 It provides support for arrays, matrices, and a collection of mathematical functions to operate on these data structures efficiently.
-
 NumPy is particularly useful for scientific computing and data analysis because it allows operations on large multi-dimensional arrays and matrices with high performance.
-
 While NumPy structures look similar to standard Python lists, they are much more efficient.
-
 The broadcasting capabilities are also extremely useful for quickly applying functions to datasets.
 
----
 
-## Key Features of NumPy
+### Key Features of NumPy
 
-### A. N-dimensional Array (ndarray)
+#### A. N-dimensional Array (ndarray)
 
 NumPy’s primary data structure is the ndarray, which allows efficient storage and manipulation of large datasets in multiple dimensions such as 1D, 2D, and 3D arrays.
 
-### B. Mathematical Functions
+#### B. Mathematical Functions
 
 NumPy provides a wide range of mathematical operations such as:
 
@@ -280,33 +266,30 @@ NumPy provides a wide range of mathematical operations such as:
 - Statistical functions
 - Random number generation
 
-### C. Broadcasting
+#### C. Broadcasting
 
 Broadcasting allows NumPy to perform element-wise operations on arrays of different shapes without explicitly reshaping them.
 
-### D. Integration with Other Libraries
+#### D. Integration with Other Libraries
 
 NumPy is commonly used alongside:
-
 - Pandas
 - SciPy
 - Matplotlib
-
 It forms the foundation for scientific computing in Python.
 
-### E. Efficiency
+#### E. Efficiency
 
 NumPy operations are faster and more memory-efficient compared to traditional Python lists because they are implemented using lower-level languages.
 
----
 
-## Working with NumPy
+### Working with NumPy
 
-## A. Array Creation Functions
+#### A. Array Creation Functions
 
 These functions allow you to generate arrays with specific initial values or patterns.
 
-### 1. np.arange()
+##### 1. np.arange()
 
 Generates an array of values within a given interval using a specific step size.
 
@@ -325,7 +308,7 @@ print(arr) # [0 2 4 6 8]`}
   </TabItem>
 </Tabs>
 
-### 2. np.zeros() and np.ones()
+##### 2. np.zeros() and np.ones()
 
 Creates arrays filled entirely with 0s or 1s.
 
@@ -345,7 +328,7 @@ ones = np.ones(4)
   </TabItem>
 </Tabs>
 
-### 3. np.linspace()
+##### 3. np.linspace()
 
 Returns evenly spaced numbers over a specified interval.
 
@@ -365,7 +348,7 @@ print(lin)
   </TabItem>
 </Tabs>
 
-### 4. np.eye()
+##### 4. np.eye()
 
 Creates an identity matrix.
 
@@ -382,7 +365,7 @@ Creates an identity matrix.
 
 ---
 
-## B. Random Number Generation
+#### B. Random Number Generation
 
 NumPy’s random module is essential for:
 
@@ -390,7 +373,7 @@ NumPy’s random module is essential for:
 - Shuffling data
 - Initializing machine learning models
 
-### 1. np.random.rand() and np.random.randn()
+##### 1. np.random.rand() and np.random.randn()
 
 - `rand()` creates values from a uniform distribution.
 - `randn()` creates values from a standard normal distribution.
@@ -409,7 +392,7 @@ n = np.random.randn(3,3)
   </TabItem>
 </Tabs>
 
-### 2. np.random.randint()
+##### 2. np.random.randint()
 
 Returns random integers from a specified range.
 
@@ -424,7 +407,7 @@ r_int = np.random.randint(1, 100, 5)`}
   </TabItem>
 </Tabs>
 
-### 3. np.random.seed()
+##### 3. np.random.seed()
 
 Sets the starting point for the random number generator, making results reproducible.
 
@@ -443,9 +426,9 @@ print(np.random.rand(1))
 
 ---
 
-## C. Manipulation and Attributes
+#### C. Manipulation and Attributes
 
-### 1. shape and dtype
+##### 1. shape and dtype
 
 These attributes tell you:
 
@@ -468,7 +451,7 @@ print(arr.dtype)
   </TabItem>
 </Tabs>
 
-### 2. reshape()
+##### 2. reshape()
 
 Changes the shape of an array without changing its data.
 
@@ -488,11 +471,11 @@ new_arr = arr.reshape(2, 3)
 
 ---
 
-## D. Indexing and Slicing
+#### D. Indexing and Slicing
 
 Retrieving specific elements or chunks of data from an array.
 
-### 1. 2D Indexing and Slicing
+##### 1. 2D Indexing and Slicing
 
 Data is accessed using `[row, col]` notation.
 
@@ -512,7 +495,7 @@ print(mat[:, 1:])
   </TabItem>
 </Tabs>
 
-### 2. Conditional Selection
+##### 2. Conditional Selection
 
 Boolean logic is used to filter arrays.
 
@@ -529,7 +512,7 @@ print(arr[arr > 5])
   </TabItem>
 </Tabs>
 
-### 3. Broadcasting
+##### 3. Broadcasting
 
 Broadcasting allows NumPy to treat arrays with different shapes during arithmetic operations.
 
@@ -550,9 +533,9 @@ print(arr + 10)
 
 ---
 
-## E. Mathematical and Statistical Operations
+#### E. Mathematical and Statistical Operations
 
-### 1. Universal Functions (ufunc)
+##### 1. Universal Functions (ufunc)
 
 Operations are applied element-wise across the array.
 
@@ -572,7 +555,7 @@ print(np.exp(arr))
   </TabItem>
 </Tabs>
 
-### 2. Statistical Functions
+##### 2. Statistical Functions
 
 Statistical functions aggregate data to find insights.
 
@@ -592,7 +575,7 @@ print(arr.mean())
   </TabItem>
 </Tabs>
 
-### 3. Axis-based Operations
+##### 3. Axis-based Operations
 
 Calculations can be performed along rows or columns.
 
@@ -612,7 +595,7 @@ print(mat.sum(axis=1))
   </TabItem>
 </Tabs>
 
-### 4. argmax() and argmin()
+##### 4. argmax() and argmin()
 
 Returns the index of the maximum or minimum value.
 
@@ -629,9 +612,8 @@ print(arr.argmax())
   </TabItem>
 </Tabs>
 
----
 
-## Video Reference
+### Video Reference
 
 <div style="display: flex; justify-content: center;">
   <iframe
@@ -647,33 +629,25 @@ print(arr.argmax())
   ></iframe>
 </div>
 
----
 
-# Pandas
+## Pandas
 
 Pandas is the most popular Python library for data analysis.
-
 It acts as a bridge between raw data such as CSVs or SQL databases and the mathematical power of NumPy.
-
 Pandas introduces two primary data structures:
-
 - Series (1D)
 - DataFrame (2D)
-
 These structures allow you to manipulate tabular data with the same ease as an Excel spreadsheet but with the speed and scalability of Python.
 
----
 
-## A. Core Data Structures
+### A. Core Data Structures
 
-### 1. Pandas Series
+#### 1. Pandas Series
 
 A Series is a one-dimensional labeled array.
-
 It is essentially a single column of data where every value is assigned a label called an index.
 
-#### Key Feature
-
+##### Key Feature
 You can access data using labels instead of just numerical positions.
 
 <Tabs>
@@ -692,25 +666,19 @@ print(ser['b'])
   </TabItem>
 </Tabs>
 
----
 
-### 2. Pandas DataFrame
-
+#### 2. Pandas DataFrame
 A DataFrame is a two-dimensional, size-mutable, and heterogeneous tabular data structure.
-
 Think of it as a collection of Series objects sharing the same index.
 
-#### Key Feature
+##### Key Feature
 
 It can handle different data types such as:
-
 - Integers
 - Strings
 - Floats
 - Booleans
-
 in different columns simultaneously.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -727,40 +695,31 @@ df = pd.DataFrame(data)`}
   </TabItem>
 </Tabs>
 
----
 
-## B. Essential Data Operations
+### B. Essential Data Operations
 
-### 1. Data Exploration
+#### 1. Data Exploration
 
 When a dataset is loaded, it is important to inspect its contents without printing thousands of rows.
-
 Common methods include:
-
 - `df.head(n)` → Displays the first n rows
 - `df.info()` → Shows data types, memory usage, and null counts
 - `df.describe()` → Provides a statistical summary of numerical columns
 
----
 
-### 2. Data Cleaning
+#### 2. Data Cleaning
 
 Real-world data is often missing or incorrectly formatted.
 
-#### Handling Missing Data
-
+##### Handling Missing Data
 Use:
-
 - `df.isnull()` to identify missing values
 - `df.fillna(value)` to replace missing values
 - `df.dropna()` to remove missing data
 
----
 
-### 3. Filtering
-
+#### 3. Filtering
 Conditional logic is used to extract subsets of data.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -772,27 +731,20 @@ expensive_items = df[df['Price'] > 100]`}
   </TabItem>
 </Tabs>
 
----
 
-### 4. Data Merging and Grouping
-
+#### 4. Data Merging and Grouping
 Pandas excels at combining data from multiple sources, similar to SQL operations.
 
-#### a. Merging (Joining)
-
+##### a. Merging (Joining)
 Two DataFrames can be combined using a common key with `pd.merge()`.
-
 It supports:
-
 - Left Join
 - Right Join
 - Inner Join
 - Outer Join
 
-#### b. Grouping (Split-Apply-Combine)
-
+##### b. Grouping (Split-Apply-Combine)
 The `groupby()` function groups rows based on a column and performs calculations on those groups.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -804,23 +756,18 @@ avg_price = df.groupby('Category')['Price'].mean()`}
   </TabItem>
 </Tabs>
 
----
 
-## C. Working with Pandas
+### C. Working with Pandas
 
-### 1. Data Exploration & Metadata
-
+#### 1. Data Exploration & Metadata
 Before manipulating data, you should understand its structure and data types.
 
-#### a. df.info()
-
+##### a. df.info()
 Provides a concise summary of the DataFrame including:
-
 - Column names
 - Non-null counts
 - Memory usage
 - Data types
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -843,10 +790,8 @@ df.info()
   </TabItem>
 </Tabs>
 
-#### b. df.describe()
-
+##### b. df.describe()
 Generates descriptive statistics for numerical columns.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -857,18 +802,12 @@ Generates descriptive statistics for numerical columns.
   </TabItem>
 </Tabs>
 
----
----
-
-### 2. Selection and Slicing
-
+#### 2. Selection and Slicing
 Selection and slicing help navigate through data using labels or positions.
 
-#### a. .loc[] and .iloc[]
-
+##### a. .loc[] and .iloc[]
 - `loc[]` → Accesses data using labels (row names and column names)
 - `iloc[]` → Accesses data using integer positions (index numbers)
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -885,12 +824,9 @@ print(df.iloc[0, 0])
   </TabItem>
 </Tabs>
 
----
 
-#### b. .at[] and .iat[]
-
+##### b. .at[] and .iat[]
 These are used for fast access to a single scalar value.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -903,16 +839,12 @@ print(df.at[0, 'Quantity'])
   </TabItem>
 </Tabs>
 
----
 
-### 3. Data Cleaning and Transformation
-
+#### 3. Data Cleaning and Transformation
 Preparing data for analysis often requires changing data types or renaming columns.
 
-#### a. .astype()
-
+##### a. .astype()
 Converts a column from one data type to another.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -924,12 +856,8 @@ df['Quantity'] = df['Quantity'].astype('float64')`}
   </TabItem>
 </Tabs>
 
----
-
-#### b. .rename()
-
+##### b. .rename()
 Changes column or index labels.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -940,16 +868,12 @@ Changes column or index labels.
   </TabItem>
 </Tabs>
 
----
 
-### 4. Sorting and Filtering
-
+#### 4. Sorting and Filtering
 Sorting and filtering help organize data and extract insights.
 
-#### a. .sort_values()
-
+##### a. .sort_values()
 Sorts the DataFrame based on the values of a specific column.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -961,12 +885,9 @@ df.sort_values(by='Quantity', ascending=False, inplace=True)`}
   </TabItem>
 </Tabs>
 
----
 
-#### b. .query()
-
+##### b. .query()
 Filters data using a logical string expression.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -978,16 +899,12 @@ filtered_df = df.query('Quantity > 30')`}
   </TabItem>
 </Tabs>
 
----
 
-### 5. Reshaping Data
-
+#### 5. Reshaping Data
 Reshaping changes the layout of data for visualization or modeling purposes.
 
-#### a. .melt()
-
+##### a. .melt()
 Converts a DataFrame from wide format to long format.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -1003,12 +920,9 @@ melted = pd.melt(
   </TabItem>
 </Tabs>
 
----
 
-#### b. .pivot()
-
+##### b. .pivot()
 Creates a new table structure based on column values.
-
 It is the reverse operation of `melt()`.
 
 <Tabs>
@@ -1025,18 +939,14 @@ pivot_table = df.pivot(
   </TabItem>
 </Tabs>
 
----
 
-### 6. Combining Datasets
+#### 6. Combining Datasets
 
 Combining data from different sources is a common task in data analysis.
 
-#### a. .merge()
-
+##### a. .merge()
 Joins two DataFrames using a common key column.
-
 This works similar to SQL joins.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -1056,9 +966,8 @@ merged_df = pd.merge(
   </TabItem>
 </Tabs>
 
----
 
-#### b. .concat()
+##### b. .concat()
 
 Stacks DataFrames together either vertically or horizontally.
 
@@ -1073,16 +982,12 @@ combined = pd.concat([df1, df2], axis=0)`}
   </TabItem>
 </Tabs>
 
----
 
-### 7. Handling Missing Values
-
+#### 7. Handling Missing Values
 In real-world datasets, `NaN` (Not a Number) represents missing data.
 
-#### a. .isnull() and .sum()
-
+##### a. .isnull() and .sum()
 These methods detect and count missing values.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -1093,13 +998,10 @@ These methods detect and count missing values.
   </TabItem>
 </Tabs>
 
----
 
-#### b. .fillna() and .dropna()
-
+##### b. .fillna() and .dropna()
 - `fillna()` → Replaces missing values with a specified value
 - `dropna()` → Removes rows or columns containing missing values
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -1110,12 +1012,9 @@ These methods detect and count missing values.
   </TabItem>
 </Tabs>
 
----
 
-### 8. Statistical Aggregations
-
+#### 8. Statistical Aggregations
 Statistical aggregation functions help quickly calculate insights from data.
-
 <Tabs>
   <TabItem label="Python">
     <Code
@@ -1136,9 +1035,8 @@ print(df['Quantity'].cumsum())
   </TabItem>
 </Tabs>
 
----
 
-## Video Reference
+### Video Reference
 
 <div style={{ display: "flex", justifyContent: "center" }}>
   <iframe
@@ -1152,17 +1050,16 @@ print(df['Quantity'].cumsum())
     allowFullScreen
   ></iframe>
 </div>
----
 
-# **Python - Matplotlib**
+## Python - Matplotlib
 
 Matplotlib is a powerful and versatile open-source plotting library for Python, designed to help users visualize data in a variety of formats. It is designed to work with NumPy arrays and pandas dataframes. The library makes it easy to make graphs from tabular data.
 
-## **1. Matplotlib Pyplot**
+### 1. Matplotlib Pyplot
 
 Pyplot is a Matplotlib module that provides simple functions for adding plot elements, such as lines, images, text, etc. to the axes in the current figure.
 
-### **Installation:**
+#### Installation:
 
  <Code
       code={`pip install matplotlib`}
@@ -1170,7 +1067,7 @@ Pyplot is a Matplotlib module that provides simple functions for adding plot ele
       title="Matplotlib Installation"
     />
 
-### **Steps to Use Pyplot:**
+#### Steps to Use Pyplot:
 
 1. **Import Matplotlib:** Start by importing matplotlib.pyplot as plt.
 2. **Create Data:** Prepare your data in the form of lists or arrays.
@@ -1180,7 +1077,7 @@ Pyplot is a Matplotlib module that provides simple functions for adding plot ele
 
 **Syntax:** matplotlib.pyplot.plot()
 
-## **2. Parts of Matplotlib**
+### 2. Parts of Matplotlib
 
 **Figure:** Whole area chosen for plotting
 
@@ -1195,7 +1092,6 @@ plt.show()`}
   </TabItem>
 </Tabs>
 
----
 
 **Axes:** Area where data is plotted and it can be added by using methods add_subplot(nrows, ncols, index) return axes object
 
@@ -1211,7 +1107,6 @@ plt.show()`}
   </TabItem>
 </Tabs>
 
----
 
 **Figure size:** Adjusting Figure Size => plt.figure(figsize=(x, y))
 
@@ -1227,9 +1122,8 @@ plt.show()`}
   </TabItem>
 </Tabs>
 
----
 
-## **3. Create titles and axis label as method**
+### 3. Create titles and axis label as method
 
 <Tabs>
   <TabItem label="Python">
@@ -1255,9 +1149,8 @@ plt.show()`}
 ![AIML-1](/public/IT/w1-aiml1.png)
 
 </div>
----
 
-## **4. Create Multiple Subplots**
+### 4. Create Multiple Subplots
 
 <Tabs>
   <TabItem label="Python">
@@ -1282,14 +1175,12 @@ plt.show()`}
     height="400px"
   />
 </div>
----
 
-## **5. Create Legends**
 
+### 5. Create Legends
 A matplotlib legend is a small box that describes the various elements of the plot in terms of lines and markers that have distinct styles or colors.
 
 **Attributes:**
-
 1. **shadow:** [None or bool] Whether to draw a shadow behind the legend.It’s Default value is None.
 2. **markerscale:** [None or int or float] The relative size of legend markers compared with the originally drawn ones.The Default is None.
 3. **numpoints:** [None or int] The number of marker points in the legend when creating a legend entry for a Line2D (line).The Default is None.
@@ -1328,12 +1219,10 @@ plt.show()`}
   </TabItem>
 </Tabs>
 
----
 
-## **6. Line Plot**
+### 6. Line Plot
 
 Line Plot is used to visualize a trend in data and is also used to compare two variables.
-
 **Syntax:** `plt.plot(x,y)`
 
 <Tabs>
@@ -1369,10 +1258,9 @@ plt.show()`}
     height="400px"
   />
 </div>
----
 
 
-### **Parameter for Plot**
+#### Parameter for Plot
 
 1. **color** - Sets the color of the line.
 2. **linestyle** - Sets the line style, e.g., solid, dashed, etc.
@@ -1421,16 +1309,15 @@ plt.show()`}
     height="400px"
   />
 </div>
----
 
 
-## **7. Scatter Graph**
+### 7. Scatter Graph
 
 It similar to a line graph which is used to show how one variable is related to another. It consists of data points, if it is linear then it is highly correlated and only marks the data point.
 
 **Syntax:** `plt.scatter(x,y)`
 
-### **Parameter of Scatter Graph**
+#### Parameter of Scatter Graph
 
 1. **c:** Sets color of markers.
 2. **s:** Sets the size of markers.
@@ -1476,16 +1363,14 @@ plt.show()`}
     height="400px"
   />
 </div>
----
 
-
-## **8. Bar Chart**
+### 8. Bar Chart
 
 It is mostly used to compare categories, for vertical bar plots and horizontal bar plots.
 
 **Syntax:** `bar(x, height) or bar(y,width)`
 
-### **Parameter of Bar Graph**
+#### Parameter of Bar Graph
 
 1. **Color:** Sets the color of bars.
 2. **edgecolor:** Sets the color of the borderline of bars.
@@ -1585,16 +1470,13 @@ plt.show()`}
   />
 </div>
 
----
 
 
-## **9. Pie Plot**
+### 9. Pie Plot
 
 It is effective in showing the proportion of categories and is best suited for comparing fewer categories. It is used to highlight the proportion of one or a group of categories.
-
 **Syntax:** pie(x), x: size of portions, passed as fraction or number
-
-### **Parameter of Pie**
+#### Parameter of Pie
 
 1. **colors:** Sets the colors of portions.
 2. **labels:** Sets the labels of portions.
@@ -1635,18 +1517,14 @@ plt.show()`}
     height="300px"
   />
   </div>
----
 
-## **10. Histogram Chart**
+
+### 10. Histogram Chart
 
 It is used to visualize the spread of data in a distribution
-
 **Syntax:** hist(x)
-
 where x is the data values
-
-### **Parameter of Histogram**
-
+#### Parameter of Histogram
 1. **Color:** Sets the color of bars.
 2. **bins:** Sets the number of bins to be used.
 3. **density:** Sets to True where bins display fraction and not the count.
@@ -1689,9 +1567,8 @@ plt.show()`}
     height="500px"
   />
   </div>
----
 
-## **11. 3-Dimensional Line Graph**
+### 11. 3-Dimensional Line Graph
 
 <Tabs>
   <TabItem label="3D Axes Setup">
@@ -1715,7 +1592,7 @@ ax = plt.axes(projection='3d')`}
     height="300px"
   />
   </div>
----
+
 
 <Tabs>
   <TabItem label="Python">
@@ -1759,7 +1636,7 @@ plt.show()`}
 
 ---
 
-## **12. Working with Images using Matplotlib**
+### 12. Working with Images using Matplotlib
 
 The image module in matplotlib library is used for working with images in Python.
 The image module also includes two useful methods
@@ -1794,11 +1671,8 @@ plt.show()`}
   />
   </div>
 
----
 
-
-## **13. Display an Image in Grayscale in Matplotlib**
-
+### 13. Display an Image in Grayscale in Matplotlib
 Open the image using PIL image method and convert it to L mode.L mode image is a single-channel image - normally interpreted as grayscale.
 
 
@@ -1834,10 +1708,9 @@ plt.show()`}
     height="350px"
   />
   </div>
----
 
 
-## **14. Display an OpenCV image in Python with Matplotlib**
+### 14. Display an OpenCV image in Python with Matplotlib
 
 The OpenCV module is an open-source computer vision and machine learning software library. It is a huge open-source library for computer vision, machine learning, and image processing.
 OpenCV images with Matplotlib module for that you just need to convert colored image into a gray scale image.
@@ -1874,8 +1747,8 @@ plt.show()`}
     height="350px"
   />
   </div>
----
-#    Video Reference
+
+###    Video Reference
 <div style="display: flex; justify-content: center;">
   <iframe
     width="350"
@@ -1886,4 +1759,3 @@ plt.show()`}
     allowfullscreen
   ></iframe>
 </div>
----
