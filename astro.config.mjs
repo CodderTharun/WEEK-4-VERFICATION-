@@ -242,9 +242,10 @@ export default defineConfig({
               label: "Week 1",
               collapsed: true,
               items: [
+                { label: "Overview", link: "/it/week-1/"  },
                 { label: "AIML", link: "/it/week-1/aiml" },
-                { label: "Overview", link: "/it/week-1/" },
                 { label: "DSA", link: "/it/week-1/dsa" },
+                { label: "Git and GitHub", link: "/it/week-1/git" },
                 { label: "CN", link: "/it/week-1/cn" },
                 { label: "OOPS", link: "/it/week-1/oops" },
                 { label: "OS", link: "/it/week-1/os" },
@@ -257,7 +258,7 @@ export default defineConfig({
               items: [
                 
                 { label: "Overview", link: "/it/week-2/" },
-                { label: "AIML", link: "/it/week-1/aiml" },
+                { label: "AIML", link: "/it/week-2/aiml" },
                 { label: "DSA", link: "/it/week-2/dsa" },
                 { label: "CN", link: "/it/week-2/cn" },
                 { label: "OOPS", link: "/it/week-2/oops" },
