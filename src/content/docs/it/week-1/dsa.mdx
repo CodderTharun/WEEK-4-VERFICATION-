@@ -5,14 +5,14 @@ description: "Arrays and Searching Algorithms"
 
 import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
 
-# Array
+## Array
 
-## **Definition:**  
+#### **Definition:**  
 An array is a linear data structure that stores elements of the same data type in contiguous memory locations.
 
 ---
 
-## **Key Characteristics of Arrays**
+### **A. Key Characteristics of Arrays**
 
 | Characteristics | Explanation |
 | --- | --- |
@@ -27,15 +27,15 @@ An array is a linear data structure that stores elements of the same data type i
 | Supports Multiple Dimensions | 1D, 2D, 3D arrays, etc. |
 
 ---
-## **Declaration & Initialization of Array**
+### **B. Declaration & Initialization of Array**
 
 <Tabs>
 
   <TabItem label="C++">
 
-# C++
+#### C++
 
-## Declaration
+#### 1. Declaration
 
 <Code
   code={`int arr[5];`}
@@ -43,7 +43,7 @@ An array is a linear data structure that stores elements of the same data type i
   title="Array Declaration"
 />
 
-## Initialization
+#### 2. Initialization
 
 <Code
   code={`arr[0] = 10;
@@ -52,7 +52,7 @@ arr[1] = 20;`}
   title="Array Initialization"
 />
 
-## Declaration + Initialization
+#### 3. Declaration + Initialization
 
 <Code
   code={`int arr[4] = {10, 20, 30, 40};`}
@@ -64,9 +64,9 @@ arr[1] = 20;`}
 
   <TabItem label="Java">
 
-# Java
+#### Java
 
-## Declaration
+#### 1. Declaration
 
 <Code
   code={`int[] arr = new int[5];`}
@@ -74,7 +74,7 @@ arr[1] = 20;`}
   title="Array Declaration"
 />
 
-## Initialization
+#### 2. Initialization
 
 <Code
   code={`arr[0] = 10;
@@ -83,7 +83,7 @@ arr[1] = 20;`}
   title="Array Initialization"
 />
 
-## Declaration + Initialization
+#### 3. Declaration + Initialization
 
 <Code
   code={`int[] arr = {10, 20, 30, 40};`}
@@ -95,9 +95,9 @@ arr[1] = 20;`}
 
   <TabItem label="Python">
 
-# Python
+#### Python
 
-## Declaration
+#### 1. Declaration
 
 <Code
   code={`arr = [0] * 5   # Array of size 5`}
@@ -105,7 +105,7 @@ arr[1] = 20;`}
   title="Array Declaration"
 />
 
-## Initialization
+#### 2. Initialization
 
 <Code
   code={`arr[0] = 10
@@ -114,7 +114,7 @@ arr[1] = 20`}
   title="Array Initialization"
 />
 
-## Declaration + Initialization
+#### 3. Declaration + Initialization
 
 <Code
   code={`arr = [10, 20, 30, 40]`}
@@ -127,9 +127,9 @@ arr[1] = 20`}
 </Tabs>
 ---
 
-## 4. Basic Operations on Arrays
+## Basic Operations on Arrays
 
-### Traversal
+### A. Traversal
 
 Traversing means accessing and printing all elements of an array one by one.
 
@@ -193,7 +193,7 @@ for i in range(len(arr)):
 </Tabs>
 ---
 
-### Insertion
+### B. Insertion
 
 Insertion means adding a new element into an array.
 
@@ -310,7 +310,7 @@ print(arr)`}
 </Tabs>
 ---
 
-# Deletion
+### C. Deletion
 
 Removing an element from an array.
 
@@ -430,7 +430,7 @@ for x in arr:
   </TabItem>
 </Tabs>
 
-# Accessing
+### D. Accessing
 
 Accessing means retrieving the value of an element using its index.
 
@@ -490,19 +490,19 @@ print(arr[2])`}
 </Tabs>
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
-<div className="resource-card">
+<div class="resource-card">
 
-### 🌐 Array Introduction - GeeksforGeeks
+#### Array Introduction - GeeksforGeeks
 
 Learn the fundamentals of arrays including declaration, traversal, insertion, deletion, and common operations with detailed explanations and examples.
 
-<a 
-  href="https://www.geeksforgeeks.org/introduction-to-arrays/" 
-  target="_blank"
+<a
+	href="https://www.geeksforgeeks.org/introduction-to-arrays/"
+	target="_blank"
 >
-  Read Article →
+	Read Article →
 </a>
 
 </div>
@@ -510,55 +510,102 @@ Learn the fundamentals of arrays including declaration, traversal, insertion, de
 <style>
 {`
 .resource-card {
-	border: 1px solid #2d3748;
-	border-radius: 12px;
-	padding: 20px;
-	margin-top: 16px;
-	background: #111827;
-	transition: all 0.3s ease;
+	border: 1px solid var(--sl-color-gray-5);
+	border-left: 4px solid var(--sl-color-accent);
+
+	border-radius: 14px;
+	padding: 22px;
+	margin-top: 20px;
+
+	background: var(--sl-color-bg-sidebar);
+
+	transition:
+		transform 0.3s ease,
+		background 0.3s ease,
+		box-shadow 0.3s ease,
+		border-color 0.3s ease;
+
 	cursor: pointer;
 }
 
 .resource-card:hover {
-	background: #1f2937;
+	background: var(--sl-color-bg-sidebar-hover);
+
 	transform: translateY(-4px);
-	box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+
+	border-color: var(--sl-color-accent);
+
+	box-shadow:
+		0 10px 24px rgba(0,0,0,0.25);
 }
 
-.resource-card h3 {
+.resource-card h2 {
 	margin-top: 0;
-	color: #60a5fa;
+	margin-bottom: 14px;
+
+	font-size: 1.25rem;
+	font-weight: 700;
+
+	color: var(--sl-color-white);
 }
 
 .resource-card p {
-	color: #d1d5db;
+	margin: 0;
+
+	color: var(--sl-color-gray-3);
+
+	line-height: 1.8;
+	font-size: 0.96rem;
 }
 
 .resource-card a {
 	display: inline-block;
-	margin-top: 10px;
-	color: #93c5fd;
+
+	margin-top: 16px;
+
+	color: var(--sl-color-accent);
+
 	font-weight: 600;
+
 	text-decoration: none;
+
+	transition: color 0.2s ease;
 }
 
 .resource-card a:hover {
+	color: var(--sl-color-accent-high);
+
 	text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+	.resource-card {
+		padding: 18px;
+	}
+
+	.resource-card h2 {
+		font-size: 1.1rem;
+	}
+
+	.resource-card p {
+		font-size: 0.92rem;
+	}
 }
 `}
 </style>
+
 ---
 
-# **Methods to Handle Array Problems**
-# 1. Two Pointers Technique
+
+## **Methods to Handle Array Problems**
+### A. Two Pointers Technique
 
 The **Two Pointers Technique** is an efficient problem-solving approach used in Data Structures and Algorithms. In this technique, two pointers (or indexes) are used simultaneously to traverse a data structure such as an array, string, or linked list.
-
 The main objective of this technique is to reduce the time complexity of problems that would otherwise require nested loops. Instead of repeatedly scanning elements, the two pointers move according to certain conditions, making the solution more optimized and efficient.
 
 ---
 
-# Working Principle
+#### 1. Working Principle
 
 Two variables are maintained as pointers:
 
@@ -569,9 +616,9 @@ These pointers move through the data structure based on the problem requirements
 
 ---
 
-# Types of Two Pointer Techniques
+#### 2. Types of Two Pointer Techniques
 
-## a. Opposite Direction Pointers
+##### a. Opposite Direction Pointers
 
 In this approach:
 
@@ -585,9 +632,8 @@ This method is commonly used in:
 - Reversing arrays or strings
 - Problems involving sorted arrays
 
----
 
-## b. Same Direction Pointers
+##### b. Same Direction Pointers
 
 In this approach:
 
@@ -601,9 +647,8 @@ This technique is commonly used in:
 - Rearranging elements
 - Partitioning arrays
 
----
 
-## c. Fast and Slow Pointer
+##### c. Fast and Slow Pointer
 
 In this method:
 
@@ -616,9 +661,8 @@ This approach is mainly used in:
 - Detecting cycles in linked lists
 - Finding the middle element
 
----
 
-## d. Sliding Window Technique
+##### d. Sliding Window Technique
 
 The Sliding Window is an advanced form of the Two Pointers Technique where two pointers maintain a dynamic range or window.
 
@@ -628,9 +672,8 @@ It is commonly used in:
 - Longest substring problems
 - Maximum or minimum sum window problems
 
----
 
-# Advantages of Two Pointers Technique
+#### 2. Advantages of Two Pointers Technique
 
 - Reduces time complexity
 - Avoids unnecessary nested loops
@@ -640,7 +683,7 @@ It is commonly used in:
 
 ---
 
-# Applications
+#### 3. Applications
 
 The Two Pointers Technique is widely used in:
 
@@ -654,17 +697,16 @@ The Two Pointers Technique is widely used in:
 
 
 
-# Sliding Window Technique
+### B. Sliding Window Technique
 
 The **Sliding Window Technique** is an efficient problem-solving approach used in Data Structures and Algorithms to solve problems involving arrays or strings.
 
 In this technique, a group of consecutive elements is considered as a **window**, and this window moves or “slides” across the data structure to process data efficiently.
-
 The main objective of the Sliding Window Technique is to reduce the time complexity of problems that involve repeated calculations on subarrays or substrings.
 
 ---
 
-# Working Principle
+#### 1. Working Principle
 
 A window is created using two pointers:
 
@@ -680,9 +722,9 @@ The pointers move through the array or string according to the problem requireme
 
 ---
 
-# Types of Sliding Window
+#### 2. Types of Sliding Window
 
-## 1. Fixed Size Sliding Window
+##### a. Fixed Size Sliding Window
 
 In this approach:
 
@@ -697,7 +739,7 @@ This technique is commonly used in:
 
 ---
 
-## 2. Dynamic Size Sliding Window
+##### b. Dynamic Size Sliding Window
 
 In this approach:
 
@@ -712,7 +754,7 @@ This technique is commonly used in:
 
 ---
 
-# Advantages of Sliding Window Technique
+#### 3. Advantages of Sliding Window Technique
 
 - Reduces time complexity
 - Avoids repeated calculations
@@ -722,7 +764,7 @@ This technique is commonly used in:
 
 ---
 
-# Applications
+#### 4. Applications
 
 The Sliding Window Technique is widely used in:
 
@@ -735,7 +777,7 @@ The Sliding Window Technique is widely used in:
 
 ---
 
-# Prefix Sum Technique
+### C. Prefix Sum Technique
 
 The **Prefix Sum Technique** is an efficient method used in Data Structures and Algorithms to quickly calculate the sum of elements in an array over a given range.
 
@@ -743,15 +785,14 @@ Instead of calculating the sum repeatedly for different ranges, the Prefix Sum T
 
 ---
 
-# Working Principle
+#### 1. Working Principle
 
 In the Prefix Sum Technique, a new array called the **Prefix Sum Array** is created.
 
 Each element of the prefix sum array stores the sum of all elements from the beginning of the original array up to the current index.
 
----
 
-# Formula
+ Formula
 
 ```text id="kbrn44"
 Prefix[i] = Prefix[i - 1] + Array[i]
@@ -761,7 +802,7 @@ Using the prefix sum array, the sum of elements between two indexes can be calcu
 
 ---
 
-# Range Sum Calculation
+#### 2. Range Sum Calculation
 
 To find the sum from index `L` to index `R`:
 
@@ -777,9 +818,9 @@ Sum = Prefix[R]
 
 ---
 
-# Types of Prefix Sum
+#### 3. Types of Prefix Sum
 
-## 1. One-Dimensional Prefix Sum
+##### a. One-Dimensional Prefix Sum
 
 Used for:
 
@@ -787,9 +828,8 @@ Used for:
 - Frequency calculations
 - Cumulative computations
 
----
 
-## 2. Two-Dimensional Prefix Sum
+##### b. Two-Dimensional Prefix Sum
 
 Used in matrices to calculate the sum of elements within a rectangular region efficiently.
 
@@ -801,7 +841,7 @@ Commonly used in:
 
 ---
 
-# Advantages of Prefix Sum Technique
+#### 4. Advantages of Prefix Sum Technique
 
 - Reduces repeated calculations
 - Efficient for multiple range queries
@@ -811,7 +851,7 @@ Commonly used in:
 
 ---
 
-# Applications
+#### 5. Applications
 
 The Prefix Sum Technique is widely used in:
 
@@ -824,7 +864,7 @@ The Prefix Sum Technique is widely used in:
 
 ---
 
-# Time Complexity
+#### 6. Time Complexity
 
 | Operation | Complexity |
 |---|---|
@@ -833,7 +873,7 @@ The Prefix Sum Technique is widely used in:
 
 ---
 
-# Difference Between Normal Sum and Prefix Sum
+#### 7. Difference Between Normal Sum and Prefix Sum
 
 | Normal Method | Prefix Sum Technique |
 |---|---|
@@ -843,7 +883,7 @@ The Prefix Sum Technique is widely used in:
 
 ---
 
-# Kadane’s Algorithm
+### D. Kadane’s Algorithm
 
 **Kadane’s Algorithm** is an efficient algorithm used to find the **maximum sum subarray** in an array.
 
