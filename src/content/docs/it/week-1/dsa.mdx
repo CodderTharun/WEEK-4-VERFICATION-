@@ -2,16 +2,17 @@
 title: "DSA"
 description: "Arrays and Searching Algorithms"
 ---
-import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-# 1. Theory
+import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
 
-**Definition:**  
+# Array
+
+## **Definition:**  
 An array is a linear data structure that stores elements of the same data type in contiguous memory locations.
 
 ---
 
-# 2. Key Characteristics of Arrays
+## **Key Characteristics of Arrays**
 
 | Characteristics | Explanation |
 | --- | --- |
@@ -26,238 +27,270 @@ An array is a linear data structure that stores elements of the same data type i
 | Supports Multiple Dimensions | 1D, 2D, 3D arrays, etc. |
 
 ---
-**3. Declaration & Initialization of Array**
+## **Declaration & Initialization of Array**
 
+<Tabs>
 
-C++
+  <TabItem label="C++">
 
-**Declaration**
+# C++
 
+## Declaration
 
-```cpp
-int arr[5];
-```
-**Initialization**
+<Code
+  code={`int arr[5];`}
+  lang="cpp"
+  title="Array Declaration"
+/>
 
-```cpp
-arr[0] = 10;
-arr[1] = 20;
-```
+## Initialization
 
-### Declaration + Initialization
+<Code
+  code={`arr[0] = 10;
+arr[1] = 20;`}
+  lang="cpp"
+  title="Array Initialization"
+/>
 
-```cpp
-int arr[4] = {10, 20, 30, 40};
-```
+## Declaration + Initialization
 
+<Code
+  code={`int arr[4] = {10, 20, 30, 40};`}
+  lang="cpp"
+  title="Declaration and Initialization"
+/>
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+# Java
+
+## Declaration
+
+<Code
+  code={`int[] arr = new int[5];`}
+  lang="java"
+  title="Array Declaration"
+/>
+
+## Initialization
+
+<Code
+  code={`arr[0] = 10;
+arr[1] = 20;`}
+  lang="java"
+  title="Array Initialization"
+/>
+
+## Declaration + Initialization
+
+<Code
+  code={`int[] arr = {10, 20, 30, 40};`}
+  lang="java"
+  title="Declaration and Initialization"
+/>
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+# Python
+
+## Declaration
+
+<Code
+  code={`arr = [0] * 5   # Array of size 5`}
+  lang="python"
+  title="Array Declaration"
+/>
+
+## Initialization
+
+<Code
+  code={`arr[0] = 10
+arr[1] = 20`}
+  lang="python"
+  title="Array Initialization"
+/>
+
+## Declaration + Initialization
+
+<Code
+  code={`arr = [10, 20, 30, 40]`}
+  lang="python"
+  title="Declaration and Initialization"
+/>
+
+  </TabItem>
+
+</Tabs>
 ---
 
-**Java**
+## 4. Basic Operations on Arrays
 
-### Declaration
-
-```java
-int[] arr = new int[5];
-```
-
-### Initialization
-
-```java
-arr[0] = 10;
-arr[1] = 20;
-```
-
-### Declaration + Initialization
-
-```java
-int[] arr = {10, 20, 30, 40};
-```
-
----
-
-**Python**
-
-### Declaration
-
-```python
-arr = [0] * 5   # Array of size 5
-```
-
-### Initialization
-
-```python
-arr[0] = 10
-arr[1] = 20
-```
-
-### Declaration + Initialization
-
-```python
-arr = [10, 20, 30, 40]
-```
-
----
-
-# 4. Basic Operations on Arrays
-
-# Traversal
-
-Traversal means visiting each element of an array one by one to perform some operation.
-
-
-# Traversal
+### Traversal
 
 Traversing means accessing and printing all elements of an array one by one.
 
 <Tabs>
   <TabItem label="C++">
 
-```cpp
-#include <iostream>
+<Code
+  code={`#include <iostream>
 using namespace std;
 
 int main() {
 
-    int arr[] = {10, 20, 30, 40};
+	int arr[] = {10, 20, 30, 40};
 
-    int n = sizeof(arr) / sizeof(arr[0]);
+	int n = sizeof(arr) / sizeof(arr[0]);
 
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << endl;
-    }
+	for (int i = 0; i < n; i++) {
+		cout << arr[i] << endl;
+	}
 
-    return 0;
-}
-```
+	return 0;
+}`}
+  lang="cpp"
+  title="Array Traversal in C++"
+/>
 
   </TabItem>
 
   <TabItem label="Java">
 
-```java
-public class Main {
+<Code
+  code={`public class Main {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        int[] arr = {10, 20, 30, 40};
+		int[] arr = {10, 20, 30, 40};
 
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
-    }
-}
-```
+		for (int i = 0; i < arr.length; i++) {
+			System.out.println(arr[i]);
+		}
+	}
+}`}
+  lang="java"
+  title="Array Traversal in Java"
+/>
 
   </TabItem>
 
   <TabItem label="Python">
 
-```python
-arr = [10, 20, 30, 40]
+<Code
+  code={`arr = [10, 20, 30, 40]
 
 for i in range(len(arr)):
-    print(arr[i])
-```
+	print(arr[i])`}
+  lang="python"
+  title="Array Traversal in Python"
+/>
 
   </TabItem>
 </Tabs>
-
 ---
 
-# Insertion
+### Insertion
 
 Insertion means adding a new element into an array.
 
 <Tabs>
   <TabItem label="C++">
 
-```cpp
-#include <iostream>
+<Code
+  code={`#include <iostream>
 using namespace std;
 
 int main() {
 
-    int arr[10] = {10, 20, 30};
+	int arr[10] = {10, 20, 30};
 
-    int n = 3;
+	int n = 3;
 
-    // Insert at beginning
-    for (int i = n; i > 0; i--) {
-        arr[i] = arr[i - 1];
-    }
+	// Insert at beginning
+	for (int i = n; i > 0; i--) {
+		arr[i] = arr[i - 1];
+	}
 
-    arr[0] = 5;
-    n++;
+	arr[0] = 5;
+	n++;
 
-    // Insert at end
-    arr[n] = 40;
-    n++;
+	// Insert at end
+	arr[n] = 40;
+	n++;
 
-    // Insert at position
-    int pos = 2, value = 25;
+	// Insert at position
+	int pos = 2, value = 25;
 
-    for (int i = n; i > pos; i--) {
-        arr[i] = arr[i - 1];
-    }
+	for (int i = n; i > pos; i--) {
+		arr[i] = arr[i - 1];
+	}
 
-    arr[pos] = value;
-    n++;
+	arr[pos] = value;
+	n++;
 
-    return 0;
-}
-```
+	return 0;
+}`}
+  lang="cpp"
+  title="Array Insertion in C++"
+/>
 
   </TabItem>
 
   <TabItem label="Java">
 
-```java
-import java.util.*;
+<Code
+  code={`import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        int[] arr = new int[10];
+		int[] arr = new int[10];
 
-        arr[0] = 10;
-        arr[1] = 20;
-        arr[2] = 30;
+		arr[0] = 10;
+		arr[1] = 20;
+		arr[2] = 30;
 
-        int n = 3;
+		int n = 3;
 
-        // Insert at beginning
-        for (int i = n; i > 0; i--) {
-            arr[i] = arr[i - 1];
-        }
+		// Insert at beginning
+		for (int i = n; i > 0; i--) {
+			arr[i] = arr[i - 1];
+		}
 
-        arr[0] = 5;
-        n++;
+		arr[0] = 5;
+		n++;
 
-        // Insert at end
-        arr[n] = 40;
-        n++;
+		// Insert at end
+		arr[n] = 40;
+		n++;
 
-        // Insert at position
-        int pos = 2;
-        int value = 25;
+		// Insert at position
+		int pos = 2;
+		int value = 25;
 
-        for (int i = n; i > pos; i--) {
-            arr[i] = arr[i - 1];
-        }
+		for (int i = n; i > pos; i--) {
+			arr[i] = arr[i - 1];
+		}
 
-        arr[pos] = value;
-        n++;
-    }
-}
-```
+		arr[pos] = value;
+		n++;
+	}
+}`}
+  lang="java"
+  title="Array Insertion in Java"
+/>
 
   </TabItem>
 
   <TabItem label="Python">
 
-```python
-arr = [10, 20, 30]
+<Code
+  code={`arr = [10, 20, 30]
 
 # Insert at beginning
 arr.insert(0, 5)
@@ -268,12 +301,13 @@ arr.append(40)
 # Insert at specific position
 arr.insert(2, 25)
 
-print(arr)
-```
+print(arr)`}
+  lang="python"
+  title="Array Insertion in Python"
+/>
 
   </TabItem>
 </Tabs>
-
 ---
 
 # Deletion
@@ -283,95 +317,99 @@ Removing an element from an array.
 <Tabs>
   <TabItem label="C++">
 
-```cpp
-#include <iostream>
+<Code
+  code={`#include <iostream>
 using namespace std;
 
 int main() {
 
-    int arr[10] = {10, 20, 30, 40};
+	int arr[10] = {10, 20, 30, 40};
 
-    int n = 4;
+	int n = 4;
 
-    // Delete at Beginning
-    for (int i = 0; i < n - 1; i++) {
-        arr[i] = arr[i + 1];
-    }
+	// Delete at Beginning
+	for (int i = 0; i < n - 1; i++) {
+		arr[i] = arr[i + 1];
+	}
 
-    n--;
+	n--;
 
-    // Delete at Middle
-    int pos = 1;
+	// Delete at Middle
+	int pos = 1;
 
-    for (int i = pos; i < n - 1; i++) {
-        arr[i] = arr[i + 1];
-    }
+	for (int i = pos; i < n - 1; i++) {
+		arr[i] = arr[i + 1];
+	}
 
-    n--;
+	n--;
 
-    // Delete at End
-    n--;
+	// Delete at End
+	n--;
 
-    // Print final array
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
+	// Print final array
+	for (int i = 0; i < n; i++) {
+		cout << arr[i] << " ";
+	}
 
-    return 0;
-}
-```
+	return 0;
+}`}
+  lang="cpp"
+  title="Array Deletion in C++"
+/>
 
   </TabItem>
 
   <TabItem label="Java">
 
-```java
-public class Main {
+<Code
+  code={`public class Main {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        int[] arr = new int[10];
+		int[] arr = new int[10];
 
-        arr[0] = 10;
-        arr[1] = 20;
-        arr[2] = 30;
-        arr[3] = 40;
+		arr[0] = 10;
+		arr[1] = 20;
+		arr[2] = 30;
+		arr[3] = 40;
 
-        int n = 4;
+		int n = 4;
 
-        // Delete at Beginning
-        for (int i = 0; i < n - 1; i++) {
-            arr[i] = arr[i + 1];
-        }
+		// Delete at Beginning
+		for (int i = 0; i < n - 1; i++) {
+			arr[i] = arr[i + 1];
+		}
 
-        n--;
+		n--;
 
-        // Delete at Middle
-        int pos = 1;
+		// Delete at Middle
+		int pos = 1;
 
-        for (int i = pos; i < n - 1; i++) {
-            arr[i] = arr[i + 1];
-        }
+		for (int i = pos; i < n - 1; i++) {
+			arr[i] = arr[i + 1];
+		}
 
-        n--;
+		n--;
 
-        // Delete at End
-        n--;
+		// Delete at End
+		n--;
 
-        // Print final array
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-    }
-}
-```
+		// Print final array
+		for (int i = 0; i < n; i++) {
+			System.out.print(arr[i] + " ");
+		}
+	}
+}`}
+  lang="java"
+  title="Array Deletion in Java"
+/>
 
   </TabItem>
 
   <TabItem label="Python">
 
-```python
-arr = [10, 20, 30, 40]
+<Code
+  code={`arr = [10, 20, 30, 40]
 
 # Delete at Beginning
 arr.pop(0)
@@ -384,13 +422,13 @@ arr.pop()
 
 # Print final array
 for x in arr:
-    print(x, end=" ")
-```
+	print(x, end=" ")`}
+  lang="python"
+  title="Array Deletion in Python"
+/>
 
   </TabItem>
 </Tabs>
-
----
 
 # Accessing
 
@@ -399,2139 +437,2146 @@ Accessing means retrieving the value of an element using its index.
 <Tabs>
   <TabItem label="C++">
 
-```cpp
-#include <iostream>
+<Code
+  code={`#include <iostream>
 using namespace std;
 
 int main() {
 
-    int arr[] = {10, 20, 30, 40};
+	int arr[] = {10, 20, 30, 40};
 
-    cout << arr[0] << endl;
-    cout << arr[2] << endl;
+	cout << arr[0] << endl;
+	cout << arr[2] << endl;
 
-    return 0;
-}
-```
+	return 0;
+}`}
+  lang="cpp"
+  title="Array Access in C++"
+/>
 
   </TabItem>
 
   <TabItem label="Java">
 
-```java
-public class Main {
+<Code
+  code={`public class Main {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        int[] arr = {10, 20, 30, 40};
+		int[] arr = {10, 20, 30, 40};
 
-        System.out.println(arr[0]);
-        System.out.println(arr[2]);
-    }
-}
-```
+		System.out.println(arr[0]);
+		System.out.println(arr[2]);
+	}
+}`}
+  lang="java"
+  title="Array Access in Java"
+/>
 
   </TabItem>
 
   <TabItem label="Python">
 
-```python
-arr = [10, 20, 30, 40]
+<Code
+  code={`arr = [10, 20, 30, 40]
 
 print(arr[0])
-print(arr[2])
-```
+print(arr[2])`}
+  lang="python"
+  title="Array Access in Python"
+/>
 
   </TabItem>
 </Tabs>
+---
 
-# 5. LEET CODE
+## 📚 Additional Resources
 
-[LeetCode](https://leetcode.com/)
-# 6. References
+<div className="resource-card">
 
-- [Array Introduction - GeeksforGeeks](https://www.geeksforgeeks.org/introduction-to-arrays/)
-# Binary Search
+### 🌐 Array Introduction - GeeksforGeeks
 
-Binary Search is a searching algorithm that operates on a sorted or monotonic search space, repeatedly dividing it into halves to find a target value or optimal answer in logarithmic time `O(log N)`.
+Learn the fundamentals of arrays including declaration, traversal, insertion, deletion, and common operations with detailed explanations and examples.
 
+<a 
+  href="https://www.geeksforgeeks.org/introduction-to-arrays/" 
+  target="_blank"
+>
+  Read Article →
+</a>
+
+</div>
+
+<style>
+{`
+.resource-card {
+	border: 1px solid #2d3748;
+	border-radius: 12px;
+	padding: 20px;
+	margin-top: 16px;
+	background: #111827;
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+
+.resource-card:hover {
+	background: #1f2937;
+	transform: translateY(-4px);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.resource-card h3 {
+	margin-top: 0;
+	color: #60a5fa;
+}
+
+.resource-card p {
+	color: #d1d5db;
+}
+
+.resource-card a {
+	display: inline-block;
+	margin-top: 10px;
+	color: #93c5fd;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.resource-card a:hover {
+	text-decoration: underline;
+}
+`}
+</style>
+---
+
+# **Methods to Handle Array Problems**
+# 1. Two Pointers Technique
+
+The **Two Pointers Technique** is an efficient problem-solving approach used in Data Structures and Algorithms. In this technique, two pointers (or indexes) are used simultaneously to traverse a data structure such as an array, string, or linked list.
+
+The main objective of this technique is to reduce the time complexity of problems that would otherwise require nested loops. Instead of repeatedly scanning elements, the two pointers move according to certain conditions, making the solution more optimized and efficient.
 
 ---
 
-# Conditions to Apply Binary Search Algorithm
+# Working Principle
 
-- The data structure must be sorted.
-- Access to any element of the data structure should take constant time.
+Two variables are maintained as pointers:
 
----
+- Left Pointer
+- Right Pointer
 
-# Binary Search Algorithm
-
-1. Divide the search space into two halves by finding the middle index `mid`.
-2. Compare the middle element with the key.
-3. If the key is found at middle, terminate the process.
-4. If the key is smaller than the middle element, search the left half.
-5. If the key is larger than the middle element, search the right half.
-6. Continue until the key is found or the search space is exhausted.
+These pointers move through the data structure based on the problem requirements until the desired result is obtained.
 
 ---
 
-# Working of Binary Search
+# Types of Two Pointer Techniques
 
-Consider:
+## a. Opposite Direction Pointers
 
-```text
-arr[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91}
+In this approach:
 
-target = 23
-```
+- One pointer starts from the beginning.
+- Another pointer starts from the end.
+- Both pointers move toward each other.
 
----
+This method is commonly used in:
 
-# How to Implement Binary Search?
-
-Binary Search can be implemented in two ways:
-
-- Iterative Binary Search
-- Recursive Binary Search
+- Pair sum problems
+- Reversing arrays or strings
+- Problems involving sorted arrays
 
 ---
 
-# Iterative Binary Search
+## b. Same Direction Pointers
 
-Time Complexity: `O(log n)`  
-Auxiliary Space: `O(1)`
+In this approach:
 
-Here we use a `while` loop to repeatedly divide the search space.
+- Both pointers move in the same direction.
+- One pointer generally tracks useful elements.
+- The other pointer scans the data structure.
 
----
-# Iterative Binary Search
+This technique is commonly used in:
 
-<Tabs>
-  <TabItem label="C++">
-
-```cpp
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int binarySearch(vector<int> &arr, int x) {
-
-    int low = 0;
-    int high = arr.size() - 1;
-
-    while (low <= high) {
-
-        int mid = low + (high - low) / 2;
-
-        if (arr[mid] == x)
-            return mid;
-
-        if (arr[mid] < x)
-            low = mid + 1;
-        else
-            high = mid - 1;
-    }
-
-    return -1;
-}
-
-int main() {
-
-    vector<int> arr = {2, 3, 4, 10, 40};
-
-    int x = 10;
-
-    int result = binarySearch(arr, x);
-
-    if (result == -1)
-        cout << "Element is not present in array";
-    else
-        cout << "Element is present at index "
-             << result;
-
-    return 0;
-}
-```
-
-  </TabItem>
-
-  <TabItem label="C">
-
-```c
-#include <stdio.h>
-
-int binarySearch(int arr[], int n, int x) {
-
-    int low = 0;
-    int high = n - 1;
-
-    while (low <= high) {
-
-        int mid = low + (high - low) / 2;
-
-        if (arr[mid] == x)
-            return mid;
-
-        if (arr[mid] < x)
-            low = mid + 1;
-        else
-            high = mid - 1;
-    }
-
-    return -1;
-}
-
-int main() {
-
-    int arr[] = {2, 3, 4, 10, 40};
-
-    int x = 10;
-
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    int result = binarySearch(arr, n, x);
-
-    if (result == -1)
-        printf("Element is not present in array");
-    else
-        printf(
-            "Element is present at index %d",
-            result
-        );
-
-    return 0;
-}
-```
-
-  </TabItem>
-
-  <TabItem label="Java">
-
-```java
-class GFG {
-
-    static int binarySearch(int arr[], int x) {
-
-        int low = 0;
-        int high = arr.length - 1;
-
-        while (low <= high) {
-
-            int mid = low + (high - low) / 2;
-
-            if (arr[mid] == x)
-                return mid;
-
-            if (arr[mid] < x)
-                low = mid + 1;
-            else
-                high = mid - 1;
-        }
-
-        return -1;
-    }
-
-    public static void main(String args[]) {
-
-        int arr[] = {2, 3, 4, 10, 40};
-
-        int x = 10;
-
-        int result = binarySearch(arr, x);
-
-        if (result == -1)
-            System.out.println(
-                "Element is not present in array"
-            );
-        else
-            System.out.println(
-                "Element is present at index "
-                + result
-            );
-    }
-}
-```
-
-  </TabItem>
-
-  <TabItem label="Python">
-
-```python
-def binarySearch(arr, x):
-
-    low = 0
-    high = len(arr) - 1
-
-    while low <= high:
-
-        mid = low + (high - low) // 2
-
-        if arr[mid] == x:
-            return mid
-
-        elif arr[mid] < x:
-            low = mid + 1
-
-        else:
-            high = mid - 1
-
-    return -1
-
-
-if __name__ == '__main__':
-
-    arr = [2, 3, 4, 10, 40]
-
-    x = 10
-
-    result = binarySearch(arr, x)
-
-    if result != -1:
-        print(
-            "Element is present at index",
-            result
-        )
-    else:
-        print(
-            "Element is not present in array"
-        )
-```
-
-  </TabItem>
-</Tabs>
-# Recursive Binary Search
-
-Recursive Binary Search uses recursion to divide the search space into halves repeatedly until the element is found.
-
-Time Complexity: `O(log n)`  
-Auxiliary Space: `O(log n)`
+- Removing duplicates
+- Rearranging elements
+- Partitioning arrays
 
 ---
 
-# Recursive Binary Search Algorithm
+## c. Fast and Slow Pointer
 
-1. Find the middle index `mid`.
-2. Compare the middle element with the target.
-3. If the target is found, return the index.
-4. If the target is smaller, search the left half recursively.
-5. If the target is greater, search the right half recursively.
-6. Continue until the element is found or the search space becomes empty.
+In this method:
+
+- One pointer moves faster than the other.
+- The slow pointer moves one step at a time.
+- The fast pointer moves multiple steps.
+
+This approach is mainly used in:
+
+- Detecting cycles in linked lists
+- Finding the middle element
 
 ---
-# Recursive Binary Search
 
-<Tabs>
-  <TabItem label="C++">
+## d. Sliding Window Technique
 
-```cpp
-#include <iostream>
-#include <vector>
-using namespace std;
+The Sliding Window is an advanced form of the Two Pointers Technique where two pointers maintain a dynamic range or window.
 
-int binarySearch(vector<int>& arr,
-                 int low,
-                 int high,
-                 int x) {
+It is commonly used in:
 
-    if (high >= low) {
+- Subarray problems
+- Longest substring problems
+- Maximum or minimum sum window problems
 
-        int mid = low + (high - low) / 2;
+---
 
-        if (arr[mid] == x)
-            return mid;
+# Advantages of Two Pointers Technique
 
-        if (arr[mid] > x)
-            return binarySearch(
-                arr,
-                low,
-                mid - 1,
-                x
-            );
+- Reduces time complexity
+- Avoids unnecessary nested loops
+- Improves efficiency
+- Uses less extra memory
+- Suitable for large datasets
 
-        return binarySearch(
-            arr,
-            mid + 1,
-            high,
-            x
-        );
-    }
+---
 
-    return -1;
-}
+# Applications
 
-int main() {
+The Two Pointers Technique is widely used in:
 
-    vector<int> arr = {2, 3, 4, 10, 40};
+- Pair sum problems
+- Array reversal
+- Duplicate removal
+- String processing
+- Sliding window problems
+- Linked list operations
 
-    int query = 10;
 
-    int n = arr.size();
 
-    int result = binarySearch(
-        arr,
-        0,
-        n - 1,
-        query
-    );
 
-    if (result == -1)
-        cout << "Element is not present in array";
-    else
-        cout << "Element is present at index "
-             << result;
+# Sliding Window Technique
 
-    return 0;
-}
+The **Sliding Window Technique** is an efficient problem-solving approach used in Data Structures and Algorithms to solve problems involving arrays or strings.
+
+In this technique, a group of consecutive elements is considered as a **window**, and this window moves or “slides” across the data structure to process data efficiently.
+
+The main objective of the Sliding Window Technique is to reduce the time complexity of problems that involve repeated calculations on subarrays or substrings.
+
+---
+
+# Working Principle
+
+A window is created using two pointers:
+
+- Start Pointer
+- End Pointer
+
+The window size may be:
+
+- Fixed
+- Dynamic
+
+The pointers move through the array or string according to the problem requirements.
+
+---
+
+# Types of Sliding Window
+
+## 1. Fixed Size Sliding Window
+
+In this approach:
+
+- The size of the window remains constant.
+- The window slides one element at a time.
+
+This technique is commonly used in:
+
+- Maximum sum subarray of size K
+- Average of subarrays
+- Fixed-length substring problems
+
+---
+
+## 2. Dynamic Size Sliding Window
+
+In this approach:
+
+- The window size changes dynamically.
+- The window expands or shrinks based on conditions.
+
+This technique is commonly used in:
+
+- Longest substring problems
+- Minimum window substring
+- Problems involving conditions or constraints
+
+---
+
+# Advantages of Sliding Window Technique
+
+- Reduces time complexity
+- Avoids repeated calculations
+- Improves efficiency
+- Eliminates unnecessary nested loops
+- Suitable for large datasets
+
+---
+
+# Applications
+
+The Sliding Window Technique is widely used in:
+
+- Subarray problems
+- Substring problems
+- Maximum or minimum sum problems
+- Longest unique substring
+- Pattern matching
+- Network and streaming data analysis
+
+---
+
+# Prefix Sum Technique
+
+The **Prefix Sum Technique** is an efficient method used in Data Structures and Algorithms to quickly calculate the sum of elements in an array over a given range.
+
+Instead of calculating the sum repeatedly for different ranges, the Prefix Sum Technique stores cumulative sums in advance, allowing range sum queries to be answered efficiently.
+
+---
+
+# Working Principle
+
+In the Prefix Sum Technique, a new array called the **Prefix Sum Array** is created.
+
+Each element of the prefix sum array stores the sum of all elements from the beginning of the original array up to the current index.
+
+---
+
+# Formula
+
+```text id="kbrn44"
+Prefix[i] = Prefix[i - 1] + Array[i]
 ```
 
-  </TabItem>
+Using the prefix sum array, the sum of elements between two indexes can be calculated efficiently.
 
-  <TabItem label="C">
+---
 
-```c
-#include <stdio.h>
+# Range Sum Calculation
 
-int binarySearch(int arr[],
-                 int low,
-                 int high,
-                 int x) {
+To find the sum from index `L` to index `R`:
 
-    if (high >= low) {
-
-        int mid = low + (high - low) / 2;
-
-        if (arr[mid] == x)
-            return mid;
-
-        if (arr[mid] > x)
-            return binarySearch(
-                arr,
-                low,
-                mid - 1,
-                x
-            );
-
-        return binarySearch(
-            arr,
-            mid + 1,
-            high,
-            x
-        );
-    }
-
-    return -1;
-}
-
-int main() {
-
-    int arr[] = {2, 3, 4, 10, 40};
-
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    int x = 10;
-
-    int result = binarySearch(
-        arr,
-        0,
-        n - 1,
-        x
-    );
-
-    if (result == -1)
-        printf("Element is not present in array");
-    else
-        printf(
-            "Element is present at index %d",
-            result
-        );
-
-    return 0;
-}
+```text id="f3dbwo"
+Sum = Prefix[R] - Prefix[L - 1]
 ```
 
-  </TabItem>
+If `L = 0`, then:
 
-  <TabItem label="Java">
-
-```java
-class GFG {
-
-    static int binarySearch(
-        int arr[],
-        int low,
-        int high,
-        int x
-    ) {
-
-        if (high >= low) {
-
-            int mid = low + (high - low) / 2;
-
-            if (arr[mid] == x)
-                return mid;
-
-            if (arr[mid] > x)
-                return binarySearch(
-                    arr,
-                    low,
-                    mid - 1,
-                    x
-                );
-
-            return binarySearch(
-                arr,
-                mid + 1,
-                high,
-                x
-            );
-        }
-
-        return -1;
-    }
-
-    public static void main(String args[]) {
-
-        int arr[] = {2, 3, 4, 10, 40};
-
-        int n = arr.length;
-
-        int x = 10;
-
-        int result = binarySearch(
-            arr,
-            0,
-            n - 1,
-            x
-        );
-
-        if (result == -1)
-            System.out.println(
-                "Element is not present in array"
-            );
-        else
-            System.out.println(
-                "Element is present at index "
-                + result
-            );
-    }
-}
-```
-
-  </TabItem>
-
-  <TabItem label="Python">
-
-```python
-def binarySearch(arr, low, high, x):
-
-    if high >= low:
-
-        mid = low + (high - low) // 2
-
-        if arr[mid] == x:
-            return mid
-
-        elif arr[mid] > x:
-            return binarySearch(
-                arr,
-                low,
-                mid - 1,
-                x
-            )
-
-        else:
-            return binarySearch(
-                arr,
-                mid + 1,
-                high,
-                x
-            )
-
-    return -1
-
-
-if __name__ == '__main__':
-
-    arr = [2, 3, 4, 10, 40]
-
-    x = 10
-
-    result = binarySearch(
-        arr,
-        0,
-        len(arr) - 1,
-        x
-    )
-
-    if result != -1:
-        print(
-            "Element is present at index",
-            result
-        )
-    else:
-        print(
-            "Element is not present in array"
-        )
-```
-
-  </TabItem>
-</Tabs>
-# Output
-
-```text
-Element is present at index 3
+```text id="a6n44g"
+Sum = Prefix[R]
 ```
 
 ---
 
-# Complexity Analysis
+# Types of Prefix Sum
 
-| Case | Time Complexity |
-| --- | --- |
-| Best Case | O(1) |
-| Average Case | O(log N) |
-| Worst Case | O(log N) |
+## 1. One-Dimensional Prefix Sum
 
-### Auxiliary Space
+Used for:
 
-```text
-O(1)
+- Array range sum problems
+- Frequency calculations
+- Cumulative computations
+
+---
+
+## 2. Two-Dimensional Prefix Sum
+
+Used in matrices to calculate the sum of elements within a rectangular region efficiently.
+
+Commonly used in:
+
+- Matrix sum queries
+- Image processing
+- Grid-based problems
+
+---
+
+# Advantages of Prefix Sum Technique
+
+- Reduces repeated calculations
+- Efficient for multiple range queries
+- Improves performance
+- Simple and easy to implement
+- Reduces time complexity for query operations
+
+---
+
+# Applications
+
+The Prefix Sum Technique is widely used in:
+
+- Range sum queries
+- Subarray sum problems
+- Frequency counting
+- Competitive programming
+- Matrix sum calculations
+- Data analysis problems
+
+---
+
+# Time Complexity
+
+| Operation | Complexity |
+|---|---|
+| Building Prefix Sum Array | O(n) |
+| Range Sum Query | O(1) |
+
+---
+
+# Difference Between Normal Sum and Prefix Sum
+
+| Normal Method | Prefix Sum Technique |
+|---|---|
+| Calculates sum repeatedly | Uses precomputed sums |
+| Higher time complexity | Faster range queries |
+| Inefficient for many queries | Efficient for multiple queries |
+
+---
+
+# Kadane’s Algorithm
+
+**Kadane’s Algorithm** is an efficient algorithm used to find the **maximum sum subarray** in an array.
+
+The algorithm works by continuously tracking the maximum sum ending at the current position and updating the overall maximum sum found so far.
+
+It is one of the most important optimization techniques in Data Structures and Algorithms.
+
+---
+
+# Problem Statement
+
+Given an array containing positive and negative integers, find the contiguous subarray with the maximum possible sum.
+
+---
+
+# Working Principle
+
+Kadane’s Algorithm works on the idea that:
+
+- A negative cumulative sum decreases the total sum.
+- If the current sum becomes negative, it is discarded.
+- A new subarray is started from the next element.
+
+The algorithm maintains:
+
+- Current Sum
+- Maximum Sum
+
+At each step:
+
+- Add the current element to the current sum.
+- Update the maximum sum if needed.
+- Reset the current sum to `0` if it becomes negative.
+
+---
+
+# Steps of Kadane’s Algorithm
+
+1. Initialize:
+   - Current Sum = 0
+   - Maximum Sum = smallest possible value
+
+2. Traverse the array element by element.
+
+3. Add the current element to the current sum.
+
+4. Update the maximum sum if the current sum is greater.
+
+5. If the current sum becomes negative:
+   - Reset current sum to `0`.
+
+---
+
+# Advantages of Kadane’s Algorithm
+
+- Very efficient
+- Simple implementation
+- Avoids nested loops
+- Optimized for large arrays
+- Solves maximum subarray problem in linear time
+
+---
+
+# Applications
+
+Kadane’s Algorithm is widely used in:
+
+- Maximum subarray problems
+- Financial profit analysis
+- Signal processing
+- Dynamic programming problems
+- Stock market analysis
+- Optimization problems
+
+---
+
+# Time Complexity
+
+| Operation | Complexity |
+|---|---|
+| Array Traversal | O(n) |
+| Space Complexity | O(1) |
+
+---
+
+# Difference Between Brute Force and Kadane’s Algorithm
+
+| Brute Force Method | Kadane’s Algorithm |
+|---|---|
+| Uses nested loops | Uses single traversal |
+| Time Complexity: O(n²) | Time Complexity: O(n) |
+| Less efficient | Highly optimized |
+
+---
+
+# Important Note
+
+Kadane’s Algorithm works efficiently for arrays containing both positive and negative numbers.
+
+In cases where all elements are negative, a modified version is used to correctly identify the maximum element as the answer.
+
+---
+# Hashing (HashMap / Set)
+
+**Hashing** is a technique used to store, search, and access data efficiently using a special function called a **hash function**.
+
+It is one of the most important concepts in Data Structures and Algorithms because it allows operations such as insertion, deletion, and searching to be performed very quickly.
+
+Hashing is commonly implemented using:
+
+- HashMap
+- HashSet
+
+---
+
+# Working Principle
+
+In hashing, data is stored using a **key-value mechanism**.
+
+A hash function converts the key into a unique index or location where the data is stored.
+
+This allows direct access to elements without traversing the entire data structure.
+
+---
+
+# HashMap
+
+A **HashMap** stores data in the form of:
+
+```text id="2dn6i9"
+Key → Value
 ```
 
-If recursive call stack is considered:
+Each key is unique and is mapped to a corresponding value.
 
-```text
-O(log N)
-```
+---
+
+## Features of HashMap
+
+- Stores key-value pairs
+- Keys are unique
+- Fast insertion and searching
+- Allows efficient lookup operations
+- Unordered collection
+
+---
+
+## Applications of HashMap
+
+HashMap is commonly used in:
+
+- Frequency counting
+- Storing records
+- Lookup tables
+- Caching
+- Database indexing
+
+---
+
+# HashSet
+
+A **HashSet** stores only unique elements.
+
+Duplicate values are not allowed.
+
+---
+
+## Features of HashSet
+
+- Stores unique elements only
+- No duplicate values
+- Fast searching and insertion
+- Unordered collection
+
+---
+
+## Applications of HashSet
+
+HashSet is commonly used in:
+
+- Removing duplicates
+- Membership checking
+- Unique data storage
+- Fast existence checking
+
+---
+
+# Collision in Hashing
+
+Sometimes different keys may generate the same hash index. This situation is called a **collision**.
+
+Collision handling techniques include:
+
+- Chaining
+- Open Addressing
+
+---
+
+# Advantages of Hashing
+
+- Fast insertion
+- Fast searching
+- Efficient deletion
+- Reduces lookup time
+- Works efficiently for large datasets
+
+---
+
+# Time Complexity
+
+| Operation | Average Complexity |
+|---|---|
+| Insertion | O(1) |
+| Searching | O(1) |
+| Deletion | O(1) |
+
+Worst-case complexity may become `O(n)` during excessive collisions.
+
+---
+
+# Difference Between HashMap and HashSet
+
+| HashMap | HashSet |
+|---|---|
+| Stores key-value pairs | Stores only values |
+| Keys must be unique | Elements must be unique |
+| Used for mapping data | Used for unique collections |
+
+---
+
+# Applications of Hashing
+
+Hashing is widely used in:
+
+- Frequency counting
+- Duplicate detection
+- Password storage
+- Database indexing
+- Compiler design
+- Caching systems
+- Searching algorithms
+
+---
+
+# Binary Search on Arrays
+
+**Binary Search** is an efficient searching algorithm used to find an element in a **sorted array**.
+
+Instead of checking each element one by one, Binary Search repeatedly divides the search space into two halves until the target element is found.
+It is one of the most important searching techniques in Data Structures and Algorithms.
+
+---
+
+# Working Principle
+
+Binary Search works on the concept of dividing the array into two parts.
+The algorithm compares the target element with the middle element of the array.
+
+- If the target is equal to the middle element:
+  - The element is found.
+
+- If the target is smaller than the middle element:
+  - Search continues in the left half.
+
+- If the target is greater than the middle element:
+  - Search continues in the right half.
+
+This process continues until the element is found or the search space becomes empty.
+
+---
+
+# Requirement for Binary Search
+
+Binary Search works only on:
+
+- Sorted Arrays
+- Sorted Lists
+
+If the data is not sorted, Binary Search cannot be applied correctly.
+
+---
+
+# Steps of Binary Search
+
+1. Find the middle element of the array.
+2. Compare the middle element with the target value.
+3. If both are equal:
+   - Return the result.
+4. If the target is smaller:
+   - Search the left half.
+5. If the target is greater:
+   - Search the right half.
+6. Repeat the process until the element is found.
+
+---
+
+# Advantages of Binary Search
+
+- Very fast searching technique
+- Reduces search space efficiently
+- Better than linear search for large datasets
+- Uses logarithmic time complexity
 
 ---
 
 # Applications of Binary Search
 
+Binary Search is widely used in:
+
 - Searching in sorted arrays
-- Finding first/last occurrence
-- Database indexing using B-Trees
-- Git bisect debugging
-- Network routing and IP lookup
-- File systems and libraries
-- Gaming and graphics
-- Machine learning hyperparameter tuning
+- Database indexing
 - Competitive programming
-- Binary Search Trees
+- Searching in large datasets
+- Optimization problems
+- Finding lower bound and upper bound
+- Searching in answer space problems
 
 ---
 
-# Merge Sort
+# Time Complexity
 
-Merge Sort is a popular sorting algorithm based on the Divide and Conquer approach.
-
-It recursively divides the array into two halves, sorts them individually, and finally merges them together to form a sorted array.
-# Working of Merge Sort
-
-Merge Sort works using the Divide and Conquer technique.
-
-## Steps Involved
-
-### Divide
-
-Divide the array recursively into two halves until each subarray contains only one element.
-
-### Conquer
-
-Sort each subarray individually.
-
-### Merge
-
-Merge the sorted subarrays back together in sorted order.
+| Operation | Complexity |
+|---|---|
+| Best Case | O(1) |
+| Average Case | O(log n) |
+| Worst Case | O(log n) |
 
 ---
 
-# Example of Merge Sort
+# Difference Between Linear Search and Binary Search
 
-Consider the array:
-
-```text
-[38, 27, 43, 10]
-```
-
-## Divide Phase
-
-```text
-[38, 27, 43, 10]
-→ [38, 27] and [43, 10]
-
-[38, 27]
-→ [38] and [27]
-
-[43, 10]
-→ [43] and [10]
-```
+| Linear Search | Binary Search |
+|---|---|
+| Searches element one by one | Divides array into halves |
+| Works on unsorted arrays | Requires sorted arrays |
+| Time Complexity: O(n) | Time Complexity: O(log n) |
+| Slower for large datasets | Faster for large datasets |
 
 ---
 
-## Conquer Phase
+# Important Note
 
-```text
-[38] is already sorted
-[27] is already sorted
-[43] is already sorted
-[10] is already sorted
-```
+The efficiency of Binary Search comes from reducing the search space by half in every step.
+For this reason, Binary Search is significantly faster than linear search for large sorted datasets.
+
+
+# LEET CODE PRACTICE PROBLEMS
+---
+<div className="leetcode-grid">
+
+<a className="leetcode-card" href="https://leetcode.com/problems/two-sum/" target="_blank">
+	<h3>1. Two Sum</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/container-with-most-water/" target="_blank">
+	<h3>11. Container With Most Water</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/3sum/" target="_blank">
+	<h3>15. 3Sum</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank">
+	<h3>3. Longest Substring Without Repeating Characters</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank">
+	<h3>209. Minimum Size Subarray Sum</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/minimum-window-substring/" target="_blank">
+	<h3>76. Minimum Window Substring</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank">
+	<h3>560. Subarray Sum Equals K</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/find-pivot-index/" target="_blank">
+	<h3>724. Find Pivot Index</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/product-of-array-except-self/" target="_blank">
+	<h3>238. Product of Array Except Self</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/maximum-subarray/" target="_blank">
+	<h3>53. Maximum Subarray</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/maximum-product-subarray/" target="_blank">
+	<h3>152. Maximum Product Subarray</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/contains-duplicate/" target="_blank">
+	<h3>217. Contains Duplicate</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/longest-consecutive-sequence/" target="_blank">
+	<h3>128. Longest Consecutive Sequence</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/majority-element/" target="_blank">
+	<h3>169. Majority Element</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/binary-search/" target="_blank">
+	<h3>704. Binary Search</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank">
+	<h3>33. Search in Rotated Sorted Array</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank">
+	<h3>153. Find Minimum in Rotated Sorted Array</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/trapping-rain-water/" target="_blank">
+	<h3>42. Trapping Rain Water</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank">
+	<h3>239. Sliding Window Maximum</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank">
+	<h3>121. Best Time to Buy and Sell Stock</h3>
+</a>
+
+</div>
+
+<style>
+{`
+.leetcode-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 16px;
+	margin-top: 20px;
+}
+
+.leetcode-card {
+	display: block;
+	padding: 18px;
+	border-radius: 14px;
+	background: #111827;
+	border: 1px solid #2d3748;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.leetcode-card h3 {
+	margin: 0;
+	font-size: 16px;
+	color: #93c5fd;
+}
+
+.leetcode-card:hover {
+	background: #1f2937;
+	transform: translateY(-5px);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+	border-color: #3b82f6;
+}
+
+.leetcode-card:hover h3 {
+	color: #dbeafe;
+}
+`}
+</style>
+
+
+# Algorithms
+## Binary Search
+
+**Binary Search** is an efficient searching algorithm used to find an element in a **sorted array**.
+
+Instead of checking elements one by one, Binary Search repeatedly divides the search space into two halves until the target element is found.
 
 ---
 
-## Merge Phase
+# Working Principle
 
-```text
-Merge [38] and [27]
-→ [27, 38]
+1. Find the middle element of the array.
+2. Compare the target element with the middle element.
+3. If both are equal:
+   - Element is found.
+4. If the target is smaller:
+   - Search the left half.
+5. If the target is greater:
+   - Search the right half.
+6. Repeat the process until the element is found or the search space becomes empty.
 
-Merge [43] and [10]
-→ [10, 43]
+---
 
-Merge [27, 38] and [10, 43]
-→ [10, 27, 38, 43]
-```
+# Requirement
+
+Binary Search works only on:
+
+- Sorted Arrays
+- Sorted Lists
 
 ---
 
-# Final Sorted Array
+# Advantages
 
-```text
-[10, 27, 38, 43]
-```
+- Faster than linear search
+- Reduces search space efficiently
+- Works well for large datasets
+- Uses logarithmic time complexity
 
 ---
-# Merge Sort
 
+# Applications
+
+Binary Search is commonly used in:
+
+- Searching in sorted arrays
+- Database indexing
+- Competitive programming
+- Search optimization problems
+- Finding lower and upper bounds
+
+---
+
+# Time Complexity
+
+| Case | Complexity |
+|---|---|
+| Best Case | O(1) |
+| Average Case | O(log n) |
+| Worst Case | O(log n) |
+
+---
+
+# Difference Between Linear Search and Binary Search
+
+| Linear Search | Binary Search |
+|---|---|
+| Checks elements one by one | Divides array into halves |
+| Works on unsorted arrays | Requires sorted arrays |
+| Time Complexity: O(n) | Time Complexity: O(log n) |
+
+---
+#### CODE
 <Tabs>
   <TabItem label="C++">
 
-```cpp
-#include <iostream>
-#include <vector>
+<Code
+  code={`#include <iostream>
 using namespace std;
 
-void merge(vector<int>& arr,
-           int left,
-           int mid,
-           int right) {
-
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
-
-    vector<int> L(n1), R(n2);
-
-    for (int i = 0; i < n1; i++)
-        L[i] = arr[left + i];
-
-    for (int j = 0; j < n2; j++)
-        R[j] = arr[mid + 1 + j];
-
-    int i = 0;
-    int j = 0;
-    int k = left;
-
-    while (i < n1 && j < n2) {
-
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
-            i++;
-        }
-        else {
-            arr[k] = R[j];
-            j++;
-        }
-
-        k++;
-    }
-
-    while (i < n1) {
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
-
-    while (j < n2) {
-        arr[k] = R[j];
-        j++;
-        k++;
-    }
-}
-
-void mergeSort(vector<int>& arr,
-               int left,
-               int right) {
-
-    if (left >= right)
-        return;
-
-    int mid = left + (right - left) / 2;
-
-    mergeSort(arr, left, mid);
-    mergeSort(arr, mid + 1, right);
-
-    merge(arr, left, mid, right);
-}
-
 int main() {
 
-    vector<int> arr = {38, 27, 43, 10};
+	int arr[] = {10, 20, 30, 40, 50};
 
-    int n = arr.size();
+	int target = 30;
 
-    mergeSort(arr, 0, n - 1);
+	int left = 0;
+	int right = 4;
 
-    for (int i = 0; i < arr.size(); i++)
-        cout << arr[i] << " ";
+	while (left <= right) {
 
-    cout << endl;
+		int mid = (left + right) / 2;
 
-    return 0;
-}
-```
+		if (arr[mid] == target) {
+			cout << "Element Found";
+			return 0;
+		}
 
-  </TabItem>
+		else if (arr[mid] < target) {
+			left = mid + 1;
+		}
 
-  <TabItem label="C">
+		else {
+			right = mid - 1;
+		}
+	}
 
-```c
-#include <stdio.h>
-#include <stdlib.h>
+	cout << "Element Not Found";
 
-void merge(int arr[],
-           int l,
-           int m,
-           int r) {
-
-    int i, j, k;
-
-    int n1 = m - l + 1;
-    int n2 = r - m;
-
-    int L[n1], R[n2];
-
-    for (i = 0; i < n1; i++)
-        L[i] = arr[l + i];
-
-    for (j = 0; j < n2; j++)
-        R[j] = arr[m + 1 + j];
-
-    i = 0;
-    j = 0;
-    k = l;
-
-    while (i < n1 && j < n2) {
-
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
-            i++;
-        }
-        else {
-            arr[k] = R[j];
-            j++;
-        }
-
-        k++;
-    }
-
-    while (i < n1) {
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
-
-    while (j < n2) {
-        arr[k] = R[j];
-        j++;
-        k++;
-    }
-}
-
-void mergeSort(int arr[],
-               int l,
-               int r) {
-
-    if (l < r) {
-
-        int m = l + (r - l) / 2;
-
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-
-        merge(arr, l, m, r);
-    }
-}
-
-int main() {
-
-    int arr[] = {38, 27, 43, 10};
-
-    int arr_size =
-        sizeof(arr) / sizeof(arr[0]);
-
-    mergeSort(arr, 0, arr_size - 1);
-
-    for (int i = 0; i < arr_size; i++)
-        printf("%d ", arr[i]);
-
-    printf("\n");
-
-    return 0;
-}
-```
+	return 0;
+}`}
+  lang="cpp"
+  title="Binary Search in C++"
+/>
 
   </TabItem>
 
   <TabItem label="Java">
 
-```java
-import java.io.*;
+<Code
+  code={`public class Main {
 
-class GfG {
+	public static void main(String[] args) {
 
-    static void merge(
-        int arr[],
-        int l,
-        int m,
-        int r
-    ) {
+		int[] arr = {10, 20, 30, 40, 50};
 
-        int n1 = m - l + 1;
-        int n2 = r - m;
+		int target = 30;
 
-        int L[] = new int[n1];
-        int R[] = new int[n2];
+		int left = 0;
+		int right = arr.length - 1;
 
-        for (int i = 0; i < n1; ++i)
-            L[i] = arr[l + i];
+		while (left <= right) {
 
-        for (int j = 0; j < n2; ++j)
-            R[j] = arr[m + 1 + j];
+			int mid = (left + right) / 2;
 
-        int i = 0;
-        int j = 0;
-        int k = l;
+			if (arr[mid] == target) {
+				System.out.println("Element Found");
+				return;
+			}
 
-        while (i < n1 && j < n2) {
+			else if (arr[mid] < target) {
+				left = mid + 1;
+			}
 
-            if (L[i] <= R[j]) {
-                arr[k] = L[i];
-                i++;
-            }
-            else {
-                arr[k] = R[j];
-                j++;
-            }
+			else {
+				right = mid - 1;
+			}
+		}
 
-            k++;
-        }
-
-        while (i < n1) {
-            arr[k] = L[i];
-            i++;
-            k++;
-        }
-
-        while (j < n2) {
-            arr[k] = R[j];
-            j++;
-            k++;
-        }
-    }
-
-    static void mergeSort(
-        int arr[],
-        int l,
-        int r
-    ) {
-
-        if (l < r) {
-
-            int m = l + (r - l) / 2;
-
-            mergeSort(arr, l, m);
-            mergeSort(arr, m + 1, r);
-
-            merge(arr, l, m, r);
-        }
-    }
-
-    public static void main(String args[]) {
-
-        int arr[] = {38, 27, 43, 10};
-
-        mergeSort(arr, 0, arr.length - 1);
-
-        for (int i = 0; i < arr.length; ++i)
-            System.out.print(arr[i] + " ");
-
-        System.out.println();
-    }
-}
-```
+		System.out.println("Element Not Found");
+	}
+}`}
+  lang="java"
+  title="Binary Search in Java"
+/>
 
   </TabItem>
 
   <TabItem label="Python">
 
-```python
-def merge(arr, left, mid, right):
+<Code
+  code={`arr = [10, 20, 30, 40, 50]
 
-    n1 = mid - left + 1
-    n2 = right - mid
+target = 30
 
-    L = [0] * n1
-    R = [0] * n2
+left = 0
+right = len(arr) - 1
 
-    for i in range(n1):
-        L[i] = arr[left + i]
+while left <= right:
 
-    for j in range(n2):
-        R[j] = arr[mid + 1 + j]
+	mid = (left + right) // 2
 
-    i = 0
-    j = 0
-    k = left
+	if arr[mid] == target:
+		print("Element Found")
+		break
 
-    while i < n1 and j < n2:
+	elif arr[mid] < target:
+		left = mid + 1
 
-        if L[i] <= R[j]:
-            arr[k] = L[i]
-            i += 1
-        else:
-            arr[k] = R[j]
-            j += 1
-
-        k += 1
-
-    while i < n1:
-        arr[k] = L[i]
-        i += 1
-        k += 1
-
-    while j < n2:
-        arr[k] = R[j]
-        j += 1
-        k += 1
-
-
-def mergeSort(arr, left, right):
-
-    if left < right:
-
-        mid = (left + right) // 2
-
-        mergeSort(arr, left, mid)
-        mergeSort(arr, mid + 1, right)
-
-        merge(arr, left, mid, right)
-
-
-if __name__ == "__main__":
-
-    arr = [38, 27, 43, 10]
-
-    mergeSort(arr, 0, len(arr) - 1)
-
-    for i in arr:
-        print(i, end=" ")
-
-    print()
-```
+	else:
+		right = mid - 1
+else:
+	print("Element Not Found")`}
+  lang="python"
+  title="Binary Search in Python"
+/>
 
   </TabItem>
 </Tabs>
 
-# Recurrence Relation of Merge Sort
 
-```text
-T(n) = Θ(1),                    if n = 1
+# Merge Sort
 
-T(n) = 2T(n/2) + Θ(n),         if n > 1
-```
+**Merge Sort** is a divide-and-conquer sorting algorithm used to sort elements efficiently.
 
-Where:
+The algorithm divides the array into smaller subarrays, sorts them individually, and then merges them back together in sorted order.
 
-- `2T(n/2)` → Recursive calls for two halves
-- `Θ(n)` → Time taken to merge subarrays
-Where:
-
-- `T(n)` represents the total time taken by the algorithm to sort an array of size `n`.
-- `2T(n/2)` represents the time taken to recursively sort the two halves of the array.
-- `O(n)` represents the time taken to merge the two sorted halves.
+Merge Sort is known for its stable and efficient performance on large datasets.
 
 ---
 
-# Complexity Analysis of Merge Sort
+# Working Principle
 
-## Time Complexity
+Merge Sort works in two main steps:
 
-| Case | Complexity |
-| --- | --- |
-| Best Case | O(n log n) |
-| Average Case | O(n log n) |
-| Worst Case | O(n log n) |
+1. **Divide**
+   - Split the array into two halves repeatedly until each subarray contains only one element.
 
-### Explanation
-
-- **Best Case:** When the array is already sorted or nearly sorted.
-- **Average Case:** When the array elements are randomly arranged.
-- **Worst Case:** When the array is sorted in reverse order.
+2. **Merge**
+   - Merge the smaller sorted subarrays back together to form a completely sorted array.
 
 ---
 
-## Auxiliary Space
+# Steps of Merge Sort
 
-```text
-O(n)
-```
-
-Additional memory is required for temporary arrays during merging.
-
----
-
-# Applications of Merge Sort
-
-- Sorting large datasets
-- External sorting when data does not fit in memory
-- Inversion counting
-- Count Smaller on Right
-- Surpasser Count
-- Library sorting methods
-- Sorting linked lists
-- Parallel processing
-- Union and intersection of sorted arrays
-
----
-
-# Merge Sort in Programming Languages
-
-- `TimSort` (variation of Merge Sort) is used in:
-  - Python
-  - Java Android
-  - Swift
-
-- `Collections.sort()` in Java uses Merge Sort.
-
-- `Arrays.sort()` for primitive types in Java uses Quick Sort.
-
-Merge Sort is preferred for non-primitive data types because it is stable.
+1. Divide the array into two equal halves.
+2. Recursively apply Merge Sort on both halves.
+3. Merge the sorted halves into a single sorted array.
+4. Repeat until the entire array becomes sorted.
 
 ---
 
 # Advantages of Merge Sort
 
-## Stability
-
-Merge Sort is a stable sorting algorithm, meaning equal elements maintain their relative order.
-
----
-
-## Guaranteed Performance
-
-Worst-case complexity remains:
-
-```text
-O(n log n)
-```
-
-even for large datasets.
-
----
-
-## Easy to Implement
-
-The Divide and Conquer approach is simple and structured.
-
----
-
-## Naturally Parallel
-
-Subarrays can be sorted independently, making Merge Sort suitable for parallel processing.
+- Efficient for large datasets
+- Stable sorting algorithm
+- Consistent performance
+- Works well with linked lists
+- Uses divide-and-conquer strategy
 
 ---
 
 # Disadvantages of Merge Sort
 
-## Extra Space Required
-
-Merge Sort requires additional memory for temporary arrays.
-
----
-
-## Not In-Place
-
-It cannot sort within the original array memory itself.
+- Requires extra memory for merging
+- Slightly slower for small datasets compared to simpler algorithms
 
 ---
 
-## Slower than Quick Sort
+# Applications
 
-Quick Sort is usually faster in practice because it is more cache-friendly and works in-place.
+Merge Sort is widely used in:
+
+- Large dataset sorting
+- External sorting
+- Linked list sorting
+- Parallel processing
+- Divide-and-conquer problems
 
 ---
+
+# Time Complexity
+
+| Case | Complexity |
+|---|---|
+| Best Case | O(n log n) |
+| Average Case | O(n log n) |
+| Worst Case | O(n log n) |
+
+---
+
+# Space Complexity
+
+| Complexity |
+|---|
+| O(n) |
+
+---
+
+# Difference Between Merge Sort and Bubble Sort
+
+| Merge Sort | Bubble Sort |
+|---|---|
+| Divide-and-conquer algorithm | Comparison-based simple sorting |
+| Time Complexity: O(n log n) | Time Complexity: O(n²) |
+| Faster for large datasets | Slower for large datasets |
+| Requires extra memory | In-place sorting |
+
+---
+<Tabs>
+  <TabItem label="C++">
+
+<Code
+  code={`#include <iostream>
+using namespace std;
+
+void merge(int arr[], int left, int mid, int right) {
+
+	int n1 = mid - left + 1;
+	int n2 = right - mid;
+
+	int L[n1], R[n2];
+
+	for (int i = 0; i < n1; i++)
+		L[i] = arr[left + i];
+
+	for (int j = 0; j < n2; j++)
+		R[j] = arr[mid + 1 + j];
+
+	int i = 0, j = 0, k = left;
+
+	while (i < n1 && j < n2) {
+
+		if (L[i] <= R[j]) {
+			arr[k] = L[i];
+			i++;
+		}
+
+		else {
+			arr[k] = R[j];
+			j++;
+		}
+
+		k++;
+	}
+
+	while (i < n1) {
+		arr[k] = L[i];
+		i++;
+		k++;
+	}
+
+	while (j < n2) {
+		arr[k] = R[j];
+		j++;
+		k++;
+	}
+}
+
+void mergeSort(int arr[], int left, int right) {
+
+	if (left < right) {
+
+		int mid = (left + right) / 2;
+
+		mergeSort(arr, left, mid);
+		mergeSort(arr, mid + 1, right);
+
+		merge(arr, left, mid, right);
+	}
+}
+
+int main() {
+
+	int arr[] = {38, 27, 43, 3, 9, 82, 10};
+
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	mergeSort(arr, 0, n - 1);
+
+	for (int i = 0; i < n; i++) {
+		cout << arr[i] << " ";
+	}
+
+	return 0;
+}`}
+  lang="cpp"
+  title="Merge Sort in C++"
+/>
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+<Code
+  code={`public class Main {
+
+	static void merge(int[] arr, int left, int mid, int right) {
+
+		int n1 = mid - left + 1;
+		int n2 = right - mid;
+
+		int[] L = new int[n1];
+		int[] R = new int[n2];
+
+		for (int i = 0; i < n1; i++)
+			L[i] = arr[left + i];
+
+		for (int j = 0; j < n2; j++)
+			R[j] = arr[mid + 1 + j];
+
+		int i = 0, j = 0, k = left;
+
+		while (i < n1 && j < n2) {
+
+			if (L[i] <= R[j]) {
+				arr[k] = L[i];
+				i++;
+			}
+
+			else {
+				arr[k] = R[j];
+				j++;
+			}
+
+			k++;
+		}
+
+		while (i < n1) {
+			arr[k] = L[i];
+			i++;
+			k++;
+		}
+
+		while (j < n2) {
+			arr[k] = R[j];
+			j++;
+			k++;
+		}
+	}
+
+	static void mergeSort(int[] arr, int left, int right) {
+
+		if (left < right) {
+
+			int mid = (left + right) / 2;
+
+			mergeSort(arr, left, mid);
+			mergeSort(arr, mid + 1, right);
+
+			merge(arr, left, mid, right);
+		}
+	}
+
+	public static void main(String[] args) {
+
+		int[] arr = {38, 27, 43, 3, 9, 82, 10};
+
+		mergeSort(arr, 0, arr.length - 1);
+
+		for (int num : arr) {
+			System.out.print(num + " ");
+		}
+	}
+}`}
+  lang="java"
+  title="Merge Sort in Java"
+/>
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+<Code
+  code={`def merge_sort(arr):
+
+	if len(arr) > 1:
+
+		mid = len(arr) // 2
+
+		left = arr[:mid]
+		right = arr[mid:]
+
+		merge_sort(left)
+		merge_sort(right)
+
+		i = j = k = 0
+
+		while i < len(left) and j < len(right):
+
+			if left[i] < right[j]:
+				arr[k] = left[i]
+				i += 1
+
+			else:
+				arr[k] = right[j]
+				j += 1
+
+			k += 1
+
+		while i < len(left):
+			arr[k] = left[i]
+			i += 1
+			k += 1
+
+		while j < len(right):
+			arr[k] = right[j]
+			j += 1
+			k += 1
+
+arr = [38, 27, 43, 3, 9, 82, 10]
+
+merge_sort(arr)
+
+print(arr)`}
+  lang="python"
+  title="Merge Sort in Python"
+/>
+
+  </TabItem>
+</Tabs>
 
 # Quick Sort
 
-Quick Sort is a Divide and Conquer sorting algorithm.
+**Quick Sort** is an efficient divide-and-conquer sorting algorithm used to sort elements in an array.
 
-It selects an element as a **pivot** and partitions the array around the pivot such that:
+The algorithm works by selecting a special element called the **pivot**, then partitioning the array so that:
 
-- Elements smaller than the pivot appear on the left side.
-- Elements greater than the pivot appear on the right side.
+- Elements smaller than the pivot are placed on the left side.
+- Elements greater than the pivot are placed on the right side.
 
-Finally, the pivot reaches its correct sorted position.
+The same process is recursively applied to the left and right subarrays until the entire array becomes sorted.
+
+---
+
+# Working Principle
+
+Quick Sort works in two main steps:
+
+1. **Partition**
+   - Choose a pivot element.
+   - Rearrange elements around the pivot.
+
+2. **Recursion**
+   - Recursively apply Quick Sort on the left and right subarrays.
 
 ---
 
 # Steps of Quick Sort
 
-## 1. Choose a Pivot
+1. Select a pivot element.
+2. Partition the array around the pivot.
+3. Place smaller elements on the left side.
+4. Place larger elements on the right side.
+5. Recursively repeat the process for subarrays.
+6. Continue until the array becomes completely sorted.
 
-Select a pivot element from the array.
+---
 
-Possible pivot choices:
+# Pivot Selection
+
+The pivot can be selected in different ways:
 
 - First element
 - Last element
+- Middle element
 - Random element
-- Median element
 
----
-
-## 2. Partition the Array
-
-Rearrange the array so that:
-
-- Smaller elements go to the left
-- Larger elements go to the right
-
----
-
-## 3. Recursive Calls
-
-Apply Quick Sort recursively on:
-
-- Left subarray
-- Right subarray
-
----
-
-## 4. Base Case
-
-Recursion stops when the subarray contains only one element.
-
-A single element is already sorted.
-
----
-
-# Choice of Pivot
-
-Different strategies for selecting pivot:
-
-| Pivot Type | Description |
-| --- | --- |
-| First Element | Simplest approach |
-| Last Element | Commonly used |
-| Random Pivot | Reduces chances of worst case |
-| Median Pivot | Improves partition balance |
-There are different strategies for selecting a pivot in Quick Sort.
-
-- Always pick the first element
-- Always pick the last element
-- Pick a random element
-- Pick the median element
-
----
-
-# Pivot Selection Strategies
-
-## First or Last Element as Pivot
-
-This is the simplest approach.
-
-However, it performs poorly when the array is already sorted because it leads to the worst-case complexity.
-
----
-
-## Random Pivot
-
-A random element is selected as pivot.
-
-This reduces the chance of consistently getting the worst-case partition.
-
----
-
-## Median Pivot
-
-The median element is selected as the pivot.
-
-This usually gives balanced partitions and improves time complexity.
-
-However, finding the median itself adds extra overhead.
-
----
-
-# Partition Algorithm
-
-The core operation in Quick Sort is the `partition()` function.
-
-Partitioning rearranges the array around the pivot.
-
-All partition algorithms work in:
-
-```text
-O(n)
-```
-
-time complexity.
-
----
-
-# Types of Partition Algorithms
-
-| Partition Method | Description |
-| --- | --- |
-| Naive Partition | Uses extra temporary array |
-| Lomuto Partition | Simple and widely used |
-| Hoare Partition | Faster and more efficient |
-
----
-
-# Naive Partition
-
-- Creates a temporary copy of the array.
-- Places smaller elements first.
-- Places larger elements later.
-- Requires extra space:
-
-```text
-O(n)
-```
-
----
-
-# Lomuto Partition
-
-This is the partition method used most commonly in learning Quick Sort.
-
-## Working Principle
-
-- Keep track of index `i`
-- Traverse array using index `j`
-- Swap elements smaller than pivot toward the left side
-
-It is simple and easy to implement.
-
----
-
-# Hoare Partition
-
-Hoare Partition is faster than Lomuto Partition.
-
-## Working Principle
-
-- Traverse from both ends
-- Swap misplaced elements
-- Continue until partition is complete
-
-It performs fewer swaps and is more efficient in practice.
-
----
-
-# Working of Quick Sort
-
-1. Select a pivot.
-2. Partition the array.
-3. Recursively apply Quick Sort on left subarray.
-4. Recursively apply Quick Sort on right subarray.
-5. Continue until subarrays contain only one element.
-
----
-
-# Quick Sort Illustration
-
-
----
-# Quick Sort
-
-<Tabs>
-  <TabItem label="C++">
-
-```cpp
-#include <iostream>
-#include <vector>
-using namespace std;
-
-int partition(vector<int>& arr,
-              int low,
-              int high) {
-
-    int pivot = arr[high];
-
-    int i = low - 1;
-
-    for (int j = low;
-         j <= high - 1;
-         j++) {
-
-        if (arr[j] < pivot) {
-
-            i++;
-
-            swap(arr[i], arr[j]);
-        }
-    }
-
-    swap(arr[i + 1], arr[high]);
-
-    return i + 1;
-}
-
-void quickSort(vector<int>& arr,
-               int low,
-               int high) {
-
-    if (low < high) {
-
-        int pi = partition(
-            arr,
-            low,
-            high
-        );
-
-        quickSort(arr, low, pi - 1);
-
-        quickSort(arr, pi + 1, high);
-    }
-}
-
-int main() {
-
-    vector<int> arr = {
-        10, 7, 8, 9, 1, 5
-    };
-
-    int n = arr.size();
-
-    quickSort(arr, 0, n - 1);
-
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
-
-    return 0;
-}
-```
-
-  </TabItem>
-
-  <TabItem label="C">
-
-```c
-#include <stdio.h>
-
-void swap(int* a, int* b);
-
-int partition(int arr[],
-              int low,
-              int high) {
-
-    int pivot = arr[high];
-
-    int i = low - 1;
-
-    for (int j = low;
-         j <= high - 1;
-         j++) {
-
-        if (arr[j] < pivot) {
-
-            i++;
-
-            swap(&arr[i], &arr[j]);
-        }
-    }
-
-    swap(&arr[i + 1], &arr[high]);
-
-    return i + 1;
-}
-
-void quickSort(int arr[],
-               int low,
-               int high) {
-
-    if (low < high) {
-
-        int pi = partition(
-            arr,
-            low,
-            high
-        );
-
-        quickSort(arr, low, pi - 1);
-
-        quickSort(arr, pi + 1, high);
-    }
-}
-
-void swap(int* a, int* b) {
-
-    int t = *a;
-
-    *a = *b;
-
-    *b = t;
-}
-
-int main() {
-
-    int arr[] = {
-        10, 7, 8, 9, 1, 5
-    };
-
-    int n =
-        sizeof(arr) / sizeof(arr[0]);
-
-    quickSort(arr, 0, n - 1);
-
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-
-    return 0;
-}
-```
-
-  </TabItem>
-
-  <TabItem label="Java">
-
-```java
-import java.util.Arrays;
-
-class GfG {
-
-    static int partition(
-        int[] arr,
-        int low,
-        int high
-    ) {
-
-        int pivot = arr[high];
-
-        int i = low - 1;
-
-        for (int j = low;
-             j <= high - 1;
-             j++) {
-
-            if (arr[j] < pivot) {
-
-                i++;
-
-                swap(arr, i, j);
-            }
-        }
-
-        swap(arr, i + 1, high);
-
-        return i + 1;
-    }
-
-    static void swap(
-        int[] arr,
-        int i,
-        int j
-    ) {
-
-        int temp = arr[i];
-
-        arr[i] = arr[j];
-
-        arr[j] = temp;
-    }
-
-    static void quickSort(
-        int[] arr,
-        int low,
-        int high
-    ) {
-
-        if (low < high) {
-
-            int pi = partition(
-                arr,
-                low,
-                high
-            );
-
-            quickSort(arr, low, pi - 1);
-
-            quickSort(arr, pi + 1, high);
-        }
-    }
-
-    public static void main(String[] args) {
-
-        int[] arr = {
-            10, 7, 8, 9, 1, 5
-        };
-
-        int n = arr.length;
-
-        quickSort(arr, 0, n - 1);
-
-        for (int val : arr) {
-            System.out.print(val + " ");
-        }
-    }
-}
-```
-
-  </TabItem>
-
-  <TabItem label="Python">
-
-```python
-def partition(arr, low, high):
-
-    pivot = arr[high]
-
-    i = low - 1
-
-    for j in range(low, high):
-
-        if arr[j] < pivot:
-
-            i += 1
-
-            swap(arr, i, j)
-
-    swap(arr, i + 1, high)
-
-    return i + 1
-
-
-def swap(arr, i, j):
-
-    arr[i], arr[j] = arr[j], arr[i]
-
-
-def quickSort(arr, low, high):
-
-    if low < high:
-
-        pi = partition(arr, low, high)
-
-        quickSort(arr, low, pi - 1)
-
-        quickSort(arr, pi + 1, high)
-
-
-if __name__ == "__main__":
-
-    arr = [10, 7, 8, 9, 1, 5]
-
-    n = len(arr)
-
-    quickSort(arr, 0, n - 1)
-
-    for val in arr:
-        print(val, end=" ")
-```
-
-  </TabItem>
-</Tabs>
-
-# Output
-
-```text
-1 5 7 8 9 10
-```
-
----
-
-# Complexity Analysis of Quick Sort
-
-## Time Complexity
-
-| Case | Complexity |
-| --- | --- |
-| Best Case | O(n log n) |
-| Average Case | O(n log n) |
-| Worst Case | O(n²) |
-
-### Explanation
-
-- **Best Case:** Pivot divides array into equal halves.
-- **Average Case:** Pivot divides array into reasonably balanced partitions.
-- **Worst Case:** Smallest or largest element is always selected as pivot.
-
----
-
-# Auxiliary Space
-
-| Scenario | Space Complexity |
-| --- | --- |
-| Best Case | O(log n) |
-| Worst Case | O(n) |
+Choosing a good pivot improves performance.
 
 ---
 
 # Advantages of Quick Sort
 
-- Divide and Conquer approach
-- Efficient on large datasets
-- Requires low memory overhead
-- Cache friendly
-- Fastest general-purpose sorting algorithm in practice
-- Tail recursive optimization possible
+- Very fast in practice
+- Efficient for large datasets
+- Uses divide-and-conquer strategy
+- Requires less memory compared to Merge Sort
+- In-place sorting algorithm
+
+---
+
 # Disadvantages of Quick Sort
 
-- Worst-case time complexity becomes:
-
-```text
-O(n²)
-```
-
-when pivot selection is poor.
-
-- Not suitable for very small datasets.
-- Quick Sort is not a stable sorting algorithm.
-- Equal elements may lose their original relative order after sorting.
+- Worst-case performance can be slow
+- Not a stable sorting algorithm
+- Performance depends on pivot selection
 
 ---
 
-# Applications of Quick Sort
+# Applications
 
-- Sorting large datasets efficiently
-- Used in library sorting functions
-- Database record arrangement
-- Preprocessing for Binary Search
-- Quickselect algorithm
-- Sorting objects using custom comparators
-- Data compression preprocessing
-- Graphics and computational geometry
+Quick Sort is widely used in:
 
----
-
-# Maximum Subarray Sum - Kadane's Algorithm
-
-Given an integer array `arr[]`, find the subarray with the maximum possible sum.
-
-A subarray is a continuous part of the array.
+- Large dataset sorting
+- System libraries
+- Competitive programming
+- Internal sorting
+- Real-time applications
 
 ---
 
-# Examples
+# Time Complexity
 
-## Example 1
+| Case | Complexity |
+|---|---|
+| Best Case | O(n log n) |
+| Average Case | O(n log n) |
+| Worst Case | O(n²) |
 
-```text
-Input:
-arr[] = [2, 3, -8, 7, -1, 2, 3]
-
-Output:
-11
-```
-
-Explanation:
-
-```text
-Subarray = [7, -1, 2, 3]
-Sum = 11
-```
+Worst case occurs when poor pivots are repeatedly selected.
 
 ---
 
-## Example 2
+# Space Complexity
 
-```text
-Input:
-arr[] = [-2, -4]
-
-Output:
--2
-```
+| Complexity |
+|---|
+| O(log n) |
 
 ---
 
-## Example 3
+# Difference Between Merge Sort and Quick Sort
 
-```text
-Input:
-arr[] = [5, 4, 1, 7, 8]
-
-Output:
-25
-```
-
----
-
-# Naive Approach
-
-## Idea
-
-Generate all possible subarrays using nested loops and compute their sums.
+| Merge Sort | Quick Sort |
+|---|---|
+| Requires extra memory | In-place sorting |
+| Stable sorting | Not stable |
+| Consistent performance | Faster in practice |
+| Space Complexity: O(n) | Space Complexity: O(log n) |
 
 ---
-
-## Time Complexity
-
-```text
-O(n²)
-```
-
-## Auxiliary Space
-
-```text
-O(1)
-```
-
----
-
-
----
-# Maximum Subarray Sum - Naive Approach
-
 <Tabs>
   <TabItem label="C++">
 
-```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
+<Code
+  code={`#include <iostream>
 using namespace std;
 
-int maxSubarraySum(vector<int>& arr) {
+int partition(int arr[], int low, int high) {
 
-    int res = arr[0];
+	int pivot = arr[high];
 
-    for (int i = 0; i < arr.size(); i++) {
+	int i = low - 1;
 
-        int currSum = 0;
+	for (int j = low; j < high; j++) {
 
-        for (int j = i; j < arr.size(); j++) {
+		if (arr[j] < pivot) {
 
-            currSum = currSum + arr[j];
+			i++;
 
-            res = max(res, currSum);
-        }
-    }
+			swap(arr[i], arr[j]);
+		}
+	}
 
-    return res;
+	swap(arr[i + 1], arr[high]);
+
+	return i + 1;
+}
+
+void quickSort(int arr[], int low, int high) {
+
+	if (low < high) {
+
+		int pi = partition(arr, low, high);
+
+		quickSort(arr, low, pi - 1);
+
+		quickSort(arr, pi + 1, high);
+	}
 }
 
 int main() {
 
-    vector<int> arr = {
-        2, 3, -8, 7, -1, 2, 3
-    };
+	int arr[] = {10, 7, 8, 9, 1, 5};
 
-    cout << maxSubarraySum(arr);
+	int n = sizeof(arr) / sizeof(arr[0]);
 
-    return 0;
-}
-```
+	quickSort(arr, 0, n - 1);
 
-  </TabItem>
+	for (int i = 0; i < n; i++) {
+		cout << arr[i] << " ";
+	}
 
-  <TabItem label="C">
-
-```c
-#include <stdio.h>
-
-int maxSubarraySum(int arr[], int size) {
-
-    int maxSum = arr[0];
-
-    for (int i = 0; i < size; i++) {
-
-        int currSum = 0;
-
-        for (int j = i; j < size; j++) {
-
-            currSum = currSum + arr[j];
-
-            if (currSum > maxSum) {
-                maxSum = currSum;
-            }
-        }
-    }
-
-    return maxSum;
-}
-
-int main() {
-
-    int arr[] = {
-        2, 3, -8, 7, -1, 2, 3
-    };
-
-    int size =
-        sizeof(arr) / sizeof(arr[0]);
-
-    printf(
-        "%d",
-        maxSubarraySum(arr, size)
-    );
-
-    return 0;
-}
-```
+	return 0;
+}`}
+  lang="cpp"
+  title="Quick Sort in C++"
+/>
 
   </TabItem>
 
   <TabItem label="Java">
 
-```java
-import java.util.Arrays;
+<Code
+  code={`public class Main {
 
-class GfG {
+	static int partition(int[] arr, int low, int high) {
 
-    static int maxSubarraySum(int[] arr) {
+		int pivot = arr[high];
 
-        int res = arr[0];
+		int i = low - 1;
 
-        for (int i = 0; i < arr.length; i++) {
+		for (int j = low; j < high; j++) {
 
-            int currSum = 0;
+			if (arr[j] < pivot) {
 
-            for (int j = i; j < arr.length; j++) {
+				i++;
 
-                currSum =
-                    currSum + arr[j];
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
 
-                res = Math.max(
-                    res,
-                    currSum
-                );
-            }
-        }
+		int temp = arr[i + 1];
+		arr[i + 1] = arr[high];
+		arr[high] = temp;
 
-        return res;
-    }
+		return i + 1;
+	}
 
-    public static void main(String[] args) {
+	static void quickSort(int[] arr, int low, int high) {
 
-        int[] arr = {
-            2, 3, -8, 7, -1, 2, 3
-        };
+		if (low < high) {
 
-        System.out.println(
-            maxSubarraySum(arr)
-        );
-    }
-}
-```
+			int pi = partition(arr, low, high);
+
+			quickSort(arr, low, pi - 1);
+
+			quickSort(arr, pi + 1, high);
+		}
+	}
+
+	public static void main(String[] args) {
+
+		int[] arr = {10, 7, 8, 9, 1, 5};
+
+		quickSort(arr, 0, arr.length - 1);
+
+		for (int num : arr) {
+			System.out.print(num + " ");
+		}
+	}
+}`}
+  lang="java"
+  title="Quick Sort in Java"
+/>
 
   </TabItem>
 
   <TabItem label="Python">
 
-```python
-def maxSubarraySum(arr):
+<Code
+  code={`def partition(arr, low, high):
 
-    res = arr[0]
+	pivot = arr[high]
 
-    for i in range(len(arr)):
+	i = low - 1
 
-        currSum = 0
+	for j in range(low, high):
 
-        for j in range(i, len(arr)):
+		if arr[j] < pivot:
 
-            currSum = currSum + arr[j]
+			i += 1
 
-            res = max(res, currSum)
+			arr[i], arr[j] = arr[j], arr[i]
 
-    return res
+	arr[i + 1], arr[high] = arr[high], arr[i + 1]
 
+	return i + 1
 
-if __name__ == "__main__":
+def quick_sort(arr, low, high):
 
-    arr = [2, 3, -8, 7, -1, 2, 3]
+	if low < high:
 
-    print(maxSubarraySum(arr))
-```
+		pi = partition(arr, low, high)
+
+		quick_sort(arr, low, pi - 1)
+
+		quick_sort(arr, pi + 1, high)
+
+arr = [10, 7, 8, 9, 1, 5]
+
+quick_sort(arr, 0, len(arr) - 1)
+
+print(arr)`}
+  lang="python"
+  title="Quick Sort in Python"
+/>
+
+  </TabItem>
+</Tabs>
+
+# Maximum Subarray
+
+The **Maximum Subarray Problem** is a common problem in Data Structures and Algorithms where the objective is to find the contiguous subarray with the largest possible sum.
+
+A contiguous subarray means the elements must appear continuously in the array.
+
+This problem is efficiently solved using **Kadane’s Algorithm**.
+
+---
+
+# Problem Statement
+
+Given an array containing positive and negative integers, find the contiguous subarray with the maximum sum.
+
+---
+
+# Working Principle
+
+The idea is to continuously calculate the running sum of elements.
+
+- If the running sum becomes negative, it is discarded.
+- A new subarray starts from the next element.
+- The maximum sum found during traversal is stored as the answer.
+
+---
+
+# Key Concept
+
+At every position:
+
+- Add the current element to the current sum.
+- Update the maximum sum if the current sum is greater.
+- Reset the current sum if it becomes negative.
+
+This helps avoid carrying unnecessary negative contributions.
+
+---
+
+# Advantages
+
+- Efficient solution
+- Uses single array traversal
+- Avoids nested loops
+- Optimized for large datasets
+
+---
+
+# Applications
+
+The Maximum Subarray concept is widely used in:
+
+- Financial profit analysis
+- Stock market problems
+- Signal processing
+- Dynamic programming
+- Optimization problems
+
+---
+
+# Time Complexity
+
+| Operation | Complexity |
+|---|---|
+| Traversal | O(n) |
+| Space Complexity | O(1) |
+
+---
+
+# Difference Between Brute Force and Kadane’s Algorithm
+
+| Brute Force | Kadane’s Algorithm |
+|---|---|
+| Uses nested loops | Uses single traversal |
+| Time Complexity: O(n²) | Time Complexity: O(n) |
+| Less efficient | Highly optimized |
+
+---
+
+<Tabs>
+  <TabItem label="C++">
+
+<Code
+  code={`#include <iostream>
+using namespace std;
+
+int main() {
+
+	int arr[] = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+
+	int n = sizeof(arr) / sizeof(arr[0]);
+
+	int currentSum = 0;
+	int maxSum = arr[0];
+
+	for (int i = 0; i < n; i++) {
+
+		currentSum += arr[i];
+
+		if (currentSum > maxSum) {
+			maxSum = currentSum;
+		}
+
+		if (currentSum < 0) {
+			currentSum = 0;
+		}
+	}
+
+	cout << "Maximum Subarray Sum = " << maxSum;
+
+	return 0;
+}`}
+  lang="cpp"
+  title="Maximum Subarray in C++"
+/>
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+<Code
+  code={`public class Main {
+
+	public static void main(String[] args) {
+
+		int[] arr = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+
+		int currentSum = 0;
+		int maxSum = arr[0];
+
+		for (int i = 0; i < arr.length; i++) {
+
+			currentSum += arr[i];
+
+			if (currentSum > maxSum) {
+				maxSum = currentSum;
+			}
+
+			if (currentSum < 0) {
+				currentSum = 0;
+			}
+		}
+
+		System.out.println("Maximum Subarray Sum = " + maxSum);
+	}
+}`}
+  lang="java"
+  title="Maximum Subarray in Java"
+/>
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+<Code
+  code={`arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+
+current_sum = 0
+max_sum = arr[0]
+
+for num in arr:
+
+	current_sum += num
+
+	if current_sum > max_sum:
+		max_sum = current_sum
+
+	if current_sum < 0:
+		current_sum = 0
+
+print("Maximum Subarray Sum =", max_sum)`}
+  lang="python"
+  title="Maximum Subarray in Python"
+/>
 
   </TabItem>
 </Tabs>
 
 ---
 
-# Kadane's Algorithm
-
-<Tabs>
-  <TabItem label="C++">
-
-```cpp
-#include <iostream>
-#include <vector>
-#include <algorithm>
-using namespace std;
-
-int maxSubarraySum(vector<int>& arr) {
-
-    int res = arr[0];
-
-    int maxEnding = arr[0];
-
-    for (int i = 1; i < arr.size(); i++) {
-
-        maxEnding = max(
-            arr[i],
-            maxEnding + arr[i]
-        );
-
-        res = max(res, maxEnding);
-    }
-
-    return res;
-}
-
-int main() {
-
-    vector<int> arr = {
-        2, 3, -8, 7, -1, 2, 3
-    };
-
-    cout << maxSubarraySum(arr);
-
-    return 0;
-}
-```
-
-  </TabItem>
-
-  <TabItem label="C">
-
-```c
-#include <stdio.h>
-#include <limits.h>
-
-int maxSubarraySum(int arr[], int size) {
-
-    int res = arr[0];
-
-    int maxEnding = arr[0];
-
-    for (int i = 1; i < size; i++) {
-
-        maxEnding =
-            (maxEnding + arr[i] > arr[i])
-            ? maxEnding + arr[i]
-            : arr[i];
-
-        res =
-            (res > maxEnding)
-            ? res
-            : maxEnding;
-    }
-
-    return res;
-}
-
-int main() {
-
-    int arr[] = {
-        2, 3, -8, 7, -1, 2, 3
-    };
-
-    int size =
-        sizeof(arr) / sizeof(arr[0]);
-
-    printf(
-        "%d\n",
-        maxSubarraySum(arr, size)
-    );
-
-    return 0;
-}
-```
-
-  </TabItem>
-
-  <TabItem label="Java">
-
-```java
-import java.util.Arrays;
-
-class GfG {
-
-    static int maxSubarraySum(int[] arr) {
-
-        int res = arr[0];
-
-        int maxEnding = arr[0];
-
-        for (int i = 1; i < arr.length; i++) {
-
-            maxEnding = Math.max(
-                maxEnding + arr[i],
-                arr[i]
-            );
-
-            res = Math.max(
-                res,
-                maxEnding
-            );
-        }
-
-        return res;
-    }
-
-    public static void main(String[] args) {
-
-        int[] arr = {
-            2, 3, -8, 7, -1, 2, 3
-        };
-
-        System.out.println(
-            maxSubarraySum(arr)
-        );
-    }
-}
-```
-
-  </TabItem>
-
-  <TabItem label="Python">
-
-```python
-def maxSubarraySum(arr):
-
-    res = arr[0]
-
-    maxEnding = arr[0]
-
-    for i in range(1, len(arr)):
-
-        maxEnding = max(
-            maxEnding + arr[i],
-            arr[i]
-        )
-
-        res = max(res, maxEnding)
-
-    return res
 
 
-if __name__ == "__main__":
 
-    arr = [2, 3, -8, 7, -1, 2, 3]
 
-    print(maxSubarraySum(arr))
-```
 
-  </TabItem>
-</Tabs>
 
-# Output
 
-```text
-11
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
