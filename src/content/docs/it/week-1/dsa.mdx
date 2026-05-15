@@ -1,19 +1,20 @@
 ---
 title: "DSA"
+description: "Arrays and Searching Algorithms"
 ---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
-import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
-
-# 1. Array
+# 1. Theory
 
 **Definition:**  
 An array is a linear data structure that stores elements of the same data type in contiguous memory locations.
 
+---
 
 # 2. Key Characteristics of Arrays
 
 | Characteristics | Explanation |
-|---|---|
+| --- | --- |
 | Homogeneous Elements | All elements must be of the same data type |
 | Contiguous Memory Allocation | Elements are stored in continuous memory locations |
 | Fixed Size | Size is defined at declaration |
@@ -24,12 +25,2513 @@ An array is a linear data structure that stores elements of the same data type i
 | Static Nature | Cannot expand or shrink dynamically |
 | Supports Multiple Dimensions | 1D, 2D, 3D arrays, etc. |
 
-# 3. Declaration & Initialization of Array
+---
+**3. Declaration & Initialization of Array**
 
 
-## C++
+C++
 
-### Declaration
+**Declaration**
+
 
 ```cpp
 int arr[5];
+```
+**Initialization**
+
+```cpp
+arr[0] = 10;
+arr[1] = 20;
+```
+
+### Declaration + Initialization
+
+```cpp
+int arr[4] = {10, 20, 30, 40};
+```
+
+---
+
+**Java**
+
+### Declaration
+
+```java
+int[] arr = new int[5];
+```
+
+### Initialization
+
+```java
+arr[0] = 10;
+arr[1] = 20;
+```
+
+### Declaration + Initialization
+
+```java
+int[] arr = {10, 20, 30, 40};
+```
+
+---
+
+**Python**
+
+### Declaration
+
+```python
+arr = [0] * 5   # Array of size 5
+```
+
+### Initialization
+
+```python
+arr[0] = 10
+arr[1] = 20
+```
+
+### Declaration + Initialization
+
+```python
+arr = [10, 20, 30, 40]
+```
+
+---
+
+# 4. Basic Operations on Arrays
+
+# Traversal
+
+Traversal means visiting each element of an array one by one to perform some operation.
+
+
+# Traversal
+
+Traversing means accessing and printing all elements of an array one by one.
+
+<Tabs>
+  <TabItem label="C++">
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int arr[] = {10, 20, 30, 40};
+
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << endl;
+    }
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+```java
+public class Main {
+
+    public static void main(String[] args) {
+
+        int[] arr = {10, 20, 30, 40};
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+```python
+arr = [10, 20, 30, 40]
+
+for i in range(len(arr)):
+    print(arr[i])
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
+# Insertion
+
+Insertion means adding a new element into an array.
+
+<Tabs>
+  <TabItem label="C++">
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int arr[10] = {10, 20, 30};
+
+    int n = 3;
+
+    // Insert at beginning
+    for (int i = n; i > 0; i--) {
+        arr[i] = arr[i - 1];
+    }
+
+    arr[0] = 5;
+    n++;
+
+    // Insert at end
+    arr[n] = 40;
+    n++;
+
+    // Insert at position
+    int pos = 2, value = 25;
+
+    for (int i = n; i > pos; i--) {
+        arr[i] = arr[i - 1];
+    }
+
+    arr[pos] = value;
+    n++;
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+```java
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        int[] arr = new int[10];
+
+        arr[0] = 10;
+        arr[1] = 20;
+        arr[2] = 30;
+
+        int n = 3;
+
+        // Insert at beginning
+        for (int i = n; i > 0; i--) {
+            arr[i] = arr[i - 1];
+        }
+
+        arr[0] = 5;
+        n++;
+
+        // Insert at end
+        arr[n] = 40;
+        n++;
+
+        // Insert at position
+        int pos = 2;
+        int value = 25;
+
+        for (int i = n; i > pos; i--) {
+            arr[i] = arr[i - 1];
+        }
+
+        arr[pos] = value;
+        n++;
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+```python
+arr = [10, 20, 30]
+
+# Insert at beginning
+arr.insert(0, 5)
+
+# Insert at end
+arr.append(40)
+
+# Insert at specific position
+arr.insert(2, 25)
+
+print(arr)
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
+# Deletion
+
+Removing an element from an array.
+
+<Tabs>
+  <TabItem label="C++">
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int arr[10] = {10, 20, 30, 40};
+
+    int n = 4;
+
+    // Delete at Beginning
+    for (int i = 0; i < n - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+
+    n--;
+
+    // Delete at Middle
+    int pos = 1;
+
+    for (int i = pos; i < n - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+
+    n--;
+
+    // Delete at End
+    n--;
+
+    // Print final array
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+```java
+public class Main {
+
+    public static void main(String[] args) {
+
+        int[] arr = new int[10];
+
+        arr[0] = 10;
+        arr[1] = 20;
+        arr[2] = 30;
+        arr[3] = 40;
+
+        int n = 4;
+
+        // Delete at Beginning
+        for (int i = 0; i < n - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+
+        n--;
+
+        // Delete at Middle
+        int pos = 1;
+
+        for (int i = pos; i < n - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+
+        n--;
+
+        // Delete at End
+        n--;
+
+        // Print final array
+        for (int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+```python
+arr = [10, 20, 30, 40]
+
+# Delete at Beginning
+arr.pop(0)
+
+# Delete at Middle
+arr.pop(1)
+
+# Delete at End
+arr.pop()
+
+# Print final array
+for x in arr:
+    print(x, end=" ")
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
+# Accessing
+
+Accessing means retrieving the value of an element using its index.
+
+<Tabs>
+  <TabItem label="C++">
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int arr[] = {10, 20, 30, 40};
+
+    cout << arr[0] << endl;
+    cout << arr[2] << endl;
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+```java
+public class Main {
+
+    public static void main(String[] args) {
+
+        int[] arr = {10, 20, 30, 40};
+
+        System.out.println(arr[0]);
+        System.out.println(arr[2]);
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+```python
+arr = [10, 20, 30, 40]
+
+print(arr[0])
+print(arr[2])
+```
+
+  </TabItem>
+</Tabs>
+
+# 5. LEET CODE
+
+[LeetCode](https://leetcode.com/)
+# 6. References
+
+- [Array Introduction - GeeksforGeeks](https://www.geeksforgeeks.org/introduction-to-arrays/)
+# Binary Search
+
+Binary Search is a searching algorithm that operates on a sorted or monotonic search space, repeatedly dividing it into halves to find a target value or optimal answer in logarithmic time `O(log N)`.
+
+
+---
+
+# Conditions to Apply Binary Search Algorithm
+
+- The data structure must be sorted.
+- Access to any element of the data structure should take constant time.
+
+---
+
+# Binary Search Algorithm
+
+1. Divide the search space into two halves by finding the middle index `mid`.
+2. Compare the middle element with the key.
+3. If the key is found at middle, terminate the process.
+4. If the key is smaller than the middle element, search the left half.
+5. If the key is larger than the middle element, search the right half.
+6. Continue until the key is found or the search space is exhausted.
+
+---
+
+# Working of Binary Search
+
+Consider:
+
+```text
+arr[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91}
+
+target = 23
+```
+
+---
+
+# How to Implement Binary Search?
+
+Binary Search can be implemented in two ways:
+
+- Iterative Binary Search
+- Recursive Binary Search
+
+---
+
+# Iterative Binary Search
+
+Time Complexity: `O(log n)`  
+Auxiliary Space: `O(1)`
+
+Here we use a `while` loop to repeatedly divide the search space.
+
+---
+# Iterative Binary Search
+
+<Tabs>
+  <TabItem label="C++">
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int binarySearch(vector<int> &arr, int x) {
+
+    int low = 0;
+    int high = arr.size() - 1;
+
+    while (low <= high) {
+
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == x)
+            return mid;
+
+        if (arr[mid] < x)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+
+    return -1;
+}
+
+int main() {
+
+    vector<int> arr = {2, 3, 4, 10, 40};
+
+    int x = 10;
+
+    int result = binarySearch(arr, x);
+
+    if (result == -1)
+        cout << "Element is not present in array";
+    else
+        cout << "Element is present at index "
+             << result;
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="C">
+
+```c
+#include <stdio.h>
+
+int binarySearch(int arr[], int n, int x) {
+
+    int low = 0;
+    int high = n - 1;
+
+    while (low <= high) {
+
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == x)
+            return mid;
+
+        if (arr[mid] < x)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+
+    return -1;
+}
+
+int main() {
+
+    int arr[] = {2, 3, 4, 10, 40};
+
+    int x = 10;
+
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    int result = binarySearch(arr, n, x);
+
+    if (result == -1)
+        printf("Element is not present in array");
+    else
+        printf(
+            "Element is present at index %d",
+            result
+        );
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+```java
+class GFG {
+
+    static int binarySearch(int arr[], int x) {
+
+        int low = 0;
+        int high = arr.length - 1;
+
+        while (low <= high) {
+
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] == x)
+                return mid;
+
+            if (arr[mid] < x)
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+
+        return -1;
+    }
+
+    public static void main(String args[]) {
+
+        int arr[] = {2, 3, 4, 10, 40};
+
+        int x = 10;
+
+        int result = binarySearch(arr, x);
+
+        if (result == -1)
+            System.out.println(
+                "Element is not present in array"
+            );
+        else
+            System.out.println(
+                "Element is present at index "
+                + result
+            );
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+```python
+def binarySearch(arr, x):
+
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+
+        mid = low + (high - low) // 2
+
+        if arr[mid] == x:
+            return mid
+
+        elif arr[mid] < x:
+            low = mid + 1
+
+        else:
+            high = mid - 1
+
+    return -1
+
+
+if __name__ == '__main__':
+
+    arr = [2, 3, 4, 10, 40]
+
+    x = 10
+
+    result = binarySearch(arr, x)
+
+    if result != -1:
+        print(
+            "Element is present at index",
+            result
+        )
+    else:
+        print(
+            "Element is not present in array"
+        )
+```
+
+  </TabItem>
+</Tabs>
+# Recursive Binary Search
+
+Recursive Binary Search uses recursion to divide the search space into halves repeatedly until the element is found.
+
+Time Complexity: `O(log n)`  
+Auxiliary Space: `O(log n)`
+
+---
+
+# Recursive Binary Search Algorithm
+
+1. Find the middle index `mid`.
+2. Compare the middle element with the target.
+3. If the target is found, return the index.
+4. If the target is smaller, search the left half recursively.
+5. If the target is greater, search the right half recursively.
+6. Continue until the element is found or the search space becomes empty.
+
+---
+# Recursive Binary Search
+
+<Tabs>
+  <TabItem label="C++">
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int binarySearch(vector<int>& arr,
+                 int low,
+                 int high,
+                 int x) {
+
+    if (high >= low) {
+
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == x)
+            return mid;
+
+        if (arr[mid] > x)
+            return binarySearch(
+                arr,
+                low,
+                mid - 1,
+                x
+            );
+
+        return binarySearch(
+            arr,
+            mid + 1,
+            high,
+            x
+        );
+    }
+
+    return -1;
+}
+
+int main() {
+
+    vector<int> arr = {2, 3, 4, 10, 40};
+
+    int query = 10;
+
+    int n = arr.size();
+
+    int result = binarySearch(
+        arr,
+        0,
+        n - 1,
+        query
+    );
+
+    if (result == -1)
+        cout << "Element is not present in array";
+    else
+        cout << "Element is present at index "
+             << result;
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="C">
+
+```c
+#include <stdio.h>
+
+int binarySearch(int arr[],
+                 int low,
+                 int high,
+                 int x) {
+
+    if (high >= low) {
+
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == x)
+            return mid;
+
+        if (arr[mid] > x)
+            return binarySearch(
+                arr,
+                low,
+                mid - 1,
+                x
+            );
+
+        return binarySearch(
+            arr,
+            mid + 1,
+            high,
+            x
+        );
+    }
+
+    return -1;
+}
+
+int main() {
+
+    int arr[] = {2, 3, 4, 10, 40};
+
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    int x = 10;
+
+    int result = binarySearch(
+        arr,
+        0,
+        n - 1,
+        x
+    );
+
+    if (result == -1)
+        printf("Element is not present in array");
+    else
+        printf(
+            "Element is present at index %d",
+            result
+        );
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+```java
+class GFG {
+
+    static int binarySearch(
+        int arr[],
+        int low,
+        int high,
+        int x
+    ) {
+
+        if (high >= low) {
+
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] == x)
+                return mid;
+
+            if (arr[mid] > x)
+                return binarySearch(
+                    arr,
+                    low,
+                    mid - 1,
+                    x
+                );
+
+            return binarySearch(
+                arr,
+                mid + 1,
+                high,
+                x
+            );
+        }
+
+        return -1;
+    }
+
+    public static void main(String args[]) {
+
+        int arr[] = {2, 3, 4, 10, 40};
+
+        int n = arr.length;
+
+        int x = 10;
+
+        int result = binarySearch(
+            arr,
+            0,
+            n - 1,
+            x
+        );
+
+        if (result == -1)
+            System.out.println(
+                "Element is not present in array"
+            );
+        else
+            System.out.println(
+                "Element is present at index "
+                + result
+            );
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+```python
+def binarySearch(arr, low, high, x):
+
+    if high >= low:
+
+        mid = low + (high - low) // 2
+
+        if arr[mid] == x:
+            return mid
+
+        elif arr[mid] > x:
+            return binarySearch(
+                arr,
+                low,
+                mid - 1,
+                x
+            )
+
+        else:
+            return binarySearch(
+                arr,
+                mid + 1,
+                high,
+                x
+            )
+
+    return -1
+
+
+if __name__ == '__main__':
+
+    arr = [2, 3, 4, 10, 40]
+
+    x = 10
+
+    result = binarySearch(
+        arr,
+        0,
+        len(arr) - 1,
+        x
+    )
+
+    if result != -1:
+        print(
+            "Element is present at index",
+            result
+        )
+    else:
+        print(
+            "Element is not present in array"
+        )
+```
+
+  </TabItem>
+</Tabs>
+# Output
+
+```text
+Element is present at index 3
+```
+
+---
+
+# Complexity Analysis
+
+| Case | Time Complexity |
+| --- | --- |
+| Best Case | O(1) |
+| Average Case | O(log N) |
+| Worst Case | O(log N) |
+
+### Auxiliary Space
+
+```text
+O(1)
+```
+
+If recursive call stack is considered:
+
+```text
+O(log N)
+```
+
+---
+
+# Applications of Binary Search
+
+- Searching in sorted arrays
+- Finding first/last occurrence
+- Database indexing using B-Trees
+- Git bisect debugging
+- Network routing and IP lookup
+- File systems and libraries
+- Gaming and graphics
+- Machine learning hyperparameter tuning
+- Competitive programming
+- Binary Search Trees
+
+---
+
+# Merge Sort
+
+Merge Sort is a popular sorting algorithm based on the Divide and Conquer approach.
+
+It recursively divides the array into two halves, sorts them individually, and finally merges them together to form a sorted array.
+# Working of Merge Sort
+
+Merge Sort works using the Divide and Conquer technique.
+
+## Steps Involved
+
+### Divide
+
+Divide the array recursively into two halves until each subarray contains only one element.
+
+### Conquer
+
+Sort each subarray individually.
+
+### Merge
+
+Merge the sorted subarrays back together in sorted order.
+
+---
+
+# Example of Merge Sort
+
+Consider the array:
+
+```text
+[38, 27, 43, 10]
+```
+
+## Divide Phase
+
+```text
+[38, 27, 43, 10]
+→ [38, 27] and [43, 10]
+
+[38, 27]
+→ [38] and [27]
+
+[43, 10]
+→ [43] and [10]
+```
+
+---
+
+## Conquer Phase
+
+```text
+[38] is already sorted
+[27] is already sorted
+[43] is already sorted
+[10] is already sorted
+```
+
+---
+
+## Merge Phase
+
+```text
+Merge [38] and [27]
+→ [27, 38]
+
+Merge [43] and [10]
+→ [10, 43]
+
+Merge [27, 38] and [10, 43]
+→ [10, 27, 38, 43]
+```
+
+---
+
+# Final Sorted Array
+
+```text
+[10, 27, 38, 43]
+```
+
+---
+# Merge Sort
+
+<Tabs>
+  <TabItem label="C++">
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void merge(vector<int>& arr,
+           int left,
+           int mid,
+           int right) {
+
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    vector<int> L(n1), R(n2);
+
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[mid + 1 + j];
+
+    int i = 0;
+    int j = 0;
+    int k = left;
+
+    while (i < n1 && j < n2) {
+
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(vector<int>& arr,
+               int left,
+               int right) {
+
+    if (left >= right)
+        return;
+
+    int mid = left + (right - left) / 2;
+
+    mergeSort(arr, left, mid);
+    mergeSort(arr, mid + 1, right);
+
+    merge(arr, left, mid, right);
+}
+
+int main() {
+
+    vector<int> arr = {38, 27, 43, 10};
+
+    int n = arr.size();
+
+    mergeSort(arr, 0, n - 1);
+
+    for (int i = 0; i < arr.size(); i++)
+        cout << arr[i] << " ";
+
+    cout << endl;
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="C">
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+void merge(int arr[],
+           int l,
+           int m,
+           int r) {
+
+    int i, j, k;
+
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+    int L[n1], R[n2];
+
+    for (i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+
+    for (j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+
+    i = 0;
+    j = 0;
+    k = l;
+
+    while (i < n1 && j < n2) {
+
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(int arr[],
+               int l,
+               int r) {
+
+    if (l < r) {
+
+        int m = l + (r - l) / 2;
+
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+
+        merge(arr, l, m, r);
+    }
+}
+
+int main() {
+
+    int arr[] = {38, 27, 43, 10};
+
+    int arr_size =
+        sizeof(arr) / sizeof(arr[0]);
+
+    mergeSort(arr, 0, arr_size - 1);
+
+    for (int i = 0; i < arr_size; i++)
+        printf("%d ", arr[i]);
+
+    printf("\n");
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+```java
+import java.io.*;
+
+class GfG {
+
+    static void merge(
+        int arr[],
+        int l,
+        int m,
+        int r
+    ) {
+
+        int n1 = m - l + 1;
+        int n2 = r - m;
+
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+
+        for (int i = 0; i < n1; ++i)
+            L[i] = arr[l + i];
+
+        for (int j = 0; j < n2; ++j)
+            R[j] = arr[m + 1 + j];
+
+        int i = 0;
+        int j = 0;
+        int k = l;
+
+        while (i < n1 && j < n2) {
+
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            }
+            else {
+                arr[k] = R[j];
+                j++;
+            }
+
+            k++;
+        }
+
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+
+    static void mergeSort(
+        int arr[],
+        int l,
+        int r
+    ) {
+
+        if (l < r) {
+
+            int m = l + (r - l) / 2;
+
+            mergeSort(arr, l, m);
+            mergeSort(arr, m + 1, r);
+
+            merge(arr, l, m, r);
+        }
+    }
+
+    public static void main(String args[]) {
+
+        int arr[] = {38, 27, 43, 10};
+
+        mergeSort(arr, 0, arr.length - 1);
+
+        for (int i = 0; i < arr.length; ++i)
+            System.out.print(arr[i] + " ");
+
+        System.out.println();
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+```python
+def merge(arr, left, mid, right):
+
+    n1 = mid - left + 1
+    n2 = right - mid
+
+    L = [0] * n1
+    R = [0] * n2
+
+    for i in range(n1):
+        L[i] = arr[left + i]
+
+    for j in range(n2):
+        R[j] = arr[mid + 1 + j]
+
+    i = 0
+    j = 0
+    k = left
+
+    while i < n1 and j < n2:
+
+        if L[i] <= R[j]:
+            arr[k] = L[i]
+            i += 1
+        else:
+            arr[k] = R[j]
+            j += 1
+
+        k += 1
+
+    while i < n1:
+        arr[k] = L[i]
+        i += 1
+        k += 1
+
+    while j < n2:
+        arr[k] = R[j]
+        j += 1
+        k += 1
+
+
+def mergeSort(arr, left, right):
+
+    if left < right:
+
+        mid = (left + right) // 2
+
+        mergeSort(arr, left, mid)
+        mergeSort(arr, mid + 1, right)
+
+        merge(arr, left, mid, right)
+
+
+if __name__ == "__main__":
+
+    arr = [38, 27, 43, 10]
+
+    mergeSort(arr, 0, len(arr) - 1)
+
+    for i in arr:
+        print(i, end=" ")
+
+    print()
+```
+
+  </TabItem>
+</Tabs>
+
+# Recurrence Relation of Merge Sort
+
+```text
+T(n) = Θ(1),                    if n = 1
+
+T(n) = 2T(n/2) + Θ(n),         if n > 1
+```
+
+Where:
+
+- `2T(n/2)` → Recursive calls for two halves
+- `Θ(n)` → Time taken to merge subarrays
+Where:
+
+- `T(n)` represents the total time taken by the algorithm to sort an array of size `n`.
+- `2T(n/2)` represents the time taken to recursively sort the two halves of the array.
+- `O(n)` represents the time taken to merge the two sorted halves.
+
+---
+
+# Complexity Analysis of Merge Sort
+
+## Time Complexity
+
+| Case | Complexity |
+| --- | --- |
+| Best Case | O(n log n) |
+| Average Case | O(n log n) |
+| Worst Case | O(n log n) |
+
+### Explanation
+
+- **Best Case:** When the array is already sorted or nearly sorted.
+- **Average Case:** When the array elements are randomly arranged.
+- **Worst Case:** When the array is sorted in reverse order.
+
+---
+
+## Auxiliary Space
+
+```text
+O(n)
+```
+
+Additional memory is required for temporary arrays during merging.
+
+---
+
+# Applications of Merge Sort
+
+- Sorting large datasets
+- External sorting when data does not fit in memory
+- Inversion counting
+- Count Smaller on Right
+- Surpasser Count
+- Library sorting methods
+- Sorting linked lists
+- Parallel processing
+- Union and intersection of sorted arrays
+
+---
+
+# Merge Sort in Programming Languages
+
+- `TimSort` (variation of Merge Sort) is used in:
+  - Python
+  - Java Android
+  - Swift
+
+- `Collections.sort()` in Java uses Merge Sort.
+
+- `Arrays.sort()` for primitive types in Java uses Quick Sort.
+
+Merge Sort is preferred for non-primitive data types because it is stable.
+
+---
+
+# Advantages of Merge Sort
+
+## Stability
+
+Merge Sort is a stable sorting algorithm, meaning equal elements maintain their relative order.
+
+---
+
+## Guaranteed Performance
+
+Worst-case complexity remains:
+
+```text
+O(n log n)
+```
+
+even for large datasets.
+
+---
+
+## Easy to Implement
+
+The Divide and Conquer approach is simple and structured.
+
+---
+
+## Naturally Parallel
+
+Subarrays can be sorted independently, making Merge Sort suitable for parallel processing.
+
+---
+
+# Disadvantages of Merge Sort
+
+## Extra Space Required
+
+Merge Sort requires additional memory for temporary arrays.
+
+---
+
+## Not In-Place
+
+It cannot sort within the original array memory itself.
+
+---
+
+## Slower than Quick Sort
+
+Quick Sort is usually faster in practice because it is more cache-friendly and works in-place.
+
+---
+
+# Quick Sort
+
+Quick Sort is a Divide and Conquer sorting algorithm.
+
+It selects an element as a **pivot** and partitions the array around the pivot such that:
+
+- Elements smaller than the pivot appear on the left side.
+- Elements greater than the pivot appear on the right side.
+
+Finally, the pivot reaches its correct sorted position.
+
+---
+
+# Steps of Quick Sort
+
+## 1. Choose a Pivot
+
+Select a pivot element from the array.
+
+Possible pivot choices:
+
+- First element
+- Last element
+- Random element
+- Median element
+
+---
+
+## 2. Partition the Array
+
+Rearrange the array so that:
+
+- Smaller elements go to the left
+- Larger elements go to the right
+
+---
+
+## 3. Recursive Calls
+
+Apply Quick Sort recursively on:
+
+- Left subarray
+- Right subarray
+
+---
+
+## 4. Base Case
+
+Recursion stops when the subarray contains only one element.
+
+A single element is already sorted.
+
+---
+
+# Choice of Pivot
+
+Different strategies for selecting pivot:
+
+| Pivot Type | Description |
+| --- | --- |
+| First Element | Simplest approach |
+| Last Element | Commonly used |
+| Random Pivot | Reduces chances of worst case |
+| Median Pivot | Improves partition balance |
+There are different strategies for selecting a pivot in Quick Sort.
+
+- Always pick the first element
+- Always pick the last element
+- Pick a random element
+- Pick the median element
+
+---
+
+# Pivot Selection Strategies
+
+## First or Last Element as Pivot
+
+This is the simplest approach.
+
+However, it performs poorly when the array is already sorted because it leads to the worst-case complexity.
+
+---
+
+## Random Pivot
+
+A random element is selected as pivot.
+
+This reduces the chance of consistently getting the worst-case partition.
+
+---
+
+## Median Pivot
+
+The median element is selected as the pivot.
+
+This usually gives balanced partitions and improves time complexity.
+
+However, finding the median itself adds extra overhead.
+
+---
+
+# Partition Algorithm
+
+The core operation in Quick Sort is the `partition()` function.
+
+Partitioning rearranges the array around the pivot.
+
+All partition algorithms work in:
+
+```text
+O(n)
+```
+
+time complexity.
+
+---
+
+# Types of Partition Algorithms
+
+| Partition Method | Description |
+| --- | --- |
+| Naive Partition | Uses extra temporary array |
+| Lomuto Partition | Simple and widely used |
+| Hoare Partition | Faster and more efficient |
+
+---
+
+# Naive Partition
+
+- Creates a temporary copy of the array.
+- Places smaller elements first.
+- Places larger elements later.
+- Requires extra space:
+
+```text
+O(n)
+```
+
+---
+
+# Lomuto Partition
+
+This is the partition method used most commonly in learning Quick Sort.
+
+## Working Principle
+
+- Keep track of index `i`
+- Traverse array using index `j`
+- Swap elements smaller than pivot toward the left side
+
+It is simple and easy to implement.
+
+---
+
+# Hoare Partition
+
+Hoare Partition is faster than Lomuto Partition.
+
+## Working Principle
+
+- Traverse from both ends
+- Swap misplaced elements
+- Continue until partition is complete
+
+It performs fewer swaps and is more efficient in practice.
+
+---
+
+# Working of Quick Sort
+
+1. Select a pivot.
+2. Partition the array.
+3. Recursively apply Quick Sort on left subarray.
+4. Recursively apply Quick Sort on right subarray.
+5. Continue until subarrays contain only one element.
+
+---
+
+# Quick Sort Illustration
+
+
+---
+# Quick Sort
+
+<Tabs>
+  <TabItem label="C++">
+
+```cpp
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int partition(vector<int>& arr,
+              int low,
+              int high) {
+
+    int pivot = arr[high];
+
+    int i = low - 1;
+
+    for (int j = low;
+         j <= high - 1;
+         j++) {
+
+        if (arr[j] < pivot) {
+
+            i++;
+
+            swap(arr[i], arr[j]);
+        }
+    }
+
+    swap(arr[i + 1], arr[high]);
+
+    return i + 1;
+}
+
+void quickSort(vector<int>& arr,
+               int low,
+               int high) {
+
+    if (low < high) {
+
+        int pi = partition(
+            arr,
+            low,
+            high
+        );
+
+        quickSort(arr, low, pi - 1);
+
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+int main() {
+
+    vector<int> arr = {
+        10, 7, 8, 9, 1, 5
+    };
+
+    int n = arr.size();
+
+    quickSort(arr, 0, n - 1);
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="C">
+
+```c
+#include <stdio.h>
+
+void swap(int* a, int* b);
+
+int partition(int arr[],
+              int low,
+              int high) {
+
+    int pivot = arr[high];
+
+    int i = low - 1;
+
+    for (int j = low;
+         j <= high - 1;
+         j++) {
+
+        if (arr[j] < pivot) {
+
+            i++;
+
+            swap(&arr[i], &arr[j]);
+        }
+    }
+
+    swap(&arr[i + 1], &arr[high]);
+
+    return i + 1;
+}
+
+void quickSort(int arr[],
+               int low,
+               int high) {
+
+    if (low < high) {
+
+        int pi = partition(
+            arr,
+            low,
+            high
+        );
+
+        quickSort(arr, low, pi - 1);
+
+        quickSort(arr, pi + 1, high);
+    }
+}
+
+void swap(int* a, int* b) {
+
+    int t = *a;
+
+    *a = *b;
+
+    *b = t;
+}
+
+int main() {
+
+    int arr[] = {
+        10, 7, 8, 9, 1, 5
+    };
+
+    int n =
+        sizeof(arr) / sizeof(arr[0]);
+
+    quickSort(arr, 0, n - 1);
+
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+```java
+import java.util.Arrays;
+
+class GfG {
+
+    static int partition(
+        int[] arr,
+        int low,
+        int high
+    ) {
+
+        int pivot = arr[high];
+
+        int i = low - 1;
+
+        for (int j = low;
+             j <= high - 1;
+             j++) {
+
+            if (arr[j] < pivot) {
+
+                i++;
+
+                swap(arr, i, j);
+            }
+        }
+
+        swap(arr, i + 1, high);
+
+        return i + 1;
+    }
+
+    static void swap(
+        int[] arr,
+        int i,
+        int j
+    ) {
+
+        int temp = arr[i];
+
+        arr[i] = arr[j];
+
+        arr[j] = temp;
+    }
+
+    static void quickSort(
+        int[] arr,
+        int low,
+        int high
+    ) {
+
+        if (low < high) {
+
+            int pi = partition(
+                arr,
+                low,
+                high
+            );
+
+            quickSort(arr, low, pi - 1);
+
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int[] arr = {
+            10, 7, 8, 9, 1, 5
+        };
+
+        int n = arr.length;
+
+        quickSort(arr, 0, n - 1);
+
+        for (int val : arr) {
+            System.out.print(val + " ");
+        }
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+```python
+def partition(arr, low, high):
+
+    pivot = arr[high]
+
+    i = low - 1
+
+    for j in range(low, high):
+
+        if arr[j] < pivot:
+
+            i += 1
+
+            swap(arr, i, j)
+
+    swap(arr, i + 1, high)
+
+    return i + 1
+
+
+def swap(arr, i, j):
+
+    arr[i], arr[j] = arr[j], arr[i]
+
+
+def quickSort(arr, low, high):
+
+    if low < high:
+
+        pi = partition(arr, low, high)
+
+        quickSort(arr, low, pi - 1)
+
+        quickSort(arr, pi + 1, high)
+
+
+if __name__ == "__main__":
+
+    arr = [10, 7, 8, 9, 1, 5]
+
+    n = len(arr)
+
+    quickSort(arr, 0, n - 1)
+
+    for val in arr:
+        print(val, end=" ")
+```
+
+  </TabItem>
+</Tabs>
+
+# Output
+
+```text
+1 5 7 8 9 10
+```
+
+---
+
+# Complexity Analysis of Quick Sort
+
+## Time Complexity
+
+| Case | Complexity |
+| --- | --- |
+| Best Case | O(n log n) |
+| Average Case | O(n log n) |
+| Worst Case | O(n²) |
+
+### Explanation
+
+- **Best Case:** Pivot divides array into equal halves.
+- **Average Case:** Pivot divides array into reasonably balanced partitions.
+- **Worst Case:** Smallest or largest element is always selected as pivot.
+
+---
+
+# Auxiliary Space
+
+| Scenario | Space Complexity |
+| --- | --- |
+| Best Case | O(log n) |
+| Worst Case | O(n) |
+
+---
+
+# Advantages of Quick Sort
+
+- Divide and Conquer approach
+- Efficient on large datasets
+- Requires low memory overhead
+- Cache friendly
+- Fastest general-purpose sorting algorithm in practice
+- Tail recursive optimization possible
+# Disadvantages of Quick Sort
+
+- Worst-case time complexity becomes:
+
+```text
+O(n²)
+```
+
+when pivot selection is poor.
+
+- Not suitable for very small datasets.
+- Quick Sort is not a stable sorting algorithm.
+- Equal elements may lose their original relative order after sorting.
+
+---
+
+# Applications of Quick Sort
+
+- Sorting large datasets efficiently
+- Used in library sorting functions
+- Database record arrangement
+- Preprocessing for Binary Search
+- Quickselect algorithm
+- Sorting objects using custom comparators
+- Data compression preprocessing
+- Graphics and computational geometry
+
+---
+
+# Maximum Subarray Sum - Kadane's Algorithm
+
+Given an integer array `arr[]`, find the subarray with the maximum possible sum.
+
+A subarray is a continuous part of the array.
+
+---
+
+# Examples
+
+## Example 1
+
+```text
+Input:
+arr[] = [2, 3, -8, 7, -1, 2, 3]
+
+Output:
+11
+```
+
+Explanation:
+
+```text
+Subarray = [7, -1, 2, 3]
+Sum = 11
+```
+
+---
+
+## Example 2
+
+```text
+Input:
+arr[] = [-2, -4]
+
+Output:
+-2
+```
+
+---
+
+## Example 3
+
+```text
+Input:
+arr[] = [5, 4, 1, 7, 8]
+
+Output:
+25
+```
+
+---
+
+# Naive Approach
+
+## Idea
+
+Generate all possible subarrays using nested loops and compute their sums.
+
+---
+
+## Time Complexity
+
+```text
+O(n²)
+```
+
+## Auxiliary Space
+
+```text
+O(1)
+```
+
+---
+
+
+---
+# Maximum Subarray Sum - Naive Approach
+
+<Tabs>
+  <TabItem label="C++">
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int maxSubarraySum(vector<int>& arr) {
+
+    int res = arr[0];
+
+    for (int i = 0; i < arr.size(); i++) {
+
+        int currSum = 0;
+
+        for (int j = i; j < arr.size(); j++) {
+
+            currSum = currSum + arr[j];
+
+            res = max(res, currSum);
+        }
+    }
+
+    return res;
+}
+
+int main() {
+
+    vector<int> arr = {
+        2, 3, -8, 7, -1, 2, 3
+    };
+
+    cout << maxSubarraySum(arr);
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="C">
+
+```c
+#include <stdio.h>
+
+int maxSubarraySum(int arr[], int size) {
+
+    int maxSum = arr[0];
+
+    for (int i = 0; i < size; i++) {
+
+        int currSum = 0;
+
+        for (int j = i; j < size; j++) {
+
+            currSum = currSum + arr[j];
+
+            if (currSum > maxSum) {
+                maxSum = currSum;
+            }
+        }
+    }
+
+    return maxSum;
+}
+
+int main() {
+
+    int arr[] = {
+        2, 3, -8, 7, -1, 2, 3
+    };
+
+    int size =
+        sizeof(arr) / sizeof(arr[0]);
+
+    printf(
+        "%d",
+        maxSubarraySum(arr, size)
+    );
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+```java
+import java.util.Arrays;
+
+class GfG {
+
+    static int maxSubarraySum(int[] arr) {
+
+        int res = arr[0];
+
+        for (int i = 0; i < arr.length; i++) {
+
+            int currSum = 0;
+
+            for (int j = i; j < arr.length; j++) {
+
+                currSum =
+                    currSum + arr[j];
+
+                res = Math.max(
+                    res,
+                    currSum
+                );
+            }
+        }
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+
+        int[] arr = {
+            2, 3, -8, 7, -1, 2, 3
+        };
+
+        System.out.println(
+            maxSubarraySum(arr)
+        );
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+```python
+def maxSubarraySum(arr):
+
+    res = arr[0]
+
+    for i in range(len(arr)):
+
+        currSum = 0
+
+        for j in range(i, len(arr)):
+
+            currSum = currSum + arr[j]
+
+            res = max(res, currSum)
+
+    return res
+
+
+if __name__ == "__main__":
+
+    arr = [2, 3, -8, 7, -1, 2, 3]
+
+    print(maxSubarraySum(arr))
+```
+
+  </TabItem>
+</Tabs>
+
+---
+
+# Kadane's Algorithm
+
+<Tabs>
+  <TabItem label="C++">
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int maxSubarraySum(vector<int>& arr) {
+
+    int res = arr[0];
+
+    int maxEnding = arr[0];
+
+    for (int i = 1; i < arr.size(); i++) {
+
+        maxEnding = max(
+            arr[i],
+            maxEnding + arr[i]
+        );
+
+        res = max(res, maxEnding);
+    }
+
+    return res;
+}
+
+int main() {
+
+    vector<int> arr = {
+        2, 3, -8, 7, -1, 2, 3
+    };
+
+    cout << maxSubarraySum(arr);
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="C">
+
+```c
+#include <stdio.h>
+#include <limits.h>
+
+int maxSubarraySum(int arr[], int size) {
+
+    int res = arr[0];
+
+    int maxEnding = arr[0];
+
+    for (int i = 1; i < size; i++) {
+
+        maxEnding =
+            (maxEnding + arr[i] > arr[i])
+            ? maxEnding + arr[i]
+            : arr[i];
+
+        res =
+            (res > maxEnding)
+            ? res
+            : maxEnding;
+    }
+
+    return res;
+}
+
+int main() {
+
+    int arr[] = {
+        2, 3, -8, 7, -1, 2, 3
+    };
+
+    int size =
+        sizeof(arr) / sizeof(arr[0]);
+
+    printf(
+        "%d\n",
+        maxSubarraySum(arr, size)
+    );
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+```java
+import java.util.Arrays;
+
+class GfG {
+
+    static int maxSubarraySum(int[] arr) {
+
+        int res = arr[0];
+
+        int maxEnding = arr[0];
+
+        for (int i = 1; i < arr.length; i++) {
+
+            maxEnding = Math.max(
+                maxEnding + arr[i],
+                arr[i]
+            );
+
+            res = Math.max(
+                res,
+                maxEnding
+            );
+        }
+
+        return res;
+    }
+
+    public static void main(String[] args) {
+
+        int[] arr = {
+            2, 3, -8, 7, -1, 2, 3
+        };
+
+        System.out.println(
+            maxSubarraySum(arr)
+        );
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem label="Python">
+
+```python
+def maxSubarraySum(arr):
+
+    res = arr[0]
+
+    maxEnding = arr[0]
+
+    for i in range(1, len(arr)):
+
+        maxEnding = max(
+            maxEnding + arr[i],
+            arr[i]
+        )
+
+        res = max(res, maxEnding)
+
+    return res
+
+
+if __name__ == "__main__":
+
+    arr = [2, 3, -8, 7, -1, 2, 3]
+
+    print(maxSubarraySum(arr))
+```
+
+  </TabItem>
+</Tabs>
+
+# Output
+
+```text
+11
+```
