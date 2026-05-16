@@ -614,7 +614,6 @@ Two variables are maintained as pointers:
 
 These pointers move through the data structure based on the problem requirements until the desired result is obtained.
 
----
 
 #### 2. Types of Two Pointer Techniques
 
@@ -673,7 +672,7 @@ It is commonly used in:
 - Maximum or minimum sum window problems
 
 
-#### 2. Advantages of Two Pointers Technique
+#### 3. Advantages of Two Pointers Technique
 
 - Reduces time complexity
 - Avoids unnecessary nested loops
@@ -683,7 +682,7 @@ It is commonly used in:
 
 ---
 
-#### 3. Applications
+#### 4. Applications
 
 The Two Pointers Technique is widely used in:
 
@@ -694,7 +693,7 @@ The Two Pointers Technique is widely used in:
 - Sliding window problems
 - Linked list operations
 
-
+---
 
 
 ### B. Sliding Window Technique
@@ -720,7 +719,6 @@ The window size may be:
 
 The pointers move through the array or string according to the problem requirements.
 
----
 
 #### 2. Types of Sliding Window
 
@@ -737,7 +735,6 @@ This technique is commonly used in:
 - Average of subarrays
 - Fixed-length substring problems
 
----
 
 ##### b. Dynamic Size Sliding Window
 
@@ -752,7 +749,6 @@ This technique is commonly used in:
 - Minimum window substring
 - Problems involving conditions or constraints
 
----
 
 #### 3. Advantages of Sliding Window Technique
 
@@ -762,7 +758,6 @@ This technique is commonly used in:
 - Eliminates unnecessary nested loops
 - Suitable for large datasets
 
----
 
 #### 4. Applications
 
@@ -800,7 +795,6 @@ Prefix[i] = Prefix[i - 1] + Array[i]
 
 Using the prefix sum array, the sum of elements between two indexes can be calculated efficiently.
 
----
 
 #### 2. Range Sum Calculation
 
@@ -816,7 +810,6 @@ If `L = 0`, then:
 Sum = Prefix[R]
 ```
 
----
 
 #### 3. Types of Prefix Sum
 
@@ -839,7 +832,6 @@ Commonly used in:
 - Image processing
 - Grid-based problems
 
----
 
 #### 4. Advantages of Prefix Sum Technique
 
@@ -849,7 +841,6 @@ Commonly used in:
 - Simple and easy to implement
 - Reduces time complexity for query operations
 
----
 
 #### 5. Applications
 
@@ -862,7 +853,6 @@ The Prefix Sum Technique is widely used in:
 - Matrix sum calculations
 - Data analysis problems
 
----
 
 #### 6. Time Complexity
 
@@ -871,7 +861,6 @@ The Prefix Sum Technique is widely used in:
 | Building Prefix Sum Array | O(n) |
 | Range Sum Query | O(1) |
 
----
 
 #### 7. Difference Between Normal Sum and Prefix Sum
 
@@ -918,7 +907,6 @@ At each step:
 - Update the maximum sum if needed.
 - Reset the current sum to `0` if it becomes negative.
 
----
 
 ####  2. Steps of Kadane’s Algorithm
 
@@ -954,7 +942,6 @@ Step 7: Return maxSum
 - Optimized for large arrays
 - Solves maximum subarray problem in linear time
 
----
 
 #### 4. Applications
 
@@ -967,7 +954,6 @@ Kadane’s Algorithm is widely used in:
 - Stock market analysis
 - Optimization problems
 
----
 
 #### 5. Time Complexity
 
@@ -976,7 +962,6 @@ Kadane’s Algorithm is widely used in:
 | Array Traversal | O(n) |
 | Space Complexity | O(1) |
 
----
 
 #### 6. Difference Between Brute Force and Kadane’s Algorithm
 
@@ -987,7 +972,6 @@ Kadane’s Algorithm is widely used in:
 | Less efficient | Highly optimized |
 
 ---
-
 ##### Important Note
 
 Kadane’s Algorithm works efficiently for arrays containing both positive and negative numbers.
@@ -1015,7 +999,6 @@ A hash function converts the key into a unique index or location where the data 
 
 This allows direct access to elements without traversing the entire data structure.
 
----
 
 #### 2. HashMap
 
@@ -1027,7 +1010,6 @@ Key → Value
 
 Each key is unique and is mapped to a corresponding value.
 
----
 
 ##### a. Features of HashMap
 
@@ -1049,7 +1031,6 @@ HashMap is commonly used in:
 - Caching
 - Database indexing
 
----
 
 #### 5. HashSet
 
@@ -1057,7 +1038,6 @@ A **HashSet** stores only unique elements.
 
 Duplicate values are not allowed.
 
----
 
 ##### a. Features of HashSet
 
@@ -1066,7 +1046,6 @@ Duplicate values are not allowed.
 - Fast searching and insertion
 - Unordered collection
 
----
 
 ##### b. Applications of HashSet
 
@@ -1077,7 +1056,6 @@ HashSet is commonly used in:
 - Unique data storage
 - Fast existence checking
 
----
 
 ##### c. Collision in Hashing
 
@@ -1088,7 +1066,6 @@ Collision handling techniques include:
 - Chaining
 - Open Addressing
 
----
 
 ##### d. Advantages of Hashing
 
@@ -1098,7 +1075,6 @@ Collision handling techniques include:
 - Reduces lookup time
 - Works efficiently for large datasets
 
----
 
 ##### c. Time Complexity
 
@@ -1110,7 +1086,6 @@ Collision handling techniques include:
 
 Worst-case complexity may become `O(n)` during excessive collisions.
 
----
 
 ##### d. Difference Between HashMap and HashSet
 
@@ -1120,7 +1095,6 @@ Worst-case complexity may become `O(n)` during excessive collisions.
 | Keys must be unique | Elements must be unique |
 | Used for mapping data | Used for unique collections |
 
----
 
 ##### e. Applications of Hashing
 
@@ -1135,7 +1109,6 @@ Hashing is widely used in:
 - Searching algorithms
 
 ---
-
 ### D. Binary Search on Arrays
 
 **Binary Search** is an efficient searching algorithm used to find an element in a **sorted array**.
@@ -1161,7 +1134,6 @@ The algorithm compares the target element with the middle element of the array.
 
 This process continues until the element is found or the search space becomes empty.
 
----
 
 #### 2. Requirement for Binary Search
 
@@ -1172,7 +1144,6 @@ Binary Search works only on:
 
 If the data is not sorted, Binary Search cannot be applied correctly.
 
----
 
 #### 3. Steps of Binary Search
 
@@ -1214,7 +1185,7 @@ Step 8: If element is not found
 - Better than linear search for large datasets
 - Uses logarithmic time complexity
 
----
+
 
 #### 5. Applications of Binary Search
 
@@ -1228,7 +1199,6 @@ Binary Search is widely used in:
 - Finding lower bound and upper bound
 - Searching in answer space problems
 
----
 
 #### 6. Time Complexity
 
@@ -1238,7 +1208,7 @@ Binary Search is widely used in:
 | Average Case | O(log n) |
 | Worst Case | O(log n) |
 
----
+
 
 #### 7. Difference Between Linear Search and Binary Search
 
@@ -1388,7 +1358,7 @@ For this reason, Binary Search is significantly faster than linear search for la
 
 ## Algorithms
 ### A. Binary Search
-
+---
 **Binary Search** is an efficient searching algorithm used to find an element in a **sorted array**.
 
 Instead of checking elements one by one, Binary Search repeatedly divides the search space into two halves until the target element is found.
@@ -1407,7 +1377,6 @@ e. If the target is greater:
    - Search the right half.
 f. Repeat the process until the element is found or the search space becomes empty.
 
----
 
 #### 2. Requirement
 
@@ -1416,7 +1385,6 @@ Binary Search works only on:
 - Sorted Arrays
 - Sorted Lists
 
----
 
 #### 3. Advantages
 
@@ -1425,7 +1393,6 @@ Binary Search works only on:
 - Works well for large datasets
 - Uses logarithmic time complexity
 
----
 
 #### 4. Applications
 
@@ -1437,7 +1404,6 @@ Binary Search is commonly used in:
 - Search optimization problems
 - Finding lower and upper bounds
 
----
 
 #### 5. Time Complexity
 
@@ -1447,7 +1413,6 @@ Binary Search is commonly used in:
 | Average Case | O(log n) |
 | Worst Case | O(log n) |
 
----
 
 #### 6. Difference Between Linear Search and Binary Search
 
@@ -1457,7 +1422,6 @@ Binary Search is commonly used in:
 | Works on unsorted arrays | Requires sorted arrays |
 | Time Complexity: O(n) | Time Complexity: O(log n) |
 
----
 #### Code
 <Tabs>
   <TabItem label="C++">
@@ -1575,7 +1539,7 @@ else:
 
   </TabItem>
 </Tabs>
-
+---
 ### B. Merge Sort
 
 **Merge Sort** is a divide-and-conquer sorting algorithm used to sort elements efficiently.
@@ -1596,7 +1560,6 @@ a. **Divide**
 b. **Merge**
    - Merge the smaller sorted subarrays back together to form a completely sorted array.
 
----
 
 #### 2. Steps of Merge Sort
 
@@ -1605,7 +1568,6 @@ b. Recursively apply Merge Sort on both halves.
 c. Merge the sorted halves into a single sorted array.
 d. Repeat until the entire array becomes sorted.
 
----
 
 #### 3. Advantages of Merge Sort
 
@@ -1615,14 +1577,14 @@ d. Repeat until the entire array becomes sorted.
 - Works well with linked lists
 - Uses divide-and-conquer strategy
 
----
+
 
 #### 4. Disadvantages of Merge Sort
 
 - Requires extra memory for merging
 - Slightly slower for small datasets compared to simpler algorithms
 
----
+
 
 #### 5. Applications
 
@@ -1634,7 +1596,7 @@ Merge Sort is widely used in:
 - Parallel processing
 - Divide-and-conquer problems
 
----
+
 
 #### 6. Time Complexity
 
@@ -1644,7 +1606,7 @@ Merge Sort is widely used in:
 | Average Case | O(n log n) |
 | Worst Case | O(n log n) |
 
----
+
 
 #### 7. Space Complexity
 
@@ -1652,7 +1614,7 @@ Merge Sort is widely used in:
 |---|
 | O(n) |
 
----
+
 
 #### 8. Difference Between Merge Sort and Bubble Sort
 
@@ -1663,7 +1625,7 @@ Merge Sort is widely used in:
 | Faster for large datasets | Slower for large datasets |
 | Requires extra memory | In-place sorting |
 
----
+
 <Tabs>
   <TabItem label="C++">
 
@@ -1876,7 +1838,7 @@ print(arr)`}
 
   </TabItem>
 </Tabs>
-
+---
 ### C. Quick Sort
 
 **Quick Sort** is an efficient divide-and-conquer sorting algorithm used to sort elements in an array.
@@ -1888,7 +1850,6 @@ The algorithm works by selecting a special element called the **pivot**, then pa
 
 The same process is recursively applied to the left and right subarrays until the entire array becomes sorted.
 
----
 
 #### 1. Working Principle
 
@@ -1901,7 +1862,6 @@ a. **Partition**
 b. **Recursion**
    - Recursively apply Quick Sort on the left and right subarrays.
 
----
 
 #### 2.  Steps of Quick Sort
 
@@ -1912,7 +1872,6 @@ d. Place larger elements on the right side.
 e. Recursively repeat the process for subarrays. 
 f. Continue until the array becomes completely sorted.
 
----
 
 #### 3. Pivot Selection
 
@@ -1925,7 +1884,6 @@ The pivot can be selected in different ways:
 
 Choosing a good pivot improves performance.
 
----
 
 #### 4. Advantages of Quick Sort
 
@@ -1935,7 +1893,6 @@ Choosing a good pivot improves performance.
 - Requires less memory compared to Merge Sort
 - In-place sorting algorithm
 
----
 
 #### 5. Disadvantages of Quick Sort
 
@@ -1943,7 +1900,6 @@ Choosing a good pivot improves performance.
 - Not a stable sorting algorithm
 - Performance depends on pivot selection
 
----
 
 #### 6. Applications
 
@@ -1955,7 +1911,7 @@ Quick Sort is widely used in:
 - Internal sorting
 - Real-time applications
 
----
+
 
 #### 7. Time Complexity
 
@@ -1967,7 +1923,7 @@ Quick Sort is widely used in:
 
 Worst case occurs when poor pivots are repeatedly selected.
 
----
+
 
 #### 8. Space Complexity
 
@@ -1975,7 +1931,7 @@ Worst case occurs when poor pivots are repeatedly selected.
 |---|
 | O(log n) |
 
----
+
 
 #### 9. Difference Between Merge Sort and Quick Sort
 
@@ -1986,7 +1942,7 @@ Worst case occurs when poor pivots are repeatedly selected.
 | Consistent performance | Faster in practice |
 | Space Complexity: O(n) | Space Complexity: O(log n) |
 
----
+
 <Tabs>
   <TabItem label="C++">
 
@@ -2148,7 +2104,7 @@ print(arr)`}
 
   </TabItem>
 </Tabs>
-
+---
 ### D.  Maximum Subarray
 
 The **Maximum Subarray Problem** is a common problem in Data Structures and Algorithms where the objective is to find the contiguous subarray with the largest possible sum.
@@ -2173,7 +2129,7 @@ The idea is to continuously calculate the running sum of elements.
 - A new subarray starts from the next element.
 - The maximum sum found during traversal is stored as the answer.
 
----
+
 
 #### 2. Key Concept
 
@@ -2185,7 +2141,7 @@ At every position:
 
 This helps avoid carrying unnecessary negative contributions.
 
----
+
 
 #### 3.  Advantages
 
@@ -2194,7 +2150,7 @@ This helps avoid carrying unnecessary negative contributions.
 - Avoids nested loops
 - Optimized for large datasets
 
----
+
 
 #### 4. Applications
 
@@ -2206,7 +2162,6 @@ The Maximum Subarray concept is widely used in:
 - Dynamic programming
 - Optimization problems
 
----
 
 #### 5. Time Complexity
 
@@ -2215,7 +2170,7 @@ The Maximum Subarray concept is widely used in:
 | Traversal | O(n) |
 | Space Complexity | O(1) |
 
----
+
 
 #### 6. Difference Between Brute Force and Kadane’s Algorithm
 
@@ -2225,7 +2180,6 @@ The Maximum Subarray concept is widely used in:
 | Time Complexity: O(n²) | Time Complexity: O(n) |
 | Less efficient | Highly optimized |
 
----
 
 <Tabs>
   <TabItem label="C++">
