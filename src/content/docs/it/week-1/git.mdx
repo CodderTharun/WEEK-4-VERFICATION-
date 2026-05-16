@@ -3,7 +3,7 @@ title: Git & GitHub
 description: Complete Git and GitHub Resource
 ---
 
-
+import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
 
 # Git & GitHub
 
@@ -61,23 +61,41 @@ Git is distributed because every developer has a complete copy of the repository
 
 ### A. Linux
 
-```bash
-sudo apt-get install git
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`sudo apt-get install git`}
+      lang="bash"
+      title="Install Git"
+    />
+  </TabItem>
+</Tabs>
 
 ### B. Windows
 
 Download from:
 
-```text
-https://git-scm.com/downloads
-```
+<Tabs>
+  <TabItem label="Text">
+    <Code
+      code={`https://git-scm.com/downloads`}
+      lang="text"
+      title="Git Download Link"
+    />
+  </TabItem>
+</Tabs>
 
 ### C. Verify Installation
 
-```bash
-git --version
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git --version`}
+      lang="bash"
+      title="Verify Installation"
+    />
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -85,21 +103,39 @@ git --version
 
 ### A. Set Username
 
-```bash
-git config --global user.name "Your Name"
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git config --global user.name "Your Name"`}
+      lang="bash"
+      title="Set Username"
+    />
+  </TabItem>
+</Tabs>
 
 ### B. Set Email
 
-```bash
-git config --global user.email "your@email.com"
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git config --global user.email "your@email.com"`}
+      lang="bash"
+      title="Set Email"
+    />
+  </TabItem>
+</Tabs>
 
 ### C. Check Configuration
 
-```bash
-git config --list
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git config --list`}
+      lang="bash"
+      title="Check Configuration"
+    />
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -107,9 +143,15 @@ git config --list
 
 Git workflow consists of three main stages:
 
-```text
-Working Directory → Staging Area → Repository
-```
+<Tabs>
+  <TabItem label="Text">
+    <Code
+      code={`Working Directory → Staging Area → Repository`}
+      lang="text"
+      title="Git Workflow"
+    />
+  </TabItem>
+</Tabs>
 
 ### A. Workflow Steps
 
@@ -145,9 +187,15 @@ The file snapshot is permanently stored in Git history.
 
 Initialize a new Git repository.
 
-```bash
-git init
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git init`}
+      lang="bash"
+      title="Initialize Repository"
+    />
+  </TabItem>
+</Tabs>
 
 This creates a hidden `.git` directory that stores all Git metadata.
 
@@ -159,27 +207,51 @@ This creates a hidden `.git` directory that stores all Git metadata.
 
 Add a single file:
 
-```bash
-git add filename
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git add filename`}
+      lang="bash"
+      title="Add Single File"
+    />
+  </TabItem>
+</Tabs>
 
 Add all files:
 
-```bash
-git add .
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git add .`}
+      lang="bash"
+      title="Add All Files"
+    />
+  </TabItem>
+</Tabs>
 
 ### B. Commit Changes
 
-```bash
-git commit -m "Commit message"
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git commit -m "Commit message"`}
+      lang="bash"
+      title="Commit Changes"
+    />
+  </TabItem>
+</Tabs>
 
 Example:
 
-```bash
-git commit -m "Added login functionality"
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git commit -m "Added login functionality"`}
+      lang="bash"
+      title="Example Commit"
+    />
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -187,9 +259,15 @@ git commit -m "Added login functionality"
 
 Check repository status.
 
-```bash
-git status
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git status`}
+      lang="bash"
+      title="Git Status"
+    />
+  </TabItem>
+</Tabs>
 
 This shows:
 
@@ -206,21 +284,39 @@ This shows:
 
 View commit history.
 
-```bash
-git log
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git log`}
+      lang="bash"
+      title="Git Log"
+    />
+  </TabItem>
+</Tabs>
 
 Compact version:
 
-```bash
-git log --oneline
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git log --oneline`}
+      lang="bash"
+      title="Compact Git Log"
+    />
+  </TabItem>
+</Tabs>
 
 Graph view:
 
-```bash
-git log --oneline --graph --all
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git log --oneline --graph --all`}
+      lang="bash"
+      title="Graph View"
+    />
+  </TabItem>
+</Tabs>
 
 ![Git Log Graph](/IT/git/git-log-graph.png)
 
@@ -232,9 +328,15 @@ The staging area acts as a temporary preparation zone before committing.
 
 ### A. Important Concept
 
-```text
-git add creates a snapshot of the current file state
-```
+<Tabs>
+  <TabItem label="Text">
+    <Code
+      code={`git add creates a snapshot of the current file state`}
+      lang="text"
+      title="Important Concept"
+    />
+  </TabItem>
+</Tabs>
 
 Even after staging, files can still be modified.
 
@@ -244,17 +346,29 @@ Even after staging, files can still be modified.
 
 ### A. Unstage a File
 
-```bash
-git reset HEAD filename
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git reset HEAD filename`}
+      lang="bash"
+      title="Unstage File"
+    />
+  </TabItem>
+</Tabs>
 
 Removes file from staging area while keeping modifications.
 
 ### B. Discard Changes
 
-```bash
-git checkout -- filename
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git checkout -- filename`}
+      lang="bash"
+      title="Discard Changes"
+    />
+  </TabItem>
+</Tabs>
 
 ### C. Warning
 
@@ -266,9 +380,15 @@ This permanently removes changes.
 
 ### A. Remove File Completely
 
-```bash
-git rm filename
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git rm filename`}
+      lang="bash"
+      title="Remove File"
+    />
+  </TabItem>
+</Tabs>
 
 Removes:
 
@@ -277,9 +397,15 @@ Removes:
 
 ### B. Remove Only from Git
 
-```bash
-git rm --cached filename
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git rm --cached filename`}
+      lang="bash"
+      title="Remove File from Git Tracking"
+    />
+  </TabItem>
+</Tabs>
 
 The file remains on the computer but Git stops tracking it.
 
@@ -289,21 +415,39 @@ The file remains on the computer but Git stops tracking it.
 
 ### A. Compare Working Directory and Staging Area
 
-```bash
-git diff
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git diff`}
+      lang="bash"
+      title="Git Diff"
+    />
+  </TabItem>
+</Tabs>
 
 ### B. Compare Staging Area and Last Commit
 
-```bash
-git diff --cached
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git diff --cached`}
+      lang="bash"
+      title="Compare Staging Area"
+    />
+  </TabItem>
+</Tabs>
 
 ### C. Compare Working Directory and Last Commit
 
-```bash
-git diff HEAD
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git diff HEAD`}
+      lang="bash"
+      title="Compare with Last Commit"
+    />
+  </TabItem>
+</Tabs>
 
 ![Git Diff Workflow](/IT/git/git-diff-workflow.png)
 
@@ -315,12 +459,18 @@ The `.gitignore` file tells Git which files or folders should not be tracked.
 
 ### A. Example
 
-```gitignore
-node_modules/
+<Tabs>
+  <TabItem label="gitignore">
+    <Code
+      code={`node_modules/
 .env
 *.log
-*.pyc
-```
+*.pyc`}
+      lang="gitignore"
+      title=".gitignore Example"
+    />
+  </TabItem>
+</Tabs>
 
 ### B. Commonly Ignored Files
 
@@ -338,45 +488,86 @@ Branches allow developers to work on features independently.
 
 ### A. Default Branch Names
 
-```text
-main
-```
+<Tabs>
+  <TabItem label="Text">
+    <Code
+      code={`main`}
+      lang="text"
+      title="Default Branch"
+    />
+  </TabItem>
+</Tabs>
 
 Older naming:
 
-```text
-master
-```
+<Tabs>
+  <TabItem label="Text">
+    <Code
+      code={`master`}
+      lang="text"
+      title="Older Branch Name"
+    />
+  </TabItem>
+</Tabs>
 
 ### B. View Branches
 
-```bash
-git branch
-```
-
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git branch`}
+      lang="bash"
+      title="View Branches"
+    />
+  </TabItem>
+</Tabs>
 ### C. Create Branch
 
-```bash
-git branch feature-login
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git branch feature-login`}
+      lang="bash"
+      title="Create Branch"
+    />
+  </TabItem>
+</Tabs>
 
 ### D. Switch Branch
 
-```bash
-git checkout feature-login
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git checkout feature-login`}
+      lang="bash"
+      title="Switch Branch"
+    />
+  </TabItem>
+</Tabs>
 
 ### E. Create and Switch Branch
 
-```bash
-git checkout -b feature-login
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git checkout -b feature-login`}
+      lang="bash"
+      title="Create and Switch Branch"
+    />
+  </TabItem>
+</Tabs>
 
 ### F. Delete Branch
 
-```bash
-git branch -d feature-login
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git branch -d feature-login`}
+      lang="bash"
+      title="Delete Branch"
+    />
+  </TabItem>
+</Tabs>
 
 ![Git Branching Diagram](/IT/git/git-branching-diagram.png)
 
@@ -388,15 +579,27 @@ Git stash temporarily stores unfinished changes.
 
 ### A. Save Changes
 
-```bash
-git stash
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git stash`}
+      lang="bash"
+      title="Save Changes"
+    />
+  </TabItem>
+</Tabs>
 
 ### B. Restore Changes
 
-```bash
-git stash pop
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git stash pop`}
+      lang="bash"
+      title="Restore Changes"
+    />
+  </TabItem>
+</Tabs>
 
 Useful when switching branches quickly.
 
@@ -408,9 +611,15 @@ HEAD is a special pointer that refers to the current branch or commit.
 
 ### A. Example
 
-```text
-HEAD → main
-```
+<Tabs>
+  <TabItem label="Text">
+    <Code
+      code={`HEAD → main`}
+      lang="text"
+      title="HEAD Pointer"
+    />
+  </TabItem>
+</Tabs>
 
 When switching branches, HEAD moves automatically.
 
@@ -422,10 +631,16 @@ Merging combines two branches together.
 
 ### A. Example
 
-```bash
-git checkout main
-git merge feature-login
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git checkout main
+git merge feature-login`}
+      lang="bash"
+      title="Merge Branches"
+    />
+  </TabItem>
+</Tabs>
 
 Git creates a merge commit that combines histories.
 
@@ -439,13 +654,19 @@ Merge conflicts happen when two branches modify the same section of code differe
 
 ### A. Conflict Markers
 
-```text
-<<<<<<< HEAD
+<Tabs>
+  <TabItem label="Text">
+    <Code
+      code={`<<<<<<< HEAD
 Current branch code
 =======
 Incoming branch code
->>>>>>> branch-name
-```
+>>>>>>> branch-name`}
+      lang="text"
+      title="Conflict Markers"
+    />
+  </TabItem>
+</Tabs>
 
 ### B. Steps to Resolve Conflicts
 
@@ -455,10 +676,16 @@ Incoming branch code
 4. Add file
 5. Commit changes
 
-```bash
-git add filename
-git commit
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git add filename
+git commit`}
+      lang="bash"
+      title="Resolve Conflict"
+    />
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -468,9 +695,15 @@ Rebasing moves commits from one branch onto another base branch.
 
 ### A. Command
 
-```bash
-git rebase main
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git rebase main`}
+      lang="bash"
+      title="Rebase Branch"
+    />
+  </TabItem>
+</Tabs>
 
 ### B. Advantages
 
@@ -495,9 +728,15 @@ Git reset moves HEAD to another commit.
 
 ### A. Soft Reset
 
-```bash
-git reset --soft commitID
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git reset --soft commitID`}
+      lang="bash"
+      title="Soft Reset"
+    />
+  </TabItem>
+</Tabs>
 
 Keeps:
 
@@ -506,9 +745,15 @@ Keeps:
 
 ### B. Mixed Reset
 
-```bash
-git reset --mixed commitID
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git reset --mixed commitID`}
+      lang="bash"
+      title="Mixed Reset"
+    />
+  </TabItem>
+</Tabs>
 
 Keeps:
 
@@ -520,9 +765,15 @@ Removes:
 
 ### C. Hard Reset
 
-```bash
-git reset --hard commitID
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git reset --hard commitID`}
+      lang="bash"
+      title="Hard Reset"
+    />
+  </TabItem>
+</Tabs>
 
 Deletes:
 
@@ -547,21 +798,39 @@ Remote repositories are repositories hosted online.
 
 ### B. Add Remote
 
-```bash
-git remote add origin repositoryURL
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git remote add origin repositoryURL`}
+      lang="bash"
+      title="Add Remote"
+    />
+  </TabItem>
+</Tabs>
 
 ### C. View Remotes
 
-```bash
-git remote -v
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git remote -v`}
+      lang="bash"
+      title="View Remotes"
+    />
+  </TabItem>
+</Tabs>
 
 ### D. Remove Remote
 
-```bash
-git remote remove origin
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git remote remove origin`}
+      lang="bash"
+      title="Remove Remote"
+    />
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -571,21 +840,39 @@ SSH authentication avoids repeated password entry.
 
 ### A. Generate SSH Key
 
-```bash
-ssh-keygen -t rsa -C "your@email.com"
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`ssh-keygen -t rsa -C "your@email.com"`}
+      lang="bash"
+      title="Generate SSH Key"
+    />
+  </TabItem>
+</Tabs>
 
 ### B. Add SSH Key
 
-```bash
-ssh-add ~/.ssh/id_rsa
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`ssh-add ~/.ssh/id_rsa`}
+      lang="bash"
+      title="Add SSH Key"
+    />
+  </TabItem>
+</Tabs>
 
 ### C. View Public Key
 
-```bash
-cat ~/.ssh/id_rsa.pub
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`cat ~/.ssh/id_rsa.pub`}
+      lang="bash"
+      title="View Public Key"
+    />
+  </TabItem>
+</Tabs>
 
 Paste this key into GitHub SSH settings.
 
@@ -607,13 +894,18 @@ Paste this key into GitHub SSH settings.
 
 ### B. Push Existing Project
 
-```bash
-git remote add origin URL
-git push -u origin main
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git remote add origin URL
+git push -u origin main`}
+      lang="bash"
+      title="Push Existing Project"
+    />
+  </TabItem>
+</Tabs>
 
 ---
-
 
 ## Push, Pull, and Fetch
 
@@ -621,25 +913,43 @@ git push -u origin main
 
 Uploads commits to remote repository.
 
-```bash
-git push origin main
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git push origin main`}
+      lang="bash"
+      title="Push Changes"
+    />
+  </TabItem>
+</Tabs>
 
 ### B. Fetch
 
 Downloads latest changes without merging.
 
-```bash
-git fetch origin
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git fetch origin`}
+      lang="bash"
+      title="Fetch Changes"
+    />
+  </TabItem>
+</Tabs>
 
 ### C. Pull
 
 Fetches and merges changes.
 
-```bash
-git pull origin main
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git pull origin main`}
+      lang="bash"
+      title="Pull Changes"
+    />
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -647,23 +957,41 @@ git pull origin main
 
 ### A. Example
 
-```text
-origin/main
-```
+<Tabs>
+  <TabItem label="Text">
+    <Code
+      code={`origin/main`}
+      lang="text"
+      title="Remote Tracking Branch"
+    />
+  </TabItem>
+</Tabs>
 
 Tracks the remote branch locally.
 
 ### B. After Fetching
 
-```bash
-git merge origin/main
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git merge origin/main`}
+      lang="bash"
+      title="Merge Remote Branch"
+    />
+  </TabItem>
+</Tabs>
 
 or:
 
-```bash
-git rebase origin/main
-```
+<Tabs>
+  <TabItem label="Bash">
+    <Code
+      code={`git rebase origin/main`}
+      lang="bash"
+      title="Rebase Remote Branch"
+    />
+  </TabItem>
+</Tabs>
 
 ---
 
@@ -694,15 +1022,27 @@ Small commits are easier to manage.
 
 Bad:
 
-```text
-fixed stuff
-```
+<Tabs>
+  <TabItem label="Text">
+    <Code
+      code={`fixed stuff`}
+      lang="text"
+      title="Bad Commit Message"
+    />
+  </TabItem>
+</Tabs>
 
 Good:
 
-```text
-Fixed authentication bug in login module
-```
+<Tabs>
+  <TabItem label="Text">
+    <Code
+      code={`Fixed authentication bug in login module`}
+      lang="text"
+      title="Good Commit Message"
+    />
+  </TabItem>
+</Tabs>
 
 ### C. Use Feature Branches
 
