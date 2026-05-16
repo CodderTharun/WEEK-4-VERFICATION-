@@ -26,7 +26,7 @@ There are two kinds of basic stresses which are:
 - Normal stresses – always act normal to the stressed surface (either tensile or compressive)  
 - Shearing stresses – always act parallel to the stressed surface  
 
-### 1. Tensile Stress
+### A. Tensile Stress
 The stress induced in a body, when subjected to two equal and opposite pulls  i result of which there is an increase in length, is known as tensile stress. The ratio of increase in length to known as tensile stress. The tensile stress act tensile strain. The tensile stress acts normal to the area and it pulls on the area  
 Mathematically  
 Tensile stress (σ) = Resisting force (R) / Cross-sectional area = Tensile load (P) / A  
@@ -34,14 +34,14 @@ $$
 \sigma_t = \frac{P}{A}
 $$
 
-### 2. Compressive Stress
+### B. Compressive Stress
 The stress induced in a body, when subjected to two equal and opposite pushes as shown in as a result of which there is a decrease in length of the body, is known as compressive stress.  
 Mathematically  
 $$
 \sigma_c = \frac{P}{A}
 $$
 
-### 3. Shear Stress
+### C. Shear Stress
 It is the stress offered by the body against the two equal and opposite tangential force acting on its area of cross section which causes the sliding of one part of the body over the other.  
 If the tangential force P acts on a body to cause shear, then shear stress is  
 Mathematically  
@@ -49,42 +49,48 @@ $$
 \tau = \frac{P}{A}
 $$
 
+---
+
 ## Strain
 Then a body is subjected to some external force, there is some change of dimension of the body. The ratio of change of dimension of the body to the original dimension is known as strain. Strain is dimensionless.
 $$
 \text{Strain} = \frac{\text{Change in dimension}}{\text{Original dimension}}
 $$
 Strain may be:
-### 1. Tensile strain
+### A. Tensile strain
 If there is some increase in length of a body due to external force, then the ratio of increase of length to the original length of the body is known as tensile strain.
 Mathematically  
 $$
 \varepsilon_t = \frac{\Delta L}{L}
 $$
 
-### 2. Compressive strain
+### B. Compressive strain
 if there is some decrease in length of the body, then the ratio of decrease of the length of the body to the original length is known as compressive strain.
 Mathematically  
 $$
 \varepsilon_c = \frac{\Delta L}{L}
 $$
 
-### 3. Volumetric strain
+### C. Volumetric strain
 The ratio of change of volume of the body to the original volume is known as volumetric strain.
 Mathematically  
 $$
 \varepsilon_v = \frac{\Delta V}{V}
 $$
 
-### 4. Shear strain
+### C. Shear strain
 The strain produced by shear stress is known as shear strain.
 Mathematically  
 $$
 \gamma = \tan \theta \approx \theta
 $$
 
+---
+
 ## Elastic Limit
 The value of stress corresponding to this limiting force is known as the elastic limit of the material.
+
+---
 
 ## Analysis Of Bars Of Composite Sections
 A composite bar is made up of two or more bars of equal length but different materials.  
@@ -140,11 +146,15 @@ $$
 \varepsilon_2 = \frac{\sigma_2}{E_2}
 $$
 
+---
+
 ## Hooke’s law
 Hooke’s Law states that when a material is loaded within elastic limit, the stress is proportional to the strain produced by the stress. This means the ratio of the stress to the corresponding strain is a constant within the elastic limit. This constant is known as Modulus of Elasticity or Modulus of Rigidity  
 $$
 \frac{\text{Normal stress}}{\text{Corresponding strain}} = \text{Constant}
 $$
+
+---
 
 ## Elastic constants
 ### A. Young’s Modulus
@@ -172,6 +182,8 @@ $$
 $$
 K = \frac{p}{\Delta V / V}
 $$
+
+---
 
 ## Relationship between Stree and Strain
 ### A. For One-Dimensional Stress System
@@ -249,6 +261,8 @@ $$
 e_3 = \frac{\sigma_3}{E} - \mu \left(\frac{\sigma_1}{E}\right) - \mu \left(\frac{\sigma_2}{E}\right)
 $$
 
+---
+
 ## Relation between constants
 
 Relation between Bulk modulus (K) and Young’s modulus (E)  
@@ -284,6 +298,7 @@ $$
   }}
 />
 
+---
 
 ## Principle of Superposition
 The principle of superposition states that when multiple forces act on an elastic body, the total deformation (strain) is equal to the sum of the deformations caused by each force acting individually.  
@@ -295,7 +310,7 @@ Imagine a rod where
 - Section 1 is being pulled by 100 N.  
 - Section 2 is being pushed by 50 N.  
 - Section 3 is being pulled by 20 N.  
-### Step-by-Step Example
+### A. Step-by-Step Example
 **Analyze Section 1**  
 We look only at the first part of the rod. Based on the forces, it feels a total pulling force (tension). We calculate its change in length, which might be +-0.5mm.  
 **Analyze Section 2**  
@@ -303,13 +318,13 @@ Because of the 50 N pushing force, this middle part of the rod is being compress
 **Analyze Section 3**  
 The final section has a light pulling force. Its change is calculated as +0.1mm.  
 
-### The Superposition Math
+### B. The Superposition Math
 Instead of trying to guess how the whole rod moves at once, we just add our results  
 $$
 (+0.5 \text{ mm}) + (-0.2 \text{ mm}) + (+0.1 \text{ mm}) = +0.4 \text{ mm}
 $$
 
-### The Final Result
+### C. The Final Result
 The entire rod has increased in length by 0.4 mm.
 <br />
 <img
@@ -329,7 +344,7 @@ The planes, which have no shear stress are known as principal planes. Hence prin
 
 ## Principal Stress
 These are the purely normal stresses (either tensile or compressive) that act upon the principal planes.  
-### Case I: Member Subjected to Direct Stress in One Plane
+### A. Case I: Member Subjected to Direct Stress in One Plane
 Definition: A rectangular member of uniform area A and unit thickness subjected to an axial force P along the X-axis.  
 $$
 \sigma_n = \sigma \cos^2 \theta
@@ -340,7 +355,7 @@ $$
 Maximum normal stress occurs at $\theta = 0^\circ$, value = $\sigma$  
 Maximum shear stress occurs at $\theta = 45^\circ$ or $135^\circ$, value = $\frac{\sigma}{2}$  
 
-### Case II: Member Subjected to Two Perpendicular Stresses
+### B. Case II: Member Subjected to Two Perpendicular Stresses
 Definition: A bar subjected to two direct tensile stresses $\sigma_1$ (major) and $\sigma_2$ (minor).  
 $$
 \sigma_n = \frac{\sigma_1 + \sigma_2}{2} + \frac{\sigma_1 - \sigma_2}{2} \cos 2\theta
@@ -354,7 +369,7 @@ $$
 $$
 
 
-### Case III: Member Subjected to Simple Shear Stress
+### C. Case III: Member Subjected to Simple Shear Stress
 Definition: A bar subjected to simple shear stress $\tau$.  
 $$
 \sigma_n = \tau \sin 2\theta
@@ -364,27 +379,27 @@ $$
 $$
 
 ### Equations for Principal Stresses and Planes
-#### A. Position of Principal Planes
+#### 1. Position of Principal Planes
 The angles at which the shear stress is zero.  
 $$
 \tan 2\theta = \frac{2\tau}{\sigma_1 - \sigma_2}
 $$
 
-#### B. Major Principal Stress
+#### 2. Major Principal Stress
 The maximum normal stress acting on a principal plane.  
 $$
 \sigma_{major} = \frac{\sigma_1 + \sigma_2}{2} + \sqrt{\left(\frac{\sigma_1 - \sigma_2}{2}\right)^2 + \tau^2}
 $$
 
 
-#### C. Minor Principal Stress
+#### 3. Minor Principal Stress
 The minimum normal stress acting on a principal plane.  
 $$
 \sigma_{minor} = \frac{\sigma_1 + \sigma_2}{2} - \sqrt{\left(\frac{\sigma_1 - \sigma_2}{2}\right)^2 + \tau^2}
 $$
 
 
-#### D. Maximum Shear Stress
+#### 4. Maximum Shear Stress
 The greatest intensity of shear stress within the material.  
 $$
 \tau_{max} = \frac{1}{2} \sqrt{(\sigma_1 - \sigma_2)^2 + 4\tau^2}
@@ -400,12 +415,13 @@ $$
   }}
 />
 
+---
 
 ## Mohr’s Circle for Plane Stress
 
 The transformation equations for plane stress can be represented in a graphical format known as Mohr’s circle. This representation is useful in visualizing the relationships between normal and shear stresses acting on various inclined planes at a point in a stressed body.
 
-### Rules for construction of Mohr’s circle
+### A. Rules for construction of Mohr’s circle
 #### 1. Center
 $$
 C = \frac{\sigma_x + \sigma_y}{2}
@@ -423,7 +439,7 @@ $$
 | Shear Stresses (Vertical Axis) | + For Clockwise Shear <br /> - For Counterclockwise Shear |
 
 
-### Construct Mohr’s circle as follows
+### B. Construct Mohr’s circle as follows
 
 1. Determine the point on the body in which the principal stresses are to be determined.  
 2. Treating the load cases independently and calculated the stresses for the point chosen.  
@@ -462,12 +478,14 @@ $$
   />
 </div>
 
+---
+
 ## Beam
 A beam is usually a horizontal structural member that is subjected to a load that tends to cause it to bend,
 
 ### Types of Beams
 
-#### Based on Support Conditions
+#### 1. Based on Support Conditions
 - **Simply Supported Beam:** A beam that rests freely on two supports, usually at its ends  
 - **Cantilever Beam:** A beam that is rigidly fixed at one end and completely free at the other end  
 - **Overhanging Beam:** A beam where the end portion extends beyond the support  
@@ -480,7 +498,7 @@ A beam is usually a horizontal structural member that is subjected to a load tha
 
 
 
-#### Based on Analysis
+#### 2. Based on Analysis
 
 From an engineering analysis perspective, beams are also divided into two categories based on how you calculate their forces:
 - **Statically Determinate Beams:** Beams where you can find all the reaction forces and internal forces using only the basic equations of static equilibrium  
@@ -645,3 +663,5 @@ The bending moment is zero at both ends and gently curves upwards to reach its m
 The diagram is two triangles made by a single straight line cutting diagonally through the baseline at the center.<br />
 **Draw the BMD:**  
 The diagram is a smooth, symmetrical curved hill (parabola) sitting entirely above the baseline.
+
+---

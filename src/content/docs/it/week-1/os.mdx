@@ -50,7 +50,7 @@ The OS enforces security policies, authenticates users, and protects system reso
 
 The OS detects and handles errors, ensuring system stability and providing fault tolerance mechanisms to recover from failures.
 
-
+---
 
 ## Functions of Operating System
 
@@ -66,7 +66,6 @@ The operating system is responsible for the following activities in connection w
   - Process synchronization
   - Process communication
 
----
 
 ### B. Main-Memory Management
 
@@ -107,6 +106,7 @@ The operating system is responsible for the following activities in connection w
 - Storage allocation
 - Disk scheduling
 
+---
 
 ## Networking (Distributed Systems)
 A distributed system is a collection of processors that do not share memory or a clock. Each processor has its own local memory.
@@ -117,6 +117,7 @@ Access to a shared resource allows:
 - Increased data availability
 - Enhanced reliability
 
+---
 
 ## Protection System
 Protection refers to a mechanism for controlling access by programs, processes, or users to both system and user resources.
@@ -125,6 +126,7 @@ The protection mechanism must:
 - Specify the controls to be imposed
 - Provide a means of enforcement
 
+---
 
 ## Command-Interpreter System
 Many commands are given to the operating system by control statements which deal with:
@@ -140,6 +142,7 @@ The program that reads and interprets control statements is called:
 - Shell (in UNIX)
 Its function is to get and execute the next command statement.
 
+---
 
 ## Evolution of OS
 
@@ -167,7 +170,7 @@ Features:
 ### C. Multiprogramming Operating System
 
 This type of OS executes more than one job simultaneously using a single processor.
-#### Features
+#### 1. Features
 
 - Increases CPU utilization
 - Jobs are stored in a job pool on disk
@@ -175,7 +178,7 @@ This type of OS executes more than one job simultaneously using a single process
 - If one job waits for I/O, CPU switches to another job
 - CPU remains busy as long as at least one job is ready
 
-#### Uses
+#### 2. Uses
 
 - Job scheduling
 - CPU scheduling
@@ -183,19 +186,19 @@ This type of OS executes more than one job simultaneously using a single process
 ### D. Time-Sharing / Multitasking Operating Systems
 
 Time-sharing is a logical extension of multiprogramming.
-#### Features
+#### 1. Features
 - Faster switching between jobs
 - Multiple users can share the system simultaneously
 - Users can interact with jobs while running
 - Uses virtual memory for effective memory utilization
 
-#### Uses
+#### 2. Uses
 - CPU scheduling
 - Memory management
 - Disk management
 - Security management
 
-#### Examples
+#### 3. Examples
 - CTSS
 - MULTICS
 - CAL
@@ -210,29 +213,29 @@ These systems have more than one processor in close communication, sharing:
 - Memory
 - Peripheral devices
 
-#### Advantages
+#### 1. Advantages
 
-##### 1. Increased Throughput
+##### a. Increased Throughput
 By increasing the number of processors, the system performs more work in less time.
 
-##### 2. Economy of Scale
+##### b. Economy of Scale
 Processors can share peripherals, mass storage, and power supplies.
 
-##### 3. Increased Reliability
+##### c. Increased Reliability
 Failure of one processor does not halt the system completely.
 The ability to continue service proportional to surviving hardware is called **graceful degradation**.
 Systems designed for graceful degradation are called **fault tolerant** systems.
 
-#### Types
+#### 2. Types
 
 1. Symmetric multiprocessing system
 2. Asymmetric multiprocessing system
 
-##### 1. Symmetric Multiprocessing
+##### a. Symmetric Multiprocessing
 
 Each processor runs an identical copy of the OS.
 
-##### 2. Asymmetric Multiprocessing
+##### b. Asymmetric Multiprocessing
 
 One master processor controls slave processors.
 
@@ -244,19 +247,19 @@ In distributed systems:
 - Each machine has its own processor and local memory
 - All operating systems cooperate to manage network resources
 
-#### Categories
+#### 1. Categories
 
 1. Client-Server systems
 2. Peer-to-Peer systems
 
-#### Advantages
+#### 2. Advantages
 
 - Resource sharing
 - Computation speed-up
 - Reliability
 - Communication
 
-#### Networking Infrastructure
+#### 3. Networking Infrastructure
 
 - LAN
 - WAN
@@ -266,7 +269,7 @@ In distributed systems:
 
 The PC operating system is designed for maximizing user convenience and responsiveness.
 
-#### Features
+#### 1. Features
 
 - Neither multi-user nor multitasking
 - Includes Microsoft Windows and Apple Macintosh
@@ -277,7 +280,7 @@ The PC operating system is designed for maximizing user convenience and responsi
 
 A real-time operating system (RTOS) is intended for applications with fixed deadlines.
 
-#### Applications
+#### 1. Applications
 
 - Embedded systems
 - Automobile engine controllers
@@ -285,19 +288,20 @@ A real-time operating system (RTOS) is intended for applications with fixed dead
 - Spacecraft
 - Industrial control systems
 
-#### Types
+#### 2. Types
 
 1. Hard real-time systems
 2. Soft real-time systems
 
-##### 1. Hard Real-Time System
+##### a. Hard Real-Time System
 
 Guarantees completion of critical tasks on time.
 
-##### 2. Soft Real-Time System
+##### b. Soft Real-Time System
 
 Critical tasks get higher priority but timing guarantees are less strict.
 
+---
 
 ## Components of an Operating System
 
@@ -311,6 +315,7 @@ The shell is the outermost layer of the operating system and handles user intera
 
 The kernel is the core component of the operating system and acts as the primary interface between the OS and hardware.
 
+---
 
 ## Single User Operating System
 
@@ -326,7 +331,7 @@ A single user can access the computer at a particular time.
   />
 </div>
 
-### Features
+### A. Features
 
 - Interpreting user commands
 - File management
@@ -335,7 +340,7 @@ A single user can access the computer at a particular time.
 - Resource allocation
 - Managing processes
 
-### Advantages
+### B. Advantages
 
 - Occupies less memory space
 - Easy to maintain
@@ -343,12 +348,14 @@ A single user can access the computer at a particular time.
 - Allows only one user's tasks at a time
 - No interruption from other users
 
-### Disadvantages
+### C. Disadvantages
 
 - Performs only a single task
 - OS remains idle most of the time
 - Tasks take longer to complete
 - High response time
+
+---
 
 ## Multi-User Operating System
 
@@ -363,14 +370,14 @@ A multi-user operating system supports multiple users simultaneously.
   />
 </div>
 
-### Features
+### A. Features
 
 - Resource sharing
 - Time-sharing
 - Background sharing
 - Invisible system functions
 
-### Advantages
+### B. Advantages
 
 - Sharing of data and information
 - Sharing hardware resources
@@ -379,13 +386,13 @@ A multi-user operating system supports multiple users simultaneously.
 - Stable and systematic services
 - Easy backup
 
-### Disadvantages
+### C. Disadvantages
 
 - Requires expensive hardware
 - Performance reduces with multiple users
 - Privacy concerns due to information sharing
 
-
+---
 
 ## Kernel in Operating System
 
@@ -411,12 +418,12 @@ It handles:
 
 All OS services run in kernel space.
 
-##### Features
+##### a. Features
 
 - Fast
 - Less fault isolation
 
-##### Examples
+##### b. Examples
 
 - UNIX
 - Linux
@@ -428,12 +435,12 @@ All OS services run in kernel space.
 
 Minimal kernel functionality with most services moved to user space.
 
-##### Features
+##### a. Features
 
 - Better reliability
 - More overhead
 
-##### Examples
+##### b. Examples
 
 - Minix 3
 - Mach 3.0
@@ -474,25 +481,25 @@ The OS handles only protection and gives applications direct access to hardware 
 
 ### Functions of Kernel
 
-#### A. Process Management
+#### 1. Process Management
 
 Scheduling and execution of processes.
 
-#### B. Memory Management
+#### 2. Memory Management
 
 - Allocation and deallocation
 - Virtual memory handling
 - Memory protection
 
-#### C. Device Management
+#### 3. Device Management
 
 Managing input/output devices and drivers.
 
-#### D. File System Management
+#### 4. File System Management
 
 Managing file operations and file system interfaces.
 
-#### E. Resource Management
+#### 5. Resource Management
 
 Managing:
 
@@ -500,11 +507,11 @@ Managing:
 - Disk space
 - Network bandwidth
 
-#### F. Security and Access Control
+#### 6. Security and Access Control
 
 Enforcing permissions and authentication.
 
-#### G. Inter-Process Communication
+#### 7. Inter-Process Communication
 
 Providing:
 - Message passing
@@ -521,3 +528,5 @@ Providing:
 - Executes requested operations
 - Returns results to user space
 - Performs context switching for multitasking
+
+---

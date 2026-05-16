@@ -171,7 +171,7 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/eee/week-1/" },
                 { label: "Digital Electronics", link: "/eee/week-1/digital-logic" },
-                { label: "Network Analysis", link: "/eee/week-1/circuit-theory" },
+                { label: "Network Analysis", link: "/eee/week-1/network-analysis" },
                 { label: "Power Electronics", link: "/eee/week-1/power-generation" },
               ],
             },
