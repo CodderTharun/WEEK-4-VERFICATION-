@@ -6,11 +6,11 @@ import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
 
 ## Introduction
 
-### What is C?
+#### What is C?
 C is a general-purpose procedural programming language known for its efficiency and low-level memory access.
 
 ---
-## Syntax
+#### Syntax
 
 This simple program demonstrates the basic structure of a C program.
 
@@ -50,7 +50,7 @@ int main(void)
   width="500" 
 />
 
-### Explanation
+#### Explanation
 
 - **Line 1:** `#include <stdio.h>` tells C to include a header file. This header lets us use input/output functions such as `printf()`.
 
@@ -64,9 +64,9 @@ int main(void)
 
 - **Line 6:** The closing curly bracket `}` marks the end of the `main()` function.
 
-# Variables and Data Types
+## Variables and Data Types
 
-## Variables
+### A. Variables
 
 Variables are containers for storing data values, like numbers and characters.
 
@@ -78,7 +78,7 @@ In C, variables must have a specific type, which tells the program what kind of 
 
 ---
 
-## C Variable Initialization
+#### C Variable Initialization
 
 Once a variable is declared, we can store useful values in it. The first value we store is called the **initial value**, and the process is called **initialization**.
 
@@ -90,7 +90,7 @@ We can also initialize a variable along with declaration.
 
 ---
 
-## Rules for Naming Variables in C
+#### Rules for Naming Variables in C
 
 - A variable name must only contain letters, digits, and underscores.
 - It must start with an alphabet or an underscore only.
@@ -101,11 +101,11 @@ We can also initialize a variable along with declaration.
 
 ---
 
-## Declaring (Creating) Variables
+#### Declaring (Creating) Variables
 
 To create a variable, you must specify the **type** and give the variable a **name**.
 
-### Syntax
+##### Syntax
 
 <Code
   code={`type variableName = value;`}
@@ -113,7 +113,7 @@ To create a variable, you must specify the **type** and give the variable a **na
   title="Variable Declaration Syntax"
 />
 
-### Example
+##### Example
 <Code
   code={`int myNum = 15;`}
   lang="c"
@@ -122,7 +122,7 @@ To create a variable, you must specify the **type** and give the variable a **na
 
 ---
 
-## Accessing Variables
+#### Accessing Variables
 
 The data stored inside a C variable can be accessed using the variable name.
 
@@ -156,13 +156,13 @@ int main() {
 </Tabs>
 ---
 
-# Data Types
+### B. Data Types
 
 Each variable in C has an associated data type. It specifies the type of data that the variable can store, such as integer, character, float, double, etc.
 
 ---
 
-## Data Types in C
+#### Data Types in C
 
 <img 
   src="https://raw.githubusercontent.com/Sohanlm/lgp-notes-photos/refs/heads/main/C2.png" 
@@ -172,7 +172,7 @@ Each variable in C has an associated data type. It specifies the type of data th
 
 ---
 
-## Basic Data Types
+#### Basic Data Types
 
 | Sl No | Data Type | Size | Description | Example |
 | :---: | :---: | :---: | :--- | :---: |
@@ -185,7 +185,7 @@ Each variable in C has an associated data type. It specifies the type of data th
 
 ---
 
-## Integer Data Type
+#### 1. Integer Data Type
 
 - Stores whole numbers (positive, negative, or zero).
 - Declared using the `int` keyword.
@@ -193,7 +193,7 @@ Each variable in C has an associated data type. It specifies the type of data th
 - Range: `-2,147,483,648` to `2,147,483,647`
 - Format specifier: `%d`
 
-### Example
+##### Example
 
 <Code
   code={`int a = 10;`}
@@ -203,14 +203,14 @@ Each variable in C has an associated data type. It specifies the type of data th
 
 ---
 
-## Character Data Type
+#### 2. Character Data Type
 
 - Stores a single character such as `'A'`, `'b'`, or `'5'`.
 - Size: typically `1 byte`
 - Range: `-128` to `127` (signed by default)
 - Format specifier: `%c`
 
-### Example
+#### Example
 
 <Code
   code={`char ch = 'A';`}
@@ -220,14 +220,14 @@ Each variable in C has an associated data type. It specifies the type of data th
 
 ---
 
-## Float Data Type
+#### 3. Float Data Type
 
 - Stores decimal numbers (numbers with fractional parts).
 - Size: typically `4 bytes`
 - Approximate range: `3.4e-38` to `3.4e+38`
 - Format specifier: `%f`
 
-### Example
+#### Example
 
 <Code
   code={`float b = 3.5f;`}
@@ -237,14 +237,14 @@ Each variable in C has an associated data type. It specifies the type of data th
 
 ---
 
-## Double Data Type
+#### 4. Double Data Type
 
 - Stores decimal numbers with higher precision than `float`.
 - Size: typically `8 bytes`
 - Approximate range: `1.7e-308` to `1.7e+308`
 - Format specifier: `%lf`
 
-### Example
+#### Example
 
 <Code
   code={`double c = 12.345678;`}
@@ -253,13 +253,13 @@ Each variable in C has an associated data type. It specifies the type of data th
 />
 ---
 
-## Void Data Type
+#### 5. Void Data Type
 
 - Represents no value or an empty type.
 - Used in functions that do not return any value.
 - Can also be used for generic pointers (`void *`) in memory operations.
 
-### Example
+#### Example
 
 <Code
   code={`void showMessage() {
@@ -270,13 +270,13 @@ Each variable in C has an associated data type. It specifies the type of data th
 />
 ---
 
-## Bool Data Type
+#### 6. Bool Data Type
 
 - Represents a logical value.
 - Stores only two states: `true` or `false`.
 - Commonly used in conditions and decision-making.
 
-### Example
+#### Example
 
 <Code
   code={`bool e = true;`}
@@ -284,9 +284,9 @@ Each variable in C has an associated data type. It specifies the type of data th
   title="Boolean Example"
 />
 
-# Operators and Expressions
+## Operators and Expressions
 
-## Operators
+### A. Operators
 
 Operators are used to perform operations on variables and values.
 
@@ -304,7 +304,7 @@ C divides operators into the following groups:
 
 ---
 
-# Arithmetic Operators
+#### 1. Arithmetic Operators
 
 Arithmetic operators are used to perform common mathematical operations.
 
@@ -320,7 +320,7 @@ Arithmetic operators are used to perform common mathematical operations.
 
 ---
 
-## Example Program
+###### Example Program
 
 <Tabs>
   <TabItem label="C Program">
@@ -371,7 +371,7 @@ a-- = 26`}
   </TabItem>
 </Tabs>
 
-# Assignment Operators
+#### 2. Assignment Operators
 
 Assignment operators are used to assign values to variables.
 
@@ -383,7 +383,7 @@ Assignment operators can also be combined with other operators to perform multip
 
 ---
 
-## Assignment Operators Table
+##### Assignment Operators Table
 
 | Operator | Name | Description | Syntax |
 | :---: | :---: | :--- | :---: |
@@ -401,7 +401,7 @@ Assignment operators can also be combined with other operators to perform multip
 
 ---
 
-## Example Program
+###### Example Program
 
 <Tabs>
   <TabItem label="C Program">
@@ -457,7 +457,7 @@ int main()
 
 ---
 
-# Comparison Operators
+#### 3. Comparison Operators
 
 Comparison operators are used to compare two values or variables.
 
@@ -465,7 +465,7 @@ These operators help in decision-making and conditional statements.
 
 ---
 
-## Comparison Operators Table
+#### Comparison Operators Table
 
 | Operator | Name | Description | Syntax |
 | :---: | :---: | :--- | :---: |
@@ -478,7 +478,7 @@ These operators help in decision-making and conditional statements.
 
 ---
 
-## Example Program
+###### Example Program
 
 <Tabs>
   <TabItem label="C Program">
@@ -527,7 +527,7 @@ Here:
 - `0` means **false**
 - `1` means **true**
 
-# Logical Operators
+#### 4. Logical Operators
 
 Logical operators are used to combine two or more conditions or to reverse the result of a condition.
 
@@ -538,7 +538,7 @@ The result of a logical operation is always a Boolean value:
 
 ---
 
-## Logical Operators Table
+###### Logical Operators Table
 
 | Operator | Name | Description | Syntax |
 | :---: | :---: | :--- | :---: |
@@ -548,7 +548,7 @@ The result of a logical operation is always a Boolean value:
 
 ---
 
-## Example Program
+###### Example Program
 
 <Tabs>
   <TabItem label="C Program">
@@ -586,7 +586,7 @@ a || b : 1
   </TabItem>
 </Tabs>
 
-# Bitwise Operators
+#### 5. Bitwise Operators
 
 Bitwise operators are used to perform operations at the bit level.
 
@@ -596,7 +596,7 @@ Bitwise operations are useful for faster calculations and low-level programming.
 
 ---
 
-## Bitwise Operators Table
+##### Bitwise Operators Table
 
 | Operator | Name | Description | Syntax |
 | :---: | :---: | :--- | :---: |
@@ -609,7 +609,7 @@ Bitwise operations are useful for faster calculations and low-level programming.
 
 ---
 
-# Operator Precedence
+### B. Operator Precedence
 
 When an expression contains multiple operators, C follows precedence rules to determine which operation should be performed first.
 
@@ -617,7 +617,7 @@ Operators with higher precedence are evaluated before operators with lower prece
 
 ---
 
-## Common Operator Precedence Order
+#### Common Operator Precedence Order
 
 | Priority | Operators | Description |
 | :---: | :--- | :--- |
@@ -632,7 +632,7 @@ Operators with higher precedence are evaluated before operators with lower prece
 
 ---
 
-## Example Program
+###### Example Program
 
 <Tabs>
   <TabItem label="C Program">
@@ -669,7 +669,7 @@ int main()
 </Tabs>
 ---
 
-## Explanation
+#### Explanation
 
 In the expression:
 
@@ -703,7 +703,7 @@ which gives:
   title="Calculation Result"
 />
 
-# Conditional Statements
+## Conditional Statements
 
 In C, programs can choose which part of the code to execute based on a condition.
 
@@ -711,7 +711,7 @@ This process is called **decision making**, and the statements used are called *
 
 ---
 
-## Syntax of Conditional Statements in C
+##### Syntax of Conditional Statements in C
 
 <img 
   src="https://raw.githubusercontent.com/Sohanlm/lgp-notes-photos/refs/heads/main/C3.png" 
@@ -721,7 +721,7 @@ This process is called **decision making**, and the statements used are called *
 
 ---
 
-# Types of Conditional Statements in C
+#### Types of Conditional Statements in C
 
 C provides the following conditional statements:
 
@@ -733,11 +733,11 @@ C provides the following conditional statements:
 
 ---
 
-# If Statement
+### A. If Statement
 
 Use `if` to execute a block of code only when a specified condition is true.
 
-## Example
+##### Example
 
 <Tabs>
   <TabItem label="C Program">
@@ -775,11 +775,11 @@ int main()
 </Tabs>
 ---
 
-# If-Else Statement
+### B. If-Else Statement
 
 Use `else` to execute another block of code when the condition is false.
 
-## Example
+##### Example
 
 
 <Tabs>
@@ -822,11 +822,11 @@ int main()
 
 ---
 
-# If-Else If Statement
+### C. If-Else If Statement
 
 Use `else if` to test multiple conditions one after another.
 
-## Example
+##### Example
 
 
 <Tabs>
@@ -869,13 +869,13 @@ int main()
 </Tabs>
 ---
 
-# Nested If Statement
+### D. Nested If Statement
 
 A nested `if` means placing one `if` statement inside another `if` or `else` block.
 
 It is used to check multiple conditions step by step.
 
-## Example
+###### Example
 
 <Tabs>
   <TabItem label="C Program">
@@ -926,11 +926,11 @@ Not a teenager`}
 
 ---
 
-# Switch Statement
+### E. Switch Statement
 
 Use `switch` when there are many alternative blocks of code to execute.
 
-## Example
+##### Example
 
 <Tabs>
   <TabItem label="C Program">
