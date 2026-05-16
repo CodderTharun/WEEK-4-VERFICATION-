@@ -708,205 +708,233 @@ Weight of the student who left:
 
 ## Profit and Loss
 
-##### Cost Price (C.P.)
+<style>{`
+.profit-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 15px;
+}
 
-The price at which an article is purchased.
+.profit-table th {
+  background: #0f172a;
+  color: white;
+  padding: 12px;
+  border: 1px solid #334155;
+}
 
-##### Selling Price (S.P.)
+.profit-table td {
+  padding: 12px;
+  border: 1px solid #334155;
+  vertical-align: top;
+}
 
-The price at which an article is sold.
+.profit-table tr:nth-child(even) {
+  background-color: rgba(148, 163, 184, 0.08);
+}
 
-##### Profit or Gain
+.profit-table tr:hover {
+  background-color: rgba(56, 189, 248, 0.12);
+  transition: 0.3s;
+}
+`}</style>
 
-##### Profit
-If
-<small>
-S.P. > C.P.
-</small>
----
+#### Profit and Loss Formula Table
 
-##### Loss
+<table className="profit-table">
+  <thead>
+    <tr>
+      <th>Concept</th>
+      <th>Formula / Definition</th>
+    </tr>
+  </thead>
 
-If
-<small>
-S.P. <  C.P.
-</small>
+  <tbody>
 
----
+    <tr>
+      <td><strong>Cost Price (C.P.)</strong></td>
+      <td>The price at which an article is purchased.</td>
+    </tr>
 
-##### A. Gain
+    <tr>
+      <td><strong>Selling Price (S.P.)</strong></td>
+      <td>The price at which an article is sold.</td>
+    </tr>
 
-$$
-\text{Gain} = S.P. - C.P.
-$$
+    <tr>
+      <td><strong>Profit / Gain</strong></td>
+      <td>\(S.P. > C.P.\)</td>
+    </tr>
 
----
+    <tr>
+      <td><strong>Loss</strong></td>
+      <td>\(S.P. < C.P.\)</td>
+    </tr>
 
-##### B. Loss
+    <tr>
+      <td><strong>Gain</strong></td>
+      <td>
+        $$
+        \text{Gain} = S.P - C.P
+        $$
+      </td>
+    </tr>
 
-$$
-\text{Loss} = C.P. - S.P.
-$$
+    <tr>
+      <td><strong>Loss Formula</strong></td>
+      <td>
+        $$
+        \text{Loss} = C.P - S.P
+        $$
+      </td>
+    </tr>
 
----
+    <tr>
+      <td><strong>Gain%</strong></td>
+      <td>
+        $$
+        \text{Gain\%} =
+        \left(
+        \frac{\text{Gain}}{\text{C.P.}}
+        \right)\times100
+        $$
+      </td>
+    </tr>
 
-##### C. Gain%
+    <tr>
+      <td><strong>Loss%</strong></td>
+      <td>
+        $$
+        \text{Loss\%} =
+        \left(
+        \frac{\text{Loss}}{\text{C.P.}}
+        \right)\times100
+        $$
+      </td>
+    </tr>
 
-$$
-\text{Gain\%}
-=
-\left(
-\frac{\text{Gain}}{\text{C.P.}}
-\right)
-\times 100
-$$
+    <tr>
+      <td><strong>Selling Price Formula (Gain)</strong></td>
+      <td>
+        $$
+        S.P =
+        \left(
+        \frac{100+\text{Gain\%}}{100}
+        \right)\times C.P
+        $$
+      </td>
+    </tr>
 
----
+    <tr>
+      <td><strong>Selling Price Formula (Loss)</strong></td>
+      <td>
+        $$
+        S.P =
+        \left(
+        \frac{100-\text{Loss\%}}{100}
+        \right)\times C.P
+        $$
+      </td>
+    </tr>
 
-##### D. Loss%
+    <tr>
+      <td><strong>Cost Price Formula (Gain)</strong></td>
+      <td>
+        $$
+        C.P =
+        \left(
+        \frac{100}{100+\text{Gain\%}}
+        \right)\times S.P
+        $$
+      </td>
+    </tr>
 
-$$
-\text{Loss\%}
-=
-\left(
-\frac{\text{Loss}}{\text{C.P.}}
-\right)
-\times 100
-$$
+    <tr>
+      <td><strong>Cost Price Formula (Loss)</strong></td>
+      <td>
+        $$
+        C.P =
+        \left(
+        \frac{100}{100-\text{Loss\%}}
+        \right)\times S.P
+        $$
+      </td>
+    </tr>
 
----
+    <tr>
+      <td><strong>If Gain is \(x\%\)</strong></td>
+      <td>
+        $$
+        S.P = (100+x)\% \text{ of C.P.}
+        $$
+      </td>
+    </tr>
 
-##### E. Selling Price Formula (Gain)
+    <tr>
+      <td><strong>If Loss is \(x\%\)</strong></td>
+      <td>
+        $$
+        S.P = (100-x)\% \text{ of C.P.}
+        $$
+      </td>
+    </tr>
 
-$$
-S.P.
-=
-\left(
-\frac{100 + \text{Gain\%}}{100}
-\right)
-\times C.P.
-$$
+    <tr>
+      <td><strong>Equal Gain and Loss on Similar Items</strong></td>
+      <td>
+        $$
+        \text{Net Loss\%} = \frac{x^2}{100}
+        $$
+      </td>
+    </tr>
 
----
+    <tr>
+      <td><strong>False Weight at Cost Price</strong></td>
+      <td>
+        $$
+        \text{Gain\%} =
+        \left(
+        \frac{\text{Error}}
+        {\text{True Value}-\text{Error}}
+        \right)\times100
+        $$
+      </td>
+    </tr>
 
-##### F. Selling Price Formula (Loss)
+    <tr>
+      <td><strong>Claimed \(x\%\) Profit with \(y\%\) Less Weight</strong></td>
+      <td>
+        $$
+        \text{Gain\%} =
+        \left(
+        \frac{x+y}{100-y}
+        \right)\times100
+        $$
+      </td>
+    </tr>
 
-$$
-S.P.
-=
-\left(
-\frac{100 - \text{Loss\%}}{100}
-\right)
-\times C.P.
-$$
+    <tr>
+      <td><strong>Claimed \(x\%\) Loss with \(y\%\) Less Weight</strong></td>
+      <td>
+        $$
+        \text{Net Gain/Loss\%} =
+        \left(
+        \frac{y-x}{100-y}
+        \right)\times100
+        $$
+      </td>
+    </tr>
 
----
+    <tr>
+      <td><strong>Result Interpretation</strong></td>
+      <td>
+        Positive Result → Gain <br />
+        Negative Result → Loss
+      </td>
+    </tr>
 
-##### G. Cost Price Formula (Gain)
-
-$$
-C.P.
-=
-\left(
-\frac{100}{100 + \text{Gain\%}}
-\right)
-\times S.P.
-$$
-
----
-
-##### H. Cost Price Formula (Loss)
-
-$$
-C.P.
-=
-\left(
-\frac{100}{100 - \text{Loss\%}}
-\right)
-\times S.P.
-$$
-
----
-
-##### I.
-
-If gain is \(x\%\), then
-
-$$
-S.P. = (100 + x)\% \text{ of C.P.}
-$$
-
----
-
-##### J.
-
-If loss is \(x\%\), then
-
-$$
-S.P. = (100 - x)\% \text{ of C.P.}
-$$
-
----
-
-##### K.
-
-When two similar items are sold, one at \(x\%\) gain and the other at \(x\%\) loss, then
-
-$$
-\text{Net Loss\%}
-=
-\frac{x^2}{100}
-$$
-
----
-
-##### L.
-
-If a trader sells at cost price but uses false weight, then
-
-$$
-\text{Gain\%}
-=
-\left(
-\frac{\text{Error}}
-{\text{True Value} - \text{Error}}
-\right)
-\times 100
-$$
-
----
-
-##### M.
-
-If a trader claims \(x\%\) profit but uses \(y\%\) less weight, then
-
-$$
-\text{Gain\%}
-=
-\left(
-\frac{x + y}{100 - y}
-\right)
-\times 100
-$$
-
----
-
-##### N.
-
-If a trader claims \(x\%\) loss but uses \(y\%\) less weight, then
-
-$$
-\text{Net Gain/Loss\%}
-=
-\left(
-\frac{y - x}{100 - y}
-\right)
-\times 100
-$$
-
-Positive result → Gain
-
-Negative result → Loss
+  </tbody>
+</table>
 
 ### Example Problems
 
@@ -957,189 +985,249 @@ Profit%:
 
 ## Simple and Compound Interest
 
-### A. Simple Interest
-
-##### **1. Principal (P)**
-
-The money borrowed or lent for a certain period is called the principal.
-
----
-
-##### **2. Interest**
-
-The extra money paid for using someone else’s money is called interest.
-
----
-
-##### **3. Simple Interest (S.I.)**
-
-If interest is calculated uniformly on the principal for the entire time, it is called simple interest.
-<small>
-Let:
-\(P\) = Principal
-\(R\) = Rate of interest per annum (%)
-\(T\) = Time (in years)
-</small>
----
-
-##### **4. Simple Interest**
-$$
-S.I.
-=
-\frac{P \times R \times T}{100}
-$$
-
----
-
-##### **5. Principal**
-
-$$
-P
-=
-\frac{S.I. \times 100}{R \times T}
-$$
-
----
-
-###### **6. Rate**
-
-$$
-R
-=
-\frac{S.I. \times 100}{P \times T}
-$$
-
----
-
-###### **7. Time**
-
-$$
-T
-=
-\frac{S.I. \times 100}{P \times R}
-$$
-
----
-
-###### **8. Amount**
-
-$$
-A = P + S.I.
-$$
-
-##### **9. Compound Interest**
-<small>
-Let:
-\(P\) = Principal
-
-\(R\) = Rate of interest per annum (%)
-
-\(n\) = Time (in years) 
-</small>
-
----
-
-##### **10. Compounded Annually**
-
-$$
-A
-=
-P
-\left(
-1 + \frac{R}{100}
-\right)^n
-$$
-
----
-
-##### **11. Compounded Half-Yearly**
-
-$$
-A
-=
-P
-\left(
-1 + \frac{(R/2)}{100}
-\right)^{2n}
-$$
-
----
-
-##### **12. Compounded Quarterly**
-
-$$
-A
-=
-P
-\left(
-1 + \frac{(R/4)}{100}
-\right)^{4n}
-$$
-
----
-
-###### **13. Fractional Time**
-
-When interest is compounded annually but time is fractional (e.g., 3½ years):
-
-$$
-A
-=
-P
-\left(
-1 + \frac{R}{100}
-\right)^3
-\left(
-1 + \frac{(R/2)}{100}
-\right)
-$$
-
----
-
-##### **14. Different Rates for Different Years**
-
-If rates are:
-
-\(R_1\%\), \(R_2\%\), \(R_3\%\)
-
-then
-
-$$
-A
-=
-P
-\left(
-1 + \frac{R_1}{100}
-\right)
-\left(
-1 + \frac{R_2}{100}
-\right)
-\left(
-1 + \frac{R_3}{100}
-\right)
-$$
-
----
-
-##### **15. Present Worth**
-
-Present Worth (\(P\)) of ₹x due after n years:
-
-$$
-P
-=
-\frac{x}
-{
-\left(
-1 + \frac{R}{100}
-\right)^n
+<style>{`
+.interest-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 15px;
 }
-$$
+
+.interest-table th {
+  background: #0f172a;
+  color: white;
+  padding: 12px;
+  border: 1px solid #334155;
+  text-align: left;
+}
+
+.interest-table td {
+  padding: 12px;
+  border: 1px solid #334155;
+  vertical-align: top;
+}
+
+.interest-table tr:nth-child(even) {
+  background-color: rgba(148, 163, 184, 0.08);
+}
+
+.interest-table tr:hover {
+  background-color: rgba(59, 130, 246, 0.12);
+  transition: 0.3s;
+}
+`}</style>
+
+#### Simple and Compound Interest Table
+
+<table className="interest-table">
+
+  <thead>
+    <tr>
+      <th>Concept</th>
+      <th>Formula / Definition</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <tr>
+      <td><strong>Principal (P)</strong></td>
+      <td>
+        The money borrowed or lent for a certain period is called the principal.
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Interest</strong></td>
+      <td>
+        The extra money paid for using someone else’s money is called interest.
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Simple Interest (S.I.)</strong></td>
+      <td>
+        If interest is calculated uniformly on the principal for the entire time,
+        it is called simple interest.
+        <br /><br />
+
+        Let:
+        <br />
+        \(P\) = Principal <br />
+        \(R\) = Rate of interest per annum (%) <br />
+        \(T\) = Time (in years)
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Simple Interest Formula</strong></td>
+      <td>
+        $$
+        S.I =
+        \frac{P \times R \times T}{100}
+        $$
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Principal Formula</strong></td>
+      <td>
+        $$
+        P =
+        \frac{S.I \times 100}{R \times T}
+        $$
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Rate Formula</strong></td>
+      <td>
+        $$
+        R =
+        \frac{S.I \times 100}{P \times T}
+        $$
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Time Formula</strong></td>
+      <td>
+        $$
+        T =
+        \frac{S.I \times 100}{P \times R}
+        $$
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Amount</strong></td>
+      <td>
+        $$
+        A = P + S.I
+        $$
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Compound Interest</strong></td>
+      <td>
+        Let:
+        <br />
+        \(P\) = Principal <br />
+        \(R\) = Rate of interest per annum (%) <br />
+        \(n\) = Time (in years)
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Compounded Annually</strong></td>
+      <td>
+        $$
+        A =
+        P
+        \left(
+        1 + \frac{R}{100}
+        \right)^n
+        $$
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Compounded Half-Yearly</strong></td>
+      <td>
+        $$
+        A =
+        P
+        \left(
+        1 + \frac{(R/2)}{100}
+        \right)^{2n}
+        $$
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Compounded Quarterly</strong></td>
+      <td>
+        $$
+        A =
+        P
+        \left(
+        1 + \frac{(R/4)}{100}
+        \right)^{4n}
+        $$
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Fractional Time</strong></td>
+      <td>
+        When interest is compounded annually but time is fractional.
+        <br /><br />
+
+        $$
+        A =
+        P
+        \left(
+        1 + \frac{R}{100}
+        \right)^3
+        \left(
+        1 + \frac{(R/2)}{100}
+        \right)
+        $$
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Different Rates for Different Years</strong></td>
+      <td>
+        If rates are:
+        <br />
+        \(R_1\%\), \(R_2\%\), \(R_3\%\)
+
+        <br /><br />
+
+        $$
+        A =
+        P
+        \left(
+        1 + \frac{R_1}{100}
+        \right)
+        \left(
+        1 + \frac{R_2}{100}
+        \right)
+        \left(
+        1 + \frac{R_3}{100}
+        \right)
+        $$
+      </td>
+    </tr>
+
+    <tr>
+      <td><strong>Present Worth</strong></td>
+      <td>
+        Present Worth (\(P\)) of ₹x due after n years:
+
+        $$
+        P =
+        \frac{x}
+        {
+        \left(
+        1 + \frac{R}{100}
+        \right)^n
+        }
+        $$
+      </td>
+    </tr>
+
+  </tbody>
+
+</table>
 
 ### B. Example Problems
 ```text
 Ex. 1
-A certain sum of money becomes three times of itself in 20 years at simple interest. In how many years does it become double of itself at the same rate?
+A certain sum of money becomes three times of itself in 20 years at simple interest.
+ In how many years does it become double of itself at the same rate?
 
 Solution:
 Let Principal = P

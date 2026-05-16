@@ -170,6 +170,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { label: "Overview", link: "/eee/week-1/" },
+                { label: "C Programming", link: "/ece/week-1/cprogramming" },
                 { label: "Digital Electronics", link: "/eee/week-1/digital-logic" },
                 { label: "Network Analysis", link: "/eee/week-1/network-analysis" },
                 { label: "Power Electronics", link: "/eee/week-1/power-generation" },
