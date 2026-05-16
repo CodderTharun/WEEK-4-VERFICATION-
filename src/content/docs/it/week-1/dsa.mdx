@@ -893,13 +893,13 @@ It is one of the most important optimization techniques in Data Structures and A
 
 ---
 
-# Problem Statement
+##### Problem Statement
 
 Given an array containing positive and negative integers, find the contiguous subarray with the maximum possible sum.
 
 ---
 
-# Working Principle
+#### 1. Working Principle
 
 Kadane’s Algorithm works on the idea that:
 
@@ -920,24 +920,33 @@ At each step:
 
 ---
 
-# Steps of Kadane’s Algorithm
+####  2. Steps of Kadane’s Algorithm
 
-1. Initialize:
-   - Current Sum = 0
-   - Maximum Sum = smallest possible value
+##### Kadane’s Algorithm
 
-2. Traverse the array element by element.
+```text
+Step 1: Initialize
+    currentSum = 0
+    maxSum = -∞
 
-3. Add the current element to the current sum.
+Step 2: Traverse the array from left to right
 
-4. Update the maximum sum if the current sum is greater.
+Step 3: Add current element to currentSum
+    currentSum = currentSum + arr[i]
 
-5. If the current sum becomes negative:
-   - Reset current sum to `0`.
+Step 4: Update maxSum if currentSum is greater
+    if currentSum > maxSum
+        maxSum = currentSum
 
----
+Step 5: If currentSum becomes negative
+    currentSum = 0
 
-# Advantages of Kadane’s Algorithm
+Step 6: Repeat until end of array
+
+Step 7: Return maxSum
+```
+
+#### 3. Advantages of Kadane’s Algorithm
 
 - Very efficient
 - Simple implementation
@@ -947,7 +956,7 @@ At each step:
 
 ---
 
-# Applications
+#### 4. Applications
 
 Kadane’s Algorithm is widely used in:
 
@@ -960,7 +969,7 @@ Kadane’s Algorithm is widely used in:
 
 ---
 
-# Time Complexity
+#### 5. Time Complexity
 
 | Operation | Complexity |
 |---|---|
@@ -969,7 +978,7 @@ Kadane’s Algorithm is widely used in:
 
 ---
 
-# Difference Between Brute Force and Kadane’s Algorithm
+#### 6. Difference Between Brute Force and Kadane’s Algorithm
 
 | Brute Force Method | Kadane’s Algorithm |
 |---|---|
@@ -979,14 +988,13 @@ Kadane’s Algorithm is widely used in:
 
 ---
 
-# Important Note
+##### Important Note
 
 Kadane’s Algorithm works efficiently for arrays containing both positive and negative numbers.
-
 In cases where all elements are negative, a modified version is used to correctly identify the maximum element as the answer.
 
 ---
-# Hashing (HashMap / Set)
+### E. Hashing (HashMap / Set)
 
 **Hashing** is a technique used to store, search, and access data efficiently using a special function called a **hash function**.
 
@@ -999,7 +1007,7 @@ Hashing is commonly implemented using:
 
 ---
 
-# Working Principle
+#### 1. Working Principle
 
 In hashing, data is stored using a **key-value mechanism**.
 
@@ -1009,7 +1017,7 @@ This allows direct access to elements without traversing the entire data structu
 
 ---
 
-# HashMap
+#### 2. HashMap
 
 A **HashMap** stores data in the form of:
 
@@ -1021,7 +1029,7 @@ Each key is unique and is mapped to a corresponding value.
 
 ---
 
-## Features of HashMap
+##### a. Features of HashMap
 
 - Stores key-value pairs
 - Keys are unique
@@ -1031,7 +1039,7 @@ Each key is unique and is mapped to a corresponding value.
 
 ---
 
-## Applications of HashMap
+#### b. Applications of HashMap
 
 HashMap is commonly used in:
 
@@ -1043,7 +1051,7 @@ HashMap is commonly used in:
 
 ---
 
-# HashSet
+#### 5. HashSet
 
 A **HashSet** stores only unique elements.
 
@@ -1051,7 +1059,7 @@ Duplicate values are not allowed.
 
 ---
 
-## Features of HashSet
+##### a. Features of HashSet
 
 - Stores unique elements only
 - No duplicate values
@@ -1060,7 +1068,7 @@ Duplicate values are not allowed.
 
 ---
 
-## Applications of HashSet
+##### b. Applications of HashSet
 
 HashSet is commonly used in:
 
@@ -1071,7 +1079,7 @@ HashSet is commonly used in:
 
 ---
 
-# Collision in Hashing
+##### c. Collision in Hashing
 
 Sometimes different keys may generate the same hash index. This situation is called a **collision**.
 
@@ -1082,7 +1090,7 @@ Collision handling techniques include:
 
 ---
 
-# Advantages of Hashing
+##### d. Advantages of Hashing
 
 - Fast insertion
 - Fast searching
@@ -1092,7 +1100,7 @@ Collision handling techniques include:
 
 ---
 
-# Time Complexity
+##### c. Time Complexity
 
 | Operation | Average Complexity |
 |---|---|
@@ -1104,7 +1112,7 @@ Worst-case complexity may become `O(n)` during excessive collisions.
 
 ---
 
-# Difference Between HashMap and HashSet
+##### d. Difference Between HashMap and HashSet
 
 | HashMap | HashSet |
 |---|---|
@@ -1114,7 +1122,7 @@ Worst-case complexity may become `O(n)` during excessive collisions.
 
 ---
 
-# Applications of Hashing
+##### e. Applications of Hashing
 
 Hashing is widely used in:
 
@@ -1128,7 +1136,7 @@ Hashing is widely used in:
 
 ---
 
-# Binary Search on Arrays
+### D. Binary Search on Arrays
 
 **Binary Search** is an efficient searching algorithm used to find an element in a **sorted array**.
 
@@ -1137,7 +1145,7 @@ It is one of the most important searching techniques in Data Structures and Algo
 
 ---
 
-# Working Principle
+#### 1. Working Principle
 
 Binary Search works on the concept of dividing the array into two parts.
 The algorithm compares the target element with the middle element of the array.
@@ -1155,7 +1163,7 @@ This process continues until the element is found or the search space becomes em
 
 ---
 
-# Requirement for Binary Search
+#### 2. Requirement for Binary Search
 
 Binary Search works only on:
 
@@ -1166,21 +1174,40 @@ If the data is not sorted, Binary Search cannot be applied correctly.
 
 ---
 
-# Steps of Binary Search
+#### 3. Steps of Binary Search
 
-1. Find the middle element of the array.
-2. Compare the middle element with the target value.
-3. If both are equal:
-   - Return the result.
-4. If the target is smaller:
-   - Search the left half.
-5. If the target is greater:
-   - Search the right half.
-6. Repeat the process until the element is found.
+##### Binary Search Algorithm
 
+```text
+Step 1: Initialize
+    low = 0
+    high = n - 1
+
+Step 2: Repeat while low <= high
+
+Step 3: Find middle element
+    mid = (low + high) / 2
+
+Step 4: Compare middle element with target
+
+    if arr[mid] == target
+        return mid
+
+Step 5: If target is smaller
+    high = mid - 1
+
+Step 6: If target is greater
+    low = mid + 1
+
+Step 7: Repeat until element is found
+        or low > high
+
+Step 8: If element is not found
+    return -1
+```
 ---
 
-# Advantages of Binary Search
+#### 4. Advantages of Binary Search
 
 - Very fast searching technique
 - Reduces search space efficiently
@@ -1189,7 +1216,7 @@ If the data is not sorted, Binary Search cannot be applied correctly.
 
 ---
 
-# Applications of Binary Search
+#### 5. Applications of Binary Search
 
 Binary Search is widely used in:
 
@@ -1203,7 +1230,7 @@ Binary Search is widely used in:
 
 ---
 
-# Time Complexity
+#### 6. Time Complexity
 
 | Operation | Complexity |
 |---|---|
@@ -1213,7 +1240,7 @@ Binary Search is widely used in:
 
 ---
 
-# Difference Between Linear Search and Binary Search
+#### 7. Difference Between Linear Search and Binary Search
 
 | Linear Search | Binary Search |
 |---|---|
@@ -1224,13 +1251,14 @@ Binary Search is widely used in:
 
 ---
 
-# Important Note
+###### Important Note
 
 The efficiency of Binary Search comes from reducing the search space by half in every step.
 For this reason, Binary Search is significantly faster than linear search for large sorted datasets.
 
+---
 
-# LEET CODE PRACTICE PROBLEMS
+## Leet Code Practice Problems
 ---
 <div className="leetcode-grid">
 
@@ -1329,8 +1357,11 @@ For this reason, Binary Search is significantly faster than linear search for la
 	display: block;
 	padding: 18px;
 	border-radius: 14px;
-	background: #111827;
-	border: 1px solid #2d3748;
+
+	/* Theme Adaptive Colors */
+	background: var(--sl-color-bg);
+	border: 1px solid var(--sl-color-gray-5);
+
 	text-decoration: none;
 	transition: all 0.3s ease;
 }
@@ -1338,25 +1369,25 @@ For this reason, Binary Search is significantly faster than linear search for la
 .leetcode-card h3 {
 	margin: 0;
 	font-size: 16px;
-	color: #93c5fd;
+	color: var(--sl-color-text-accent);
 }
 
 .leetcode-card:hover {
-	background: #1f2937;
+	background: var(--sl-color-bg-nav);
 	transform: translateY(-5px);
-	box-shadow: 0 8px 20px rgba(0,0,0,0.35);
-	border-color: #3b82f6;
+	box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+	border-color: var(--sl-color-accent);
 }
 
 .leetcode-card:hover h3 {
-	color: #dbeafe;
+	color: var(--sl-color-white);
 }
 `}
 </style>
 
 
-# Algorithms
-## Binary Search
+## Algorithms
+### A. Binary Search
 
 **Binary Search** is an efficient searching algorithm used to find an element in a **sorted array**.
 
@@ -1364,21 +1395,21 @@ Instead of checking elements one by one, Binary Search repeatedly divides the se
 
 ---
 
-# Working Principle
+#### 1. Working Principle
 
-1. Find the middle element of the array.
-2. Compare the target element with the middle element.
-3. If both are equal:
+a. Find the middle element of the array.
+b. Compare the target element with the middle element.
+c. If both are equal:
    - Element is found.
-4. If the target is smaller:
+d. If the target is smaller:
    - Search the left half.
-5. If the target is greater:
+e. If the target is greater:
    - Search the right half.
-6. Repeat the process until the element is found or the search space becomes empty.
+f. Repeat the process until the element is found or the search space becomes empty.
 
 ---
 
-# Requirement
+#### 2. Requirement
 
 Binary Search works only on:
 
@@ -1387,7 +1418,7 @@ Binary Search works only on:
 
 ---
 
-# Advantages
+#### 3. Advantages
 
 - Faster than linear search
 - Reduces search space efficiently
@@ -1396,7 +1427,7 @@ Binary Search works only on:
 
 ---
 
-# Applications
+#### 4. Applications
 
 Binary Search is commonly used in:
 
@@ -1408,7 +1439,7 @@ Binary Search is commonly used in:
 
 ---
 
-# Time Complexity
+#### 5. Time Complexity
 
 | Case | Complexity |
 |---|---|
@@ -1418,7 +1449,7 @@ Binary Search is commonly used in:
 
 ---
 
-# Difference Between Linear Search and Binary Search
+#### 6. Difference Between Linear Search and Binary Search
 
 | Linear Search | Binary Search |
 |---|---|
@@ -1427,7 +1458,7 @@ Binary Search is commonly used in:
 | Time Complexity: O(n) | Time Complexity: O(log n) |
 
 ---
-#### CODE
+#### Code
 <Tabs>
   <TabItem label="C++">
 
@@ -1545,8 +1576,7 @@ else:
   </TabItem>
 </Tabs>
 
-
-# Merge Sort
+### B. Merge Sort
 
 **Merge Sort** is a divide-and-conquer sorting algorithm used to sort elements efficiently.
 
@@ -1556,28 +1586,28 @@ Merge Sort is known for its stable and efficient performance on large datasets.
 
 ---
 
-# Working Principle
+#### 1. Working Principle
 
 Merge Sort works in two main steps:
 
-1. **Divide**
+a. **Divide**
    - Split the array into two halves repeatedly until each subarray contains only one element.
 
-2. **Merge**
+b. **Merge**
    - Merge the smaller sorted subarrays back together to form a completely sorted array.
 
 ---
 
-# Steps of Merge Sort
+#### 2. Steps of Merge Sort
 
-1. Divide the array into two equal halves.
-2. Recursively apply Merge Sort on both halves.
-3. Merge the sorted halves into a single sorted array.
-4. Repeat until the entire array becomes sorted.
+a. Divide the array into two equal halves.
+b. Recursively apply Merge Sort on both halves.
+c. Merge the sorted halves into a single sorted array.
+d. Repeat until the entire array becomes sorted.
 
 ---
 
-# Advantages of Merge Sort
+#### 3. Advantages of Merge Sort
 
 - Efficient for large datasets
 - Stable sorting algorithm
@@ -1587,14 +1617,14 @@ Merge Sort works in two main steps:
 
 ---
 
-# Disadvantages of Merge Sort
+#### 4. Disadvantages of Merge Sort
 
 - Requires extra memory for merging
 - Slightly slower for small datasets compared to simpler algorithms
 
 ---
 
-# Applications
+#### 5. Applications
 
 Merge Sort is widely used in:
 
@@ -1606,7 +1636,7 @@ Merge Sort is widely used in:
 
 ---
 
-# Time Complexity
+#### 6. Time Complexity
 
 | Case | Complexity |
 |---|---|
@@ -1616,7 +1646,7 @@ Merge Sort is widely used in:
 
 ---
 
-# Space Complexity
+#### 7. Space Complexity
 
 | Complexity |
 |---|
@@ -1624,7 +1654,7 @@ Merge Sort is widely used in:
 
 ---
 
-# Difference Between Merge Sort and Bubble Sort
+#### 8. Difference Between Merge Sort and Bubble Sort
 
 | Merge Sort | Bubble Sort |
 |---|---|
@@ -1847,7 +1877,7 @@ print(arr)`}
   </TabItem>
 </Tabs>
 
-# Quick Sort
+### C. Quick Sort
 
 **Quick Sort** is an efficient divide-and-conquer sorting algorithm used to sort elements in an array.
 
@@ -1860,31 +1890,31 @@ The same process is recursively applied to the left and right subarrays until th
 
 ---
 
-# Working Principle
+#### 1. Working Principle
 
 Quick Sort works in two main steps:
 
-1. **Partition**
+a. **Partition**
    - Choose a pivot element.
    - Rearrange elements around the pivot.
 
-2. **Recursion**
+b. **Recursion**
    - Recursively apply Quick Sort on the left and right subarrays.
 
 ---
 
-# Steps of Quick Sort
+#### 2.  Steps of Quick Sort
 
-1. Select a pivot element.
-2. Partition the array around the pivot.
-3. Place smaller elements on the left side.
-4. Place larger elements on the right side.
-5. Recursively repeat the process for subarrays.
-6. Continue until the array becomes completely sorted.
+a. Select a pivot element.
+b. Partition the array around the pivot. 
+c. Place smaller elements on the left side. 
+d. Place larger elements on the right side. 
+e. Recursively repeat the process for subarrays. 
+f. Continue until the array becomes completely sorted.
 
 ---
 
-# Pivot Selection
+#### 3. Pivot Selection
 
 The pivot can be selected in different ways:
 
@@ -1897,7 +1927,7 @@ Choosing a good pivot improves performance.
 
 ---
 
-# Advantages of Quick Sort
+#### 4. Advantages of Quick Sort
 
 - Very fast in practice
 - Efficient for large datasets
@@ -1907,7 +1937,7 @@ Choosing a good pivot improves performance.
 
 ---
 
-# Disadvantages of Quick Sort
+#### 5. Disadvantages of Quick Sort
 
 - Worst-case performance can be slow
 - Not a stable sorting algorithm
@@ -1915,7 +1945,7 @@ Choosing a good pivot improves performance.
 
 ---
 
-# Applications
+#### 6. Applications
 
 Quick Sort is widely used in:
 
@@ -1927,7 +1957,7 @@ Quick Sort is widely used in:
 
 ---
 
-# Time Complexity
+#### 7. Time Complexity
 
 | Case | Complexity |
 |---|---|
@@ -1939,7 +1969,7 @@ Worst case occurs when poor pivots are repeatedly selected.
 
 ---
 
-# Space Complexity
+#### 8. Space Complexity
 
 | Complexity |
 |---|
@@ -1947,7 +1977,7 @@ Worst case occurs when poor pivots are repeatedly selected.
 
 ---
 
-# Difference Between Merge Sort and Quick Sort
+#### 9. Difference Between Merge Sort and Quick Sort
 
 | Merge Sort | Quick Sort |
 |---|---|
@@ -2119,7 +2149,7 @@ print(arr)`}
   </TabItem>
 </Tabs>
 
-# Maximum Subarray
+### D.  Maximum Subarray
 
 The **Maximum Subarray Problem** is a common problem in Data Structures and Algorithms where the objective is to find the contiguous subarray with the largest possible sum.
 
@@ -2129,13 +2159,13 @@ This problem is efficiently solved using **Kadane’s Algorithm**.
 
 ---
 
-# Problem Statement
+##### Problem Statement
 
 Given an array containing positive and negative integers, find the contiguous subarray with the maximum sum.
 
 ---
 
-# Working Principle
+#### 1. Working Principle
 
 The idea is to continuously calculate the running sum of elements.
 
@@ -2145,7 +2175,7 @@ The idea is to continuously calculate the running sum of elements.
 
 ---
 
-# Key Concept
+#### 2. Key Concept
 
 At every position:
 
@@ -2157,7 +2187,7 @@ This helps avoid carrying unnecessary negative contributions.
 
 ---
 
-# Advantages
+#### 3.  Advantages
 
 - Efficient solution
 - Uses single array traversal
@@ -2166,7 +2196,7 @@ This helps avoid carrying unnecessary negative contributions.
 
 ---
 
-# Applications
+#### 4. Applications
 
 The Maximum Subarray concept is widely used in:
 
@@ -2178,7 +2208,7 @@ The Maximum Subarray concept is widely used in:
 
 ---
 
-# Time Complexity
+#### 5. Time Complexity
 
 | Operation | Complexity |
 |---|---|
@@ -2187,7 +2217,7 @@ The Maximum Subarray concept is widely used in:
 
 ---
 
-# Difference Between Brute Force and Kadane’s Algorithm
+#### 6. Difference Between Brute Force and Kadane’s Algorithm
 
 | Brute Force | Kadane’s Algorithm |
 |---|---|
@@ -2297,326 +2327,3 @@ print("Maximum Subarray Sum =", max_sum)`}
 </Tabs>
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
