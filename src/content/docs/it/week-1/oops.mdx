@@ -10,7 +10,7 @@ import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
 Procedural Oriented Programming (POP) is a programming paradigm that focuses on procedures (functions) as the main building blocks of a program.
 It organizes code as a sequence of instructions that operate on data.
 
-### Features of POP
+### A. Features of POP
 
 - Programs are divided into small reusable functions.
 - Start with a main problem → break it into smaller sub-problems (functions).
@@ -18,26 +18,27 @@ It organizes code as a sequence of instructions that operate on data.
 - Data can be shared across functions using global variables.
 - Data is often exposed to multiple functions.
 
-### Advantages of POP
+### B. Advantages of POP
 
 - Simple and easy to understand.
 - Suitable for small programs.
 - Code reuse through functions.
 - Faster execution (less overhead than OOP).
 
-### Disadvantages of POP
+### C. Disadvantages of POP
 
 - Difficult to manage large programs.
 - Data is not secure (no encapsulation).
 - Hard to modify and debug complex systems.
 - No real-world modeling.
 
+---
 
 ## Object Oriented Programming (OOP)
 
 OOPS is a programming approach that organizes code into objects, which contain data and methods, to make programs more structured, reusable, and easy to understand.
 
-### Features of OOP
+### A. Features of OOP
 
 - Combining data and methods into a single unit (class) and restricting access.
 - Hiding complex details and showing only essential features.
@@ -47,7 +48,7 @@ OOPS is a programming approach that organizes code into objects, which contain d
 - Protecting data from unauthorized access.
 
 
-### Advantages of OOP
+### B. Advantages of OOP
 
 - Code can be reused using inheritance.
 - The program is divided into small parts (classes), making it easy to manage.
@@ -57,7 +58,7 @@ OOPS is a programming approach that organizes code into objects, which contain d
 - Represents real-life objects clearly.
 
 
-### Disadvantages of OOP
+### C. Disadvantages of OOP
 
 - Hard to understand for beginners.
 - Requires extra memory for objects and classes.
@@ -65,7 +66,7 @@ OOPS is a programming approach that organizes code into objects, which contain d
 - Extra effort needed for design (classes, objects).
 - Simple problems do not need OOP structure.
 
-### Characteristics of OOP
+### D. Characteristics of OOP
 
 - Class
 - Object
@@ -73,6 +74,8 @@ OOPS is a programming approach that organizes code into objects, which contain d
 - Abstraction
 - Polymorphism
 - Inheritance
+
+---
 
 ## Difference Between POP and OOP
 
@@ -84,10 +87,11 @@ OOPS is a programming approach that organizes code into objects, which contain d
 | Reusability | Limited | High |
 | Example Languages | C, Pascal | Java, Python, C++ |
 
+---
 
 ## Class and Object
 
-### Class
+### A. Class
 
 A class is a user-defined blueprint or prototype from which objects are created.
 It represents the set of properties or methods that are common to all objects of one type.
@@ -101,26 +105,26 @@ Using classes, you can create multiple objects with the same behavior instead of
 
 
 
-### Object
+### B. Object
 
 An object is a basic unit of Object-Oriented Programming that represents real-life entities.
 A typical C++ program creates many objects, which interact with each other by invoking methods.
 The objects are what perform your code and are visible to the user.
 
-#### Features of an Object
+####  Features of an Object
 
-#### 1. State
+##### 1. State
 It is represented by the attributes of an object.
 It reflects the properties of an object.
 
-#### 2. Behavior
+##### 2. Behavior
 It is represented by the methods of an object.
 It reflects the response of an object to other objects.
 
-#### 3. Identity
+##### 3. Identity
 It is a unique name given to an object that enables it to interact with other objects.
 
-#### 4. Method
+##### 4. Method
 A method is a collection of statements that perform some specific task and return the result to the caller.
 
 <br />
@@ -137,11 +141,13 @@ A method is a collection of statements that perform some specific task and retur
 
 <br />
 
+---
+
 ## Encapsulation
 
 The idea of encapsulation is to bind the data members and methods into a single unit.
 
-### Features of Encapsulation
+### A. Features of Encapsulation
 
 - Helps in better maintainability, readability, and usability.
 - Avoids explicitly passing data members to methods.
@@ -163,13 +169,13 @@ The idea of encapsulation is to bind the data members and methods into a single 
 
 <br />
 
-### Real-Life Example
+### B. Real-Life Example
 
 You can use an ATM machine, but the internal details are hidden.
 
 
 
-### Encapsulation Example
+### C. Encapsulation Example
 
 <Tabs>
   <TabItem label="Java">
@@ -235,7 +241,7 @@ Data is hidden and accessed using getter/setter methods.
 
 
 
-### Advantages of Encapsulation
+### D. Advantages of Encapsulation
 
 - Restricts direct access to private variables.
 - Protects sensitive data from unauthorized access.
@@ -246,13 +252,13 @@ Data is hidden and accessed using getter/setter methods.
 
 
 
-### Disadvantages of Encapsulation
+### E. Disadvantages of Encapsulation
 
 - Writing getter and setter methods increases code length.
 - Accessing data through methods adds slight performance overhead.
 - Too much restriction may limit flexibility.
 
-
+---
 
 ## Abstraction
 
@@ -278,13 +284,13 @@ It means showing only the important details and hiding the complex implementatio
 
 <br />
 
-### Real-Life Example
+### A. Real-Life Example
 
 You drive the car (what), but you do not know how the engine works internally (how).
 
 
 
-### Abstraction Example
+### B. Abstraction Example
 
 <Tabs>
   <TabItem label="Java">
@@ -351,7 +357,7 @@ The abstract method defines what to do, not how.
 
 
 
-### Advantages of Abstraction
+### C. Advantages of Abstraction
 
 - Focus only on required details.
 - Makes code cleaner and easier to understand.
@@ -361,14 +367,14 @@ The abstract method defines what to do, not how.
 
 
 
-### Disadvantages of Abstraction
+### D. Disadvantages of Abstraction
 
 - Requires proper planning.
 - Abstract classes may feel confusing for beginners.
 - Can increase complexity if overused.
 - Indirect calls may slightly affect performance.
 
-
+---
 
 ## Inheritance
 
@@ -381,7 +387,7 @@ Inheritance allows:
 
 
 
-### Features of Inheritance
+### A. Features of Inheritance
 
 - One class can reuse properties of another class.
 - Child classes reuse parent class features.
@@ -390,7 +396,7 @@ Inheritance allows:
 
 
 
-### Inheritance Example
+### B. Inheritance Example
 
 <Tabs>
   <TabItem label="Java">
@@ -464,7 +470,7 @@ d.bark()`}
 Dog inherits properties of Animal.
 
 
-### Types of Inheritance
+### C. Types of Inheritance
 
 There are 5 types of inheritance.
 
@@ -505,12 +511,12 @@ Multilevel inheritance means a class is derived from another derived class, form
 
 #### 5. Hybrid Inheritance
 Hybrid inheritance occurs when two or more inheritance types are combined in one program.<br />
-  Example:
+ - Example:
     - Multiple inheritance
     - Multilevel inheritance
 
 
-
+---
 
 ## Polymorphism
 
@@ -531,7 +537,7 @@ The word polymorphism means "many forms".
 
 <br />
 
-### Compile-Time Polymorphism
+### A. Compile-Time Polymorphism
 
 Compile-time polymorphism is also known as:
 
@@ -741,12 +747,12 @@ c3.display()`}
 
 
 
-### Runtime Polymorphism
+### B. Runtime Polymorphism
 
 It is also known as late binding and dynamic polymorphism, the function call in runtime polymorphism is resolved at runtime in contrast with compile time polymorphism, where the compiler determines which function call to bind at compilation. Runtime polymorphism is implemented using function overriding with virtual functions.
 
 
-#### Function Overriding
+#### 1. Function Overriding
 
 Function Overriding occurs when a derived class defines one or more member functions of the base class. That base function is said to be overridden. The base class function must be declared as a virtual function for runtime polymorphism to happen.
 
@@ -845,7 +851,7 @@ d.sound()`}
 
 
 
-#### Advantages of Runtime Polymorphism
+#### 2. Advantages of Runtime Polymorphism
 
 - Increases flexibility in programs.
 - Supports method overriding.
@@ -854,8 +860,10 @@ d.sound()`}
 
 
 
-#### Disadvantages of Runtime Polymorphism
+#### 3. Disadvantages of Runtime Polymorphism
 
 - Slightly slower because method calls are resolved at runtime.
 - Increases program complexity.
 - Debugging may become difficult in large systems.
+
+---
