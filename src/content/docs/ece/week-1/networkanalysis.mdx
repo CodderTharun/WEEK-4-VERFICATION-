@@ -1,5 +1,5 @@
 ---
-title: Network Analysis - Week 1
+title: Network Analysis
 description: Network Analysis fundamentals
 ---
 
@@ -12,7 +12,7 @@ description: Network Analysis fundamentals
 3. **Resistance (R):** The capacity of a material to resist or prevent the flow of electric charge. It is measured in Ohms (Ω) and is always positive.  
 4. **Conductance (G):** The reciprocal of resistance (1/R), representing the ease with which current flows. It is measured in Siemens (S) or mhos (℧).
 
-![Fundamental Electrical](/public/ECE/NetworkAnalysis/fundamentals.png)
+![Fundamental Electrical](/ECE/NetworkAnalysis/fundamentals.png)
 
 **Ohm’s Law**
 
@@ -43,7 +43,7 @@ P = I<sup>2</sup>R
 
 **Kirchhoff’s Current Law (KCL)**
 
-![KCL](/public/ECE/NetworkAnalysis/W1-NT2.png)
+![KCL](/ECE/NetworkAnalysis/W1-NT2.png)
 
 At any moment, the algebraic sum of flowing currents through a point (or junction) in a network is Zero (0) or in any electrical network, the algebraic sum of the currents meeting at a point (or junction) is Zero (0). This law is also known as Point Law or Current law.  
 **Principle**: Conservation of Charge.
@@ -55,7 +55,7 @@ At any moment, the algebraic sum of flowing currents through a point (or junctio
 
 **Kirchhoff’s Voltage Law** 
 
-![KVL](/public/ECE/NetworkAnalysis/W1-NT3.png)
+![KVL](/ECE/NetworkAnalysis/W1-NT3.png)
 
 Kirchoff’s Voltage Law states that in any closed loop network being driven by a voltage source, the total voltage around the loop is equal to the sum of all the voltage drops within the same loop.  
 **Principle:** Conservation of Energy.
@@ -69,31 +69,31 @@ The 3-phase networks have three wires and usually, the networks are connected in
 
 **Delta Connected Network**
 
-![Delta Connected Network](/public/ECE/NetworkAnalysis/W1-NT4.png)
+![Delta Connected Network](/ECE/NetworkAnalysis/W1-NT4.png)
 
 The delta connected network is formed when three network branches or impedances are connected to form a loop in such a way that their heads are connected to the tails of the adjacent branch. The resultant network forms a triangle shape that resembles a Greek letter Delta “Δ” which is why it’s named after it. It is also known as π (pi) network because it resembles the letter after rearranging the branches. 
 
 **Star Connected Network**
 
-![Star Connected Network](/public/ECE/NetworkAnalysis/W1-NT5.png)
+![Star Connected Network](/ECE/NetworkAnalysis/W1-NT5.png)
 
 The Star connected network is formed when three branches or impedances are connected together at a common point. The other ends of the branch networks are free. The resultant shape resembles the letter “Y” which is why it is also called “Y” or “Wye” connected network. It is also known as “T” connected network due to its shape after rearranging the network branches. 
 
 **Network Transformation**
 
-![Network Transformation](/public/ECE/NetworkAnalysis/W1-NT6.png)
+![Network Transformation](/ECE/NetworkAnalysis/W1-NT6.png)
 
 
 **Thevenin’s Theorem**
 
 Any linear electric network or a complex circuit with current and voltage sources can be replaced by an equivalent circuit containing a single independent voltage source $V_{th}$ and a Series Resistance $R_{th}$.
 
-![Thevenin Theorem](/public/ECE/NetworkAnalysis/W1-NT7.png)
+![Thevenin Theorem](/ECE/NetworkAnalysis/W1-NT7.png)
 
 
 **Norton’s Theorem**
 
-![Norton Theorem](/public/ECE/NetworkAnalysis/W1-NT8.png)
+![Norton Theorem](/ECE/NetworkAnalysis/W1-NT8.png)
 
 
 Norton Theorem says that any circuitry which has many  power supplies and  resistors can be swapped with the circuit which has a current source and one  resistor in its parallel.  
@@ -114,7 +114,7 @@ R<sub>TH</sub> = R<sub>N</sub>
 
 **Maximum Power Transfer Theorem for DC Circuits**
 
-![Maximum Power Transfer Theorem](/public/ECE/NetworkAnalysis/W1-NT9.png)
+![Maximum Power Transfer Theorem](/ECE/NetworkAnalysis/W1-NT9.png)
 
 This theorem describes the condition for maximum power transfer from an active network to an external load resistance. It states that in a linear, active, bilateral DC network, the maximum power will be transferred from source to the load when the external load resistance equals the internal resistance of the source.
 
@@ -149,7 +149,7 @@ V<sub>2</sub> = Z<sub>21</sub> I<sub>1</sub> + Z<sub>22</sub> I<sub>2</sub>
 **Problems**
 
 1. In the series-parallell circuit shown in Fig 1.32, find (i) the voltage drop across the 4Ω resistor and (ii) the supply voltage.  
-![Fig 1.32](/public/ECE/NetworkAnalysis/W1-NT10.png)
+![Fig 1.32](/ECE/NetworkAnalysis/W1-NT10.png)
 
 
 ### **Solution:**
@@ -176,7 +176,7 @@ To find the supply voltage, we calculate the total resistance (R):
 
 2. Find the currents in various branches of the network shown in Fig. 1.46 
 
-![Fig. 1.46](/public/ECE/NetworkAnalysis/W1-NT11.png)
+![Fig. 1.46](/ECE/NetworkAnalysis/W1-NT11.png)
 
 Using Kirchhoff's Voltage Law (KVL) for the loop ABCDEFA \[cite: 5\]:  
 \-0.02I \- 0.02(I \- 80\) \- 0.03(I \+ 10\) \- 0.02(I \- 140\) \- 0.01(I \- 120\) \- 0.01(I \- 100\) \= 0 \[cite: 5\]  
@@ -192,7 +192,7 @@ Solving this equation yields **I \= 57.27A** \[cite: 5\]. The branch currents ar
 | I<sub>FA</sub> | I - 100 | -42.73A (or I<sub>AF</sub> = 42.73A) |
 
 3. In the network shown in Fig. 1.52, find the resistance between points A and B.
-![Fig. 1.52](/public/ECE/NetworkAnalysis/W1-NT12.png)
+![Fig. 1.52](/ECE/NetworkAnalysis/W1-NT12.png)
 
 Convert the three 4Ω resistances in delta (D, E, F) to star. Each star resistance is 1.33Ω.
 
@@ -208,7 +208,7 @@ The equivalent resistance between points A and B is calculated as:
 R<sub>AB</sub> \= \[(5.87 \+ 5.87) x 5.87\] / (5.87 \+ 5.87 \+ 5.87) \= 3.913Ω.
 
 4\. Find Thevenin's and Norton's equivalent circuits across terminals a and b for the circuit in Fig. 3.33, which contains a dependent voltage source (10i).
-![Figure 3.33](/public/ECE/NetworkAnalysis/W1-NT13.png)
+![Figure 3.33](/ECE/NetworkAnalysis/W1-NT13.png)
 
 
 **Thevenin Voltage (E₀):**  
@@ -230,7 +230,7 @@ I<sub>sc</sub> = I<sub>2</sub> + I<sub>1</sub> = 2 - 1 = 1A
 R₀ = E₀ / I<sub>sc</sub> = 16/1 = 16Ω
  
 5. Find the current through R<sub>L</sub> in the circuit shown in Fig. 3.15.  
-![Fig. 3.15](/public/ECE/NetworkAnalysis/W1-NT14.png)
+![Fig. 3.15](/ECE/NetworkAnalysis/W1-NT14.png)
 
 **Case 1: Only 4A current source present**  
 The 2Ω resistor is neglected as it is across a short circuit.  
