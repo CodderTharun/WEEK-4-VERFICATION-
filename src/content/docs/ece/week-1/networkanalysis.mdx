@@ -3,18 +3,18 @@ title: Network Analysis
 description: Network Analysis fundamentals
 ---
 
-## **Electrical Units and Measurement Conventions in DC Systems**
+### **Electrical Units and Measurement Conventions in DC Systems**
 
-### **Fundamental Electrical Quantities**
+### **A. Fundamental Electrical Quantities**
 
 1. **Voltage (V/E)**: Represents the potential energy required to move electrons between two points (nodes). It is measured in Volts (V).  
-2. **Current (I/i):** The continuous flow of electrical  charge through a circuit. It is measured in Amperes (A).  
+2. **Current (I/i):** The continuous flow of electrical charge through a circuit. It is measured in Amperes (A).  
 3. **Resistance (R):** The capacity of a material to resist or prevent the flow of electric charge. It is measured in Ohms (Ω) and is always positive.  
 4. **Conductance (G):** The reciprocal of resistance (1/R), representing the ease with which current flows. It is measured in Siemens (S) or mhos (℧).
 
 ![Fundamental Electrical](/ECE/NetworkAnalysis/fundamentals.png)
 
-### **Ohm’s Law**
+#### **1. Ohm’s Law**
 
 At a constant temperature, the current flowing through a conductor is directly proportional to the voltage across it.
 
@@ -32,16 +32,16 @@ P = V<sup>2</sup>/R
 
 P = I<sup>2</sup>R
 
-### **Common DC Circuit Theory Terms:**
+### **B. Common DC Circuit Theory Terms:**
 
-• Circuit – a circuit is a closed loop conducting path in which an electrical current flows.  
-• Path – a single line of connecting elements or sources.  
-• Node – a node is a junction, connection or terminal within a circuit were two or more circuit elements are connected or joined together giving a connection point between two or more branches. A node is indicated by a dot.  
-• Branch – a branch is a single or group of components such as resistors or a source which are connected between two nodes.  
-• Loop – a loop is a simple closed path in a circuit in which no circuit element or node is encountered more than once.  
-• Mesh – a mesh is a single closed loop series path that does not contain any other paths. There are no loops inside a mesh.
+1. Circuit – a circuit is a closed loop conducting path in which an electrical current flows.  
+2. Path – a single line of connecting elements or sources.  
+3. Node – a node is a junction, connection or terminal within a circuit were two or more circuit elements are connected or joined together giving a connection point between two or more branches. A node is indicated by a dot.  
+4. Branch – a branch is a single or group of components such as resistors or a source which are connected between two nodes.  
+5. Loop – a loop is a simple closed path in a circuit in which no circuit element or node is encountered more than once.  
+6. Mesh – a mesh is a single closed loop series path that does not contain any other paths. There are no loops inside a mesh.
 
-#### **Kirchhoff’s Current Law (KCL)**
+#### **1. Kirchhoff’s Current Law (KCL)**
 
 ![KCL](/ECE/NetworkAnalysis/W1-NT2.png)
 
@@ -53,7 +53,7 @@ At any moment, the algebraic sum of flowing currents through a point (or junctio
 ∑ I<sub>in</sub> = ∑ I<sub>out</sub>
 
 
-**Kirchhoff’s Voltage Law** 
+#### **2. Kirchhoff’s Voltage Law (KVL)**
 
 ![KVL](/ECE/NetworkAnalysis/W1-NT3.png)
 
@@ -63,35 +63,35 @@ Kirchoff’s Voltage Law states that in any closed loop network being driven by 
 
 
 
-### **1\. Introduction to Network Transformation**
+### **C. Introduction to Network Transformation**
 
 The 3-phase networks have three wires and usually, the networks are connected in star & delta configuration. The 3 phase supply or the load connected in either formation can be converted into its equivalent counterpart. We use such conversion to simplify the mathematical calculations required for circuit analysis of a complex electrical network.
 
-#### **Delta Connected Network**
+#### **1. Delta Connected Network**
 
 ![Delta Connected Network](/ECE/NetworkAnalysis/W1-NT4.png)
 
 The delta connected network is formed when three network branches or impedances are connected to form a loop in such a way that their heads are connected to the tails of the adjacent branch. The resultant network forms a triangle shape that resembles a Greek letter Delta “Δ” which is why it’s named after it. It is also known as π (pi) network because it resembles the letter after rearranging the branches. 
 
-#### **Star Connected Network**
+#### **2. Star Connected Network**
 
 ![Star Connected Network](/ECE/NetworkAnalysis/W1-NT5.png)
 
 The Star connected network is formed when three branches or impedances are connected together at a common point. The other ends of the branch networks are free. The resultant shape resembles the letter “Y” which is why it is also called “Y” or “Wye” connected network. It is also known as “T” connected network due to its shape after rearranging the network branches. 
 
-### **Network Transformation**
+### **D. Network Transformation**
 
 ![Network Transformation](/ECE/NetworkAnalysis/W1-NT6.png)
 
 
-#### **Thevenin’s Theorem**
+#### **1. Thevenin’s Theorem**
 
 Any linear electric network or a complex circuit with current and voltage sources can be replaced by an equivalent circuit containing a single independent voltage source $V_{th}$ and a Series Resistance $R_{th}$.
 
 ![Thevenin Theorem](/ECE/NetworkAnalysis/W1-NT7.png)
 
 
-#### **Norton’s Theorem**
+#### **2. Norton’s Theorem**
 
 ![Norton Theorem](/ECE/NetworkAnalysis/W1-NT8.png)
 
@@ -112,7 +112,7 @@ VTH​=IN​RN​
 
 R<sub>TH</sub> = R<sub>N</sub>
 
-#### **Maximum Power Transfer Theorem for DC Circuits**
+#### **3. Maximum Power Transfer Theorem for DC Circuits**
 
 ![Maximum Power Transfer Theorem](/ECE/NetworkAnalysis/W1-NT9.png)
 
@@ -123,22 +123,22 @@ This theorem describes the condition for maximum power transfer from an active n
 * It is important to note that in AC circuit, source also possesses an internal reactance. Therefore in order to have maximum power transfer the load must possess same value of reactance but it should be of opposite type. This means that the load must have an equivalent capacitive reactance, if source has inductive reactance, and vice versa.  
 * The efficiency is 50 percent only at maximum power transfer condition. So in power system network, this condition causes a large voltage drop in the lines. But the goal of the power system network is to increase the efficiency rather than maximum power. Therefore, power system never operated under maximum power transfer.
 
-### **2 port network (XY and ABCD parameters)**
+### **E. 2 port network (XY and ABCD parameters)**
 
 A two-port network is a circuit with two pairs of terminals (input and output). It is used to model and analyze complex circuits like amplifiers and transmission lines using parameter sets such as Z (impedance) and ABCD (transmission) parameters. 
 
-#### **Z-Parameters (Impedance / ABCD)**
+#### **1. Z-Parameters (Impedance / ABCD)**
 
-#### **Definition**
+##### **Definition**
 
 Z-parameters relate **voltages to currents** at both ports.
 
 V<sub>1</sub> = Z<sub>11</sub> I<sub>1</sub> + Z<sub>12</sub> I<sub>2</sub>
 
 V<sub>2</sub> = Z<sub>21</sub> I<sub>1</sub> + Z<sub>22</sub> I<sub>2</sub>
-#### **Steps to Find Z-Parameters**
+##### **Steps to Find Z-Parameters**
 
-* Set I<sub>2</sub> = 0 (open-circuit output port)  
+*  Set I<sub>2</sub> = 0 (open-circuit output port)  
 - Z<sub>11</sub> = V<sub>1</sub> / I<sub>1</sub>
 - Z<sub>21</sub> = V<sub>2</sub> / I<sub>1</sub>
 
@@ -185,7 +185,7 @@ Using Kirchhoff's Voltage Law (KVL) for the loop ABCDEFA \[cite: 5\]:
 Solving this equation yields **I \= 57.27A** \[cite: 5\]. The branch currents are \[cite: 6\]:
 
 | Branch | Calculation | Result |
-| :--- | :--- | :--- |
+| :--- | :--- | :--- |git 
 | I<sub>AB</sub> | I | 57.27A |
 | I<sub>BC</sub> | I - 80 | -22.73A (or I<sub>CB</sub> = 22.73A) |
 | I<sub>CD</sub> | I + 10 | 67.27A |
