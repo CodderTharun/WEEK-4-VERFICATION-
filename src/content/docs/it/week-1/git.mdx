@@ -1,11 +1,11 @@
 ---
-title: Git & GitHub 
+title: Git & GitHub
 description: Complete Git and GitHub Resource
 ---
 
 # Git & GitHub
 
-## 1. Introduction to Git
+## Introduction to Git
 
 Git is a Distributed Version Control System (DVCS) used to track changes in files and collaborate with multiple developers.
 
@@ -19,9 +19,9 @@ Git helps developers:
 
 ![Distributed Git Architecture](/public/IT/git/distributed-git-architecture.png)
 
----
 
-## 2. Version Control System
+
+## Version Control System
 
 A Version Control System (VCS) records changes made to files over time.
 
@@ -38,9 +38,9 @@ A Version Control System (VCS) records changes made to files over time.
 - Developers can collaborate safely
 - Previous versions can be restored anytime
 
----
 
-## 3. Distributed Version Control System
+
+## Distributed Version Control System
 
 Git is distributed because every developer has a complete copy of the repository.
 
@@ -53,9 +53,9 @@ Git is distributed because every developer has a complete copy of the repository
 
 ![Centralized vs Distributed VCS](/public/IT/git/centralized-vs-distributed-vcs.png)
 
----
 
-## 4. Installing Git
+
+## Installing Git
 
 ### Linux
 
@@ -77,9 +77,9 @@ https://git-scm.com/downloads
 git --version
 ```
 
----
 
-## 5. First-Time Git Configuration
+
+## First-Time Git Configuration
 
 ### Set Username
 
@@ -99,9 +99,9 @@ git config --global user.email "your@email.com"
 git config --list
 ```
 
----
 
-## 6. Git Workflow
+
+## Git Workflow
 
 Git workflow consists of three main stages:
 
@@ -117,9 +117,9 @@ Working Directory → Staging Area → Repository
 
 ![Git Workflow Diagram](/public/IT/git/git-workflow-diagram.png)
 
----
 
-## 7. File States in Git
+
+## File States in Git
 
 Files in Git can exist in three states.
 
@@ -137,9 +137,9 @@ The file snapshot is permanently stored in Git history.
 
 ![Git File States](/public/IT/git/git-file-states.png)
 
----
 
-## 8. Repository Initialization
+
+## Repository Initialization
 
 Initialize a new Git repository.
 
@@ -149,9 +149,9 @@ git init
 
 This creates a hidden `.git` directory that stores all Git metadata.
 
----
 
-## 9. Staging and Committing
+
+## Staging and Committing
 
 ### Add Files
 
@@ -180,9 +180,8 @@ git commit -m "Added login functionality"
 ```
 
 
----
 
-## 10. Git Status
+## Git Status
 
 Check repository status.
 
@@ -196,11 +195,12 @@ This shows:
 - Staged files
 - Untracked files
 - Current branch
+
 ![Git Status Output](/public/IT/git/git-status-output.png)
 
----
 
-## 11. Git Log
+
+## Git Log
 
 View commit history.
 
@@ -222,9 +222,9 @@ git log --oneline --graph --all
 
 ![Git Log Graph](/public/IT/git/git-log-graph.png)
 
----
 
-## 12. The Staging Area
+
+## The Staging Area
 
 The staging area acts as a temporary preparation zone before committing.
 
@@ -236,9 +236,9 @@ git add creates a snapshot of the current file state
 
 Even after staging, files can still be modified.
 
----
 
-## 13. Undoing Changes
+
+## Undoing Changes
 
 ### Unstage a File
 
@@ -258,9 +258,9 @@ git checkout -- filename
 
 This permanently removes changes.
 
----
 
-## 14. Removing Files
+
+## Removing Files
 
 ### Remove File Completely
 
@@ -281,9 +281,9 @@ git rm --cached filename
 
 The file remains on the computer but Git stops tracking it.
 
----
 
-## 15. Viewing Differences
+
+## Viewing Differences
 
 ### Compare Working Directory and Staging Area
 
@@ -305,9 +305,9 @@ git diff HEAD
 
 ![Git Diff Workflow](/public/IT/git/git-diff-workflow.png)
 
----
 
-## 16. .gitignore
+
+## .gitignore
 
 The `.gitignore` file tells Git which files or folders should not be tracked.
 
@@ -328,9 +328,9 @@ node_modules/
 - Logs
 - Dependencies
 
----
 
-## 17. Branching
+
+## Branching
 
 Branches allow developers to work on features independently.
 
@@ -378,9 +378,9 @@ git branch -d feature-login
 
 ![Git Branching Diagram](/public/IT/git/git-branching-diagram.png)
 
----
 
-## 18. Git Stash
+
+## Git Stash
 
 Git stash temporarily stores unfinished changes.
 
@@ -399,9 +399,8 @@ git stash pop
 Useful when switching branches quickly.
 
 
----
 
-## 19. HEAD Pointer
+## HEAD Pointer
 
 HEAD is a special pointer that refers to the current branch or commit.
 
@@ -414,9 +413,8 @@ HEAD → main
 When switching branches, HEAD moves automatically.
 
 
----
 
-## 20. Merging
+## Merging
 
 Merging combines two branches together.
 
@@ -431,9 +429,9 @@ Git creates a merge commit that combines histories.
 
 ![Git Merge Diagram](/public/IT/git/git-merge-diagram.png)
 
----
 
-## 21. Merge Conflicts
+
+## Merge Conflicts
 
 Merge conflicts happen when two branches modify the same section of code differently.
 
@@ -460,9 +458,9 @@ git add filename
 git commit
 ```
 
----
 
-## 22. Rebasing
+
+## Rebasing
 
 Rebasing moves commits from one branch onto another base branch.
 
@@ -487,9 +485,9 @@ Rebasing rewrites commit history and can break collaboration.
 
 ![Merge vs Rebase](/public/IT/git/merge-vs-rebase.png)
 
----
 
-## 23. Git Reset
+
+## Git Reset
 
 Git reset moves HEAD to another commit.
 
@@ -533,9 +531,9 @@ Deletes:
 
 This operation can permanently delete work.
 
----
 
-## 24. Remote Repositories
+
+## Remote Repositories
 
 Remote repositories are repositories hosted online.
 
@@ -563,9 +561,9 @@ git remote -v
 git remote remove origin
 ```
 
----
 
-## 25. GitHub SSH Setup
+
+## GitHub SSH Setup
 
 SSH authentication avoids repeated password entry.
 
@@ -592,9 +590,9 @@ Paste this key into GitHub SSH settings.
 ![GitHub SSH Setup](/public/IT/git/github-ssh-setup1.png)
 ![GitHub SSH Setup](/public/IT/git/github-ssh-setup2.png)
 
----
 
-## 26. Creating a GitHub Repository
+
+## Creating a GitHub Repository
 
 ### Steps
 
@@ -613,9 +611,8 @@ git push -u origin main
 ```
 
 
----
 
-## 27. Push, Pull, and Fetch
+## Push, Pull, and Fetch
 
 ### Push
 
@@ -642,9 +639,8 @@ git pull origin main
 ```
 
 
----
 
-## 28. Remote Tracking Branches
+## Remote Tracking Branches
 
 ### Example
 
@@ -667,9 +663,8 @@ git rebase origin/main
 ```
 
 
----
 
-## 29. Team Workflow
+## Team Workflow
 
 ### Standard Team Workflow
 
@@ -684,9 +679,9 @@ git rebase origin/main
 
 ![Team Workflow Git](/public/IT/git/team-workflow-git.png)
 
----
 
-## 30. Best Practices
+
+## Best Practices
 
 ### Commit Frequently
 
@@ -722,9 +717,9 @@ Do not push:
 - Passwords
 - Environment files
 
----
 
-## 31. Git Cheat Sheet
+
+## Git Cheat Sheet
 
 ![Git Cheat Sheet](/public/IT/git/git-cheat-sheet.png)
 
