@@ -19,7 +19,7 @@ Understanding the fundamental concepts of Python is essential for effective prog
 - Functions
 - Data structures
 
-
+---
 ### A. Variables and Data Types
 
 Python is dynamically typed, meaning you don't need to declare a variable's type. The interpreter figures it out at runtime.
@@ -46,7 +46,7 @@ print(type(age))
     />
   </TabItem>
 </Tabs>
-
+---
 ### B. Data Structures (Collections)
 
 These are containers used to group data together.
@@ -58,7 +58,7 @@ These are containers used to group data together.
 | Set | `{1, 2, 3}` | Yes | Yes |
 | Dictionary | `{"a": 1}` | Yes | Keys are unique |
 
-
+---
 ### C. Input and Output
 
 Python handles user interaction through functions like `print()` for output and `input()` for input.
@@ -80,7 +80,7 @@ print(f"Hello {name}, next year you will be {age + 1}.")`}
   </TabItem>
 </Tabs>
 
-
+---
 ### D. Control Flow
 
 #### 1. Conditional Statements
@@ -150,7 +150,7 @@ while count < 3:
     />
   </TabItem>
 </Tabs>
-
+---
 
 ### E. Functions
 
@@ -177,7 +177,7 @@ print(square(5)) # Output: 25`}
   </TabItem>
 </Tabs>
 
-
+---
 ### F. List Comprehension
 
 List comprehension is a way to create lists in a single line.
@@ -199,7 +199,7 @@ print(even_squares) # Output: [4, 16, 36]`}
     />
   </TabItem>
 </Tabs>
-
+---
 
 ### G. String Manipulation
 
@@ -222,8 +222,8 @@ print("python"[0:4])
     />
   </TabItem>
 </Tabs>
-
-### Video Reference
+---
+## Video Reference
 
 <div style="display: flex; justify-content: center;">
   <iframe
@@ -239,17 +239,18 @@ print("python"[0:4])
   ></iframe>
 </div>
 
+---
 
-## NumPy and Pandas
+## NumPy
 
+NumPy (Numerical Python) is a fundamental Python library used for numerical computing.  
+It provides support for arrays, matrices, and a wide range of mathematical functions that operate efficiently on these data structures.
 
-### NumPy
+NumPy is especially useful in scientific computing and data analysis because it enables high-performance operations on large multidimensional arrays and matrices.
 
-NumPy (Numerical Python) is a fundamental library for numerical computing in Python.
-It provides support for arrays, matrices, and a collection of mathematical functions to operate on these data structures efficiently.
-NumPy is particularly useful for scientific computing and data analysis because it allows operations on large multi-dimensional arrays and matrices with high performance.
-While NumPy structures look similar to standard Python lists, they are much more efficient.
-The broadcasting capabilities are also extremely useful for quickly applying functions to datasets.
+Although NumPy arrays look similar to standard Python lists, they are significantly faster and more memory-efficient. Its broadcasting feature is also highly useful, as it allows mathematical operations to be applied to entire datasets quickly and efficiently.
+
+---
 
 
 ### A. Key Features of NumPy
@@ -282,6 +283,7 @@ It forms the foundation for scientific computing in Python.
 
 NumPy operations are faster and more memory-efficient compared to traditional Python lists because they are implemented using lower-level languages.
 
+---
 
 ### B. Working with NumPy
 
@@ -363,7 +365,7 @@ Creates an identity matrix.
   </TabItem>
 </Tabs>
 
-
+---
 
 #### 2. Random Number Generation
 
@@ -424,7 +426,7 @@ print(np.random.rand(1))
   </TabItem>
 </Tabs>
 
-
+---
 
 #### 3. Manipulation and Attributes
 
@@ -611,8 +613,9 @@ print(arr.argmax())
   </TabItem>
 </Tabs>
 
+---
 
-### Video Reference
+## Video Reference
 
 <div style="display: flex; justify-content: center;">
   <iframe
@@ -628,6 +631,7 @@ print(arr.argmax())
   ></iframe>
 </div>
 
+---
 
 ## Pandas
 
@@ -694,6 +698,7 @@ df = pd.DataFrame(data)`}
   </TabItem>
 </Tabs>
 
+---
 
 ### B.  Essential Data Operations
 
@@ -755,6 +760,7 @@ avg_price = df.groupby('Category')['Price'].mean()`}
   </TabItem>
 </Tabs>
 
+---
 
 ### C. Working with Pandas
 
@@ -938,6 +944,7 @@ pivot_table = df.pivot(
   </TabItem>
 </Tabs>
 
+---
 
 #### 6. Combining Datasets
 
@@ -1034,8 +1041,8 @@ print(df['Quantity'].cumsum())
   </TabItem>
 </Tabs>
 
-
-### Video Reference
+---
+## Video Reference
 
 <div style={{ display: "flex", justifyContent: "center" }}>
   <iframe
@@ -1049,12 +1056,17 @@ print(df['Quantity'].cumsum())
     allowFullScreen
   ></iframe>
 </div>
-
+---
 ## Python - Matplotlib
 
-Matplotlib is a powerful and versatile open-source plotting library for Python, designed to help users visualize data in a variety of formats. It is designed to work with NumPy arrays and pandas dataframes. The library makes it easy to make graphs from tabular data.
+Matplotlib is a powerful and versatile open-source plotting library for Python that helps users visualize data in a variety of formats.  
 
-### Matplotlib Pyplot
+It is designed to work seamlessly with NumPy arrays and pandas DataFrames, making it highly useful for scientific computing and data analysis.  
+
+The library provides an easy way to create graphs and charts from tabular data, including line plots, bar charts, histograms, scatter plots, and more.
+
+---
+### A. Matplotlib Pyplot
 
 Pyplot is a Matplotlib module that provides simple functions for adding plot elements, such as lines, images, text, etc. to the axes in the current figure.
 
@@ -1067,8 +1079,8 @@ Pyplot is a Matplotlib module that provides simple functions for adding plot ele
     />
   </TabItem>
 </Tabs>
-
-#### Steps to Use Pyplot:
+---
+### B. Steps to Use Pyplot:
 
 1. **Import Matplotlib:** Start by importing matplotlib.pyplot as plt.
 2. **Create Data:** Prepare your data in the form of lists or arrays.
@@ -1077,8 +1089,8 @@ Pyplot is a Matplotlib module that provides simple functions for adding plot ele
 5. **Display Plot:** Use plt.show() to display the plot.
 
 **Syntax:** matplotlib.pyplot.plot()
-
-### Parts of Matplotlib
+---
+### C. Parts of Matplotlib
 
 **Figure:** Whole area chosen for plotting
 
@@ -1122,9 +1134,9 @@ plt.show()`}
     />
   </TabItem>
 </Tabs>
+---
 
-
-### Create titles and axis label as method
+### D. Create titles and axis label as method
 
 <Tabs>
   <TabItem label="Python">
@@ -1150,8 +1162,8 @@ plt.show()`}
 ![AIML-1](/public/IT/w1-aiml1.png)
 
 </div>
-
-### Create Multiple Subplots
+---
+### E. Create Multiple Subplots
 
 <Tabs>
   <TabItem label="Python">
@@ -1177,17 +1189,17 @@ plt.show()`}
   />
 </div>
 
-
-### Create Legends
+---
+### F. Create Legends
 A matplotlib legend is a small box that describes the various elements of the plot in terms of lines and markers that have distinct styles or colors.
 
 **Attributes:**
-1. **shadow:** [None or bool] Whether to draw a shadow behind the legend.It’s Default value is None.
-2. **markerscale:** [None or int or float] The relative size of legend markers compared with the originally drawn ones.The Default is None.
-3. **numpoints:** [None or int] The number of marker points in the legend when creating a legend entry for a Line2D (line).The Default is None.
-4. **fontsize:** The font size of the legend.If the value is numeric the size will be the absolute font size in points.
-5. **facecolor:** [None or “inherit” or color] The legend’s background color.
-6. **edgecolor:** [None or “inherit” or color] The legend’s background patch edge color.
+a. **shadow:** [None or bool] Whether to draw a shadow behind the legend.It’s Default value is None.
+b. **markerscale:** [None or int or float] The relative size of legend markers compared with the originally drawn ones.The Default is None. 
+c. **numpoints:** [None or int] The number of marker points in the legend when creating a legend entry for a Line2D (line).The Default is None. 
+d. **fontsize:** The font size of the legend.If the value is numeric the size will be the absolute font size in points. 
+e. **facecolor:** [None or “inherit” or color] The legend’s background color. 
+f. **edgecolor:** [None or “inherit” or color] The legend’s background patch edge color.
 
 
 `#adding legend in graph => plt.legend(x, y, label='legend');
@@ -1219,9 +1231,10 @@ plt.show()`}
     />
   </TabItem>
 </Tabs>
+---
+## Plotting in Matplotlib
 
-
-### Line Plot
+### A. Line Plot
 
 Line Plot is used to visualize a trend in data and is also used to compare two variables.
 **Syntax:** `plt.plot(x,y)`
@@ -1310,9 +1323,9 @@ plt.show()`}
     height="400px"
   />
 </div>
+---
 
-
-### Scatter Graph
+### B. Scatter Graph
 
 It similar to a line graph which is used to show how one variable is related to another. It consists of data points, if it is linear then it is highly correlated and only marks the data point.
 
@@ -1364,8 +1377,8 @@ plt.show()`}
     height="400px"
   />
 </div>
-
-###  Bar Chart
+---
+### C. Bar Chart
 
 It is mostly used to compare categories, for vertical bar plots and horizontal bar plots.
 
@@ -1471,9 +1484,9 @@ plt.show()`}
   />
 </div>
 
+---
 
-
-### Pie Plot
+### D. Pie Plot
 
 It is effective in showing the proportion of categories and is best suited for comparing fewer categories. It is used to highlight the proportion of one or a group of categories.
 **Syntax:** pie(x), x: size of portions, passed as fraction or number
@@ -1519,8 +1532,8 @@ plt.show()`}
   />
   </div>
 
-
-### Histogram Chart
+---
+### E. Histogram Chart
 
 It is used to visualize the spread of data in a distribution
 **Syntax:** hist(x)
@@ -1568,8 +1581,8 @@ plt.show()`}
     height="500px"
   />
   </div>
-
-### K. 3-Dimensional Line Graph
+---
+### F. 3-Dimensional Line Graph
 
 <Tabs>
   <TabItem label="3D Axes Setup">
@@ -1637,7 +1650,7 @@ plt.show()`}
 
 ---
 
-### Working with Images using Matplotlib
+## Working with Images using Matplotlib
 
 The image module in matplotlib library is used for working with images in Python.
 The image module also includes two useful methods
@@ -1671,9 +1684,9 @@ plt.show()`}
     height="400px"
   />
   </div>
+---
 
-
-### Display an Image in Grayscale in Matplotlib
+### A. Display an Image in Grayscale in Matplotlib
 Open the image using PIL image method and convert it to L mode.L mode image is a single-channel image - normally interpreted as grayscale.
 
 
@@ -1709,9 +1722,9 @@ plt.show()`}
     height="350px"
   />
   </div>
+---
 
-
-### Display an OpenCV image in Python with Matplotlib
+### B. Display an OpenCV image in Python with Matplotlib
 
 The OpenCV module is an open-source computer vision and machine learning software library. It is a huge open-source library for computer vision, machine learning, and image processing.
 OpenCV images with Matplotlib module for that you just need to convert colored image into a gray scale image.
@@ -1748,8 +1761,8 @@ plt.show()`}
     height="350px"
   />
   </div>
-
-###    Video Reference
+---
+##    Video Reference
 <div style="display: flex; justify-content: center;">
   <iframe
     width="350"
@@ -1760,3 +1773,4 @@ plt.show()`}
     allowfullscreen
   ></iframe>
 </div>
+---
