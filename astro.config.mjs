@@ -6,6 +6,8 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
 export default defineConfig({
+   site: 'https://p-cs-verification-7lkg.vercel.app', 
+   site: 
   integrations: [
     starlight({
       expressiveCode: {
