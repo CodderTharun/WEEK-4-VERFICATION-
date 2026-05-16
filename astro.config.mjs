@@ -99,67 +99,44 @@ export default defineConfig({
 
         {
           label: "ECE",
-          collapsed: true,
-          items: [
-            {
-              label: "Week 1",
-              collapsed: true,
-              items: [
-                { label: "Overview", link: "/ece/week-1/" },
-                { label: "C Programming", link: "/ece/week-1/cprogramming" },
-                { label: "Digital Electonics", link: "/ece/week-1/digital-logic" },               
-                { label: "Network Analysis", link: "/ece/week-1/networkanalysis" },
-              ], 
-            },
-            // {
-            //   label: "Week 2",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/ece/week-2/" },
-            //     { label: "Digital Logic", link: "/ece/week-2/digital-logic" },
-            //     { label: "C Programming", link: "/ece/week-2/cprogramming" },
-            //     { label: "Signals & Systems", link: "/ece/week-2/signals-systems" },
-            //     { label: "Network Analysis", link: "/ece/week-2/networkanalysis" },
-            //     { label: "Power Electronics", link: "/ece/week-2/power-electronics" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 3",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/ece/week-3/" },
-            //     { label: "Digital Logic", link: "/ece/week-3/digital-logic" },
-            //     { label: "C Programming", link: "/ece/week-3/cprogramming" },
-            //     { label: "Signals & Systems", link: "/ece/week-3/signals-systems" },
-            //     { label: "Network Analysis", link: "/ece/week-3/networkanalysis" },
-            //     { label: "Power Electronics", link: "/ece/week-3/power-electronics" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 4",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/ece/week-4/" },
-            //     { label: "Digital Logic", link: "/ece/week-4/digital-logic" },
-            //     { label: "C Programming", link: "/ece/week-4/cprogramming" },
-            //     { label: "Signals & Systems", link: "/ece/week-4/signals-systems" },
-            //     { label: "Network Analysis", link: "/ece/week-4/networkanalysis" },
-            //     { label: "Power Electronics", link: "/ece/week-4/power-electronics" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 5",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/ece/week-5/" },
-            //     { label: "Digital Logic", link: "/ece/week-5/digital-logic" },
-            //     { label: "C Programming", link: "/ece/week-5/cprogramming" },
-            //     { label: "Signals & Systems", link: "/ece/week-5/signals-systems" },
-            //     { label: "Network Analysis", link: "/ece/week-5/networkanalysis" },
-            //     { label: "Power Electronics", link: "/ece/week-5/power-electronics" },
-            //   ],
-            // },
-          ],
+collapsed: true,
+items: [
+  {
+    label: "C Programming",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+    ],
+  },
+
+  {
+    label: "Digital Electronics",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/ece/week-1/digital-logic" },
+      //{ label: "Week 2", link: "/ece/week-1/digital-logic" },
+      //{ label: "Week 3", link: "/ece/week-1/digital-logic" },
+      //{ label: "Week 4", link: "/ece/week-1/digital-logic" },
+      //{ label: "Week 5", link: "/ece/week-1/digital-logic" },
+    ],
+  },
+
+  {
+    label: "Network Analysis",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
+    ],
+  },
+],
         },
 
         {
@@ -167,64 +144,51 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              label: "Week 1",
-              collapsed: true,
-              items: [
-                { label: "Overview", link: "/eee/week-1/" },
-                { label: "C Programming", link: "/ece/week-1/cprogramming" },
-                { label: "Digital Electronics", link: "/eee/week-1/digital-logic" },
-                { label: "Network Analysis", link: "/eee/week-1/network-analysis" },
-                { label: "Power Electronics", link: "/eee/week-1/power-generation" },
-              ],
-            },
-            // {
-            //   label: "Week 2",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/eee/week-2/" },
-            //     { label: "Circuit Theory", link: "/eee/week-2/circuit-theory" },
-            //     { label: "Power Systems", link: "/eee/week-2/power-systems" },
-            //     { label: "Electrical Machines", link: "/eee/week-2/electrical-machines" },
-            //     { label: "Control Systems", link: "/eee/week-2/digital-logic" },
-            //     { label: "Power Generation", link: "/eee/week-2/power-electronics" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 3",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/eee/week-3/" },
-            //     { label: "Circuit Theory", link: "/eee/week-3/circuit-theory" },
-            //     { label: "Power Systems", link: "/eee/week-3/power-systems" },
-            //     { label: "Electrical Machines", link: "/eee/week-3/electrical-machines" },
-            //     { label: "Control Systems", link: "/eee/week-3/digital-logic" },
-            //     { label: "Power Generation", link: "/eee/week-3/power-electronics" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 4",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/eee/week-4/" },
-            //     { label: "Circuit Theory", link: "/eee/week-4/circuit-theory" },
-            //     { label: "Power Systems", link: "/eee/week-4/power-systems" },
-            //     { label: "Electrical Machines", link: "/eee/week-4/electrical-machines" },
-            //     { label: "Control Systems", link: "/eee/week-4/digital-logic" },
-            //     { label: "Power Generation", link: "/eee/week-4/power-electronics" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 5",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/eee/week-5/" },
-            //     { label: "Circuit Theory", link: "/eee/week-5/circuit-theory" },
-            //     { label: "Power Systems", link: "/eee/week-5/power-systems" },
-            //     { label: "Electrical Machines", link: "/eee/week-5/electrical-machines" },
-            //     { label: "Control Systems", link: "/eee/week-5/digital-logic" },
-            //     { label: "Power Generation", link: "/eee/week-5/power-electronics" },
-            //   ],
-            // },
+    label: "C Programming",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+    ],
+  },
+
+  {
+    label: "Digital Electronics",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/ece/week-1/digital-logic" },
+      //{ label: "Week 2", link: "/ece/week-1/digital-logic" },
+      //{ label: "Week 3", link: "/ece/week-1/digital-logic" },
+      //{ label: "Week 4", link: "/ece/week-1/digital-logic" },
+      //{ label: "Week 5", link: "/ece/week-1/digital-logic" },
+    ],
+  },
+
+  {
+    label: "Network Analysis",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
+    ],
+  },
+  {
+    label: "Power Generation ",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/eee/week-1/power-generation" },
+      //{ label: "Week 2", link: "/eee/week-1/power-generation" },
+      //{ label: "Week 3", link: "/eee/week-1/power-generation" },
+      //{ label: "Week 4", link: "/eee/week-1/power-generation" },
+      //{ label: "Week 5", link: "/eee/week-1/power-generation" },
+    ],
+  },
           ],
         },
 
@@ -233,72 +197,72 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              label: "Week 1",
-              collapsed: true,
-              items: [
-                { label: "Overview", link: "/it/week-1/"  },
-                { label: "AIML", link: "/it/week-1/aiml" },
-                { label: "DSA", link: "/it/week-1/dsa" },
-                { label: "Git and GitHub", link: "/it/week-1/git" },
-                { label: "CN", link: "/it/week-1/cn" },
-                { label: "OOPS", link: "/it/week-1/oops" },
-                { label: "OS", link: "/it/week-1/os" },
-                { label: "DBMS", link: "/it/week-1/dbms" },
-              ],
-            },
-            // {
-            //   label: "Week 2",
-            //   collapsed: true,
-            //   items: [
-                
-            //     { label: "Overview", link: "/it/week-2/" },
-            //     { label: "AIML", link: "/it/week-2/aiml" },
-            //     { label: "DSA", link: "/it/week-2/dsa" },
-            //     { label: "CN", link: "/it/week-2/cn" },
-            //     { label: "OOPS", link: "/it/week-2/oops" },
-            //     { label: "OS", link: "/it/week-2/os" },
-            //     { label: "DBMS", link: "/it/week-2/dbms" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 3",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/it/week-3/" },
-            //     { label: "AIML", link: "/it/week-1/aiml" },
-            //     { label: "DSA", link: "/it/week-3/dsa" },
-            //     { label: "CN", link: "/it/week-3/cn" },
-            //     { label: "OOPS", link: "/it/week-3/oops" },
-            //     { label: "OS", link: "/it/week-3/os" },
-            //     { label: "DBMS", link: "/it/week-3/dbms" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 4",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/it/week-4/" },
-            //     { label: "AIML", link: "/it/week-1/aiml" },
-            //     { label: "DSA", link: "/it/week-4/dsa" },
-            //     { label: "CN", link: "/it/week-4/cn" },
-            //     { label: "OOPS", link: "/it/week-4/oops" },
-            //     { label: "OS", link: "/it/week-4/os" },
-            //     { label: "DBMS", link: "/it/week-4/dbms" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 5",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/it/week-5/" },
-            //     { label: "AIML", link: "/it/week-1/aiml" },
-            //     { label: "DSA", link: "/it/week-5/dsa" },
-            //     { label: "CN", link: "/it/week-5/cn" },
-            //     { label: "OOPS", link: "/it/week-5/oops" },
-            //     { label: "OS", link: "/it/week-5/os" },
-            //     { label: "DBMS", link: "/it/week-5/dbms" },
-            //   ],
-            // },
+    label: "AIML ",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/it/week-1/aiml" },
+      //{ label: "Week 2", link: "/it/week-1/aiml" },
+      //{ label: "Week 3", link: "/it/week-1/aiml" },
+      //{ label: "Week 4", link: "/it/week-1/aiml" },
+      //{ label: "Week 5", link: "/it/week-1/aiml" },
+    ],
+  },
+   {
+    label: "CN",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/it/week-1/cn" },
+      //{ label: "Week 2", link: "/it/week-1/cn" },
+      //{ label: "Week 3", link: "/it/week-1/cn" },
+      //{ label: "Week 4", link: "/it/week-1/cn" },
+      //{ label: "Week 5", link: "/it/week-1/cn" },
+    ],
+  },
+     {
+    label: "DBMS",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/it/week-1/dbms" },
+      //{ label: "Week 2", link: "/it/week-1/dbms" },
+      //{ label: "Week 3", link: "/it/week-1/dbms" },
+      //{ label: "Week 4", link: "/it/week-1/dbms" },
+      //{ label: "Week 5", link: "/it/week-1/dbms" },
+    ],
+  },  
+   {
+    label: "Git and Github",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/it/week-1/git" },
+      //{ label: "Week 2", link: "/it/week-1/git" },
+      //{ label: "Week 3", link: "/it/week-1/git" },
+      //{ label: "Week 4", link: "/it/week-1/git" },
+      //{ label: "Week 5", link: "/it/week-1/git" },
+    ],
+  },  
+  {
+    label: "OOPS",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/it/week-1/oops" },
+      //{ label: "Week 1", link: "/it/week-1/oops" },
+      //{ label: "Week 1", link: "/it/week-1/oops" },
+      //{ label: "Week 1", link: "/it/week-1/oops" },
+      //{ label: "Week 1", link: "/it/week-1/oops" },
+    ],
+  },  
+    {
+    label: "OS",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/it/week-1/os" },
+      //{ label: "Week 1", link: "/it/week-1/os" },
+      //{ label: "Week 1", link: "/it/week-1/os" },
+      //{ label: "Week 1", link: "/it/week-1/os" },
+      //{ label: "Week 1", link: "/it/week-1/os" },
+    ],
+  }, 
+ 
           ],
         },
 
@@ -307,122 +271,88 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              label: "Week 1",
+              label: "Basic Thermodynamics",
               collapsed: true,
               items: [
-                { label: "Overview", link: "/mech/week-1/" },
-                { label: "Basic Thermodynamics", link: "/mech/week-1/thermodynamics" },
-                { label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
-                
+                { label: "Week 1", link: "/mech/week-1/thermodynamics" },
+                //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
+                //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
+                //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
+                //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
               ],
             },
-            // {
-            //   label: "Week 2",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/mech/week-2/" },
-            //     { label: "Thermodynamics", link: "/mech/week-2/thermodynamics" },
-            //     { label: "Strength of Materials", link: "/mech/week-2/strength-materials" },
-            //     { label: "Machine Design", link: "/mech/week-2/machine-design" },
-            //     { label: "Fluid Mechanics", link: "/mech/week-2/fluid-mechanics" },
-            //     { label: "Manufacturing", link: "/mech/week-2/manufacturing" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 3",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/mech/week-3/" },
-            //     { label: "Thermodynamics", link: "/mech/week-3/thermodynamics" },
-            //     { label: "Strength of Materials", link: "/mech/week-3/strength-materials" },
-            //     { label: "Machine Design", link: "/mech/week-3/machine-design" },
-            //     { label: "Fluid Mechanics", link: "/mech/week-3/fluid-mechanics" },
-            //     { label: "Manufacturing", link: "/mech/week-3/manufacturing" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 4",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/mech/week-4/" },
-            //     { label: "Thermodynamics", link: "/mech/week-4/thermodynamics" },
-            //     { label: "Strength of Materials", link: "/mech/week-4/strength-materials" },
-            //     { label: "Machine Design", link: "/mech/week-4/machine-design" },
-            //     { label: "Fluid Mechanics", link: "/mech/week-4/fluid-mechanics" },
-            //     { label: "Manufacturing", link: "/mech/week-4/manufacturing" },
-            //   ],
-            // },
-            // {
-            //   label: "Week 5",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/mech/week-5/" },
-            //     { label: "Thermodynamics", link: "/mech/week-5/thermodynamics" },
-            //     { label: "Strength of Materials", link: "/mech/week-5/strength-materials" },
-            //     { label: "Machine Design", link: "/mech/week-5/machine-design" },
-            //     { label: "Fluid Mechanics", link: "/mech/week-5/fluid-mechanics" },
-            //     { label: "Manufacturing", link: "/mech/week-5/manufacturing" },
-            //   ],
-            // },
+
+            {
+              label: "Strength of Materials",
+              collapsed: true,
+              items: [
+                { label: "Week 1", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+              ],
+            },
+           
           ],
         },
 
-        {
-          label: "Answer Keys",
-          collapsed: true,
-          items: [
-            {
-              label: "IT",
-              items: [
-                { label: "Week 1", link: "/answer-keys/it/week-1" },
-                { label: "Week 2", link: "/answer-keys/it/week-2" },
-                { label: "Week 3", link: "/answer-keys/it/week-3" },
-                { label: "Week 4", link: "/answer-keys/it/week-4" },
-                { label: "Week 5", link: "/answer-keys/it/week-5" },
-              ],
-            },
-            {
-              label: "ECE",
-              items: [
-                { label: "Week 1", link: "/answer-keys/ece/week-1" },
-                { label: "Week 2", link: "/answer-keys/ece/week-2" },
-                { label: "Week 3", link: "/answer-keys/ece/week-3" },
-                { label: "Week 4", link: "/answer-keys/ece/week-4" },
-                { label: "Week 5", link: "/answer-keys/ece/week-5" },
-              ],
-            },
-            {
-              label: "EEE",
-              items: [
-                { label: "Week 1", link: "/answer-keys/eee/week-1" },
-                { label: "Week 2", link: "/answer-keys/eee/week-2" },
-                { label: "Week 3", link: "/answer-keys/eee/week-3" },
-                { label: "Week 4", link: "/answer-keys/eee/week-4" },
-                { label: "Week 5", link: "/answer-keys/eee/week-5" },
-              ],
-            },
-            {
-              label: "Mechanical",
-              items: [
-                { label: "Week 1", link: "/answer-keys/mech/week-1" },
-                { label: "Week 2", link: "/answer-keys/mech/week-2" },
-                { label: "Week 3", link: "/answer-keys/mech/week-3" },
-                { label: "Week 4", link: "/answer-keys/mech/week-4" },
-                { label: "Week 5", link: "/answer-keys/mech/week-5" },
-              ],
-            },
-            {
-              label: "Aptitude",
-              items: [
-                { label: "Week 1", link: "/answer-keys/aptitude/week-1" },
-                { label: "Week 2", link: "/answer-keys/aptitude/week-2" },
-                { label: "Week 3", link: "/answer-keys/aptitude/week-3" },
-                { label: "Week 4", link: "/answer-keys/aptitude/week-4" },
-                { label: "Week 5", link: "/answer-keys/aptitude/week-5" },
-              ],
-            },
-          ],
-        },
+       // {
+         // label: "Answer Keys",
+          //collapsed: true,
+          //items: [
+            //{
+             // label: "IT",
+             // items: [
+                //{ label: "Week 1", link: "/answer-keys/it/week-1" },
+                //{ label: "Week 2", link: "/answer-keys/it/week-2" },
+                //{ label: "Week 3", link: "/answer-keys/it/week-3" },
+                //{ label: "Week 4", link: "/answer-keys/it/week-4" },
+                //{ label: "Week 5", link: "/answer-keys/it/week-5" },
+          //    ],
+          //  },
+          //  {
+           //   label: "ECE",
+            //  items: [
+                //{ label: "Week 1", link: "/answer-keys/ece/week-1" },
+                //{ label: "Week 2", link: "/answer-keys/ece/week-2" },
+                //{ label: "Week 3", link: "/answer-keys/ece/week-3" },
+                //{ label: "Week 4", link: "/answer-keys/ece/week-4" },
+                //{ label: "Week 5", link: "/answer-keys/ece/week-5" },
+          //    ],
+          //  },
+          //  {
+          //    label: "EEE",
+           //   items: [
+                //{ label: "Week 1", link: "/answer-keys/eee/week-1" },
+                //{ label: "Week 2", link: "/answer-keys/eee/week-2" },
+                //{ label: "Week 3", link: "/answer-keys/eee/week-3" },
+                //{ label: "Week 4", link: "/answer-keys/eee/week-4" },
+                //{ label: "Week 5", link: "/answer-keys/eee/week-5" },
+           //   ],
+          //  },
+          //  {
+           //   label: "Mechanical",
+            //  items: [
+                //{ label: "Week 1", link: "/answer-keys/mech/week-1" },
+                //{ label: "Week 2", link: "/answer-keys/mech/week-2" },
+                //{ label: "Week 3", link: "/answer-keys/mech/week-3" },
+                //{ label: "Week 4", link: "/answer-keys/mech/week-4" },
+                //{ label: "Week 5", link: "/answer-keys/mech/week-5" },
+           //   ],
+          //  },
+          //  {
+           //   label: "Aptitude",
+           //   items: [
+                //{ label: "Week 1", link: "/answer-keys/aptitude/week-1" },
+                //{ label: "Week 2", link: "/answer-keys/aptitude/week-2" },
+                //{ label: "Week 3", link: "/answer-keys/aptitude/week-3" },
+                //{ label: "Week 4", link: "/answer-keys/aptitude/week-4" },
+                //{ label: "Week 5", link: "/answer-keys/aptitude/week-5" },
+             // ],
+          //  },
+         // ],
+       // },
         
       ],
     }),
