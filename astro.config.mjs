@@ -43,10 +43,6 @@ export default defineConfig({
               items: [
                 { label: "Overview", link: "/aptitude/week-1/" },
                 { label: "Quantitative Ability", link: "/aptitude/week-1/quantitative-ability" },
-                { label: "Logical Reasoning", link: "/aptitude/week-1/logical-reasoning" },
-                { label: "Verbal Reasoning", link: "/aptitude/week-1/verbal-reasoning" },
-                { label: "Data Interpretation", link: "/aptitude/week-1/data-interpretation" },
-                { label: "Problem Solving", link: "/aptitude/week-1/problem-solving" },
               ],
             },
             // {
