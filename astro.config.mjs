@@ -49,7 +49,6 @@ export default defineConfig({
               label: "Week 1",
               collapsed: true,
               items: [
-                { label: "Overview", link: "/aptitude/" },
                 { label: "Quantitative Ability", link: "/aptitude/week-1/quantitative-ability" },
               ],
             },
