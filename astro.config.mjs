@@ -230,6 +230,17 @@ items: [
     ],
   },  
    {
+    label: "DSA",
+    collapsed: true,
+    items: [
+      { label: "Week 1", link: "/it/week-1/dsa" },
+      //{ label: "Week 2", link: "/it/week-1/dbms" },
+      //{ label: "Week 3", link: "/it/week-1/dbms" },
+      //{ label: "Week 4", link: "/it/week-1/dbms" },
+      //{ label: "Week 5", link: "/it/week-1/dbms" },
+    ],
+  },  
+   {
     label: "Git and Github",
     collapsed: true,
     items: [

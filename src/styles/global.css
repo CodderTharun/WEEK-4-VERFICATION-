@@ -11,7 +11,6 @@
 /* ----------------------------------------------------------
    INTER FONT — import + apply universally
    ---------------------------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
   --sl-font: 'Inter', system-ui, sans-serif;
@@ -21,6 +20,15 @@
     'Fira Code',
     'Cascadia Code',
     monospace;
+}
+code,
+pre,
+pre code,
+.expressive-code,
+.expressive-code code,
+.tab,
+.shiki {
+  font-family: var(--sl-font-mono) !important;
 }
 table tr:nth-child(even) {
   background: transparent !important;
@@ -728,4 +736,40 @@ mark,
   font-weight: 650;
 
   letter-spacing: -0.02em;
+}
+/* ==========================================================
+   MOBILE FIXES
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+  .pagination-links,
+  .sl-link-button,
+  .tabs,
+  .tablist {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.5rem;
+  }
+
+  .pagination-links a,
+  .sl-link-button,
+  .tab {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .hero {
+    overflow: hidden;
+  }
+
+  h1 {
+    line-height: 1.1;
+    font-size: 2.2rem !important;
+  }
+
+  .hero .actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
 }
