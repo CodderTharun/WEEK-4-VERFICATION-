@@ -39,10 +39,17 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
+              label: "Overview",
+              collapsed: true,
+              items: [
+                { label: "Syllabus", link: "/aptitude/" },
+              ]
+            },
+            {
               label: "Week 1",
               collapsed: true,
               items: [
-                { label: "Overview", link: "/aptitude/week-1/" },
+                { label: "Overview", link: "/aptitude/" },
                 { label: "Quantitative Ability", link: "/aptitude/week-1/quantitative-ability" },
               ],
             },
@@ -102,6 +109,17 @@ export default defineConfig({
 collapsed: true,
 items: [
   {
+    label: "Overview",
+    collapsed: true,
+    items: [
+      { label: "Syllabus", link: "/ece/" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+    ],
+  },
+  {
     label: "C Programming",
     collapsed: true,
     items: [
@@ -143,6 +161,18 @@ items: [
           label: "EEE",
           collapsed: true,
           items: [
+{
+    label: "Overview",
+    collapsed: true,
+    items: [
+      { label: "Syllabus", link: "/eee/" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+    ],
+  },
+
             {
     label: "C Programming",
     collapsed: true,
@@ -196,6 +226,17 @@ items: [
           label: "IT",
           collapsed: true,
           items: [
+             {
+    label: "Overview",
+    collapsed: true,
+    items: [
+      { label: "Syllabus", link: "/it/" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+    ],
+  },
             {
     label: "AIML ",
     collapsed: true,
@@ -281,6 +322,17 @@ items: [
           label: "Mechanical",
           collapsed: true,
           items: [
+            {
+    label: "Overview",
+    collapsed: true,
+    items: [
+      { label: "Syllabus", link: "/mech/" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+    ],
+  },
             {
               label: "Basic Thermodynamics",
               collapsed: true,
