@@ -309,7 +309,9 @@ import numpy as np
 # Start at 0, stop before 10, step by 2
 arr = np.arange(0, 10, 2)
 
-print(arr) # [0 2 4 6 8]
+print(arr) 
+Output:
+[0 2 4 6 8]
 ```
 
   </TabItem>
@@ -325,13 +327,17 @@ Useful for initializing weights or placeholders.
   <TabItem label="Python">
 
 ```python
-zeros = np.zeros((2, 3))
+zeros = np.zeros((2, 3)) 
 # 2 rows, 3 columns
+Output:
+[[0. 0. 0.]
+ [0. 0. 0.]]
 
 ones = np.ones(4)
 # 1D array of 4 ones
+Output:
+[1. 1. 1. 1.]
 ```
-
   </TabItem>
 </Tabs>
 
@@ -349,7 +355,8 @@ Unlike `arange`, you specify the number of points instead of the step size.
 lin = np.linspace(0, 1, 5)
 
 print(lin)
-# [0. 0.25 0.5 0.75 1.]
+Output:
+[0. 0.25 0.5 0.75 1.]
 ```
 
   </TabItem>
@@ -365,6 +372,11 @@ Creates an identity matrix.
 ```python
 identity = np.eye(4)
 # 4x4 identity matrix
+Output:
+[[1. 0. 0. 0.]
+ [0. 1. 0. 0.]
+ [0. 0. 1. 0.]
+ [0. 0. 0. 1.]]
 ```
 
   </TabItem>
@@ -391,9 +403,15 @@ NumPy’s random module is essential for:
 ```python
 u = np.random.rand(3)
 # Uniform
+Output:
+[0.99139112 0.16436222 0.8056486 ]
 
 n = np.random.randn(3,3)
 # Normal (3x3 matrix)
+Output:
+[[ 0.51103321 -0.67945367  1.70726173]
+ [ 0.15690527 -2.16380175 -3.02649565]
+ [ 0.79847859 -0.22648723 -0.00696714]]
 ```
 
   </TabItem>
@@ -409,6 +427,8 @@ Returns random integers from a specified range.
 ```python
 # 5 random integers between 1 and 100
 r_int = np.random.randint(1, 100, 5)
+Output:
+[69 61 46 84  8]
 ```
 
   </TabItem>
@@ -448,10 +468,10 @@ These attributes tell you:
 arr = np.array([[1, 2], [3, 4]])
 
 print(arr.shape)
-# (2, 2)
+Output:  (2, 2)
 
 print(arr.dtype)
-# int64
+Output: int64
 ```
 
   </TabItem>
@@ -466,10 +486,13 @@ Changes the shape of an array without changing its data.
 
 ```python
 arr = np.arange(6)
-# [0, 1, 2, 3, 4, 5]
+Output: [0, 1, 2, 3, 4, 5]
 
 new_arr = arr.reshape(2, 3)
 # Becomes 2 rows, 3 columns
+Output:
+[[0 1 2]
+[3 4 5]]
 ```
 
   </TabItem>
@@ -490,10 +513,13 @@ Data is accessed using `[row, col]` notation.
 mat = np.array([[5, 10, 15], [20, 25, 30]])
 
 print(mat[1, 2])
-# 30 (second row, third column)
+Output: 30 (second row, third column)
 
 print(mat[:, 1:])
 # All rows, columns from index 1 to the end
+Output:
+[[10 15]
+[25 30]]
 ```
 
   </TabItem>
@@ -510,7 +536,7 @@ Boolean logic is used to filter arrays.
 arr = np.array([1, 2, 10, 20])
 
 print(arr[arr > 5])
-# [10, 20]
+Output: [10, 20]
 ```
 
   </TabItem>
@@ -527,7 +553,7 @@ Broadcasting allows NumPy to treat arrays with different shapes during arithmeti
 arr = np.array([1, 2, 3])
 
 print(arr + 10)
-# [11, 12, 13]
+Output: [11, 12, 13]
 
 # The '10' is broadcasted to match shape
 ```
@@ -548,10 +574,11 @@ Operations are applied element-wise across the array.
 arr = np.array([0, 1, 4])
 
 print(np.sqrt(arr))
-# [0, 1, 2]
+Output: [0, 1, 2]
 
 print(np.exp(arr))
 # e^0, e^1, e^4
+Output: [ 1. 2.71828183 54.59815003]
 ```
 
   </TabItem>
@@ -568,10 +595,10 @@ Statistical functions aggregate data to find insights.
 arr = np.array([1, 5, 10])
 
 print(arr.sum())
-# 16
+Output: 16
 
 print(arr.mean())
-# 5.33
+Output: 5.33
 ```
 
   </TabItem>
@@ -588,10 +615,10 @@ Calculations can be performed along rows or columns.
 mat = np.array([[1, 2], [3, 4]])
 
 print(mat.sum(axis=0))
-# [4, 6] (Sum of columns)
+Output: [4, 6] (Sum of columns)
 
 print(mat.sum(axis=1))
-# [3, 7] (Sum of rows)
+Output: [3, 7] (Sum of rows)
 ```
 
   </TabItem>
@@ -608,7 +635,7 @@ Returns the index of the maximum or minimum value.
 arr = np.array([10, 50, 20])
 
 print(arr.argmax())
-# 1 (index of 50)
+Output: 1 (index of 50)
 ```
 
   </TabItem>
@@ -696,6 +723,11 @@ data = {
 }
 
 df = pd.DataFrame(data)
+Output:
+ Product  Price  In_Stock
+0   Laptop   1200      True
+1    Mouse     25      True
+2  Monitor    300     False
 ```
 
   </TabItem>
@@ -735,6 +767,10 @@ Conditional logic is used to extract subsets of data.
 ```python
 # Get only products where Price is greater than 100
 expensive_items = df[df['Price'] > 100]
+Output:
+   Product  Price  In_Stock
+0   Laptop   1200      True
+2  Monitor    300     False
 ```
 
   </TabItem>
@@ -764,6 +800,10 @@ The `groupby()` function groups rows based on a column and performs calculations
 ```python
 # Calculate the average price per product category
 avg_price = df.groupby('Category')['Price'].mean()
+Output:
+Category
+Electronics    750.0
+Name: Price, dtype: float64
 ```
 
   </TabItem>
@@ -802,6 +842,17 @@ df.info()
 
 # Shows column names, non-null counts,
 # and dtypes (int64, object, etc.)
+
+Output:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 2 entries, 0 to 1
+Data columns (total 2 columns):
+ #   Column    Non-Null Count  Dtype 
+---  ------    --------------  ----- 
+ 0   Fruits    2 non-null      object
+ 1   Quantity  2 non-null      int64 
+dtypes: int64(1), object(1)
+memory usage: 164.0+ bytes
 ```
 
   </TabItem>
@@ -816,7 +867,19 @@ Generates descriptive statistics for numerical columns.
 
 ```python
 print(df.describe())
+
+Output:
+        Quantity
+count   2.000000
+mean   30.000000
+std    14.142136
+min    20.000000
+25%    25.000000
+50%    30.000000
+75%    35.000000
+max    40.000000
 ```
+
 
   </TabItem>
 </Tabs>
@@ -836,11 +899,13 @@ Selection and slicing help navigate through data using labels or positions.
 ```python
 # Accessing row index 1, column 'Fruits'
 print(df.loc[1, 'Fruits'])
-# 'Apple'
+
+Output: 'Apple'
 
 # Accessing first row, first column by position
 print(df.iloc[0, 0])
-# 'Mango'
+
+Output: 'Mango'
 ```
 
   </TabItem>
@@ -857,7 +922,8 @@ These are used for fast access to a single scalar value.
 ```python
 # Fast access by label
 print(df.at[0, 'Quantity'])
-# 40
+
+Output: 40
 ```
 
   </TabItem>
@@ -891,6 +957,11 @@ Changes column or index labels.
 
 ```python
 df.rename(columns={'Fruits': 'Item_Name'}, inplace=True)
+
+Output:
+  Item_Name  Quantity
+0     Mango        40
+1     Apple        20
 ```
 
   </TabItem>
@@ -910,6 +981,11 @@ Sorts the DataFrame based on the values of a specific column.
 ```python
 # Sort by Quantity descending
 df.sort_values(by='Quantity', ascending=False, inplace=True)
+
+Output:
+  Item_Name  Quantity
+0     Mango        40
+1     Apple        20
 ```
 
   </TabItem>
@@ -925,6 +1001,10 @@ Filters data using a logical string expression.
 ```python
 # Select rows where Quantity is greater than 30
 filtered_df = df.query('Quantity > 30')
+
+Output:
+  Item_Name  Quantity
+0     Mango        40
 ```
 
   </TabItem>
@@ -948,6 +1028,11 @@ melted = pd.melt(
     id_vars=['Item_Name'],
     value_vars=['Quantity']
 )
+
+Output:
+  Item_Name   variable  value
+0     Mango   Quantity     40
+1     Apple   Quantity     20
 ```
 
   </TabItem>
@@ -967,6 +1052,12 @@ pivot_table = df.pivot(
     index='Item_Name',
     columns='Quantity'
 )
+
+Output:
+Quantity    20      40
+Item_Name             
+Apple      Apple   NaN
+Mango       NaN   Mango
 ```
 
   </TabItem>
@@ -997,6 +1088,11 @@ merged_df = pd.merge(
     on='Fruits',
     how='inner'
 )
+
+Output:
+   Fruits  Quantity  Price
+0   Mango        40    120
+1   Apple        20     80
 ```
 
   </TabItem>
@@ -1012,6 +1108,13 @@ Stacks DataFrames together either vertically or horizontally.
 ```python
 # Stack df2 on top of df1
 combined = pd.concat([df1, df2], axis=0)
+
+Output:
+   Fruits  Quantity
+0   Mango        40
+1   Apple        20
+0  Orange        30
+1  Banana        15
 ```
 
   </TabItem>
@@ -1030,6 +1133,11 @@ These methods detect and count missing values.
 
 ```python
 print(df.isnull().sum())
+
+Output:
+Fruits      0
+Quantity    0
+dtype: int64
 ```
 
   </TabItem>
@@ -1045,6 +1153,12 @@ print(df.isnull().sum())
 
 ```python
 df['Quantity'] = df['Quantity'].fillna(0)
+
+Output:
+   Fruits  Quantity
+0   Mango      40.0
+1   Apple      20.0
+2  Orange       0.0
 ```
 
   </TabItem>
@@ -1060,15 +1174,24 @@ Statistical aggregation functions help quickly calculate insights from data.
 ```python
 print(df['Quantity'].sum())
 # Total of all quantities
+Output: 60
+
 
 print(df['Quantity'].mean())
 # Average quantity
+Output: 30
 
 print(df['Quantity'].max())
 # Highest value
+Output: 40
 
 print(df['Quantity'].cumsum())
 # Running total (Cumulative Sum)
+
+Output:
+0    40
+1    60
+Name: Quantity, dtype: int64
 ```
 
   </TabItem>
