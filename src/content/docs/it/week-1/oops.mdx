@@ -5,80 +5,9 @@ description: Object-Oriented Programming fundamentals
 
 import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
 
-## Object Orientedd Programming
-## Procedural Oriented Programming (POP)
+## Basics
 
-Procedural Oriented Programming (POP) is a programming paradigm that focuses on procedures (functions) as the main building blocks of a program.
-It organizes code as a sequence of instructions that operate on data.
-
-### A. Features of POP
-
-- Programs are divided into small reusable functions.
-- Start with a main problem → break it into smaller sub-problems (functions).
-- Instructions are executed step-by-step.
-- Data can be shared across functions using global variables.
-- Data is often exposed to multiple functions.
-
-### B. Advantages of POP
-
-- Simple and easy to understand.
-- Suitable for small programs.
-- Code reuse through functions.
-- Faster execution (less overhead than OOP).
-
-### C. Disadvantages of POP
-
-- Difficult to manage large programs.
-- Data is not secure (no encapsulation).
-- Hard to modify and debug complex systems.
-- No real-world modeling.
-
----
-
-## Object Oriented Programming (OOP)
-
-OOPS is a programming approach that organizes code into objects, which contain data and methods, to make programs more structured, reusable, and easy to understand.
-
-### A. Features of OOP
-
-- Combining data and methods into a single unit (class) and restricting access.
-- Hiding complex details and showing only essential features.
-- Creating new classes from existing classes to reuse code.
-- One function behaves in different ways based on input or object.
-- Reusing properties and methods from another class.
-- Protecting data from unauthorized access.
-
-
-### B. Advantages of OOP
-
-- Code can be reused using inheritance.
-- The program is divided into small parts (classes), making it easy to manage.
-- Errors can be fixed easily without affecting the whole program.
-- Data is protected using encapsulation.
-- Easy to extend and modify programs.
-- Represents real-life objects clearly.
-
-
-### C. Disadvantages of OOP
-
-- Hard to understand for beginners.
-- Requires extra memory for objects and classes.
-- Compared to procedural programming in some cases.
-- Extra effort needed for design (classes, objects).
-- Simple problems do not need OOP structure.
-
-### D. Characteristics of OOP
-
-- Class
-- Object
-- Encapsulation
-- Abstraction
-- Polymorphism
-- Inheritance
-
----
-
-## Difference Between POP and OOP
+### A. POP vs OOP
 
 | Features | POP | OOP |
 |---|---|---|
@@ -88,45 +17,27 @@ OOPS is a programming approach that organizes code into objects, which contain d
 | Reusability | Limited | High |
 | Example Languages | C, Pascal | Java, Python, C++ |
 
----
 
-## Class and Object
+### B. Features of OOP
 
-### A. Class
-
-A class is a user-defined blueprint or prototype from which objects are created.
-It represents the set of properties or methods that are common to all objects of one type.
-Using classes, you can create multiple objects with the same behavior instead of writing their code multiple times.
-
-#### Important Points About Classes
-
-- A class can have members defined as `public`, `private`, or `protected` to control accessibility.
-- The class name should follow naming conventions, usually starting with a capital letter.
-- The class body is enclosed with braces `{}` and defines data members and member functions.
+- Combining data and methods into a single unit (class) and restricting access.
+- Hiding complex details and showing only essential features.
+- Creating new classes from existing classes to reuse code.
+- One function behaves in different ways based on input or object.
+- Reusing properties and methods from another class.
+- Protecting data from unauthorized access.
 
 
+### C. Class and Object
 
-### B. Object
+#### 1. Class
 
-An object is a basic unit of Object-Oriented Programming that represents real-life entities.
-A typical C++ program creates many objects, which interact with each other by invoking methods.
-The objects are what perform your code and are visible to the user.
+A class is a user-defined blueprint or prototype from which objects are created.  
+It defines the properties and behaviors common to all objects of one type.
 
-####  Features of an Object
-
-##### 1. State
-It is represented by the attributes of an object.
-It reflects the properties of an object.
-
-##### 2. Behavior
-It is represented by the methods of an object.
-It reflects the response of an object to other objects.
-
-##### 3. Identity
-It is a unique name given to an object that enables it to interact with other objects.
-
-##### 4. Method
-A method is a collection of statements that perform some specific task and return the result to the caller.
+**Example:**  
+Class → Car  
+Objects → BMW, Audi, Tesla
 
 <br />
 
@@ -142,19 +53,187 @@ A method is a collection of statements that perform some specific task and retur
 
 <br />
 
+#### 2. Object
+
+An object is an instance of a class that represents a real-world entity.  
+Objects contain data and methods.
+
+
+### D. Attributes and Methods
+
+#### 1. Attributes
+
+Attributes are variables/data members that store the state of an object.
+
+#### 2. Methods
+
+Methods are functions inside a class that define the behavior of an object.
+
+### E. Message Passing
+
+Message passing is the process by which objects communicate with each other by calling methods.
+
+- One object sends a message to another object.
+- The receiving object performs the requested action.
+- Communication happens through method calls.
+
+**Example:**  
+A customer object sends a message to a bank object to withdraw money.
+
+---
+
+## Constructors and Keywords
+
+### A. Constructor
+
+A constructor is a special method used to create and initialize an object.  
+It runs automatically when an object is created and sets the initial values of the object’s data.
+
+#### 1. Features of Constructor
+
+- Has the same name as the class.
+- Called automatically when an object is created.
+- Used to initialize object data members.
+- Does not have a return type.
+- Helps reduce repeated code.
+
+
+#### 2. Real-Life Example
+
+When a car is manufactured, its engine and color are initialized automatically.
+
+#### 3. Constructor Syntax Example
+
+<Tabs>
+  <TabItem label="Java">
+    <Code
+      code={`class ClassName {
+
+    // Constructor
+    ClassName() {
+        // initialization code
+    }
+}`}
+      lang="java"
+      title="Constructor Syntax in Java"
+    />
+  </TabItem>
+
+  <TabItem label="C++">
+    <Code
+      code={`class ClassName {
+
+public:
+
+    // Constructor
+    ClassName() {
+        // initialization code
+    }
+};`}
+      lang="cpp"
+      title="Constructor Syntax in C++"
+    />
+  </TabItem>
+
+  <TabItem label="Python">
+    <Code
+      code={`class ClassName:
+
+    def __init__(self):
+        # initialization code
+        pass`}
+      lang="python"
+      title="Constructor Syntax in Python"
+    />
+  </TabItem>
+</Tabs>
+
+Constructors are used to initialize objects automatically when they are created.
+
+### B. this Keyword
+
+The `this` keyword refers to the current object of the class.  
+It is used to access the current object's variables and methods inside the class.
+
+#### 1. Uses of this Keyword
+
+- Refers to the current class object.
+- Distinguishes instance variables from local variables.
+- Can be used to call current class methods.
+- Can be used to invoke current class constructors.
+- Helps improve code readability.
+
+#### 2. Real-Life Example
+
+A student saying “this book is mine” refers to the current student’s book.
+
+#### 3. this Keyword Example
+
+<Tabs>
+  <TabItem label="Java">
+    <Code
+      code={`class Student {
+
+    int marks;
+
+    Student(int marks) {
+        this.marks = marks;
+    }
+
+    void display() {
+        System.out.println(this.marks);
+    }
+}`}
+      lang="java"
+      title="this Keyword in Java"
+    />
+  </TabItem>
+
+  <TabItem label="C++">
+    <Code
+      code={`class Student {
+
+private:
+    int marks;
+
+public:
+
+    Student(int marks) {
+        this->marks = marks;
+    }
+
+    void display() {
+        cout << this->marks;
+    }
+};`}
+      lang="cpp"
+      title="this Keyword in C++"
+    />
+  </TabItem>
+
+  <TabItem label="Python">
+    <Code
+      code={`class Student:
+
+    def __init__(self, marks):
+        self.marks = marks
+
+    def display(self):
+        print(self.marks)`}
+      lang="python"
+      title="this Keyword Equivalent in Python"
+    />
+  </TabItem>
+</Tabs>
+
+The `this` keyword refers to the current object of the class.
+
 ---
 
 ## Encapsulation
 
-The idea of encapsulation is to bind the data members and methods into a single unit.
-
-### A. Features of Encapsulation
-
-- Helps in better maintainability, readability, and usability.
-- Avoids explicitly passing data members to methods.
-- Maintains data integrity by validating values assigned to variables.
-- Helps achieve abstraction.
-- Hides implementation details and exposes only required functionalities.
+The idea of encapsulation is to bind the data members and methods into a single unit.  
+It restricts direct access to data and allows access only through methods.
 
 <br />
 
@@ -170,19 +249,32 @@ The idea of encapsulation is to bind the data members and methods into a single 
 
 <br />
 
-### B. Real-Life Example
+### A. Data Hiding
+
+Data hiding means restricting direct access to variables using access modifiers like `private`.
+
+### B. Getters and Setters
+
+Getters and setters are public methods used to access and update private data members.
+
+- Getter → Used to read data
+- Setter → Used to modify data
+
+### C. Controlled Access
+
+Controlled access means data can only be accessed through authorized methods, improving security and integrity.
+
+### D. Real-Life Example
 
 You can use an ATM machine, but the internal details are hidden.
 
 
-
-### C. Encapsulation Example
+### E. Encapsulation Example
 
 <Tabs>
   <TabItem label="Java">
-
-```java
-class Student {
+    <Code
+      code={`class Student {
 
     private int marks;
 
@@ -193,15 +285,15 @@ class Student {
     int getMarks() {
         return marks;
     }
-}
-```
-
+}`}
+      lang="java"
+      title="Encapsulation in Java"
+    />
   </TabItem>
 
   <TabItem label="C++">
-
-```cpp
-class Student {
+    <Code
+      code={`class Student {
 
 private:
     int marks;
@@ -215,15 +307,15 @@ public:
     int getMarks() {
         return marks;
     }
-};
-```
-
+};`}
+      lang="cpp"
+      title="Encapsulation in C++"
+    />
   </TabItem>
 
   <TabItem label="Python">
-
-```python
-class Student:
+    <Code
+      code={`class Student:
 
     def __init__(self):
         self.__marks = 0
@@ -232,44 +324,26 @@ class Student:
         self.__marks = m
 
     def getMarks(self):
-        return self.__marks
-```
-
+        return self.__marks`}
+      lang="python"
+      title="Encapsulation in Python"
+    />
   </TabItem>
 </Tabs>
 
 Data is hidden and accessed using getter/setter methods.
 
 
-
-### D. Advantages of Encapsulation
-
-- Restricts direct access to private variables.
-- Protects sensitive data from unauthorized access.
-- Internal implementation can be changed without affecting users.
-- Allows validation and control over data.
-- Encapsulated classes can be reused easily.
-- Promotes organized and modular code.
-
-
-
-### E. Disadvantages of Encapsulation
-
-- Writing getter and setter methods increases code length.
-- Accessing data through methods adds slight performance overhead.
-- Too much restriction may limit flexibility.
-
 ---
 
 ## Abstraction
 
-Abstraction is another key concept in Object-Oriented Programming.
-It means showing only the important details and hiding the complex implementation.
+Abstraction means showing only important details and hiding complex implementation.
 
-#### Abstraction Focuses On
+### A. What vs How
 
-- What to do (functionality)
-- Not how it is done (implementation)
+- What an object does → Visible to user
+- How it works internally → Hidden from user
 
 <br />
 
@@ -285,19 +359,39 @@ It means showing only the important details and hiding the complex implementatio
 
 <br />
 
-### A. Real-Life Example
+### B. Abstract Class
+
+An abstract class is a class that cannot be instantiated.  
+It contains both abstract methods and normal methods.  
+It is mainly used to achieve partial abstraction.
+
+### C. Interface
+
+An interface is a blueprint of a class that contains abstract methods.  
+It is used to achieve full abstraction and multiple inheritance.
+
+### D. Difference between Abstract Class and Interface
+
+| Abstract Class | Interface |
+|----------------|------------|
+| Can have abstract and normal methods | Contains abstract methods |
+| Supports partial abstraction | Supports full abstraction |
+| Can have constructors | Cannot have constructors |
+| A class extends an abstract class | A class implements an interface |
+| Supports single inheritance | Supports multiple inheritance |
+
+
+### E. Real-Life Example
 
 You drive the car (what), but you do not know how the engine works internally (how).
 
 
-
-### B. Abstraction Example
+### F. Abstraction Example
 
 <Tabs>
   <TabItem label="Java">
-
-```java
-abstract class Animal {
+    <Code
+      code={`abstract class Animal {
 
     abstract void sound();
 }
@@ -307,15 +401,15 @@ class Dog extends Animal {
     void sound() {
         System.out.println("Bark");
     }
-}
-```
-
+}`}
+      lang="java"
+      title="Abstraction in Java"
+    />
   </TabItem>
 
   <TabItem label="C++">
-
-```cpp
-class Animal {
+    <Code
+      code={`class Animal {
 
 public:
 
@@ -329,15 +423,15 @@ public:
     void sound() {
         cout << "Bark";
     }
-};
-```
-
+};`}
+      lang="cpp"
+      title="Abstraction in C++"
+    />
   </TabItem>
 
   <TabItem label="Python">
-
-```python
-from abc import ABC, abstractmethod
+    <Code
+      code={`from abc import ABC, abstractmethod
 
 class Animal(ABC):
 
@@ -348,125 +442,38 @@ class Animal(ABC):
 class Dog(Animal):
 
     def sound(self):
-        print("Bark")
-```
-
+        print("Bark")`}
+      lang="python"
+      title="Abstraction in Python"
+    />
   </TabItem>
 </Tabs>
 
 The abstract method defines what to do, not how.
-
-### C. Advantages of Abstraction
-
-- Focus only on required details.
-- Makes code cleaner and easier to understand.
-- Hides important implementation details.
-- Common structure can be reused.
-- Changes in implementation do not affect users.
-
-
-
-### D. Disadvantages of Abstraction
-
-- Requires proper planning.
-- Abstract classes may feel confusing for beginners.
-- Can increase complexity if overused.
-- Indirect calls may slightly affect performance.
 
 ---
 
 ## Inheritance
 
 Inheritance is a mechanism in which one class acquires the properties and behaviors of another class.
-Inheritance allows:
 
-- Code reuse
-- Extension of existing classes
-- Hierarchical classification
+### A. Parent → Child Relationship
 
+- Parent Class → The class whose properties are inherited.
+- Child Class → The class that inherits properties from another class.
 
+**Example:**
+Animal → Parent Class  
+Dog → Child Class
 
-### A. Features of Inheritance
+### B. IS-A Relationship
 
-- One class can reuse properties of another class.
-- Child classes reuse parent class features.
-- Promotes code reusability.
-- Represents real-world relationships.
+Inheritance represents an IS-A relationship.
 
+**Examples:**
+- Dog IS-A Animal
+- Car IS-A Vehicle
 
-
-### B. Inheritance Example
-
-<Tabs>
-  <TabItem label="Java">
-
-```java
-class Animal {
-
-    void eat() {
-        System.out.println("Eating");
-    }
-}
-
-class Dog extends Animal {
-
-    void bark() {
-        System.out.println("Barking");
-    }
-}
-```
-
-  </TabItem>
-
-  <TabItem label="C++">
-
-```cpp
-class Animal {
-
-public:
-
-    void eat() {}
-};
-
-class Dog : public Animal {
-
-public:
-
-    void bark() {}
-};
-```
-
-  </TabItem>
-
-  <TabItem label="Python">
-
-```python
-# Parent Class
-class Animal:
-
-    def sound(self):
-        print("Animals make sounds")
-
-# Child Class
-class Dog(Animal):
-
-    def bark(self):
-        print("Dog barks")
-
-# Creating object of child class
-d = Dog()
-
-# Accessing parent class method
-d.sound()
-
-# Accessing child class method
-d.bark()
-```
-
-  </TabItem>
-</Tabs>
-
-Dog inherits properties of Animal.
 
 
 ### C. Types of Inheritance
@@ -496,7 +503,6 @@ It is also known as simple inheritance.
 In multiple inheritance, one class can have more than one superclass and inherit features from all parent classes.
 
 
-
 #### 3. Hierarchical Inheritance
 In hierarchical inheritance, more than one subclass is inherited from a single base class.
 That means multiple derived classes are created from one base class.
@@ -515,297 +521,56 @@ Hybrid inheritance occurs when two or more inheritance types are combined in one
     - Multilevel inheritance
 
 
----
+### D. super Keyword
 
-## Polymorphism
+The `super` keyword refers to the parent class object.  
+It is used to access parent class variables, methods, and constructors.
 
-Polymorphism allows the same method to perform different actions.
-The word polymorphism means "many forms".
+#### 1. Uses of super Keyword
 
-<br />
+- Refers to the parent class object.
+- Accesses parent class variables.
+- Calls parent class methods.
+- Invokes parent class constructors.
+- Helps in method overriding.
 
-<img
-  src="/IT/oops6.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
 
-<br />
+#### 2. Real-Life Example
 
-### A. Compile-Time Polymorphism
+A child calling their parent for help is similar to using the `super` keyword to access parent class members.
 
-Compile-time polymorphism is also known as:
-
-- Early Binding
-- Static Polymorphism
-
-In compile-time polymorphism, the compiler determines how the function or operator will work depending on the context during compilation.
-
-This type of polymorphism is achieved using:
-
-- Function Overloading
-- Operator Overloading
-
-#### 1. Function Overloading
-Function overloading allows multiple functions with the same name but different parameters.
-<br />
-**Function Overloading Example**
+#### 3. super Keyword Example
 
 <Tabs>
   <TabItem label="Java">
-
-```java
-class Addition {
-
-    void add(int a, int b) {
-        System.out.println("Sum = " + (a + b));
-    }
-
-    void add(int a, int b, int c) {
-        System.out.println("Sum = " + (a + b + c));
-    }
-
-    public static void main(String[] args) {
-
-        Addition obj = new Addition();
-
-        obj.add(10, 20);
-        obj.add(10, 20, 30);
-    }
-}
-```
-
-  </TabItem>
-
-  <TabItem label="C++">
-
-```cpp
-#include <bits/stdc++.h>
-using namespace std;
-
-class Geeks {
-
-public:
-
-    void add(int a, int b) {
-        cout << "Integer Sum = "
-             << a + b << endl;
-    }
-
-    void add(double a, double b) {
-        cout << "Float Sum = "
-             << a + b << endl;
-    }
-};
-
-int main() {
-
-    Geeks gfg;
-
-    gfg.add(10, 2);
-    gfg.add(5.3, 6.2);
-
-    return 0;
-}
-```
-
-  </TabItem>
-
-  <TabItem label="Python">
-
-```python
-class Addition:
-
-    def add(self, a, b, c=0):
-        print("Sum =", a + b + c)
-
-obj = Addition()
-
-obj.add(10, 20)
-obj.add(10, 20, 30)
-```
-
-  </TabItem>
-</Tabs>
-
-
-
-#### 2. Operator Overloading
-Programming languages can provide operators with special meanings for particular data types.
-This ability is known as Operator Overloading.
-
-For example:
-- The `+` operator is used to add integers.
-- The `+` operator is also used to concatenate strings.
-- The `<<` and `>>` operators are used as binary shift operators and also with input/output streams.
-
-This is possible because of operator overloading.
-
-<br />
-
-**Operator Overloading Example**
-
-<Tabs>
-  <TabItem label="Java">
-
-```java
-public class Main {
-
-    public static void main(String[] args) {
-
-        int a = 10;
-        int b = 20;
-
-        System.out.println(a + b);
-
-        String s1 = "Hello ";
-        String s2 = "Java";
-
-        System.out.println(s1 + s2);
-    }
-}
-```
-
-  </TabItem>
-
-  <TabItem label="C++">
-
-```cpp
-#include <iostream>
-using namespace std;
-
-class Complex {
-
-    int real, imag;
-
-public:
-
-    Complex(int r, int i) {
-        real = r;
-        imag = i;
-    }
-
-    Complex operator + (Complex obj) {
-
-        Complex temp(0, 0);
-
-        temp.real = real + obj.real;
-        temp.imag = imag + obj.imag;
-
-        return temp;
-    }
-
-    void display() {
-        cout << real << " + "
-             << imag << "i" << endl;
-    }
-};
-
-int main() {
-
-    Complex c1(2, 3);
-    Complex c2(4, 5);
-
-    Complex c3 = c1 + c2;
-
-    c3.display();
-
-    return 0;
-}
-```
-
-  </TabItem>
-
-  <TabItem label="Python">
-
-```python
-class Complex:
-
-    def __init__(self, real, imag):
-        self.real = real
-        self.imag = imag
-
-    def __add__(self, other):
-
-        return Complex(
-            self.real + other.real,
-            self.imag + other.imag
-        )
-
-    def display(self):
-        print(self.real, "+", self.imag, "i")
-
-c1 = Complex(2, 3)
-c2 = Complex(4, 5)
-
-c3 = c1 + c2
-
-c3.display()
-```
-
-  </TabItem>
-</Tabs>
-
-### B. Runtime Polymorphism
-
-It is also known as late binding and dynamic polymorphism, the function call in runtime polymorphism is resolved at runtime in contrast with compile time polymorphism, where the compiler determines which function call to bind at compilation. Runtime polymorphism is implemented using function overriding with virtual functions.
-
-
-#### 1. Function Overriding
-
-Function Overriding occurs when a derived class defines one or more member functions of the base class. That base function is said to be overridden. The base class function must be declared as a virtual function for runtime polymorphism to happen.
-
-
-##### Function Overriding Example
-
-<Tabs>
-  <TabItem label="Java">
-
-```java
-class Animal {
+    <Code
+      code={`class Animal {
 
     void sound() {
-        System.out.println("Animal makes sound");
+        System.out.println("Animal Sound");
     }
 }
 
 class Dog extends Animal {
 
     void sound() {
-        System.out.println("Dog barks");
+        super.sound();
+        System.out.println("Dog Barks");
     }
-}
-
-public class Main {
-
-    public static void main(String[] args) {
-
-        Dog d = new Dog();
-
-        d.sound();
-    }
-}
-```
-
+}`}
+      lang="java"
+      title="super Keyword in Java"
+    />
   </TabItem>
 
   <TabItem label="C++">
-
-```cpp
-#include <iostream>
-using namespace std;
-
-class Animal {
+    <Code
+      code={`class Animal {
 
 public:
 
     void sound() {
-        cout << "Animal makes sound"
-             << endl;
+        cout << "Animal Sound";
     }
 };
 
@@ -814,57 +579,106 @@ class Dog : public Animal {
 public:
 
     void sound() {
-        cout << "Dog barks"
-             << endl;
+        Animal::sound();
+        cout << "Dog Barks";
     }
-};
-
-int main() {
-
-    Dog d;
-
-    d.sound();
-
-    return 0;
-}
-```
-
+};`}
+      lang="cpp"
+      title="super Keyword Equivalent in C++"
+    />
   </TabItem>
 
   <TabItem label="Python">
-
-```python
-class Animal:
+    <Code
+      code={`class Animal:
 
     def sound(self):
-        print("Animal makes sound")
+        print("Animal Sound")
 
 class Dog(Animal):
 
     def sound(self):
-        print("Dog barks")
-
-d = Dog()
-
-d.sound()
-```
-
+        super().sound()
+        print("Dog Barks")`}
+      lang="python"
+      title="super Keyword in Python"
+    />
   </TabItem>
 </Tabs>
 
-#### 2. Advantages of Runtime Polymorphism
-
-- Increases flexibility in programs.
-- Supports method overriding.
-- Enables dynamic method dispatch.
-- Makes code reusable and extensible.
+The `super` keyword is used to access parent class members.
 
 
+### E. Inheritance Example
 
-#### 3. Disadvantages of Runtime Polymorphism
+<Tabs>
+  <TabItem label="Java">
+    <Code
+      code={`class Animal {
 
-- Slightly slower because method calls are resolved at runtime.
-- Increases program complexity.
-- Debugging may become difficult in large systems.
+    void eat() {
+        System.out.println("Eating");
+    }
+}
 
----
+class Dog extends Animal {
+
+    void bark() {
+        System.out.println("Barking");
+    }
+}`}
+      lang="java"
+      title="Inheritance in Java"
+    />
+  </TabItem>
+
+  <TabItem label="C++">
+    <Code
+      code={`class Animal {
+
+public:
+
+    void eat() {}
+};
+
+class Dog : public Animal {
+
+public:
+
+    void bark() {}
+};`}
+      lang="cpp"
+      title="Inheritance in C++"
+    />
+  </TabItem>
+
+  <TabItem label="Python">
+    <Code
+      code={`# Parent Class
+class Animal:
+
+    def sound(self):
+        print("Animals make sounds")
+
+# Child Class
+class Dog(Animal):
+
+    def bark(self):
+        print("Dog barks")
+
+# Creating object of child class
+d = Dog()
+
+# Accessing parent class method
+d.sound()
+
+# Accessing child class method
+d.bark()`}
+      lang="python"
+      title="Inheritance in Python"
+    />
+  </TabItem>
+</Tabs>
+
+Dog inherits properties of Animal.
+
