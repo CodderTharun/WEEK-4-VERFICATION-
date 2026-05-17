@@ -179,7 +179,7 @@ items: [
     ],
   },
   {
-    label: "Power Generation ",
+    label: "Power Electronics ",
     collapsed: true,
     items: [
       { label: "Week 1", link: "/eee/week-1/power-generation" },
