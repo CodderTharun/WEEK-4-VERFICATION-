@@ -306,8 +306,9 @@ The main focus of Data Definition Language (DDL) is on specifying and controllin
 
 <Tabs>
   <TabItem label="SQL">
-    <Code
-      code={`CREATE TABLE Student(
+
+```sql
+CREATE TABLE Student(
     Roll_No INT,
     Name VARCHAR(50)
 );
@@ -315,13 +316,12 @@ The main focus of Data Definition Language (DDL) is on specifying and controllin
 ALTER TABLE Student
 ADD Age INT;
 
-RENAME TABLE Student TO Students;`}
-      lang="sql"
-      title="DDL Commands"
-    />
+RENAME TABLE Student TO Students;
+```
+
   </TabItem>
 </Tabs>
-
+---
 #### 2. Data Manipulation Language (DML)
 
 We can use DML commands to manipulate data in a database.
@@ -340,8 +340,9 @@ We can insert new data, update existing data, delete unwanted data and even retr
 
 <Tabs>
   <TabItem label="SQL">
-    <Code
-      code={`INSERT INTO Students
+
+```sql
+INSERT INTO Students
 VALUES(1, 'Rahul', 20);
 
 SELECT * FROM Students;
@@ -351,10 +352,9 @@ SET Age = 21
 WHERE Roll_No = 1;
 
 DELETE FROM Students
-WHERE Roll_No = 1;`}
-      lang="sql"
-      title="DML Commands"
-    />
+WHERE Roll_No = 1;
+```
+
   </TabItem>
 </Tabs>
 
@@ -372,17 +372,17 @@ We can grant or revoke access to our data, ensuring security and control.
 
 <Tabs>
   <TabItem label="SQL">
-    <Code
-      code={`GRANT SELECT, INSERT
+
+```sql
+GRANT SELECT, INSERT
 ON Students
 TO user1;
 
 REVOKE INSERT
 ON Students
-FROM user1;`}
-      lang="sql"
-      title="DCL Commands"
-    />
+FROM user1;
+```
+
   </TabItem>
 </Tabs>
 
@@ -401,8 +401,9 @@ TCL commands ensure that database transactions are processed reliably.
 
 <Tabs>
   <TabItem label="SQL">
-    <Code
-      code={`START TRANSACTION;
+
+```sql
+START TRANSACTION;
 
 UPDATE Students
 SET Age = 22
@@ -412,10 +413,9 @@ SAVEPOINT A;
 
 ROLLBACK TO A;
 
-COMMIT;`}
-      lang="sql"
-      title="TCL Commands"
-    />
+COMMIT;
+```
+
   </TabItem>
 </Tabs>
 

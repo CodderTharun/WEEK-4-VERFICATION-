@@ -37,28 +37,22 @@ An array is a linear data structure that stores elements of the same data type i
 
 #### 1. Declaration
 
-<Code
-  code={`int arr[5];`}
-  lang="cpp"
-  title="Array Declaration"
-/>
+```cpp
+int arr[5];
+```
 
 #### 2. Initialization
 
-<Code
-  code={`arr[0] = 10;
-arr[1] = 20;`}
-  lang="cpp"
-  title="Array Initialization"
-/>
+```cpp
+arr[0] = 10;
+arr[1] = 20;
+```
 
 #### 3. Declaration + Initialization
 
-<Code
-  code={`int arr[4] = {10, 20, 30, 40};`}
-  lang="cpp"
-  title="Declaration and Initialization"
-/>
+```cpp
+int arr[4] = {10, 20, 30, 40};
+```
 
   </TabItem>
 
@@ -68,28 +62,22 @@ arr[1] = 20;`}
 
 #### 1. Declaration
 
-<Code
-  code={`int[] arr = new int[5];`}
-  lang="java"
-  title="Array Declaration"
-/>
+```java
+int[] arr = new int[5];
+```
 
 #### 2. Initialization
 
-<Code
-  code={`arr[0] = 10;
-arr[1] = 20;`}
-  lang="java"
-  title="Array Initialization"
-/>
+```java
+arr[0] = 10;
+arr[1] = 20;
+```
 
 #### 3. Declaration + Initialization
 
-<Code
-  code={`int[] arr = {10, 20, 30, 40};`}
-  lang="java"
-  title="Declaration and Initialization"
-/>
+```java
+int[] arr = {10, 20, 30, 40};
+```
 
   </TabItem>
 
@@ -99,34 +87,28 @@ arr[1] = 20;`}
 
 #### 1. Declaration
 
-<Code
-  code={`arr = [0] * 5   # Array of size 5`}
-  lang="python"
-  title="Array Declaration"
-/>
+```python
+arr = [0] * 5   # Array of size 5
+```
 
 #### 2. Initialization
 
-<Code
-  code={`arr[0] = 10
-arr[1] = 20`}
-  lang="python"
-  title="Array Initialization"
-/>
+```python
+arr[0] = 10
+arr[1] = 20
+```
 
 #### 3. Declaration + Initialization
 
-<Code
-  code={`arr = [10, 20, 30, 40]`}
-  lang="python"
-  title="Declaration and Initialization"
-/>
+```python
+arr = [10, 20, 30, 40]
+```
 
   </TabItem>
 
 </Tabs>
----
 
+---
 ## Basic Operations on Arrays
 
 ### A. Traversal
@@ -136,8 +118,8 @@ Traversing means accessing and printing all elements of an array one by one.
 <Tabs>
   <TabItem label="C++">
 
-<Code
-  code={`#include <iostream>
+```cpp
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -151,17 +133,15 @@ int main() {
 	}
 
 	return 0;
-}`}
-  lang="cpp"
-  title="Array Traversal in C++"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Java">
 
-<Code
-  code={`public class Main {
+```java
+public class Main {
 
 	public static void main(String[] args) {
 
@@ -171,26 +151,23 @@ int main() {
 			System.out.println(arr[i]);
 		}
 	}
-}`}
-  lang="java"
-  title="Array Traversal in Java"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Python">
 
-<Code
-  code={`arr = [10, 20, 30, 40]
+```python
+arr = [10, 20, 30, 40]
 
 for i in range(len(arr)):
-	print(arr[i])`}
-  lang="python"
-  title="Array Traversal in Python"
-/>
+	print(arr[i])
+```
 
   </TabItem>
 </Tabs>
+
 ---
 
 ### B. Insertion
@@ -200,8 +177,8 @@ Insertion means adding a new element into an array.
 <Tabs>
   <TabItem label="C++">
 
-<Code
-  code={`#include <iostream>
+```cpp
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -233,17 +210,15 @@ int main() {
 	n++;
 
 	return 0;
-}`}
-  lang="cpp"
-  title="Array Insertion in C++"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Java">
 
-<Code
-  code={`import java.util.*;
+```java
+import java.util.*;
 
 public class Main {
 
@@ -280,17 +255,15 @@ public class Main {
 		arr[pos] = value;
 		n++;
 	}
-}`}
-  lang="java"
-  title="Array Insertion in Java"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Python">
 
-<Code
-  code={`arr = [10, 20, 30]
+```python
+arr = [10, 20, 30]
 
 # Insert at beginning
 arr.insert(0, 5)
@@ -301,13 +274,12 @@ arr.append(40)
 # Insert at specific position
 arr.insert(2, 25)
 
-print(arr)`}
-  lang="python"
-  title="Array Insertion in Python"
-/>
+print(arr)
+```
 
   </TabItem>
 </Tabs>
+
 ---
 
 ### C. Deletion
@@ -317,8 +289,8 @@ Removing an element from an array.
 <Tabs>
   <TabItem label="C++">
 
-<Code
-  code={`#include <iostream>
+```cpp
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -352,17 +324,15 @@ int main() {
 	}
 
 	return 0;
-}`}
-  lang="cpp"
-  title="Array Deletion in C++"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Java">
 
-<Code
-  code={`public class Main {
+```java
+public class Main {
 
 	public static void main(String[] args) {
 
@@ -399,17 +369,15 @@ int main() {
 			System.out.print(arr[i] + " ");
 		}
 	}
-}`}
-  lang="java"
-  title="Array Deletion in Java"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Python">
 
-<Code
-  code={`arr = [10, 20, 30, 40]
+```python
+arr = [10, 20, 30, 40]
 
 # Delete at Beginning
 arr.pop(0)
@@ -422,14 +390,11 @@ arr.pop()
 
 # Print final array
 for x in arr:
-	print(x, end=" ")`}
-  lang="python"
-  title="Array Deletion in Python"
-/>
+	print(x, end=" ")
+```
 
   </TabItem>
 </Tabs>
-
 ### D. Accessing
 
 Accessing means retrieving the value of an element using its index.
@@ -437,8 +402,8 @@ Accessing means retrieving the value of an element using its index.
 <Tabs>
   <TabItem label="C++">
 
-<Code
-  code={`#include <iostream>
+```cpp
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -449,17 +414,15 @@ int main() {
 	cout << arr[2] << endl;
 
 	return 0;
-}`}
-  lang="cpp"
-  title="Array Access in C++"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Java">
 
-<Code
-  code={`public class Main {
+```java
+public class Main {
 
 	public static void main(String[] args) {
 
@@ -468,26 +431,23 @@ int main() {
 		System.out.println(arr[0]);
 		System.out.println(arr[2]);
 	}
-}`}
-  lang="java"
-  title="Array Access in Java"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Python">
 
-<Code
-  code={`arr = [10, 20, 30, 40]
+```python
+arr = [10, 20, 30, 40]
 
 print(arr[0])
-print(arr[2])`}
-  lang="python"
-  title="Array Access in Python"
-/>
+print(arr[2])
+```
 
   </TabItem>
 </Tabs>
+
 ---
 
 ## Additional Resources
@@ -1423,11 +1383,12 @@ Binary Search is commonly used in:
 | Time Complexity: O(n) | Time Complexity: O(log n) |
 
 #### Code
+
 <Tabs>
   <TabItem label="C++">
 
-<Code
-  code={`#include <iostream>
+```cpp
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -1460,17 +1421,15 @@ int main() {
 	cout << "Element Not Found";
 
 	return 0;
-}`}
-  lang="cpp"
-  title="Binary Search in C++"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Java">
 
-<Code
-  code={`public class Main {
+```java
+public class Main {
 
 	public static void main(String[] args) {
 
@@ -1501,17 +1460,15 @@ int main() {
 
 		System.out.println("Element Not Found");
 	}
-}`}
-  lang="java"
-  title="Binary Search in Java"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Python">
 
-<Code
-  code={`arr = [10, 20, 30, 40, 50]
+```python
+arr = [10, 20, 30, 40, 50]
 
 target = 30
 
@@ -1532,13 +1489,12 @@ while left <= right:
 	else:
 		right = mid - 1
 else:
-	print("Element Not Found")`}
-  lang="python"
-  title="Binary Search in Python"
-/>
+	print("Element Not Found")
+```
 
   </TabItem>
 </Tabs>
+
 ---
 ### B. Merge Sort
 
@@ -1629,8 +1585,8 @@ Merge Sort is widely used in:
 <Tabs>
   <TabItem label="C++">
 
-<Code
-  code={`#include <iostream>
+```cpp
+#include <iostream>
 using namespace std;
 
 void merge(int arr[], int left, int mid, int right) {
@@ -1702,17 +1658,15 @@ int main() {
 	}
 
 	return 0;
-}`}
-  lang="cpp"
-  title="Merge Sort in C++"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Java">
 
-<Code
-  code={`public class Main {
+```java
+public class Main {
 
 	static void merge(int[] arr, int left, int mid, int right) {
 
@@ -1781,17 +1735,15 @@ int main() {
 			System.out.print(num + " ");
 		}
 	}
-}`}
-  lang="java"
-  title="Merge Sort in Java"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Python">
 
-<Code
-  code={`def merge_sort(arr):
+```python
+def merge_sort(arr):
 
 	if len(arr) > 1:
 
@@ -1831,13 +1783,12 @@ arr = [38, 27, 43, 3, 9, 82, 10]
 
 merge_sort(arr)
 
-print(arr)`}
-  lang="python"
-  title="Merge Sort in Python"
-/>
+print(arr)
+```
 
   </TabItem>
 </Tabs>
+
 ---
 ### C. Quick Sort
 
@@ -1946,8 +1897,8 @@ Worst case occurs when poor pivots are repeatedly selected.
 <Tabs>
   <TabItem label="C++">
 
-<Code
-  code={`#include <iostream>
+```cpp
+#include <iostream>
 using namespace std;
 
 int partition(int arr[], int low, int high) {
@@ -1996,17 +1947,15 @@ int main() {
 	}
 
 	return 0;
-}`}
-  lang="cpp"
-  title="Quick Sort in C++"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Java">
 
-<Code
-  code={`public class Main {
+```java
+public class Main {
 
 	static int partition(int[] arr, int low, int high) {
 
@@ -2055,17 +2004,15 @@ int main() {
 			System.out.print(num + " ");
 		}
 	}
-}`}
-  lang="java"
-  title="Quick Sort in Java"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Python">
 
-<Code
-  code={`def partition(arr, low, high):
+```python
+def partition(arr, low, high):
 
 	pivot = arr[high]
 
@@ -2097,13 +2044,12 @@ arr = [10, 7, 8, 9, 1, 5]
 
 quick_sort(arr, 0, len(arr) - 1)
 
-print(arr)`}
-  lang="python"
-  title="Quick Sort in Python"
-/>
+print(arr)
+```
 
   </TabItem>
 </Tabs>
+
 ---
 ### D.  Maximum Subarray
 
@@ -2184,8 +2130,8 @@ The Maximum Subarray concept is widely used in:
 <Tabs>
   <TabItem label="C++">
 
-<Code
-  code={`#include <iostream>
+```cpp
+#include <iostream>
 using namespace std;
 
 int main() {
@@ -2213,17 +2159,15 @@ int main() {
 	cout << "Maximum Subarray Sum = " << maxSum;
 
 	return 0;
-}`}
-  lang="cpp"
-  title="Maximum Subarray in C++"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Java">
 
-<Code
-  code={`public class Main {
+```java
+public class Main {
 
 	public static void main(String[] args) {
 
@@ -2247,17 +2191,15 @@ int main() {
 
 		System.out.println("Maximum Subarray Sum = " + maxSum);
 	}
-}`}
-  lang="java"
-  title="Maximum Subarray in Java"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Python">
 
-<Code
-  code={`arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+```python
+arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
 
 current_sum = 0
 max_sum = arr[0]
@@ -2272,10 +2214,8 @@ for num in arr:
 	if current_sum < 0:
 		current_sum = 0
 
-print("Maximum Subarray Sum =", max_sum)`}
-  lang="python"
-  title="Maximum Subarray in Python"
-/>
+print("Maximum Subarray Sum =", max_sum)
+```
 
   </TabItem>
 </Tabs>

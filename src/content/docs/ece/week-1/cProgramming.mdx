@@ -17,8 +17,8 @@ This simple program demonstrates the basic structure of a C program.
 <Tabs>
   <TabItem label="C Program">
 
-<Code
-  code={`#include <stdio.h>
+```c
+#include <stdio.h>
 
 int main(void)
 {
@@ -26,24 +26,19 @@ int main(void)
 	printf("Hello World");
 
 	return 0;
-}`}
-  lang="c"
-  title="hello.c"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Output">
 
-<Code
-  code={`Hello World`}
-  lang="text"
-  title="Output"
-/>
+```text
+Hello World
+```
 
   </TabItem>
 </Tabs>
-
 <img 
   src="https://github.com/Sohanlm/lgp-notes-photos/blob/main/C1.png?raw=true" 
   alt="C1" 
@@ -107,18 +102,15 @@ To create a variable, you must specify the **type** and give the variable a **na
 
 ##### Syntax
 
-<Code
-  code={`type variableName = value;`}
-  lang="c"
-  title="Variable Declaration Syntax"
-/>
+```c
+type variableName = value;
+```
 
 ##### Example
-<Code
-  code={`int myNum = 15;`}
-  lang="c"
-  title="Variable Example"
-/>
+
+```c
+int myNum = 15;
+```
 
 ---
 
@@ -128,8 +120,9 @@ The data stored inside a C variable can be accessed using the variable name.
 
 <Tabs>
   <TabItem label="C">
-    <Code
-      code={`#include <stdio.h>
+
+```c
+#include <stdio.h>
 
 int main() {
 
@@ -140,20 +133,20 @@ int main() {
 	printf("%d", num);
 
 	return 0;
-}`}
-      lang="c"
-      title="Variables Example"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="Output">
-    <Code
-      code={`3`}
-      lang="text"
-      title="Program Output"
-    />
+
+```text
+3
+```
+
   </TabItem>
 </Tabs>
+
 ---
 
 ### B. Data Types
@@ -195,14 +188,11 @@ Each variable in C has an associated data type. It specifies the type of data th
 
 ##### Example
 
-<Code
-  code={`int a = 10;`}
-  lang="c"
-  title="Integer Example"
-/>
+```c
+int a = 10;
+```
 
 ---
-
 #### 2. Character Data Type
 
 - Stores a single character such as `'A'`, `'b'`, or `'5'`.
@@ -212,11 +202,9 @@ Each variable in C has an associated data type. It specifies the type of data th
 
 #### Example
 
-<Code
-  code={`char ch = 'A';`}
-  lang="c"
-  title="Character Example"
-/>
+```c
+char ch = 'A';
+```
 
 ---
 
@@ -229,11 +217,9 @@ Each variable in C has an associated data type. It specifies the type of data th
 
 #### Example
 
-<Code
-  code={`float b = 3.5f;`}
-  lang="c"
-  title="Float Example"
-/>
+```c
+float b = 3.5f;
+```
 
 ---
 
@@ -246,11 +232,10 @@ Each variable in C has an associated data type. It specifies the type of data th
 
 #### Example
 
-<Code
-  code={`double c = 12.345678;`}
-  lang="c"
-  title="Double Example"
-/>
+```c
+double c = 12.345678;
+```
+
 ---
 
 #### 5. Void Data Type
@@ -261,13 +246,12 @@ Each variable in C has an associated data type. It specifies the type of data th
 
 #### Example
 
-<Code
-  code={`void showMessage() {
+```c
+void showMessage() {
 	printf("Hello\\n");
-}`}
-  lang="c"
-  title="Void Function Example"
-/>
+}
+```
+
 ---
 
 #### 6. Bool Data Type
@@ -278,12 +262,9 @@ Each variable in C has an associated data type. It specifies the type of data th
 
 #### Example
 
-<Code
-  code={`bool e = true;`}
-  lang="c"
-  title="Boolean Example"
-/>
-
+```c
+bool e = true;
+```
 ## Operators and Expressions
 
 ### A. Operators
@@ -325,8 +306,8 @@ Arithmetic operators are used to perform common mathematical operations.
 <Tabs>
   <TabItem label="C Program">
 
-<Code
-  code={`#include <stdio.h>
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -345,17 +326,15 @@ int main()
 	printf("a-- = %d\\n", a--);
 
 	return 0;
-}`}
-  lang="c"
-  title="Arithmetic Operators Example"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Output">
 
-<Code
-  code={`a + b = 30
+```text
+a + b = 30
 a - b = 20
 a * b = 125
 a / b = 5
@@ -363,10 +342,8 @@ a % b = 0
 +a = 25
 -a = -25
 a++ = 25
-a-- = 26`}
-  lang="text"
-  title="Program Output"
-/>
+a-- = 26
+```
 
   </TabItem>
 </Tabs>
@@ -406,8 +383,8 @@ Assignment operators can also be combined with other operators to perform multip
 <Tabs>
   <TabItem label="C Program">
 
-<Code
-  code={`#include <stdio.h>
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -447,10 +424,8 @@ int main()
 	printf("a <<= b: %d\\n", a <<= b);
 
 	return 0;
-}`}
-  lang="c"
-  title="Assignment Operators Example"
-/>
+}
+```
 
   </TabItem>
 </Tabs>
@@ -483,8 +458,8 @@ These operators help in decision-making and conditional statements.
 <Tabs>
   <TabItem label="C Program">
 
-<Code
-  code={`#include <stdio.h>
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -499,29 +474,24 @@ int main()
 	printf("a != b : %d\\n", a != b);
 
 	return 0;
-}`}
-  lang="c"
-  title="Comparison Operators Example"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Output">
 
-<Code
-  code={`a < b  : 0
+```text
+a < b  : 0
 a > b  : 1
 a <= b : 0
 a >= b : 1
 a == b : 0
-a != b : 1`}
-  lang="text"
-  title="Program Output"
-/>
+a != b : 1
+```
 
   </TabItem>
 </Tabs>
-
 Here:
 
 - `0` means **false**
@@ -553,8 +523,8 @@ The result of a logical operation is always a Boolean value:
 <Tabs>
   <TabItem label="C Program">
 
-<Code
-  code={`#include <stdio.h>
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -566,26 +536,21 @@ int main()
 	printf("!a : %d\\n", !a);
 
 	return 0;
-}`}
-  lang="c"
-  title="Logical Operators Example"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Output">
 
-<Code
-  code={`a && b : 1
+```text
+a && b : 1
 a || b : 1
-!a : 0`}
-  lang="text"
-  title="Program Output"
-/>
+!a : 0
+```
 
   </TabItem>
 </Tabs>
-
 #### 5. Bitwise Operators
 
 Bitwise operators are used to perform operations at the bit level.
@@ -637,8 +602,8 @@ Operators with higher precedence are evaluated before operators with lower prece
 <Tabs>
   <TabItem label="C Program">
 
-<Code
-  code={`#include <stdio.h>
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -649,59 +614,48 @@ int main()
 	printf("%d\\n", result2);
 
 	return 0;
-}`}
-  lang="c"
-  title="Operator Precedence Example"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Output">
 
-<Code
-  code={`14
-20`}
-  lang="text"
-  title="Program Output"
-/>
+```text
+14
+20
+```
 
   </TabItem>
 </Tabs>
+
 ---
 
 #### Explanation
 
 In the expression:
 
-<Code
-  code={`2 + 3 * 4`}
-  lang="c"
-  title="Expression Example"
-/>
+```c
+2 + 3 * 4
+```
 
 multiplication is performed first:
 
-<Code
-  code={`2 + 12 = 14`}
-  lang="c"
-  title="Calculation"
-/>
+```c
+2 + 12 = 14
+```
 
 If you want addition to happen first, use parentheses:
 
-<Code
-  code={`(2 + 3) * 4`}
-  lang="c"
-  title="Expression with Parentheses"
-/>
+```c
+(2 + 3) * 4
+```
 
 which gives:
 
-<Code
-  code={`5 * 4 = 20`}
-  lang="c"
-  title="Calculation Result"
-/>
+```c
+5 * 4 = 20
+```
 
 ## Conditional Statements
 
@@ -742,8 +696,8 @@ Use `if` to execute a block of code only when a specified condition is true.
 <Tabs>
   <TabItem label="C Program">
 
-<Code
-  code={`#include <stdio.h>
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -756,23 +710,20 @@ int main()
 	}
 
 	return 0;
-}`}
-  lang="c"
-  title="If Statement Example"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Output">
 
-<Code
-  code={`Eligible for vote`}
-  lang="text"
-  title="Program Output"
-/>
+```text
+Eligible for vote
+```
 
   </TabItem>
 </Tabs>
+
 ---
 
 ### B. If-Else Statement
@@ -781,12 +732,11 @@ Use `else` to execute another block of code when the condition is false.
 
 ##### Example
 
-
 <Tabs>
   <TabItem label="C Program">
 
-<Code
-  code={`#include <stdio.h>
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -802,20 +752,16 @@ int main()
 	}
 
 	return 0;
-}`}
-  lang="c"
-  title="If-Else Statement Example"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Output">
 
-<Code
-  code={`Not Eligible for vote`}
-  lang="text"
-  title="Program Output"
-/>
+```text
+Not Eligible for vote
+```
 
   </TabItem>
 </Tabs>
@@ -828,12 +774,11 @@ Use `else if` to test multiple conditions one after another.
 
 ##### Example
 
-
 <Tabs>
   <TabItem label="C Program">
 
-<Code
-  code={`#include <stdio.h>
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -850,23 +795,20 @@ int main()
 		printf("Not a valid age");
 
 	return 0;
-}`}
-  lang="c"
-  title="If-Else If Statement Example"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Output">
 
-<Code
-  code={`You can vote`}
-  lang="text"
-  title="Program Output"
-/>
+```text
+You can vote
+```
 
   </TabItem>
 </Tabs>
+
 ---
 
 ### D. Nested If Statement
@@ -880,8 +822,8 @@ It is used to check multiple conditions step by step.
 <Tabs>
   <TabItem label="C Program">
 
-<Code
-  code={`#include <stdio.h>
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -905,21 +847,17 @@ int main()
 	}
 
 	return 0;
-}`}
-  lang="c"
-  title="Nested If Statement Example"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Output">
 
-<Code
-  code={`Not eligible to vote (Under 18)
-Not a teenager`}
-  lang="text"
-  title="Program Output"
-/>
+```text
+Not eligible to vote (Under 18)
+Not a teenager
+```
 
   </TabItem>
 </Tabs>
@@ -935,8 +873,8 @@ Use `switch` when there are many alternative blocks of code to execute.
 <Tabs>
   <TabItem label="C Program">
 
-<Code
-  code={`#include <stdio.h>
+```c
+#include <stdio.h>
 
 int main()
 {
@@ -960,20 +898,16 @@ int main()
 	}
 
 	return 0;
-}`}
-  lang="c"
-  title="Switch Statement Example"
-/>
+}
+```
 
   </TabItem>
 
   <TabItem label="Output">
 
-<Code
-  code={`Eligible for vote`}
-  lang="text"
-  title="Program Output"
-/>
+```text
+Eligible for vote
+```
 
   </TabItem>
 </Tabs>

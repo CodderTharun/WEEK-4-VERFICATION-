@@ -180,8 +180,9 @@ You can use an ATM machine, but the internal details are hidden.
 
 <Tabs>
   <TabItem label="Java">
-    <Code
-      code={`class Student {
+
+```java
+class Student {
 
     private int marks;
 
@@ -192,15 +193,15 @@ You can use an ATM machine, but the internal details are hidden.
     int getMarks() {
         return marks;
     }
-}`}
-      lang="java"
-      title="Encapsulation in Java"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`class Student {
+
+```cpp
+class Student {
 
 private:
     int marks;
@@ -214,15 +215,15 @@ public:
     int getMarks() {
         return marks;
     }
-};`}
-      lang="cpp"
-      title="Encapsulation in C++"
-    />
+};
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`class Student:
+
+```python
+class Student:
 
     def __init__(self):
         self.__marks = 0
@@ -231,10 +232,9 @@ public:
         self.__marks = m
 
     def getMarks(self):
-        return self.__marks`}
-      lang="python"
-      title="Encapsulation in Python"
-    />
+        return self.__marks
+```
+
   </TabItem>
 </Tabs>
 
@@ -295,8 +295,9 @@ You drive the car (what), but you do not know how the engine works internally (h
 
 <Tabs>
   <TabItem label="Java">
-    <Code
-      code={`abstract class Animal {
+
+```java
+abstract class Animal {
 
     abstract void sound();
 }
@@ -306,15 +307,15 @@ class Dog extends Animal {
     void sound() {
         System.out.println("Bark");
     }
-}`}
-      lang="java"
-      title="Abstraction in Java"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`class Animal {
+
+```cpp
+class Animal {
 
 public:
 
@@ -328,15 +329,15 @@ public:
     void sound() {
         cout << "Bark";
     }
-};`}
-      lang="cpp"
-      title="Abstraction in C++"
-    />
+};
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`from abc import ABC, abstractmethod
+
+```python
+from abc import ABC, abstractmethod
 
 class Animal(ABC):
 
@@ -347,16 +348,13 @@ class Animal(ABC):
 class Dog(Animal):
 
     def sound(self):
-        print("Bark")`}
-      lang="python"
-      title="Abstraction in Python"
-    />
+        print("Bark")
+```
+
   </TabItem>
 </Tabs>
 
 The abstract method defines what to do, not how.
-
-
 
 ### C. Advantages of Abstraction
 
@@ -401,8 +399,9 @@ Inheritance allows:
 
 <Tabs>
   <TabItem label="Java">
-    <Code
-      code={`class Animal {
+
+```java
+class Animal {
 
     void eat() {
         System.out.println("Eating");
@@ -414,15 +413,15 @@ class Dog extends Animal {
     void bark() {
         System.out.println("Barking");
     }
-}`}
-      lang="java"
-      title="Inheritance in Java"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`class Animal {
+
+```cpp
+class Animal {
 
 public:
 
@@ -434,15 +433,15 @@ class Dog : public Animal {
 public:
 
     void bark() {}
-};`}
-      lang="cpp"
-      title="Inheritance in C++"
-    />
+};
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`# Parent Class
+
+```python
+# Parent Class
 class Animal:
 
     def sound(self):
@@ -461,10 +460,9 @@ d = Dog()
 d.sound()
 
 # Accessing child class method
-d.bark()`}
-      lang="python"
-      title="Inheritance in Python"
-    />
+d.bark()
+```
+
   </TabItem>
 </Tabs>
 
@@ -556,10 +554,12 @@ This type of polymorphism is achieved using:
 Function overloading allows multiple functions with the same name but different parameters.
 <br />
 **Function Overloading Example**
+
 <Tabs>
   <TabItem label="Java">
-    <Code
-      code={`class Addition {
+
+```java
+class Addition {
 
     void add(int a, int b) {
         System.out.println("Sum = " + (a + b));
@@ -576,15 +576,15 @@ Function overloading allows multiple functions with the same name but different 
         obj.add(10, 20);
         obj.add(10, 20, 30);
     }
-}`}
-      lang="java"
-      title="Function Overloading in Java"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`#include <bits/stdc++.h>
+
+```cpp
+#include <bits/stdc++.h>
 using namespace std;
 
 class Geeks {
@@ -610,15 +610,15 @@ int main() {
     gfg.add(5.3, 6.2);
 
     return 0;
-}`}
-      lang="cpp"
-      title="Function Overloading in C++"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`class Addition:
+
+```python
+class Addition:
 
     def add(self, a, b, c=0):
         print("Sum =", a + b + c)
@@ -626,10 +626,9 @@ int main() {
 obj = Addition()
 
 obj.add(10, 20)
-obj.add(10, 20, 30)`}
-      lang="python"
-      title="Function Overloading in Python"
-    />
+obj.add(10, 20, 30)
+```
+
   </TabItem>
 </Tabs>
 
@@ -638,17 +637,23 @@ obj.add(10, 20, 30)`}
 #### 2. Operator Overloading
 Programming languages can provide operators with special meanings for particular data types.
 This ability is known as Operator Overloading.
+
 For example:
 - The `+` operator is used to add integers.
 - The `+` operator is also used to concatenate strings.
 - The `<<` and `>>` operators are used as binary shift operators and also with input/output streams.
+
 This is possible because of operator overloading.
+
 <br />
+
 **Operator Overloading Example**
+
 <Tabs>
   <TabItem label="Java">
-    <Code
-      code={`public class Main {
+
+```java
+public class Main {
 
     public static void main(String[] args) {
 
@@ -662,15 +667,15 @@ This is possible because of operator overloading.
 
         System.out.println(s1 + s2);
     }
-}`}
-      lang="java"
-      title="Operator Overloading in Java"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`#include <iostream>
+
+```cpp
+#include <iostream>
 using namespace std;
 
 class Complex {
@@ -710,15 +715,15 @@ int main() {
     c3.display();
 
     return 0;
-}`}
-      lang="cpp"
-      title="Operator Overloading in C++"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`class Complex:
+
+```python
+class Complex:
 
     def __init__(self, real, imag):
         self.real = real
@@ -739,14 +744,11 @@ c2 = Complex(4, 5)
 
 c3 = c1 + c2
 
-c3.display()`}
-      lang="python"
-      title="Operator Overloading in Python"
-    />
+c3.display()
+```
+
   </TabItem>
 </Tabs>
-
-
 
 ### B. Runtime Polymorphism
 
@@ -762,8 +764,9 @@ Function Overriding occurs when a derived class defines one or more member funct
 
 <Tabs>
   <TabItem label="Java">
-    <Code
-      code={`class Animal {
+
+```java
+class Animal {
 
     void sound() {
         System.out.println("Animal makes sound");
@@ -785,15 +788,15 @@ public class Main {
 
         d.sound();
     }
-}`}
-      lang="java"
-      title="Function Overriding in Java"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`#include <iostream>
+
+```cpp
+#include <iostream>
 using namespace std;
 
 class Animal {
@@ -823,15 +826,15 @@ int main() {
     d.sound();
 
     return 0;
-}`}
-      lang="cpp"
-      title="Function Overriding in C++"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`class Animal:
+
+```python
+class Animal:
 
     def sound(self):
         print("Animal makes sound")
@@ -843,14 +846,11 @@ class Dog(Animal):
 
 d = Dog()
 
-d.sound()`}
-      lang="python"
-      title="Function Overriding in Python"
-    />
+d.sound()
+```
+
   </TabItem>
 </Tabs>
-
-
 
 #### 2. Advantages of Runtime Polymorphism
 
