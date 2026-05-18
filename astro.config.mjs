@@ -207,17 +207,17 @@ items: [
       //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
     ],
   },
-  {
-    label: "Power Electronics ",
-    collapsed: true,
-    items: [
-      { label: "Week 1", link: "/eee/week-1/power-generation" },
+ // {
+  //  label: "Power Electronics ",
+   // collapsed: true,
+   // items: [
+     // { label: "Week 1", link: "/eee/week-1/power-generation" },
       //{ label: "Week 2", link: "/eee/week-1/power-generation" },
       //{ label: "Week 3", link: "/eee/week-1/power-generation" },
       //{ label: "Week 4", link: "/eee/week-1/power-generation" },
       //{ label: "Week 5", link: "/eee/week-1/power-generation" },
-    ],
-  },
+   // ],
+ // },
           ],
         },
 
