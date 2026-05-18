@@ -773,3 +773,12 @@ mark,
     align-items: stretch !important;
   }
 }
+
+img {
+  display: block;
+  margin: 20px auto;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}

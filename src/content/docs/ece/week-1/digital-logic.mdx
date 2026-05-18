@@ -1024,15 +1024,145 @@ Encoders are used to reduce the number of data lines in digital systems.
 
 ## Multiplexer (MUX)
 
-A multiplexer is a combinational circuit that selects one input from multiple input lines and forwards it to a single output line.
-It uses select lines to determine which input is connected to the output. For (2^n) input lines, a multiplexer requires n select lines.
-A multiplexer acts as a data selector, allowing one of many inputs to be transmitted over a single line.
+A multiplexer (MUX) is a combinational circuit used to select one input from many input lines and send it to a single output line. It has multiple input lines, one output line, and selection lines that decide which input is connected to the output according to their binary values. Generally, a multiplexer contains 2^n input lines and n selection lines. Because it selects one data input from several inputs and transfers it to the output, it is also known as a data selector.
+
 
 <div align="center">
   <img
-    src="/ECE/DE31.png"
+    src="/ECE/DE100.png"
     alt="Multiplexer"
     width="60%"
+  />
+</div>
+
+---
+### A. 2-to-1 Line Multiplexer
+
+A 2-to-1 line multiplexer consists of:
+
+- Two data input lines: $I_0$ and $I_1$
+- One select line: $S$
+- One output line: $Y$
+
+The select line determines which input is connected to the output.
+
+#### Operation
+
+- When $S = 0$, the upper AND gate is enabled and $I_0$ is connected to the output.
+- When $S = 1$, the lower AND gate is enabled and $I_1$ is connected to the output.
+
+<div align="center">
+  <img
+    src="/ECE/DE101.png"
+    alt="Multiplexer"
+    width="60%"
+  />
+</div>
+
+---
+
+### B. 4-to-1 Line Multiplexer
+
+A 4-to-1 line multiplexer has:
+
+- Four $(2^n)$ input lines
+- Two $(n)$ select lines
+- One output line
+
+It is a multiplexer consisting of four input channels, where information from one of the channels can be selected and transmitted to the output line according to the select input combinations.
+
+Selection of one among the four input channels is possible using two select inputs.
+
+Each of the four inputs:
+
+$$
+I_0 \text{ through } I_3
+$$
+
+is applied to one input of an AND gate.
+
+The select lines:
+
+$$
+S_1 \text{ and } S_0
+$$
+
+are decoded to select a particular AND gate.
+
+The outputs of all AND gates are connected to a single OR gate that provides the one-line output.
+
+<div align="center">
+  <img
+    src="/ECE/DE102.png"
+    alt="Multiplexer"
+    width="60%"
+  />
+</div>
+
+### C. 8-to-1 Multiplexer
+
+An 8-to-1 Multiplexer $(8{:}1\ \text{MUX})$ is a combinational circuit that selects one input from eight input lines:
+
+$$
+I_0 \text{ to } I_7
+$$
+
+and transfers it to a single output line:
+
+$$
+Y
+$$
+
+It consists of:
+
+- Eight input lines
+- Three select lines: $S_2, S_1,$ and $S_0$
+- One enable input: $E$
+- One output line: $Y$
+
+The select lines determine which input is connected to the output.
+
+- When $E = 1$, the selected input appears at the output.
+- When $E = 0$, the output is disabled.
+
+The circuit is widely used in digital systems for data selection and signal routing.
+
+<div align="center">
+  <img
+    src="/ECE/DE103.png"
+    alt="Multiplexer"
+    width="80%"
+    style={{
+      border: "2px solid #999",
+      borderRadius: "10px",
+      padding: "6px",
+    }}
+  />
+</div>
+
+<div align="center">
+  <img
+    src="/ECE/DE104.png"
+    alt="Multiplexer"
+    width="80%"
+    style={{
+      border: "2px solid #999",
+      borderRadius: "10px",
+      padding: "6px",
+    }}
+  />
+</div>
+
+<div align="center">
+  <img
+    src="/ECE/DE109.png"
+    alt="Multiplexer"
+    width="80%"
+    style={{
+      border: "2px solid #999",
+      borderRadius: "10px",
+      padding: "6px",
+    }}
   />
 </div>
 
@@ -1048,7 +1178,29 @@ A demultiplexer acts as a data distributor, sending one input signal to one of m
   <img
     src="/ECE/DE32.png"
     alt="Demultiplexer"
-    width="60%"
+    width="80%"
+  />
+</div>
+
+#### 1-to-8 Demultiplexer
+
+A 1-to-8 demultiplexer has:
+
+- One input line: $D_{in}$
+- Eight output lines: $Y_0$ to $Y_7$
+- Three select lines: $S_2, S_1,$ and $S_0$
+
+It distributes a single input line to one of the eight output lines depending on the select input combinations.
+
+The select lines determine which output line receives the input signal.
+
+The truth table of the 1-to-8 demultiplexer is shown below.
+
+<div align="center">
+  <img
+    src="/ECE/DE104.png"
+    alt="Demultiplexer"
+    width="80%"
   />
 </div>
 
@@ -1731,7 +1883,104 @@ A shift register is a group of flip-flops connected in series to store and shift
 The registers which will shift the bits to the left are called “Shift left registers”.
 The registers which will shift the bits to the right are called “Shift right registers”.
 
-#### 1. Bidirectional Shift Register:
+---
+#### 1. Serial-In Serial-Out Shift Register (SISO)
+
+A Serial-In Serial-Out (SISO) shift register accepts data one bit at a time through a single input line and outputs data serially using a series of flip-flops triggered by the same clock signal.
+
+The primary use of a SISO shift register is to act as a delay element.
+
+###### Features
+
+- Data enters one bit at a time in serial form.
+- Data leaves one bit at a time in serial form.
+- Typically constructed using multiple D flip-flops connected in series.
+- All flip-flops are synchronized using a common clock signal.
+
+<div>
+<img
+    src="/ECE/DE77.png"
+    alt="Bidirectional Shift Register"
+    width="80%"
+  />
+</div>
+
+---
+
+#### 2. Serial-In Parallel-Out Shift Register (SIPO)
+
+A Serial-In Parallel-Out (SIPO) shift register accepts data serially through a single input line and produces all bits simultaneously as parallel outputs using multiple synchronized flip-flops.
+
+The primary use of a SIPO shift register is to convert serial data into parallel data.
+
+###### Features
+
+- Data is entered one bit at a time in serial form.
+- All stored bits are available simultaneously as parallel outputs.
+- Constructed using multiple D flip-flops connected in series.
+- All flip-flops operate using a common clock signal.
+- Includes a Clear $(CLR)$ signal to reset all flip-flops.
+
+<div>
+<img
+    src="/ECE/DE78.png"
+    alt="Bidirectional Shift Register"
+    width="80%"
+  />
+</div>
+
+---
+
+#### 3. Parallel-In Serial-Out Shift Register (PISO)
+
+A Parallel-In Serial-Out (PISO) shift register accepts parallel data simultaneously into multiple flip-flops and shifts the data out serially through a single output line.
+
+The primary use of a PISO shift register is to convert parallel data into serial data.
+
+###### Features
+
+- Data is loaded simultaneously in parallel form.
+- Data is shifted out one bit at a time in serial form.
+- Constructed using multiple D flip-flops.
+- Multiplexers are used to select between parallel input data and the output of the previous flip-flop.
+- All flip-flops operate using a common clock signal.
+
+<div>
+<img
+    src="/ECE/DE79.png"
+    alt="Bidirectional Shift Register"
+    width="80%"
+  />
+</div>
+---
+
+#### 4. Parallel-In Parallel-Out Shift Register (PIPO)
+
+A Parallel-In Parallel-Out (PIPO) shift register accepts and outputs data simultaneously across all flip-flops without serial shifting.
+
+The primary use of a PIPO shift register is temporary data storage and delay operations.
+
+###### Features
+
+- Data is loaded simultaneously in parallel form.
+- Data is retrieved simultaneously from all flip-flops.
+- Constructed using multiple D flip-flops without interconnections between them.
+- All flip-flops are controlled using a common clock signal.
+- Includes a Clear $(CLR)$ signal to reset all flip-flops.
+
+
+<div>
+<img
+    src="/ECE/DE80.png"
+    alt="Bidirectional Shift Register"
+    width="80%"
+  />
+</div>
+
+
+
+---
+#### 5. Bidirectional Shift Register:
 
 A Bidirectional Shift Register can shift binary data either to the left or right, enabling multiplication or division by 2 based on the selected mode.
 
@@ -1739,7 +1988,6 @@ Mode 1 (high) shifts data right (division by 2); Mode 0 (low) shifts data left (
 
 Composed of four D flip-flops with inputs at both ends and gates controlled by mode signal to enable directional shifting.
 
-#### Bidirectional Shift Register
 
 <div align="center">
   <img
@@ -1749,7 +1997,7 @@ Composed of four D flip-flops with inputs at both ends and gates controlled by m
   />
 </div>
 
-#### 2. Universal Shift Register:
+#### 6. Universal Shift Register:
 
 A Universal Shift Register is an N-bit register that supports both left and right shifting as well as parallel loading, using N flip-flops and N multiplexers with shared select lines to control the data flow.
 
@@ -1895,3 +2143,180 @@ Counts ten states and then resets to its initial state. The most common decade c
 From the circuit diagram, a NAND gate is connected to Q3 and Q1 and its output is fed to the clear input because the binary representation of 10 is 1010. When Q3 and Q1 both become 1, the NAND gate output goes low, activating the clear input, so the counter resets at 10 and starts counting again from 0.
 
 Important point: Number of flip flops used in counter are always greater than equal to $(\log_2 n)$ where $n = \text{number of states in counter}$.
+
+---
+
+## Finite State Machines
+
+Finite State Machines (FSMs) are the fundamental building blocks of various digital and computing systems. They provide a systematic approach to model the behavior of sequential circuits and help control different processes in digital systems.
+
+---
+
+### A. What is a Finite State Machine?
+
+A Finite State Machine (FSM) is a mathematical model used to explain and understand the behavior of a digital system.
+
+More specifically, it is a structured and systematic model that describes the behavior of a sequential circuit existing in a finite number of states at a given point in time.
+
+In simple words, a synchronous sequential circuit is called a Finite State Machine if it has a finite number of states.
+
+The transition between these states takes place based on internal or external inputs, resulting in predictable and systematic changes in system behavior.
+
+---
+
+### B. Components of a Finite State Machine
+
+#### 1. Finite States
+
+Finite states are the distinct modes or conditions of a system. Each state represents a specific behavior of the system.
+
+In digital systems, states are generally represented using symbols or labels.
+
+
+#### 2. State Transitions
+
+A state transition is the change from one state to another.
+
+These transitions occur based on specific inputs or conditions and are generally triggered by events associated with rules that determine the next state of the system.
+
+
+#### 3. State Diagram
+
+The behavior and state transitions of a finite state machine can be represented graphically using a state diagram.
+
+
+#### 4. Inputs
+
+Inputs are external signals that trigger state transitions in the system.
+
+These inputs can come from sensors, keyboards, microphones, switches, or other user input devices.
+
+
+#### 5. Outputs
+
+Outputs are the results produced by the system based on the current state and inputs.
+
+These outputs may control actuators, trigger events, or provide feedback to the external environment.
+
+---
+
+### C. Types of Finite State Machine
+
+There are two main types of finite state machines:
+
+1. Mealy State Machine
+2. Moore State Machine
+
+
+#### 1. Mealy State Machine
+
+A Finite State Machine is called a Mealy State Machine if its outputs depend on:
+
+- Present state
+- Present input
+
+The block diagram of the Mealy State Machine is shown in the figure below.
+
+<div align="center">
+  <img
+    src="/ECE/DE105.png"
+    alt="Digital Electronics Diagram"
+    width="80%"
+  />
+</div>
+As shown in the figure, there are two main parts present in the Mealy State Machine:
+
+- Combinational logic circuit
+- Memory element
+
+The memory element is used to provide a part of the previous outputs and present states as inputs to the combinational logic circuit.
+
+Based on the present inputs and present states, the Mealy State Machine produces outputs. Therefore, the outputs are valid only during the positive or negative transition of the clock signal.
+
+##### State Diagram of Mealy State Machine
+
+The state diagram of the Mealy State Machine is shown in the figure below.
+
+<div align="center">
+  <img
+    src="/ECE/DE106.png"
+    alt="Digital Electronics Diagram"
+    width="80%"
+  />
+</div>
+In the above figure, there are three states namely:
+
+- $A$
+- $B$
+- $C$
+
+These states are represented inside circles, where each circle corresponds to one state.
+
+The state transitions between these states are represented using directed lines.
+
+Here:
+
+$$
+0/0,\ 1/0,\ 1/1
+$$
+
+denote:
+
+$$
+\text{Input / Output}
+$$
+
+In the figure, each state has two possible transitions based on the input value.
+
+In general, the number of states required in a Mealy State Machine is less than or equal to the number of states required in a Moore State Machine.
+
+For every Mealy State Machine, there exists an equivalent Moore State Machine.
+
+---
+
+#### 2. Moore State Machine
+
+A Finite State Machine is called a Moore State Machine if its outputs depend only on the present states.
+
+The block diagram of the Moore State Machine is shown in the figure below.
+
+<div align="center">
+  <img
+    src="/ECE/DE107.png"
+    alt="Digital Electronics Diagram"
+    width="60%"
+  />
+</div>
+
+As shown in above figure, there are two parts presents in a Moore state machine. Those are combinational logic and memory. In this case, the present inputs and present states determine the next states. So, based on next states, Moore state machine produces the outputs. Therefore, the outputs will be valid only after transition of the state.
+
+##### State Diagram of Moore State Machine
+The state diagram of Moore state machine is shown in the following figure
+
+
+<div align="center">
+  <img
+    src="/ECE/DE108.png"
+    alt="Digital Electronics Diagram"
+    width="60%"
+  />
+</div>
+
+In the above figure, there are four states namely:
+
+- $A$
+- $B$
+- $C$
+- $D$
+
+These states and their corresponding outputs are represented inside circles.
+
+Only the input values are labeled on each state transition.
+
+In the figure, each state has two possible transitions based on the input value.
+
+In general, the number of states required in a Moore State Machine is greater than or equal to the number of states required in a Mealy State Machine.
+
+For every Moore State Machine, there exists an equivalent Mealy State Machine.
+
+Therefore, either of them can be used depending on the system requirements.
