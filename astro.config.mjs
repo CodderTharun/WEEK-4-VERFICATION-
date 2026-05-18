@@ -292,7 +292,7 @@ items: [
     ],
   },  
   {
-    label: "OOPS",
+    label: "OOP",
     collapsed: true,
     items: [
       { label: "Week 1", link: "/it/week-1/oops" },
