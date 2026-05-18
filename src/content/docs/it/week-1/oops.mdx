@@ -105,47 +105,124 @@ When a car is manufactured, its engine and color are initialized automatically.
 #### 3. Constructor Syntax Example
 
 <Tabs>
-  <TabItem label="Java">
-    <Code
-      code={`class ClassName {
-
-    // Constructor
-    ClassName() {
-        // initialization code
-    }
-}`}
-      lang="java"
-      title="Constructor Syntax in Java"
-    />
-  </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`class ClassName {
+
+#### C++
+
+#### 1. Constructor Declaration
+
+```cpp
+class ClassName {
+
+public:
+
+    // Constructor Declaration
+    ClassName();
+};
+```
+
+#### 2. Constructor Definition
+
+```cpp
+ClassName::ClassName() {
+
+    // initialization code
+}
+```
+
+#### 3. Constructor Declaration + Definition
+
+```cpp
+class ClassName {
 
 public:
 
     // Constructor
     ClassName() {
+
         // initialization code
     }
-};`}
-      lang="cpp"
-      title="Constructor Syntax in C++"
-    />
+};
+```
+
+  </TabItem>
+
+  <TabItem label="Java">
+
+#### Java
+
+#### 1. Constructor Declaration
+
+```java
+class ClassName {
+
+    // Constructor Declaration
+    ClassName();
+}
+```
+
+#### 2. Constructor Definition
+
+```java
+ClassName() {
+
+    // initialization code
+}
+```
+
+#### 3. Constructor Declaration + Definition
+
+```java
+class ClassName {
+
+    // Constructor
+    ClassName() {
+
+        // initialization code
+    }
+}
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`class ClassName:
 
+#### Python
+
+#### 1. Constructor Declaration
+
+```python
+class ClassName:
+
+    # Constructor Declaration
     def __init__(self):
+        pass
+```
+
+#### 2. Constructor Definition
+
+```python
+def __init__(self):
+
+    # initialization code
+    pass
+```
+
+#### 3. Constructor Declaration + Definition
+
+```python
+class ClassName:
+
+    # Constructor
+    def __init__(self):
+
         # initialization code
-        pass`}
-      lang="python"
-      title="Constructor Syntax in Python"
-    />
+        pass
+```
+
   </TabItem>
+
 </Tabs>
 
 Constructors are used to initialize objects automatically when they are created.
@@ -170,9 +247,12 @@ A student saying “this book is mine” refers to the current student’s book.
 #### 3. this Keyword Example
 
 <Tabs>
+
   <TabItem label="Java">
-    <Code
-      code={`class Student {
+
+
+```java
+class Student {
 
     int marks;
 
@@ -183,17 +263,20 @@ A student saying “this book is mine” refers to the current student’s book.
     void display() {
         System.out.println(this.marks);
     }
-}`}
-      lang="java"
-      title="this Keyword in Java"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`class Student {
 
-private:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Student {
+
     int marks;
 
 public:
@@ -205,25 +288,26 @@ public:
     void display() {
         cout << this->marks;
     }
-};`}
-      lang="cpp"
-      title="this Keyword in C++"
-    />
+};
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`class Student:
+
+
+```python
+class Student:
 
     def __init__(self, marks):
         self.marks = marks
 
     def display(self):
-        print(self.marks)`}
-      lang="python"
-      title="this Keyword Equivalent in Python"
-    />
+        print(self.marks)
+```
+
   </TabItem>
+
 </Tabs>
 
 The `this` keyword refers to the current object of the class.
@@ -272,9 +356,12 @@ You can use an ATM machine, but the internal details are hidden.
 ### E. Encapsulation Example
 
 <Tabs>
+
   <TabItem label="Java">
-    <Code
-      code={`class Student {
+
+
+```java
+class Student {
 
     private int marks;
 
@@ -285,17 +372,19 @@ You can use an ATM machine, but the internal details are hidden.
     int getMarks() {
         return marks;
     }
-}`}
-      lang="java"
-      title="Encapsulation in Java"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`class Student {
+
+
+```cpp
+class Student {
 
 private:
+
     int marks;
 
 public:
@@ -307,30 +396,27 @@ public:
     int getMarks() {
         return marks;
     }
-};`}
-      lang="cpp"
-      title="Encapsulation in C++"
-    />
+};
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`class Student:
 
-    def __init__(self):
-        self.__marks = 0
+
+```python
+class Student:
 
     def setMarks(self, m):
-        self.__marks = m
+        self.marks = m
 
     def getMarks(self):
-        return self.__marks`}
-      lang="python"
-      title="Encapsulation in Python"
-    />
-  </TabItem>
-</Tabs>
+        return self.marks
+```
 
+  </TabItem>
+
+</Tabs>
 Data is hidden and accessed using getter/setter methods.
 
 
@@ -389,9 +475,11 @@ You drive the car (what), but you do not know how the engine works internally (h
 ### F. Abstraction Example
 
 <Tabs>
+
   <TabItem label="Java">
-    <Code
-      code={`abstract class Animal {
+
+```java
+abstract class Animal {
 
     abstract void sound();
 }
@@ -401,15 +489,18 @@ class Dog extends Animal {
     void sound() {
         System.out.println("Bark");
     }
-}`}
-      lang="java"
-      title="Abstraction in Java"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`class Animal {
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Animal {
 
 public:
 
@@ -423,15 +514,16 @@ public:
     void sound() {
         cout << "Bark";
     }
-};`}
-      lang="cpp"
-      title="Abstraction in C++"
-    />
+};
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`from abc import ABC, abstractmethod
+
+
+```python
+from abc import ABC, abstractmethod
 
 class Animal(ABC):
 
@@ -442,11 +534,11 @@ class Animal(ABC):
 class Dog(Animal):
 
     def sound(self):
-        print("Bark")`}
-      lang="python"
-      title="Abstraction in Python"
-    />
+        print("Bark")
+```
+
   </TabItem>
+
 </Tabs>
 
 The abstract method defines what to do, not how.
@@ -542,9 +634,13 @@ A child calling their parent for help is similar to using the `super` keyword to
 #### 3. super Keyword Example
 
 <Tabs>
+
   <TabItem label="Java">
-    <Code
-      code={`class Animal {
+
+
+
+```java
+class Animal {
 
     void sound() {
         System.out.println("Animal Sound");
@@ -557,20 +653,25 @@ class Dog extends Animal {
         super.sound();
         System.out.println("Dog Barks");
     }
-}`}
-      lang="java"
-      title="super Keyword in Java"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`class Animal {
+
+
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Animal {
 
 public:
 
     void sound() {
-        cout << "Animal Sound";
+        cout << "Animal Sound" << endl;
     }
 };
 
@@ -582,15 +683,17 @@ public:
         Animal::sound();
         cout << "Dog Barks";
     }
-};`}
-      lang="cpp"
-      title="super Keyword Equivalent in C++"
-    />
+};
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`class Animal:
+
+
+
+```python
+class Animal:
 
     def sound(self):
         print("Animal Sound")
@@ -599,11 +702,11 @@ class Dog(Animal):
 
     def sound(self):
         super().sound()
-        print("Dog Barks")`}
-      lang="python"
-      title="super Keyword in Python"
-    />
+        print("Dog Barks")
+```
+
   </TabItem>
+
 </Tabs>
 
 The `super` keyword is used to access parent class members.
@@ -612,9 +715,13 @@ The `super` keyword is used to access parent class members.
 ### E. Inheritance Example
 
 <Tabs>
+
   <TabItem label="Java">
-    <Code
-      code={`class Animal {
+
+
+
+```java
+class Animal {
 
     void eat() {
         System.out.println("Eating");
@@ -626,58 +733,57 @@ class Dog extends Animal {
     void bark() {
         System.out.println("Barking");
     }
-}`}
-      lang="java"
-      title="Inheritance in Java"
-    />
+}
+```
+
   </TabItem>
 
   <TabItem label="C++">
-    <Code
-      code={`class Animal {
+
+
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Animal {
 
 public:
 
-    void eat() {}
+    void eat() {
+        cout << "Eating";
+    }
 };
 
 class Dog : public Animal {
 
 public:
 
-    void bark() {}
-};`}
-      lang="cpp"
-      title="Inheritance in C++"
-    />
+    void bark() {
+        cout << "Barking";
+    }
+};
+```
+
   </TabItem>
 
   <TabItem label="Python">
-    <Code
-      code={`# Parent Class
+
+
+```python
 class Animal:
 
-    def sound(self):
-        print("Animals make sounds")
+    def eat(self):
+        print("Eating")
 
-# Child Class
 class Dog(Animal):
 
     def bark(self):
-        print("Dog barks")
+        print("Barking")
+```
 
-# Creating object of child class
-d = Dog()
-
-# Accessing parent class method
-d.sound()
-
-# Accessing child class method
-d.bark()`}
-      lang="python"
-      title="Inheritance in Python"
-    />
   </TabItem>
+
 </Tabs>
 
 Dog inherits properties of Animal.
