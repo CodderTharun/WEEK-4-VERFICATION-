@@ -605,74 +605,7 @@ class Student:
 
 </Tabs>
 
-### F. Abstraction Example
 
-<Tabs>
-
-  <TabItem label="Java">
-
-```java
-abstract class Animal {
-
-    abstract void sound();
-}
-
-class Dog extends Animal {
-
-    void sound() {
-        System.out.println("Bark");
-    }
-}
-```
-
-  </TabItem>
-
-  <TabItem label="C++">
-
-```cpp
-#include <iostream>
-using namespace std;
-
-class Animal {
-
-public:
-
-    virtual void sound() = 0;
-};
-
-class Dog : public Animal {
-
-public:
-
-    void sound() {
-        cout << "Bark";
-    }
-};
-```
-
-  </TabItem>
-
-  <TabItem label="Python">
-
-
-```python
-from abc import ABC, abstractmethod
-
-class Animal(ABC):
-
-    @abstractmethod
-    def sound(self):
-        pass
-
-class Dog(Animal):
-
-    def sound(self):
-        print("Bark")
-```
-
-  </TabItem>
-
-</Tabs>
 
 Data is hidden and accessed using getter and setter methods.
 
