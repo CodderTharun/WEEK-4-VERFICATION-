@@ -2,6 +2,10 @@
 title: SOM
 description: Complete notes on Strength of Materials
 ---
+
+import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
+
+
 ## Strength Of Materials
 This resistance by which material of the body opposes the deformation is known as strength of material.
 
@@ -48,6 +52,8 @@ Mathematically
 $$
 \tau = \frac{P}{A}
 $$
+#### Application
+In an industrial setting, an overhead factory crane lifting a heavy manufacturing component perfectly demonstrates all three fundamental stresses simultaneously. The vertical steel wire ropes hoisting the load are subjected to tensile stress as the heavy weight pulls down, threatening to stretch and snap the cables. At the same time, the massive concrete columns supporting the overhead runway tracks experience intense compressive stress as they bear the downward gravity load of the entire crane assembly and its cargo. Finally, the connecting bolts and pins holding the crane's hoist hook assembly together are under severe shear stress, as the opposing forces of the upward lift and the downward weight try to slice cleanly through the cross-section of the fasteners.
 
 ---
 
@@ -63,6 +69,7 @@ Mathematically
 $$
 \varepsilon_t = \frac{\Delta L}{L}
 $$
+Ex: Because the rotating propeller pushes the water backward, it generates a massive forward thrust that pulls linearly on certain sections of the drive system and its flexible couplings, causing them to elongate.
 
 ### B. Compressive strain
 if there is some decrease in length of the body, then the ratio of decrease of the length of the body to the original length is known as compressive strain.
@@ -70,6 +77,7 @@ Mathematically
 $$
 \varepsilon_c = \frac{\Delta L}{L}
 $$
+Ex: At the exact same time, that immense forward thrust creates an equal and opposite reaction force that pushes directly against the shaft's thrust bearings, causing microscopic shortening and axial compression in those specific contact zones.
 
 ### C. Volumetric strain
 The ratio of change of volume of the body to the original volume is known as volumetric strain.
@@ -77,13 +85,16 @@ Mathematically
 $$
 \varepsilon_v = \frac{\Delta V}{V}
 $$
-
-### C. Shear strain
+Ex:  Finally, because the entire assembly operates submerged under massive hydrostatic ocean pressure or deep within a pressurized fluid tank, the materials experience uniform three-dimensional squeezing, resulting in a microscopic change in total volume. 
+### D. Shear strain
 The strain produced by shear stress is known as shear strain.
 Mathematically  
 $$
 \gamma = \tan \theta \approx \theta
 $$
+
+Ex: As the powerful motor rotates the shaft against heavy resistance, the shaft twists along its length, causing an angular distortion where its parallel internal planes slide past one another.
+
 
 ---
 
@@ -148,11 +159,227 @@ $$
 
 ---
 
+#### Example: 
+
+<div
+  style={{
+    border: "1px solid var(--ifm-color-emphasis-300)",
+    borderRadius: "12px",
+    padding: "28px",
+    marginTop: "10px",
+    fontSize: "15px",
+    lineHeight: "1.8",
+  }}
+>
+##### Question:
+A rod consists of two parts that are made of steel and copper as shown in the figure below.
+<div align="center">
+  <img
+    width="400px"
+    height="400px"
+    src="/Mech/Composite_Problem.jpeg"
+  />
+</div>
+The elastic modulus and coefficient of thermal expansion for steel are:
+
+- $E_s = 200 \,\mathrm{GPa}$
+- $\alpha_s = 11.7 \times 10^{-6} \,/^\circ C$
+
+For copper:
+
+- $E_{cu} = 70 \,\mathrm{GPa}$
+- $\alpha_{cu} = 21.6 \times 10^{-6} \,/^\circ C$
+
+If the temperature of the rod is raised by:
+
+$$
+50^\circ C
+$$
+
+determine the forces and stresses acting on the rod.
+
+---
+
+##### Answer:
+
+###### Given Data
+
+| Material | Length | Diameter |
+| :--- | :---: | :---: |
+| Steel | $0.5 \,\text{m}$ | $75 \,\text{mm}$ |
+| Copper | $0.75 \,\text{m}$ | $50 \,\text{mm}$ |
+
+Gap available:
+
+$$
+0.4 \,\text{mm}
+$$
+
+###### Free Expansion
+
+Thermal expansion formula:
+
+$$
+\delta_T = \alpha (\Delta T)L
+$$
+
+Substituting values:
+
+$$
+= (11.7 \times 10^{-6}) \times 50 \times 500
++
+(21.6 \times 10^{-6}) \times 50 \times 750
+$$
+
+$$
+= 1.1025 \text{ mm}
+$$
+
+(Compressive)
+
+###### Restrained Deflection
+
+Only free expansion available:
+
+$$
+0.4 \text{ mm}
+$$
+
+Therefore restrained deflection:
+
+$$
+= 1.1025 - 0.4
+$$
+
+$$
+= 0.7025 \text{ mm}
+$$
+
+
+###### Force Developed in Rod
+
+Let the reaction force be $P$.
+
+$$
+\delta
+=
+\left(\frac{PL}{AE}\right)_{\text{steel}}
++
+\left(\frac{PL}{AE}\right)_{\text{Cu}}
+$$
+
+Substituting values:
+
+$$
+0.7025
+=
+\frac{P \times 500}
+{
+\left(
+\frac{\pi}{4}(0.075)^2
+\right)
+(200 \times 10^9)
+}
++
+\frac{P \times 750}
+{
+\left(
+\frac{\pi}{4}(0.050)^2
+\right)
+(70 \times 10^9)
+}
+$$
+
+$$
+P = 116.6 \text{ kN}
+$$
+
+
+###### Stress on Steel Rod
+
+$$
+\sigma_{\text{steel}}
+=
+\frac{P}{A_{\text{steel}}}
+$$
+
+$$
+=
+\frac{116.6 \times 10^3}
+{
+\frac{\pi}{4}(0.075)^2
+}
+\text{ N/m}^2
+$$
+
+$$
+= 26.39 \text{ MPa}
+$$
+
+
+###### Stress on Copper Rod
+
+$$
+\sigma_{\text{Cu}}
+=
+\frac{P}{A_{\text{Cu}}}
+$$
+
+$$
+=
+\frac{116.6 \times 10^3}
+{
+\frac{\pi}{4}(0.050)^2
+}
+\text{ N/m}^2
+$$
+
+$$
+= 59.38 \text{ MPa}
+$$
+
+</div>
+---
+
 ## Hooke’s law
 Hooke’s Law states that when a material is loaded within elastic limit, the stress is proportional to the strain produced by the stress. This means the ratio of the stress to the corresponding strain is a constant within the elastic limit. This constant is known as Modulus of Elasticity or Modulus of Rigidity  
 $$
 \frac{\text{Normal stress}}{\text{Corresponding strain}} = \text{Constant}
 $$
+
+---
+
+### A. Practical Applications
+
+#### 1. Spring & Suspension Design
+Ensures mechanical springs absorb energy and reliably return to their original shape without permanent deformation.
+
+#### 2. Sensors & Load Cells
+Strain gauges measure tiny structural deformations and use Hooke’s Law to determine force or weight accurately.
+
+---
+
+### B. Advantages & Disadvantages
+
+#### 1. Advantage
+Provides a simple and linear mathematical relationship, making engineering calculations and simulations predictable.
+
+#### 2. Disadvantage
+Cannot accurately model permanent deformation processes such as forging or metal bending.
+
+---
+
+### C. Where It Fails
+
+#### 1. Plastic Deformation
+Becomes invalid once the material exceeds the yield point and deforms permanently.
+
+#### 2. Non-Linear Materials
+Materials like rubber and polymers stretch elastically but do not follow a linear stress-strain relationship.
+
+#### 3. Thermal Creep
+At high temperatures, materials slowly deform over time even under constant load.
+
 
 ---
 
@@ -214,6 +441,194 @@ $$
 e_2 = \frac{\sigma_2}{E} - \mu \left(\frac{\sigma_1}{E}\right)
 $$
 
+#### Problem
+
+The state of 2D-stress at a point is given by the following matrix of stresses:
+
+$$
+\left[
+\begin{array}{cc}
+\sigma_{xx} & \sigma_{xy} \\
+\sigma_{xy} & \sigma_{yy}
+\end{array}
+\right]
+=
+\left[
+\begin{array}{cc}
+100 & 30 \\
+30 & 20
+\end{array}
+\right]
+\ \text{MPa}
+$$
+
+Determine the magnitude of maximum shear stress in MPa.
+
+#### Concept
+
+For a bi-axial state of stress system, maximum shear stress is given by:
+
+$$
+\tau_{\max}
+=
+\sqrt{
+\left(
+\frac{\sigma_{xx}-\sigma_{yy}}{2}
+\right)^2
++
+(\sigma_{xy})^2
+}
+$$
+
+Where:
+
+- $\tau_{\max}$ = Maximum shear stress
+- $\sigma_{xx}$ and $\sigma_{yy}$ = Normal stresses in X and Y directions
+- $\sigma_{xy}$ = Shear stress acting in the XY plane
+
+Tensile normal stress is taken as positive, compressive normal stress is taken as negative, and anticlockwise shear stress is considered positive.
+
+---
+
+#### Calculation
+
+Given stress matrix:
+
+$$
+\left[
+\begin{array}{cc}
+\sigma_{xx} & \sigma_{xy} \\
+\sigma_{xy} & \sigma_{yy}
+\end{array}
+\right]
+=
+\left[
+\begin{array}{cc}
+100 & 30 \\
+30 & 20
+\end{array}
+\right]
+\ \text{MPa}
+$$
+
+Therefore,
+
+$$
+\sigma_{xx} = 100 \text{ MPa}
+$$
+
+$$
+\sigma_{yy} = 20 \text{ MPa}
+$$
+
+$$
+\sigma_{xy} = 30 \text{ MPa}
+$$
+
+Substituting into the formula:
+
+$$
+\tau_{\max}
+=
+\sqrt{
+\left(
+\frac{100-20}{2}
+\right)^2
++
+(30)^2
+}
+$$
+
+$$
+=
+\sqrt{40^2 + 30^2}
+$$
+
+$$
+=
+50 \text{ MPa}
+$$
+
+---
+
+#### Alternative Solution
+
+For a bi-axial stress system:
+
+$$
+\tau_{\max}
+=
+\left|
+\frac{\sigma_1-\sigma_2}{2}
+\right|
+$$
+
+Where principal stresses are:
+
+$$
+\sigma_{1,2}
+=
+\frac{\sigma_{xx}+\sigma_{yy}}{2}
+\pm
+\sqrt{
+\left(
+\frac{\sigma_{xx}-\sigma_{yy}}{2}
+\right)^2
++
+(\sigma_{xy})^2
+}
+$$
+
+Substituting values:
+
+$$
+\sigma_{1,2}
+=
+\frac{100+20}{2}
+\pm
+\sqrt{
+\left(
+\frac{100-20}{2}
+\right)^2
++
+(30)^2
+}
+$$
+
+$$
+=
+60 \pm 50
+$$
+
+Therefore,
+
+$$
+\sigma_1 = 110 \text{ MPa}
+$$
+
+$$
+\sigma_2 = 10 \text{ MPa}
+$$
+
+Now,
+
+$$
+\tau_{\max}
+=
+\left|
+\frac{110-10}{2}
+\right|
+=
+50 \text{ MPa}
+$$
+
+#### Important Point
+
+For a bi-axial stress system, the maximum shear stress is equal to the radius of Mohr’s Circle.
+
+
+---
+
 #### 1. Longitudinal strain
 Longitudinal strain. When a body is subjected to an axial tensile load, there is an increase in the length [of the body. But at the same time there is a decrease in other dimensions of the body at right singles to the line of action of the applied load. Thus the body is laying axial deformation an(| also deformation at right angles to the line of action of the applied load|
 Mathematically  
@@ -228,6 +643,35 @@ Where
 - $\sigma_1, \sigma_2$ = Stresses in two perpendicular directions  
 - $E$ = Young’s Modulus  
 - $\mu$ = Poisson’s ratio  
+---
+
+#### A. Practical Applications
+
+###### 1. Pressure Vessels and Pipelines
+Industrial boilers, gas cylinders, and underwater pipelines experience simultaneous hoop (circumferential) and axial stresses. Engineers use these multi-axial strain formulas to calculate safe wall thicknesses so the vessel does not burst or neck under high internal pressures.
+
+###### 2. Interference Fits (Shaft & Bushing)
+In mechanical assemblies, a slightly oversized shaft is pressed into a bearing hub. The resulting radial compression induces longitudinal expansion. Engineers use Poisson’s ratio calculations to ensure components do not seize or warp during operation.
+
+
+#### B. Advantages and Disadvantages
+
+###### 1. Advantage
+Provides a precise mathematical framework for analyzing complex real-world bi-axial and tri-axial stress states rather than simple one-dimensional loading conditions.
+
+###### 2. Disadvantage
+The equations require highly precise material constants such as Young’s modulus $(E)$ and Poisson’s ratio $(\mu)$. Determining accurate values for non-standard alloys or modified polymers requires specialized laboratory testing.
+
+
+#### C. Where It Fails
+
+###### 1. Plastic and Post-Yield Deformations
+Once a material exceeds its yield strength and undergoes permanent deformation, Hooke’s Law becomes invalid. In the plastic region, Poisson’s ratio changes significantly and the linear strain relations no longer apply.
+
+###### 2. Anisotropic and Composite Materials
+These equations assume isotropic behavior, meaning the material properties are identical in all directions. Composite materials such as carbon fiber and wood possess direction-dependent properties, making the standard formulas inaccurate.
+
+---
 
 #### 2. Lateral strain
 The strain at right angles to the direction of applied load is known as lateral strain.  
@@ -242,6 +686,41 @@ Using Poisson’s Ratio
 $$
 \varepsilon_{lat} = - \mu \times \varepsilon_{long}
 $$
+
+---
+
+#### A. Practical Applications
+
+##### 1. Gasket and Seal Design
+In industrial piping, bolts are tightened to compress a rubber or metallic gasket axially. Due to lateral strain, the gasket expands outward radially, creating a tight and leak-proof seal between pipe flanges.
+
+##### 2. Rolling Mills and Sheet Metal Forming
+In manufacturing, metal slabs are passed through heavy rollers to reduce their thickness. Engineers use lateral strain principles to calculate how much the sheet widens laterally as it is compressed vertically, preventing edge cracking.
+
+#### B. Advantages and Disadvantages
+
+##### 1. Advantage
+Allows engineers to accurately predict dimensional changes in all directions, ensuring moving parts such as pistons and cylinders maintain proper clearances under heavy axial loading.
+
+##### 2. Disadvantage
+Adds complexity to engineering calculations because deformation must be analyzed in three dimensions, increasing computational effort in CAD and FEA software.
+
+
+#### C. Where It Fails
+
+##### 1. Constant-Volume Plastic Zone
+Once a material enters the plastic deformation region, the linear relationship defined by Poisson’s ratio breaks down completely. For most metals, the ratio approaches:
+
+$$
+0.5
+$$
+
+as permanent deformation occurs without significant volume change.
+
+##### 2. Highly Porous Materials
+Materials such as cork, sponges, and sintered foams show very small lateral strain during compression because their internal pores collapse. Standard lateral strain equations and typical Poisson’s ratio values become inaccurate for such materials.
+
+---
 
 #### 3. Poisson’s ratio
 The ratio of lateral strain to the longitudinal strain is a constant for a given material, when the material is stressed within the elastic limit.  
@@ -266,18 +745,18 @@ $$
 ## Relation between constants
 
 Relation between Bulk modulus (K) and Young’s modulus (E)  
-Relation between Modulus of rigidity (C) and Young’s modulus (E)  
-Relation between E, C and K  
 $$
 E = 2G(1 + \mu)
 $$
+Relation between Modulus of rigidity (C) and Young’s modulus (E)  
 $$
 E = 3K(1 - 2\mu)
 $$
+Relation between E, C and K  
 $$
 \frac{1}{E} = \frac{1}{3K} + \frac{1}{2G}
 $$
-<br />
+<br />  
 <img
   src="/Mech/mech3.png"
   alt="Diagram"
@@ -391,13 +870,11 @@ $$
 \sigma_{major} = \frac{\sigma_1 + \sigma_2}{2} + \sqrt{\left(\frac{\sigma_1 - \sigma_2}{2}\right)^2 + \tau^2}
 $$
 
-
 #### 3. Minor Principal Stress
 The minimum normal stress acting on a principal plane.  
 $$
 \sigma_{minor} = \frac{\sigma_1 + \sigma_2}{2} - \sqrt{\left(\frac{\sigma_1 - \sigma_2}{2}\right)^2 + \tau^2}
 $$
-
 
 #### 4. Maximum Shear Stress
 The greatest intensity of shear stress within the material.  
@@ -414,71 +891,6 @@ $$
     margin: "auto"
   }}
 />
-
----
-
-## Mohr’s Circle for Plane Stress
-
-The transformation equations for plane stress can be represented in a graphical format known as Mohr’s circle. This representation is useful in visualizing the relationships between normal and shear stresses acting on various inclined planes at a point in a stressed body.
-
-### A. Rules for construction of Mohr’s circle
-#### 1. Center
-$$
-C = \frac{\sigma_x + \sigma_y}{2}
-$$
-
-#### 2. Radius
-$$
-R = \sqrt{\left(\frac{\sigma_x - \sigma_y}{2}\right)^2 + \tau_{xy}^2}
-$$
-
-
-| **Stress Component** | **Plot** |
-|---------------------|----------|
-| Normal Stresses (Horizontal Axis) | + For Tension <br /> - For Compression |
-| Shear Stresses (Vertical Axis) | + For Clockwise Shear <br /> - For Counterclockwise Shear |
-
-
-### B. Construct Mohr’s circle as follows
-
-1. Determine the point on the body in which the principal stresses are to be determined.  
-2. Treating the load cases independently and calculated the stresses for the point chosen.  
-3. Choose a set of x-y reference axes and draw a square element centered on the axes.  
-4. Identify the stresses $\sigma_x$, $\sigma_y$, and $\tau_{xy} = \tau_{yx}$ and list them with the proper sign.  
-5. Draw a set of $\sigma - \tau$ coordinate axes with $\sigma$ being positive to the right and $\tau$ being positive in the upward direction. Choose an appropriate scale for the each axis.  
-6. Using the rules on the previous page, plot the stresses on the x face of the element in this coordinate system (point V). Repeat the process for the y face (point H).  
-7. Draw a line between the two point V and H. The point where this line crosses the $\sigma$ axis establishes the center of the circle.  
-8. Draw the complete circle.  
-9. The line from the center of the circle to point V identifies the x axis or reference axis for angle measurements (i.e. $\theta = 0$).  
-
-#### Note: The angle between the reference axis and the $\sigma$ axis is equal to $2\theta_p$.  
-
-<br />
-<img
-  src="/Mech/mech7.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
-
-
-### Reference Video
-
-<div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
-  <iframe
-    src="https://www.youtube.com/embed/_DH3546mSCM"
-    title="YouTube video player"
-    style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%" }}
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-  />
-</div>
-
----
 
 ## Beam
 A beam is usually a horizontal structural member that is subjected to a load that tends to cause it to bend,
@@ -518,16 +930,58 @@ What it does: It is the internal resistance that stops the left side of the beam
 At any point on a beam, the bending moment is the total sum of the rotational forces (moments) acting on one side of that point  
 It is the internal resistance that stops the beam from simply snapping or folding under the weight  
 
+$$
+\frac{M}{I}
+=
+\frac{\sigma}{y}
+=
+\frac{E}{R}
+$$
 
-#### Sign Convention
+#### A. Practical Applications
+
+##### 1.Structural I-Beam Design
+Structural engineers use the relation
+
+$$
+\frac{M}{I} = \frac{\sigma}{y}
+$$
+
+to calculate maximum bending stresses in factory roof trusses and overhead crane runways. By maximizing the moment of inertia $(I)$ using an I-shaped cross-section, bending stress is minimized.
+
+##### 2. Machine Shaft and Axle Design
+Mechanical engineers analyze rotating drive shafts subjected to transverse loads from pulleys and gears to ensure the bending moment $(M)$ does not cause structural failure.
+
+
+##### B. Advantages and Disadvantages
+
+###### 1. Advantage
+Simplifies complex three-dimensional beam bending into a precise and manageable one-dimensional engineering relationship.
+
+##### 2. Disadvantage
+The theory is limited to straight and symmetric beams undergoing pure bending without simultaneous twisting or axial loading.
+
+
+#### C. Where It Fails
+
+##### 1. Deep Beams
+The theory assumes plane sections remain plane after bending according to Bernoulli–Euler beam theory. In deep beams with low span-to-depth ratios, shear deformation becomes significant and the bending equation loses accuracy.
+
+##### 2. Plastic Hinge Formation
+
+If the bending moment causes stresses beyond the material yield strength, the stress distribution no longer remains linear, making the classical bending equation invalid.
+
+---
+
+## Sign Convention
 A bending moment is classified as either positive or negative based on how it tends to bend or curve the beam:
 
-#### 1. Positive Bending Moment (Sagging Moment)
+#### A. Positive Bending Moment (Sagging Moment)
 - The "Smile" Rule: A bending moment is considered positive if it causes the beam to bend so that there is concavity at the top (curving upwards into a "smile" shape)  
 - Engineers commonly refer to this as a sagging moment  
 - The Directional Rule: If you conceptually cut a section of the beam, the bending moment is positive if the net rotational force on the left side of the cut is clockwise, and the net rotational force on the right side is anti-clockwise  
 
-#### 2. Negative Bending Moment (Hogging Moment)
+#### B. Negative Bending Moment (Hogging Moment)
 - The "Frown" Rule: A bending moment is considered negative if it causes the beam to bend so that there is convexity at the top (curving downwards into a "frown" shape) This is known as a hogging moment  
 - The Directional Rule: The bending moment is negative when the net rotational force on the left side of the cut is anti-clockwise, and on the right side is clockwise.
 <br />
@@ -542,7 +996,8 @@ A bending moment is classified as either positive or negative based on how it te
 />
 
 ### Shear Force Diagram (SFD) and Bending Moment Diagram (BMD) for Beams under Various Loading Conditions
-#### 1. Cantilever beam with point load (concentrated load at the free end)
+
+#### A. Cantilever beam with point load (concentrated load at the free end)
 
 **Determine the reaction force at the fixed end:**  
 The wall pushes up with the exact same amount of force as the load pushing down, and provides a twisting resistance to keep the beam from spinning.<br />
@@ -568,7 +1023,7 @@ The diagram is a simple, flat rectangle drawn below the baseline.<br />
 **Draw the BMD:**  
 The diagram is a triangle sloping downwards, with its deepest point at the wall.
 
-#### 2. Cantilever beam with Uniformly distributed load (U.D.L)
+#### B. Cantilever beam with Uniformly distributed load (U.D.L)
 
 **Determine the reaction force at the fixed end:**  
 The wall pushes up with a force equal to the total weight of the distributed load and heavily resists the bending.<br />
@@ -594,7 +1049,7 @@ The diagram is a triangle sloping downwards from the free end to the wall.<br />
 **Draw the BMD:**  
 The diagram is a curved, bowl-like shape (parabola) drawn below the baseline, getting deepest at the wall.
 
-#### 3. Cantilever beam with U.D.L and point load
+#### C. Cantilever beam with U.D.L and point load
 **Determine the reaction force at the fixed end:**  
 The wall must support the total combined weight of both the point load and the distributed load, and resist the combined twisting effect of both.<br />
 **Determine the SF at the required points:**  
@@ -617,7 +1072,7 @@ The diagram looks like a slanted rectangle (a trapezoid) sitting completely belo
 **Draw the BMD:**  
 The diagram is a continuous curve drawn below the baseline, ending at its lowest point at the wall.
 
-#### 4. Simply supported beam with point load (in the middle)
+#### D. Simply supported beam with point load (in the middle)
 **Determine the reaction force at the simply supported ends:**  
 The two supports on the ends share the downward load equally.<br />
 **Determine the SF at the required points:**  
@@ -641,7 +1096,7 @@ The diagram consists of two flat rectangles—one above the baseline for the lef
 The diagram is a large triangle pointing upwards, with its peak right in the center.
 
 
-#### 5. Simply supported beam with U.D.L
+#### E. Simply supported beam with U.D.L
 **Determine the reaction force at the simply supported ends:**  
 Just like before, the two supports equally share the total weight of the distributed load.<br />
 **Determine the SF at the required points:**  
