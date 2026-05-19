@@ -20,13 +20,12 @@ A computer system can be divided into four components:
 - **User** — Who works/executes the required function.
 <div align="center">
   <img 
-    src="/IT/os1.1.png"
+    src="/IT/OS/os1.1.jpeg"
     alt="OS-1"
     width="500px"
     height="400px"
   />
 </div>
----
 
 ## OS Operations
 
@@ -251,7 +250,7 @@ An operating system (OS) is made up of several key components that work together
 - **Kernel** — The core component of the operating system; the primary interface between the OS and Hardware.
 <div align="center">
   <img 
-    src="/IT/os1.2.png"
+    src="/IT/OS/os1.2.jpeg"
     alt="OS-1"
     width="500px"
     height="400px"
@@ -357,7 +356,6 @@ A kernel is the core part of an operating system. It acts as a bridge between so
 - On completion, the kernel returns the result (or error) to user space.
 - Kernel does **context switching** as needed (scheduler picks next process/thread) to allow multitasking.
 
----
 
 ## Multithreaded Programming
 
@@ -384,7 +382,7 @@ Many user-level threads are mapped to a single kernel thread.
 - The entire process will block if a thread makes a blocking system call.
 - Multiple threads are unable to run in parallel on multiprocessors.
 
-> Examples: Solaris Green Threads, GNU Portable Threads
+> *Examples: Solaris Green Threads, GNU Portable Threads*
 
 #### 2. One-to-One
 
@@ -395,7 +393,7 @@ Each user-level thread maps to a kernel thread.
 - Allows multiple threads to run in parallel on multiprocessors.
 - Drawback: creating a user thread requires creating a corresponding kernel thread, burdening performance.
 
-> Examples: Windows NT/XP/2000, Linux
+> *Examples: Windows NT/XP/2000, Linux*
 
 #### 3. Many-to-Many Model
 
@@ -406,7 +404,7 @@ Overcomes drawbacks of both Many-to-One and One-to-One models.
 - When a thread performs a blocking system call, the kernel can schedule another thread.
 - Allows a user-level thread to be **bound** to a kernel thread (**two-level model**).
 
-> Examples: IRIX, HP-UX, Solaris OS
+> *Examples: IRIX, HP-UX, Solaris OS*
 
 ### C. Thread Libraries
 
@@ -492,7 +490,6 @@ Threads share process data, but sometimes each thread needs its own private data
 - Communication between kernel and thread library is done using **upcalls**.
 - Upcalls help manage blocked and unblocked threads efficiently.
 
----
 
 ## Process
 
@@ -515,7 +512,6 @@ As a process executes, it changes its state. Each process may be in one of the f
 
 > Only one process can be **running** on any processor at any instant. Many processes may be **ready** and **waiting**.
 
----
 
 ## Process Scheduling
 
@@ -558,7 +554,6 @@ The dispatcher should be as fast as possible, since it is invoked during every p
 - **Waiting time** — Sum of periods spent waiting in the ready queue.
 - **Response time** — Time from submission of a request until the first response is produced.
 
----
 
 ## Scheduling Algorithms
 
@@ -608,7 +603,6 @@ Two scenarios when a process is dispatched:
 - If the CPU burst is **less than 1 time quantum** — the process releases the CPU voluntarily; the scheduler moves to the next process.
 - If the CPU burst is **longer than 1 time quantum** — the timer goes off, causing an interrupt; a context switch is executed, the process is put at the tail of the ready queue, and the scheduler selects the next process.
 
----
 
 ## Synchronization
 
@@ -636,7 +630,7 @@ A classic software-based solution to the critical-section problem.
 <Tabs>
   <TabItem label="C">
 
-```c
+```c title="Peterson's Solution - Process Pᵢ"
 do {
     flag[i] = TRUE;
     turn = j;
@@ -651,8 +645,7 @@ do {
 
 } while (TRUE);
 ```
-</TabItem>
-</Tabs>
+</TabItem> </Tabs> 
 
 ### C. Synchronization Hardware
 
@@ -688,17 +681,17 @@ Shared semaphore `synch` initialized to 0:
 <Tabs>
   <TabItem label="P₁">
 
-```c
+```c title="Process P₁"
 S1;
 signal(synch);
 ```
 </TabItem>
-<TabItem label="P₂">
-```P2
+ <TabItem label="P₂">
+ ```P2
 wait(synch);
 S2;
 ```
-</TabItem>
+</TabItem> 
 </Tabs>
 
 #### 2. Implementation
@@ -712,15 +705,15 @@ A semaphore is defined as:
 <Tabs>
   <TabItem label="Struct">
 
-```c
+```c title="Semaphore Definition"
 typedef struct {
     int value;
     struct process *list;
 } semaphore;
 ```
-</TabItem> 
+</TabItem>
 <TabItem label="wait()">
-```wait()
+```wait
 wait(semaphore *S) {
     S->value--;
 
@@ -732,7 +725,7 @@ wait(semaphore *S) {
 ```
 </TabItem>
 <TabItem label="signal()">
-```s
+```signal
 signal(semaphore *S) {
     S->value++;
 
@@ -743,8 +736,158 @@ signal(semaphore *S) {
 }
 ```
 </TabItem>
-</Tabs>
+</Tabs> 
+
+
 - `block()` suspends the process that invokes it.
 - `wakeup(P)` resumes the execution of a blocked process $P$.
 - If a semaphore value is **negative**, its magnitude is the number of processes waiting on that semaphore.
 - The list of waiting processes can be implemented by a link field in each **Process Control Block (PCB)**.
+
+# Classic Problems of Synchronization
+
+- Bounded-buffer problem
+- The Readers-Writers Problem
+- The Dining-Philosophers Problem
+
+
+# The Bounded-Buffer Problem
+
+- We assume that the pool consists of `n` buffers, each capable of holding one item.
+- The `mutex` semaphore provides mutual exclusion for accesses to the buffer pool and is initialized to the value `1`.
+- The `empty` and `full` semaphores count the number of empty and full buffers.
+- The semaphore `empty` is initialized to the value `n`; semaphore `full` is initialized to the value `0`.
+
+## Producer Process
+
+```c
+do{
+   // produce an item in nextp
+   ...
+   wait(empty);
+   wait(mutex);
+   // add nextp to buffer
+   ...
+   signal(mutex);
+   signal(full);
+} while(TRUE);
+```
+
+## Consumer Process
+
+```c
+do{
+   wait(full);
+   wait(mutex);
+   // remove an item from buffer to nextc
+   ...
+   signal(mutex);
+   signal(empty);
+   // consume the item in nextc
+   ...
+} while(TRUE);
+```
+
+- We can interpret this code as the producer producing full buffers for the consumer or as the consumer producing empty buffers for the producer.
+
+
+# The Readers-Writers Problem
+
+- A database is to be shared among several concurrent processes. Some of these processes may want only to read the database, whereas others may want to update (that is, to read and write) the database.
+- **Readers** – processes that only read the database.
+- **Writers** – processes performing both read and write (update).
+- If two readers access the shared data simultaneously, no problem will result. But if a writer and some other thread (either a reader or a writer) access the database simultaneously, problems arise.
+
+
+- This synchronization problem is referred to as the readers-writers problem.
+- The readers-writers problem has several variations.
+- The **first readers-writers problem**, which requires that no reader must be kept waiting unless a writer has already obtained permission to use the shared object.
+- The **second readers-writers problem** requires that, once a writer is ready, that writer performs its write as soon as possible.
+- A solution to either problem may result in starvation. In the first case, writers may starve; in the second case, readers may starve.
+
+## Shared Data Structures
+
+```c
+semaphore mutex, wrt;
+int readcount;
+```
+
+- The semaphores `mutex` and `wrt` are initialized to `1` and `readcount` is initialized to `0`.
+- The semaphore `wrt` is common to both reader and writer processes.
+- The `mutex` semaphore is used to ensure mutual exclusion when the variable `readcount` is updated.
+- The variable `readcount` keeps track of how many processes are currently reading the object.
+- The semaphore `wrt` functions as a mutual-exclusion semaphore for the writers.
+
+## Writer Process
+
+```c
+do{
+   wait(wrt);
+   // writing is performed
+   ...
+   signal(wrt);
+} while(TRUE);
+```
+
+## Reader Process
+
+```c
+do{
+   wait(mutex);
+   readcount++;
+   if(readcount == 1)
+       wait(wrt);
+   signal(mutex);
+   // reading is performed
+   ...
+   wait(mutex);
+   readcount--;
+   if(readcount == 0)
+       signal(wrt);
+   signal(mutex);
+} while(TRUE);
+```
+
+# The Dining-Philosophers Problem
+<div align="center">
+  <img 
+    src="/IT/OS/os1.3.jpeg"
+    alt="OS-1"
+    width="500px"
+    height="400px"
+  />
+</div>
+- Consider five philosophers who spend their lives thinking and eating.
+- The philosophers share a circular table surrounded by five chairs, each belonging to one philosopher.
+- In the center of the table is a bowl of rice, and the table is laid with five single chopsticks.
+- When a philosopher is thinking, she does not interact with her colleagues.
+- When a philosopher is hungry, she tries to pick up the two chopsticks that are closest to her (the chopsticks that are between her and her left and right neighbors).
+- A philosopher may pick up only one chopstick at a time.
+- When a hungry philosopher has both chopsticks at the same time, she eats without releasing her chopsticks. When she finishes eating, she puts down both chopsticks and starts thinking again.
+- One simple solution is to represent each chopstick with a semaphore.
+- A philosopher tries to grab a chopstick by executing a `wait()` operation on that semaphore; she releases chopsticks by executing the `signal()` operation on the appropriate semaphores.
+
+## Shared Data
+
+```c
+semaphore chopstick[5];
+```
+
+where all elements of `chopstick` are initialized to `1`.
+
+## Structure of Philosopher
+
+```c
+do{
+   wait(chopstick[i]);
+   wait(chopstick[(i + 1) % 5]);
+   // eat
+   ...
+   signal(chopstick[i]);
+   signal(chopstick[(i + 1) % 5]);
+   // think
+   ...
+} while(TRUE);
+```
+
+- The disadvantage is it could create a deadlock. Suppose that all five philosophers become hungry simultaneously and each grabs her left chopstick. All the elements of `chopstick` will now be equal to `0`. When each philosopher tries to grab her right chopstick, she will be delayed forever.
