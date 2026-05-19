@@ -1,34 +1,33 @@
 ---
-title: DBMS
+title: Database Management Systems
 ---
 
 import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
 
-### Database Management Systems
-Database Management System (DBMS) is software that helps users create, manage, and manipulate databases efficiently.
-It provides a systematic way to store, retrieve, update, and manage data while ensuring security, consistency, and reliability.
-DBMS is widely used in applications such as banking systems, hospital management systems, airline reservation systems, e-commerce platforms, and educational institutions.
+Database Management System (DBMS) is software that helps users create, manage and manipulate databases efficiently.
+It provides a systematic way to store, retrieve, update and manage data while ensuring security, consistency and reliability.
+DBMS is widely used in applications such as banking systems, hospital management systems, airline reservation systems, e-commerce platforms and educational institutions.
 
 ---
 
 ## Introduction
 
-#### What is Data?
+### What is Data?
 Data consists of raw, distinct units of information like text, numbers, images or audio.
 It exists in physical forms such as paper or digital formats on computers and storage devices.
 Derived from the Latin "datum" (a single fact), data becomes meaningful when processed into information.
 
-#### What is Database?
+### What is Database?
 Database is a collection of interrelated data which is used to retrieve, insert and delete the data efficiently.
 It is also used to organize the data in the form of a table, schema, views, and reports, etc.
 
-#### What is a Database Management System?
+### What is a Database Management System?
 A database-management system (DBMS) is a collection of interrelated data and a set of programs to access that data.
 The collection of data, usually referred to as the database, contains information relevant to an enterprise.
 The primary goal of a DBMS is to provide a way to store and retrieve database information that is both convenient and efficient.
 
-**Example:**
-A hospital database organizes information about patients, doctors, appointments, and medical records.
+Example:
+A hospital database organizes information about patients, doctors, appointments and medical records.
 
 ---
 
@@ -318,10 +317,8 @@ ADD Age INT;
 
 RENAME TABLE Student TO Students;
 ```
+</TabItem> </Tabs>
 
-  </TabItem>
-</Tabs>
----
 #### 2. Data Manipulation Language (DML)
 
 We can use DML commands to manipulate data in a database.
@@ -354,9 +351,7 @@ WHERE Roll_No = 1;
 DELETE FROM Students
 WHERE Roll_No = 1;
 ```
-
-  </TabItem>
-</Tabs>
+</TabItem> </Tabs>
 
 #### 3. Data Control Language (DCL)
 
@@ -382,9 +377,7 @@ REVOKE INSERT
 ON Students
 FROM user1;
 ```
-
-  </TabItem>
-</Tabs>
+</TabItem> </Tabs>
 
 #### 4. Transaction Control Language (TCL)
 
@@ -415,9 +408,7 @@ ROLLBACK TO A;
 
 COMMIT;
 ```
-
-  </TabItem>
-</Tabs>
+</TabItem> </Tabs>
 
 <br />
 
@@ -489,7 +480,88 @@ An attribute that can be derived from other attributes of the entity type is kno
 e.g.; Age (can be derived from DOB).
 The derived attribute is represented by a dashed oval.
 
-#### 3. Relationship
+#### 3. Keys
+
+Keys are fundamental elements of the relational database model that ensure uniqueness, data integrity and efficient data access. They uniquely identify each row in a table. They prevent data duplication and maintain consistency. They create relationships between different tables.
+
+##### Types of Keys
+
+###### a. Candidate Key
+The minimal set of attributes that can uniquely identify a tuple is known as a candidate key.
+1. A candidate key is a minimal super key with no redundant attributes.
+2. It must contain unique values, ensuring that no two rows have the same value in the candidate key’s columns.
+Every table must have at least a single candidate key.
+3. A table can have multiple candidate keys but only one primary key.
+
+###### b. Super Key
+The set of one or more attributes (columns) that can uniquely identify a tuple (record) is known as Super Key. It may include extra attributes that aren't important for uniqueness but still uniquely identify the row.
+1. A super key can contain extra attributes that aren’t necessary for uniqueness.
+2. For example, if the "STUD_NO" column can uniquely identify a student, adding "SNAME" to it will still form a valid super key, though it's unnecessary.
+
+###### c. Alternate Key
+An alternate key is any candidate key in a table that is not chosen as the primary key. In other words, all the keys that are not selected as the primary key are considered alternate keys.
+1. An alternate key is also referred to as a secondary key because it can uniquely identify records in a table, just like the primary key.
+2. An alternate key can consist of one or more columns (fields) that can uniquely identify a record, but it is not the primary key.
+
+###### d. Foreign Key
+A foreign key is an attribute in one table that refers to the primary key in another table. The table that contains the foreign key is called the referencing table and the table that is referenced is called the referenced table.
+1. A foreign key in one table points to the primary key in another table, establishing a relationship between them.
+2. It helps connect two or more tables, enabling you to create relationships between them. This is important for maintaining data integrity and preventing data redundancy.
+3. They act as a cross-reference between the tables.
+
+###### e. Partial Key
+A partial key is chosen from a weak entity to help identify records, but it cannot uniquely identify a record by itself.
+1. Helps distinguish records in a weak entity when combined with data from a related strong entity.
+2. It cannot be NULL, as it is needed to identify records with other data.
+3. It can be a single column or a combination of columns.
+
+###### f. Primary Key
+A primary key is chosen from the set of candidate keys to uniquely identify each record in a table. For example, in the STUDENT table, both STUD_NO and STUD_PHONE can be candidate keys, but STUD_NO is selected as the primary key.
+1. It cannot be NULL, as each record must have a valid identifier.
+2. It may be single-column or composite (made of multiple columns).
+3. Databases often organize data using the primary key to allow faster access and searching.
+
+###### g. Secondary Key
+A Secondary Key is an attribute or a combination of attributes used to search or query records in a table, but it doesn’t guarantee uniqueness.
+1. It helps in retrieving data quickly, often by creating indexes.
+2. It doesn’t uniquely identify each record; multiple records can have the same value.
+3. For example, STUD_NAME in a STUDENT table can be used to find students by name, even though many students may share the same name.
+4. It’s mainly for improving search efficiency, not for maintaining data uniqueness.
+
+###### h. Unique Key
+A Unique Key is a database constraint that ensures that all values in a specific column or a combination of columns are unique across all the rows in a table. It guarantees that no two rows in the table can have the same value in the columns defined as part of the unique key.
+1. Prevents duplicate values in the specified column.
+2. It allows NULL values, but only one NULL per column.
+3. It can be applied to a single column or multiple columns.
+4. Helps maintain the integrity and accuracy of the data in the table.
+
+###### i. Composite Key
+Sometimes, a single column is not enough to uniquely identify all records in a table, so a combination of multiple attributes is used. An optimal set of such attributes is chosen to ensure that every row is uniquely identifiable.
+1. Two or more attributes are used together to make a composite key.
+2. Different combinations of attributes may give different accuracy in terms of identifying the rows uniquely.
+
+###### j. Surrogate Keys
+A surrogate key is an artificial attribute created to uniquely identify each record in a table when no suitable natural key is available.
+1. It is usually generated automatically by the system (like auto-increment numbers).
+2. It acts as a primary key when natural or composite keys are not practical or efficient.
+3. A single system-generated attribute is used to make a surrogate key.
+4. It does not have any real-world meaning and is used only for identification purposes.
+
+
+<br />
+
+<img
+  src="/IT/DBMS1.18.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+
+#### 4. Relationship
 
 A Relationship Type represents the association between entity types.
 For example, ‘Enrolled in’ is a relationship type that exists between entity type Student and Course.

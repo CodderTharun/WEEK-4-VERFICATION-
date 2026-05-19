@@ -5,6 +5,134 @@ description: "Arrays and Searching Algorithms"
 
 import { Code, Tabs, TabItem } from '@astrojs/starlight/components';
 
+## Data Structures
+
+###  A. Definition
+A **Data Structure** is a way of organizing, storing, and managing data in a computer so that it can be accessed and modified efficiently.
+
+
+### B. Explanation
+Data structures help programmers handle large amounts of data effectively.  
+They determine how data is stored in memory, how operations are performed on the data, and how quickly those operations can be executed.
+
+Using proper data structures improves:
+- Speed of programs
+- Memory usage
+- Data management
+- Problem-solving efficiency
+
+Different applications require different types of data structures depending on the need.
+
+### C. Types
+
+#### 1. Primitive Data Structures
+Basic data types provided by programming languages.
+
+#### Examples:
+- `int`
+- `float`
+- `char`
+- `double`
+- `bool`
+
+
+#### 2. Non-Primitive Data Structures
+Non-Primitive Data Structures are advanced data structures created using primitive data types.  
+They are used to store multiple values, organize large amounts of data, and perform complex operations efficiently.
+
+These data structures are mainly classified into two categories:
+
+
+#### Types of Non-Primitive Data Structures
+
+##### a. Linear Data Structures
+In Linear Data Structures, elements are arranged in a sequential order.  
+Each element is connected to its previous and next element.
+
+These structures are easy to implement and are commonly used for storing and processing data sequentially.
+
+###### Features
+- Data is organized linearly
+- Traversal is simple
+- Memory usage is efficient for sequential processing
+
+###### Examples
+- Array
+- Linked List
+- Stack
+- Queue
+
+
+##### b. Non-Linear Data Structures
+In Non-Linear Data Structures, elements are not arranged sequentially.  
+A single element can be connected to multiple elements, forming hierarchical or network-based relationships.
+
+These structures are mainly used when data relationships are complex.
+
+###### Features
+- Data is organized hierarchically or graphically
+- Faster searching and sorting in some cases
+- Suitable for representing complex relationships
+
+###### Examples
+- Tree
+- Graph
+
+---
+
+## Time and Space Complexity Analysis
+
+##### Purpose of Complexity Analysis
+Complexity analysis is used to:
+
+- Evaluate the efficiency of an algorithm
+- Predict its performance for large input sizes
+- Compare different algorithms for the same task
+
+The analysis is generally done with respect to input size `n`.
+
+<img src="/IT/DSA1.jpg" alt="DSA-1" width="60%" />
+
+#### Time Complexity
+
+Time Complexity is a function that describes the amount of computational time an algorithm takes to run based on the input size `n`.
+
+
+#### Big O Notation (O)
+
+- Describes the worst-case scenario
+- Represents the upper bound of an algorithm
+- Ensures that the algorithm will never exceed a certain time
+
+
+#### Omega Notation (Ω)
+
+- Describes the best-case scenario
+- Represents the lower bound of an algorithm
+- Indicates the minimum time an algorithm takes
+
+
+#### Theta Notation (Θ)
+
+- Describes the average-case scenario when applicable
+- Represents a tight bound, meaning it is both upper and lower bound
+- Applicable when the performance is predictable for all input distributions
+
+
+##### Examples of Time Complexities
+
+| Complexity | Name | Description |
+|---|---|---|
+| `O(1)` | Constant | Time is independent of input size |
+| `O(log n)` | Logarithmic | Reduces problem size logarithmically |
+| `O(n)` | Linear | Grows proportionally to input size |
+| `O(n log n)` | Linearithmic | Common in efficient sorting algorithms |
+| `O(n^2)` | Quadratic | Nested loops over data |
+| `O(2^n)` | Exponential | Recursive solutions without optimization |
+| `O(n!)` | Factorial | Brute-force permutations |
+
+<img src="/IT/DSA2.jpg" alt="DSA-2" width= "60%" />
+
 ## Array
 
 #### **Definition:**  
@@ -1496,7 +1624,619 @@ else:
 </Tabs>
 
 ---
-### B. Merge Sort
+
+### B. Bubble Sort
+
+**Bubble Sort** is a simple comparison-based sorting algorithm used to arrange elements in ascending or descending order.
+
+The algorithm repeatedly compares adjacent elements and swaps them if they are in the wrong order. During each pass, the largest unsorted element "bubbles up" to its correct position at the end of the array.
+
+Bubble Sort continues making passes through the array until no more swaps are required, which means the array is completely sorted.
+
+
+
+#### 1. Working Principle
+
+Bubble Sort works by repeatedly performing the following operations:
+
+a. Compare two adjacent elements.  
+b. Swap them if they are in the wrong order.  
+c. Continue the process for all elements in the array.  
+d. After each pass, the largest element reaches its correct position.  
+e. Repeat the process for the remaining unsorted elements.  
+
+
+
+#### 2. Steps of Bubble Sort
+
+a. Start from the first element of the array.  
+b. Compare the current element with the next element.  
+c. If the current element is greater than the next element, swap them.  
+d. Move to the next pair of adjacent elements.  
+e. Continue until the end of the array is reached.  
+f. Repeat the same process for the remaining unsorted part of the array.  
+g. Continue until no swaps occur in a complete pass.  
+
+
+
+#### 3. Algorithm
+
+<Tabs>
+
+```
+1. Traverse the array from beginning to end.  
+2. Compare adjacent elements.  
+3. Swap elements if they are in the wrong order.  
+4. Repeat the process for all elements.  
+5. Stop when the array becomes sorted.  
+```
+
+</Tabs>
+
+
+
+
+#### 4. Characteristics of Bubble Sort
+
+- Comparison-based sorting algorithm
+- Stable sorting algorithm
+- In-place sorting algorithm
+- Simple and easy to understand
+- Suitable for small datasets
+- Repeatedly swaps adjacent elements
+
+
+
+#### 5. Advantages of Bubble Sort
+
+- Easy to implement
+- Simple logic
+- Requires very little extra memory
+- Stable sorting algorithm
+- Good for educational purposes
+- Useful for small datasets
+
+
+
+#### 6. Disadvantages of Bubble Sort
+
+- Slow for large datasets
+- Requires many comparisons
+- Inefficient compared to advanced sorting algorithms
+- High time complexity
+- Not suitable for large-scale applications
+
+
+
+#### 7. Time Complexity
+
+| Case | Complexity |
+|---|---|
+| Best Case | O(n) |
+| Average Case | O(n²) |
+| Worst Case | O(n²) |
+
+- Best case occurs when the array is already sorted.
+- Worst case occurs when the array is sorted in reverse order.
+
+
+
+#### 8. Space Complexity
+
+| Complexity |
+|---|
+| O(1) |
+
+Bubble Sort is an in-place sorting algorithm because it does not require extra memory for another array.
+
+#### 9. Code Implementation
+
+<Tabs>
+  <TabItem value="c" label="C++">
+
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int arr[] = {5, 1, 4, 2, 8};
+    int n = 5;
+    int temp;
+
+    for(int i = 0; i < n - 1; i++) {
+
+        for(int j = 0; j < n - i - 1; j++) {
+
+            if(arr[j] > arr[j + 1]) {
+
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    cout << "Sorted Array:\n";
+
+    for(int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem value="java" label="Java">
+
+```java
+class BubbleSort {
+
+    public static void main(String[] args) {
+
+        int[] arr = {5, 1, 4, 2, 8};
+        int n = arr.length;
+        int temp;
+
+        for(int i = 0; i < n - 1; i++) {
+
+            for(int j = 0; j < n - i - 1; j++) {
+
+                if(arr[j] > arr[j + 1]) {
+
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+
+        System.out.println("Sorted Array:");
+
+        for(int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem value="python" label="Python">
+
+```python
+arr = [5, 1, 4, 2, 8]
+n = len(arr)
+
+for i in range(n - 1):
+
+    for j in range(n - i - 1):
+
+        if arr[j] > arr[j + 1]:
+
+            arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+print("Sorted Array:")
+
+for i in arr:
+    print(i, end=" ")
+```
+
+  </TabItem>
+</Tabs>
+
+### C. Selection Sort
+
+**Selection Sort** is a simple comparison-based sorting algorithm used to sort elements in an array.
+
+The algorithm works by repeatedly selecting the smallest element from the unsorted portion of the array and placing it at its correct position in the sorted portion.
+
+After each pass, one element is placed in its correct sorted position. The process continues until the entire array becomes sorted.
+
+
+
+#### 1. Working Principle
+
+Selection Sort works in two main steps:
+
+a. **Selection**
+   - Find the smallest element in the unsorted array.
+
+b. **Swapping**
+   - Swap the selected element with the first unsorted element.
+
+
+
+#### 2. Steps of Selection Sort
+
+a. Start from the first element of the array.  
+b. Find the minimum element in the unsorted portion of the array.  
+c. Swap the minimum element with the current element.  
+d. Move to the next position in the array.  
+e. Repeat the process for the remaining unsorted elements.  
+f. Continue until the array becomes completely sorted.  
+
+
+
+#### 3. Algorithm
+
+<Tabs>
+  <TabItem value="steps" label="Steps of Selection Sort">
+```Steps
+1. Traverse the array from beginning to end.  
+2. Find the minimum element in the unsorted part.  
+3. Swap the minimum element with the current position.  
+4. Repeat the process for all elements.  
+5. Stop when the array becomes sorted.  
+```
+  </TabItem>
+</Tabs>
+
+
+
+#### 4. Characteristics of Selection Sort
+
+- Comparison-based sorting algorithm
+- In-place sorting algorithm
+- Simple and easy to understand
+- Performs fewer swaps
+- Suitable for small datasets
+
+
+
+#### 5. Advantages of Selection Sort
+
+- Easy to implement
+- Requires less memory
+- Performs fewer swaps compared to Bubble Sort
+- Useful for small datasets
+- Simple logic
+
+
+
+#### 6. Disadvantages of Selection Sort
+
+- Slow for large datasets
+- Inefficient for large inputs
+- High time complexity
+- Not suitable for real-time applications
+- Not a stable sorting algorithm
+
+
+
+#### 7. Time Complexity
+
+| Case | Complexity |
+|---|---|
+| Best Case | O(n²) |
+| Average Case | O(n²) |
+| Worst Case | O(n²) |
+
+Selection Sort performs the same number of comparisons in all cases.
+
+
+
+#### 8. Space Complexity
+
+| Complexity |
+|---|
+| O(1) |
+
+Selection Sort is an in-place sorting algorithm because it does not require extra memory.
+
+
+
+#### 9. Code Implementation
+
+<Tabs>
+  <TabItem value="cpp" label="C++">
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int arr[] = {64, 25, 12, 22, 11};
+    int n = 5;
+
+    for(int i = 0; i < n - 1; i++) {
+
+        int minIndex = i;
+
+        for(int j = i + 1; j < n; j++) {
+
+            if(arr[j] < arr[minIndex]) {
+                minIndex = j;
+            }
+        }
+
+        int temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+
+    cout << "Sorted Array:\n";
+
+    for(int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem value="java" label="Java">
+
+```java
+class SelectionSort {
+
+    public static void main(String[] args) {
+
+        int[] arr = {64, 25, 12, 22, 11};
+        int n = arr.length;
+
+        for(int i = 0; i < n - 1; i++) {
+
+            int minIndex = i;
+
+            for(int j = i + 1; j < n; j++) {
+
+                if(arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            int temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = temp;
+        }
+
+        System.out.println("Sorted Array:");
+
+        for(int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem value="python" label="Python">
+
+```python
+arr = [64, 25, 12, 22, 11]
+n = len(arr)
+
+for i in range(n - 1):
+
+    minIndex = i
+
+    for j in range(i + 1, n):
+
+        if arr[j] < arr[minIndex]:
+            minIndex = j
+
+    arr[i], arr[minIndex] = arr[minIndex], arr[i]
+
+print("Sorted Array:")
+
+for i in arr:
+    print(i, end=" ")
+```
+
+  </TabItem>
+</Tabs>
+
+### E. Insertion Sort
+
+**Insertion Sort** is a simple comparison-based sorting algorithm used to sort elements in an array.
+The algorithm works by taking one element at a time and inserting it into its correct position within the already sorted part of the array.
+
+It is similar to arranging playing cards in hand, where each new card is inserted into the correct position. The process continues until the entire array becomes sorted.
+
+
+
+#### 1. Working Principle
+
+Insertion Sort works in two main steps:
+
+a. **Selection**
+   - Pick one element from the unsorted portion.
+
+b. **Insertion**
+   - Insert the selected element into its correct position in the sorted portion.
+
+
+
+#### 2. Steps of Insertion Sort
+
+a. Start from the second element of the array.  
+b. Compare the current element with previous elements.  
+c. Shift larger elements one position to the right.  
+d. Insert the current element into its correct position.  
+e. Repeat the process for all remaining elements.  
+f. Continue until the array becomes completely sorted.  
+
+
+
+#### 3. Algorithm
+
+<Tabs>
+  <TabItem value="steps" label="Steps of Insertion Sort">
+```
+1. Start from the second element of the array.  
+2. Compare the current element with previous elements.  
+3. Shift larger elements to the right side.  
+4. Insert the element into its correct position.  
+5. Repeat the process for all elements.  
+6. Stop when the array becomes sorted.  
+```
+  </TabItem>
+</Tabs>
+
+
+
+#### 4. Characteristics of Insertion Sort
+
+- Comparison-based sorting algorithm
+- Stable sorting algorithm
+- In-place sorting algorithm
+- Efficient for small datasets
+- Works well for nearly sorted arrays
+
+
+
+#### 5. Advantages of Insertion Sort
+
+- Easy to implement
+- Efficient for small datasets
+- Stable sorting algorithm
+- Requires less memory
+- Performs well for nearly sorted data
+
+
+
+#### 6. Disadvantages of Insertion Sort
+
+- Slow for large datasets
+- High time complexity for large inputs
+- Inefficient compared to advanced sorting algorithms
+- Requires many shifts in worst case
+
+
+
+#### 7. Time Complexity
+
+| Case | Complexity |
+|---|---|
+| Best Case | O(n) |
+| Average Case | O(n²) |
+| Worst Case | O(n²) |
+
+- Best case occurs when the array is already sorted.
+- Worst case occurs when the array is sorted in reverse order.
+
+
+
+#### 8. Space Complexity
+
+| Complexity |
+|---|
+| O(1) |
+
+Insertion Sort is an in-place sorting algorithm because it does not require extra memory.
+
+
+
+#### 10. Code Implementation
+
+<Tabs>
+  <TabItem value="cpp" label="C++">
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int arr[] = {5, 2, 4, 6, 1, 3};
+    int n = 6;
+
+    for(int i = 1; i < n; i++) {
+
+        int key = arr[i];
+        int j = i - 1;
+
+        while(j >= 0 && arr[j] > key) {
+
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = key;
+    }
+
+    cout << "Sorted Array:\n";
+
+    for(int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+```
+
+  </TabItem>
+
+  <TabItem value="java" label="Java">
+
+```java
+class InsertionSort {
+
+    public static void main(String[] args) {
+
+        int[] arr = {5, 2, 4, 6, 1, 3};
+        int n = arr.length;
+
+        for(int i = 1; i < n; i++) {
+
+            int key = arr[i];
+            int j = i - 1;
+
+            while(j >= 0 && arr[j] > key) {
+
+                arr[j + 1] = arr[j];
+                j--;
+            }
+
+            arr[j + 1] = key;
+        }
+
+        System.out.println("Sorted Array:");
+
+        for(int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+        }
+    }
+}
+```
+
+  </TabItem>
+
+  <TabItem value="python" label="Python">
+
+```python
+arr = [5, 2, 4, 6, 1, 3]
+n = len(arr)
+
+for i in range(1, n):
+
+    key = arr[i]
+    j = i - 1
+
+    while j >= 0 and arr[j] > key:
+
+        arr[j + 1] = arr[j]
+        j -= 1
+
+    arr[j + 1] = key
+
+print("Sorted Array:")
+
+for i in arr:
+    print(i, end=" ")
+```
+
+  </TabItem>
+</Tabs>
+
+### F. Merge Sort
 
 **Merge Sort** is a divide-and-conquer sorting algorithm used to sort elements efficiently.
 
@@ -1790,7 +2530,7 @@ print(arr)
 </Tabs>
 
 ---
-### C. Quick Sort
+### G. Quick Sort
 
 **Quick Sort** is an efficient divide-and-conquer sorting algorithm used to sort elements in an array.
 
@@ -2050,9 +2790,9 @@ print(arr)
 
   </TabItem>
 </Tabs>
-
 ---
-### D.  Maximum Subarray
+
+### H_1.  Maximum Subarray
 
 The **Maximum Subarray Problem** is a common problem in Data Structures and Algorithms where the objective is to find the contiguous subarray with the largest possible sum.
 
