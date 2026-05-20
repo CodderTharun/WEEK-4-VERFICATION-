@@ -3,504 +3,485 @@ title: "Computer Networks – Week 2"
 description: "Data Link Layer, ARP, CSMA, ALOHA, Ethernet, and Error Detection/Correction"
 ---
 
-# Computer Networks — Week 2
-
 ## Data Link Layer in OSI Model
 
-The **Data Link Layer (DLL)** is the second layer from the bottom in the OSI (Open System Interconnection) network architecture model. It is responsible for the **node-to-node delivery of data** within the same local network. Its major role is to ensure error-free transmission of information. DLL is also responsible for encoding, decoding, and organizing outgoing and incoming data.
+The **Data Link Layer (DLL)** is the second layer from the bottom in the OSI model.
 
-<img
-  src="1.jpg"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+- Responsible for node-to-node delivery of data
+- Ensures error-free transmission
+- Performs encoding and decoding of data
 
----
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="1.jpg" alt="Diagram" width="60%" />
+</div>
+</html>
 
-### Primary Functions of the Data Link Layer
+### Functions of Data Link Layer
 
 | Function | Description |
 |---|---|
-| **Framing** | Divides the raw bit-stream from the Physical layer into structured data units called frames. |
-| **Physical Addressing** | Adds a header containing sender's and receiver's MAC addresses to each frame. |
-| **Flow Control** | Regulates data transmission rate so a fast sender does not overwhelm a slower receiver. |
-| **Error Control** | Detects and recovers from frame errors using checksums and retransmission requests. |
-| **Medium Access Control (MAC)** | Determines which device may transmit on the shared medium, preventing collisions. |
+| Framing | Divides raw bit stream into frames |
+| Physical Addressing | Adds sender and receiver MAC addresses |
+| Flow Control | Prevents fast sender from overwhelming receiver |
+| Error Control | Detects and recovers from frame errors |
+| Medium Access Control | Controls access to shared medium |
 
 ---
 
 ## Link-Layer Addressing
 
-- A link-layer address is also known as a **link address**, **physical address**, or **MAC address**.
-- When a datagram passes from the network layer to the data-link layer, it is encapsulated in a frame and **two data-link addresses** are added to the frame header.
-- These addresses **change every time** the frame moves from one link to another.
+- Also called:
+  * Link address
+  * Physical address
+  * MAC address
 
-### Types of Link-Layer Addresses
+- Two data-link addresses are added to frame headers
+- Addresses change from one link to another
 
-| Type | Description |
-|---|---|
-| **Unicast** | One sender → one receiver |
-| **Multicast** | One sender → a group of receivers |
-| **Broadcast** | One sender → all receivers |
+### A. Types of Link-Layer Addresses
+
+#### 1. Unicast
+
+- One sender → one receiver
+
+#### 2. Multicast
+
+- One sender → group of receivers
+
+#### 3. Broadcast
+
+- One sender → all receivers
 
 ---
 
 ## Address Resolution Protocol (ARP)
 
-ARP is a **network-layer protocol** used to dynamically map a **32-bit IP address** (logical) to a **48-bit MAC address** (physical) on a local network.
+ARP maps a **32-bit IP address** to a **48-bit MAC address**.
 
 ### Key Points
 
-- Essential for enabling communication between devices on the same LAN.
-- Bridges the gap between IP-based and MAC-based addressing.
-- Operates using a simple **request–reply** mechanism.
-- Classified under the **Network Layer** in the OSI model.
+- Used for communication inside LAN
+- Bridges IP and MAC addressing
+- Uses request–reply mechanism
+- Works at Network Layer
 
-### ARP Message Types
+### A. ARP Message Types
 
 | Message | Description |
 |---|---|
-| **ARP Request** | Broadcasted — "Who has IP X.X.X.X?" |
-| **ARP Reply** | Unicast — "IP X.X.X.X is at MAC AA:BB:CC:DD:EE:FF" |
+| ARP Request | Broadcast query |
+| ARP Reply | Unicast response |
 
-<img
-  src="2.jpg"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="2.jpg" alt="Diagram" width="60%" />
+</div>
+</html>
 
-### ARP Operation
+### A. ARP Operation
 
-1. Host checks its **ARP cache** for an existing IP–MAC mapping.
-2. If not found, it **broadcasts an ARP query** containing the target IP address.
-3. Each host on the network receives the query and checks if it matches its IP.
-4. The matching host sends an **ARP reply (unicast)** with its MAC address.
-5. The originator adds the IP–MAC pair to its **ARP table**.
+#### 1. Steps
 
-> **Example:** To find System B's MAC, System A broadcasts an ARP request with B's IP. All nodes except B discard it (but may update their ARP tables). System B replies with its MAC. System A stores the pair.
+1. Host checks ARP cache
+2. If mapping not found, ARP request is broadcasted
+3. Hosts check target IP
+4. Matching host sends ARP reply
+5. Sender stores mapping in ARP table
 
-### ARP Packet Fields
+> Example: System A broadcasts request for System B's MAC address. System B replies with its MAC address.
 
-<img
-  src="3.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+### A. ARP Packet Fields
+
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="3.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
 | Field | Size | Description |
 |---|---|---|
-| Hardware Type | 16 bits | Type of network (Ethernet = 1) |
-| Protocol Type | 16 bits | Protocol used (IPv4 = `0800H`) |
-| Hardware Length | 8 bits | Length of physical address in bytes (Ethernet = 6) |
-| Protocol Length | 8 bits | Length of logical address in bytes (IPv4 = 4) |
-| Operation | 16 bits | ARP Request (1) or ARP Reply (2) |
-| Sender Hardware Address | Variable | Physical address of sender (6 bytes for Ethernet) |
-| Sender Protocol Address | Variable | Logical address of sender (4 bytes for IPv4) |
-| Target Hardware Address | Variable | Physical address of target (all 0s in request) |
-| Target Protocol Address | Variable | Logical address of target (4 bytes for IPv4) |
+| Hardware Type | 16 bits | Network type |
+| Protocol Type | 16 bits | IPv4 = `0800H` |
+| Hardware Length | 8 bits | MAC address length |
+| Protocol Length | 8 bits | IP address length |
+| Operation | 16 bits | Request or Reply |
+| Sender Hardware Address | Variable | Sender MAC |
+| Sender Protocol Address | Variable | Sender IP |
+| Target Hardware Address | Variable | Receiver MAC |
+| Target Protocol Address | Variable | Receiver IP |
 
 ---
 
 ## RARP – Reverse ARP
 
-**Reverse Address Resolution Protocol (RARP)** allows a host to convert its **MAC address** to the corresponding **IP address**.
+RARP converts MAC address into IP address.
 
-- Used by a client machine to request its IPv4 address from the gateway router's ARP table.
-- The network administrator maps MAC addresses to IP addresses in the gateway router.
-- A new machine (or one without stored IP) sends a **RARP broadcast packet** containing its MAC address in both sender and receiver hardware address fields.
+### Key Points
+
+- Used by systems without stored IP addresses
+- Client sends RARP broadcast packet
+- Gateway router provides IP mapping
 
 ---
 
 ## CSMA (Carrier Sense Multiple Access)
 
-**CSMA** is a method used to manage how devices share a communication channel. Each device **senses the channel** before sending data. If the channel is busy, the device waits until it is free.
+CSMA allows devices to share communication channels efficiently.
 
-> **Vulnerable Time** = Propagation time (**Tp**)
+> Vulnerable Time = $T_p$
 
-<img
-  src="4.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="4.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
-### Types of CSMA
+### A. Types of CSMA
 
 #### 1. CSMA/CD — Collision Detection
 
-Operates at the **MAC layer**. Detects collisions by sensing transmissions from other stations.
+- Detects collisions during transmission
+- Operates at MAC layer
 
-**Algorithm:**
-1. Check if the channel is idle or busy.
-2. If busy, wait until idle.
-3. If idle, start transmitting and **monitor for collisions**.
-4. On collision detection — stop, send a **jam signal**, wait a **random backoff period**, then retry.
-5. Increment retransmission counter; abort if maximum attempts reached.
+##### a. Algorithm
 
->  CSMA/CD detects but does **not reduce** collisions. Performance degrades exponentially in large networks.
+1. Check if channel is idle
+2. If busy, wait
+3. If idle, transmit data
+4. Monitor collisions
+5. On collision:
+   - Stop transmission
+   - Send jam signal
+   - Wait random backoff time
+   - Retry
 
-<img
-  src="5.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+> CSMA/CD detects collisions but does not reduce them.
+
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="5.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
 #### 2. CSMA/CA — Collision Avoidance
 
-**Prevents** collisions before they occur (unlike CSMA/CD which reacts after).
+- Prevents collisions before transmission
 
-**Algorithm:**
-1. Check if channel is idle or busy.
-2. If busy, wait until idle.
-3. If idle, wait an **Inter-frame Gap (IFG)** time, then send the frame.
-4. Set a timer and wait for **acknowledgement**.
-5. If ACK received before timeout → success. Otherwise, wait a backoff period and retry.
+##### a. Algorithm
 
-<img
-  src="6.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+1. Check channel status
+2. If busy, wait
+3. If idle, wait IFG time
+4. Send frame
+5. Wait for ACK
+6. Retry if timeout occurs
+
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="6.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
 ---
 
 ## ALOHA Protocol
 
-Developed at the **University of Hawaii** in the early 1970s. A **random access protocol** with no coordination between devices.
+Developed at the University of Hawaii.
 
-### Pure ALOHA
+### A. Pure ALOHA
 
-<img
-  src="7.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="7.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
-- Stations transmit frames **whenever ready**, without checking the channel.
-- Uses **acknowledgements**; if no ACK within timeout (`2 × Tp`), the frame is retransmitted.
-- Each device waits a **random backoff time** before retransmitting to avoid repeat collisions.
+- Frames transmitted whenever ready
+- No channel checking
+- Uses acknowledgements
+- Uses random backoff after collision
 
-<img
-  src="8.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="8.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
-**Throughput Formula:**
+### Throughput Formula
 
-$$S = G \times e^{-2G}$$
+$$
+S = G \times e^{-2G}
+$$
 
-- **S** = throughput (successful transmissions per packet time)
-- **G** = average packets generated per packet time
+Where:
 
-**Maximum Throughput** (at G = 0.5):
+- $S$ = throughput
+- $G$ = average packets generated
 
-$$S_{max} = 0.5 \times e^{-1} \approx 18.4\%$$
+### Maximum Throughput
 
-### Slotted ALOHA
+At $G = 0.5$:
 
-An improved version of Pure ALOHA. The channel is divided into **fixed-length time slots**; stations may only transmit at the **beginning of a slot**.
+$$
+S_{max} = 0.5 \times e^{-1} \approx 18.4\%
+$$
 
-- Reduces the vulnerable period to **one time slot** (half that of Pure ALOHA).
-- Stations are synchronized to slots.
+### A. Slotted ALOHA
 
-<img
-  src="9.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+- Transmission allowed only at beginning of slot
+- Vulnerable period reduced
 
-**Throughput Formula:**
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="9.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
-$$S = G \times e^{-G}$$
+### Throughput Formula
 
-**Maximum Throughput** (at G = 1):
+$$
+S = G \times e^{-G}
+$$
 
-$$S_{max} = \frac{1}{e} \approx 36.8\%$$
+### Maximum Throughput
 
-<img
-  src="10.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+At $G = 1$:
 
-### Comparison: Pure ALOHA vs Slotted ALOHA
+$$
+S_{max} = \frac{1}{e} \approx 36.8\%
+$$
+
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="10.png" alt="Diagram" width="60%" />
+</div>
+</html>
+
+### A. Pure ALOHA vs Slotted ALOHA
 
 | Feature | Pure ALOHA | Slotted ALOHA |
 |---|---|---|
-| Transmission timing | Any time | Start of time slot only |
-| Vulnerable period | 2 × Tp | 1 × Tp |
-| Max throughput | ~18.4% | ~36.8% |
-| Synchronization required | No | Yes |
+| Transmission timing | Any time | Slot beginning only |
+| Vulnerable period | $2 \times T_p$ | $1 \times T_p$ |
+| Maximum throughput | 18.4% | 36.8% |
+| Synchronization | Not required | Required |
 
 ---
 
 ## Ethernet
 
-Ethernet provides rules that allow network-connected devices to communicate **without talking over each other**.
-<img
-  src="11.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+Ethernet provides rules for communication between devices.
 
-### Types of Ethernet
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="11.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
-| Type | Speed | Cables |
+### A. Types of Ethernet
+
+| Type | Speed | Cable |
 |---|---|---|
-| **Fast Ethernet** | 100 Mbps | CAT5, fiber optic |
-| **Gigabit Ethernet** | 1 Gbps | CAT5e, fiber optic |
-| **10-Gigabit Ethernet** | 10 Gbps | CAT6a / CAT7, fiber optic |
-| **Switch Ethernet** | 10 Mbps – 10 Gbps | Dedicated per-workstation connections |
+| Fast Ethernet | 100 Mbps | CAT5, fiber optic |
+| Gigabit Ethernet | 1 Gbps | CAT5e, fiber optic |
+| 10-Gigabit Ethernet | 10 Gbps | CAT6a/CAT7 |
+| Switched Ethernet | 10 Mbps–10 Gbps | Dedicated links |
 
-### Key Features of Ethernet
+### A. Features of Ethernet
 
-- **Speed** — up to 100 Gbps with current standards
-- **Flexibility** — works with a wide range of devices and OS
-- **Reliability** — uses error-correction techniques
-- **Cost-effectiveness** — widely available, easy to implement
-- **Interoperability** — devices from different manufacturers communicate seamlessly
-- **Security** — built-in encryption and authentication
-- **Manageability** — tools available for monitoring and control
+- High speed
+- Flexibility
+- Reliability
+- Cost-effective
+- Interoperability
+- Security
+- Easy manageability
 
-### Ethernet Frames
+### A. Ethernet Frames
 
-The MAC sublayer when **sending**:
-- Encapsulates higher-level frames for the transmission medium.
-- Adds a **frame check sequence** for error identification.
-- Forwards data via CSMA/CD, waiting to avoid collisions.
-- Retransmits on detecting a jam signal.
+#### 1. MAC Sublayer While Sending
 
-The MAC sublayer when **receiving**:
-- Uses the frame check sequence to ensure data integrity.
-- Strips off the preamble and padding before passing data upward.
+- Encapsulates higher-level frames
+- Adds frame check sequence
+- Uses CSMA/CD
+- Retransmits after collision
+
+#### 2. MAC Sublayer While Receiving
+
+- Checks frame integrity
+- Removes preamble and padding
 
 ---
 
 ## Error Detection in Computer Networks
 
-**Error** = condition where receiver's information does not match sender's information. Digital signals may have bits flipped (0→1 or 1→0) due to noise.
+Error occurs when received information differs from transmitted information.
 
-### Types of Errors
+### A. Types of Errors
 
-| Type | Description |
-|---|---|
-| **Single-Bit Error** | Only one bit is altered during transmission. |
+#### 1. Single-Bit Error
 
-<img
-  src="12.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+- Only one bit changes
 
-| **Multiple-Bit Error** | More than one non-consecutive bit is affected. |
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="12.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
-<img
-  src="13.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+#### 2. Multiple-Bit Error
 
-| **Burst Error** | A sequence of consecutive bits is flipped. |
+- More than one non-consecutive bit changes
 
-<img
-  src="14.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="13.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
+#### 3. Burst Error
 
-### Error Detection Methods
+- Consecutive bits change
+
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="14.png" alt="Diagram" width="60%" />
+</div>
+</html>
+
+### A. Error Detection Methods
 
 #### 1. Simple Parity Check
 
-<img
-  src="15.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="15.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
-- Adds **one extra bit** to make the total count of 1s even (even parity).
-- ✅ Detects all single-bit errors and any odd number of errors.
-- ❌ Cannot detect an even number of bit errors.
+- Adds one extra parity bit
+- Detects single-bit errors
+- Cannot detect even number of errors
 
 #### 2. Two-Dimensional Parity Check
 
-<img
-  src="16.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="16.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
-
-- Parity bits calculated for **each row and each column**.
-- ✅ Can detect and **correct** all single-bit errors.
-- ✅ Can detect (but not correct) 2–3 bit errors anywhere in the matrix.
-- ❌ Fails if the parity bit itself is in error.
+- Uses row and column parity
+- Detects and corrects single-bit errors
+- Detects 2–3 bit errors
 
 #### 3. Checksum
 
-**Sender Side:**
-1. Divide data into k segments of m bits each.
-2. Add segments using **1's complement arithmetic**.
-3. Complement the sum → **checksum**.
-4. Send checksum along with data.
+##### a. Sender Side
 
-**Receiver Side:**
-1. Add all received segments using 1's complement arithmetic.
-2. Complement the result.
-3. If result = **0** → data accepted. Otherwise → data discarded.
+1. Divide data into segments
+2. Add using 1's complement arithmetic
+3. Complement result
+4. Send checksum
 
-<img
-  src="17.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+##### b. Receiver Side
 
+1. Add received segments
+2. Complement result
+3. If result is 0 → accept data
+
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="17.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
 #### 4. Cyclic Redundancy Check (CRC)
 
-<img
-  src="18.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="18.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
+Based on binary division.
 
-Based on **binary division** rather than addition.
+##### a. Steps
 
-**Steps:**
-1. Append **(k−1) zeros** to the original message (where k = length of divisor).
-2. Perform **modulo-2 division**.
-3. Remainder = **CRC bits**.
-4. Codeword = original data + CRC.
+1. Append $(k - 1)$ zeros
+2. Perform modulo-2 division
+3. Remainder becomes CRC bits
+4. Append CRC to original data
 
-At the receiver, the codeword is divided by the same divisor. A **zero remainder** means no error; any remainder indicates corruption.
+At receiver:
 
-> **Note:** CRC must be (k−1) bits. Length of codeword = n + k − 1 bits.
+- Divide received codeword using same divisor
+- Zero remainder means no error
 
-<img
-  src="19.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+> CRC bits must be $(k - 1)$ bits long.
 
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="19.png" alt="Diagram" width="60%" />
+</div>
+</html>
 
 ---
 
 ## Error Correction in Computer Networks
 
-After detecting errors, the incorrect bits must be replaced with correct ones — this is **error correction**.
+Error correction replaces incorrect bits with correct bits.
+
+### A. Types of Error Correction
 
 | Method | Description |
 |---|---|
-| **Forward Error Correction** | Receiver corrects errors without requesting retransmission. |
-| **Backward Error Correction** | Receiver signals the sender to retransmit corrupted data. |
+| Forward Error Correction | Receiver corrects errors directly |
+| Backward Error Correction | Sender retransmits corrupted data |
 
-### Hamming Code
+### A. Hamming Code
 
-Developed by **R.W. Hamming**. A block code capable of:
-- **Detecting** up to 2 simultaneous bit errors.
-- **Correcting** single-bit errors.
+Developed by R.W. Hamming.
 
-Redundant bits are inserted at **positions that are powers of 2** (1, 2, 4, 8, 16, …).
+- Detects up to 2-bit errors
+- Corrects single-bit errors
+- Redundant bits placed at powers of 2
 
-**Number of redundant bits (r)** satisfies:
+### Formula
 
-$$2^r \geq m + r + 1$$
+$$
+2^r \geq m + r + 1
+$$
 
-where **m** = number of data bits.
+Where:
 
-#### Encoding Steps
+- $r$ = redundant bits
+- $m$ = data bits
 
-1. Calculate number of redundant bits using `2^r ≥ m + r + 1`.
-2. Place redundant bits at positions 1, 2, 4, 8, … (powers of 2).
-3. Calculate each redundant bit as an **even parity bit** over specific positions:
-   - `r1` covers positions: 1, 3, 5, 7, 9, 11, …
-   - `r2` covers positions: 2, 3, 6, 7, 10, 11, …
-   - `r3` covers positions: 4–7, 12–15, 20–23, …
+### A. Encoding Steps
 
-#### Decoding Steps
+#### 1. Procedure
 
-1. Recalculate redundant bits using same rules → get `c1, c2, c3, c4, …`
-2. Convert `c1c2c3c4` from binary to decimal.
-3. If decimal = **0** → no error.
-4. If decimal ≠ 0 → that decimal value is the **bit position with the error** → **flip that bit**.
+1. Calculate redundant bits
+2. Place redundant bits at powers of 2
+3. Calculate parity bits
 
-> **Example:** If `c1c2c3c4 = 1001` → decimal 9 → bit at position 9 is in error → flip it.
+##### a. Coverage
+
+- $r_1$: 1, 3, 5, 7, ...
+- $r_2$: 2, 3, 6, 7, ...
+- $r_3$: 4–7, 12–15, ...
+
+### A. Decoding Steps
+
+#### 1. Procedure
+
+1. Recalculate parity bits
+2. Convert parity result to decimal
+3. If decimal is 0 → no error
+4. Otherwise flip corresponding bit
+
+> Example: $1001_2 = 9$, so bit 9 contains error.
+
 
