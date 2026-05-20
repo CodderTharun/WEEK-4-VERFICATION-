@@ -1,60 +1,506 @@
 ---
-title: CN - Week 2
-description: TCP/IP and Transport Layer
+title: "Computer Networks – Week 2"
+description: "Data Link Layer, ARP, CSMA, ALOHA, Ethernet, and Error Detection/Correction"
 ---
 
+# Computer Networks — Week 2
+
+## Data Link Layer in OSI Model
+
+The **Data Link Layer (DLL)** is the second layer from the bottom in the OSI (Open System Interconnection) network architecture model. It is responsible for the **node-to-node delivery of data** within the same local network. Its major role is to ensure error-free transmission of information. DLL is also responsible for encoding, decoding, and organizing outgoing and incoming data.
+
+<img
+  src="1.jpg"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+---
+
+### Primary Functions of the Data Link Layer
+
+| Function | Description |
+|---|---|
+| **Framing** | Divides the raw bit-stream from the Physical layer into structured data units called frames. |
+| **Physical Addressing** | Adds a header containing sender's and receiver's MAC addresses to each frame. |
+| **Flow Control** | Regulates data transmission rate so a fast sender does not overwhelm a slower receiver. |
+| **Error Control** | Detects and recovers from frame errors using checksums and retransmission requests. |
+| **Medium Access Control (MAC)** | Determines which device may transmit on the shared medium, preventing collisions. |
+
+---
+
+## Link-Layer Addressing
+
+- A link-layer address is also known as a **link address**, **physical address**, or **MAC address**.
+- When a datagram passes from the network layer to the data-link layer, it is encapsulated in a frame and **two data-link addresses** are added to the frame header.
+- These addresses **change every time** the frame moves from one link to another.
+
+### Types of Link-Layer Addresses
+
+| Type | Description |
+|---|---|
+| **Unicast** | One sender → one receiver |
+| **Multicast** | One sender → a group of receivers |
+| **Broadcast** | One sender → all receivers |
+
+---
+
+## Address Resolution Protocol (ARP)
+
+ARP is a **network-layer protocol** used to dynamically map a **32-bit IP address** (logical) to a **48-bit MAC address** (physical) on a local network.
+
+### Key Points
+
+- Essential for enabling communication between devices on the same LAN.
+- Bridges the gap between IP-based and MAC-based addressing.
+- Operates using a simple **request–reply** mechanism.
+- Classified under the **Network Layer** in the OSI model.
+
+### ARP Message Types
+
+| Message | Description |
+|---|---|
+| **ARP Request** | Broadcasted — "Who has IP X.X.X.X?" |
+| **ARP Reply** | Unicast — "IP X.X.X.X is at MAC AA:BB:CC:DD:EE:FF" |
+
+<img
+  src="2.jpg"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+### ARP Operation
+
+1. Host checks its **ARP cache** for an existing IP–MAC mapping.
+2. If not found, it **broadcasts an ARP query** containing the target IP address.
+3. Each host on the network receives the query and checks if it matches its IP.
+4. The matching host sends an **ARP reply (unicast)** with its MAC address.
+5. The originator adds the IP–MAC pair to its **ARP table**.
+
+> **Example:** To find System B's MAC, System A broadcasts an ARP request with B's IP. All nodes except B discard it (but may update their ARP tables). System B replies with its MAC. System A stores the pair.
+
+### ARP Packet Fields
+
+<img
+  src="3.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| Field | Size | Description |
+|---|---|---|
+| Hardware Type | 16 bits | Type of network (Ethernet = 1) |
+| Protocol Type | 16 bits | Protocol used (IPv4 = `0800H`) |
+| Hardware Length | 8 bits | Length of physical address in bytes (Ethernet = 6) |
+| Protocol Length | 8 bits | Length of logical address in bytes (IPv4 = 4) |
+| Operation | 16 bits | ARP Request (1) or ARP Reply (2) |
+| Sender Hardware Address | Variable | Physical address of sender (6 bytes for Ethernet) |
+| Sender Protocol Address | Variable | Logical address of sender (4 bytes for IPv4) |
+| Target Hardware Address | Variable | Physical address of target (all 0s in request) |
+| Target Protocol Address | Variable | Logical address of target (4 bytes for IPv4) |
+
+---
+
+## RARP – Reverse ARP
+
+**Reverse Address Resolution Protocol (RARP)** allows a host to convert its **MAC address** to the corresponding **IP address**.
+
+- Used by a client machine to request its IPv4 address from the gateway router's ARP table.
+- The network administrator maps MAC addresses to IP addresses in the gateway router.
+- A new machine (or one without stored IP) sends a **RARP broadcast packet** containing its MAC address in both sender and receiver hardware address fields.
+
+---
+
+## CSMA (Carrier Sense Multiple Access)
+
+**CSMA** is a method used to manage how devices share a communication channel. Each device **senses the channel** before sending data. If the channel is busy, the device waits until it is free.
+
+> **Vulnerable Time** = Propagation time (**Tp**)
+
+<img
+  src="4.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+### Types of CSMA
+
+#### 1. CSMA/CD — Collision Detection
+
+Operates at the **MAC layer**. Detects collisions by sensing transmissions from other stations.
+
+**Algorithm:**
+1. Check if the channel is idle or busy.
+2. If busy, wait until idle.
+3. If idle, start transmitting and **monitor for collisions**.
+4. On collision detection — stop, send a **jam signal**, wait a **random backoff period**, then retry.
+5. Increment retransmission counter; abort if maximum attempts reached.
+
+> ⚠️ CSMA/CD detects but does **not reduce** collisions. Performance degrades exponentially in large networks.
+
+<img
+  src="5.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+#### 2. CSMA/CA — Collision Avoidance
+
+**Prevents** collisions before they occur (unlike CSMA/CD which reacts after).
+
+**Algorithm:**
+1. Check if channel is idle or busy.
+2. If busy, wait until idle.
+3. If idle, wait an **Inter-frame Gap (IFG)** time, then send the frame.
+4. Set a timer and wait for **acknowledgement**.
+5. If ACK received before timeout → success. Otherwise, wait a backoff period and retry.
+
+<img
+  src="6.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+---
+
+## ALOHA Protocol
+
+Developed at the **University of Hawaii** in the early 1970s. A **random access protocol** with no coordination between devices.
+
+### Pure ALOHA
+
+<img
+  src="7.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+- Stations transmit frames **whenever ready**, without checking the channel.
+- Uses **acknowledgements**; if no ACK within timeout (`2 × Tp`), the frame is retransmitted.
+- Each device waits a **random backoff time** before retransmitting to avoid repeat collisions.
+
+<img
+  src="8.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+**Throughput Formula:**
+
+$$S = G \times e^{-2G}$$
+
+- **S** = throughput (successful transmissions per packet time)
+- **G** = average packets generated per packet time
+
+**Maximum Throughput** (at G = 0.5):
+
+$$S_{max} = 0.5 \times e^{-1} \approx 18.4\%$$
+
+### Slotted ALOHA
+
+An improved version of Pure ALOHA. The channel is divided into **fixed-length time slots**; stations may only transmit at the **beginning of a slot**.
+
+- Reduces the vulnerable period to **one time slot** (half that of Pure ALOHA).
+- Stations are synchronized to slots.
+
+<img
+  src="9.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+**Throughput Formula:**
+
+$$S = G \times e^{-G}$$
+
+**Maximum Throughput** (at G = 1):
+
+$$S_{max} = \frac{1}{e} \approx 36.8\%$$
+
+<img
+  src="10.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+### Comparison: Pure ALOHA vs Slotted ALOHA
+
+| Feature | Pure ALOHA | Slotted ALOHA |
+|---|---|---|
+| Transmission timing | Any time | Start of time slot only |
+| Vulnerable period | 2 × Tp | 1 × Tp |
+| Max throughput | ~18.4% | ~36.8% |
+| Synchronization required | No | Yes |
+
+---
+
+## Ethernet
+
+Ethernet provides rules that allow network-connected devices to communicate **without talking over each other**.
+<img
+  src="11.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+### Types of Ethernet
+
+| Type | Speed | Cables |
+|---|---|---|
+| **Fast Ethernet** | 100 Mbps | CAT5, fiber optic |
+| **Gigabit Ethernet** | 1 Gbps | CAT5e, fiber optic |
+| **10-Gigabit Ethernet** | 10 Gbps | CAT6a / CAT7, fiber optic |
+| **Switch Ethernet** | 10 Mbps – 10 Gbps | Dedicated per-workstation connections |
+
+### Key Features of Ethernet
+
+- **Speed** — up to 100 Gbps with current standards
+- **Flexibility** — works with a wide range of devices and OS
+- **Reliability** — uses error-correction techniques
+- **Cost-effectiveness** — widely available, easy to implement
+- **Interoperability** — devices from different manufacturers communicate seamlessly
+- **Security** — built-in encryption and authentication
+- **Manageability** — tools available for monitoring and control
+
+### Ethernet Frames
+
+The MAC sublayer when **sending**:
+- Encapsulates higher-level frames for the transmission medium.
+- Adds a **frame check sequence** for error identification.
+- Forwards data via CSMA/CD, waiting to avoid collisions.
+- Retransmits on detecting a jam signal.
+
+The MAC sublayer when **receiving**:
+- Uses the frame check sequence to ensure data integrity.
+- Strips off the preamble and padding before passing data upward.
+
+---
+
+## Error Detection in Computer Networks
+
+**Error** = condition where receiver's information does not match sender's information. Digital signals may have bits flipped (0→1 or 1→0) due to noise.
+
+### Types of Errors
+
+| Type | Description |
+|---|---|
+| **Single-Bit Error** | Only one bit is altered during transmission. |
+
+<img
+  src="12.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| **Multiple-Bit Error** | More than one non-consecutive bit is affected. |
+
+<img
+  src="13.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| **Burst Error** | A sequence of consecutive bits is flipped. |
+
+<img
+  src="14.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
 
-## TCP/IP Model
+### Error Detection Methods
 
-The TCP/IP model is the foundation of modern internet.
+#### 1. Simple Parity Check
 
-### TCP/IP Layers
+<img
+  src="15.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
-1. **Application Layer**
-   - HTTP, HTTPS, FTP, SMTP, DNS
+- Adds **one extra bit** to make the total count of 1s even (even parity).
+- ✅ Detects all single-bit errors and any odd number of errors.
+- ❌ Cannot detect an even number of bit errors.
 
-2. **Transport Layer**
-   - TCP, UDP
+#### 2. Two-Dimensional Parity Check
 
-3. **Internet Layer**
-   - IP, ICMP, IGMP
+<img
+  src="16.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
-4. **Link Layer**
-   - Ethernet, PPP, Wi-Fi
 
-### TCP (Transmission Control Protocol)
+- Parity bits calculated for **each row and each column**.
+- ✅ Can detect and **correct** all single-bit errors.
+- ✅ Can detect (but not correct) 2–3 bit errors anywhere in the matrix.
+- ❌ Fails if the parity bit itself is in error.
 
-- Connection-oriented
-- Reliable delivery
-- In-order delivery
-- Flow control
-- Used for: Email, Web, File transfer
+#### 3. Checksum
 
-### UDP (User Datagram Protocol)
+**Sender Side:**
+1. Divide data into k segments of m bits each.
+2. Add segments using **1's complement arithmetic**.
+3. Complement the sum → **checksum**.
+4. Send checksum along with data.
 
-- Connectionless
-- Unreliable but fast
-- No flow control
-- Used for: Video streaming, Online gaming, DNS
+**Receiver Side:**
+1. Add all received segments using 1's complement arithmetic.
+2. Complement the result.
+3. If result = **0** → data accepted. Otherwise → data discarded.
 
-### IP Addressing
+<img
+  src="17.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
-- **IPv4**: 32-bit address (xxx.xxx.xxx.xxx)
-- **IPv6**: 128-bit address
-- **Subnetting**: Dividing networks
 
-### This Week
+#### 4. Cyclic Redundancy Check (CRC)
 
-- TCP vs UDP comparison
-- IP addressing and subnetting
-- Port numbers
-- Common protocols overview
+<img
+  src="18.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
-### Protocols Overview
 
-- **HTTP/HTTPS** - Web
-- **SMTP/POP3** - Email
-- **SSH** - Secure shell
-- **DNS** - Name resolution
-- **DHCP** - Dynamic IP assignment
+Based on **binary division** rather than addition.
+
+**Steps:**
+1. Append **(k−1) zeros** to the original message (where k = length of divisor).
+2. Perform **modulo-2 division**.
+3. Remainder = **CRC bits**.
+4. Codeword = original data + CRC.
+
+At the receiver, the codeword is divided by the same divisor. A **zero remainder** means no error; any remainder indicates corruption.
+
+> **Note:** CRC must be (k−1) bits. Length of codeword = n + k − 1 bits.
+
+<img
+  src="19.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+
+---
+
+## Error Correction in Computer Networks
+
+After detecting errors, the incorrect bits must be replaced with correct ones — this is **error correction**.
+
+| Method | Description |
+|---|---|
+| **Forward Error Correction** | Receiver corrects errors without requesting retransmission. |
+| **Backward Error Correction** | Receiver signals the sender to retransmit corrupted data. |
+
+### Hamming Code
+
+Developed by **R.W. Hamming**. A block code capable of:
+- **Detecting** up to 2 simultaneous bit errors.
+- **Correcting** single-bit errors.
+
+Redundant bits are inserted at **positions that are powers of 2** (1, 2, 4, 8, 16, …).
+
+**Number of redundant bits (r)** satisfies:
+
+$$2^r \geq m + r + 1$$
+
+where **m** = number of data bits.
+
+#### Encoding Steps
+
+1. Calculate number of redundant bits using `2^r ≥ m + r + 1`.
+2. Place redundant bits at positions 1, 2, 4, 8, … (powers of 2).
+3. Calculate each redundant bit as an **even parity bit** over specific positions:
+   - `r1` covers positions: 1, 3, 5, 7, 9, 11, …
+   - `r2` covers positions: 2, 3, 6, 7, 10, 11, …
+   - `r3` covers positions: 4–7, 12–15, 20–23, …
+
+#### Decoding Steps
+
+1. Recalculate redundant bits using same rules → get `c1, c2, c3, c4, …`
+2. Convert `c1c2c3c4` from binary to decimal.
+3. If decimal = **0** → no error.
+4. If decimal ≠ 0 → that decimal value is the **bit position with the error** → **flip that bit**.
+
+> **Example:** If `c1c2c3c4 = 1001` → decimal 9 → bit at position 9 is in error → flip it.
+
