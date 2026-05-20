@@ -204,7 +204,7 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 1", link: "/ece/week-1/cprogramming" },
-      { label: "Week 2", link: "/ece/week-1/cprogramming" },
+      { label: "Week 2", link: "/eee/week-2/cprogramming" },
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },

@@ -1,293 +1,14 @@
 ---
-title: Thermodynamics
-description: Fundamentals of Thermodynamics Notes
+title: Advanced Thermodynamics
+description: Advanced Thermodynamics Notes
 ---
 
-## Thermodynamics
-Thermodynamics is a branch of physics and science that focuses on the relationship between heat, work, temperature, and other forms of energy.
-The term itself is derived from:
-- **Thermo** → Heat  
-- **Dynamics** → Mechanical motion involving work  
+## Carnot Cycle
 
----
-
-## Laws of Thermodynamics
-The four laws of thermodynamics define the fundamental physical quantities such as energy, temperature, and entropy and explain how they behave under different conditions.
-
-
-### A. Zeroth law of thermodynamics
-This law states that if two thermodynamic systems are each in thermal equilibrium with a third system, then they are also in thermal equilibrium with each other.
-This principle forms the fundamental basis for temperature measurement.
-
-### B. First law of thermodynamics
-Often called the law of conservation of energy, this principle dictates that energy can neither be created nor destroyed; it can only be transferred or transformed from one form to another.
-A consequence of this law is that for a closed system undergoing a cyclic process, the net heat interaction is exactly equal to the net work interaction.
-
-### C. Second law of thermodynamics
-This law establishes that the entropy of any isolated system always increases.
-It acts as a "directional law" indicating the natural direction of a process.
-
-    - **Kelvin-Planck statement**<br />
-      It is impossible for a system to operate in a thermodynamic cycle and deliver net work to its surroundings while receiving heat from only a single thermal energy reservoir.
-
-    - **Clausius statement**<br />
-      It is impossible for a system to operate in such a way that the sole result could be heat transfer from a cooler body to a hotter body.
-
-
-### D. Third law of thermodynamics
-This law states that as the temperature of a system approaches absolute zero, its entropy approaches a constant value.
-Specifically, the entropy of a pure crystalline substance at nearly absolute zero temperature is exactly zero.
-
----
-
-## System
-In thermodynamics, a system is defined as a specific quantity of matter or a region in space that is under investigation.
-
-### A. Closed System (Control Mass)
-A closed system is a thermodynamic system in which energy can cross the boundary, but mass cannot.
-<br />
-<img
-  src="/Mech/Closed_system.png"
-  alt="Diagram"
-  style={{
-    width: "40%",
-    display: "block",
-    margin: "auto"
-  }}
-/><br />
-**Example:** A piston-cylinder arrangement without valves is an example of a closed system.
-
-### B. Isolated System
- An isolated system is a thermodynamic system in which neither mass nor energy can cross the system boundary.
-<br />
-<img
-  src="/Mech/Isolated_System.png"
-  alt="Diagram"
-  style={{
-    width: "40%",
-    display: "block",
-    margin: "auto"
-  }}
-/><br /> 
-**Example:** A well-insulated thermos flask is an example of an isolated system.
-
-### C. Open System (Control Volume)
-An open system is a thermodynamic system in which both mass and energy can cross the system boundary.
-<br />
-<img
-  src="/Mech/Open_System.png"
-  alt="Diagram"
-  style={{
-    width: "40%",
-    display: "block",
-    margin: "auto"
-  }}
-/><br />
-
-**Example:** A steam turbine is an open system because steam enters and exits while energy transfer occurs.
-
----
-
-## Surroundings
-The mass or region outside the system is called surroundings.
-
----
-
-## Boundary
-A boundary is the interface that is shared between a system and its surroundings.
-<br />
-<img
-  src="/Mech/therm3.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/><br />
-
----
-
-## Control volume
-A control volume is a specific region in space chosen for analysis where both mass and energy are permitted to cross its boundary.
-This distinguishes it from a closed system (or control mass), which only allows energy to cross its boundary.
-
-
-### Key characteristics of a control volume
-
-#### A. Control Surface
-The boundary that encloses the control volume is referred to as the control surface.
-Mass and energy cross this surface to enter or leave the control volume.
-
-#### B. Flow Work
-Because mass continuously flows in and out, control volumes involve "flow work" (or flow energy), which is the energy required to push a fluid into or out of the control volume.
-
-#### C. Control Volume Work
-A control volume is a specific region in space chosen for analysis where both mass and energy are permitted to cross its boundary  This distinguishes it from a closed system (or control mass), which only allows energy to cross its boundary
-
----
-
-## The Macroscopic Approach (Classical Thermodynamics)
-
-The macroscopic approach focuses on the behavior of a system in bulk.
-It is entirely concerned with the overall, internal macroscopic state of a body and does not consider the molecular constitution of the matter.
-Instead, this approach relies on globally observable and measurable physical units such as temperature, pressure, and volume to evaluate the system and predict how it will behave during a given process.
-
-**Example**  
-Imagine checking the air inside a car tire.
-Using the macroscopic approach, you simply attach a gauge to read the overall air pressure.
-You are measuring a bulk characteristic of the system without needing to know what any individual air molecule is doing inside the tire.
-
----
-
-## The Microscopic Approach (Statistical Thermodynamics)
-
-Conversely, the microscopic approach examines a system at the atomic or molecular level, putting every individual molecule "under the spotlight".
-It evaluates the specific properties, motions, and interactions of individual particles to characterize the collective behavior of the entire group.
-For instance, a system's internal energy is understood microscopically as the sum total of the kinetic and potential energies possessed by its continuously moving atoms and molecules.
-
-**Example**  
-Looking at that same car tire, the microscopic approach would focus on the countless individual nitrogen and oxygen molecules zooming around inside.
-It would analyze how fast these particles are moving and how frequently they collide with the rubber walls of the tire.
-By applying statistical math to these tiny molecular impacts, physicists can deduce the overall macroscopic pressure of the tire.
-<br />
-<img
-  src="/Mech/therm5.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/><br />
-
-
-
-| Feature | Macroscopic Approach | Microscopic Approach |
-|---|---|---|
-| Primary Focus | The overall bulk characteristics of the system as a whole. | The behavior of individual molecules ($N_2$ and $O_2$) within the system. |
-| Measurement Tool | A physical pressure gauge attached to the tire valve. | Statistical math applied to molecular velocity and impact frequency. |
-| Key Variables | Total pressure (e.g., PSI or bar) and temperature. | Particle velocity, collision rates, and kinetic energy. |
-| Perspective | External and practical; treats the air as a continuous fluid. | Internal and theoretical; treats the air as a collection of discrete particles. |
-| Action Observed | A single reading representing the average state of the gas. | Countless tiny impacts against the inner rubber walls of the tire. |
-
----
-
-## Thermodynamic equilibrium
-Thermodynamic equilibrium describes a state where all properties of a system have fixed, unchanging values.
-If a system in equilibrium is completely isolated from its surroundings, you will observe zero changes in the values of its properties.
-Essentially, in this state, there is no tendency for the system to change spontaneously.
-The system can only be forced into a new state by an external influence, such as adding heat to change its temperature or physically altering its volume.
-**Example**
-A practical example is gas enclosed in a cylinder with a movable piston.
-The gas is in equilibrium if:
-- Its internal temperature is completely uniform  
-- Its pressure is completely uniform  
-- The force acting on the outside of the piston is just enough to keep it perfectly still  
-
-
-### Types of Thermodynamic Equilibrium
-For a system to be considered in complete thermodynamic equilibrium, it must simultaneously satisfy four different types of equilibrium.
-
-#### A. Thermal Equilibrium
-This means the temperature is exactly the same throughout the entire system.
-
-#### B. Mechanical Equilibrium 
-This occurs when there is no change in pressure at any point within the system.
-
-#### C. Chemical Equilibrium
-This state is reached when the chemical composition of the system is stable and does not vary over time.
-
-#### D. Phase Equilibrium
-If the system contains more than one phase (such as a mixture of liquid and vapour), it is in phase equilibrium when the mass of each individual phase reaches a constant level.
-Ultimately, if a thermodynamic system satisfies thermal, mechanical, chemical, and phase equilibrium meaning its relevant parameters cease to vary with time it has achieved full thermodynamic equilibrium.
-
----
-
-## Reversible Processes
-A reversible process is an idealized, theoretical scenario comparable to motion without friction in mechanics.
-In a totally reversible process, both the system and its surroundings can be exactly restored to their respective initial states after the process has taken place.
-Because the process happens infinitesimally slowly, the system remains at (or very near) thermodynamic equilibrium at each step along its path, meaning the direction of the change can be reversed at any point.
-
-
-### Types of Reversibility
-Reversibility is broken down into two components.
-
-#### 1. Internally Reversible
-A process is internally reversible if no irreversibility such as friction, turbulence, or viscous losses occurs inside the system boundary.
-The system passes through a series of uniform equilibrium states, meaning the forward and reverse paths coincide perfectly on a property diagram.
-
-   - **Key Example:**  
-     Phase changes such as boiling and condensation are generally treated as internally reversible.
-
-
-
-#### 2. Externally Reversible
-A process is externally reversible if no irreversibility occurs outside the system boundary in the surroundings.
-
-   - **Key Example:**  
-     Heat transfer occurring through a negligible, infinitesimally small temperature difference which is considered externally reversible.
-$$
-dT \approx 0
-$$ 
-
-
-
-#### 3. Totally Reversible
-A process that is both internally and externally reversible.
-This is a theoretical ideal where both the system and the surroundings can be returned to their original states without leaving any net change in the universe.
-<br />
+The Carnot Cycle is an ideal thermodynamic cycle that represents the maximum possible efficiency any heat engine can achieve while operating between two temperature reservoirs.
 
 <img
-  src="/Mech/therm6.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
-
----
-
-## Irreversible process
-An irreversible process is one where the system adjusts to an abrupt change and cannot be reversed without leaving a permanent net change in the universe.
-Most real-world processes are irreversible.
-
-**Examples**  
-- **Balloon Analogy:**  
-  A bursting balloon causes gas to expand suddenly and uncontrollably; reversing this requires significant external effort.
-
-- **Heat Transfer:**  
-  Heat flow through a finite temperature difference is a primary cause of irreversibility.
-
----
-
-## Thermodynamic Indicators
-The distinction between reversible and irreversible processes is defined by key mathematical principles.
-
-### A. Entropy Generation ($S_{gen}$)
-For irreversible processes, $S_{gen}$ is always positive, increasing the entropy of the universe.
-In internally reversible processes:
-$$
-S_{gen} = 0
-$$
-
-
-### B. Clausius Inequality
-For an internally irreversible cycle, the cyclic integral of heat transfer divided by temperature is always less than zero:
-$$
-\oint \frac{\delta Q}{T} < 0
-$$
-
-
-## Quasi-static process
-In thermodynamics, a quasi-static process is defined as an infinitely slow process in which the intensive properties such as pressure and temperature remain completely uniform throughout the entire system at any given moment.
-Because the process occurs at such an infinitesimally slow rate, the system essentially passes through a continuous series of equilibrium states, never deviating significantly from thermodynamic equilibrium.
-<br />
-
-<img
-  src="/Mech/therm7.png"
+  src="/Mech/thermo1.png"
   alt="Diagram"
   style={{
     width: "60%",
@@ -297,100 +18,125 @@ Because the process occurs at such an infinitesimally slow rate, the system esse
 />
 
 
-### A. Relationship to Reversibility
-While all internally reversible processes are quasi-static, the reverse is not always true not all quasi-static processes are internally reversible.
-For a closed system, a quasi-static process is only considered internally reversible if viscous losses like friction are neglected.
+### A. Four Processes of the Carnot Cycle
 
+The cycle has four reversible stages:
 
-### B. Significance in Calculating Work
-Assuming a process is quasi-static is crucial for mathematically calculating the work done by a system.
-For example, calculating displacement work using the integral formula:
-$$
-\int PdV
-$$
+#### 1. Isothermal Expansion (Heat Addition)
 
-relies on the process being quasi-static and internally reversible.
+- Working fluid absorbs heat $Q_H$
+- Temperature remains constant at high temperature $T_H$
+- Gas expands and does work
 
----
+#### 2. Adiabatic Expansion
 
-## Non-Quasi-Static Example
-A prime example of a process that is not quasi-static is free expansion when a gas expands into an absolute vacuum.
-Because the expansion is sudden and uncontrolled, the intensive properties are not uniform, meaning you cannot use the $\int PdV$ formula to calculate work for it.
+- No heat transfer
+- Gas continues expanding
+- Temperature falls from $T_H$ to $T_L$
 
----
+#### 3. Isothermal Compression (Heat Rejection)
 
-## State
-In thermodynamics, the state is the specific condition of a system that is completely defined and specified by various parameters known as state variables such as temperature, pressure, volume, and entropy.
+- Heat $Q_L$ rejected to sink
+- Temperature constant at $T_L$
+- Gas is compressed
 
----
+#### 4. Adiabatic Compression
 
-## Property
-A property is defined as any observable characteristic of a system.
-Because properties depend only on the state and are completely independent of the path followed during a process, they are considered state functions or point functions.
-The change in a property between two states is always the same regardless of the path taken whether reversible or irreversible, making them exact differentials.
-For any cyclic process, the net change in a property is always zero.
+- No heat transfer
+- Gas compressed back to initial state
+- Temperature rises from $T_L$ to $T_H$
 
-### A. Intensive Properties
-These are independent of the system's size, mass, or extent, and they are not additive in nature.
-Additionally, any specific property or the ratio of two extensive properties is classified as an intensive property.
+### B. Carnot Efficiency
 
-   - **Examples**
-       -Pressure:
- -Pressure is an intensive property because its value does not depend on the amount or size of the system. Dividing the system into smaller parts does not change the pressure.
-Temperature:
--Temperature is an intensive property because it remains the same regardless of the quantity of substance present in the system.
-Velocity:
-Velocity is an intensive property because the speed of a fluid or object does not depend on the total mass of the system.
-Viscosity:
-Viscosity is an intensive property because the resistance offered by a fluid to flow remains unchanged even if the quantity of the fluid changes.
-Density:
-Density is an intensive property because it is the ratio of mass to volume, and its value remains constant for a substance under given conditions regardless of system size.  
+The efficiency depends only on source and sink temperatures:
 
+$$\eta = 1 - \frac{T_L}{T_H}$$
 
+Where:
+- $\eta$ = thermal efficiency
+- $T_H$ = absolute temperature of heat source (K)
+- $T_L$ = absolute temperature of heat sink (K)
 
-### B. Extensive Properties
-These depend directly on the extent, size, or mass of the system.
-Extensive properties are additive, meaning the total value for the overall system is the sum of the values of its individual parts.
+### C. Important Characteristics
 
- **Examples:**
-- **Total Mass:**  
-  Mass is an extensive property because it depends on the amount of matter present in the system. Larger systems contain greater mass.
+#### 1. Reversible Process
 
-- **Volume:**  
-  Volume is an extensive property because it changes with the size or quantity of the substance in the system.
+All processes are ideal and reversible, meaning:
 
-- **Internal Energy:**  
-  Internal energy is extensive because the total energy stored within a system increases as the amount of substance increases.
+- No friction
+- No heat loss
+- No pressure drop
 
-- **Kinetic Energy:**  
-  Kinetic energy is an extensive property because it depends on the mass of the moving object or fluid.
+#### 2. Maximum Efficiency
 
-- **Potential Energy:**  
-  Potential energy is extensive because it depends on the total mass and position of the system.
+It gives the theoretical maximum efficiency possible.
 
-- **Enthalpy:**  
-  Enthalpy is an extensive property because the total heat content increases with the amount of substance present.
+#### 3. Ideal Cycle
 
-- **Entropy:**  
-  Entropy is extensive because the degree of molecular randomness increases with system size and quantity of matter.
+It cannot be perfectly achieved in practice because real systems have irreversibilities.
 
-  ---
+### D. Applications
 
-## The Zeroth Law of Thermodynamics
+#### 1. Standard for Maximum Efficiency
 
-### A. Fundamental Principle
-If two thermodynamic systems are each in thermal equilibrium with a third system separately, then they are also in thermal equilibrium with each other.
-$$
-(A = B) \text{ and } (A = C) \Rightarrow (B = C)
-$$
-This law guarantees that systems B and C will inherently be in thermal equilibrium with one another if they both share equilibrium with system A.<br />
-**Logical Visualization, If we have three separate bodies A, B, and C:**
-- Body A is in thermal equilibrium with Body B  
-- Body A is also in thermal equilibrium with Body C  
-- Then: Bodies B and C are inherently in thermal equilibrium with each other  
-<br />
+The main engineering application of the Carnot cycle is:
+To determine the maximum possible efficiency of a heat engine operating between two temperatures.
+Engineers compare actual engines with Carnot efficiency to evaluate performance.
+
+**Example**    
+Used in:
+- Steam power plants
+- Diesel engines
+- Gas turbines
+- Petrol engines
+If an engine's efficiency is far below Carnot efficiency, engineers know losses are high.
+
+#### 2. Design of Thermal Power Plants
+
+In power plant engineering, the Carnot cycle helps engineers:
+
+- Select suitable boiler temperatures
+- Improve turbine efficiency
+- Reduce condenser temperature
+- Estimate theoretical plant efficiency
+
+**Engineering Principle**
+
+Higher source temperature and lower sink temperature increase efficiency.
+This idea is directly applied in:
+
+- Superheated steam plants
+- Combined cycle plants
+- Nuclear power stations
+
+#### 3. Refrigeration and Heat Pump Systems
+
+The Carnot cycle is also used in reverse form called the:
+
+- Carnot refrigerator
+- Carnot heat pump
+
+**Applications:**
+- Air conditioners
+- Refrigerators
+- Cryogenic systems
+- Industrial cooling systems
+Engineers use Carnot COP (Coefficient of Performance) as the ideal reference value.
+
+### E. Problems
+
+#### 1. One kilogram of air at 101.35 kPa, 21°C is compressed in an Otto cycle with a compression ratio of 7:1. During the combustion process, 953.66 kJ of heat is added to the air.
+
+Compute:
+
+a. The specific volume, pressure, and temperature at the four points in the cycle.   
+b. The air standard efficiency.   
+c. The mep (mean effective pressure) and hp of the engine, if it uses 1 kg/min of air.   
+
+#### 2. Calculate the efficiency for a Carnot cycle operating between the maximum and minimum temperatures of the Otto cycle (Figure 42).
+
 <img
-  src="/Mech/therm8.png"
+  src="/Mech/thermo2.png"
   alt="Diagram"
   style={{
     width: "60%",
@@ -399,601 +145,1119 @@ This law guarantees that systems B and C will inherently be in thermal equilibri
   }}
 />
 
+#### Solution:
 
-### B. Significance in Temperature Measurement
-The Zeroth Law allows us to use thermometers as the "third system."
-If a thermometer reaches equilibrium with Object 1 and then Object 2 at the same reading, both objects share the same temperature.
+**Given**
 
----
+- $\dfrac{V_A}{V_B} = 8$
+- $P_A = 100 \text{ kPa}$
+- $q_{BC} = +800 \text{ kJ/kg}$
+- $C_p = \dfrac{7}{2}R$
 
-## Thermometry
-Thermometry is the branch of thermodynamics focused on the quantitative measurement of temperature.
-Since temperature is not a directly measurable quantity like mass or length, we must measure it indirectly by observing the physical changes it causes in certain materials.
+**Processes**
 
-### Thermometric Properties
-To measure equilibrium, thermometers rely on specific properties that change consistently with temperature.
-
-| Thermometer Type | Thermometric Property |
+| Process | Description |
 |---|---|
-| Constant Volume Gas Thermometer | Pressure |
-| Constant Pressure Gas Thermometer | Volume |
-| Mercury-in-glass Thermometer | Length |
-| Electrical Resistance Thermometer | Resistance |
-| Thermocouple | Thermal e.m.f. |
+| AB | Reversible adiabatic |
+| BC | Isochoric (constant volume) |
+| CD | Reversible adiabatic |
+| DA | Isochoric (constant volume) |
+
+**State Properties**
+
+| State | Temperature $T$ (K) | Pressure $P$ (kPa) |
+|---|---:|---:|
+| A | 290 | 100 |
+| B | 662 | 1838 |
+| C | 1782 | 4918 |
+| D | 776 | 268 |
+
+**Cycle Description**
+
+The process follows a closed $P$-$V$ cycle:
+
+1. AB — Adiabatic compression
+2. BC — Constant-volume heat addition
+3. CD — Adiabatic expansion
+4. DA — Constant-volume heat rejection
+
+**Notes**
+
+- $AB$ and $CD$ are reversible adiabatic processes.
+- $BC$ and $DA$ are constant-volume processes.
+- The cycle resembles an idealized thermodynamic power cycle.
+
+
+##### Adiabatic Compression Analysis
+
+**Adiabatic Compression**
+
+For a reversible adiabatic process:
+
+$$\frac{dS^{\circ}}{dt} = \sum_i \dot{m}_i \hat{S}_i + \frac{\dot{Q}^{\circ}}{T_{\text{boundary}}} + \dot{S}_{\text{gen}}^{\circ}$$
+
+Since the process is:
+
+- adiabatic $\Rightarrow \dot{Q}=0$
+- reversible $\Rightarrow \dot{S}_{gen}=0$
+
+Therefore:
+
+$$\hat{S}_A = \hat{S}_B$$
+
+Hence,
+
+$$\Delta \hat{S}(P,V)=0$$
+
+Using the entropy relation:
+
+$$0 = C_p \ln\left(\frac{V_B}{V_A}\right) + C_v \ln\left(\frac{P_B}{P_A}\right)$$
+
+Rearranging:
+
+$$\frac{P_B}{P_A} = \left(\frac{V_A}{V_B}\right)^{C_p/C_v}$$
+
+Substitute values:
+
+$$P_B = P_A (8)^{\frac{7/2\,R}{5/2\,R}}$$
+
+$$P_B = 100(8)^{1.4}$$
+
+$$P_B \approx 1838 \text{ kPa}$$
+
+**Temperature Relation**
+
+Using the entropy relation in terms of $T$ and $V$:
+
+$$\Delta \hat{S}(T,V)=0$$
+
+Thus,
+
+$$\frac{T_B}{T_A} = \left(\frac{V_A}{V_B}\right)^{\frac{C_p-C_v}{C_v}}$$
+
+Substitute values:
+
+$$T_B = (290\,K)(8)^{\left(\frac{7/5-1}{1}\right)}$$
+$$T_B \approx 666.2 \, K$$
+
+
+**Energy Balance from B → C**
+
+**First Law for a Closed System**
+
+$$\frac{dU}{dt} = \sum_i \dot{m}_i \hat{h}_i + \dot{Q} + \dot{W}^{\circ}$$
+
+For the constant-volume process $B \rightarrow C$:
+
+- No boundary work
+- Heat is added
+- Change in internal energy only
+
+Thus,
+
+$$\dot{m}(\hat{u}_C - \hat{u}_B) = \dot{Q}$$
+
+Dividing by mass flow rate:
+
+$$\frac{\dot{Q}}{\dot{m}} = \hat{u}_C - \hat{u}_B = C_v(T_C - T_B)$$
+
+Rearranging for temperature:
+
+$$T_C = \frac{\dot{Q}}{\dot{m}C_v} + T_B$$
+
+Substitute values:
+
+$$T_C = \frac{800 \times 10^3 \, \text{J/kg}}{\left(\frac{5}{2}\right)(8.314 \,\text{kJ/(kmol·K)})\left(\frac{1\,\text{kg mol}}{1000\,\text{g}}\right)} + 666.2\,K$$
+
+$$T_C \approx 1782.4\,K$$
+
+**Pressure Relation for Isochoric Process**
+
+Using the ideal gas relation:
+
+$$\frac{P_C V_C}{T_C} = \frac{P_B V_B}{T_B}$$
+
+Since the process is isochoric:
+
+$$V_B = V_C$$
+
+Therefore,
+
+$$P_C = P_B \left(\frac{T_C}{T_B}\right)$$
+
+Substitute values:
+
+$$P_C = 1838 \left(\frac{1782.4}{666.2}\right)$$
+
+$$P_C \approx 4918 \text{ kPa}$$
+
+$$P_C = (1838 \text{ kPa}) \left( \frac{1782.4}{666.2} \right)$$
+
+$$P_C = 4917.5 \text{ kPa}$$
+
+As before during adiabatic compression:
+
+$$P_D / P_C = \left( \frac{V_C}{V_D} \right)^{C_p / C_v}$$
+
+$$\& \quad \frac{T_D}{T_C} = \left( \frac{V_C}{V_D} \right)^{\left( \frac{C_p - C_v}{C_v} \right)}$$
+
+$$V_D = V_A$$
+
+$$V_B = V_C$$
+
+$$P_D = P_C \left( \frac{V_B}{V_A} \right)^{C_p / C_v} = 4917.5 \text{ kPa } \left( \frac{1}{8} \right)^{7/5}$$
+
+$$P_D = 267.6 \text{ kPa}$$
+
+$$T_D = T_C \left( \frac{V_B}{V_A} \right)^{\left( \frac{C_p - C_v}{C_v} \right)} = 1782.4 \left( \frac{1}{8} \right)^{(7/5 - 1)}$$
+
+$$T_D = 775.8 \text{ K}$$
+
+**Overall Balance**
+
+$$\frac{dU}{dt}^{\to 0} = \sum_i \dot{m}_i \hat{H}_i^{\to 0} + \dot{Q} + \dot{W}_{\text{net}}$$
+
+$$- \dot{W}_{\text{net}} = Q_{\text{in}} + Q_{\text{out}}$$
+
+Need $Q_{\text{out}}$
+
+- **Balance around last isochoric step:**
+
+     $$\frac{dU}{dt} = \sum_i \dot{m}_i \hat{H}_i^{\to 0} + \dot{Q}_{\text{out}} + \dot{W}^{\to 0}$$
+
+     $$\dot{m} (\hat{u}_A - \hat{u}_D) = \dot{Q}_{\text{out}}$$
+
+**Absolute Temperature**
+
+Thermodynamic temperature scales provide an absolute, material-independent baseline defined strictly by physical laws rather than fluid expansion (e.g., mercury). This absolute reference allows engineers to evaluate the true theoretical limits of energy conversion systems.
+
+- **Temperature Scale Conversion Formula**
+
+     To convert between two linear, arbitrary temperature scales (Scale $\text{I}$ and Scale $\text{II}$), the measured temperature is normalized against their respective ice points ($I$) and steam points ($S$):
+
+     $$\frac{T_{\text{I}} - I_{\text{I}}}{S_{\text{I}} - I_{\text{I}}} = \frac{T_{\text{II}} - I_{\text{II}}}{S_{\text{II}} - I_{\text{II}}}$$
+
+      Where:
+         - $T$ = Temperature reading on the respective scale.
+         - $I$ = Ice point (freezing point of water).
+         - $S$ = Steam point (boiling point of water).
+
+- **Importance in Engineering**
+
+     Absolute thermodynamic temperature scales (Kelvin and Rankine) are vital because they eliminate material bias, enabling rigorous thermodynamic analysis.
+
+     - Carnot Performance Limits
+       The absolute scale establishes the maximum theoretical efficiency ($\eta_{th, max}$) for power cycles and the maximum Coefficient of Performance (COP) for refrigeration and HVAC systems:
+
+        $$\eta_{th, max} = 1 - \frac{T_L}{T_H}$$
+
+     - Equations of State
+       Fundamental relations, such as the Ideal Gas Law ($Pν=RT$), explicitly require absolute thermodynamic temperature. Using relative scales yields mathematically invalid thermodynamic properties (e.g., negative pressures or volumes).
+
+     - Instrumentation Calibration
+       Because the scale relies on the Second Law rather than a specific material property, it serves as the universal baseline for calibrating all industrial sensors (thermocouples, RTDs, and pyrometers).
+
+**Problems**
+
+An engineer is evaluating a completely reversible cyclic heat engine operating continuously between a high-temperature source ($T_{\text{H}}$) and a low-temperature sink ($T_{\text{L}}$). During each cycle, the engine receives $800\text{ kJ}$ of heat from the source and rejects $320\text{ kJ}$ of heat to the sink.
+
+**Determine:**
+
+a. The thermal efficiency ($\eta_{\text{th}}$) of this heat engine.
+
+b. The exact absolute temperature of the high-temperature source ($T_{\text{H}}$) if the absolute temperature of the low-temperature sink ($T_{\text{L}}$) is measured to be $300\text{ K}$.
+
+**Solution:**
+
+**Part(a): Evaluation of Thermal Efficiency**
+
+For any cyclic heat engine, the thermal efficiency ($\eta_{\text{th}}$) is defined as the ratio of net work output ($W_{\text{net,out}}$) to the total heat input ($Q_{\text{H}}$):
+
+$$\eta_{\text{th}} = \frac{W_{\text{net,out}}}{Q_{\text{H}}}$$
+
+Applying the first law of thermodynamics for a closed system executing a cycle ($\Sigma Q = \Sigma W$), the net work output is equal to the net heat transfer:
+
+$$W_{\text{net,out}} = Q_{\text{H}} - Q_{\text{L}}$$
+
+Substituting this into the efficiency expression yields:
+
+$$\eta_{\text{th}} = \frac{Q_{\text{H}} - Q_{\text{L}}}{Q_{\text{H}}} = 1 - \frac{Q_{\text{L}}}{Q_{\text{H}}}$$
+
+**Given:**
+
+- Heat supplied from the source, $Q_{\text{H}} = 800\text{ kJ}$
+- Heat rejected to the sink, $Q_{\text{L}} = 320\text{ kJ}$
+
+Substituting the given operational values into the equation:
+
+$$\eta_{\text{th}} = 1 - \frac{320\text{ kJ}}{800\text{ kJ}} = 1 - 0.40 = 0.60$$
+
+$$\mathbf{\eta_{\text{th}} = 60\%}$$
+
+**Part(b): Absolute Temperature of the Source**
+
+Because the engine operates on a completely reversible thermodynamic cycle, the principles of the absolute thermodynamic temperature scale (Kelvin scale) apply. For a reversible cycle with a single heat source and a single heat sink, the ratio of heat transfer is fundamentally defined by the ratio of the absolute temperatures of the reservoirs:
+
+$$\left(\frac{Q_{\text{H}}}{Q_{\text{L}}}\right)_{\text{rev}} = \frac{T_{\text{H}}}{T_{\text{L}}}$$
+
+**Given:**
+
+- Absolute temperature of the sink, $T_{\text{L}} = 300\text{ K}$
+
+Rearranging the expression to explicitly isolate the source temperature ($T_{\text{H}}$):
+
+$$T_{\text{H}} = T_{\text{L}} \cdot \left(\frac{Q_{\text{H}}}{Q_{\text{L}}}\right)$$
+
+Substituting the known values:
+
+$$T_{\text{H}} = 300\text{ K} \cdot \left(\frac{800\text{ kJ}}{320\text{ kJ}}\right) = 300\text{ K} \cdot 2.5$$
+
+$$\mathbf{T_{\text{H}} = 750\text{ K}}$$
+
+**Alternative Verification (Using Carnot Efficiency)**
+
+The maximum thermal efficiency of a reversible heat engine operating between two fixed thermal reservoirs depends solely on their absolute temperatures:
+
+$$\eta_{\text{th, rev}} = 1 - \frac{T_{\text{L}}}{T_{\text{H}}}$$
+
+Substituting the efficiency found in Part (a) and the given sink temperature:
+
+$$0.60 = 1 - \frac{300\text{ K}}{T_{\text{H}}}$$
+
+Rearranging the linear algebraic equation:
+
+$$\frac{300\text{ K}}{T_{\text{H}}} = 1 - 0.60 = 0.40$$
+
+$$T_{\text{H}} = \frac{300\text{ K}}{0.40} = 750\text{ K}$$
+
+The result is consistent using both analytical approaches.
 
 ---
 
-## Work and Heat as path functions
-### Fundamental Definitions
-- **Heat ($Q$)**<br />
-Energy in transit between systems due solely to a temperature difference.
-It is often described as a "less organized" or disordered process at the molecular level.
+## The Clausius Inequality
 
-- **Work ($W$)**<br />
-Energy in transit through any mechanism other than temperature difference.
-In classical terms, a transfer is classified as work if its sole effect on the surroundings could be equivalent to raising a weight.
+The Clausius Inequality is a fundamental theorem derived from the Second Law of Thermodynamics that serves as a criterion to determine the nature, feasibility, and reversibility of any thermodynamic cycle. It applies universally to all valid cycles—including power-producing (heat engines) and power-consuming (refrigeration and heat pump) cycles—operating between any number of thermal reservoirs.
+
+Mathematically, the Clausius Inequality states that the cyclic integral of the heat transfer ($\delta Q$) divided by the absolute temperature ($T$) at the boundary where the heat transfer occurs must be less than or equal to zero:
+
+$$\oint \frac{\delta Q}{T} \le 0$$
+
+### A. Thermodynamic Criteria for Cycle Evaluation
+
+The inequality establishes three distinct quantitative criteria used to evaluate the validity of a proposed or operating cycle:
+
+- $\oint \frac{\delta Q}{T} = 0$ : The cycle is possible and **internally reversible**. This represents an idealized, frictionless scenario with no internal irreversibilities.
+- $\oint \frac{\delta Q}{T} < 0$ : The cycle is possible and **internally irreversible**. This represents all real-world, practical cycles where losses such as friction, unrestrained expansion, and heat transfer across finite temperature differences inherently occur.
+- $\oint \frac{\delta Q}{T} > 0$ : The cycle is **impossible**. Any proposed system yielding a value greater than zero violates the Second Law of Thermodynamics and cannot physically exist.
+
+<img
+  src="/Mech/thermo3.png"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+### B. Importance in Engineering
+
+In engineering design and advanced thermodynamic analysis, the Clausius Inequality is highly critical for evaluating complex systems and performance thresholds.
+
+#### 1. Analysis of Multi-Reservoir Systems
+
+While simple heat engines operating between only two reservoirs can be evaluated using standard thermal efficiency formulations, many complex engineering systems—such as co-generation plants or multi-stage refrigeration systems—interact with three or more thermal energy reservoirs. The Clausius Inequality provides the primary analytical framework required to evaluate these multi-reservoir interactions.
+
+> **System Constraint:** This mathematical evaluation is strictly valid only when applied to complete, closed cycles; it cannot be used to analyze isolated, non-cyclic processes.
+
+#### 2. Feasibility Testing in Conceptual Design
+
+The inequality serves as a rigorous, mathematical "pass/fail" validation tool during the conceptual phase of engineering design. Before capital or computational resources are allocated to developing a new power cycle or chemical processing plant, engineers apply the inequality to verify that the proposed parameters do not violate fundamental laws of nature.
+
+#### 3. Quantitative Assessment of Irreversibilities
+
+By computing the value of the cyclic integral, engineers can determine how closely a real system approaches idealized, reversible operation. The degree to which the integral drops below zero provides a direct indicator of the magnitude of internal irreversibilities present within the system components.
+
+### C. Derivation of the Property Entropy ($S$)
+
+The definition of entropy comes directly from combining the First Law of Thermodynamics and the Clausius Inequality for a cyclic process.
+
+For any cycle, the Clausius Inequality states:
+
+$$\oint \frac{\delta Q}{T} \le 0$$
+
+If we consider an internally reversible cycle consisting of two distinct paths from state 1 to state 2 (Path $A$ and Path $B$ reversed), the inequality becomes an equality:
+
+$$\oint \frac{\delta Q}{T} = \int_{1, \text{path } A}^2 \frac{\delta Q}{T} + \int_{2, \text{path } B}^1 \frac{\delta Q}{T} = 0$$
+
+$$\int_{1, \text{path } A}^2 \frac{\delta Q}{T} = \int_{1, \text{path } B}^2 \frac{\delta Q}{T}$$
+
+Because the value of this integral is identical regardless of the path taken between state 1 and state 2, the integrand must represent a change in a differential state property. Clausius named this property Entropy ($S$):
+
+$$dS = \left(\frac{\delta Q}{T}\right)_{\text{internally reversible}} \implies S_2 - S_1 = \int_1^2 \left(\frac{\delta Q}{T}\right)_{\text{rev}}$$
+
+### D. Derivation of the Tds (Gibbs) Relations
+
+To compute changes in entropy using measurable properties (like temperature, pressure, and volume), we substitute the definitions of property variations into the differential First Law equation for a closed system:
+
+$$\delta Q - \delta W = du$$
+
+For an internally reversible process:
+
+- Heat transfer can be written as: $\delta Q = Tds$
+- Boundary work can be written as: $\delta W = Pdv$
+
+Substituting these into the First Law yields the First $Tds$ Equation:
+
+$$Tds = du + Pdv$$
+
+To derive the second relation, we use the definition of Enthalpy ($h$):
+
+$$h = u + Pv \implies dh = du + Pdv + vdP$$
+
+$$du + Pdv = dh - vdP$$
+
+Substituting this back into the first $Tds$ equation gives the Second $Tds$ Equation:
+
+$$Tds = dh - vdP$$
+
+Dividing both equations by $T$ isolates the entropy differential ($ds$):
+
+$$ds = \frac{du}{T} + \frac{Pdv}{T}$$
+
+$$ds = \frac{dh}{T} - \frac{vdP}{T}$$
+
+### E. Derivation for Substance-Specific Shortcuts
+
+Because entropy is a state property, the formulations derived above hold true for both reversible and irreversible processes. We integrate these equations for specific ideal states:
+
+#### 1. Incompressible Fluids (Liquids & Solids)
+
+For ideal liquids and solids, the change in specific volume is negligible ($dv = 0$). Using the definition of specific heat at constant volume ($du = C_{\text{v}}dT$):
+
+$$ds = \frac{du}{T} + \frac{P(0)}{T} \implies ds = \frac{C_{\text{v}}dT}{T}$$
+
+Integrating from state 1 to state 2 assuming a constant average specific heat:
+
+$$\int_1^2 ds = \int_1^2 \frac{C_{\text{v}}dT}{T} \implies s_2 - s_1 = C_{\text{v}} \ln\left(\frac{T_2}{T_1}\right)$$
+
+#### 2. Ideal Gases
+
+An ideal gas obeys the Equation of State ($P\nu = RT$).
+
+**Volumetric Ideal Gas Formulation:** Substitute $du = C_{\text{v}}dT$ and $\frac{P}{T} = \frac{R}{v}$ into the first isolated $ds$ relation:
+
+$$ds = \frac{C_{\text{v}}dT}{T} + \frac{Rdv}{v}$$
+
+Integrating both sides yields:
+
+$$s_2 - s_1 = C_{\text{v}} \ln\left(\frac{T_2}{T_1}\right) + R \ln\left(\frac{v_2}{v_1}\right)$$
+
+**Pressure Ideal Gas Formulation:** Substitute $dh = C_{\text{p}}dT$ and $\frac{v}{T} = \frac{R}{P}$ into the second isolated $ds$ relation:
+
+$$ds = \frac{C_{\text{p}}dT}{T} - \frac{RdP}{P}$$
+
+Integrating both sides yields:
+
+$$s_2 - s_1 = C_{\text{p}} \ln\left(\frac{T_2}{T_1}\right) - R \ln\left(\frac{P_2}{P_1}\right)$$
 
 ---
 
-## Path Functions vs. State Functions
-To understand why work and heat are path functions, we must distinguish them from state functions.
-### A. State Functions
-Properties that depend only on the current state of the system, not how it got there.
-- **Examples**
-    - Pressure ($P$)  
-    - Volume ($V$)  
-    - Temperature ($T$)  
-    - Internal Energy ($U$)  
+## The Principle of Increase of Entropy
 
-### B. Path Functions
-Quantities whose magnitude depends on the specific route (path) taken between the initial and final states.<br />
+The entropy of an isolated system—or the universe—must always increase for real processes or remain constant for ideal processes. It can never decrease.
 
-**Key Takeaway**  
-Work and heat are path functions.
-Their values are not determined by the start and end points alone, but by the specific process used to transition between them.
+### A. Mathematical Formulation
 
-#### 1. Work ($W$) as a Path Function
-Work is defined as energy in transit due to a force acting through a distance.
-In a closed system, the boundary work is calculated as:
-$$
-W = \int_{V_1}^{V_2} P \, dV
-$$
-On a Pressure-Volume ($P-V$) diagram, work is represented by the area under the process curve.
+The net entropy change of the universe ($\Delta S_{\text{uni}}$) is the sum of the entropy change of the system ($\Delta S_{\text{sys}}$) and its surroundings ($\Delta S_{\text{surr}}$):
 
-**Example:** Different Expansion Paths
-Imagine a gas expanding from State 1 to State 2.
-<br />
-<img
-  src="/Mech/therm9.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+$$\Delta S_{\text{uni}} = \Delta S_{\text{sys}} + \Delta S_{\text{surr}}$$
 
--> **Path A (High Pressure Expansion)**<br />
-The gas stays at a high pressure for a long time before dropping.
-This creates a large area under the curve, meaning more work is done.
+This yields three distinct feasibility regimes:
 
--> **Path B (Low Pressure Expansion)**<br />
-The pressure drops immediately, and then the gas expands.
-This creates a very small area under the curve, meaning less work is done.<br />
--> **Conclusion**<br />
-Even though the start and end points $(P, V)$ are identical, the work done changes depending on the "road" taken.
+- $\Delta S_{\text{uni}} > 0$ : Possible / Irreversible Process (Real-world scenarios with internal losses).
+- $\Delta S_{\text{uni}} = 0$ : Possible / Reversible Process (Idealized benchmark).
+- $\Delta S_{\text{uni}} < 0$ : Impossible Process (Violates the Second Law of Thermodynamics).
 
-#### 2. Heat ($Q$) as a Path Function
-Heat is energy in transit due to a temperature difference.
-While it doesn't have a simple "area" representation like work on a $P-V$ diagram, its dependency on the path is proven by the First Law of Thermodynamics:
-$$
-Q = \Delta U + W
-$$
+### B. The Core Concept: System vs. Universe
 
-**Example**: Raising the Temperature of a Gas
-Suppose you want to raise the temperature of air in a cylinder by 10°C ($\Delta U$ is fixed).
-<br />
-<img
-  src="/Mech/therm10.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
-<br />
-<img
-  src="/Mech/therm17.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+While $\Delta S_{\text{uni}}$ can never be negative, the entropy change of a specific subsystem ($\Delta S_{\text{sys}}$) can be negative if it rejects heat.
 
--> **Path 1 (Adiabatic)**<br />
-You compress the gas very quickly while the cylinder is insulated.
-Here because all the energy came from the work you did ($W$):
-$$
-Q = 0
-$$
+For any heat transfer process at a constant boundary temperature ($T$), the entropy variation is calculated as:
 
--> **Path 2 (Constant Volume)**<br />
-You lock the piston so it cannot move ($W = 0$) and place it over a burner.
-Here, all the energy needed to raise the temperature comes from heat ($Q$).<br />
+$$\Delta S = \frac{Q}{T}$$
 
--> **Conclusion**<br />
-The final state (the temperature) is the same, but the amount of heat added varied from zero to a maximum value based on your process path.
-<br />
-<img
-  src="/Mech/therm11.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+### C. Numerical Explanation
 
-#### Comparison Between State Functions and Path Functions
+To mathematically demonstrate how a system's entropy can decrease while the universe's entropy increases, consider the following physical engineering scenario:
 
-| Feature | State Functions (e.g., $P,V,T,U$) | Path Functions ($Q$ and $W$) |
-|---|---|---|
-| Graphical View | A single point on a graph | The area under the line connecting points |
-| Analogy | Altitude: Your height at the top of a mountain is the same regardless of your trail | Distance: The number of steps you took depends on whether you climbed straight up or spiraled around |
-| Equation | $\Delta U = U_2 - U_1$ | $W_{1-2} = \int \delta W$ (Never $\Delta W$) |
+**Given Parameters**
 
-## Cyclic process
-A cyclic process (or thermodynamic cycle) is a process, or a combination of multiple processes, carried out in such a way that the system's initial and final states are exactly the same.
+- System: A hot mechanical component cooling down at a constant boundary temperature, $T_{\text{sys}} = 600\text{ K}$.
+- Surroundings: An industrial shop floor acting as a thermal reservoir at a constant temperature, $T_{\text{surr}} = 300\text{ K}$.
+- Heat Transferred: $Q = 1200\text{ kJ}$ is rejected from the system to the surroundings.
 
-### A. Key characteristics of a cyclic process
-#### 1. Purpose
-Cyclic processes are designed to produce a continuous, ongoing effect.
+#### 1. Entropy Change of the System ($\Delta S_{\text{sys}}$)
 
-#### 2. Change in Properties
-Because the system ultimately returns to its exact starting condition, the net change in any thermodynamic property such as internal energy, volume, or pressure over the complete cycle is always exactly zero.
-    - **First Law Application**<br />
-According to the First Law of Thermodynamics, the net heat transferred into the closed system during a cycle is exactly equal to the net work done by the system.
-$$
-\Sigma Q = \Sigma W
-$$
+Because heat leaves the system, the energy interaction is negative relative to the system boundary ($Q = -1200\text{ kJ}$):
 
-### B. Types & Examples
-On a pressure-volume ($P-V$) diagram, cycles can be visualized by the direction they follow.
-- **Power-producing cycles** such as gas engines or steam power plants operate in a clockwise direction and produce positive net work.
-- **Power-consuming cycles** such as refrigerators and heat pumps operate in an anti-clockwise direction and require negative net work to function.
-<br />
-<img
-  src="/Mech/therm12.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+$$\Delta S_{\text{sys}} = \frac{Q_{\text{out}}}{T_{\text{sys}}} = \frac{-1200\text{ kJ}}{600\text{ K}} = -2\text{ kJ/K}$$
+
+**Observation:** The individual system entropy decreases ($\Delta S_{\text{sys}} < 0$).
+
+#### 2. Entropy Change of the Surroundings ($\Delta S_{\text{surr}}$)
+
+Because the surroundings absorb this exact quantity of heat, the energy interaction is positive relative to the surroundings boundary ($Q = +1200\text{ kJ}$):
+
+$$\Delta S_{\text{surr}} = \frac{Q_{\text{in}}}{T_{\text{surr}}} = \frac{+1200\text{ kJ}}{300\text{ K}} = +4\text{ kJ/K}$$
+
+#### 3. Net Entropy Change of the Universe ($\Delta S_{\text{uni}}$)
+
+Summing the individual entropy variations to check total cycle feasibility:
+
+$$\Delta S_{\text{uni}} = \Delta S_{\text{sys}} + \Delta S_{\text{surr}}$$
+
+$$\Delta S_{\text{uni}} = (-2\text{ kJ/K}) + (+4\text{ kJ/K}) = +2\text{ kJ/K}$$
+
+**Thermodynamic Conclusion**
+
+$$\Delta S_{\text{uni}} = +2\text{ kJ/K} \quad \implies \quad \Delta S_{\text{uni}} > 0$$
+
+The numerical result satisfies the Principle of Increase of Entropy. Even though the system's local entropy decreased by $2\text{ kJ/K}$, the finite temperature driving force ($600\text{ K} \to 300\text{ K}$) generated $2\text{ kJ/K}$ of net entropy in the universe, proving the cooling process is physically possible and irreversible.
 
 ---
 
-## Non-cyclic process
-A non-cyclic process occurs when a system undergoes a change from an initial state to a completely different final state.
+## Entropy Generation ($S_{\text{gen}}$)
 
-### A. Key characteristics of a non-cyclic process
+Entropy generation ($S_{\text{gen}}$) is the measure of entropy created entirely due to path-dependent irreversibilities (such as fluid friction, mixing, or unrestrained expansion). Because it depends on the specific path of the process, it is a path function (represented by an inexact differential, $\delta S_{\text{gen}}$) rather than a thermodynamic property.
 
-#### 1. Change in Properties
-Because the system does not return to its original state, an energetic change occurs within the system, which is associated with actual changes in measurable properties like pressure, volume, and internal energy.
+$$\delta S_{\text{gen}} \ge 0$$
 
-    - **First Law Application**<br />
-For a closed system undergoing a non-cyclic change of state, the energy entering or leaving as heat and work directly affects the energy stored inside.
-This is mathematically expressed as:
+- $S_{\text{gen}} > 0$ : Actual, irreversible process (real-world engineering systems).
+- $S_{\text{gen}} = 0$ : Idealized, internally reversible process (no internal losses).
+- $S_{\text{gen}} < 0$ : Physically impossible process.
 
-$$
-Q = W + \Delta E
-$$
-  <div style={{ marginLeft: "82px" }}>
-   meaning the heat interaction equals the work interaction plus the change in the system’s total energy.
-   </div>
+### A. Closed Systems (Non-Flow Processes)
 
-### B. Types & Examples
-Common examples include:
-- Isothermal process (temperature remains constant)  
-- Isobaric process (pressure remains constant)  
-- Isochoric process (volume remains constant)  
-- Adiabatic process (no heat transfer)  
-<br />
-<img
-  src="/Mech/therm13.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
+#### 1. General Formulation
+
+In a closed system, mass is fixed within the boundary. The net entropy change ($\Delta S$) is the balance of entropy transfer via heat and internal entropy generation:
+
+$$\Delta S = S_2 - S_1 = \int_1^2 \frac{\delta Q}{T} + S_{\text{gen}}$$
+
+#### 2. Specialized Operational States
+
+- **Internally Reversible Process** ($S_{\text{gen}} = 0$): Entropy change is entirely driven by boundary heat transfer:
+
+     $$\Delta S = \int_1^2 \frac{\delta Q}{T}$$
+
+- **Adiabatic Irreversible Process** ($\delta Q = 0$): Without thermal transfer, internal irreversibilities dictate that system entropy must strictly rise:
+
+     $$\Delta S = S_{\text{gen}} \quad ( \Delta S > 0 )$$
+
+- **Isentropic Process** (Adiabatic + Reversible): System entropy remains perfectly constant:
+
+     $$\Delta S = 0 \implies S_1 = S_2$$
+
+### B. Open Systems (Control Volumes)
+
+#### 1. General Formulation
+
+In open systems, mass crossing the control surface carries bulk entropy into or out of the system. The time rate of entropy change inside the control volume ($\frac{dS_{\text{cv}}}{dt}$) is formulated as:
+
+$$\frac{dS_{\text{cv}}}{dt} = \sum_{k} \frac{\dot{Q}_k}{T_k} + \sum_{\text{in}} \dot{m}_{\text{i}} s_{\text{i}} - \sum_{\text{out}} \dot{m}_{\text{e}} s_{\text{e}} + \dot{S}_{\text{gen}}$$
+
+#### 2. Steady-Flow Engineering Applications
+
+- For devices operating continuously at steady state (e.g., turbines, compressors, or nozzles), properties within the control volume do not vary over time ($\frac{dS_{\text{cv}}}{dt} = 0$).      
+- For a single-inlet, single-outlet steady-flow system, the equation simplifies to:
+
+$$\dot{m}(s_{\text{e}} - s_{\text{i}}) = \sum_{k} \frac{\dot{Q}_k}{T_k} + \dot{S}_{\text{gen}}$$
+
+#### 3. Specialized Operational States (Steady Flow)
+
+- **Adiabatic Steady Flow** ($\dot{Q} = 0$): Entropy change is solely a function of fluid friction and throttling losses:
+
+     $$\dot{m}(s_{\text{e}} - s_{\text{i}}) = \dot{S}_{\text{gen}}$$
+
+- **Internally Reversible Steady Flow** ($\dot{S}_{\text{gen}} = 0$): Fluid property changes match boundary heat transport:
+
+     $$\dot{m}(s_{\text{e}} - s_{\text{i}}) = \sum_{k} \frac{\dot{Q}_k}{T_k}$$
+
+- **Isentropic Steady Flow** (Adiabatic + Reversible): Fluid properties at the exit exactly match the inlet state:
+
+     $$s_{\text{e}} = s_{\text{i}}$$
+
+### C. Isolated Systems and the Universe
+
+#### General Formulation
+
+For any process, the total entropy generation of the universe ($\Delta S_{\text{gen, uni}}$) represents the sum of the entropy changes of the system and its surrounding thermal environment:
+
+$$\Delta S_{\text{gen, uni}} = \Delta S_{\text{sys}} + \Delta S_{\text{surr}} = \Delta S_{\text{uni}}$$
+
+Because a complete cycle returns a system back to its baseline state, its property change is zero ($\Delta S_{\text{sys, cycle}} = 0$). The total cyclic entropy generation matches the rate of external environment variations:
+
+$$\dot{S}_{\text{gen}} = -\sum_{k} \left(\frac{\dot{Q}}{T}\right)_k$$
+
+### D. Numerical
+
+To contrast closed and open system equations, consider an industrial process compressing air from State 1 to State 2 with a mass flow rate of $\dot{m} = 2\text{ kg/s}$.
+
+**Given Parameters**
+
+- Inlet fluid entropy: $s_{\text{i}} = 1.8\text{ kJ/kg}\cdot\text{K}$
+- Exit fluid entropy: $s_{\text{e}} = 2.1\text{ kJ/kg}\cdot\text{K}$
+- Heat loss to surroundings: $\dot{Q}_{\text{out}} = -60\text{ kW}$ (leaving the system)
+- Boundary temperature where heat transfer occurs: $T_{\text{b}} = 300\text{ K}$
+
+**Step-by-Step Calculation (Open Steady-State Balance)**
+
+Using the single-inlet, single-outlet steady-flow balance equation:
+
+$$\dot{m}(s_{\text{e}} - s_{\text{i}}) = \frac{\dot{Q}}{T_{\text{b}}} + \dot{S}_{\text{gen}}$$
+
+**Evaluate Net Change via Fluid Flow:**
+
+$$\dot{m}(s_{\text{e}} - s_{\text{i}}) = 2\text{ kg/s} \cdot (2.1 - 1.8)\text{ kJ/kg}\cdot\text{K} = +0.6\text{ kW/K}$$
+
+**Evaluate Entropy Transfer via Heat:**
+
+$$\frac{\dot{Q}}{T_{\text{b}}} = \frac{-60\text{ kW}}{300\text{ K}} = -0.2\text{ kW/K}$$
+
+**Isolate and Solve for Entropy Generation Rate ($\dot{S}_{\text{gen}}$):**
+
+$$\dot{S}_{\text{gen}} = \dot{m}(s_{\text{e}} - s_{\text{i}}) - \frac{\dot{Q}}{T_{\text{b}}}$$
+
+$$\dot{S}_{\text{gen}} = 0.6\text{ kW/K} - (-0.2\text{ kW/K})$$
+
+$$\dot{S}_{\text{gen}} = 0.6 + 0.2 = \mathbf{+0.8\text{ kW/K}}$$
+
+**Thermodynamic Conclusion**
+
+Because $\dot{S}_{\text{gen}} = +0.8\text{ kW/K} > 0$, the compression cycle satisfies the Second Law of Thermodynamics, confirming that the process is physically possible and internally irreversible.
 
 ---
 
-## Enthalpy
-Enthalpy ($H$) is essentially a measurement of the total energy within a thermodynamic system.
-Mathematically:
-$$
-H = U + PV
-$$
+## Pure Substance
+
+### A. Fundamentals of Pure Substances
+
+#### Definition
+
+A pure substance is defined as matter that maintains a fixed, uniform, and homogeneous chemical composition throughout its entire mass. It can exist as a single chemical element, a stable compound, or a homogenous physical mixture of various elements or compounds, provided the chemical composition remains uniform and invariant (e.g., liquid water, carbon dioxide, or atmospheric air).
+
+To analyze the thermodynamic behavior, state transitions, and phase changes of pure substances, engineering thermodynamics utilizes analytical mathematical relations coupled with two-dimensional property diagrams. These diagrams represent planar geometric projections of the three-dimensional Pressure–Specific Volume–Temperature (P-v-T) state surface.
+
+### B. Fundamental Thermodynamic Formulations
+
+#### 1. Phase Equilibrium and Gibbs Phase Rule
+
+The thermodynamic degree of freedom (the number of independent intensive properties required to completely fix the state of a system) is dictated by Gibbs Phase Rule:
+
+$$n = C - \phi + 2$$
+
 Where:
 
-- $H$ = Enthalpy  
-- $U$ = Internal energy  
-- $P$ = Pressure  
-- $V$ = Volume  
+- $n$ = Number of independent intensive variables or degrees of freedom.
+- $C$ = Number of distinct chemical components in the system.
+- $\phi$ = Number of phases coexisting in thermodynamic equilibrium.
 
+#### 2. Two-Phase Mixture Quality (Dryness Fraction)
 
-**Practical Context**  
-A great way to understand enthalpy is by looking at a constant-pressure (isobaric) process.
-If you add heat to a stationary system while keeping its pressure perfectly constant, the exact amount of heat supplied is equal to the increase in the system's enthalpy.
-Because it measures total energy, it is an extensive property, meaning its value depends entirely on the size or mass of the system.
+When a pure substance coexists as a liquid-vapor mixture within the saturation dome, the relative mass distribution of the phases is quantified by the Dryness Fraction ($x$), or quality:
 
----
+$$x = \frac{m_g}{m_f + m_g}$$
 
-## Entropy
-Entropy ($S$) is a thermodynamic function used to measure the molecular randomness, disorder, or unpredictability within a system.
-It essentially quantifies the number of possible arrangements the atoms or molecules in a system can have.
+Where:
 
-- **Simple Example**<br />
-Think about water in different phases.
-   - In solid ice, molecules are tightly packed in a rigid structure, so entropy is very low.
-   - In steam, molecules move randomly throughout the container, making entropy much higher.
+- $m_g$ = Mass of dry saturated vapor.
+- $m_f$ = Mass of saturated liquid in suspension.
 
-- **Thermodynamic Significance**<br />
-Entropy is the driving concept behind the Second Law of Thermodynamics.
-While the First Law says energy is conserved, the Second Law dictates that entropy is not conserved in real-world irreversible processes.
-Every actual process generates new entropy, meaning the entropy of the universe continuously increases.
+The Wetness Fraction, representing the mass ratio of suspended liquid droplets to the total mixture mass, is defined as:
 
----
+$$\text{Wetness Fraction} = 1 - x = \frac{m_f}{m_f + m_g}$$
 
-## The First Law of Thermodynamics: Conservation of Energy
-The First Law states that energy can neither be created nor destroyed.
-It can only be transferred or transformed from one form to another.
-Its mathematical application depends on whether the system undergoes a cyclic or non-cyclic process.
+#### 3. Evaluation of Wet Mixture Properties
 
-### A. The First Law for a Cyclic Process
-A thermodynamic cycle is a series of processes where the initial and final states are identical.
-For a closed system in a cycle, the net heat interaction equals the net work interaction.
-- **Mathematical Expression**
-$$
-\Sigma Q = \Sigma W
-$$
+The overall intensive properties of a two-phase liquid-vapor mixture are calculated by weighting the saturated liquid (subscript $f$) and saturated vapor (subscript $g$) properties extracted from standard steam tables:
 
-  <div style={{ marginLeft: "260px" }}>
-   or
-   </div>
+- **Specific Volume ($v_{mix}$):**
 
-$$
-\oint \delta Q = \oint \delta W
-$$
+     $$v_{mix} = v_f + x \cdot (v_g - v_f) = v_f + x \cdot v_{fg}$$
 
-- **Sign Conventions**
-   - **Power-Producing Systems (Engines):**  
-       Both net work and net heat are positive.
-   - **Power-Consuming Systems (Refrigerators/Heat Pumps):**  
-       Both net work and net heat are negative.
+- **Specific Enthalpy ($h_{mix}$):**
 
-- **Impossibility of PMM-1**<br />
-A Perpetual Motion Machine of the First Kind (PMM-1) is impossible because it violates:
-$$
-\Sigma Q = \Sigma W
-$$
+     $$h_{mix} = h_f + x \cdot (h_g - h_f) = h_f + x \cdot h_{fg}$$
 
-### B. The First Law for a Non-Cyclic Process (Change of State)
-When a system moves from State 1 to State 2, the law accounts for how heat and work interactions affect the energy stored inside the system.
+- **Specific Entropy ($s_{mix}$):**
 
-#### 1. Closed Systems
-- **Mathematical Expression**<br />
-$$
-Q = W + \Delta E
-$$
+     $$s_{mix} = s_f + x \cdot (s_g - s_f) = s_f + x \cdot s_{fg}$$
 
-  <div style={{ marginLeft: "210px" }}>
-   or in differential form:
-   </div>
+- **Specific Internal Energy ($u_{mix}$):**
 
-$$
-\delta Q = \delta W + dE
-$$
+     $$u_{mix} = h_{mix} - (P \cdot v_{mix})$$
 
-- **Total Energy Change**
+#### 4. Superheated Vapor Region
 
-  $$
-  \Delta E = \Delta KE + \Delta PE + \Delta U
-  $$
+When thermal energy addition drives the system temperature above the saturation threshold ($T_{sup} > T_{sat}$), the fluid enters the superheated vapor regime. The specific enthalpy is evaluated as:
 
-  where:
+$$h_{sup} = h_g + C_{ps} \cdot (T_{sup} - T_{sat})$$
 
-  - $\Delta KE$ = Change in kinetic energy
+Where $C_{ps}$ is the average specific heat capacity of the superheated vapor.
 
-  - $\Delta PE$ = Change in potential energy
+### C. Two-Dimensional Property Diagram Projections
 
-  - $\Delta U$ = Change in internal energy
-- **Stationary Systems**<br />
-If kinetic and potential energy changes are zero:
-$$
-Q = W + \Delta U
-$$
+#### 1. The Pressure-Volume (P-v) Diagram
 
-- **Internally Reversible Process**
-For a simple compressible stationary system:
-$$
-\delta Q = PdV + dU
-$$
+The P-v diagram maps mechanical state changes against system specific volume under constant temperature boundary conditions (isotherms).
 
-- **Energy as a Property**<br />
-While heat ($Q$) and work ($W$) are path functions, their difference ($dE$) is independent of path.
-Therefore, energy ($E$) is a thermodynamic property and a state function.
+- **Structural Geometry:** Features a central liquid-vapor saturation dome. The left leg forms the saturated liquid curve (state where $x = 0$), and the right leg forms the saturated vapor curve (state where $x = 1$).
 
-#### 2. Open Systems (Control Volume)
-Open systems allow mass to cross their boundaries, requiring the law to account for the energy carried by the flowing fluid.
+- **The Critical Point:** The absolute peak of the liquid-vapor saturation dome where the saturated liquid and vapor boundary lines converge. At states at or above this point, the latent heat of vaporization reduces to zero ($h_{fg} = 0$), causing liquid to flash directly into vapor without a multi-phase equilibrium region.
 
-- **Rate Equation**<br />
-$$
-\dot{Q} = \dot{W}_{cv} + \Delta \dot{KE} + \Delta \dot{PE} + \Delta \dot{H} + \left.\frac{dE}{dt}\right|_{cv}
-$$
+- **Volumetric Phase Zones:** The region enclosed beneath the dome defines the two-phase wet mixture zone. The zone to the left of the liquid curve defines the subcooled liquid or compressed solid states, while the zone to the right of the vapor line defines the superheated vapor region.
 
-- **Steady Flow Energy Equation (SFEE):**<br />
-  Under steady flow conditions, properties at any location do not change with time.
+- **Freezing Influence:** For fluids that contract upon solidification, the solid-liquid transition line exhibits a positive tilt. For anomalous fluids that expand upon solidification (such as water), the solid-liquid boundary exhibits a negative shift to account for the increased solid phase specific volume ($v_{solid} > v_{liquid}$).
 
-  $$
-  \frac{dE_{cv}}{dt} = 0
-  $$
-
-  The equation simplifies to:
-
-  $$
-  \dot{Q} = \dot{W}_{cv} + \Delta \dot{KE} + \Delta \dot{PE} + \Delta \dot{H}
-  $$
-- **Enthalpy in Open Systems**<br />
-In open systems, the flow energy of the mass is combined with internal energy to form enthalpy.
-$$
-H = U + PV
-$$
-
----
-
-## Steady Flow Energy Equation (SFEE)
-The Steady Flow Energy Equation (SFEE) is one of the most practical and widely used equations in thermodynamics.
-It is the First Law of Thermodynamics (law of conservation of energy) applied to an open system or control volume, where fluid continuously flows in and out at a steady rate.
-
-### A. What is Steady Flow?
-A system is said to have steady flow when the thermodynamic properties at any fixed point inside the control volume do not change with time.
-
-    - Conditions for Steady Flow
-
-        - Mass Conservation
-        The mass entering the system is equal to the mass leaving the system:
-        $$
-        \dot{m}_{in} = \dot{m}_{out}
-        $$
-
-
-        - Energy Conservation
-            The total energy inside the control volume remains constant with time:
-
-            $$
-            \frac{dE_{cv}}{dt} = 0
-            $$
-            This means there is no accumulation of energy inside the system.
-
-
-### B. Steady Flow Energy Equation
-Since energy inside the control volume remains constant, the total rate of energy entering the system must equal the total rate of energy leaving the system.
-The general form of SFEE is:
-$$
-\dot{Q} = \dot{W}_{cv} + \Delta \dot{KE} + \Delta \dot{PE} + \Delta \dot{H}
-$$
-  <div style={{ marginLeft: "218px" }}>
-   Or, per unit mass:
-   </div>
-
-$$
-q = w_{cv} + \Delta ke + \Delta pe + \Delta h
-$$
-
-### C. Meaning of Each Term
-
-    - **Heat Transfer**<br />
-        $$
-        \dot{Q}
-        $$
-        Rate of heat added to or removed from the system.
-
-    - **Control Volume Work**<br />
-        $$
-        \dot{W}_{cv}
-        $$
-        Rate of work done by the system, such as shaft work in turbines, compressors, and pumps.
-
-    - **Change in Kinetic Energy**<br />
-        $$
-        \Delta \dot{KE}
-        $$
-        Energy change due to fluid velocity.
-        $$
-        \Delta ke = \frac{V_2^2 - V_1^2}{2}
-        $$
-        Where:
-            - $V_1$ = inlet velocity  
-            - $V_2$ = outlet velocity  
-
-    - **Change in Potential Energy**<br />
-        $$
-        \Delta \dot{PE}
-        $$
-        Energy change due to elevation difference.
-        $$
-        \Delta pe = g(z_2 - z_1)
-        $$
-        Where:
-            - $g$ = acceleration due to gravity  
-            - $z_1, z_2$ = elevations  
-
-    - **Change in Enthalpy**<br />
-        $$
-        \Delta \dot{H}
-        $$
-        Represents the change in enthalpy of the fluid.
-        $$
-        \Delta h = h_2 - h_1
-        $$
-        Enthalpy includes:
-            - Internal energy of the fluid  
-            - Flow work required to push fluid into and out of the control volume  
-
-### D. Complete SFEE Form
-The expanded form of the Steady Flow Energy Equation is:
-$$
-\dot{Q} - \dot{W}_{cv} =
-\dot{m}
-\left[
-(h_2 - h_1)
-+
-\frac{V_2^2 - V_1^2}{2}
-+
-g(z_2 - z_1)
-\right]
-$$
-
-
-### E. How SFEE Works
-
-The SFEE acts like an energy accounting equation.
-Imagine a factory where:
-- Materials continuously enter and leave
-- The factory does not store materials permanently
-- Power entering equals power leaving
-Similarly, in a thermodynamic system:
-- Heat energy enters or leaves
-- Fluid carries energy into and out of the system
-- Mechanical work may be produced or consumed
-The SFEE balances all these forms of energy.
-By measuring quantities such as:
-- Pressure
-- Temperature
-- Velocity
-- Elevation
-Engineers can determine unknown quantities like:
-- Work output of a turbine
-- Power required by a compressor
-- Heat transfer in heat exchangers
-
-### F. The derivation of steady flow equations for common engineering devices
-The derivation of steady flow equations for common engineering devices begins with the general Steady Flow Energy Equation (SFEE) per unit mass:
-$$
-q = w_{cv} + \Delta ke + \Delta pe + \Delta h
-$$
-**Variable Definitions**
-- $q$: Heat transfer per unit mass  
-- $w_{cv}$: Control volume (mechanical) work per unit mass  
-- $\Delta ke$: Change in kinetic energy  
-$$
-\frac{1}{2}(c_o^2 - c_i^2)
-$$
-- $\Delta pe$: Change in potential energy  
-$$
-g(z_o - z_i)
-$$
-- $\Delta h$: Change in specific enthalpy  
-$$
-(h_o - h_i)
-$$
-
-#### 1. Nozzle
-A nozzle is designed to increase the velocity of a fluid.
-- Assumptions & Logic:
-
-  | Feature | Assumptions & Logic |
-  |---|---|
-  | Mechanical Work ($w_{cv}$) | 0 (No moving shafts or parts) |
-  | Heat Transfer ($q$) | 0 (Assumed well-insulated/adiabatic) |
-  | Potential Energy ($\Delta pe$) | 0 (Assumed horizontal orientation) |
-    
-- Simplified Equation:
-$$
-\Delta ke + \Delta h = 0
-$$
-
-- Perfect Gas Form
-$$
-\frac{1}{2}(c_o^2 - c_i^2) + c_p(T_o - T_i) = 0
-$$
-
-- Engineering Insight<br />
-The fluid's kinetic energy increases specifically by consuming its enthalpy.
-<br />
 <img
-  src="/Mech/therm14.png"
+  src="/Mech/thermo4.png"
   alt="Diagram"
   style={{
-    width: "80%",
+    width: "60%",
     display: "block",
     margin: "auto"
   }}
 />
 
-#### 2. Turbine
-A turbine extracts energy from a flowing fluid to produce mechanical shaft work.
-- Assumptions & Logic:
-  | Feature | Assumptions & Logic |
-  |---|---|
-  | Heat Transfer ($q$) | 0 (Assumed well-insulated) |
-  | Kinetic Energy ($\Delta ke$) | 0 (Negligible compared to work output) |
-  | Potential Energy ($\Delta pe$) | 0 (Negligible compared to work output) |
+#### 2. The Pressure-Temperature (P-T) Diagram
 
-- Simplified Equation:
-  $$
-  w_{cv} + \Delta h = 0
-  $$
+The P-T diagram—commonly designated as the Phase Diagram—collapses multi-phase volumetric zones into singular phase boundary lines.
 
-- Perfect Gas Form:
-  $$
-  w_{cv} + c_p \Delta T = 0
-  $$
+- **Boundary Curves:**
 
-- Engineering Insight:  
-  Mechanical work output is generated entirely at the expense of the fluid's enthalpy.
-<br />
+     - **Sublimation Curve:** The line modeling the direct solid-to-vapor phase boundary.
+     - **Vaporization Curve:** The line modeling the liquid-to-vapor phase boundary, terminating at the critical point.
+     - **Fusion Curve:** The line modeling the solid-to-liquid melting interface.
+
+- **The Triple Point:** The invariant point where the sublimation, fusion, and vaporization lines intersect. It represents the unique state where solid, liquid, and vapor phases coexist in simultaneous, stable equilibrium. Per Gibbs Phase Rule, the system has exactly zero degrees of freedom ($n = 0$) at this state.
+
+- **Slope Variation:** The slope of the fusion curve ($dP/dT$) is positive for standard substances that contract on freezing. It becomes negative for substances like water that expand on freezing.
+
 <img
-  src="/Mech/therm15.png"
+  src="/Mech/thermo5.png"
   alt="Diagram"
   style={{
-    width: "80%",
+    width: "60%",
     display: "block",
     margin: "auto"
   }}
 />
 
-#### 3. Compressor
-A compressor consumes mechanical work to increase the pressure and enthalpy of a fluid.
-- Assumptions & Logic:
-  | Feature | Assumptions & Logic |
-  |---|---|
-  | Derivation | Structurally identical to a turbine but operates in reverse |
-  | Sign Convention | $w_{cv}$ is negative (work is done on the system) |
-  | Outcome | Work input results in an increase in fluid enthalpy ($h_o > h_i$) |
 
-- Simplified Equation:
-  $$
-  w_{cv} + \Delta h = 0
-  $$
+#### 3. The Temperature-Volume (T-v) Diagram
 
-- Engineering Insight: 
-  The negative work value reflects energy consumption, which directly increases the fluid's pressure and enthalpy.
-<br />
+The T-v diagram tracks phase changes as a function of temperature and specific volume along paths of constant pressure (isobars).
+
+- **Geometric Structure:** Shares a structural morphology with the P-v diagram, including the central liquid-vapor saturation dome and the peak critical state.
+
+- **Isobaric Configuration:** Lines of constant pressure (isobars) pass through the diagram with a continuous upward trend. The line rises through the compressed liquid region on the left, stays completely horizontal within the wet dome region (reflecting that phase change occurs at a constant saturation temperature, $T_{sat}$, for a given pressure), and curves upward into the superheated vapor field on the right.
+
 <img
-  src="/Mech/therm16.png"
+  src="/Mech/thermo6.png"
   alt="Diagram"
   style={{
-    width: "80%",
+    width: "60%",
     display: "block",
     margin: "auto"
   }}
 />
+
+
+---
+
+## Dryness Fraction and Wetness Fraction of Steam
+
+### A. Dryness Fraction (x)
+
+#### 1. Definition
+
+The dryness fraction is defined as the ratio of the mass of dry steam actually present to the total mass of the steam mixture. It is denoted by the variable $x$.
+
+     $$x = \frac{m_g}{m_f + m_g}$$
+
+Where:
+
+- $m_g$ = Mass of dry steam in kg.
+- $m_f$ = Mass of water vapor (liquid droplets) in suspension.
+
+#### 2. Key Characteristics:
+
+- **Application Boundary:** This parameter is strictly applicable only for wet steam states.
+- **Dry Saturated Steam:** For a completely dry saturated steam state, no liquid mass is present ($m_f = 0$), yielding a dryness fraction of exactly one ($x = 1$).
+- **Quality of Steam:** When the dryness fraction is expressed as a percentage (i.e., $100 \times x$), it is referred to as the quality of steam.
+
+### B. Wetness Fraction
+
+#### 1. Definition
+
+The wetness fraction is defined as the ratio of the mass of water vapor in suspension to the total mass of the steam mixture.
+- $$\text{Wetness fraction} = \frac{m_f}{m_f + m_g}$$
+
+**Derivation in Terms of Quality ($x$):**
+By applying algebraic manipulation (+1 and -1) to the mass ratio:
+
+- $$\text{Wetness fraction} = \frac{m_f}{m_f + m_g} + 1 - 1$$
+
+- $$\text{Wetness fraction} = 1 - \left[1 - \frac{m_f}{m_f + m_g}\right]$$
+
+- $$\text{Wetness fraction} = 1 - \frac{(m_f + m_g) - m_f}{m_f + m_g} = 1 - \frac{m_g}{m_f + m_g}$$
+
+- $$\text{Wetness fraction} = 1 - x$$
+
+#### 2. Key Characteristic:
+
+**Priming:** When the wetness fraction is expressed as a percentage, $(1 - x) \times 100$, it is referred to as priming.
+
+### C.  Industrial Importance of Dryness Fraction ($x$)
+
+In industrial thermal systems, steam quality or dryness fraction ($x$) is a critical operational parameter. High-quality steam ensures maximum heat transmission efficiency, whereas wet steam (low $x$) causes severe mechanical and thermal degradation in processing equipment and piping networks.
+
+#### 1. Primary Industrial Applications
+
+##### a. Power Generation (Steam Turbine Operation)
+
+Power plants utilize high-temperature superheated steam to maximize the mechanical work output across steam turbine stages.
+
+- **Erosion Prevention:** As steam expands through turbine blades, its pressure and temperature drop, causing it to cross into the liquid-vapor saturation dome (wet region). Industrial standards mandate keeping the turbine exit dryness fraction above $x \ge 0.85$ ($10\%$ to $15\%$ wetness max). Droplets exceeding this limit strike high-velocity turbine blades, causing devastating pitting, erosion, and structural imbalance.
+
+- **Blade Efficiency:** Water droplets travel slower than the vapor phase, creating an aerodynamic drag force that retards blade rotation and lowers overall isentropic efficiency.
+
+##### b. Chemical Processing & Process Heating
+
+Many manufacturing industries (textiles, paper, food processing, pharmaceuticals) rely on steam as a primary utility for uniform thermal delivery.
+
+- **Latent Heat Delivery:** Saturated steam transfers the bulk of its thermal energy at a constant temperature via condensation—this energy is quantified by the latent heat of vaporization ($h_{\text{fg}}$). The higher the dryness fraction, the more latent heat is delivered per kilogram of utility fluid, directly minimizing total mass flow requirements.
+
+- **Predictable Process Control:** Automated control valves and heat exchangers are sized based on sharp saturation temperature mappings. Fluctuations in the dryness fraction disrupt precise thermal dosing inside jackets and reboilers.
+
+##### c. Sterilization & Food Manufacturing
+
+In autoclaves and food processing lines, steam comes into direct or indirect contact with products requiring specific sanitation levels.
+
+- **Superheat vs. Saturation:** Steam must be at its exact saturation temperature corresponding to its pressure to guarantee sterilization. If steam is too dry or slightly superheated, it behaves like dry air, which has significantly lower surface sterilization efficacy than moist, condensing vapor.
+
+### D.  Example: Problem
+
+#### 1. A vessel of volume 0.04 $m^{3}$ contains a mixture of Saturated water and steam at a temperature of 250°C. The mass of the liquid present is 9 kg. Find the pressure, mass, specific volume, enthalpy, entropy and internal energy of the mixture.
+
+**Given data:**
+
+- $V = 0.04 \text{ m}^{3}$
+- $T = 250^{\circ}\text{C}$
+- $m_{\text{f}} = 9 \text{ kg}$
+
+**To find:**
+
+- $P_{\text{mix}}, m_{\text{mix}}, v_{\text{mix}}, h_{\text{mix}}, s_{\text{mix}}, u_{\text{mix}}$
+
+**Sol:**
+
+From saturated water table of temperature scale, corresponding to 250°C:
+
+- $v_{\text{f}} = 0.001251 \text{ m}^{3}/\text{kg}$
+- $v_{\text{g}} = 0.050037 \text{ m}^{3}/\text{kg}$
+- $P = 39.776 \text{ bar} = 3977.6 \text{ kPa}$
+- $h_{\text{f}} = 1085.8 \text{ kJ}/\text{kg}$
+- $h_{\text{fg}} = 1714.6 \text{ kJ}/\text{kg}$
+- $s_{\text{f}} = 2.794 \text{ kJ}/\text{kg}\cdot\text{K}$
+- $s_{\text{fg}} = 3.277 \text{ kJ}/\text{kg}\cdot\text{K}$
+
+Total Volume $V = V_{\text{f}} + V_{\text{g}}$
+
+$$V_{\text{f}} = m_{\text{f}} \cdot v_{\text{f}} = 9 \times 0.001251 = 0.0113 \text{ m}^{3}$$
+
+$$V = V_{\text{f}} + V_{\text{g}}$$
+
+$$0.04 = 0.0113 + V_{\text{g}}$$
+
+$$V_{\text{g}} = 0.04 - 0.0113 = 0.0287 \text{ m}^{3}$$
+
+$$V_{\text{g}} = m_{\text{g}} \cdot v_{\text{g}}$$
+
+$$0.0287 = m_{\text{g}} \times 0.050037$$
+
+$$m_{\text{g}} = 0.574 \text{ kg}$$
+
+Total mass of mixture $m_{\text{mix}} = m_{\text{f}} + m_{\text{g}}$
+
+$$m_{\text{mix}} = 9 + 0.574$$
+
+$$\mathbf{m_{\text{mix}} = 9.574 \text{ kg}}$$
+
+Total specific volume of mixture:
+
+$$V_{\text{mix}} = m_{\text{mix}} \cdot v_{\text{mix}}$$
+
+$$0.04 = 9.574 \times v_{\text{mix}}$$
+
+$$\mathbf{v_{\text{mix}} = 4.18 \times 10^{-3} \text{ m}^{3}/\text{kg}}$$
+
+$$v_{\text{mix}} = v_{\text{f}} + x \cdot v_{\text{fg}}$$
+
+$$4.18 \times 10^{-3} = 0.001251 + x \times (0.050037 - 0.001251)$$
+
+$$x = \frac{4.18 \times 10^{-3} - 0.001251}{(0.050037 - 0.001251)}$$
+
+$$\mathbf{x = 0.06}$$
+
+Enthalpy of mixture:
+
+$$h_{\text{mix}} = h_{\text{f}} + x \cdot h_{\text{fg}} = 1085.8 + 0.06 \times 1714.6$$
+
+$$\mathbf{h_{\text{mix}} = 1188.67 \text{ kJ}/\text{kg}}$$
+
+Entropy of the mixture:
+
+$$s_{\text{mix}} = s_{\text{f}} + x \cdot s_{\text{fg}} = 2.794 + 0.06 \times 3.277$$
+
+$$\mathbf{s_{\text{mix}} = 2.99 \text{ kJ}/\text{kg}\cdot\text{K}}$$
+
+Internal energy of mixture:
+
+$$u_{\text{mix}} = h_{\text{mix}} - P_{\text{mix}} \cdot v_{\text{mix}}$$
+
+$$h = u + pv \Rightarrow u = h - pv$$
+
+$$= 1188.67 - 3977.6 \times 0.00418$$
+
+$$\mathbf{u_{\text{mix}} = 1172.05 \text{ kJ}/\text{kg}}$$
+
+---
+
+## Avogadro's Law
+
+### A. Engineering Definition
+
+At constant temperature ($T$) and pressure ($P$), equal volumes ($V$) of all ideal gases contain an identical number of moles ($n$):
+
+$$\frac{V_1}{n_1} = \frac{V_2}{n_2}$$
+
+**Molar Volume baseline:** At STP ($0^\circ\text{C}$, $101.325\text{ kPa}$), any ideal gas occupies exactly $22.414\text{ m}^3/\text{kmol}$.
+
+### B. Engineering Application
+
+- **Combustion Stoichiometry:** Volumetric fuel-to-air ratio calculations (e.g., sizing burners/injectors without mass conversion).
+- **Aerodynamics:** Calculating gas density variations to evaluate compressor/aircraft performance at altitude.
+
+### C. Advantages
+
+- **Volumetric Substitution:** Simplifies gas-phase reactions by letting mole ratios directly substitute for volume ratios.
+- **Sizing Standardization:** Sizing storage cylinders depends purely on mole count, independent of molecular weight.
+
+### D. Disadvantages
+
+
+**Ideal Gas Dependency:** Assumes zero molecular volume and zero intermolecular attraction.
+
+### E.  Where the Law Fails
+
+- **High Pressures ($P \gg 1\text{ atm}$):** Actual physical molecular volume becomes significant compared to total volume.
+- **Low Temperatures ($T \to T_{\text{sat}}$):** Intermolecular forces pull molecules closer together.
+- **Correction:** Must use the compressibility factor ($Z$): $PV = ZnRT$.
+
+---
+
+## Dalton's Law of Partial Pressures
+
+### A. Definition
+
+The total pressure ($P_{\text{total}}$) of a non-reactive ideal gas mixture equals the sum of the partial pressures ($P_i$) exerted by each individual gas component:
+
+$$P_{\text{total}} = \sum P_i = P_1 + P_2 + \dots + P_k$$
+
+**Mole Fraction Relation:** Partial pressure is directly proportional to its mole fraction ($y_i$):
+
+$$P_i = y_i \cdot P_{\text{total}}$$
+
+### B. Application
+
+- **HVAC / Psychrometrics:** Separating total atmospheric pressure into dry air pressure and water vapor pressure to chart humidity and dew points.
+- **Engine Tuning:** Calculating manifold partial pressure of oxygen to set electronic fuel injection maps.
+
+### C. Advantages
+
+**Linear Superposition:** Allows engineers to break complex multi-component gases into simple, linear individual variables.
+
+### D. Disadvantages
+
+**Non-Reactive Restriction:** Fails instantly if constituent gases chemically react upon mixing.
+
+### E. Where the Law Fails
+
+- **High-Density States & Polar Gases:** Fails when gases (like $\text{H}_2\text{O}$, $\text{NH}_3$, $\text{CO}_2$) are highly compressed. Strong intermolecular forces cause actual total pressure to drop below the theoretical sum ($\sum P_i$).
+
+- **Correction:** High-pressure industrial designs must replace Dalton's law with Kay's Rule or the Dalton-Beattie-Bridgeman law.
+
+---
+
+## Van der Waal's Equation
+
+### A. Definition
+
+The Van der Waals equation modifies the Ideal Gas Law ($PV = nRT$) using two empirical constants ($a$ and $b$) to account for intermolecular forces and finite molecular volume:
+
+$$\left(P + \frac{a}{\nu^2}\right)(\nu - b) = RT \quad \text{(for 1 mole)}$$
+
+$$\left(P + \frac{a n^2}{V^2}\right)(V - n b) = nRT \quad \text{(for } n \text{ moles)}$$
+
+Where:
+
+- $P$ = Absolute pressure
+- $\nu$ = Specific molar volume ($V/n$)
+- $T$ = Absolute temperature (K)
+- $a$ = Cohesion pressure correction: Forces pulling molecules together, reducing net wall impact pressure.
+- $b$ = Co-volume correction: Total volume physically occupied by the gas molecules themselves (uncompressible space limit).
+
+### B.  Application
+
+- **Supercritical Fluid Processing:** Predicting properties during high-pressure extractions (e.g., supercritical $\text{CO}_2$ extraction loops).
+- **Industrial Gas Storage:** Sizing compression stages and thickness boundaries for high-pressure storage tanks (ammonia, chlorine, hydrocarbons).
+- **Refrigerant Modeling:** Baseline calculations for phase transitions in HVAC design before applying localized empirical tables.
+
+### C.  Advantages
+
+- **Phase Transition Prediction:** Unlike the Ideal Gas Law, it models condensation behaviors and paths around the saturation zone.
+
+- **Critical Point Derivation:** The parameters $a$ and $b$ can be isolated mathematically using setting derivatives $\left(\frac{\partial P}{\partial \nu}\right)_T = 0$ and $\left(\frac{\partial^2 P}{\partial \nu^2}\right)_T = 0$:
+
+     $$a = \frac{27 R^2 T_{\text{crit}}^2}{64 P_{\text{crit}}} \quad \text{and} \quad b = \frac{R T_{\text{crit}}}{8 P_{\text{crit}}}$$
+
+### D. Disadvantages
+
+- **Low Accuracy Near Critical States:** Concepts hold well, but numerical errors are high right at the critical point and within the liquid-vapor dome.
+
+- **Unphysical PV Loops (Van der Waals Loops):** Inside the wet dome region, the equation plots an unphysical S-shaped curve with a positive slope ($\frac{\partial P}{\partial \nu} > 0$). Engineers must apply the Maxwell equal-area construction to force a realistic flat horizontal line.
+
+### E. Where the Law Fails
+
+- **Extreme High-Density Liquids ($v \to b$):** When fluids are highly compressed into liquid states, the linear correction $b$ fails to map non-linear molecular repulsive forces accurately.
+
+- **Highly Polar Molecules:** Fails for gases with heavy directional dipoles or hydrogen bonding (e.g., water vapor, heavy alcohols).
+
+- **Industrial Correction:** For sub-percent precision in plant engineering, this model is replaced by advanced cubic equations like Redlich-Kwong (RK), Soave-Redlich-Kwong (SRK), or Peng-Robinson (PR).
+
+---
+
+## Compressibility Factor
+
+### A. Engineering Definition
+
+The Compressibility Factor ($Z$) is a dimensionless multiplier that quantifies how much a real gas deviates from ideal gas behavior ($PV = nRT$):
+
+$$Z = \frac{P\nu}{RT} = \frac{PV}{nRT}$$
+
+- $Z = 1$ : Ideal Gas behavior (zero molecular volume, no intermolecular forces).
+- $Z < 1$ : Attractive forces dominate. Molecules pull closer together; the gas is more compressible than an ideal gas.
+- $Z > 1$ : Repulsive forces dominate. Finite molecular volume limits further compression; the gas is less compressible than an ideal gas.
+
+### B. Engineering Application
+
+- **Generalized Compressibility Charts:** Mapping $Z$ against Reduced Pressure ($P_{\text{r}}$) and Reduced Temperature ($T_{\text{r}}$) via the Principle of Corresponding States:
+
+     $$P_{\text{r}} = \frac{P}{P_{\text{crit}}} \quad \text{and} \quad T_{\text{r}} = \frac{T}{T_{\text{crit}}}$$
+
+- **Natural Gas Transmission:** Calculating high-pressure pipeline flow rate ($P \approx 70 \text{ to } 100 \text{ bar}$). Omitting $Z$ causes volumetric errors up to $20\%$.
+
+- **Compressor Sizing:** Determining the required brake horsepower ($BHP$) for industrial gas compressors.
+
+### C. Advantages
+
+- **Simple Implementation:** Retains the basic algebraic format of the Ideal Gas Law while packing real-gas complexities into one variable ($Z$).
+
+- **Universal Scaling:** Only critical properties ($P_{\text{crit}}, T_{\text{crit}}$) are required to read $Z$ values from a single chart for multiple distinct gases.
+
+### D. Disadvantages
+
+- **Critical Point Imprecision:** $Z$ varies rapidly and non-linearly near the critical point and saturation dome, leading to poor graphical reading accuracy.
+
+- **Complex Mixing Rules:** Multi-component gas mixtures require calculating effective pseudo-critical properties (e.g., via Kay's Rule), which complicates manual checks.
+
+### E. Where the Law Fails
+
+- **Two-Phase and Liquid Regimes:** The concept breaks down when condensation begins. Inside the vapor dome, properties depend on quality fraction ($x$), not a gas correction factor.
+
+- **Extreme Hyperbaric States ($P_{\text{r}} \gg 10$):** Fails to accurately map the dense, liquid-like interactions of supercritical fluids at extreme pressures.
+
+- **Industrial Correction:** Highly accurate plant designs replace generalized charts with specific cubic equations of state like Peng-Robinson (PR) or advanced formulations like Benedict-Webb-Rubin-Starling (BWRS).
+
+---
+
+## Amplitude Modulation (AM)
+
+### A. Thermodynamic Analogy: Sensible Heat Transfer
+
+Data is mapped directly onto the magnitude of the carrier wave, behaving identically to sensible heat transfer:
+
+$$Q = m \cdot C \cdot \Delta T$$
+
+### B. Governing Equation
+
+$$s(t) = [A_{\text{c}} + m(t)] \cos(2\pi f_{\text{c}} t)$$
+
+Where:
+
+- $A_{\text{c}}$ = Carrier amplitude baseline
+- $m(t)$ = Modulating data signal (variable thermal input)
+- $f_{\text{c}}$ = Carrier core frequency
+
+### C. Key Limitations
+
+- **Thermal Loss Vulnerability ($Q_{\text{loss}}$):** Ambient atmospheric noise directly alters signal amplitude. The receiver cannot differentiate between data energy and ambient noise heat, leading to immediate property corruption.
+
+- **Low System Efficiency ($\eta$):** Over $66\%$ of total transmitted power is wasted on the unvarying carrier wave dead-weight.
+
+---
+
+## Angle Modulation (FM & PM)
+
+### A. Thermodynamic Analogy: Isentropic Work / Closed Cycles
+
+Data is encoded strictly into timing and transition shifts, keeping peak amplitude fixed. This behaves as an isolated thermodynamic system or an isentropic process:
+
+$$\Delta s = 0 \quad \text{and} \quad \dot{W}_{\text{net}} = \text{Constant}$$
+
+### B.  Governing Equations
+
+#### 1. Frequency Modulation (FM)
+
+$$s(t) = A_{\text{c}} \cos\left(2\pi f_{\text{c}} t + 2\pi k_{\text{f}} \int_0^t m(\tau) d\tau\right)$$
+
+#### 2. Phase Modulation (PM)
+
+$$s(t) = A_{\text{c}} \cos\left(2\pi f_{\text{c}} t + k_{\text{p}} m(t)\right)$$
+
+### C. Key Structural Strengths
+
+**Entropy Filtering:** Ambient noise alters the amplitude surface, but a hard-limiter circuit slices off the top and bottom variations. This isolates external entropy generation ($S_{\text{gen}} \to 0$) without disturbing the internal frequency property states.
+
+### D. Resource Trade-off: Carson's Rule vs. Second Law
+
+The structural resource trade-off matches the Principle of Increase of Entropy ($\Delta S_{\text{uni}} \ge 0$). To lower noise vulnerability, the system must expand its volumetric state space ($v$).
+
+#### Bandwidth Allocations ($B$) 
+
+- AM Bandwidth (Compressed Volume):**
+
+     $$B_{\text{AM}} = 2f_{\text{m}}$$
+
+     Low bandwidth space limits data capacity, making it fragile to localized external chaotic interactions.
+
+- **FM Bandwidth (Expanded Volumetric Entropy):**
+
+     $$B_{\text{FM}} = 2(\Delta f + f_{\text{m}})$$
+
+     Governed by Carson's Rule. Expanding into a massive frequency space acts exactly like an unrestrained gas expansion into a vacuum, increasing structural entropy to protect global data integrity against localized disruptions.
+
+
+
