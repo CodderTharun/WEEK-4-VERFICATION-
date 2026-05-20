@@ -129,7 +129,7 @@ RARP converts MAC address into IP address.
 
 CSMA allows devices to share communication channels efficiently.
 
-> Vulnerable Time = \(T_p\)
+> Vulnerable Time = $T_p$
 
 <html>
 <div style={{ textAlign: "center" }}>
@@ -210,22 +210,22 @@ Developed at the University of Hawaii.
 
 ### Throughput Formula
 
-\[
+$$
 S = G \times e^{-2G}
-\]
+$$
 
 Where:
 
-- \(S\) = throughput
-- \(G\) = average packets generated
+- $S$ = throughput
+- $G$ = average packets generated
 
 ### Maximum Throughput
 
-At \(G = 0.5\):
+At $G = 0.5$:
 
-\[
+$$
 S_{max} = 0.5 \times e^{-1} \approx 18.4\%
-\]
+$$
 
 ### A. Slotted ALOHA
 
@@ -240,17 +240,17 @@ S_{max} = 0.5 \times e^{-1} \approx 18.4\%
 
 ### Throughput Formula
 
-\[
+$$
 S = G \times e^{-G}
-\]
+$$
 
 ### Maximum Throughput
 
-At \(G = 1\):
+At $G = 1$:
 
-\[
+$$
 S_{max} = \frac{1}{e} \approx 36.8\%
-\]
+$$
 
 <html>
 <div style={{ textAlign: "center" }}>
@@ -263,7 +263,7 @@ S_{max} = \frac{1}{e} \approx 36.8\%
 | Feature | Pure ALOHA | Slotted ALOHA |
 |---|---|---|
 | Transmission timing | Any time | Slot beginning only |
-| Vulnerable period | \(2 \times T_p\) | \(1 \times T_p\) |
+| Vulnerable period | $2 \times T_p$ | $1 \times T_p$ |
 | Maximum throughput | 18.4% | 36.8% |
 | Synchronization | Not required | Required |
 
@@ -409,7 +409,7 @@ Based on binary division.
 
 ##### a. Steps
 
-1. Append \((k - 1)\) zeros
+1. Append $(k - 1)$ zeros
 2. Perform modulo-2 division
 3. Remainder becomes CRC bits
 4. Append CRC to original data
@@ -419,7 +419,7 @@ At receiver:
 - Divide received codeword using same divisor
 - Zero remainder means no error
 
-> CRC bits must be \((k - 1)\) bits long.
+> CRC bits must be $(k - 1)$ bits long.
 
 <html>
 <div style={{ textAlign: "center" }}>
@@ -450,14 +450,14 @@ Developed by R.W. Hamming.
 
 ### Formula
 
-\[
+$$
 2^r \geq m + r + 1
-\]
+$$
 
 Where:
 
-- \(r\) = redundant bits
-- \(m\) = data bits
+- $r$ = redundant bits
+- $m$ = data bits
 
 ### A. Encoding Steps
 
@@ -469,9 +469,9 @@ Where:
 
 ##### a. Coverage
 
-- \(r_1\): 1, 3, 5, 7, ...
-- \(r_2\): 2, 3, 6, 7, ...
-- \(r_3\): 4–7, 12–15, ...
+- $r_1$: 1, 3, 5, 7, ...
+- $r_2$: 2, 3, 6, 7, ...
+- $r_3$: 4–7, 12–15, ...
 
 ### A. Decoding Steps
 
@@ -482,5 +482,6 @@ Where:
 3. If decimal is 0 → no error
 4. Otherwise flip corresponding bit
 
-> Example: \(1001_2 = 9\), so bit 9 contains error.
+> Example: $1001_2 = 9$, so bit 9 contains error.
+
 
