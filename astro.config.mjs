@@ -293,7 +293,7 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 1", link: "/it/week-1/aiml" },
-      { label: "Week 2", link: "/it/week-1/aiml" },
+      { label: "Week 2", link: "/it/week-2/aiml" },
       //{ label: "Week 3", link: "/it/week-1/aiml" },
       //{ label: "Week 4", link: "/it/week-1/aiml" },
       //{ label: "Week 5", link: "/it/week-1/aiml" },
@@ -304,7 +304,7 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 1", link: "/it/week-1/cn" },
-      { label: "Week 2", link: "/it/week-1/cn" },
+      { label: "Week 2", link: "/it/week-2/cn" },
       //{ label: "Week 3", link: "/it/week-1/cn" },
       //{ label: "Week 4", link: "/it/week-1/cn" },
       //{ label: "Week 5", link: "/it/week-1/cn" },
@@ -315,7 +315,7 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 1", link: "/it/week-1/dbms" },
-      { label: "Week 2", link: "/it/week-1/dbms" },
+      { label: "Week 2", link: "/it/week-2/dbms" },
       //{ label: "Week 3", link: "/it/week-1/dbms" },
       //{ label: "Week 4", link: "/it/week-1/dbms" },
       //{ label: "Week 5", link: "/it/week-1/dbms" },
