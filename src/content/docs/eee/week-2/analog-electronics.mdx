@@ -3,3 +3,947 @@ title: Analog Electronics
 description: DC motors and generators
 ---
 
+# **1\. Semiconductor**
+
+Semiconductor is the basis of all modern electronic devices such as diodes, transistors, integrated circuits, solar cells, LEDs and microprocessors. A semiconductor is a material whose electrical conductivity lies between that of a conductor and an insulator. Unlike conductors, semiconductors do not allow current to flow freely under all conditions, but unlike insulators, they can conduct electricity when suitable conditions are provided.
+
+The most commonly used semiconductor materials are:
+
+* Silicon (Si)  
+* Germanium (Ge)
+
+Silicon is widely preferred in electronics because it is abundant, inexpensive and thermally stable.
+
+## **Advantages of Silicon**
+
+1. Easily available in nature  
+2. Low cost  
+3. Good thermal stability  
+4. Suitable band gap (1.1 eV)  
+5. Forms high-quality oxide (SiO₂)  
+6. High reliability
+
+Applications:
+
+* IC fabrication  
+* Transistors  
+* Solar cells  
+* Microprocessors
+
+# **1.1 Energy Band Theory**
+
+To understand semiconductors, it is necessary to understand the concept of energy bands in solids.
+
+In an isolated atom, electrons revolve around the nucleus in specific energy levels. However, when atoms come together to form a solid, these energy levels merge and form bands of energy.
+
+The important energy bands are:
+
+1. Valence Band  
+2. Conduction Band  
+3. Forbidden Energy Gap
+
+## **Valence Band**
+
+The valence band is the highest energy band occupied by electrons at normal temperature. The electrons present in this band are tightly bound to the atom and are mainly responsible for chemical bonding.
+
+In semiconductors, electrons in the valence band normally do not contribute to conduction unless they gain sufficient energy.
+
+## **Conduction Band**
+
+The conduction band lies above the valence band. Electrons present in this band are free electrons and can move easily under the influence of an electric field, thereby contributing to electric current.
+
+## **Forbidden Energy Gap**
+
+The region between the valence band and conduction band where no electron states exist is called the forbidden energy gap or band gap.
+
+The size of the energy gap determines whether a material behaves as a conductor, semiconductor or insulator. For common semiconductor materials:
+
+| Material | Energy Gap |
+| :---- | :---- |
+| Conductors | 0 eV |
+| Semiconductors | 0.2 – 2.5 eV |
+| Insulators | Greater than 3 eV |
+
+* Silicon → 1.1 eV  
+* Germanium → 0.7 eV
+
+Because semiconductors have a small energy gap, electrons can move from the valence band to the conduction band when sufficient thermal energy is supplied.
+
+**1.3 Covalent Bonding in Semiconductors**
+
+Silicon and germanium belong to Group IV elements and contain four valence electrons. Each atom shares its valence electrons with neighboring atoms to complete its outer shell. This type of bonding is called covalent bonding.
+
+In a silicon crystal:
+
+* Every atom forms four covalent bonds.  
+* The crystal becomes electrically stable.
+
+When heat energy is supplied, some covalent bonds break, producing free electrons and holes.
+
+**1.4 Electron-Hole Pair Generation**
+
+When a covalent bond breaks due to thermal energy:
+
+* One electron becomes free and moves to the conduction band.  
+* A vacancy is left behind in the valence band.
+
+This vacancy behaves like a positive charge and is called a hole.
+
+Thus, every broken bond creates:
+
+* One free electron  
+* One hole
+
+This process is known as electron-hole pair generation.
+
+**1.5 Charge Carriers**
+
+Electric current in semiconductors is carried by two types of charge carriers:
+
+## **Electrons**
+
+Electrons are negatively charged particles that move in the conduction band.
+
+## **Holes**
+
+Holes are vacancies created in the valence band and behave as positive charge carriers.
+
+Although holes are not actual particles, their movement represents the transfer of positive charge.
+
+**1.6 Temperature Effect on Semiconductors**
+
+Semiconductors possess a negative temperature coefficient. This means that as temperature increases, resistance decreases.
+
+When temperature rises:
+
+* More covalent bonds break.  
+* More free electrons and holes are generated.  
+* Conductivity increases.
+
+This behavior is opposite to conductors, whose resistance increases with temperature.
+
+**1.7 Types of Semiconductors**
+
+Semiconductors are classified into two major types:
+
+1. Intrinsic Semiconductor  
+2. Extrinsic Semiconductor
+
+**Intrinsic Semiconductor**
+
+An intrinsic semiconductor is a pure semiconductor without any impurity atoms added to it.
+
+Examples:
+
+* Pure silicon  
+* Pure germanium
+
+In intrinsic semiconductors:
+
+* Number of electrons equals number of holes.  
+* Conductivity is low because only thermally generated carriers are available.
+
+The carrier concentration is represented as:
+
+n \= p \= ni
+
+where:
+
+* n \= electron concentration  
+* p \= hole concentration  
+* ni \= intrinsic carrier concentration
+
+Conduction in intrinsic semiconductors occurs due to both electrons and holes.
+
+The total current is therefore:
+
+I \= Ie \+ Ih
+
+Intrinsic semiconductors are not widely used in practical electronics because their conductivity is very low.
+
+**Extrinsic Semiconductor**
+
+To increase conductivity, controlled impurities are intentionally added to pure semiconductors. This process is called doping and the resulting semiconductor is called an extrinsic semiconductor.
+
+Doping significantly increases the number of charge carriers.
+
+Depending on the type of impurity added, extrinsic semiconductors are classified as:
+
+* N-type semiconductor  
+* P-type semiconductor
+
+**N-Type Semiconductor**
+
+An N-type semiconductor is formed by adding pentavalent impurity atoms to a pure semiconductor.
+
+Common pentavalent impurities:
+
+* Phosphorus (P)  
+* Arsenic (As)  
+* Antimony (Sb)
+
+These atoms have five valence electrons.
+
+When a pentavalent atom is added:
+
+* Four electrons participate in covalent bonding.  
+* One extra electron remains free.
+
+This extra electron contributes to conduction.
+
+Therefore:
+
+* Electrons become majority carriers.  
+* Holes become minority carriers.
+
+Since the impurity atoms donate free electrons, they are called donor atoms.
+
+In the energy band diagram, donor energy levels lie very close to the conduction band, requiring very little energy to release electrons.
+
+**Properties of N-Type Semiconductor**
+
+| Property | Description |
+| :---- | :---- |
+| Majority carriers | Electrons |
+| Minority carriers | Holes |
+| Conductivity | High |
+| Fermi level | Near conduction band |
+
+# 
+
+# 
+
+# 
+
+# 
+
+# 
+
+# **P-Type Semiconductor**
+
+A P-type semiconductor is formed by adding trivalent impurity atoms to a pure semiconductor.
+
+Common trivalent impurities:
+
+* Boron (B)  
+* Gallium (Ga)  
+* Aluminium (Al)
+
+These atoms contain only three valence electrons.
+
+When a trivalent impurity is added:
+
+* Only three covalent bonds are formed.  
+* One bond remains incomplete.
+
+This incomplete bond behaves as a hole.
+
+Therefore:
+
+* Holes become majority carriers.  
+* Electrons become minority carriers.
+
+Since these impurities accept electrons, they are called acceptor atoms.
+
+The acceptor energy level lies close to the valence band.
+
+**Properties of P-Type Semiconductor**
+
+| Property | Description |
+| :---- | :---- |
+| Majority carriers | Holes |
+| Minority carriers | Electrons |
+| Conductivity | High |
+| Fermi level | Near valence band |
+
+**1.10 Drift Current and Diffusion Current**
+
+Current flow in semiconductors occurs due to two mechanisms.
+
+**Drift Current**
+
+When an external electric field is applied, charge carriers move in a particular direction.
+
+This movement produces drift current.
+
+* Electrons move opposite to the electric field.  
+* Holes move along the electric field.
+
+**Diffusion Current**
+
+Diffusion current occurs due to carrier concentration difference.
+
+Charge carriers naturally move:
+
+* From high concentration region  
+* To low concentration region
+
+This phenomenon is called diffusion.
+
+**1.12 Mobility**
+
+Mobility represents how quickly charge carriers move under an applied electric field.
+
+It is defined as the ratio of drift velocity to the electric field.
+
+μ=vd/E
+
+where:
+
+* μ \= mobility  
+* vd \= drift velocity  
+* E \= electric field intensity
+
+Higher mobility means better conductivity.
+
+**1.13 Conductivity of Semiconductors**
+
+The conductivity of a semiconductor depends on:
+
+* Number of charge carriers  
+* Mobility of carriers
+
+The conductivity equation is:
+
+σ \= q (n\*μn \+ p\*μp)
+
+where:
+
+* σ \= conductivity  
+* q \= electronic charge  
+* n \= electron concentration  
+* p \= hole concentration  
+* μn \= electron mobility  
+* μp \= hole mobility
+
+This equation shows that both electrons and holes contribute to current conduction.
+
+# **PN Junction Diode**
+
+## **2.1 Diode Basics**
+
+A diode is a two-terminal semiconductor device that allows current to flow mainly in one direction.
+
+* Constructed using **P-type** and **N-type** semiconductor materials.
+* The junction formed is called the **PN Junction**.
+
+# **2.2 Diode Operations**
+
+## **Forward Bias**
+
+### **Condition**
+
+* P-side connected to the positive terminal.
+* N-side connected to the negative terminal.
+
+### **Effect**
+
+* The depletion layer decreases.
+* Barrier potential reduces.
+* Current flows easily.
+
+## **Reverse Bias**
+
+### **Condition**
+
+* P-side connected to the negative terminal.
+* N-side connected to positive terminal.
+
+### **Effect**
+
+* The depletion region widens.
+* Barrier potential increases.
+* Very small leakage current flows.
+
+# **2.3 Diode Characteristics**
+
+## **V-I Characteristics**
+
+### **Forward Characteristics**
+
+* Current remains very small until threshold voltage.
+* After the threshold, current increases rapidly.
+
+### **Reverse Characteristics**
+
+* Very small reverse current.
+* At breakdown voltage, current rises sharply.
+
+## **Important Parameters**
+
+### **Knee Voltage (Cut-in Voltage)**
+
+Minimum forward voltage required for conduction.
+
+* Silicon → ~0.7 V
+* Germanium → ~0.3 V
+
+### **Peak Inverse Voltage (PIV)**
+
+Maximum reverse voltage diodes can withstand without breakdown.
+
+### **Reverse Saturation Current**
+
+Small current under reverse bias.
+
+# **2.4 Diode Equations**
+
+## **Diode Current Equation (Shockley Equation)**
+
+Central equation for diode current:
+
+$$
+I = I_s \left( e^{\frac{V}{\eta V_T}} - 1 \right)
+$$
+
+Where:
+
+* $I$ = diode current
+* $I_s$ = reverse saturation current
+* $V$ = applied voltage
+* $\eta$ = ideality factor
+* $V_T$ = thermal voltage
+
+## **Thermal Voltage**
+
+$$
+V_T = \frac{kT}{q}
+$$
+
+At room temperature:
+
+* $V_T \approx 26\,\text{mV}$
+
+Where:
+
+* $k$ = Boltzmann constant
+* $T$ = temperature in Kelvin
+* $q$ = electronic charge
+
+## **Dynamic Resistance**
+
+$$
+r_d = \frac{dV}{dI}
+$$
+
+Approximation:
+
+$$
+r_d \approx \frac{26\,\text{mV}}{I_D}
+$$
+
+# **2.5 Breakdown Mechanisms**
+
+Breakdown occurs when reverse voltage exceeds a critical value.
+
+## **1. Zener Breakdown**
+
+### **Occurs In**
+
+* Heavily doped diodes
+* Low reverse voltage
+
+### **Cause**
+
+A strong electric field pulls electrons from covalent bonds.
+
+### **Features**
+
+* Sharp breakdown
+* Used in voltage regulation
+
+## **2. Avalanche Breakdown**
+
+### **Occurs In**
+
+* Lightly doped diodes
+* Higher reverse voltage
+
+### **Cause**
+
+Carrier collision generates more carriers.
+
+### **Features**
+
+* Chain multiplication effect
+* Large current flow
+
+# **Clipping and Clamping Circuits Notes**
+
+# **3.1 Clippers**
+
+## **Definition**
+
+A clipper circuit removes or clips a portion of the input waveform without distorting the remaining part of the signal.
+
+* Uses diodes and resistors.
+* Also called **Limiter Circuits**.
+
+# **Principle of Operation**
+
+* Diode conducts when forward biased.
+* Diode blocks when reverse biased.
+* Depending on diode orientation, parts of the waveform are removed.
+
+# **Types of Clippers**
+
+## **1. Positive Clipper**
+
+### **Function**
+
+Removes the positive half of the waveform.
+
+### **Operation**
+
+* During the positive cycle → diode conducts → output clipped.
+* During the negative cycle → diode OFF → output appears.
+
+### **Output**
+
+Only a negative portion appears.
+
+## **2. Negative Clipper**
+
+### **Function**
+
+Removes the negative half of the waveform.
+
+### **Operation**
+
+* During the negative cycle → diode conducts → clipped.
+* During the positive cycle → output appears.
+
+### **Output**
+
+Only a positive portion appears.
+
+## **3. Biased Clipper**
+
+### **Function**
+
+Clips waveform above or below a specified voltage level.
+
+### **Uses**
+
+* Voltage limiting
+* Protection circuits
+
+# **Series and Shunt Clippers**
+
+## **Series Clipper**
+
+* Diode connected in series with load.
+* Output depends on diode conduction.
+
+## **Shunt Clipper**
+
+* Diode connected parallel to load.
+* Conducting diode shorts unwanted signal.
+
+# **Applications of Clippers**
+
+* Over-voltage protection
+* Noise limiting
+* Wave shaping
+* Communication systems
+* Radar and TV circuits
+
+# **3.2 Clampers**
+
+## **Definition**
+
+A clamper circuit shifts the entire waveform upward or downward without changing its shape.
+
+Also called:
+
+* DC Restorer
+* Level Shifter
+
+# **Components Used**
+
+* Diode
+* Capacitor
+* Resistor
+
+# **Working Principle**
+
+* Capacitor stores charge during one half cycle.
+* Stored voltage adds/subtracts from input signal.
+* Entire waveform shifts vertically.
+
+# **Types of Clampers**
+
+## **1. Positive Clamper**
+
+### **Function**
+
+Shifts waveform upward.
+
+### **Result**
+
+Negative peaks move toward zero level.
+
+## **2. Negative Clamper**
+
+### **Function**
+
+Shifts waveform downward.
+
+### **Result**
+
+Positive peaks move toward zero level.
+
+## **3. Biased Clamper**
+
+### **Function**
+
+Shifts waveform to desired DC level using external bias voltage.
+
+# **Applications of Clampers**
+
+* TV receivers
+* Pulse circuits
+* Communication systems
+* Voltage multipliers
+* Oscilloscope circuits
+
+# **5. Bipolar Junction Transistor (BJT)**
+
+## **5.1 Construction and Working**
+
+### **Definition**
+
+BJT is a three-layer semiconductor device used for amplification and switching.
+
+Types:
+
+* NPN transistor
+* PNP transistor
+
+# **Terminals**
+
+* Emitter (E)
+* Base (B)
+* Collector (C)
+
+# **Construction**
+
+## **Emitter**
+
+* Heavily doped
+* Supplies charge carriers
+
+## **Base**
+
+* Thin and lightly doped
+
+## **Collector**
+
+* Moderately doped
+* Collects carriers
+
+# **5.2 BJT Operations**
+
+## **Active Region**
+
+* Emitter-base junction → forward biased
+* Collector-base junction → reverse biased
+
+Used for amplification.
+
+## **Cutoff Region**
+
+* Both junctions reverse biased.
+* Transistor OFF.
+
+## **Saturation Region**
+
+* Both junctions forward biased.
+* Transistor fully ON.
+
+# **5.3 Current Relations**
+
+Basic relation:
+
+$$
+I_E = I_B + I_C
+$$
+
+Where:
+
+* $I_E$ = emitter current
+* $I_B$ = base current
+* $I_C$ = collector current
+
+# **5.4 Current Gains**
+
+## **Common Base Gain ($\alpha$)**
+
+$$
+\alpha = \frac{I_C}{I_E}
+$$
+
+Typical value:
+
+* 0.95 to 0.99
+
+## **Common Emitter Gain ($\beta$)**
+
+$$
+\beta = \frac{I_C}{I_B}
+$$
+
+Typical value:
+
+* 20 to 200
+
+## **Relation Between $\alpha$ and $\beta$**
+
+$$
+\beta = \frac{\alpha}{1-\alpha}
+$$
+
+# **5.5 BJT Characteristics**
+
+## **Input Characteristics**
+
+Relation between:
+
+* Input current
+* Input voltage
+
+## **Output Characteristics**
+
+Relation between:
+
+* Output current
+* Output voltage
+
+## **Transfer Characteristics**
+
+Relation between:
+
+* Output current
+* Input current
+
+# **5.6 BJT Configurations**
+
+# **1. Common Base (CB)**
+
+### **Features**
+
+* Low input resistance
+* High voltage gain
+* No current gain
+
+### **Applications**
+
+* High-frequency circuits
+
+# **2. Common Emitter (CE)**
+
+### **Features**
+
+* High current gain
+* High voltage gain
+* Most widely used
+
+### **Applications**
+
+* Amplifiers
+
+# **3. Common Collector (CC)**
+
+### **Features**
+
+* High input resistance
+* Voltage gain $\approx 1$
+
+### **Applications**
+
+* Buffer circuits
+
+# **5.8 Applications**
+
+## **1. Amplifier**
+
+Amplifies weak signals.
+
+## **2. Switch**
+
+Used in digital circuits.
+
+## **3. Oscillator**
+
+Produces periodic signals.
+
+## **4. Modulation Circuits**
+
+Used in communication systems.
+
+## **5. Current Mirrors**
+
+Maintains constant current.
+
+# **6. Field Effect Transistor (FET)**
+
+# **6.1 Basics**
+
+## **Definition**
+
+FET (Field Effect Transistor) is a voltage-controlled semiconductor device in which output current is controlled by input voltage.
+
+Unlike BJT:
+
+* BJT → current controlled
+* FET → voltage controlled
+
+# **Features of FET**
+
+* High input impedance
+* Low power consumption
+* Low noise
+* Better thermal stability
+* Fast switching
+
+# **Types of FET**
+
+## **MOSFET (Metal Oxide Semiconductor FET)**
+
+* Enhancement MOSFET
+* Depletion MOSFET
+
+# **FET Terminals**
+
+* Gate (G)
+* Source (S)
+* Drain (D)
+
+# **6.4 MOSFET**
+
+## **Definition**
+
+MOSFET is a field effect transistor with insulated gate.
+
+Full form:
+
+Metal Oxide Semiconductor Field Effect Transistor
+
+# **Advantages of MOSFET**
+
+* Very high input impedance
+* Fast switching
+* Small size
+* Low power consumption
+
+# **Types of MOSFET**
+
+## **Based on Mode**
+
+### **1. Enhancement MOSFET**
+
+Normally OFF.
+
+### **2. Depletion MOSFET**
+
+Normally ON.
+
+## **Based on Channel**
+
+* N-channel MOSFET
+* P-channel MOSFET
+
+# **MOSFET Structure**
+
+# **Enhancement MOSFET Operation**
+
+## **NMOS**
+
+* Positive gate voltage creates a channel.
+* Electrons conduct current.
+
+## **PMOS**
+
+* Negative gate voltage creates a channel.
+* Holes conduct current.
+
+# **MOSFET Regions**
+
+## **Cutoff Region**
+
+* Device OFF.
+
+## **Triode/Linear Region**
+
+* Works as variable resistor.
+
+## **Saturation Region**
+
+* Used for amplification.
+
+# **6.5 NMOS and PMOS**
+
+# **NMOS**
+
+## **Features**
+
+* Uses electrons.
+* Faster operation.
+* Lower ON resistance.
+
+## **Operation**
+
+Turns ON for positive $V_{GS}$.
+
+# **PMOS**
+
+## **Features**
+
+* Uses holes.
+* Slower than NMOS.
+
+## **Operation**
+
+Turns ON for negative $V_{GS}$.
+
+| NMOS | PMOS |
+| :---- | :---- |
+| Electron conduction | Hole conduction |
+| Faster | Slower |
+| Lower resistance | Higher resistance |
+| Positive gate voltage | Negative gate voltage |
+
+# **6.6 CMOS Logic**
+
+## **Definition**
+
+CMOS uses complementary MOSFETs:
+
+* One NMOS
+* One PMOS
+
+Full form:
+
+Complementary Metal Oxide Semiconductor
+
+# **CMOS Inverter**
+
+## **Working**
+
+### **Input = 0**
+
+* PMOS ON
+* NMOS OFF
+* Output = 1
+
+### **Input = 1**
+
+* NMOS ON
+* PMOS OFF
+* Output = 0
+
+# **CMOS Characteristics**
+
+* Low static power dissipation
+* Fast switching
+* Compact design
