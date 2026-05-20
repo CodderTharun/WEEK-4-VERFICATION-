@@ -164,6 +164,14 @@ items: [
       
     ],
   },
+   {
+    label: "ADC",
+    collapsed: true,
+    items: [
+      { label: "Week 2", link: "/ece/week-2/adc" },
+      
+    ],
+  },
   {
     label: "Verilog",
     collapsed: true,
