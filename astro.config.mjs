@@ -52,18 +52,13 @@ export default defineConfig({
                 { label: "Quantitative Ability", link: "/aptitude/week-1/quantitative-ability" },
               ],
             },
-            // {
-            //   label: "Week 2",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/aptitude/week-2/" },
-            //     { label: "Quantitative Ability", link: "/aptitude/week-2/quantitative-ability" },
-            //     { label: "Logical Reasoning", link: "/aptitude/week-2/logical-reasoning" },
-            //     { label: "Verbal Reasoning", link: "/aptitude/week-2/verbal-reasoning" },
-            //     { label: "Data Interpretation", link: "/aptitude/week-2/data-interpretation" },
-            //     { label: "Problem Solving", link: "/aptitude/week-2/problem-solving" },
-            //   ],
-            // },
+            {
+               label: "Week 2",
+              collapsed: true,
+              items: [
+                { label: "Quantitative Ability", link: "/aptitude/week-2/quantitative-ability" },
+              ],
+            },
             // {
             //   label: "Week 3",
             //   collapsed: true,
@@ -123,7 +118,7 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 1", link: "/ece/week-1/cprogramming" },
-      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      { label: "Week 2", link: "/ece/week-2/cprogramming" },
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
@@ -151,6 +146,30 @@ items: [
       //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
       //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
       //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
+    ],
+  },
+  {
+    label: "Computer Networks",
+    collapsed: true,
+    items: [
+      { label: "Week 2", link: "/ece/week-2/computer-networks" },
+      
+    ],
+  },
+  {
+    label: "Analog Electronics",
+    collapsed: true,
+    items: [
+      { label: "Week 2", link: "/ece/week-2/analog-eletronics" },
+      
+    ],
+  },
+  {
+    label: "Verilog",
+    collapsed: true,
+    items: [
+      { label: "Week 2", link: "/ece/week-2/verilog" },
+      
     ],
   },
 ],
@@ -337,7 +356,7 @@ items: [
               collapsed: true,
               items: [
                 { label: "Week 1", link: "/mech/week-1/thermodynamics" },
-                //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
+                { label: "Week 2", link: "/mech/week-2/thermodynamics" },
                 //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
                 //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
                 //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
@@ -349,7 +368,7 @@ items: [
               collapsed: true,
               items: [
                 { label: "Week 1", link: "/mech/week-1/strength-materials" },
-                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                { label: "Week 2", link: "/mech/week-2/strength-materials" },
                 //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
                 //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
                 //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
