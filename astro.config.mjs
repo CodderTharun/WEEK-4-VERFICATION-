@@ -196,7 +196,7 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 1", link: "/ece/week-1/cprogramming" },
-      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      { label: "Week 2", link: "/ece/week-1/cprogramming" },
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
@@ -220,6 +220,39 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 1", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
+    ],
+  },
+  {
+    label: "Analog Electronics",
+    collapsed: true,
+    items: [
+      { label: "Week 2", link: "/ece/week-1/analog-electronics" },
+      //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
+    ],
+  },
+   {
+    label: "Power Electronics",
+    collapsed: true,
+    items: [
+      { label: "Week 2", link: "/ece/week-1/power-electronics" },
+      //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
+    ],
+  },
+  {
+    label: "Electrical Machines",
+    collapsed: true,
+    items: [
+      { label: "Week 2", link: "/ece/week-1/power-electronics" },
       //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
       //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
       //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
