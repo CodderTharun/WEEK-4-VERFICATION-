@@ -4,15 +4,6 @@ title: Computer Networks
 
 ---
 
-<style>{`
-pre {
-  overflow-x: scroll;
-  max-width: 100%;
-  display: block;
-  white-space: pre;
-}
-`}</style>
-
 ## What is a Computer Network?
 
 A computer network is a system of interconnected devices, such as computers, servers, smartphones, and printers, that communicate to exchange data. They communicate using wired or wireless connections and can range from small home networks to the global Internet.
@@ -622,7 +613,6 @@ Each entry in a routing table provides the necessary information to forward a pa
 * **Default Route:** A special entry (Destination: 0.0.0.0, Subnet Mask: 0.0.0.0) that specifies where to send packets if no more specific route is found in the table.
 
 
-
 #### **How Routing Tables are Populated**
 
 Routing tables can be maintained in three primary ways:
@@ -684,7 +674,7 @@ DVR protocols are historically associated with the **Bellman-Ford Algorithm**.
   * It receives a new distance vector from a neighbor that contains different information.  
   * It detects a link to a neighbor has gone down.  
 * **Minimizing Cost:** The calculation aims to minimize the cost (distance) to each destination using the Bellman-Ford equation:  
-* Dx(y) \= min { C(x,v) \+ Dv(y) }  
+* D$D_x(y) = \min \{ C(x,v) + D_v(y) \}$
   * Dx(y): Estimated least cost from router x to destination y.  
   * C(x,v): Cost from router x to its neighbor v.  
 * Dv(y): Neighbor v's estimated least cost to destination y.  
@@ -779,8 +769,6 @@ Before data transmission, TCP establishes a connection between sender and receiv
 * **ACK:** Sender confirms the connection
 
 This process ensures both devices are ready for communication.
-
-
 
 ### **B. Reliable Delivery Mechanisms in TCP**
 
@@ -1320,4 +1308,6 @@ Command:
 
 sip [server]
 ```
+
+
 
