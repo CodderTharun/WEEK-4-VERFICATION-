@@ -365,6 +365,16 @@ items: [
       //{ label: "Week 1", link: "/it/week-1/os" },
     ],
   }, 
+  {
+    label: "SDLC",
+    collapsed: true,
+    items: [
+      { label: "Week 2", link: "/it/week-2/sdlc" },
+      //{ label: "Week 3", link: "/it/week-1/sdlc" },
+      //{ label: "Week 4", link: "/it/week-1/sdlc" },
+      //{ label: "Week ", link: "/it/week-1/sdlc" },
+    ],
+  },
  
           ],
         },
