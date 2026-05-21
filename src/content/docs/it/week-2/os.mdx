@@ -22,7 +22,14 @@ Multithread programs are good candidates for deadlock because they compete for s
 ## Deadlock Characterization
 
 ### Necessary Conditions
-
+<div align="center">
+  <img 
+    src="/IT/OS/os2.1.jpeg"
+    alt="OS-1"
+    width="500px"
+    height="400px"
+  />
+</div>
 A deadlock situation can occur if the following 4 conditions occur simultaneously in a system.
 
 - **Mutual Exclusion:** At least one resource must be held in a non-sharable mode; that is, only one process at a time can use the resource. If another process requests for the resource, the requesting process must be delayed until the resource has been released.
@@ -57,7 +64,7 @@ Undetected deadlock will result in deterioration of the system performance.
 
 Deadlock prevention is a strategy used in computer systems to ensure that different processes can run smoothly without getting stuck waiting for each other forever.
 
-## Methods to achieve deadlock prevention are:
+### Methods to achieve deadlock prevention are:
 
 #### Eliminate Mutual Exclusion
 
@@ -129,19 +136,26 @@ A state is a safe state in which there exists at least one order in which all th
 
 A system is in safe state if there exists a safe sequence.
 
+A system is in **safe state** if there exists a **safe sequence**. A sequence of processes is a safe sequence for the current allocation state if, for each P<sub>i</sub>, the resources requests that P<sub>i</sub> can still make and it can be satisfied by the currently available resources plus the resources held by all P<sub>j</sub>, with `j < i`.
+
+If the resources that P<sub>i</sub> requests are not currently available, then P<sub>i</sub> can wait until all P<sub>j</sub> have finished. When they have finished, P<sub>i</sub> can obtain all of its needed resources to complete its designated task.
+
 A safe state is not a deadlocked state. But, a deadlocked state is an unsafe state.
 
 Deadlock avoidance mainly relies on algorithms that check resource allocation before making decisions.
 
 The two common types are:
 
-- **Banker’s Algorithm:** Used when multiple instances of resources exist.
+-1. **Banker's Algorithm:** Used when multiple instances of resources exist. It simulates allocation and ensures that the system remains in a safe state before granting resources.
 
-- **Resource Allocation Graph (RAG) Algorithm:** Used when each resource has only one instance.
+2. **Resource Allocation Graph (RAG) Algorithm:** Used when each resource has only one instance. It checks for cycles in the graph to avoid unsafe states.
 
 ### A. Banker’s Algorithm
 
-Banker's Algorithm is a resource allocation and deadlock avoidance algorithm used in operating systems.
+Banker's Algorithm is a resource allocation and deadlock avoidance algorithm used in operating systems. It ensures that there exists at least one sequence of processes such that each process can obtain the needed resources, complete its execution.
+
+- It helps prevent situations where programs get stuck and cannot finish their tasks.
+- It keeps track of resources each program needs and what's available.
 
 #### Components of the Banker's Algorithm
 
@@ -173,11 +187,18 @@ Allocation[i, j] = k
 
 ##### 4. Need
 
-It is a 2-D array of size `n*m` that indicates the remaining resource need of each process.
-
+It is a 2-d array of size 'n*m' that indicates the remaining resource need of each process.
+Need [ i,   j ] = k means process Pi currently needs 'k' instances of resource type Rj
 ```text
-Need[i, j] = Max[i, j] – Allocation[i, j]
+Need [ i,   j ] = Max [ i,   j ] – Allocation [ i,   j ].
 ```
+**Allocation** specifies the resources currently allocated to process P<sub>i</sub> and **Need** specifies the additional resources that process P<sub>i</sub> may still request to complete its task.
+
+The Banker's Algorithm is made up of two parts:
+
+**a. Safety Algorithm**
+
+**b. Resource Request Algorithm**
 
 ### a. Safety Algorithm
 
@@ -204,6 +225,7 @@ the system is in safe state.
 ```
 
 ### b. Resource Request Algorithm
+This algorithm decides if a process’s resource request can be granted safely.
 
 ```text
 Step 1:
@@ -223,15 +245,16 @@ Run Safety Algorithm
 
 ## B. Resource Allocation Graph (RAG) Algorithm
 
-This algorithm is used only if we have one instance of a resource type.
+- This algorithm is used only if we have **one instance of a resource type**. In addition to the request edge and the assignment edge, a new edge called **claim edge** is used.
 
-A claim edge `Pi → Rj` indicates that process `Pi` may request `Rj` in future.
+  - A claim edge P<sub>i</sub> → R<sub>j</sub> indicates that process P<sub>i</sub> may request R<sub>j</sub> in the future.
+  - The claim edge is represented by a **dotted line**.
 
-The claim edge is represented by a dotted line.
+- When a process P<sub>i</sub> requests the resource R<sub>j</sub>, the **claim edge is converted to a request edge**. When resource R<sub>j</sub> is released by process P<sub>i</sub>, the **assignment edge** R<sub>j</sub> → P<sub>i</sub> is replaced by the **claim edge** P<sub>i</sub> → R<sub>j</sub>.
 
-A cycle detection algorithm is used to detect the cycle.
+- When a process P<sub>i</sub> requests resource R<sub>j</sub>, the request is granted only if converting the request edge P<sub>i</sub> → R<sub>j</sub> to an assignment edge R<sub>j</sub> → P<sub>i</sub> **does not result in a cycle**.
 
-If there are no cycles then the allocation of the resource to process leaves the system in a safe state.
+- A **cycle detection algorithm** is used to detect the cycle. If there are no cycles, then the allocation of the resource to the process leaves the system in a **safe state**.
 
 ## 3. Deadlock Detection
 
@@ -250,13 +273,33 @@ An edge from `Pi` to `Pj` in wait-for graph implies that `Pi` is waiting for `Pj
 
 Deadlock exists within the system if and only if there is a cycle.
 
+<div align="center">
+  <img 
+    src="/IT/OS/os2.2.jpeg"
+    alt="OS-1"
+    width="500px"
+    height="400px"
+  />
+</div>
+
+- An edge from P<sub>i</sub> to P<sub>j</sub> in wait-for graph implies that P<sub>i</sub> is waiting for P<sub>j</sub> to release a resource that P<sub>i</sub> needs.
+
+- An edge from P<sub>i</sub> to P<sub>j</sub> exists in wait-for graph if and only if the corresponding resource allocation graph contains the edges P<sub>i</sub> → R<sub>q</sub> and R<sub>q</sub> → P<sub>j</sub>.
+
+- Deadlock exists within the system if and only if there is a **cycle**. To detect deadlock, the system needs an algorithm that searches for cycles in a graph.
+
+
 ### b. Multiple Instances of each Resource Type
 
-The deadlock detection algorithm includes following data structures:
+- The wait-for graph scheme is not applicable to a resource-allocation system with multiple instances of each resource type.
 
-- **Available**
-- **Allocation**
-- **Request**
+- The deadlock detection algorithm includes the following time-varying data structures:
+
+  - **Available:** A vector of length `m` indicates the number of available resources of each type.
+
+  - **Allocation:** An `n × m` matrix defines the number of resources of each type currently allocated to each process.
+
+  - **Request:** An `n × m` matrix indicates the current request of each process. If `Request[i][j] = k`, then P<sub>i</sub> is requesting `k` more instances of resource type R<sub>j</sub>.
 
 #### Deadlock Detection Algorithm
 
@@ -287,10 +330,15 @@ There are two options for breaking a deadlock.
 
 ## Process Termination
 
-To eliminate deadlocks by aborting a process, one of two methods can be used.
+- To eliminate deadlocks by aborting a process, one of two methods can be used. In both methods, the system reclaims all resources allocated to the terminated processes.
 
-- Abort all deadlocked processes.
-- Abort one process at a time until the deadlock cycle is eliminated.
+  - **Abort all deadlocked processes:** This method breaks the deadlock cycle, but at great expense.
+
+  - **Abort one process at a time until the deadlock cycle is eliminated:** This method causes overhead, since after each process is aborted, a deadlock-detection algorithm must be invoked to determine whether any processes are still deadlocked.
+
+- Aborting a process is not an easy task. If the process was in the middle of updating a file, terminating it will leave that file in an incorrect state.
+
+- If the partial termination method is used, then we must determine which deadlocked process (or processes) should be terminated.
 
 The following factors are considered to select the process.
 
