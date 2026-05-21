@@ -26,7 +26,7 @@ Hashing is mainly used to implement:
 - Sets of distinct items (only keys)
 - Dictionaries (key value pairs)
 
-Here’s an example of hashing using the modulo method.
+Here's an example of hashing using the modulo method.
 
 ```math
 H(x) = x \% 10
@@ -34,9 +34,19 @@ H(x) = x \% 10
 
 The hash function converts any large number into a smaller value between `0` and `9`.
 
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DSA/1stimg%20dsa.webp?raw=true"
+  alt="Diagram"
+  style={{
+    width: "70%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
 ---
 
-### Applications of Hashing
+### A. Applications of Hashing
 
 Hashing is a technique that converts data of any size into a fixed-size value, known as a hash, which can be used for quick data retrieval and comparison.
 
@@ -46,81 +56,81 @@ Hashing is a technique that converts data of any size into a fixed-size value, k
 
 Hashing acts as a digital seal and lock, focusing on the verification and privacy of sensitive data.
 
-#### Password Storage
+##### a. Password Storage
 
 Stores non-reversible "fingerprints" instead of plain text, allowing secure verification while keeping passwords hidden from attackers.
 
-#### File Comparison and Message Digest
+##### b. File Comparison and Message Digest
 
 Generates unique signatures to verify file integrity, allowing users to instantly detect any corruption or malicious tampering.
 
-#### Blockchain & Consensus
+##### c. Blockchain & Consensus
 
 Links blocks via hashes to ensure permanent immutability, where any alteration breaks the chain and alerts the network.
 
-#### Fraud Detection & Cybersecurity
+##### d. Fraud Detection & Cybersecurity
 
 Matches data patterns against known threat databases to identify and block malicious files the moment their hashes are detected.
 
 ---
 
-### 2. Database & Search Optimization
+#### 2. Database & Search Optimization
 
 This category leverages hashing to eliminate slow searches, jumping directly to the required data for high-performance computing.
 
-#### Database Indexing
+##### a. Database Indexing
 
 Enables near-instant record retrieval by using hashes as direct indices, bypassing slow sorting to speed up massive database queries.
 
-#### Distinct Elements & Counting Frequencies
+##### b. Distinct Elements & Counting Frequencies
 
 Tracks unique items and occurrences by using hash values as keys, providing a massive speed advantage over comparison methods.
 
-#### Dictionaries & Associative Arrays
+##### c. Dictionaries & Associative Arrays
 
 Facilitates immediate access to data via high-speed key mapping, ensuring lookups remain fast regardless of dataset size.
 
-### Rabin-Karp Algorithm
+##### d. Rabin-Karp Algorithm
 
 Optimizes string-searching by hashing text segments to quickly filter out non-matches and focus only on potential pattern hits.
 
 ---
 
-### 3. Network & System Infrastructure
+#### 3. Network & System Infrastructure
 
 Hashing optimizes traffic movement and resource usage to ensure minimal lag and disruption across complex systems.
 
-#### Load Balancing
+##### a. Load Balancing
 
 Uses consistent hashing to distribute traffic evenly across servers, ensuring stability and minimal data remapping during server changes.
 
-#### Bloom Filters
+##### b. Bloom Filters
 
 A memory-efficient structure that trades a tiny margin of error for extreme speed when testing membership in massive data sets.
 
-#### Network Routing
+##### c. Network Routing
 
 Hashes destination attributes to determine optimal data paths, minimizing latency and ensuring smooth transmission across global infrastructure.
 
-#### Caching Mechanisms
+##### d. Caching Mechanisms
 
 Stores frequently accessed data under hash-based keys to reduce retrieval times and decrease server load by bypassing slow lookups.
 
 ---
 
-### 4. Specialized Processing
+#### 4. Specialized Processing
 
 These applications apply hashing to complex pattern recognition and low-level system organization.
 
-## Image Processing
+##### a. Image Processing
 
 Employs perceptual hashing to find duplicate images by comparing structural features, identifying matches even after resizing or compression.
 
-#### Symbol Tables
+##### b. Symbol Tables
 
 Maps code identifiers to memory locations during compilation, which is essential for accurate variable management and program execution.
 
-#### Graphics & Grid Storage
+##### c. Graphics & Grid Storage
 
 Organizes graphical objects into spatial grids via hash functions to enable accelerated rendering and object management in 3D environments.
 
@@ -128,7 +138,7 @@ Organizes graphical objects into spatial grids via hash functions to enable acce
 
 ## Example Programs
 
-## Max Distance Between Two Occurrences
+### A. Max Distance Between Two Occurrences
 
 Given an array `arr[]`, the task is to find the maximum distance between two occurrences of any element.
 
@@ -136,16 +146,16 @@ If no element occurs twice, return `0`.
 
 ---
 
-### Examples
+#### 1. Examples
 
-#### Example 1
+##### a. Example 1
 
 ```text
 Input: arr = [1, 1, 2, 2, 2, 1]
 Output: 5
 ```
 
-#### Explanation
+**Explanation**
 
 - Distance for `1` is `5 - 0 = 5`
 - Distance for `2` is `4 - 2 = 2`
@@ -154,14 +164,14 @@ So maximum distance is `5`.
 
 ---
 
-#### Example 2
+##### b. Example 2
 
 ```text
 Input: arr = [3, 2, 1, 2, 1, 4, 5, 8, 6, 7, 4, 2]
 Output: 10
 ```
 
-#### Explanation
+**Explanation**
 
 - Max distance for `2` is `11 - 1 = 10`
 - Max distance for `1` is `4 - 2 = 2`
@@ -169,20 +179,20 @@ Output: 10
 
 ---
 
-#### Example 3
+##### c. Example 3
 
 ```text
 Input: arr = [1, 2, 3, 6, 5, 4]
 Output: 0
 ```
 
-#### Explanation
+**Explanation**
 
 No element occurs twice, so maximum distance is `0`.
 
 ---
 
-### Naive Approach — Exploring All Pairs
+#### 2. Naive Approach — Exploring All Pairs
 
 - **Time Complexity:** `O(n²)`
 - **Space Complexity:** `O(1)`
@@ -306,7 +316,7 @@ if __name__ == "__main__":
 
 ---
 
-# Output
+**Output**
 
 ```text
 5
@@ -315,7 +325,7 @@ if __name__ == "__main__":
 
 ---
 
-## Using Hash Map or Dictionary
+#### 3. Using Hash Map or Dictionary
 
 - **Time Complexity:** `O(n)`
 - **Space Complexity:** `O(n)`
@@ -456,16 +466,15 @@ if __name__ == "__main__":
 
 ---
 
-# Output
+**Output**
 
 ```text
 5
 ```
 
-
 ---
 
-## Using Hash Map or Dictionary — O(n) Time and O(n) Space
+#### 4. Using Hash Map or Dictionary — O(n) Time and O(n) Space
 
 An efficient solution to this problem is to use hashing.
 
@@ -476,6 +485,7 @@ The idea is to:
 3. For every other occurrence:
    - Find the difference between the current index and the first index stored in the hash map
    - If the difference is greater than the current result, update the result
+
 <Tabs>
   <TabItem label="C++">
 
@@ -602,6 +612,7 @@ if __name__ == "__main__":
   </TabItem>
 </Tabs>
 
+---
 
 ## String
 
@@ -631,7 +642,7 @@ Examples:
 
 ---
 
-## Introduction to Strings
+### A. Introduction to Strings
 
 Strings are sequences of characters.
 
@@ -654,15 +665,15 @@ Examples of strings:
 
 ---
 
-## String Representation in Different Languages
+### B. String Representation in Different Languages
 
-### C
+#### 1. C
 
 Strings are declared as character arrays or pointers and must end with a null character `\0` to indicate termination.
 
 ---
 
-### C++
+#### 2. C++
 
 Supports both:
 
@@ -673,13 +684,13 @@ The `std::string` class provides built-in functions for string manipulation.
 
 ---
 
-### Java
+#### 3. Java
 
 Strings are immutable objects of the `String` class, meaning their values cannot be modified once assigned.
 
 ---
 
-### Python
+#### 4. Python
 
 Strings are immutable and can be declared using:
 
@@ -691,7 +702,7 @@ This makes them flexible for multi-line text handling.
 
 ---
 
-### JavaScript
+#### 5. JavaScript
 
 Strings are immutable primitive data types and can be defined using:
 
@@ -703,13 +714,13 @@ Template literals allow interpolation.
 
 ---
 
-### C#
+#### 6. C#
 
 Uses the `string` keyword, which represents an immutable sequence of characters similar to Java.
 
 ---
 
-### Important Note
+#### 7. Important Note
 
 There is no separate character type in:
 
@@ -718,9 +729,19 @@ There is no separate character type in:
 
 A single character is also considered a string.
 
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DSA/img2dsa.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "70%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
 ---
 
-## Character vs String
+### C. Character vs String
 
 | Feature | Character | String |
 |---|---|---|
@@ -736,9 +757,9 @@ A single character is also considered a string.
 
 ---
 
-## Examples
+### D. Examples
 
-## C++
+#### 1. C++
 
 ```cpp
 char ch = 'A';
@@ -747,7 +768,7 @@ string str = "Hello";
 
 ---
 
-## Java
+#### 2. Java
 
 ```java
 char ch = 'A';
@@ -756,7 +777,7 @@ String str = "Hello";
 
 ---
 
-## Python
+#### 3. Python
 
 ```python
 ch = 'A'
@@ -765,37 +786,31 @@ str1 = "Hello"
 
 ---
 
-## String Initialization
+### E. String Initialization
 
 String initialization means creating and assigning a value to a string variable.
 
 ---
 
-## Types of String Initialization
+#### 1. Types of String Initialization
 
-### 1. Direct Initialization
+##### a. Direct Initialization
 
 The string value is assigned directly.
 
----
-
-### C++
+**C++**
 
 ```cpp
 string str = "Hello";
 ```
 
----
-
-### Java
+**Java**
 
 ```java
 String str = "Hello";
 ```
 
----
-
-### Python
+**Python**
 
 ```python
 str1 = "Hello"
@@ -803,29 +818,23 @@ str1 = "Hello"
 
 ---
 
-## 2. Using Constructor
+##### b. Using Constructor
 
 A string object is created using constructors.
 
----
-
-### C++
+**C++**
 
 ```cpp
 string str("Hello");
 ```
 
----
-
-## Java
+**Java**
 
 ```java
 String str = new String("Hello");
 ```
 
----
-
-## Python
+**Python**
 
 ```python
 str1 = str("Hello")
@@ -833,17 +842,15 @@ str1 = str("Hello")
 
 ---
 
-## Immutable vs Mutable Strings
+### F. Immutable vs Mutable Strings
 
-### Immutable String
+#### 1. Immutable String
 
 An immutable string cannot be changed after creation.
 
 If modification is attempted, a new object is created.
 
----
-
-### Example
+**Example**
 
 ```java
 String str = "Hello";
@@ -855,9 +862,9 @@ System.out.println(str);
 
 ---
 
-## Why Strings are Immutable
+#### 2. Why Strings are Immutable
 
-### Advantages
+##### a. Advantages
 
 - Security
 - Thread safety
@@ -866,9 +873,9 @@ System.out.println(str);
 
 ---
 
-## Mutable Strings in Java
+#### 3. Mutable Strings in Java
 
-## StringBuilder
+##### a. StringBuilder
 
 ```java
 StringBuilder sb = new StringBuilder("Hello");
@@ -878,9 +885,7 @@ sb.append(" World");
 System.out.println(sb);
 ```
 
----
-
-### Output
+**Output**
 
 ```text
 Hello World
@@ -888,7 +893,7 @@ Hello World
 
 ---
 
-## Difference Between Immutable and Mutable Strings
+#### 4. Difference Between Immutable and Mutable Strings
 
 | Feature | Immutable String | Mutable String |
 |---|---|---|
@@ -900,7 +905,7 @@ Hello World
 
 ---
 
-### Are Strings Mutable in Different Languages?
+#### 5. Are Strings Mutable in Different Languages?
 
 - In C/C++, string literals assigned to pointers are immutable
 - In C++, string objects are mutable
@@ -908,9 +913,9 @@ Hello World
 
 ---
 
-## General Operations Performed on Strings
+### G. General Operations Performed on Strings
 
-### 1. Length of String
+#### 1. Length of String
 
 The length of a string refers to the total number of characters present in it, including:
 
@@ -927,7 +932,7 @@ It is a fundamental property of strings and is often used in:
 
 ---
 
-### 2. Search a Character
+#### 2. Search a Character
 
 Searching for a character in a string means finding the position where a specific character appears.
 
@@ -939,7 +944,7 @@ If the character appears multiple times, you may need:
 
 ---
 
-### 3. Check for Substring
+#### 3. Check for Substring
 
 Checking for a substring means determining whether a smaller sequence of characters exists within a larger string.
 
@@ -953,7 +958,7 @@ This operation is common in:
 
 ---
 
-### 3. Insert a Character
+#### 4. Insert a Character
 
 Inserting a character into a string means adding a new character at a specific position while maintaining the original order.
 
@@ -961,7 +966,7 @@ Since strings are immutable in many languages, this operation usually creates a 
 
 ---
 
-### 4. Delete a Character
+#### 5. Delete a Character
 
 Deleting a character from a string means removing a specific character at a given position while keeping the remaining characters intact.
 
@@ -969,7 +974,7 @@ This generally creates a new string.
 
 ---
 
-### 5. Check for Same Strings
+#### 6. Check for Same Strings
 
 Checking if two strings are the same means comparing them character by character.
 
@@ -981,7 +986,7 @@ They are considered identical if:
 
 ---
 
-### 6. String Concatenation
+#### 7. String Concatenation
 
 String concatenation is the process of joining two or more strings together to form a single string.
 
@@ -994,7 +999,7 @@ Used in:
 
 ---
 
-### 7.  Reverse a String
+#### 8. Reverse a String
 
 Reversing a string means arranging its characters in the opposite order.
 
@@ -1006,7 +1011,7 @@ Commonly used in:
 
 ---
 
-### 8. Rotate a String
+#### 9. Rotate a String
 
 Rotating a string means shifting its characters to the left or right by a specified number of positions.
 
@@ -1014,7 +1019,7 @@ Characters moving past the boundary wrap around to the opposite side.
 
 ---
 
-### 9. Check for Palindrome
+#### 10. Check for Palindrome
 
 Checking for a palindrome means determining whether a string reads the same forward and backward.
 
@@ -1028,7 +1033,7 @@ Useful in:
 
 ---
 
-## Important Methods
+### H. Important Methods
 
 | Method | Description |
 |---|---|
@@ -1044,8 +1049,7 @@ Useful in:
 | `capacity()` | Current storage capacity |
 | `toString()` | Convert to normal string |
 
-
-### 1. append()
+#### 1. append()
 
 Adds text at the end.
 
@@ -1057,7 +1061,7 @@ sb.append(" World");
 System.out.println(sb);
 ```
 
-## Output
+**Output**
 
 ```text
 Hello World
@@ -1065,7 +1069,7 @@ Hello World
 
 ---
 
-### 2. insert()
+#### 2. insert()
 
 Insert text at a specific index.
 
@@ -1077,7 +1081,7 @@ sb.insert(3, "l");
 System.out.println(sb);
 ```
 
-### Output
+**Output**
 
 ```text
 Hello
@@ -1085,7 +1089,7 @@ Hello
 
 ---
 
-### 3. delete()
+#### 3. delete()
 
 Delete characters between indices.
 
@@ -1097,7 +1101,7 @@ sb.delete(5, 11);
 System.out.println(sb);
 ```
 
-### Output
+**Output**
 
 ```text
 Hello
@@ -1105,7 +1109,7 @@ Hello
 
 ---
 
-### 4. reverse()
+#### 4. reverse()
 
 Reverse the string.
 
@@ -1117,7 +1121,7 @@ sb.reverse();
 System.out.println(sb);
 ```
 
-### Output
+**Output**
 
 ```text
 olleH
@@ -1125,7 +1129,7 @@ olleH
 
 ---
 
-### 5. replace()
+#### 5. replace()
 
 Replace characters.
 
@@ -1137,7 +1141,7 @@ sb.replace(1, 4, "abc");
 System.out.println(sb);
 ```
 
-### Output
+**Output**
 
 ```text
 Habco
@@ -1145,7 +1149,7 @@ Habco
 
 ---
 
-### 6. setCharAt()
+#### 6. setCharAt()
 
 Modify a character.
 
@@ -1157,7 +1161,7 @@ sb.setCharAt(0, 'Y');
 System.out.println(sb);
 ```
 
-### Output
+**Output**
 
 ```text
 Yello
@@ -1165,7 +1169,7 @@ Yello
 
 ---
 
-## String Traversal
+### I. String Traversal
 
 String traversal means visiting or accessing each character of a string one by one.
 
@@ -1179,7 +1183,7 @@ It is commonly used for:
 
 ---
 
-## Accessing Characters
+#### 1. Accessing Characters
 
 Characters in a string are accessed using index values.
 
@@ -1187,9 +1191,7 @@ Characters in a string are accessed using index values.
 - First character → index `0`
 - Last character → `length - 1`
 
----
-
-### Example String
+**Example String**
 
 ```text
 HELLO
@@ -1240,21 +1242,22 @@ print(str1[4])
 
 ---
 
-# Output
+**Output**
 
 ```text
 H
 O
 ```
+
 ---
 
-## Looping Through String
+#### 2. Looping Through String
 
 Looping means accessing every character one by one using loops.
 
 ---
 
-### 1. Forward Traversal
+##### a. Forward Traversal
 
 Traversing the string from:
 
@@ -1302,7 +1305,7 @@ for i in range(len(str1)):
 
 ---
 
-# Output
+**Output**
 
 ```text
 H
@@ -1312,10 +1315,9 @@ L
 O
 ```
 
-
 ---
 
-## 2. Reverse Traversal
+##### b. Reverse Traversal
 
 Traversing the string from:
 
@@ -1363,7 +1365,7 @@ for i in range(len(str1)-1, -1, -1):
 
 ---
 
-# Output
+**Output**
 
 ```text
 O
@@ -1375,14 +1377,13 @@ H
 
 ---
 
-
-## String Operations
+### J. String Operations
 
 String operations are the actions performed on strings to manipulate, process, compare, or analyze text data.
 
 ---
 
-## Definition Table of String Operations
+#### 1. Definition Table of String Operations
 
 | Operation | Definition |
 |---|---|
@@ -1396,7 +1397,7 @@ String operations are the actions performed on strings to manipulate, process, c
 | Reverse a String | Reverses the order of characters in the string |
 | Generate all Substrings | Produces all possible smaller strings from the original string |
 
-### 1. Length of a String
+#### 2. Length of a String
 
 Returns the total number of characters in a string.
 
@@ -1434,14 +1435,13 @@ print(len(str1))
 
 ---
 
-# Output
+**Output**
 
 ```text
 5
 ```
 
-
-### 2. Check for Same
+#### 3. Check for Same
 
 Checks whether two strings are equal.
 
@@ -1485,7 +1485,7 @@ print(str1 == str2)
 
 ---
 
-# Output
+**Output**
 
 ```text
 true
@@ -1493,8 +1493,7 @@ true
 
 ---
 
-
-### 3. Search a Character
+#### 4. Search a Character
 
 Finds the position/index of a character.
 
@@ -1532,7 +1531,7 @@ print(str1.find('l'))
 
 ---
 
-# Output
+**Output**
 
 ```text
 2
@@ -1540,8 +1539,7 @@ print(str1.find('l'))
 
 ---
 
-
-### 4. Insert a Character
+#### 5. Insert a Character
 
 Adds a character at a specific position.
 
@@ -1587,7 +1585,7 @@ print(str1)
 
 ---
 
-# Output
+**Output**
 
 ```text
 Hello
@@ -1595,8 +1593,7 @@ Hello
 
 ---
 
-
-### 5. Remove a Character
+#### 6. Remove a Character
 
 Removes a character from a string.
 
@@ -1640,7 +1637,7 @@ print(str1)
 
 ---
 
-# Output
+**Output**
 
 ```text
 Hllo
@@ -1648,8 +1645,7 @@ Hllo
 
 ---
 
-
-### 6. Remove all Occurrences
+#### 7. Remove all Occurrences
 
 Removes all occurrences of a character.
 
@@ -1694,7 +1690,7 @@ print(str1)
 
 ---
 
-# Output
+**Output**
 
 ```text
 bnn
@@ -1702,8 +1698,7 @@ bnn
 
 ---
 
-
-### 7. Concatenating Two Strings
+#### 8. Concatenating Two Strings
 
 Joining two strings together.
 
@@ -1744,7 +1739,7 @@ print(str1 + " " + str2)
 
 ---
 
-# Output
+**Output**
 
 ```text
 Hello World
@@ -1752,8 +1747,7 @@ Hello World
 
 ---
 
-
-### 8. Reverse a String
+#### 9. Reverse a String
 
 Reverses the order of characters.
 
@@ -1800,7 +1794,7 @@ print(str1[::-1])
 
 ---
 
-# Output
+**Output**
 
 ```text
 olleH
@@ -1808,14 +1802,13 @@ olleH
 
 ---
 
-
-### 9. Generate all Substrings
+#### 10. Generate all Substrings
 
 A substring is a part of a string.
 
 ---
 
-### Example
+**Example**
 
 ```text
 String = "ABC"
@@ -1876,8 +1869,9 @@ for i in range(len(str1)):
   </TabItem>
 </Tabs>
 
+---
 
-## Check if given String is Pangram or not
+### K. Check if given String is Pangram or not
 
 Given a string `s`, check if it is Pangram or not.
 
@@ -1885,9 +1879,9 @@ A pangram is a sentence containing all letters of the English alphabet.
 
 ---
 
-### Examples
+#### 1. Examples
 
-#### Example 1
+##### a. Example 1
 
 ```text
 Input:
@@ -1897,13 +1891,13 @@ Output:
 true
 ```
 
-### Explanation
+**Explanation**
 
 The input string contains all characters from `'a'` to `'z'`.
 
 ---
 
-## Example 2
+##### b. Example 2
 
 ```text
 Input:
@@ -1913,7 +1907,7 @@ Output:
 false
 ```
 
-### Explanation
+**Explanation**
 
 The input string does not contain all characters from `'a'` to `'z'`, as `'l'`, `'z'`, `'y'` are missing.
 
@@ -2041,7 +2035,9 @@ if __name__ == "__main__":
   </TabItem>
 </Tabs>
 
-## String Matching Algorithms
+---
+
+### L. String Matching Algorithms
 
 String Matching Algorithms are used to find whether a pattern (substring) exists inside a main string (text).
 
@@ -2055,7 +2051,7 @@ They are widely used in:
 
 ---
 
-### Types of String Matching Algorithms
+#### 1. Types of String Matching Algorithms
 
 | Algorithm | Idea |
 |---|---|
@@ -2067,7 +2063,7 @@ They are widely used in:
 
 ---
 
-### Rabin-Karp Algorithm for Pattern Searching
+#### 2. Rabin-Karp Algorithm for Pattern Searching
 
 Given two strings:
 
@@ -2078,9 +2074,9 @@ Find all `0-based` starting indices where the pattern occurs in the text.
 
 ---
 
-### Examples
+##### a. Examples
 
-#### Example 1
+**Example 1**
 
 ```text
 Input:
@@ -2091,13 +2087,23 @@ Output:
 [0, 8]
 ```
 
-### Explanation
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DSA/img3dsa.webp?raw=true"
+  alt="Diagram"
+  style={{
+    width: "70%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+**Explanation**
 
 The string `"geeks"` occurs at index `0` and `8`.
 
 ---
 
-#### Example 2
+**Example 2**
 
 ```text
 Input:
@@ -2110,7 +2116,7 @@ Output:
 
 ---
 
-### How is Hash Value Calculated in Rabin-Karp?
+##### b. How is Hash Value Calculated in Rabin-Karp?
 
 The hash value is calculated using a **rolling hash function**.
 
@@ -2123,7 +2129,7 @@ This avoids recalculating the entire hash from scratch.
 
 ---
 
-### Hash Formula
+##### c. Hash Formula
 
 For a string `s` of length `m`:
 
@@ -2136,7 +2142,7 @@ s[m-1] \times d^0) \bmod q
 
 ---
 
-### Where
+**Where**
 
 - `s[i]` → ASCII value of character
 - `d` → size of input alphabet (`256` for ASCII)
@@ -2149,7 +2155,7 @@ Using modulo:
 
 ---
 
-### Rolling Hash Formula
+##### d. Rolling Hash Formula
 
 Suppose we know the hash for substring:
 
@@ -2165,7 +2171,7 @@ s[i ... j]
 
 ---
 
-### Previous Hash
+**Previous Hash**
 
 ```math
 (s[i-1] \times d^{m-1} +
@@ -2175,7 +2181,7 @@ s[j-1] \times d^0) \bmod q
 
 ---
 
-### New Hash
+**New Hash**
 
 ```math
 (s[i] \times d^{m-1} +
@@ -2185,7 +2191,7 @@ s[j] \times d^0) \bmod q
 
 ---
 
-### Rolling Hash Update
+**Rolling Hash Update**
 
 ```math
 hash(i, j) =
@@ -2196,7 +2202,7 @@ hash(i, j) =
 
 ---
 
-## Steps in Rabin-Karp
+##### e. Steps in Rabin-Karp
 
 1. Choose base `d`
 2. Choose prime modulus `q`
@@ -2209,7 +2215,7 @@ hash(i, j) =
 
 ---
 
-## Rabin-Karp Implementation
+##### f. Rabin-Karp Implementation
 
 <Tabs>
   <TabItem label="C++">
@@ -2455,7 +2461,7 @@ if __name__ == "__main__":
 
 ---
 
-## KMP Algorithm
+#### 3. KMP Algorithm
 
 Given two strings:
 
@@ -2466,9 +2472,9 @@ Return all indices where `pat` occurs in `txt`.
 
 ---
 
-### Examples
+##### a. Examples
 
-#### Example 1
+**Example 1**
 
 ```text
 Input:
@@ -2481,7 +2487,7 @@ Output:
 
 ---
 
-#### Example 2
+**Example 2**
 
 ```text
 Input:
@@ -2491,10 +2497,18 @@ pat = "aaba"
 Output:
 [0, 9, 12]
 ```
-
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DSA/img4dsa.webp?raw=true"
+  alt="Diagram"
+  style={{
+    width: "70%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 ---
 
-#### Why KMP?
+##### b. Why KMP?
 
 Naive pattern matching becomes inefficient when the pattern contains repeating characters.
 
@@ -2516,7 +2530,7 @@ O(n + m)
 
 ---
 
-## Core Idea of KMP
+##### c. Core Idea of KMP
 
 When mismatch occurs after some matches:
 
@@ -2531,13 +2545,11 @@ LPS Array
 
 ---
 
-# What is LPS?
+##### d. What is LPS?
 
 LPS = Longest Proper Prefix which is also Suffix.
 
----
-
-# Example
+**Example**
 
 For pattern:
 
@@ -2553,9 +2565,9 @@ LPS:
 
 ---
 
-### Important Definitions
+##### e. Important Definitions
 
-#### Proper Prefix
+**Proper Prefix**
 
 A prefix excluding the whole string.
 
@@ -2573,7 +2585,7 @@ Proper Prefixes:
 
 ---
 
-#### Suffixes
+**Suffixes**
 
 For `"abc"`:
 
@@ -2583,7 +2595,7 @@ For `"abc"`:
 
 ---
 
-### LPS Formula
+**LPS Formula**
 
 ```text
 lps[i] =
@@ -2594,7 +2606,7 @@ for pat[0...i]
 
 ---
 
-## Example 1 — Pattern "aabaaac"
+##### f. Example 1 — Pattern "aabaaac"
 
 | Index | LPS Value |
 |---|---|
@@ -2614,7 +2626,7 @@ Final LPS:
 
 ---
 
-# Example 2 — Pattern "abcdabca"
+##### g. Example 2 — Pattern "abcdabca"
 
 Final LPS:
 
@@ -2624,7 +2636,7 @@ Final LPS:
 
 ---
 
-# More Examples of LPS
+##### h. More Examples of LPS
 
 ```text
 Pattern = "AAAA"
@@ -2639,9 +2651,9 @@ LPS     = [0, 1, 0, 1, 2, 0, 1, 2, 3, 4, 5]
 
 ---
 
-## Construction of LPS Array
+##### i. Construction of LPS Array
 
-#### Case 1
+**Case 1**
 
 ```text
 pat[i] == pat[len]
@@ -2651,7 +2663,7 @@ Increase length.
 
 ---
 
-## Case 2
+**Case 2**
 
 ```text
 pat[i] != pat[len]
@@ -2666,7 +2678,7 @@ lps[i] = 0
 
 ---
 
-## Case 3
+**Case 3**
 
 ```text
 pat[i] != pat[len]
@@ -2681,7 +2693,7 @@ len = lps[len - 1]
 
 ---
 
-# KMP Implementation
+##### j. KMP Implementation
 
 <Tabs>
   <TabItem label="C++">
@@ -2951,7 +2963,7 @@ if __name__ == "__main__":
 
 ---
 
-### Introduction to Divide and Conquer Algorithm
+## Introduction to Divide and Conquer Algorithm
 
 Divide and Conquer is a problem-solving technique used to solve problems by:
 
@@ -2961,7 +2973,7 @@ Divide and Conquer is a problem-solving technique used to solve problems by:
 
 ---
 
-### When to Use Divide and Conquer
+### A. When to Use Divide and Conquer
 
 It works best when:
 
@@ -2973,7 +2985,7 @@ If subproblems overlap heavily:
 
 ---
 
-### Steps in Divide and Conquer
+### B. Steps in Divide and Conquer
 
 Divide and Conquer consists of three phases:
 
@@ -2981,13 +2993,19 @@ Divide and Conquer consists of three phases:
 2. Conquer
 3. Merge
 
-## Divide and Conquer Algorithm
-
-The above diagram shows the working of **Merge Sort**, which is used for sorting.
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DSA/img5dsa.webp?raw=true"
+  alt="Diagram"
+  style={{
+    width: "70%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
 ---
 
-### 1. Divide
+#### 1. Divide
 
 Break down the original problem into smaller subproblems.
 
@@ -2997,7 +3015,7 @@ The goal is to divide the problem until no further division is possible.
 
 ---
 
-### Example in Merge Sort
+##### a. Example in Merge Sort
 
 In Merge Sort:
 
@@ -3007,7 +3025,7 @@ The divide step in Merge Sort is simple.
 
 ---
 
-### Example in Quick Sort
+##### b. Example in Quick Sort
 
 In Quick Sort:
 
@@ -3016,7 +3034,7 @@ In Quick Sort:
 
 ---
 
-## 2. Conquer
+#### 2. Conquer
 
 Solve each smaller subproblem individually.
 
@@ -3026,7 +3044,7 @@ The goal is to solve subproblems independently.
 
 ---
 
-### Example in Merge Sort
+##### a. Example in Merge Sort
 
 The conquer step is:
 
@@ -3034,7 +3052,7 @@ The conquer step is:
 
 ---
 
-## 3. Merge
+#### 3. Merge
 
 Combine the solved subproblems to get the final solution.
 
@@ -3042,7 +3060,7 @@ Once smaller subproblems are solved, recursively combine them to solve the large
 
 ---
 
-### Example in Merge Sort
+##### a. Example in Merge Sort
 
 The merge step:
 
@@ -3052,7 +3070,7 @@ The merge step is critical in Merge Sort.
 
 ---
 
-### Example in Quick Sort
+##### b. Example in Quick Sort
 
 In Quick Sort:
 
@@ -3061,7 +3079,7 @@ In Quick Sort:
 
 ---
 
-## Characteristics of Divide and Conquer Algorithm
+### C. Characteristics of Divide and Conquer Algorithm
 
 Divide and Conquer works by:
 
@@ -3071,13 +3089,13 @@ Divide and Conquer works by:
 
 ---
 
-### 1. Dividing the Problem
+#### 1. Dividing the Problem
 
 The problem is broken into smaller subproblems recursively until they become simple enough to solve directly.
 
 ---
 
-### 2. Independence of Subproblems
+#### 2. Independence of Subproblems
 
 Each subproblem should be independent.
 
@@ -3089,7 +3107,7 @@ Benefits:
 
 ---
 
-### 3. Conquering Each Subproblem
+#### 3. Conquering Each Subproblem
 
 Each smaller problem is solved individually.
 
@@ -3100,7 +3118,7 @@ This may involve:
 
 ---
 
-### 4. Combining Solutions
+#### 4. Combining Solutions
 
 Solutions of smaller subproblems are combined to solve the original problem.
 
@@ -3111,15 +3129,15 @@ The combination step should be:
 
 ---
 
-## Examples of Divide and Conquer Algorithm
+### D. Examples of Divide and Conquer Algorithm
 
-### 1. Merge Sort
+#### 1. Merge Sort
 
 Merge Sort divides the array into smaller subarrays, sorts them individually and merges them.
 
 ---
 
-### 2. Quick Sort
+#### 2. Quick Sort
 
 Quick Sort:
 
@@ -3130,11 +3148,9 @@ Quick Sort:
 
 ---
 
-# Applications of Divide and Conquer Algorithm
+### E. Applications of Divide and Conquer Algorithm
 
----
-
-### Binary Search
+#### 1. Binary Search
 
 Binary Search repeatedly divides the search interval in half.
 
@@ -3146,19 +3162,19 @@ O(log n)
 
 ---
 
-### Quick Sort
+#### 2. Quick Sort
 
 Quick Sort recursively partitions arrays around a pivot.
 
 ---
 
-### Merge Sort
+#### 3. Merge Sort
 
 Merge Sort divides arrays into halves and merges sorted halves.
 
 ---
 
-### Closest Pair of Points
+#### 4. Closest Pair of Points
 
 Finds the closest pair of points in a plane.
 
@@ -3176,7 +3192,7 @@ O(n log n)
 
 ---
 
-### Strassen's Algorithm
+#### 5. Strassen's Algorithm
 
 Efficient matrix multiplication algorithm.
 
@@ -3186,7 +3202,7 @@ Normal multiplication:
 O(n³)
 ```
 
-Strassen’s complexity:
+Strassen's complexity:
 
 ```text
 O(n^2.8974)
@@ -3194,7 +3210,7 @@ O(n^2.8974)
 
 ---
 
-### FFT Algorithm
+#### 6. FFT Algorithm
 
 Cooley–Tukey FFT uses Divide and Conquer.
 
@@ -3206,7 +3222,7 @@ O(N log N)
 
 ---
 
-### Karatsuba Algorithm
+#### 7. Karatsuba Algorithm
 
 Fast multiplication algorithm for binary strings.
 
@@ -3218,11 +3234,9 @@ O(n^1.59)
 
 ---
 
-## Advantages of Divide and Conquer Algorithm
+### F. Advantages of Divide and Conquer Algorithm
 
----
-
-### 1. Solving Difficult Problems
+#### 1. Solving Difficult Problems
 
 Breaks difficult problems into manageable parts.
 
@@ -3234,7 +3248,7 @@ Tower of Hanoi
 
 ---
 
-### 2. Efficient Algorithms
+#### 2. Efficient Algorithms
 
 Helps create efficient algorithms like:
 
@@ -3244,7 +3258,7 @@ Helps create efficient algorithms like:
 
 ---
 
-### 3. Parallelism
+#### 3. Parallelism
 
 Subproblems can run on different processors simultaneously.
 
@@ -3254,7 +3268,7 @@ Useful in:
 
 ---
 
-### 4. Efficient Memory Access
+#### 4. Efficient Memory Access
 
 Smaller subproblems fit into cache memory efficiently.
 
@@ -3266,29 +3280,27 @@ Cache Oblivious Algorithms
 
 ---
 
-## Disadvantages of Divide and Conquer Algorithm
+### G. Disadvantages of Divide and Conquer Algorithm
 
----
-
-### 1. Overhead
+#### 1. Overhead
 
 Dividing and combining problems may require extra resources.
 
 ---
 
-### 2. Increased Complexity
+#### 2. Increased Complexity
 
 Some problems become more complex after division.
 
 ---
 
-### 3. Difficult Implementation
+#### 3. Difficult Implementation
 
 Some problems are hard to divide properly.
 
 ---
 
-### 4. Memory Limitations
+#### 4. Memory Limitations
 
 Large datasets may require significant memory for intermediate results.
 
@@ -3311,9 +3323,9 @@ n × q
 
 ---
 
-### Examples
+### A. Examples
 
-#### Example 1
+#### 1. Example 1
 
 ```text
 Input:
@@ -3341,7 +3353,7 @@ Output:
 
 ---
 
-### Explanation
+**Explanation**
 
 Matrix multiplication is performed using:
 
@@ -3352,7 +3364,7 @@ Dot products are computed for every cell.
 
 ---
 
-### Example 2
+#### 2. Example 2
 
 ```text
 Input:
@@ -3379,9 +3391,9 @@ Output:
 
 ---
 
-## Approach 1 — Using Nested Loops
+### B. Approach 1 — Using Nested Loops
 
-#### Complexity
+**Complexity**
 
 ```text
 Time Complexity  : O(n × m × q)
@@ -3390,7 +3402,7 @@ Space Complexity : O(n × q)
 
 ---
 
-### Idea
+#### 1. Idea
 
 The algorithm:
 
@@ -3400,7 +3412,7 @@ The algorithm:
 
 ---
 
-## Matrix Multiplication Implementation
+#### 2. Matrix Multiplication Implementation
 
 <Tabs>
   <TabItem label="C++">
@@ -3601,9 +3613,7 @@ if __name__ == "__main__":
   </TabItem>
 </Tabs>
 
----
-
-# Output
+**Output**
 
 ```text
 58 64
@@ -3612,18 +3622,17 @@ if __name__ == "__main__":
 
 ---
 
-## Approach 2 — Using Divide and Conquer
+### C. Approach 2 : Using Divide and Conquer
 
-### Complexity
+**Complexity**
 
 ```text
 Time Complexity  : O(n × m × q)
 Space Complexity : O(n × q)
 ```
-
 ---
 
-### Idea
+#### 1. Idea
 
 The algorithm:
 
@@ -3631,9 +3640,20 @@ The algorithm:
 2. Computes dot products
 3. Stores values in result matrix
 
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DSA/img6dsa.webp?raw=true"
+  alt="Diagram"
+  style={{
+    width: "70%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+
 ---
 
-### Divide and Conquer Matrix Multiplication
+#### 2. Divide and Conquer Matrix Multiplication
 
 <Tabs>
   <TabItem label="C++">
@@ -3912,15 +3932,18 @@ if __name__ == "__main__":
 
 ---
 
-### Output
+**Output**
 
 ```text
 58 64
 139 154
 ```
-## [Approach 3] — Using Strassen's Method
 
-Strassen’s algorithm originally applies to square matrices, but when adapted for multiplying an `n × m` matrix with an `m × q` matrix, the matrices are padded to form square matrices of size:
+---
+
+### D. Approach 3 — Using Strassen's Method
+
+Strassen's algorithm originally applies to square matrices, but when adapted for multiplying an `n × m` matrix with an `m × q` matrix, the matrices are padded to form square matrices of size:
 
 ```math
 s \times s
@@ -3934,17 +3957,24 @@ s = \text{next power of two} \ge \max(n, m, q)
 
 The algorithm then performs:
 
-```text
 7 recursive multiplications
-```
-
 on square blocks.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DSA/img7dsa.webp?raw=true"
+  alt="Diagram"
+  style={{
+    width: "70%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
 ---
 
-### Important Note
+#### 1. Important Note
 
-Strassen’s Method is often not preferred in practice because:
+Strassen's Method is often not preferred in practice because:
 
 - High constant factors
 - Naive multiplication is faster for small matrices
@@ -3954,7 +3984,7 @@ Strassen’s Method is often not preferred in practice because:
 
 ---
 
-## Strassen's Matrix Multiplication
+#### 2. Strassen's Matrix Multiplication
 
 <Tabs>
   <TabItem label="C++">
@@ -4676,8 +4706,3 @@ if __name__ == "__main__":
 
   </TabItem>
 </Tabs>
-
----
-
-
-
