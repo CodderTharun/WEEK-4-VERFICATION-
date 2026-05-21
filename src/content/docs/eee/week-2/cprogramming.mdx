@@ -5,12 +5,12 @@ description: DC motors and generators
 
 ## Loops
 
-In C programming, loops are essential for executing a specific block of code repeatedly. For instance, rather than manually writing a printf() statement three separate times to display text, one can utilize looping constructs to handle much larger repetitions. Manually typing statements 100 or 1,000 times is inefficient and impractical; loops provide a programmatic solution to automate these redundant tasks efficiently.
+In C programming, loops are essential for executing a specific block of code repeatedly. For instance, rather than manually writing a printf() statement three separate times to display text,
+one can utilize looping constructs to handle much larger repetitions. Manually typing statements 100 or 1,000 times is inefficient and impractical; loops provide a programmatic solution to automate these redundant tasks efficiently.
 
 ### A. Loop Classifications in C
 
 Loops facilitate the execution of a statement or group of statements multiple times until a predefined condition is satisfied. This eliminates the need for code duplication and streamlines the programming process.
-
 C provides three primary types of looping statements:
 
 #### 1. For Loop
@@ -27,10 +27,10 @@ for (initialization; condition; updation) {
 
 The various parts of the for loop are:
 
-- **Initialization**: Initialize the variable to some initial value.
-- **Test Condition**: This specifies the test condition. If the condition evaluates to true, then body of the loop is executed. If evaluated false, loop is terminated.
-- **Update Expression**: After the execution loop's body, this expression increments/decrements the loop variable by some value.
-- **Body of Loop**: Statements to repeat. Generally enclosed inside {} braces.
+- **Initialization:** Initialize the variable to some initial value.
+- **Test Condition:** This specifies the test condition. If the condition evaluates to true, then body of the loop is executed. If evaluated false, loop is terminated.
+- **Update Expression:** After the execution loop's body, this expression increments/decrements the loop variable by some value.
+- **Body of Loop:** Statements to repeat. Generally enclosed inside `{}` braces.
 
 **Example:**
 
@@ -51,6 +51,8 @@ int main()
 ```
 1 2 3 4 5
 ```
+
+**Flowchart of for Loop**
 
 #### 2. While Loop
 
@@ -88,6 +90,8 @@ int main() {
 ```
 1 2 3 4 5 6
 ```
+
+**Flowchart of while Loop**
 
 #### 3. Do While Loop
 
@@ -127,6 +131,10 @@ int main() {
 0 1 2 3 4 5 6 7 8 9 10
 ```
 
+**Flowchart of do-while Loop**
+
+---
+
 ### B. Nested Loops
 
 Nested loops in C programming occur when one loop is defined within the body of another. In this structure, the inner loop completes its full cycle for every single iteration of the outer loop. This logic is particularly advantageous for managing multidimensional data structures, such as two-dimensional arrays, or for executing complex repetitive tasks that necessitate hierarchical layers of iteration.
@@ -161,12 +169,14 @@ i = 2, j = 0
 i = 2, j = 1
 ```
 
+---
+
 ### C. Loop Control Statements
 
 Within the C programming language, loop control statements are utilized to alter the standard sequence of execution. These constructs allow developers to deviate from the linear flow of a loop based on specific criteria.
 
-| **Name** | **Description** |
-|----------|----------------|
+| Name | Description |
+|------|-------------|
 | **break** | The break statement provides a mechanism to immediately terminate a loop construct. |
 | **continue** | Executing a continue statement bypasses the remaining statements in the loop body and initiates the next iteration. |
 | **goto** | The goto statement facilitates a jump in program control to a specifically labeled statement. |
@@ -187,6 +197,7 @@ int main() {
 
    for (int i = 0; i < 5; i++) {
        if (i == 3) {
+
            // Skip the current iteration
            // when i equals 3
            continue; 
@@ -196,6 +207,7 @@ int main() {
    printf("\n");
    for (int i = 0; i < 5; i++) {
        if (i == 3) {
+
            // Jump to the skip label when
            // i equals 3
            goto skip;
@@ -222,19 +234,19 @@ Jumped to the 'skip' label when i equals 3.
 ## Functions and Recursion
 
 In C programming, a function represents a designated block of code engineered to execute a particular operation. These constructs can accept input values known as parameters, process a sequence of statements, and may provide a resulting value back to the caller.
+Functions empower developers to implement logic once and invoke it repeatedly across the program as required.
+This modular approach promotes clean, structured code that is significantly more legible and maintainable.
 
-Functions empower developers to implement logic once and invoke it repeatedly across the program as required. This modular approach promotes clean, structured code that is significantly more legible and maintainable.
-
-### A. Function Operational Logic in C
+**Function Operational Logic in C:**
 
 **Function Syntax**
 
-- **Return Type**: Defines the data type of the value the function outputs; use void if no value is returned.
-- **Function Name**: A distinct identifier for the function, adhering to standard variable naming conventions.
-- **Parameter List**: A collection of inputs supplied to the function; can be left empty or declared as void if unnecessary.
-- **Function Body**: The internal block of code, encapsulated within braces { }, that executes upon invocation.
+- **Return Type:** Defines the data type of the value the function outputs; use void if no value is returned.
+- **Function Name:** A distinct identifier for the function, adhering to standard variable naming conventions.
+- **Parameter List:** A collection of inputs supplied to the function; can be left empty or declared as void if unnecessary.
+- **Function Body:** The internal block of code, encapsulated within braces `{ }`, that executes upon invocation.
 
-#### 1. Function Declaration
+**Function Declaration**
 
 A declaration informs the compiler of the function's name, return type, and parameters prior to its utilization, omitting the actual body. This is typically situated at the beginning of the source file or within a header.
 
@@ -243,7 +255,7 @@ A declaration informs the compiler of the function's name, return type, and para
 int add(int a, int b); 
 ```
 
-#### 2. Function Definition
+**Function Definition**
 
 A definition constitutes the comprehensive implementation, providing the specific logic that runs when the function is triggered.
 
@@ -253,13 +265,12 @@ int add(int a, int b) {
 }
 ```
 
-#### 3. Necessity of Declaration
+**Necessity of Declaration:**
 
 Should a function be defined subsequent to the main function or any other calling function, a prior declaration is mandatory. This allows the compiler to validate the function and ensure syntactical accuracy.
-
 Essentially, the declaration serves as an introduction to the compiler, while the definition details the actual execution logic.
 
-#### 4. Calling a Function
+**Calling a Function**
 
 Following its definition, a function is invoked by referencing its name followed by parentheses, which signals the program to execute its internal block of code.
 
@@ -287,29 +298,43 @@ The sum is: 8
 ```
 
 In this instance, the function add is executed with arguments 5 and 3. The function performs the summation logic and returns the resulting value, which is subsequently assigned to the variable result.
-
 Functions may be invoked multiple times from within main or other functions, serving to eliminate code redundancy and maintain a streamlined, logical program structure.
 
-### B. Function Classifications in C
+---
+
+### A. Function Classifications in C
 
 Within the C programming environment, functions are generally categorized into two primary groups: library functions and user-defined functions. Depending on their specific input and output handling, user-defined constructs can be further differentiated into several distinct types.
 
 #### 1. Library Functions
 
-These comprise the built-in operations provided by the C standard, such as printf(), scanf(), and sqrt(). Utilization requires the inclusion of the relevant header file, such as #include \<stdio.h\> or #include \<math.h\>.
+These comprise the built-in operations provided by the C standard, such as printf(), scanf(), and sqrt(). Utilization requires the inclusion of the relevant header file, such as `#include <stdio.h>` or `#include <math.h>`.
 
 #### 2. User-Defined Functions
 
 These are modular blocks developed by the programmer to execute specialized logic. Based on their parameter requirements and return capabilities, they are classified into four variations:
 
-- **No arguments, no return value**: The construct operates without inputs and provides no resulting output.
-- **Arguments, no return value**: The function processes supplied input but does not return a value.
-- **No arguments, return value**: The function executes without input but provides a calculated result.
-- **Arguments and return value**: The construct accepts input parameters and returns a specific resulting value.
+##### a. No arguments, no return value
+
+The construct operates without inputs and provides no resulting output.
+
+##### b. Arguments, no return value
+
+The function processes supplied input but does not return a value.
+
+##### c. No arguments, return value
+
+The function executes without input but provides a calculated result.
+
+##### d. Arguments and return value
+
+The construct accepts input parameters and returns a specific resulting value.
 
 Selecting the appropriate function type is essential for maintaining an organized, efficient, and modular code architecture.
 
-### C. Recursion
+---
+
+### B. Recursion
 
 Recursion within C programming represents a methodology where a function invokes itself repeatedly until a predefined base condition is satisfied. A function exhibiting this self-referential behavior is designated as a recursive function, with each individual instance of self-invocation termed a recursive call.
 
@@ -351,9 +376,10 @@ Factorial = 120
 
 **Explanation**
 
-- The function maintains self-invocation by supplying the argument n - 1.
-- When the variable n reaches the value 1, the base case triggers, terminating the recursion.
-- Subsequently, the sequence of recursive calls returns individually to complete the logic: 5 × 4 × 3 × 2 × 1 = 120
+The function maintains self-invocation by supplying the argument n - 1.
+When the variable n reaches the value 1, the base case triggers, terminating the recursion.
+Subsequently, the sequence of recursive calls returns individually to complete the logic:
+5 × 4 × 3 × 2 × 1 = 120
 
 #### 1. Applications of Recursion
 
@@ -404,6 +430,8 @@ Element indexing in C initiates at 0 rather than 1. Consequently, the initial el
 
 C supports both single-dimensional (1-D) and multidimensional structures, such as 2-D or 3-D arrays. The total element count in a multidimensional structure is determined by the product of all individual dimensions.
 
+---
+
 ### B. Creating an Array
 
 Within the C programming environment, the construction of an array is generally bifurcated into two essential sub-processes: declaration and initialization.
@@ -411,15 +439,15 @@ Within the C programming environment, the construction of an array is generally 
 #### 1. Array Declaration
 
 Array declaration represents the methodology for defining the specific data type, identifier, and storage dimensions of the structure. Similar to standard variables, an array must be explicitly declared to the compiler prior to its utilization.
-
 Upon declaration, the compiler allocates a contiguous memory block corresponding to the defined size and associates it with the designated array name.
 
 #### 2. Array Initialization
 
 Upon declaration, an array typically contains arbitrary garbage values within its allocated memory. To ensure predictable program behavior, it is imperative to initialize the structure with designated data.
+When declaration and initialization are performed concurrently, the explicit definition of the array size may be omitted.
+Partial initialization is supported during declaration; the compiler will automatically assign zero or the corresponding null value to any uninitialized elements.
 
-- When declaration and initialization are performed concurrently, the explicit definition of the array size may be omitted.
-- Partial initialization is supported during declaration; the compiler will automatically assign zero or the corresponding null value to any uninitialized elements.
+---
 
 ### C. Accessing Array Elements
 
@@ -450,6 +478,8 @@ int main() {
 ```
 8 16 2
 ```
+
+---
 
 ### D. Array Traversal
 
@@ -483,7 +513,7 @@ Printing Array Elements in Reverse
 16 12 8 4 2
 ```
 
-### E. Example: Insertion of an Element at a Designated Position
+**Example: Insertion of an Element at a Designated Position**
 
 To implement the insertion of a new element at a specific index, it is necessary to systematically shift every existing element located to the right of that position by one memory slot. This procedure creates an available vacancy at the targeted index, allowing the new value to be successfully assigned to that position.
 
@@ -523,13 +553,16 @@ int main() {
 
 ## Strings
 
-- A string in C is an array of characters terminated by a null character '\0'.
-- The null character '\0' marks the end of the string.
+- A string in C is an array of characters terminated by a null character `'\0'`.
+- The null character `'\0'` marks the end of the string.
 - C does not have a built-in string data type.
 - Strings are implemented using arrays of char.
-- **char str[] = "UVCE";** This line declares a character array str and initializes it with the string "UVCE". Internally, this creates an array like: { 'U', 'V', 'C', 'E', '\0'}
-- The null character '\0' is automatically added at the end to terminate the string.
-- **printf("The string is: %s\n", str);** %s is the format specifier used to print a string. printf starts at the memory location of str and prints each character until it finds the terminating null character '\0'.
+
+`char str[] = "UVCE";` This line declares a character array str and initializes it with the string "UVCE". Internally, this creates an array like: `{ 'U', 'V', 'C', 'E', '\0'}`
+
+The null character `'\0'` is automatically added at the end to terminate the string.
+
+`printf("The string is: %s\n", str);` `%s` is the format specifier used to print a string. printf starts at the memory location of str and prints each character until it finds the terminating null character `'\0'`.
 
 ### A. Accessing String Characters
 
@@ -537,7 +570,7 @@ Within the C programming language, individual constituent characters of a string
 
 ### B. Updating String Content
 
-Modification of discrete characters is achieved via index assignment (e.g., str[0] = 'h'). Furthermore, comprehensive string updates can be executed through standard library operations like strcpy(), which facilitates the replacement of the entire content. It is imperative to ensure the replacement string remains within the constraints of the pre-allocated array dimensions to prevent memory-related complications.
+Modification of discrete characters is achieved via index assignment (e.g., `str[0] = 'h'`). Furthermore, comprehensive string updates can be executed through standard library operations like strcpy(), which facilitates the replacement of the entire content. It is imperative to ensure the replacement string remains within the constraints of the pre-allocated array dimensions to prevent memory-related complications.
 
 ```c
 #include <stdio.h>
@@ -558,7 +591,7 @@ BVCE
 
 ### C. String Length Determination
 
-In the C programming environment, calculating a string's length necessitates a systematic iteration through constituent characters until the null terminator '\0' is encountered, signaling the end of the sequence. Within the C standard library, the strlen() function provides an automated and highly efficient implementation of this logic.
+In the C programming environment, calculating a string's length necessitates a systematic iteration through constituent characters until the null terminator `'\0'` is encountered, signaling the end of the sequence. Within the C standard library, the strlen() function provides an automated and highly efficient implementation of this logic.
 
 ```c
 #include <stdio.h>
@@ -576,7 +609,9 @@ int main() {
 4
 ```
 
-**Explanation:** In this specific implementation, strlen() identifies and returns the character count of "UVCE", which corresponds to a resulting value of 4; notably, the terminating null character '\0' is excluded from this calculation.
+**Explanation**
+
+In this specific implementation, strlen() identifies and returns the character count of "UVCE", which corresponds to a resulting value of 4; notably, the terminating null character `'\0'` is excluded from this calculation.
 
 The C language further provides a diverse array of string library functions designed to facilitate various modular operations, including:
 
@@ -584,6 +619,8 @@ The C language further provides a diverse array of string library functions desi
 - Lexicographical string comparison
 - String concatenation and joining
 - String reversal methodologies
+
+---
 
 ### D. String Input Methodology
 
@@ -664,6 +701,8 @@ UVCE (Enter by user)
 UVCE
 ```
 
+---
+
 ### E. Passing Strings to Functions
 
 Given that strings are essentially character arrays, they are supplied to functions utilizing the same methodology employed for passing arrays to a function. The subsequent program demonstrates this modular implementation:
@@ -696,18 +735,22 @@ UVCE
 
 Within the C programming environment, a pointer represents a specialized variable engineered to store the memory address of another variable. Rather than maintaining a literal value, it preserves the specific location where the data resides within memory, serving as the fundamental architecture for low-level memory manipulation.
 
-- A pointer is declared by defining its associated data type and identifier, utilizing an asterisk (*) prefix before the name.
-- **Syntax:** data_type \*pointer_name;
-- The designated data type specifies the nature of the variable the pointer is intended to reference; for instance, "int \*ptr;" declares a pointer targeting an integer structure.
-- Referencing the pointer directly yields the stored memory address. To retrieve the actual value residing at that address, developers utilize the \* operator, formally designated as the dereferencing operator in C.
-- It is important to note that the asterisk (*) serves dual purposes: it is utilized during variable declaration and functions as an operator to access data at a specific address.
+A pointer is declared by defining its associated data type and identifier, utilizing an asterisk (`*`) prefix before the name. Syntax: `data_type *pointer_name;`
+
+The designated data type specifies the nature of the variable the pointer is intended to reference; for instance, `"int *ptr;"` declares a pointer targeting an integer structure.
+
+Referencing the pointer directly yields the stored memory address. To retrieve the actual value residing at that address, developers utilize the `*` operator, formally designated as the dereferencing operator in C.
+
+It is important to note that the asterisk (`*`) serves dual purposes: it is utilized during variable declaration and functions as an operator to access data at a specific address.
 
 ### A. Pointer Initialization Methodology
 
-- Initialization is achieved by assigning a variable's memory address to the pointer via the address operator (&).
-- **Syntax:** pointer_name = &variable;
-- This procedure ensures the pointer references a valid memory location prior to execution, preventing unpredictable behavior.
-- Alternatively, a pointer may be initialized to NULL if it does not yet reference a specific variable, such as: int \*ptr = NULL;
+Initialization is achieved by assigning a variable's memory address to the pointer via the address operator (`&`).
+
+Syntax: `pointer_name = &variable;`
+
+This procedure ensures the pointer references a valid memory location prior to execution, preventing unpredictable behavior.
+Alternatively, a pointer may be initialized to NULL if it does not yet reference a specific variable, such as: `int *ptr = NULL;`
 
 ### B. Size Specifications of Pointers
 
@@ -745,9 +788,9 @@ Within the C programming environment, pointers are generally categorized into fo
 
 #### 1. NULL Pointer
 
-- A NULL pointer represents a specific pointer construct that is engineered to reference no valid memory address.
-- These pointers are instantiated by assigning the literal value NULL, a capability supported by any pointer data type regardless of its target structure.
-- This facilitates a validation mechanism, allowing developers to verify pointer integrity by determining if the stored address corresponds to NULL prior to execution.
+A NULL pointer represents a specific pointer construct that is engineered to reference no valid memory address.
+These pointers are instantiated by assigning the literal value NULL, a capability supported by any pointer data type regardless of its target structure.
+This facilitates a validation mechanism, allowing developers to verify pointer integrity by determining if the stored address corresponds to NULL prior to execution.
 
 ```c
 #include <stdio.h>
@@ -766,9 +809,9 @@ int main() {
 
 #### 2. Void Pointer
 
-- Within the C language, void pointers are specialized constructs identified by the void type.
-- These pointers lack a predefined data type association, enabling them to operate with exceptional modularity.
-- Often designated as generic pointers, they possess the unique capability to reference any data structure and can be explicitly typecast as required by the implementation logic.
+Within the C language, void pointers are specialized constructs identified by the void type.
+These pointers lack a predefined data type association, enabling them to operate with exceptional modularity.
+Often designated as generic pointers, they possess the unique capability to reference any data structure and can be explicitly typecast as required by the implementation logic.
 
 ```c
 #include <stdio.h>
@@ -807,8 +850,8 @@ Garbage Address (Random Value)
 
 #### 4. Dangling Pointer
 
-- A pointer targeting a memory location that has been subsequently deallocated or freed is formally designated as a dangling pointer.
-- This condition is a frequent source of logic errors and volatile program behavior, necessitating careful management of the pointer's lifecycle.
+A pointer targeting a memory location that has been subsequently deallocated or freed is formally designated as a dangling pointer.
+This condition is a frequent source of logic errors and volatile program behavior, necessitating careful management of the pointer's lifecycle.
 
 ```c
 #include <stdio.h>
@@ -860,3 +903,304 @@ int main() {
    return 0;
 }
 ```
+
+---
+
+## Structures and Unions. Bitwise Operators. File Handling.
+
+## Structures and Unions
+
+Within the C programming environment, a structure represents a methodology for consolidating several related variables into a single, unified location. Each constituent variable within this construct is formally designated as a member of the structure.
+
+Many built-in data types are available in the C programming language. It also gives users the ability to create their own data kinds. Bit-field, structure, union, typedef, and enumeration are the five methods for constructing bespoke data. We shall learn about structure and union in this blog. In C programming, both structure and union are user-defined data types that may hold any data type. While structure and union appear to have similar responsibilities, there are a few distinctions to be made. Let's have a look at the distinction between structure and union.
+
+### A. Defining Structures in C
+
+Within the C programming environment, a structure represents a specialized user-defined data type engineered to consolidate multiple related variables of diverse data types into a single, unified construct. Constituent elements, formally designated as members or fields, are allocated within contiguous memory regions, facilitating high-efficiency retrieval and access at any point during execution.
+
+The creation of these complex data structures is initiated via the struct statement. Utilizing the struct keyword allows developers to introduce new data types that encapsulate multiple modular members within a shared identifier.
+
+**Syntax of Structure Declaration**
+
+```c
+struct [structure name]
+{
+    type member_1;
+    type member_2;
+    . . .
+    type member_n;
+};
+```
+
+**Example:**
+
+```c
+struct student
+ {
+    int rollno;
+    char name[57];
+    string phone;
+};
+```
+
+### B. The Union Construct
+
+A union represents a user-defined data structure that shares fundamental similarities with a structure, with the critical distinction that all member variables begin at the same memory location. This methodology allows a single memory region to accommodate multiple data types, though only one constituent member may preserve a valid value at any given instance. The total memory requirement for a union variable is dictated by the storage dimensions of its largest data member.
+
+The implementation of a union provides a highly efficient mechanism for accessing a single memory address through various interpretations. This approach is particularly advantageous for optimizing memory utilization across diverse computational tasks.
+
+Defining a union necessitates the use of the union statement. This construct facilitates the storage of numerous member variables of varying data types within a shared memory block. Syntactically, the initialization of a union mirrors the methodology utilized for structure definitions.
+
+**Syntax of Union Declaration**
+
+```c
+union [union name]
+ {
+    type member_1;
+    type member_2;
+    . . .
+    type member_n;
+};
+```
+
+**Example:**
+
+```c
+union Student {
+    char name[25];
+    int age;
+    string email;
+};
+```
+
+### C. Structure and Union: Comparative Analysis
+
+Within the C programming environment, structures and unions represent specialized methodologies for consolidating heterogeneous variables into a single, modular construct. The fundamental distinction between these entities resides in their internal memory management and data accessibility. The subsequent table delineates the primary operational differences between the structure and union constructs:
+
+| Structure | Union |
+|-----------|-------|
+| Constructed utilizing the struct statement. | Constructed utilizing the union keyword. |
+| Each constituent member is allocated a unique memory address. | A single memory location is shared across all data members. |
+| Modifying one member variable does not influence the values of other members. | Updating one member variable directly impacts the values stored in other data members. |
+| Allows for the concurrent initialization of multiple constituent members. | Only the initial data member can be successfully initialized at a given time. |
+| Facilitates the concurrent storage of multiple distinct member values. | Preserves only a single member value across the shared memory block. |
+| Total storage dimensions are calculated as the sum of all individual data members. | Total memory consumption is dictated by the dimensions of the largest data member. |
+| Enables high-efficiency retrieval or access to any member variable at any instance. | Restricts data retrieval or access to only one constituent member at a time. |
+
+**Operational Memory Allocation Logic:**
+
+The critical architectural divergence between these types lies in their memory allocation strategies: a Structure designates unique space for every member, allowing for modular, concurrent data access. In contrast, a Union allocates a shared memory block based only on the largest constituent member, ensuring that only one value remains valid at any given point during program execution.
+
+```c
+#include <stdio.h>
+
+// Define a Structure (members have separate memory)
+struct Data_Struct {
+    int i;    
+    float f;  
+    char c;   
+};
+
+// Define a Union (members share the same memory location)
+union Data_Union {
+    int i;    
+    float f;  
+    char c;   
+};
+
+int main() {
+    struct Data_Struct s;
+    union Data_Union u;
+
+    // 1. Memory Size Demonstration
+    printf("Size of Structure: %zu bytes\n", sizeof(s)); 
+    printf("Size of Union: %zu bytes\n", sizeof(u));     
+    
+    // 2. Data Overwriting in Union
+    u.i = 10; 
+    printf("\nUnion (After setting u.i = 10):\n");
+    printf("u.i: %d\n", u.i);
+
+    u.f = 220.5; // This overwrites the memory used by u.i
+    printf("\nUnion (After setting u.f = 220.5):\n");
+    printf("u.i: %d (Corrupted)\n", u.i); 
+    printf("u.f: %f\n", u.f);
+    
+    return 0;
+}
+```
+
+**Output**
+
+```
+Size of Structure: [Usually 12] bytes
+Size of Union: 4 bytes
+
+Union (After setting u.i = 10):
+u.i: 10
+
+Union (After setting u.f = 220.5):
+u.i: [Garbage/Corrupted Value]
+u.f: 220.5
+```
+
+---
+
+## Bitwise Operators in C
+
+In C, bitwise operators are utilized to perform operations directly on the binary representations of numbers. These operators function by manipulating individual bits (0s and 1s) within a number. The following six operators are bitwise operators, working at the bit-level to perform operations in C.
+
+- **The & (bitwise AND):** Takes two numbers and performs the AND operation on every corresponding bit. The result is 1 only if both bits are 1.
+- **The | (bitwise OR):** Takes two numbers and performs the OR operation on every corresponding bit. The result is 1 if either of the two bits is 1.
+- **The ^ (bitwise XOR):** Takes two numbers and performs the XOR operation on every corresponding bit. The result is 1 if the two bits are different.
+- **The << (left shift):** Shifts the bits of the first operand to the left, and the second operand determines the number of places to shift.
+- **The >> (right shift):** Shifts the bits of the first operand to the right, and the second operand determines the number of places to shift.
+- **The ~ (bitwise NOT):** Takes one number and inverts all of its bits.
+
+Let's look at the truth table of the bitwise operators.
+
+| X | Y | X & Y | X \| Y | X ^ Y |
+|---|---|-------|--------|-------|
+| 0 | 0 | 0 | 0 | 0 |
+| 0 | 1 | 0 | 1 | 1 |
+| 1 | 0 | 0 | 1 | 1 |
+| 1 | 1 | 1 | 1 | 0 |
+
+**Output (Example):**
+
+```
+a&b = 1 a|b = 13 a^b = 12 ~a = 4294967290 b<<1 = 18 b>>1 = 4
+```
+
+### A. Interesting Facts About Bitwise Operators
+
+- **Shift Operators:** Left-shift (`<<`) and right-shift (`>>`) should not be used with negative numbers. Shifting by a negative number or by more than the size of the integer leads to undefined behavior. No shift occurs if the number of shifts is 0.
+- **Bitwise OR (|):** The OR of two numbers is similar to adding them if no carry occurs. If there is a carry, the sum is calculated as a | b + a & b.
+- **Bitwise XOR (^):** Highly useful for solving programming problems, such as efficiently finding the number that occurs an odd number of times in a set where all other numbers occur an even number of times.
+- **Logical vs Bitwise:** Bitwise operators should not replace logical operators. Logical operators (`&&`, `||`, `!`) return 0 or 1, while bitwise operators return an integer value.
+- **Shift and Arithmetic:** Left-shift (`<<`) is equivalent to multiplication by 2, and right-shift (`>>`) is equivalent to division by 2 for positive numbers.
+- **Check Odd/Even:** The AND operator (`&`) can quickly check if a number is odd or even. `(x & 1)` is non-zero if x is odd, and 0 if x is even.
+- **Bitwise NOT (~):** Should be used cautiously. Applying `~` can result in large numbers for unsigned variables or negative numbers for signed variables due to the 2's complement representation.
+
+**Example:**
+
+```c
+#include <stdio.h>
+int main()
+{
+    // a = 5 (binary 00000101), b = 9 (binary 00001001)
+    int a = 5, b = 9;
+
+    printf("a & b = %d\n", a & b);
+    printf("a | b = %d\n", a | b);
+    printf("a ^ b = %d\n", a ^ b);
+    printf("~a = %d\n", ~a);
+    printf("b << 1 = %d\n", b << 1);
+    printf("b >> 1 = %d\n", b >> 1);
+    
+    return 0;
+}
+```
+
+**Output:**
+
+```
+a & b = 1
+a | b = 13
+a ^ b = 12
+~a = 4294967290
+b << 1 = 18
+b >> 1 = 4
+```
+
+---
+
+## File Handling in C
+
+File handling in C is the process of creating, reading, writing, and managing files using C programs. A file is a collection of data stored on a secondary storage device (like a hard disk).
+
+### A. Why Do We Need File Handling?
+
+- **Persistence:** Data stored in variables is lost when the program terminates. Files allow data to be saved permanently.
+- **Large Data Handling:** It is easier to manage large amounts of data in files rather than entering it manually every time.
+- **Portability:** Data files can be transferred and used by different programs.
+
+### B. Types of Files in C
+
+- **Text Files (.txt):** Store data as a sequence of characters (ASCII). They are human-readable.
+- **Binary Files (.bin, .dat):** Store data in binary format (0s and 1s), similar to how it is stored in memory. They are more efficient but not human-readable.
+
+### C. Common File Handling Functions
+
+| Function | Description |
+|----------|-------------|
+| **fopen()** | Opens a new or existing file. |
+| **fclose()** | Closes an open file. |
+| **fprintf() / fscanf()** | Formatted write/read for text files. |
+| **fwrite() / fread()** | Write/read for binary files. |
+| **fgetc() / fputc()** | Read/write a single character. |
+
+### D. File Operations
+
+To perform file operations, we use a pointer of type FILE.
+
+#### 1. Writing to a Text File
+
+```c
+FILE *fptr = fopen("example.txt", "w");
+if (fptr != NULL) {
+    fprintf(fptr, "Hello, File Handling!");
+    fclose(fptr);
+}
+```
+
+#### 2. Reading from a Binary File
+
+```c
+struct Data d;
+FILE *fptr = fopen("data.bin", "rb");
+if (fptr != NULL) {
+    fread(&d, sizeof(struct Data), 1, fptr);
+    fclose(fptr);
+}
+```
+
+### E. File Positioning Functions
+
+These functions allow for non-sequential access and management of the file pointer's current position, facilitating random access within the file.
+
+#### 1. fseek() (Seek to a Specific Position)
+
+This function is used to set the file pointer to a specific position within the file.
+
+Syntax: `int fseek(FILE *stream, long offset, int whence);`
+
+- **stream:** The file pointer.
+- **offset:** The number of bytes to offset from the starting position.
+- **whence:** Specifies the starting point for the offset: `SEEK_SET` (Beginning of file), `SEEK_CUR` (Current position of the file pointer), `SEEK_END` (End of file).
+
+#### 2. ftell() (Get Current Position)
+
+This function returns the current position of the file pointer, which represents the number of bytes from the beginning of the file.
+
+Syntax: `long ftell(FILE *stream);`
+
+#### 3. rewind() (Reset to Start)
+
+This function sets the file pointer back to the beginning of the file.
+
+Syntax: `void rewind(FILE *stream);`
+
+### F. Error Handling and End-of-File Check
+
+#### 1. feof() (Check for End-of-File)
+
+Returns a non-zero value (true) if the end-of-file indicator is set.
+
+Syntax: `int feof(FILE *stream);`
+
+#### 2. ferror() (Check for Errors)
+
+Returns a non-zero value if an error flag is set.
+
+Syntax: `int ferror(FILE *stream);`
