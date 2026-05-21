@@ -31,6 +31,17 @@ In the above Diagram:
 - A Cat object says Meow
 - A Cow object says Moo
 
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/poly2.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+
 ---
 
 ## One Interface Multiple Behaviors
@@ -70,6 +81,16 @@ Polymorphism is mainly divided into:
 - Compile-Time Polymorphism
 - Runtime Polymorphism
 
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/poly1.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
 
 ### A. Compile-Time Polymorphism
 
@@ -103,21 +124,10 @@ The same operation works differently.
 
 **Code Snippets:**
 
-**Java:**
+<Tabs>
+  <TabItem label="C++">
 
-```java
-class Addition {
-    void add(int a, int b) {
-        System.out.println(a + b);
-    }
-
-    void add(int a, int b, int c) {
-        System.out.println(a + b + c);
-    }
-}
-```
-
-**C++:**
+#### C++
 
 ```cpp
 class Addition {
@@ -132,7 +142,27 @@ public:
 };
 ```
 
-**Python:**
+  </TabItem>
+  <TabItem label="Java">
+
+#### Java
+
+```java
+class Addition {
+    void add(int a, int b) {
+        System.out.println(a + b);
+    }
+
+    void add(int a, int b, int c) {
+        System.out.println(a + b + c);
+    }
+}
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+#### Python
 
 ```python
 class Addition:
@@ -145,6 +175,9 @@ obj = Addition()
 obj.add(10, 20)
 obj.add(10, 20, 30)
 ```
+
+  </TabItem>
+</Tabs>
 
 #### 1. Advantages
 
@@ -177,19 +210,10 @@ The overloaded operator adds the real and imaginary parts of two complex number 
 
 **Code Snippets:**
 
-**Java:**
+<Tabs>
+  <TabItem label="C++">
 
-```java
-class Main {
-    public static void main(String args[]) {
-        String s1 = "Hello ";
-        String s2 = "World";
-        System.out.println(s1 + s2);
-    }
-}
-```
-
-**C++:**
+#### C++
 
 ```cpp
 #include<iostream>
@@ -218,7 +242,25 @@ int main() {
 }
 ```
 
-**Python:**
+  </TabItem>
+  <TabItem label="Java">
+
+#### Java
+
+```java
+class Main {
+    public static void main(String args[]) {
+        String s1 = "Hello ";
+        String s2 = "World";
+        System.out.println(s1 + s2);
+    }
+}
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+#### Python
 
 ```python
 class Number:
@@ -237,6 +279,9 @@ n2 = Number(20)
 n3 = n1 + n2
 n3.display()
 ```
+
+  </TabItem>
+</Tabs>
 
 #### 1. Advantages
 
@@ -272,30 +317,10 @@ Function Overriding occurs when a derived class defines one or more member funct
 
 **Code Snippets:**
 
-**Java:**
+<Tabs>
+  <TabItem label="C++">
 
-```java
-class Animal {
-    void sound() {
-        System.out.println("Animal Sound");
-    }
-}
-
-class Dog extends Animal {
-    void sound() {
-        System.out.println("Dog Bark");
-    }
-}
-
-class Main {
-    public static void main(String args[]) {
-        Dog d = new Dog();
-        d.sound();
-    }
-}
-```
-
-**C++:**
+#### C++
 
 ```cpp
 #include<iostream>
@@ -323,7 +348,36 @@ int main() {
 }
 ```
 
-**Python:**
+  </TabItem>
+  <TabItem label="Java">
+
+#### Java
+
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal Sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog Bark");
+    }
+}
+
+class Main {
+    public static void main(String args[]) {
+        Dog d = new Dog();
+        d.sound();
+    }
+}
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+#### Python
 
 ```python
 class Animal:
@@ -339,6 +393,9 @@ class Dog(Animal):
 d = Dog()
 d.sound()
 ```
+
+  </TabItem>
+</Tabs>
 
 ### B. Dynamic Binding
 
@@ -365,31 +422,10 @@ Decision happens during runtime.
 
 **Code Snippets:**
 
-**Java:**
+<Tabs>
+  <TabItem label="C++">
 
-```java
-class Animal {
-    void sound() {
-        System.out.println("Animal Sound");
-    }
-}
-
-class Dog extends Animal {
-    void sound() {
-        System.out.println("Dog Bark");
-    }
-}
-
-class Main {
-    public static void main(String args[]) {
-        Animal a;
-        a = new Dog();
-        a.sound();
-    }
-}
-```
-
-**C++:**
+#### C++
 
 ```cpp
 #include<iostream>
@@ -417,7 +453,37 @@ int main() {
 }
 ```
 
-**Python:**
+  </TabItem>
+  <TabItem label="Java">
+
+#### Java
+
+```java
+class Animal {
+    void sound() {
+        System.out.println("Animal Sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog Bark");
+    }
+}
+
+class Main {
+    public static void main(String args[]) {
+        Animal a;
+        a = new Dog();
+        a.sound();
+    }
+}
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+#### Python
 
 ```python
 class Animal:
@@ -433,6 +499,9 @@ class Dog(Animal):
 a = Dog()
 a.sound()
 ```
+
+  </TabItem>
+</Tabs>
 
 #### 1. Advantages of Dynamic Binding
 
@@ -488,30 +557,10 @@ Teacher ↔ Student
 
 **Code Snippets:**
 
-**Java:**
+<Tabs>
+  <TabItem label="C++">
 
-```java
-class Student {
-    String name = "Rahul";
-}
-
-class Teacher {
-    Student s = new Student();
-
-    void display() {
-        System.out.println(s.name);
-    }
-}
-
-class Main {
-    public static void main(String args[]) {
-        Teacher t = new Teacher();
-        t.display();
-    }
-}
-```
-
-**C++:**
+#### C++
 
 ```cpp
 #include<iostream>
@@ -537,7 +586,36 @@ int main() {
 }
 ```
 
-**Python:**
+  </TabItem>
+  <TabItem label="Java">
+
+#### Java
+
+```java
+class Student {
+    String name = "Rahul";
+}
+
+class Teacher {
+    Student s = new Student();
+
+    void display() {
+        System.out.println(s.name);
+    }
+}
+
+class Main {
+    public static void main(String args[]) {
+        Teacher t = new Teacher();
+        t.display();
+    }
+}
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+#### Python
 
 ```python
 class Student:
@@ -552,6 +630,9 @@ class Teacher:
 t = Teacher()
 t.display()
 ```
+
+  </TabItem>
+</Tabs>
 
 #### 1. Advantages of Association
 
@@ -584,30 +665,10 @@ Department → Professor
 
 **Code Snippets:**
 
-**Java:**
+<Tabs>
+  <TabItem label="C++">
 
-```java
-class Professor {
-    String name = "Ramesh";
-}
-
-class Department {
-    Professor p = new Professor();
-
-    void display() {
-        System.out.println(p.name);
-    }
-}
-
-class Main {
-    public static void main(String args[]) {
-        Department d = new Department();
-        d.display();
-    }
-}
-```
-
-**C++:**
+#### C++
 
 ```cpp
 #include<iostream>
@@ -633,7 +694,36 @@ int main() {
 }
 ```
 
-**Python:**
+  </TabItem>
+  <TabItem label="Java">
+
+#### Java
+
+```java
+class Professor {
+    String name = "Ramesh";
+}
+
+class Department {
+    Professor p = new Professor();
+
+    void display() {
+        System.out.println(p.name);
+    }
+}
+
+class Main {
+    public static void main(String args[]) {
+        Department d = new Department();
+        d.display();
+    }
+}
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+#### Python
 
 ```python
 class Professor:
@@ -648,6 +738,9 @@ class Department:
 d = Department()
 d.display()
 ```
+
+  </TabItem>
+</Tabs>
 
 #### 1. Advantages of Aggregation
 
@@ -682,27 +775,10 @@ House → Room
 
 **Code Snippets:**
 
-**Java:**
+<Tabs>
+  <TabItem label="C++">
 
-```java
-class Room {
-    Room() {
-        System.out.println("Room Created");
-    }
-}
-
-class House {
-    Room r = new Room();
-}
-
-class Main {
-    public static void main(String args[]) {
-        House h = new House();
-    }
-}
-```
-
-**C++:**
+#### C++
 
 ```cpp
 #include<iostream>
@@ -724,7 +800,33 @@ int main() {
 }
 ```
 
-**Python:**
+  </TabItem>
+  <TabItem label="Java">
+
+#### Java
+
+```java
+class Room {
+    Room() {
+        System.out.println("Room Created");
+    }
+}
+
+class House {
+    Room r = new Room();
+}
+
+class Main {
+    public static void main(String args[]) {
+        House h = new House();
+    }
+}
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+#### Python
 
 ```python
 class Room:
@@ -739,6 +841,9 @@ class House:
 
 h = House()
 ```
+
+  </TabItem>
+</Tabs>
 
 #### 1. Advantages of Composition
 
@@ -1070,4 +1175,3 @@ Cohesion measures how closely related functions inside a module are. It checks w
 | Virtual Function | No | Yes |
 | Commonly Used In | Method Overloading | Method Overriding |
 | Interview Keyword | Static Binding | Dynamic Binding |
-
