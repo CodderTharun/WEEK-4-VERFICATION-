@@ -356,7 +356,7 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 1", link: "/it/week-1/oop" },
-      //{ label: "Week 1", link: "/it/week-1/oops" },
+      { label: "Week 2", link: "/it/week-2/oops" },
       //{ label: "Week 1", link: "/it/week-1/oops" },
       //{ label: "Week 1", link: "/it/week-1/oops" },
       //{ label: "Week 1", link: "/it/week-1/oops" },
