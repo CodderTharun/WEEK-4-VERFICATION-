@@ -1,6 +1,6 @@
 ---
-title: Analog Electronics
-description: DC motors and generators
+title: C Programming
+description: Programming
 ---
 
 ## Loops
@@ -12,6 +12,16 @@ one can utilize looping constructs to handle much larger repetitions. Manually t
 
 Loops facilitate the execution of a statement or group of statements multiple times until a predefined condition is satisfied. This eliminates the need for code duplication and streamlines the programming process.
 C provides three primary types of looping statements:
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C5.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
 #### 1. For Loop
 
@@ -54,6 +64,16 @@ int main()
 
 **Flowchart of for Loop**
 
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C6.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
 #### 2. While Loop
 
 Similar to the for loop, a while loop is classified as an entry-controlled loop, where the specified condition is verified prior to the execution of the loop's internal code block.
@@ -92,6 +112,17 @@ int main() {
 ```
 
 **Flowchart of while Loop**
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C7.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
 
 #### 3. Do While Loop
 
@@ -132,6 +163,16 @@ int main() {
 ```
 
 **Flowchart of do-while Loop**
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C8.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
 ---
 
@@ -240,6 +281,16 @@ This modular approach promotes clean, structured code that is significantly more
 **Function Operational Logic in C:**
 
 **Function Syntax**
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C9.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
 - **Return Type:** Defines the data type of the value the function outputs; use void if no value is returned.
 - **Function Name:** A distinct identifier for the function, adhering to standard variable naming conventions.
@@ -410,6 +461,17 @@ Recursion is utilized extensively to resolve a diverse array of computational ch
 
 In C programming, an array constitutes a linear data structure designed to store a fixed-size sequence of elements sharing a uniform data type within contiguous memory addresses. Each individual element is directly accessible via its unique index, facilitating the high-efficiency retrieval and modification of data.
 
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C10.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+
 ### A. Array Characteristics in C
 
 The specific properties governing arrays differ across various programming environments; the following highlights the fundamental characteristics utilized within the C language.
@@ -426,9 +488,29 @@ An array is restricted to storing elements of a single, uniform data type, preve
 
 Element indexing in C initiates at 0 rather than 1. Consequently, the initial element resides at index 0, while the final element is located at index (size - 1).
 
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C11.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
 #### 4. Structural Dimensions
 
 C supports both single-dimensional (1-D) and multidimensional structures, such as 2-D or 3-D arrays. The total element count in a multidimensional structure is determined by the product of all individual dimensions.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C12.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
 ---
 
@@ -441,6 +523,16 @@ Within the C programming environment, the construction of an array is generally 
 Array declaration represents the methodology for defining the specific data type, identifier, and storage dimensions of the structure. Similar to standard variables, an array must be explicitly declared to the compiler prior to its utilization.
 Upon declaration, the compiler allocates a contiguous memory block corresponding to the defined size and associates it with the designated array name.
 
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C13.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
 #### 2. Array Initialization
 
 Upon declaration, an array typically contains arbitrary garbage values within its allocated memory. To ensure predictable program behavior, it is imperative to initialize the structure with designated data.
@@ -452,6 +544,16 @@ Partial initialization is supported during declaration; the compiler will automa
 ### C. Accessing Array Elements
 
 Arrays in C facilitate random access, enabling the retrieval of any element by referencing its specific position, known as the index.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C14.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
 ```c
 #include <stdio.h>
@@ -484,6 +586,18 @@ int main() {
 ### D. Array Traversal
 
 In the C programming language, array traversal represents the systematic methodology of visiting each constituent element within the structure in a specific sequence. To achieve this, developers typically employ looping constructs to iterate across the indices of the array with high efficiency.
+
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C15.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
 
 ```c
 #include <stdio.h>
@@ -563,6 +677,16 @@ int main() {
 The null character `'\0'` is automatically added at the end to terminate the string.
 
 `printf("The string is: %s\n", str);` `%s` is the format specifier used to print a string. printf starts at the memory location of str and prints each character until it finds the terminating null character `'\0'`.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Ece/C%20programming/C5.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
 
 ### A. Accessing String Characters
 
@@ -743,6 +867,16 @@ Referencing the pointer directly yields the stored memory address. To retrieve t
 
 It is important to note that the asterisk (`*`) serves dual purposes: it is utilized during variable declaration and functions as an operator to access data at a specific address.
 
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/ml10.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
 ### A. Pointer Initialization Methodology
 
 Initialization is achieved by assigning a variable's memory address to the pointer via the address operator (`&`).
@@ -906,6 +1040,8 @@ int main() {
 
 ---
 
+---
+
 ## Structures and Unions. Bitwise Operators. File Handling.
 
 ## Structures and Unions
@@ -1050,12 +1186,12 @@ u.f: 220.5
 
 In C, bitwise operators are utilized to perform operations directly on the binary representations of numbers. These operators function by manipulating individual bits (0s and 1s) within a number. The following six operators are bitwise operators, working at the bit-level to perform operations in C.
 
-- **The & (bitwise AND):** Takes two numbers and performs the AND operation on every corresponding bit. The result is 1 only if both bits are 1.
-- **The | (bitwise OR):** Takes two numbers and performs the OR operation on every corresponding bit. The result is 1 if either of the two bits is 1.
+- **The `&` (bitwise AND):** Takes two numbers and performs the AND operation on every corresponding bit. The result is 1 only if both bits are 1.
+- **The `|` (bitwise OR):** Takes two numbers and performs the OR operation on every corresponding bit. The result is 1 if either of the two bits is 1.
 - **The ^ (bitwise XOR):** Takes two numbers and performs the XOR operation on every corresponding bit. The result is 1 if the two bits are different.
-- **The << (left shift):** Shifts the bits of the first operand to the left, and the second operand determines the number of places to shift.
-- **The >> (right shift):** Shifts the bits of the first operand to the right, and the second operand determines the number of places to shift.
-- **The ~ (bitwise NOT):** Takes one number and inverts all of its bits.
+- **The `<<` (left shift):** Shifts the bits of the first operand to the left, and the second operand determines the number of places to shift.
+- **The `>>` (right shift):** Shifts the bits of the first operand to the right, and the second operand determines the number of places to shift.
+- **The  `~` (bitwise NOT):** Takes one number and inverts all of its bits.
 
 Let's look at the truth table of the bitwise operators.
 
@@ -1067,7 +1203,6 @@ Let's look at the truth table of the bitwise operators.
 | 1 | 1 | 1 | 1 | 0 |
 
 **Output (Example):**
-
 ```
 a&b = 1 a|b = 13 a^b = 12 ~a = 4294967290 b<<1 = 18 b>>1 = 4
 ```
