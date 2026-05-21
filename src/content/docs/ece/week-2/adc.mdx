@@ -6,7 +6,7 @@ description: Converters and inverters
 
 ---
 
-## CHAPTER 1: INTRODUCTION TO COMMUNICATION SYSTEMS
+## Introduction to Communication Systems
 
 ### A. Communication System
 
@@ -67,7 +67,7 @@ The frequency spectrum is the range of frequencies occupied by a signal. Differe
 
 ---
 
-## CHAPTER 2: MODULATION – CONCEPT AND NEED
+## Modulation – Concept and Need
 
 Modulation is the process of varying one or more characteristics (amplitude, frequency, or phase) of a high-frequency carrier signal in accordance with the instantaneous value of a low-frequency message signal.
 
@@ -118,7 +118,7 @@ High-frequency signals travel farther and can be amplified more efficiently by r
 
 ---
 
-## CHAPTER 3: AMPLITUDE MODULATION (AM)
+## Amplitude Modulation (AM)
 
 Amplitude Modulation (AM) is the process in which the amplitude of a high-frequency carrier signal is varied proportionally to the instantaneous value of the message signal, while the frequency and phase of the carrier remain constant.
 
@@ -248,7 +248,7 @@ Uses the nonlinear characteristic of devices. The output contains a term proport
 
 ---
 
-## CHAPTER 4: DOUBLE SIDEBAND – SUPPRESSED CARRIER (DSB-SC)
+## Double Sideband – Suppressed Carrier (DSB-SC)
 
 ### A. Concept
 
@@ -322,53 +322,7 @@ A phase detector compares outputs of both branches. The error signal is used to 
 
 ---
 
-## CHAPTER 5: SINGLE SIDEBAND (SSB) AND VESTIGIAL SIDEBAND (VSB)
-
-### A. Single Sideband Modulation (SSB)
-
-In DSB-SC, both sidebands contain identical information. SSB transmits only one sideband (upper or lower), halving the bandwidth while carrying all the information.
-<img
-  src="/ECE/ADC/ADC11.png"
-  alt="Diagram"
-  style={{
-    width: "60%",
-    display: "block",
-    margin: "auto"
-  }}
-/>
-
-$$BW_{SSB} = f_m \quad \text{(half that of AM or DSB-SC)}$$
-
-**Generation of SSB:**
-- **Filter Method:** Generate DSB-SC, then pass through a sharp bandpass filter to select only USB or LSB.
-- **Phase Shift Method:** Uses a Hilbert transform of the message signal to cancel one sideband.
-
-| Feature | AM | DSB-SC | SSB |
-|---|---|---|---|
-| Sidebands | Both | Both | One only |
-| Carrier | Yes | No | No |
-| Bandwidth | $2f_m$ | $2f_m$ | $f_m$ |
-| Power Eff. | 33% | 100% | 100% |
-| Complexity | Low | Medium | High |
-| Use Case | AM radio | Data links | Amateur radio, HF |
-
-### B. Vestigial Sideband Modulation (VSB)
-
-VSB is a compromise between DSB-SC and SSB. One full sideband plus a vestige (small portion) of the other sideband is transmitted.
-
-**Why VSB?** SSB requires sharp filters which are difficult to build for signals with low frequencies near the carrier (like video signals). VSB relaxes this filter requirement.
-
-| Parameter | VSB | SSB |
-|---|---|---|
-| Bandwidth | Slightly > $f_m$, < $2f_m$ | $f_m$ |
-| Filter Design | Moderate complexity | Very complex |
-| Application | Television (NTSC, PAL) | Voice, HF radio |
-
-**NOTE:** VSB is used in commercial television broadcasting. The picture carrier is transmitted with a 0.75 MHz vestige of the lower sideband plus the full upper sideband.
-
----
-
-## CHAPTER 6: FREQUENCY MODULATION (FM)
+## Frequency Modulation (FM)
 
 ### A. Definition
 
@@ -504,7 +458,7 @@ At high frequencies, FM signals are more susceptible to noise. Pre-emphasis boos
 
 ---
 
-## CHAPTER 7: PHASE MODULATION (PM)
+## Phase Modulation (PM)
 
 ### A. Definition and Expression
 
@@ -545,7 +499,7 @@ A phase comparator (or phase discriminator) compares the received signal phase w
 
 ---
 
-## CHAPTER 8: COMPARISON – AM, FM, AND PM
+## Comparision – AM, FM and PM
 
 | Parameter | AM | FM | PM |
 |---|---|---|---|
@@ -566,7 +520,7 @@ A phase comparator (or phase discriminator) compares the received signal phase w
 
 ---
 
-## CHAPTER 9: PULSE MODULATION TECHNIQUES
+## Pulse Modulation Techniques
 
 ### A. Overview
 
@@ -622,7 +576,7 @@ PPM has the best noise immunity among analog pulse modulation techniques but req
 
 ---
 
-## CHAPTER 10: SAMPLING THEOREM AND ALIASING
+## Sampling Theorem and Aliasing
 
 ### A. Sampling
 
@@ -671,7 +625,7 @@ $$\text{Aliasing condition: } f_s < 2W$$
 
 ---
 
-## CHAPTER 11: PULSE CODE MODULATION (PCM)
+## Pulse Code Modulation (PCM)
 
 ### A. Introduction
 
@@ -756,7 +710,7 @@ Each additional bit of encoding improves SQNR by approximately 6 dB.
 
 ---
 
-## CHAPTER 12: LINE CODING TECHNIQUES
+## Line Coding Techniques
 
 ### A. Definition
 
@@ -822,7 +776,7 @@ Block coding adds redundancy to improve error detection and synchronization. Com
 
 ---
 
-## CHAPTER 13: DIGITAL MODULATION (ASK, FSK, PSK, QAM)
+## Digital Modulation (ASK, FSK, PSK, QAM)
 
 ### A. Introduction
 
@@ -944,7 +898,7 @@ The signal has both in-phase (I) and quadrature (Q) components. Each $(A_i, B_i)
 
 ---
 
-## CHAPTER 14: ERROR DETECTION AND CORRECTION (CODING TECHNIQUES)
+## Error Detection and Correction (Coding Techniques)
 
 ### A. Need for Error Control
 
@@ -1022,7 +976,7 @@ Codeword: 0 1 1 0 0 1 1
 
 ---
 
-## CHAPTER 15: NOISE IN COMMUNICATION SYSTEMS
+## Noise in Communication Systems
 
 ### A. Definition
 
@@ -1042,7 +996,7 @@ Noise is any unwanted random electrical signal that interferes with the desired 
 
 ---
 
-## CHAPTER 16: SIGNAL-TO-NOISE RATIO AND FIGURE OF MERIT
+## Signal-to-Noise Ratio and Figure of Merit
 
 ### A. Signal-to-Noise Ratio (SNR)
 
