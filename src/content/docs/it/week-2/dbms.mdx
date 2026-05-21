@@ -170,6 +170,11 @@ There are a few dedicated Vector Databases out there such as Pinecone and Weavia
 - **Complex Setup and Maintenance:** Requires specialized knowledge to configure, tune, and maintain, especially when handling large-scale deployments and ensuring query efficiency.
 - **Limited Use Cases:** Primarily suited for high-dimensional and unstructured data, making it less effective for traditional structured data queries compared to relational databases.
 
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DBMS/1.png?raw=true" alt="Diagram" width="60%" />
+</div>
+</html>
 ---
 
 ## Mapping from ER Model to Relational Model
@@ -182,11 +187,23 @@ Figure out all the regular/strong entities from the diagram and then create a co
 
 For the given ER-Diagram we have Employee, Department and Project as strong/regular entities, as they are enclosed in a single rectangle. So, we create respective relations that are depicted in the figure below.
 
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DBMS/2.png?raw=true" alt="Diagram" width="60%" />
+</div>
+</html>
+
 ### B. Step 2: Weak Entity Types
 
 Figure out the weak entity types from the diagram and create a corresponding relation (table) that includes all its simple attributes. Add as foreign key all of the primary key attributes in the entity corresponding to the owner entity. The primary key is a combination of all the primary key attributes from the owner and the primary key of the weak entity.
 
 For the given ER-Diagram we have Dependent as a weak entity, as it is enclosed in a double rectangle that is indicative of an entity being weak. The Dependent relation (table) is created that is shown in the figure below.
+
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DBMS/3.png?raw=true" alt="Diagram" width="60%" />
+</div>
+</html>
 
 ### C. Step 3: 1-to-1 Relationships
 
@@ -194,11 +211,23 @@ Now we need to figure out the entities from the ER diagram for which there exist
 
 For the given ER-Diagram there exists a 1-to-1 relationship between Employee and Department entity. Here the Department has total participation therefore consider it as relation S and Employee as relation T. The 1-to-1 mapping between Employee and Department is depicted in the figure below.
 
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DBMS/4.png?raw=true" alt="Diagram" width="60%" />
+</div>
+</html>
+
 ### D. Step 4: 1-to-N Relationships
 
 Now we need to figure out the entities from the ER diagram for which there exists a 1-to-N relationship. The entities for which there exists a 1-to-N relationship, choose a relation as S as the type at N-side of relationship and other as T. Then we add as a foreign key to S all of the primary key attributes of T.
 
 In the given ER diagram there are two 1-to-N relationships that exist between Employee-Department and Employee-Dependent entity. The 1-to-N mapping between Employee-Department and Employee-Dependent is depicted in the figure below.
+
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DBMS/5.png?raw=true" alt="Diagram" width="60%" />
+</div>
+</html>
 
 ### E. Step 5: M-to-N Relationships
 
@@ -206,11 +235,23 @@ Now we need to figure out the entities from the ER diagram for which there exist
 
 For the given ER-Diagram there exists an M-to-N relationship between Employee and Project entity. The new table Works_On is created for mapping the relationship between Employee and Project relation (table).
 
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DBMS/6.png?raw=true" alt="Diagram" width="60%" />
+</div>
+</html>
+
 ### F. Step 6: Multi-Valued Attributes
 
 Now identify the relations (tables) that contain multi-valued attributes. Then we need to create a new relation S. In the new relation S we add as foreign keys the primary keys of the corresponding relation. Then we add the multi-valued attribute to S; the combination of all attributes in S forms the primary key.
 
 For the given ER-Diagram there exists a multi-valued attribute (Locations) in Department relation (table). So, we create a new relation called Dept_Locations. To this new relation we add the primary key of the Department Table that is D_Number and the multi-valued attribute Locations.
+
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DBMS/7.png?raw=true" alt="Diagram" width="60%" />
+</div>
+</html>
 
 ---
 
@@ -308,6 +349,12 @@ Keys are used to uniquely identify rows and to establish relationships between t
 - **Foreign Key:** Attribute used to link one table to another
 - **Alternate Key:** Candidate key not chosen as primary key
 - **Composite Key:** Key formed using more than one attribute
+
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DBMS/8.png?raw=true" alt="Diagram" width="60%" />
+</div>
+</html>
 
 ---
 
@@ -533,6 +580,14 @@ Used for advanced data storage.
 
 - XML – Stores XML data
 - GEOMETRY – Stores spatial data (shapes, locations)
+
+<html>
+<div style={{ textAlign: "center" }}>
+  <img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/DBMS/9.png?raw=true" alt="Diagram" width="70%" />
+</div>
+</html>
+
+---
 
 ### F. SQL Queries (SELECT, WHERE, ORDER BY, GROUP BY, HAVING)
 
