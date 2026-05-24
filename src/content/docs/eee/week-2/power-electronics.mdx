@@ -747,5 +747,181 @@ fo < fs
 - Low power factor.
 - Complex control.
 
+## Problems
 
+**1. Numerical on Half Wave and Full Wave Rectifier**
 
+Given: $V_m = 120 \, V$
+
+a. Half Wave Rectifier (HWR)
+
+Formula:
+
+$$
+V_{dc} = \frac{V_m}{\pi}
+$$
+
+$$
+V_{rms} = \frac{V_m}{2}
+$$
+
+Calculation:
+
+$$
+V_{dc} = \frac{120}{3.14} = 38.2 \, V
+$$
+
+$$
+V_{rms} = \frac{120}{2} = 60 \, V
+$$
+
+b. Full Wave Rectifier (FWR)
+
+Formula:
+
+$$
+V_{dc} = \frac{2V_m}{\pi}
+$$
+
+$$
+V_{rms} = \frac{V_m}{\sqrt{2}}
+$$
+
+Calculation:
+
+$$
+V_{dc} = \frac{2 \times 120}{3.14} = 76.4 \, V
+$$
+
+$$
+V_{rms} = \frac{120}{1.414} = 84.85 \, V
+$$
+
+---
+
+**2. Buck Chopper Numerical**
+
+Question: A buck converter has:
+
+Input voltage = 240 V and Duty cycle = 0.7
+
+Find:
+
+1. Output voltage  
+2. Output power if load current = 5 A
+
+Given:
+
+$$
+V_s = 240 \, V
+$$
+
+$$
+D = 0.7
+$$
+
+$$
+I_o = 5 \, A
+$$
+
+Formula:
+
+$$
+V_o = D \times V_s
+$$
+
+$$
+P_o = V_o \times I_o
+$$
+
+Calculation:
+
+$$
+V_o = 0.7 \times 240 = 168 \, V
+$$
+
+$$
+P_o = 168 \times 5 = 840 \, W
+$$
+
+---
+
+**3. SCR Numerical**
+
+Question: An SCR has:
+
+Latching current = 60 mA and Holding current = 40 mA
+
+If anode current becomes:
+
+a. 70 mA  
+b. 30 mA
+
+Determine SCR condition.
+
+Condition:
+
+$$
+SCR \text{ remains ON if } I_A > I_H
+$$
+
+Calculation:
+
+a.
+
+$$
+70 \, mA > 40 \, mA
+$$
+
+SCR remains ON
+
+b.
+
+$$
+30 \, mA < 40 \, mA
+$$
+
+SCR turns OFF
+
+---
+
+**4. Inverter Numerical**
+
+Question:
+
+A square-wave inverter has DC input voltage of 230 V and time period $T = 0.02 \, s$
+
+Find:
+
+1. RMS output voltage  
+2. Frequency of output
+
+Given:
+
+$$
+V_{dc} = 230 \, V
+$$
+
+$$
+T = 0.02 \, s
+$$
+
+Formula:
+
+$$
+V_{rms} = V_{dc}
+$$
+
+$$
+f = \frac{1}{T}
+$$
+
+Calculation:
+
+$$
+V_{rms} = 230 \, V
+$$
+
+$$
+f = \frac{1}{0.02} = 50 \, Hz
+$$
