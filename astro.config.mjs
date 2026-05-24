@@ -473,16 +473,7 @@ items: [
                 //{ label: "Week 5", link: "/answer-keys/mech/week-5" },
              ],
            },
-           {
-             label: "Aptitude",
-             items: [
-          { label: "Week 1", link: "/answer-keys/aptitude/week-1" },
-                //{ label: "Week 2", link: "/answer-keys/aptitude/week-2" },
-                //{ label: "Week 3", link: "/answer-keys/aptitude/week-3" },
-                //{ label: "Week 4", link: "/answer-keys/aptitude/week-4" },
-                //{ label: "Week 5", link: "/answer-keys/aptitude/week-5" },
-           ],
-            },
+           
           ],
         },
         
