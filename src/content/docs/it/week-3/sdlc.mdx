@@ -1,0 +1,1183 @@
+---
+title: High Level Design (HLD)
+description: HLD Notes
+---
+
+## Introduction to HLD
+
+High Level Design (HLD) focuses on the overall architecture and structure of software systems.
+
+HLD mainly deals with:
+
+- System architecture
+- Scalability
+- Databases
+- APIs
+- Traffic handling
+- Communication between services
+
+HLD does not focus on:
+
+- Low-level coding
+- Internal function logic
+- Small implementation details
+
+Examples of systems requiring HLD:
+
+- YouTube
+- Instagram
+- Netflix
+- WhatsApp
+- Amazon
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/hld-introduction.png"
+  alt="HLD Introduction"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+## Functional vs Non-Functional Requirements
+
+Requirements are mainly divided into two types.
+
+### A. Functional Requirements
+
+Functional requirements describe:
+
+- What the system should do
+- Features provided by the system
+
+#### 1. Example
+
+For Instagram:
+
+- Upload posts
+- Like posts
+- Follow users
+- Comment on posts
+
+### B. Non-Functional Requirements
+
+Non-functional requirements describe:
+
+- Scalability
+- Reliability
+- Availability
+- Security
+- Performance
+
+#### 1. Example
+
+For Instagram:
+
+- Feed loading should be fast
+- Millions of users should be supported
+- System should remain highly available
+
+
+
+## Scalability
+
+Scalability is the ability of a system to handle increasing traffic efficiently.
+
+A scalable system can continue performing properly even when users and requests increase.
+
+### A. Vertical Scaling
+
+Vertical scaling means increasing server power by upgrading:
+
+- CPU
+- RAM
+- Storage
+
+#### 1. Example
+
+8 GB RAM → 64 GB RAM
+
+#### 2. Advantages
+
+- Simple to implement
+- Easier management
+
+#### 3. Limitations
+
+- Hardware limits exist
+- Expensive
+
+### B. Horizontal Scaling
+
+Horizontal scaling means adding multiple servers.
+
+#### 1. Example
+
+1 server → 10 servers
+
+Horizontal scaling is more commonly used in modern distributed systems.
+
+#### 2. Advantages
+
+- Better scalability
+- Better fault tolerance
+
+#### 3. Limitations
+
+- Complex architecture
+- Requires load balancing
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/scalability-diagram.png"
+  alt="Scalability Diagram"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+## Load Balancer
+
+A Load Balancer distributes incoming traffic across multiple servers.
+
+### A. Why Load Balancers are Important
+
+Without load balancing:
+
+- One server may crash due to heavy traffic
+
+With load balancing:
+
+- Traffic is distributed evenly
+
+### B. Benefits
+
+- Prevents server overload
+- Improves scalability
+- Improves availability
+- Reduces downtime
+
+### C. Common Algorithms
+
+#### 1. Round Robin
+
+Requests are distributed one after another sequentially.
+
+#### 2. Least Connections
+
+Traffic is sent to the server with the fewest active connections.
+
+#### 3. IP Hashing
+
+Requests are routed based on client IP address.
+
+#### 4. Example
+
+YouTube distributes traffic across multiple servers using load balancers.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/load-balancer.png"
+  alt="Load Balancer"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+## Caching
+
+Caching stores frequently accessed data temporarily for faster access.
+
+Cache helps reduce:
+
+- Database load
+- Latency
+- Response time
+
+### A. Examples of Cached Data
+
+- User profiles
+- Trending videos
+- Frequently searched products
+
+### B. Popular Cache Systems
+
+- Redis
+- Memcached
+
+### C. Example
+
+Instead of fetching user data from the database repeatedly:
+
+- Store it temporarily in cache
+
+This improves speed significantly.
+
+### D. Advantages
+
+- Faster responses
+- Reduced server load
+- Improved performance
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/caching-diagram.png"
+  alt="Caching Diagram"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+## Database Basics
+
+Databases store and manage application data.
+
+Examples of stored data:
+
+- User accounts
+- Orders
+- Messages
+- Videos
+- Transactions
+
+Databases are extremely important because almost every modern application depends on data storage.
+
+
+
+## SQL vs NoSQL
+
+### A. SQL Databases
+
+SQL databases store structured data in tables.
+
+#### 1. Features
+
+- Fixed schema
+- Strong consistency
+- Relational structure
+
+#### 2. Examples
+
+- MySQL
+- PostgreSQL
+
+#### 3. Best Used For
+
+- Banking systems
+- Financial applications
+
+#### 4. Advantages
+
+- ACID properties
+- Strong consistency
+- Structured relationships
+
+### B. NoSQL Databases
+
+NoSQL databases store unstructured or semi-structured data.
+
+#### 1. Features
+
+- Flexible schema
+- High scalability
+- Faster horizontal scaling
+
+#### 2. Examples
+
+- MongoDB
+- Cassandra
+
+#### 3. Best Used For
+
+- Social media platforms
+- Real-time applications
+
+#### 4. Advantages
+
+- Flexible data storage
+- Better scalability
+- Faster distributed operations
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/sql-vs-nosql.png"
+  alt="SQL vs NoSQL"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+## Database Scaling
+
+As traffic and data grow, databases must scale efficiently.
+
+### A. Replication
+
+Replication creates copies of databases.
+
+#### 1. Benefits
+
+- Better availability
+- Better read performance
+- Backup support
+
+#### 2. Example
+
+One primary database and multiple read replicas.
+
+### B. Sharding
+
+Sharding splits data across multiple databases.
+
+#### 1. Example
+
+Users:
+
+- 1–1M → Database 1
+- 1M–2M → Database 2
+
+#### 2. Benefits
+
+- Better scalability
+- Reduced database load
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/replication-sharding.png"
+  alt="Replication and Sharding"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+## API Gateway
+
+An API Gateway acts as a single entry point for all client requests.
+
+It handles:
+
+- Authentication
+- Routing
+- Rate limiting
+- Request forwarding
+
+### A. Benefits
+
+- Better security
+- Centralized request handling
+- Simplified architecture
+
+#### 1. Example
+
+Mobile applications communicate with the API Gateway instead of directly contacting every service.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/api-gateway.png"
+  alt="API Gateway"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+## Message Queues
+
+Message Queues help systems communicate asynchronously.
+
+They are useful for:
+
+- Notifications
+- Background jobs
+- Email systems
+- Order processing
+
+### A. Popular Queue Systems
+
+- Kafka
+- RabbitMQ
+
+### B. Example
+
+In Amazon:
+
+- Payment processing
+- Email sending
+- Notification sending
+
+can happen asynchronously using queues.
+
+### C. Advantages
+
+- Reduces system load
+- Better scalability
+- Better fault tolerance
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/message-queue.png"
+  alt="Message Queue"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+## Monolithic vs Microservices
+
+### A. Monolithic Architecture
+
+All components are built as one single application.
+
+#### 1. Advantages
+
+- Easier to build initially
+- Simple deployment
+
+#### 2. Limitations
+
+- Difficult to scale
+- Difficult to maintain for large systems
+
+### B. Microservices Architecture
+
+The application is divided into smaller independent services.
+
+#### 1. Advantages
+
+- Better scalability
+- Independent deployment
+- Easier maintenance
+
+#### 2. Limitations
+
+- Complex communication
+- Difficult debugging
+
+#### 3. Example
+
+Netflix uses microservices architecture.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/monolith-vs-microservices.png"
+  alt="Monolith vs Microservices"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+## CAP Theorem
+
+CAP Theorem states that distributed systems can guarantee only two out of these three properties at the same time:
+
+- Consistency
+- Availability
+- Partition Tolerance
+
+CAP theorem becomes important when network failures happen between servers.
+
+### A. Consistency
+
+Consistency means:
+
+All users see the same latest data.
+
+#### 1. Example
+
+In banking systems:
+
+- All ATMs should show updated balances immediately after transactions.
+
+### B. Availability
+
+Availability means:
+
+The system should always respond to requests.
+
+#### 1. Example
+
+Instagram should still load feeds even during partial server failures.
+
+Some data may not be instantly updated.
+
+### C. Partition Tolerance
+
+Partition Tolerance means:
+
+The system should continue working even if communication between servers fails.
+
+#### 1. Example
+
+If servers in India and the USA lose connection:
+
+- The system should still continue functioning.
+
+### D. CP Systems
+
+CP systems prioritize:
+
+- Consistency
+- Partition Tolerance
+
+#### 1. Example
+
+Banking systems
+
+### E. AP Systems
+
+AP systems prioritize:
+
+- Availability
+- Partition Tolerance
+
+#### 1. Example
+
+Instagram likes and YouTube views.
+
+### F. Eventual Consistency
+
+Eventual consistency means:
+
+Data may not update instantly everywhere,
+but eventually all servers become synchronized.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/cap-theorem.png"
+  alt="CAP Theorem"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+## Rate Limiting
+
+Rate limiting restricts how many requests a user can make within a specific time period.
+
+### A. Why Rate Limiting is Important
+
+- Prevents abuse
+- Prevents spam
+- Prevents server overload
+- Improves security
+
+#### 1. Example
+
+A user may only send:
+
+- 100 requests per minute
+
+
+
+## CDN (Content Delivery Network)
+
+A CDN stores copies of content across multiple geographic servers.
+
+### A. Purpose of CDN
+
+- Faster content delivery
+- Reduced latency
+- Reduced server load
+
+### B. Example
+
+When watching YouTube videos:
+
+- Videos are served from the nearest CDN server.
+
+### C. Benefits
+
+- Faster loading
+- Better scalability
+- Better user experience
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/cdn-diagram.png"
+  alt="CDN Diagram"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+## System Design Process
+
+A structured process is followed while designing systems.
+
+### A. Understand Requirements
+
+Identify:
+
+- Functional requirements
+- Non-functional requirements
+
+### B. Estimate Scale
+
+Estimate:
+
+- Number of users
+- Traffic
+- Storage requirements
+
+### C. Design Core Components
+
+Identify:
+
+- Database
+- Cache
+- APIs
+- Load balancers
+
+### D. Create Architecture
+
+Design interaction between components.
+
+### E. Identify Bottlenecks
+
+Find possible:
+
+- Performance issues
+- Scalability problems
+- Failure points
+
+
+
+## Solved Example — Design a URL Shortener (Bit.ly)
+
+A URL Shortener converts long URLs into short and manageable links.
+
+### A. Example
+
+Long URL:
+
+https://www.example.com/products/mobile/samsung/offer
+
+Short URL:
+
+bit.ly/abc123
+
+The shortened URL redirects users to the original long URL.
+
+The system should support:
+
+- High traffic
+- Fast redirects
+- Scalability
+- Reliability
+
+
+
+### B. Functional Requirements
+
+The system should:
+
+- Generate short URLs
+- Redirect users
+- Generate unique short links
+- Handle millions of redirects
+- Support high read traffic
+
+
+
+### C. Non-Functional Requirements
+
+The system should provide:
+
+- High availability
+- Low latency
+- Scalability
+- Reliability
+
+#### 1. Why Low Latency is Important
+
+When users click a short URL:
+
+- Redirection should happen instantly
+
+Slow redirects create poor user experience.
+
+
+
+### D. Core Components
+
+Main components include:
+
+- Client
+- Load Balancer
+- API Servers
+- Cache
+- Database
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/url-shortener-architecture.png"
+  alt="URL Shortener Architecture"
+  style={{
+    width: "75%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+### E. Client
+
+The client can be:
+
+- Browser
+- Mobile application
+- Web application
+
+The client sends requests to:
+
+- Create short URLs
+- Open short URLs
+
+
+
+### F. Load Balancer
+
+The Load Balancer distributes requests across multiple API servers.
+
+#### 1. Benefits
+
+- Prevents server overload
+- Improves scalability
+- Improves availability
+
+When millions of users click shortened URLs simultaneously:
+
+- Traffic gets distributed evenly across servers.
+
+
+
+### G. API Servers
+
+API servers handle:
+
+- URL creation
+- URL redirection
+
+#### 1. Responsibilities
+
+- Accept long URLs
+- Generate short codes
+- Store mappings
+- Redirect users
+
+API servers also validate:
+
+- Invalid URLs
+- Duplicate requests
+- Malicious links
+
+
+
+### H. Database
+
+The database stores mappings between:
+
+| Short URL | Original URL |
+| --- | --- |
+| abc123 | https://example.com |
+
+The database must support:
+
+- Fast reads
+- Fast writes
+- Scalability
+
+Read traffic is usually much higher than write traffic because:
+
+- Links are clicked more often than created.
+
+
+### I. Cache
+
+Cache stores frequently accessed URLs temporarily.
+
+#### 1. Why Cache is Important
+
+Popular URLs may receive millions of clicks.
+
+Fetching from the database every time:
+
+- Increases latency
+- Increases database load
+
+Using cache:
+
+- Improves speed
+- Reduces database traffic
+
+#### 2. Popular Cache Systems
+
+- Redis
+- Memcached
+
+#### 3. Example
+
+If a viral YouTube link is accessed millions of times:
+
+- Store the mapping in cache for faster redirects.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/url-shortener-cache-flow.png"
+  alt="URL Shortener Cache"
+  style={{
+    width: "70%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+### J. URL Shortening Flow
+
+#### 1. Step 1
+
+User submits a long URL.
+
+#### 2. Step 2
+
+API server generates a unique short code.
+
+##### Example
+
+https://example.com/article/12345
+
+becomes:
+
+bit.ly/abc123
+
+#### 3. Step 3
+
+The mapping is stored in the database.
+
+#### 4. Step 4
+
+The short URL is returned to the user.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/url-shortener-flow.png"
+  alt="URL Shortening Flow"
+  style={{
+    width: "70%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+### K. URL Redirect Flow
+
+#### 1. Step 1
+
+User opens the short URL.
+
+#### 2. Step 2
+
+System checks cache first.
+
+##### a. If Present in Cache
+
+- Redirect immediately
+
+##### b. If Not Present
+
+- Fetch from database
+- Store in cache
+- Redirect user
+
+This improves:
+
+- Speed
+- Scalability
+- Performance
+
+
+### L. HTTP Redirects (301 vs 302)
+
+When users open a shortened URL,
+the server redirects them to the original URL using HTTP redirect status codes.
+
+#### 1. 301 Redirect
+
+301 means:
+
+**Permanent Redirect**
+
+The browser understands that:
+
+- The URL has permanently moved.
+
+##### a. Advantages
+
+- Better SEO
+- Browser caching
+- Faster future redirects
+
+##### b. Example
+
+bit.ly/abc123 permanently redirects to the original URL.
+
+#### 2. 302 Redirect
+
+302 means:
+
+**Temporary Redirect**
+
+The browser understands that:
+
+- The redirect is temporary.
+
+##### a. Advantages
+
+- Useful for temporary routing
+- Useful for testing
+
+##### b. Example
+
+Temporary maintenance pages or testing environments.
+
+#### 3. Difference Between 301 and 302
+
+| 301 Redirect | 302 Redirect |
+| --- | --- |
+| Permanent | Temporary |
+| Better SEO | Not ideal for SEO |
+| Browser caches redirect | Usually not cached |
+
+#### 4. Which One is Used in URL Shorteners?
+
+Most URL shorteners use:
+
+- 301 Redirects
+
+because shortened links usually permanently point to the same URL.
+
+
+
+### M. How Short Codes are Generated
+
+The system must generate:
+
+- Unique codes
+- Small URLs
+- Collision-free values
+
+#### 1. Hashing
+
+Generate hash values from URLs.
+
+##### a. Problem
+
+Hash collisions may occur:
+
+- Two URLs may generate similar values.
+
+#### 2. Base62 Encoding
+
+Uses:
+
+- a-z
+- A-Z
+- 0-9
+
+This creates compact and readable URLs.
+
+##### a. Example
+
+125 → cb
+
+#### 3. Why Base62 is Used
+
+Base62 allows:
+
+- Small URLs
+- Large combinations
+- Easy readability
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/base62-encoding.png"
+  alt="Base62 Encoding"
+  style={{
+    width: "55%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+
+### N. Scaling the System
+
+As traffic increases:
+
+- More servers are added
+
+#### 1. Horizontal Scaling
+
+Instead of:
+
+- One powerful server
+
+Use:
+
+- Multiple smaller servers
+
+#### 2. Database Replication
+
+Replication creates multiple database copies.
+
+##### a. Benefits
+
+- Better availability
+- Better read performance
+
+#### 3. Caching Popular URLs
+
+Frequently accessed URLs are stored in cache.
+
+This reduces:
+
+- Database load
+- Latency
+
+
+
+### O. Possible Bottlenecks
+
+Possible bottlenecks include:
+
+- Database overload
+- Traffic spikes
+- Cache failures
+- Hot URLs
+
+#### 1. Hot URL Problem
+
+Some URLs become extremely popular.
+
+##### Example
+
+- Viral YouTube links
+- Celebrity tweets
+- Trending news links
+
+Millions of users may access the same URL simultaneously.
+
+#### 2. Solutions
+
+- Caching
+- CDN
+- Load balancing
+
+
+
+### P. Security Considerations
+
+The system should prevent:
+
+- Malicious URLs
+- Spam links
+- Abuse
+- DDoS attacks
+
+#### 1. Rate Limiting Example
+
+A user may generate only:
+
+- 100 URLs per minute
+
+This prevents:
+
+- Spam
+- Automated abuse
+- Server overload
+
+
+
+### Q. Final Architecture Summary
+
+The final system includes:
+
+- Load Balancer
+- Multiple API Servers
+- Cache Layer
+- Database
+- Replication
+- Rate Limiting
+- CDN
+
+This architecture provides:
+
+- Scalability
+- High availability
+- Fast redirects
+- Better reliability
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/url-shortener-final-architecture.png"
+  alt="Final URL Shortener Architecture"
+  style={{
+    width: "75%",
+    margin: "20px auto",
+    display: "block"
+  }}
+/>
+
+
+## Practice Questions
+
+1. Design Instagram  
+2. Design WhatsApp  
+3. Design YouTube  
+4. Design Notification System  
+5. Design Food Delivery System  
+
+For each system:
+
+- Identify functional requirements
+- Identify non-functional requirements
+- Design architecture
+- Choose databases
+- Add scalability improvements
+
+Refer:
+
+- https://www.interviewbit.com/courses/system-design/system-design-concepts/
+- https://www.systemdesignhandbook.com/guides/system-design-interview-questions/
+- https://www.hellointerview.com/learn/system-design/

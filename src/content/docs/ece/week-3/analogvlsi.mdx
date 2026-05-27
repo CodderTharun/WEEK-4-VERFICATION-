@@ -1,0 +1,1836 @@
+---
+title: Analog VLSI
+---
+
+## SINGLE STAGE AMPLIFIERS
+A **single-stage amplifier** is an electronic amplifier circuit that uses only one active device stage (such as a MOSFET or transistor) to increase the amplitude of an input signal. It amplifies weak analog or digital signals so they can drive loads, reduce the effect of noise, or provide proper signal levels for further circuit stages.
+## Categories OF Amplifiers
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD1.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### A. Common-Source Stage
+
+#### 1. Drain Current Equation
+The common-source amplifier uses a MOSFET to amplify small signals.
+Input is applied at the gate and output is taken from the drain.
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD2.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD3.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+When the MOSFET operates in saturation region:
+
+$$
+I_D = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{GS}-V_{TH})^2
+$$
+
+The output voltage is:
+
+$$
+V_{out} = V_{DD} - I_D R_D
+$$
+
+Substituting $I_D$:
+
+$$
+V_{out} = V_{DD} - R_D \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{in}-V_{TH})^2
+$$
+
+#### 2.  Voltage Gain Derivation
+
+Voltage gain is defined as:
+
+$$
+A_v = \frac{\partial V_{out}}{\partial V_{in}}
+$$
+
+Differentiating the output equation:
+
+$$
+A_v = -R_D \mu_n C_{ox}\frac{W}{L}(V_{in}-V_{TH})
+$$
+
+Since
+
+$$
+g_m = \mu_n C_{ox}\frac{W}{L}(V_{GS}-V_{TH})
+$$
+
+therefore,
+
+$$
+A_v = -g_m R_D
+$$
+
+#### 3.  Including Channel-Length Modulation
+
+If output resistance $r_O$ is considered:
+
+$$
+A_v = -g_m(r_O \parallel R_D)
+$$
+### B. CS Stage with Diode-Connected Load
+#### 1. Diode-Connected MOSFET
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD4.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+In some CMOS technologies, fabricating precise resistors is difficult. Therefore, the drain resistor $R_D$ in a common-source amplifier can be replaced by a MOSFET connected with its gate and drain shorted together. This is called a diode-connected MOSFET.
+
+The transistor always operates in saturation because:
+
+$$
+V_{DS} = V_{GS}
+$$
+
+and saturation condition is:
+
+$$
+V_{DS} \geq V_{GS} - V_{TH}
+$$
+
+#### 2. Small-Signal Resistance
+
+For a diode-connected MOSFET:
+
+$$
+I_X = g_m V_X + \frac{V_X}{r_O}
+$$
+
+Therefore,
+
+$$
+\frac{V_X}{I_X} = \frac{1}{g_m + \frac{1}{r_O}}
+$$
+
+If $r_O$ is very large:
+
+$$
+\frac{V_X}{I_X} \approx \frac{1}{g_m}
+$$
+
+Including body effect:
+
+$$
+\frac{V_X}{I_X} = \frac{1}{g_m + g_{mb} + \frac{1}{r_O}}
+$$
+
+If $r_O$ is neglected:
+
+$$
+\frac{V_X}{I_X} \approx \frac{1}{g_m + g_{mb}}
+$$
+
+Thus, the diode-connected MOSFET behaves like a small-signal resistor.
+
+#### Common-Source Amplifier with Diode-Connected Load
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD5.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+When a diode-connected MOSFET is used as the load:
+
+$$
+A_v = -g_{m1} \left( \frac{1}{g_{m2} + g_{mb2}} \right)
+$$
+
+Approximated as:
+
+$$
+A_v = -\frac{g_{m1}}{g_{m2}(1+\eta)}
+$$
+
+where
+
+$$
+\eta = \frac{g_{mb2}}{g_{m2}}
+$$
+
+Since
+
+$$
+g_m = \sqrt{2\mu_n C_{ox}\left(\frac{W}{L}\right)I_D}
+$$
+
+the gain becomes:
+
+$$
+A_v = -\sqrt{\frac{(W/L)_1}{(W/L)_2}} \cdot \frac{1}{1+\eta}
+$$
+
+### C. CS Stage with Current-Source Load
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD6.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+In applications requiring a large voltage gain in a single stage, the relationship
+
+$$
+A_v = -g_m R_D
+$$
+
+suggests increasing the load impedance of the CS stage. However, with a resistor or diode-connected load, increasing the load resistance causes a large DC voltage drop across the load, which limits the output voltage swing.
+
+A more practical approach is to replace the load with a device that does not obey Ohm’s law, such as a current source.
+
+When both transistors operate in saturation, the total impedance seen at the output node is:
+
+$$
+r_{O1} \parallel r_{O2}
+$$
+
+Therefore, the voltage gain becomes:
+
+$$
+A_v = -g_{m1}(r_{O1} \parallel r_{O2})
+$$
+
+
+
+The minimum voltage required to keep transistor $M_2$ in saturation is:
+
+$$
+|V_{DS2,min}| = |V_{GS2} - V_{TH2}|
+$$
+
+This voltage can be reduced by increasing the width of $M_2$.
+
+If $r_{O2}$ is not sufficiently high, both the length and width of $M_2$ can be increased to reduce channel-length modulation parameter.
+
+#### Gain Dependence on Channel Length
+
+Since:
+
+$$
+\lambda \propto \frac{1}{L}
+$$
+
+and
+
+$$
+r_O \propto \frac{L}{I_D}
+$$
+Longer channel transistors provide higher output resistance and hence larger voltage gain.
+The intrinsic gain of M1 can be written as
+
+
+$$
+g_{m1} r_{O1} = \sqrt{2\left(\frac{W}{L}\right)_1 \mu_n C_{ox} I_D}\cdot\frac{1}{\lambda I_D}
+$$
+
+### D. Complementary CS Stage (Active Load)
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD7.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+In the amplifier topology where a PMOS device serves as a constant current source, M2 can also operate as an amplifying device if the input signal is applied to its gate, forming an active load. This is equivalent to a CMOS inverter.
+
+Suppose both transistors are in saturation and $$V_{in}$$ rises by ΔV0. Two changes occur:
+
+1. $I_{D1}$ increases, pulling $V_{out}$ lower.
+2. M2 injects less current into the output node, allowing $V_{out}$ to drop.
+
+These two effects enhance each other, producing a greater voltage gain. The two transistors operate in parallel:
+
+$$
+-(g_{m1} + g_{m2}) V_{in} (r_{O1} \parallel r_{O2}) = V_{out}
+$$
+
+Hence, the voltage gain is:
+
+$$
+A_v = -(g_{m1} + g_{m2})(r_{O1} \parallel r_{O2})
+$$
+
+Compared to a CS stage with a single current-source load, this circuit has the same output resistance but higher transconductance. This topology is called a **complementary CS stage**.
+
+#### Critical Issues
+
+1. The bias currents of the two transistors are strongly dependent on process, voltage, and temperature (PVT). Variations in $V_{DD}$ or threshold voltages change the drain currents.
+2. The circuit amplifies supply voltage variations ("supply noise"). The small-signal gain from $V_{DD}$ to $V_{out}$ is:
+
+$$
+\frac{V_{out}}{V_{DD}} = \frac{g_{m2} r_{O2} + 1}{r_{O2} + r_{O1}} r_{O1} = \left( g_{m2} + \frac{1}{r_{O2}} \right) (r_{O1} \parallel r_{O2})
+$$
+### E. CS Stage with Triode Load
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD8.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+A MOS device operating in the deep triode region behaves as a resistor and can therefore serve as the load in a common-source (CS) stage.
+
+In this circuit, the gate of transistor $M_2$ is biased at a sufficiently low level so that the transistor remains in the deep triode region for all output voltage swings.
+
+The ON resistance of the triode-load transistor is:
+
+$$
+R_{on2} =
+\frac{1}{
+\mu_p C_{ox}
+\left(\frac{W}{L}\right)_2
+(V_{DD} - V_b - |V_{THP}|)
+}
+$$
+
+Using this resistance, the voltage gain of the CS stage can be calculated.
+
+#### Drawbacks
+
+The major drawback of the triode-load configuration is that $R_{on2}$ depends on:
+
+- μpCox
+- Vb
+- VTHP
+
+Since $\mu_p C_{ox}$ and $V_{THP}$ vary with process and temperature, and generating an accurate bias voltage $V_b$ requires additional circuitry, the design becomes difficult and less stable.
+
+#### Advantage
+
+Triode loads consume less voltage headroom compared to diode-connected loads.
+
+For the triode-load circuit:
+
+$$
+V_{out,max} = V_{DD}
+$$
+
+whereas for a diode-connected load:
+
+$$
+V_{out,max} \approx V_{DD} - |V_{THP}|
+$$
+
+Thus, the triode-load configuration allows a larger output voltage swing.
+
+### F. CS Stage with Source Degeneration
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD9.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+In some applications, the nonlinear dependence of drain current on overdrive voltage introduces excessive nonlinearity. To improve linearity, a degeneration resistor $R_S$ is placed in series with the source terminal.
+
+As $$V_{in}$$ increases:
+
+- $$I_D$$ increases  
+- Voltage drop across $R_S$ increases  
+- Part of the input voltage appears across $R_S$
+
+Thus, the variation in $V_{GS}$ becomes smaller, producing a smoother variation of drain current.
+
+The equivalent transconductance is:
+
+$$
+G_m = \frac{\partial I_D}{\partial V_{in}}
+$$
+
+Since:
+
+$$
+V_{GS} = V_{in} - I_D R_S
+$$
+
+the effective transconductance becomes:
+
+$$
+G_m = \frac{g_m}{1 + g_m R_S}
+$$
+
+Hence, the voltage gain is:
+
+$$
+A_v = -G_m R_D
+$$
+
+or
+
+$$
+A_v = -\frac{g_m R_D}{1 + g_m R_S}
+$$
+
+
+
+As $R_S$ increases, the gain becomes less dependent on $g_m$, improving linearity.
+
+For:
+
+$$
+R_S \gg \frac{1}{g_m}
+$$
+
+we obtain:
+
+$$
+G_m \approx \frac{1}{R_S}
+$$
+
+Thus:
+
+$$
+\Delta I_D \approx \frac{\Delta V_{in}}{R_S}
+$$
+
+Most of the input voltage variation appears across $R_S$, making the drain current more linear.
+
+
+Linearization improves circuit performance but reduces voltage gain and increases noise.
+
+
+Considering body effect and channel-length modulation:
+
+$$
+G_m = \frac{g_m r_O}{R_S + [1 + (g_m + g_{mb})R_S]r_O}
+$$
+
+#### Output Resistance
+
+The output resistance becomes:
+
+$$
+R_{out} = [1 + (g_m + g_{mb})R_S]r_O + R_S
+$$
+
+or
+
+$$
+R_{out} = [1 + (g_m + g_{mb})r_O]R_S + r_O
+$$
+
+If:
+
+$$
+(g_m + g_{mb})r_O \gg 1
+$$
+
+then:
+
+$$
+R_{out} \approx (g_m + g_{mb})r_O R_S + r_O
+$$
+
+#### Voltage Gain Including All Effects
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD10.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+A_v = -\frac{g_m r_O R_D}{R_D + R_S + r_O + (g_m + g_{mb})R_S r_O}
+$$
+
+## Source Follower
+The common-drain stage, also called the source follower, is used as a voltage buffer in analog circuits. It provides high input impedance, low output impedance, and a voltage gain approximately equal to one. The output is taken from the source terminal and closely follows the input voltage.
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD11.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+In this configuration:
+
+- Input is applied at the gate
+- Output is taken from the source
+- Drain is connected to $V_{DD}$
+
+The source voltage follows the gate voltage, hence the name *source follower*.
+
+ **Large-Signal Behavior**
+
+For:
+
+$$
+V_{in} < V_{TH}
+$$
+
+the transistor is OFF and:
+
+$$
+V_{out} = 0
+$$
+
+When:
+
+$$
+V_{in} > V_{TH}
+$$
+
+the transistor turns ON in saturation and current flows through $R_S$.
+
+As $V_{in}$ increases further, the output follows the input with a level shift approximately equal to $$V_{GS}$$.
+
+The input-output relation is:
+
+$$
+\frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_{in} - V_{TH} - V_{out})^2 R_S = V_{out}
+$$
+
+
+ **Small-Signal Voltage Gain**
+ <img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD12.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+The voltage gain is obtained by differentiating the large-signal equation:
+
+$$
+A_v = \frac{V_{out}}{V_{in}}
+$$
+
+Using:
+
+$$
+g_m = \mu_n C_{ox}\frac{W}{L}(V_{in} - V_{TH} - V_{out})
+$$
+
+the voltage gain becomes:
+
+$$
+A_v =
+\frac{
+g_m R_S
+}{
+1 + (g_m + g_{mb})R_S
+}
+$$
+
+where:
+
+- $g_m$ = transconductance
+- $g_{mb}$ = body-effect transconductance
+
+
+
+For small input voltages:
+
+$$
+g_m \approx 0
+$$
+
+Hence:
+
+$$
+A_v \approx 0
+$$
+
+As the drain current increases, $g_m$ increases and the gain approaches:
+
+$$
+A_v \approx \frac{g_m}{g_m + g_{mb}}
+$$
+
+or
+
+$$
+A_v \approx \frac{1}{1+\eta}
+$$
+
+where:
+
+$$
+\eta = \frac{g_{mb}}{g_m}
+$$
+
+Thus, the gain is always slightly less than unity because of body effect.
+
+Nonlinearity
+
+In the resistor-loaded source follower, the drain current strongly depends on the input DC level.
+
+If $V_{in}$ increases:
+
+- $I_D$ increases
+- $V_{GS}$ changes
+- $V_{out} = V_{in} - V_{GS}$
+
+Hence, the output does not follow the input perfectly, causing nonlinearity.
+
+To reduce this effect, the resistor $R_S$ can be replaced by a constant current source.
+
+**Output Resistance**
+
+The body effect can be modeled as an additional resistance.
+
+The output resistance of the source follower becomes:
+
+$$
+R_{out} = \frac{1}{g_m} \parallel \frac{1}{g_{mb}}
+$$
+
+Therefore:
+
+$$
+R_{out} = \frac{1}{g_m + g_{mb}}
+$$
+
+This low output resistance allows the source follower to efficiently drive low-resistance loads.
+
+
+
+## Common-Gate (CG) Stage
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD13.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+In common-source amplifiers and source followers, the input signal is applied to the gate terminal of the MOSFET. In a common-gate (CG) stage, the input signal is applied to the source terminal while the output is taken from the drain terminal.
+
+The gate is connected to a DC bias voltage to establish proper operating conditions.
+
+In this configuration:
+
+- Input is applied at the source
+- Output is taken from the drain
+- Gate is biased at a constant voltage
+
+The common-gate stage provides low input impedance and high voltage gain, making it useful in high-frequency and wideband applications.
+
+Large-Signal Behavior
+
+Assume channel-length modulation is neglected:
+
+$$
+\lambda = 0
+$$
+
+For:
+
+$$
+V_{in} \geq V_b - V_{TH}
+$$
+
+the transistor is OFF and:
+
+$$
+V_{out} = V_{DD}
+$$
+
+For lower values of $V_{in}$, the transistor turns ON in saturation and the drain current is:
+
+$$
+I_D = \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_b - V_{in} - V_{TH})^2
+$$
+
+As $V_{in}$ decreases further, $V_{out}$ also decreases.
+
+The transistor enters the triode region when:
+
+$$
+V_{DD} - \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_b - V_{in} - V_{TH})^2 R_D = V_b - V_{TH}
+$$
+
+The output voltage in saturation region is:
+
+$$
+V_{out} = V_{DD} - \frac{1}{2}\mu_n C_{ox}\frac{W}{L}(V_b - V_{in} - V_{TH})^2 R_D
+$$
+
+
+ **Small-Signal Voltage Gain**
+ <img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD14.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Differentiating the output equation with respect to $V_{in}$:
+
+$$
+\frac{\partial V_{out}}{\partial V_{in}} = \mu_n C_{ox}\frac{W}{L}R_D(V_b - V_{in} - V_{TH})(1+\eta)
+$$
+
+Since:
+
+$$
+g_m = \mu_n C_{ox}\frac{W}{L}(V_b - V_{in} - V_{TH})
+$$
+
+the voltage gain becomes:
+
+$$
+A_v = g_m(1+\eta)R_D
+$$
+
+where:
+
+$$
+\eta = \frac{\partial V_{TH}}{\partial V_{SB}}
+$$
+
+The gain of the common-gate stage is positive.
+
+
+
+Unlike the common-source amplifier, the common-gate stage does not produce phase inversion.
+
+Body effect increases the equivalent transconductance and hence increases the voltage gain.
+
+To obtain higher gain:
+
+- Increase $g_m$ by increasing transistor width
+- Increase $R_D$
+- Operate near subthreshold region
+
+However, increasing $R_D$ also increases DC voltage drop and limits output swing.
+
+
+ **Voltage Gain Including Source Resistance**
+
+Including source degeneration resistance $R_S$, body effect, and finite output resistance:
+
+$$
+A_v = \frac{[(g_m + g_{mb})r_O + 1]R_D}{r_O + (g_m + g_{mb})r_O R_S + R_S + R_D}
+$$
+
+This equation shows that body effect slightly increases the gain of the common-gate stage.
+
+## Cascode amplifier
+
+
+A cascode stage is formed by cascading a common-source (CS) stage with a common-gate (CG) stage. It is widely used in analog circuits to obtain high voltage gain, high output resistance, and improved frequency response.
+
+The lower transistor operates as a common-source amplifier, while the upper transistor operates as a common-gate amplifier.
+
+- Input is applied to the gate of the lower transistor
+- Output is taken from the drain of the upper transistor
+- Upper transistor gate is biased with a constant voltage
+
+The cascode configuration combines:
+
+- High input impedance of CS stage
+- High bandwidth of CG stage
+- Reduced Miller effect
+
+### A. Operation of Cascode Stage
+
+The lower transistor converts the input voltage into drain current.
+
+The upper transistor prevents large voltage variations at the drain of the lower transistor.
+
+As a result:
+
+- Miller effect is reduced
+- Bandwidth increases
+- Output resistance increases
+
+
+#### 1. Voltage Gain
+
+The voltage gain of the cascode stage is approximately:
+
+$$
+A_v = -g_{m1}(r_{O1} \parallel r_{O2}(1+g_{m2}r_{O2}))
+$$
+
+For large intrinsic gain:
+
+$$
+A_v \approx -g_{m1}g_{m2}r_{O1}r_{O2}
+$$
+
+Thus, the cascode stage provides much higher gain than a simple common-source amplifier.
+
+
+#### 2. Output Resistance
+
+The output resistance is greatly increased because the common-gate transistor boosts the resistance seen at the output.
+
+Approximate output resistance:
+
+$$
+R_{out} \approx g_{m2}r_{O1}r_{O2}
+$$
+
+A high output resistance leads to higher voltage gain.
+
+
+### C. Miller Effect Reduction
+
+In a common-source amplifier, the gate-drain capacitance experiences large Miller multiplication.
+
+In a cascode stage, the voltage gain from the drain of the lower transistor to the output is small.
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD15.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Thus:
+
+- Miller multiplication is minimized
+- Effective input capacitance decreases
+- High-frequency response improves
+
+## Differential Pair
+
+
+A differential pair is one of the most important building blocks in analog integrated circuits. It amplifies the difference between two input signals while rejecting signals common to both inputs.
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD16.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+Differential pairs are widely used in:
+
+- Operational amplifiers
+- Comparators
+- Mixers
+- Voltage amplifiers
+- Analog front-end circuits
+
+
+### A. Basic Structure
+
+A MOS differential pair consists of:
+
+- Two matched transistors $M_1$ and $M_2$
+- A tail current source $I_{SS}$
+- Load resistors or active loads
+
+Inputs are applied to the gates of the transistors.
+
+Output is taken from one drain or from both drains.
+
+
+
+### B. Operation of Differential Pair
+
+The tail current source provides a constant current:
+
+$$
+I_{SS}
+$$
+
+This current is shared between the two transistors.
+
+If:
+
+$$
+V_{in1} = V_{in2}
+$$
+
+then:
+
+$$
+I_{D1} = I_{D2} = \frac{I_{SS}}{2}
+$$
+
+Both outputs remain equal.
+
+### C. Differential Input Signal
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD17.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+The differential input voltage is:
+
+$$
+V_{id} = V_{in1} - V_{in2}
+$$
+
+When:
+
+$$
+V_{in1} > V_{in2}
+$$
+
+then:
+
+- $M_1$ conducts more current
+- $M_2$ conducts less current
+
+Thus:
+
+$$
+I_{D1} > I_{D2}
+$$
+
+Similarly, if:
+
+$$
+V_{in2} > V_{in1}
+$$
+
+then:
+
+$$
+I_{D2} > I_{D1}
+$$
+
+The circuit therefore amplifies only the difference between the inputs.
+
+
+
+### D. Differential-Mode Operation
+
+For differential signals:
+
+$$
+V_{in1} = +\frac{V_{id}}{2}
+$$
+
+$$
+V_{in2} = -\frac{V_{id}}{2}
+$$
+
+The outputs become equal in magnitude and opposite in phase.
+
+
+
+#### Differential Gain
+
+For a resistive load:
+
+$$
+A_d = -g_m R_D
+$$
+
+where:
+
+- $g_m$ = transconductance
+- $R_D$ = drain resistance
+
+If active loads are used:
+
+$$
+A_d = -g_m(r_{O1} \parallel r_{O2})
+$$
+
+Differential amplifiers provide high gain because of large output resistance.
+
+
+
+
+
+#### E. Common-Mode Rejection Ratio (CMRR)
+
+CMRR measures the ability of the circuit to reject common-mode signals.
+
+$$
+CMRR = \frac{A_d}{A_{CM}}
+$$
+
+
+
+#### CMRR in Decibels
+
+$$
+CMRR_{dB} = 20\log\left(\frac{A_d}{A_{CM}}\right)
+$$
+
+Higher CMRR means better noise rejection.
+
+
+
+### F. Frequency Response of Differential Pair
+
+For differential signals, the circuit behaves similarly to a common-source amplifier and exhibits Miller multiplication.
+
+
+#### Capacitance at Node P
+
+The total capacitance at node $P$ is:
+
+$$
+C_P = C_{GD3} + C_{DB3} + C_{SB1} + C_{SB2}
+$$
+
+Large transistor sizes increase $C_P$.
+
+#### Common-Mode Gain Including Capacitances
+
+$$
+A_{v,CM} = - \frac{g_m \left(R_D \parallel \frac{1}{C_L s}\right)}{(g_{m1}+g_{m2})\left(r_{O3}\parallel \frac{1}{C_P s}\right)+1}
+$$
+
+where:
+
+- $C_L$ = load capacitance  
+- $C_P$ = capacitance at node $P$
+
+
+#### CMRR at High Frequencies
+
+$$
+CMRR \approx g_m \left( \frac{r_{O3} C_P s + 1 + 2 g_m r_{O3}}{r_{O3} C_P s + 1} \right)
+$$
+
+#### Pole Frequency
+
+$$
+\omega_p = \frac{1}{r_{O3} C_P}
+$$
+
+#### Zero Frequency
+
+$$
+\omega_z = \frac{1 + 2 g_m r_{O3}}{r_{O3} C_P}
+$$
+
+At high frequencies:
+
+- Common-mode gain increases
+- CMRR decreases
+- Noise rejection degrades
+
+## Current Mirror
+
+
+A current mirror is an analog circuit that senses a reference current and generates one or more copies of that current.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD18.jpg"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+The copied current has characteristics similar to the reference current.
+
+The output current may be:
+
+- Equal to the reference current
+- A multiple of the reference current
+- A fraction of the reference current
+
+
+$$
+I_{copy} = I_{REF}
+$$
+
+or
+
+$$
+I_{copy} = N \times I_{REF}
+$$
+
+or
+
+$$
+I_{copy} = \frac{1}{N} I_{REF}
+$$
+
+
+
+### A. Why Current Mirrors are Used
+
+Current mirrors are widely used in integrated circuits for biasing amplifiers.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD19.jpg"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Advantages of current-source biasing:
+
+- High voltage gain
+- Better bias stability
+- Less dependence on resistor values
+- Easy current distribution inside ICs
+
+In large integrated circuits, generating separate stable bias voltages for many amplifiers is difficult.
+
+Hence:
+
+- One stable reference current is generated
+- Current mirrors create multiple copies of this current
+- These currents are used to bias different circuits
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD20.jpg"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### B. NMOS Current Mirror
+
+In an NMOS current mirror:
+
+- One transistor is diode-connected
+- The reference current creates a gate-source voltage VGS
+- The same VGS is applied to another MOSFET
+- Thus both transistors conduct similar currents
+
+
+For saturation operation:
+
+$$
+I_D = \frac{1}{2}\mu_n C_{ox}\left(\frac{W}{L}\right)(V_{GS} - V_{TH})^2
+$$
+
+Since both transistors have the same $V_{GS}$:
+
+$$
+\frac{I_{D1}}{I_{REF}} = \frac{(W/L)_1}{(W/L)_{REF}}
+$$
+
+Therefore:
+
+$$
+I_{D1} = I_{REF}\left[\frac{(W/L)_1}{(W/L)_{REF}}\right]
+$$
+
+
+#### 1. Current Scaling
+
+By changing transistor dimensions, different currents can be generated.
+
+
+If:
+
+$$
+\left(\frac{W}{L}\right)_1 = 2\left(\frac{W}{L}\right)_{REF}
+$$
+
+then:
+
+$$
+I_{D1} = 2I_{REF}
+$$
+
+Similarly, if:
+
+$$
+\left(\frac{W}{L}\right)_1 = \frac{1}{2}\left(\frac{W}{L}\right)_{REF}
+$$
+
+then:
+
+$$
+I_{D1} = \frac{I_{REF}}{2}
+$$
+
+####  Condition for Proper Operation
+
+The MOSFETs must operate in saturation region.
+
+For NMOS:
+
+VDS ≥ VGS − VTH
+
+
+
+#### 2. Effect of Channel-Length Modulation
+
+Ideally, drain current should remain constant.
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD21.jpg"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+But due to channel-length modulation:
+
+- Drain current slightly increases with VDS
+- Current copying becomes imperfect
+
+Considering channel-length modulation:
+
+
+Considering channel-length modulation:
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD22.jpg"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+I_D = \frac{1}{2}\mu_n C_{ox}\left(\frac{W}{L}\right)(V_{GS} - V_{TH})^2(1+\lambda V_{DS})
+$$
+
+If:
+
+$$
+V_{DS} \text{ changes by } \Delta V_{DS}
+$$
+
+then:
+
+$$
+I_D \text{ changes by } \Delta I_D
+$$
+
+Thus:
+
+- Current mirror accuracy decreases
+- Output current depends slightly on output voltage
+
+
+
+#### Reducing Channel-Length Modulation Effect
+
+The effect can be reduced by:
+
+- Increasing channel length L
+- Using cascode current mirrors
+
+Longer channel length reduces λ.
+
+
+
+### C. PMOS Current Mirror
+
+A PMOS current mirror operates similarly to an NMOS current mirror.
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD23.jpg"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+In PMOS current mirrors:
+
+- Sources are connected to VDD
+- Current flows downward
+- PMOS transistors are used instead of NMOS
+
+For saturation:
+
+VSD ≥ VSG − |VTP|
+
+The current relation remains:
+
+ID1 / IREF = (W/L)1 / (W/L)REF
+
+
+
+#### Current Steering Circuit
+
+A current steering circuit distributes mirrored currents to different branches.
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD25.jpg"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+By selecting different W/L ratios:
+
+- Multiple currents can be generated
+- Fractional currents can also be generated
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD26.jpg"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+
+If:
+
+$$
+\left(\frac{W}{L}\right)_1 = 2\left(\frac{W}{L}\right)_{REF}
+$$
+
+then:
+
+$$
+I_{D1} = 2I_{REF}
+$$
+
+If:
+
+$$
+\left(\frac{W}{L}\right)_2 = 3\left(\frac{W}{L}\right)_{REF}
+$$
+
+then:
+
+$$
+I_{D2} = 3I_{REF}
+$$
+
+Thus, different bias currents can be supplied to different amplifiers.
+
+## Operational Amplifier
+
+Operational amplifiers (op amps) are high-gain differential amplifiers widely used in analog and mixed-signal circuits. They amplify the difference between two input signals while rejecting common signals present at both inputs. Op amps are essential building blocks in applications such as amplification, filtering, signal conditioning, data conversion, and feedback systems. Modern CMOS op amps are designed by balancing important performance parameters such as gain, bandwidth, power dissipation, noise, slew rate, and output swing. As transistor sizes and supply voltages continue to scale down, designing high-performance op amps becomes increasingly challenging due to various trade-offs between speed, gain, stability, and power consumption.
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD27.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+## Op-Amp Parameters
+
+### A. Large-Signal Behavior
+
+When large input signals are applied, the op amp operates in a nonlinear region.
+
+Under these conditions:
+
+- Small-signal analysis becomes invalid
+- Output cannot change instantaneously
+- Transient response becomes important
+
+Large-signal behavior is usually analyzed using transient simulations.
+
+
+### B. Output Swing
+
+Output swing is the maximum voltage range the op amp can produce.
+
+Large output swing is important for handling signals with wide amplitude variations.
+
+Fully differential op amps are often used because they provide:
+
+- Larger voltage swing
+- Better noise immunity
+
+However, larger swing trades with:
+
+- Speed
+- Gain
+- Bias current
+
+
+### C. Linearity
+
+Open-loop op amps are inherently nonlinear.
+
+Nonlinearity causes:
+
+- Harmonic distortion
+- Signal degradation
+
+Linearity is improved using:
+
+- Negative feedback
+- Fully differential circuits
+- High open-loop gain
+
+
+### D. Noise and Offset
+
+Noise and offset determine the minimum signal level that can be accurately processed.
+
+Main sources include:
+
+- Thermal noise
+- Flicker noise
+- Device mismatch
+
+Reducing noise usually requires:
+
+- Larger transistor size
+- Higher bias current
+
+
+### E. Supply Rejection
+
+Supply rejection indicates how well the op amp rejects supply voltage noise.
+
+This is important in mixed-signal systems where digital circuits generate noise.
+
+Fully differential op amps provide better supply noise rejection.
+
+
+## Basic Op-Amp Topologies
+
+All differential amplifiers studied earlier can be considered operational amplifiers.
+
+Basic CMOS op-amp topologies use:
+
+- Differential input pair
+- Active load
+- Current-source biasing
+
+These circuits may provide:
+
+- Single-ended output
+- Differential output
+
+The low-frequency small-signal voltage gain of these amplifiers is approximately:
+
+$$
+A_v = g_{mN}(r_{ON} \parallel r_{OP})
+$$
+
+where:
+
+- $g_{mN}$ = transconductance of NMOS transistor
+- $r_{ON}$ = output resistance of NMOS transistor
+- $r_{OP}$ = output resistance of PMOS transistor
+
+In nanometer CMOS technologies, this gain is usually limited and often does not exceed:
+
+$$
+A_v \approx 10
+$$
+
+The bandwidth is mainly determined by the load capacitance:
+
+$$
+C_L
+$$
+
+Different topologies exhibit different frequency responses.
+
+
+Basic op-amp topologies form the foundation for more advanced circuits such as:
+
+- Telescopic cascode op amps
+- Folded-cascode op amps
+- Two-stage op amps
+- Gain-boosted amplifiers
+
+### A. Telescopic Cascode Op Amp
+
+A telescopic cascode op amp is a high-gain single-stage operational amplifier formed by stacking common-source and common-gate transistors.
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD28.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+It is widely used in high-speed and low-power analog circuits because of its:
+
+- High voltage gain
+- High bandwidth
+- Low power consumption
+- Simple single-stage structure
+
+In this topology:
+
+- Differential pair transistors convert input voltage into current
+- Cascode transistors increase output resistance
+- Current-source transistors provide biasing
+
+The term *telescopic* comes from the vertical stacking of transistors.
+
+
+#### Operation of Telescopic Cascode Op Amp
+
+The input differential pair generates a small-signal current:
+
+$$
+i_d = g_m v_{in}
+$$
+
+Cascode transistors prevent large voltage variations at the drain of the input devices.
+
+As a result:
+
+- Channel-length modulation reduces
+- Output resistance increases
+- Voltage gain improves
+
+
+#### Voltage Gain
+
+The voltage gain is approximately:
+
+$$
+|A_v| = G_m R_{out}
+$$
+
+where:
+
+- $G_m$ = effective transconductance
+- $R_{out}$ = output resistance
+
+For the telescopic cascode op amp:
+
+$$
+G_m \approx g_{m1}
+$$
+
+The output resistance becomes very large because of cascoding:
+
+
+$$
+R_{out} \approx (g_m r_O)\,r_O = g_m r_O^2
+$$
+
+Hence, the voltage gain is approximately:
+
+$$
+|A_v|
+\approx
+g_m(g_m r_O^2)
+$$
+
+or
+
+$$
+|A_v|
+\approx
+g_m^2 r_O^2
+$$
+
+Thus, telescopic cascode amplifiers provide much higher gain than simple differential amplifiers.
+
+
+#### Output Voltage Swing
+
+The major limitation of telescopic cascode op amps is reduced output swing.
+
+Since many transistors are stacked vertically:
+
+- Each transistor requires saturation voltage
+- Voltage headroom decreases
+
+The output swing is limited by the overdrive voltages of stacked transistors.
+
+Hence:
+
+- Low-voltage operation becomes difficult
+- Large output swings are not possible
+
+
+
+### B. Folded-Cascode Op Amps
+
+
+Folded-cascode op amps are used to overcome the drawbacks of telescopic cascode amplifiers, mainly:
+
+- Limited output voltage swing
+- Difficulty in choosing equal input and output common-mode levels
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD29.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+In a folded-cascode structure:
+
+- The input transistor type is replaced by the opposite type
+- The signal current is “folded” through cascode devices
+- High gain is achieved without stacking too many transistors
+
+For example:
+
+- NMOS input pair can be replaced by PMOS input pair
+- PMOS input pair can be replaced by NMOS input pair
+
+
+#### 1. Output Voltage Swing
+
+For the folded-cascode op amp:
+
+Lower limit of output swing:
+
+$$
+V_{out,min} = V_{OD3} + V_{OD5}
+$$
+
+Upper limit of output swing:
+
+$$
+V_{out,max} = V_{DD} - (|V_{OD7}| + |V_{OD9}|)
+$$
+
+
+Thus, the peak-to-peak output swing is:
+
+$$
+V_{pp} = V_{DD} - \left( V_{OD3} + V_{OD5} + \left|V_{OD7}\right| + \left|V_{OD9}\right| \right)
+$$
+
+Folded-cascode amplifiers generally provide larger output swing than telescopic cascode amplifiers.
+
+#### 2. Small-Signal Gain
+
+The voltage gain is given by:
+
+$$
+|A_v| = G_m R_{out}
+$$
+
+The effective transconductance is approximately:
+
+$$
+G_m \approx g_{m1}
+$$
+
+The output resistance is approximately:
+
+$$
+R_{out}
+\approx
+R_{OP}
+\parallel
+[(g_{m3}+g_{mb3})r_{O3}(r_{O1}\parallel r_{O5})]
+$$
+
+where:
+
+$$
+R_{OP}
+\approx
+(g_{m7}+g_{mb7})r_{O7}r_{O9}
+$$
+
+Hence, the approximate voltage gain becomes:
+
+$$
+|A_v|
+\approx
+g_{m1}
+\{
+[(g_{m3}+g_{mb3})r_{O3}(r_{O1}\parallel r_{O5})]
+\parallel
+[(g_{m7}+g_{mb7})r_{O7}r_{O9}]
+\}
+$$
+
+### C. Two-Stage Op Amps
+
+
+The op amps studied previously are called one-stage op amps because the small-signal current produced by the input pair directly flows through the output impedance.
+
+Hence, the voltage gain is limited to:
+
+Gain ≈ gm × Rout
+
+Although cascoding increases gain, it also reduces output voltage swing.
+
+
+
+In many modern applications it is used for:
+
+- Very high gain is required
+- Large output voltage swing is required
+- Supply voltage is very low
+
+For example:
+- Supply voltage may be as low as 0.9 V
+- Output swing may need to reach 0.8 V
+
+In such cases, cascode op amps are not sufficient.
+
+Therefore, two-stage op amps are used.
+
+
+
+#### Basic Idea of Two-Stage Op Amp
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD30.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+A two-stage op amp contains:
+
+1. First Stage:
+   - Provides high voltage gain
+
+2. Second Stage:
+   - Provides large output swing
+
+
+
+#### Operation
+The first stage usually consists of:
+
+- Differential amplifier
+- Active load
+- Sometimes cascode transistors for higher gain
+
+The second stage is typically:
+
+- A common-source amplifier
+
+
+
+
+#### Voltage Gain
+
+For a simple two-stage op amp:
+
+
+First-stage gain:
+
+$$
+A_{v1} \approx g_{m1,2}\left(r_{O1,2} \parallel r_{O3,4}\right)
+$$
+
+Second-stage gain:
+
+$$
+A_{v2} \approx g_{m5,6}\left(r_{O5,6} \parallel r_{O7,8}\right)
+$$
+
+Overall voltage gain:
+
+$$
+A_v \approx A_{v1} \times A_{v2}
+$$
+
+Thus, the overall gain becomes much larger than that of a single-stage amplifier.
+
+## Two-Stage Op Amp with Cascoding
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/AVLSI/AVD31.png"
+  alt="AVLSI Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>

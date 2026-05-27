@@ -59,18 +59,13 @@ export default defineConfig({
                 { label: "Quantitative Ability", link: "/aptitude/week-2/quantitative-ability" },
               ],
             },
-            // {
-            //   label: "Week 3",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/aptitude/week-3/" },
-            //     { label: "Quantitative Ability", link: "/aptitude/week-3/quantitative-ability" },
-            //     { label: "Logical Reasoning", link: "/aptitude/week-3/logical-reasoning" },
-            //     { label: "Verbal Reasoning", link: "/aptitude/week-3/verbal-reasoning" },
-            //     { label: "Data Interpretation", link: "/aptitude/week-3/data-interpretation" },
-            //     { label: "Problem Solving", link: "/aptitude/week-3/problem-solving" },
-            //   ],
-            // },
+            {
+              label: "Week 3",
+              collapsed: true,
+              items: [
+                { label: "Logical and Analytical Reasoning", link: "/aptitude/week-3/logicalreasoning" },
+              ],
+            },
             // {
             //   label: "Week 4",
             //   collapsed: true,
@@ -177,6 +172,14 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 2", link: "/ece/week-2/verilog" },
+      
+    ],
+  },
+  {
+    label: "Analog VLSI",
+    collapsed: true,
+    items: [
+      { label: "Week 3", link: "/ece/week-3/analogvlsi" },
       
     ],
   },
@@ -368,7 +371,7 @@ items: [
     items: [
       { label: "Week 1", link: "/it/week-1/os" },
       { label: "Week 2", link: "/it/week-2/os" },
-      //{ label: "Week 1", link: "/it/week-1/os" },
+      { label: "Week 3", link: "/it/week-3/os" },
       //{ label: "Week 1", link: "/it/week-1/os" },
       //{ label: "Week 1", link: "/it/week-1/os" },
     ],
@@ -378,7 +381,7 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 2", link: "/it/week-2/sdlc" },
-      //{ label: "Week 3", link: "/it/week-1/sdlc" },
+      { label: "Week 3", link: "/it/week-3/sdlc" },
       //{ label: "Week 4", link: "/it/week-1/sdlc" },
       //{ label: "Week ", link: "/it/week-1/sdlc" },
     ],
