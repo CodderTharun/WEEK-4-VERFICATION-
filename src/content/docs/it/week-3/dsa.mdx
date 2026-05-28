@@ -1,48 +1,1046 @@
 ---
-title: DSA - Week 3
-description: Trees and their traversals
+title: DSA Notes
 ---
 
+<style>{`
+pre {
+  overflow-x: scroll;
+  max-width: 100%;
+  display: block;
+  white-space: pre;
+}
+`}</style>
 
 
-## Trees
 
-A tree is a hierarchical data structure with nodes connected by edges.
 
-### Tree Terminology
 
-- **Root** - Top node
-- **Parent** - Node with children
-- **Child** - Node with parent
-- **Leaf** - Node with no children
-- **Height** - Longest path from root to leaf
-- **Depth** - Path from root to node
 
-### Binary Trees
 
-Each node has at most 2 children (left and right).
 
-### Tree Traversals
 
-1. **Inorder (LNR)** - Left, Node, Right
-2. **Preorder (NLR)** - Node, Left, Right
-3. **Postorder (LRN)** - Left, Right, Node
-4. **Level Order** - Breadth-first
 
-### Binary Search Tree (BST)
+## Stacks
 
-- Left child < Parent < Right child
-- Enables efficient searching
+### A. LIFO Mechanism
 
-### This Week
+Think of a stack like a pile of plates — you can only add or remove from the top. Whatever you put in last comes out first. That's **Last-In-First-Out (LIFO)**.
 
-- Tree structure basics
-- Implementing binary trees
-- Tree traversal methods
-- BST operations (Insert, Search, Delete)
+You can't reach the bottom plate without removing every plate above it first. This is the core constraint that makes stacks useful — it enforces a strict ordering of access.
 
-### Practice Problems
+A stack is an ordered list where insertion and deletion happen at one end — the **top**. Two primary operations:
+- **Push** — add an element to the top
+- **Pop** — remove the element from the top
 
-- Implement different traversals
-- BST insertion and search
-- Find height and diameter
+**Edge cases:**
+- Popping from an empty stack → **underflow**
+- Pushing into a full array-based stack → **overflow**
+
+
+### B. Common Applications of Stack
+
+Stacks aren't just a data structure to study — they power many real systems you use daily. Here's why they appear everywhere:
+
+- **Function Call Stack**    
+Every time a function is called, the computer pushes the current execution context (local variables, return address) onto a call stack. When the function returns, it pops. Recursive functions are just functions that keep pushing onto this stack until a base case triggers the pops.
+
+- **Undo / Redo Operations**      
+In any text editor, each action is pushed onto an undo stack. Pressing Ctrl+Z pops the last action and reverts it. Redo maintains a second stack of undone actions.
+
+- **Browser Back / Forward**     
+The back button works exactly like a stack. Each page you visit is pushed. Clicking back pops and navigates to the previous page.
+
+- **Expression Parsing**         
+Compilers use stacks to convert and evaluate mathematical expressions, as covered in this document. They also use stacks to validate syntax (balanced brackets, function call matching).
+
+- **DFS Traversal**        
+Depth-First Search in graphs/trees either uses recursion (which implicitly uses the call stack) or an explicit stack to track which nodes to explore next.
+
+- **Syntax Checking**            
+Compilers push opening constructs (brackets, `if`, `begin`) and pop them when the closing counterpart is found, verifying that code is structurally valid.
+
+
+### C. O(1) Min Stack
+
+**Problem:** Design a stack that supports all normal push/pop operations but also lets you retrieve the current minimum element instantly in O(1) time.
+
+**Intuition:** The obvious approach — scan the whole stack to find the minimum — works, but it costs O(n) every time you call `getMinimum()`. That's slow if it's called frequently.
+
+The insight is: instead of searching for the minimum after the fact, track it as you go. Every time you push a new element, you already know what the minimum was before it. So you can store "what is the minimum at this point in the stack's history" alongside every element. A second auxiliary stack — the `minStack` — does exactly that.
+
+When you push to the main stack, you also push `min(newElement, currentMin)` to `minStack`. When you pop from the main stack, you pop from `minStack` too. At any moment, the top of `minStack` is the current minimum — no searching, no extra computation.
+
+**Approach:** On every push, `minStack` stores `min(newElement, currentMin)`. On every pop, both stacks are popped simultaneously.
+
+```
+Push sequence: 2, 6, 4, 1, 5
+
+After push 2 → Main: [2]              MinStack: [2]
+After push 6 → Main: [2, 6]           MinStack: [2, 2]           ← min still 2, 6 didn't beat it
+After push 4 → Main: [2, 6, 4]        MinStack: [2, 2, 2]        ← min still 2
+After push 1 → Main: [2, 6, 4, 1]     MinStack: [2, 2, 2, 1]     ← 1 is new minimum
+After push 5 → Main: [2, 6, 4, 1, 5]  MinStack: [2, 2, 2, 1, 1]  ← min stays 1
+
+getMinimum() → top of MinStack → 1   (O(1), no scan needed)
+```
+
+| Operation      | Time Complexity |
+| -------------- | --------------- |
+| Push           | O(1)            |
+| Pop            | O(1)            |
+| `getMinimum()` | O(1)            |
+
+---
+
+## Monotonic Stack
+
+### A. Concept
+
+A monotonic stack is a regular stack with one extra rule: elements are always maintained in a strictly increasing or strictly decreasing order from bottom to top. Whenever a new element violates that order, you keep popping until the order is restored, then push.
+
+This sounds like it would be slow — all that popping — but this is where **amortized analysis** matters. Each element is pushed onto the stack exactly once and popped at most once across the entire algorithm. So even though some iterations do multiple pops, the total number of push + pop operations across all n elements is at most 2n. That gives an **amortized O(1) per element**, and **O(n) overall** — not O(n²) as it might look on the surface.
+
+> **Amortized complexity** means the average cost per operation over a sequence of operations, even if some individual operations are expensive. Monotonic stack algorithms are O(n) amortized because the total work (all pushes + all pops) is bounded by 2n.
+
+**Why is this useful?** Many problems ask "for each element, what is the nearest element to its left/right that is greater/smaller?" A monotonic stack answers all of these in a single pass, because the popping step naturally reveals the relationship between elements.
+
+- **Increasing stack** (bottom → top values go up) → used for **Next/Previous Smaller** element problems
+- **Decreasing stack** (bottom → top values go down) → used for **Next/Previous Greater** element problems
+
+---
+
+### B. Next Greater Element (NGE)
+
+**Problem:** For each element in an array, find the first element to its right that is strictly greater than it. If no such element exists, output `-1`.
+
+**Intuition:** The brute force way is to check every element against everything to its right — O(n²). Here's a smarter way: imagine elements waiting in line. An element stays "unresolved" — sitting in the stack — as long as no greater element has appeared yet. The moment a new element arrives that is greater than the top of the stack, that new element is the answer for the top. Pop it, record the answer, and check the next element on the stack. Keep popping as long as the new element is still greater. Then push the new element — it's now unresolved too.
+
+By the time you finish the array, anything still in the stack never found a greater element — answer is `-1` for all of them.
+
+**Approach:** Use a decreasing stack of indices. When a new element is greater than the top, pop and record the answer. Push the current index.
+
+```
+Array: [4, 5, 2, 10, 8]
+
+Process 4  → stack empty, push 0                stack: [0]       NGE: [_,  _,  _,  _,  _]
+Process 5  → 5 > arr[0]=4 → pop 0 → NGE[0]=5
+           → stack empty, push 1                stack: [1]       NGE: [5,  _,  _,  _,  _]
+Process 2  → 2 < arr[1]=5 → just push           stack: [1, 2]    NGE: [5,  _,  _,  _,  _]
+Process 10 → 10 > arr[2]=2 → pop 2 → NGE[2]=10
+           → 10 > arr[1]=5 → pop 1 → NGE[1]=10
+           → stack empty, push 3                stack: [3]       NGE: [5, 10, 10,  _,  _]
+Process 8  → 8 < arr[3]=10 → just push          stack: [3, 4]    NGE: [5, 10, 10,  _,  _]
+
+EOF → still in stack → no greater element to the right
+  pop 4 → NGE[4] = -1
+  pop 3 → NGE[3] = -1
+
+Result: [5, 10, 10, -1, -1]
+```
+
+| Complexity       | Value  |
+| ---------------- | ------ |
+| Time (amortized) | `O(n)` |
+| Space            | `O(n)` |
+
+---
+
+### C. Next Smaller Element (NSE)
+
+**Problem:** For each element, find the first element to its right that is strictly smaller. If none, output `-1`.
+
+**Intuition:** Exact mirror of NGE — same logic, flipped comparison. Instead of a decreasing stack, use an increasing stack. An element waits in the stack until something smaller arrives to its right. That smaller element is the answer. Elements surviving to EOF get `-1`.
+
+**Approach:** Maintain an increasing stack of indices. When a new element is smaller than the top, pop and record the answer. Push the current index.
+
+```
+Array: [4, 8, 5, 2, 9]
+
+Process 4  → stack empty, push 0         stack: [0]       NSE: [_,  _,  _,  _,  _]
+Process 8  → 8 > arr[0]=4 → just push    stack: [0, 1]    NSE: [_,  _,  _,  _,  _]
+Process 5  → 5 < arr[1]=8 → pop 1 → NSE[1]=5
+           → 5 > arr[0]=4 → stop, push 2 stack: [0, 2]    NSE: [_,  5,  _,  _,  _]
+Process 2  → 2 < arr[2]=5 → pop 2 → NSE[2]=2
+           → 2 < arr[0]=4 → pop 0 → NSE[0]=2
+           → stack empty, push 3         stack: [3]       NSE: [2,  5,  2,  _,  _]
+Process 9  → 9 > arr[3]=2 → just push    stack: [3, 4]    NSE: [2,  5,  2,  _,  _]
+
+EOF → remaining have no smaller element to the right
+  pop 4 → NSE[4] = -1
+  pop 3 → NSE[3] = -1
+
+Result: [2, 5, 2, -1, -1]
+```
+
+| Complexity       | Value  |
+| ---------------- | ------ |
+| Time (amortized) | `O(n)` |
+| Space            | `O(n)` |
+
+---
+
+### D. Previous Greater Element (PGE)
+
+**Problem:** For each element, find the first element to its left that is strictly greater than it. If none exists, output `-1`.
+
+**Intuition:** NGE scans left to right and looks right. PGE does the opposite — it still scans left to right, but at each step asks "what's the nearest thing to my left that's greater than me?" The decreasing stack stores the candidates. When you arrive at element i, you pop all stack elements that are ≤ arr[i] (they can't be the previous greater for i or anything after i if i is already greater). Whatever is left on top after popping is the answer for i — it's the closest element to the left that is still greater. Then push i.
+
+The key difference from NGE: in NGE, a new element resolves old unresolved elements. In PGE, the stack resolves the current element — before pushing it, you query the top.
+
+**Approach:** Use a decreasing stack of values (or indices). For each element, pop all stack elements that are ≤ current. The top after popping is the PGE. Push current element.
+
+```
+Array: [4, 5, 2, 10]
+
+Process 4  → stack empty → PGE[0] = -1          push 4    stack: [4]
+Process 5  → 5 > 4 → pop 4 (not greater)
+           → stack empty → PGE[1] = -1          push 5    stack: [5]
+Process 2  → 2 < 5 → top 5 > 2 → PGE[2] = 5     push 2    stack: [5, 2]
+Process 10 → 10 > 2 → pop 2 (not greater)
+           → 10 > 5 → pop 5 (not greater)
+           → stack empty → PGE[3] = -1          push 10   stack: [10]
+
+Result: [-1, -1, 5, -1]
+```
+
+Reading the result: element `2` (at index 2) has `5` as its nearest greater element to the left. All others have no greater element to their left.
+
+| Complexity       | Value  |
+| ---------------- | ------ |
+| Time (amortized) | `O(n)` |
+| Space            | `O(n)` |
+
+---
+
+### E. Previous Smaller Element (PSE)
+
+**Problem:** For each element, find the first element to its left that is strictly smaller than it. If none, output `-1`.
+
+**Intuition:** PSE is to PGE what NSE is to NGE — just flip the comparison. Use an increasing stack. For each element, pop all stack elements that are ≥ current (they're useless now — current is smaller, so it'll be a better candidate for future elements). Whatever is left on top is the nearest smaller element to the left.
+
+PSE is critically important for the Histogram problem — the left boundary of any rectangle is essentially the Previous Smaller Element for that bar.
+
+**Approach:** Use an increasing stack of values. For each element, pop all stack elements ≥ current. Top after popping is the PSE. Push current.
+
+```
+Array: [4, 5, 2, 10]
+
+Process 4  → stack empty → PSE[0] = -1              push 4    stack: [4]
+Process 5  → 5 > 4 → top 4 < 5 → PSE[1] = 4         push 5    stack: [4, 5]
+Process 2  → 2 < 5 → pop 5 (not smaller)
+           → 2 < 4 → pop 4 (not smaller)
+           → stack empty → PSE[2] = -1              push 2    stack: [2]
+Process 10 → 10 > 2 → top 2 < 10 → PSE[3] = 2       push 10   stack: [2, 10]
+
+Result: [-1, 4, -1, 2]
+```
+
+Reading the result: `5` has `4` as its nearest smaller to the left; `10` has `2`.
+
+| Complexity       | Value  |
+| ---------------- | ------ |
+| Time (amortized) | `O(n)` |
+| Space            | `O(n)` |
+
+---
+
+### F. Stock Span Problem (Previous Greater — Applied)
+
+**Problem:** Given daily stock prices, for each day find the span — the number of consecutive days immediately before it (including today) where the price was less than or equal to today's price.
+
+**Intuition:** The span is simply the distance from today back to the nearest day with a strictly higher price (the Previous Greater Element by index). If no such day exists, the span covers everything back to day 0.
+
+Rather than scanning backwards each day (O(n²)), a decreasing monotonic stack keeps only the days that could still serve as a left boundary. When a new day arrives, pop all days with smaller prices — they're dominated and can't block future spans that this day can't. Whatever's left on top is the nearest previous greater price. Span = distance to that day.
+
+**Approach:** Stack of indices, decreasing by price. Pop while price ≤ today's. Top is PGE index P. `Span = i - P`.
+
+```
+Prices: [6, 3, 4, 5, 2]
+
+Day 0 → price=6  stack empty → P=-1      span=0-(-1)=1    stack: [0]
+Day 1 → price=3  3<6 → P=0               span=1-0=1       stack: [0,1]
+Day 2 → price=4  4>3 → pop 1
+                 4<6 → stop → P=0        span=2-0=2       stack: [0,2]
+Day 3 → price=5  5>4 → pop 2
+                 5<6 → stop → P=0        span=3-0=3       stack: [0,3]
+Day 4 → price=2  2<5 → P=3               span=4-3=1       stack: [0,3,4]
+
+Span Array: [1, 1, 2, 3, 1]
+```
+
+Day 3 has span 3 → prices on days 1, 2, 3 were all ≤ 5, but day 0 (price=6) broke the run.
+
+| Complexity       | Value  |
+| ---------------- | ------ |
+| Time (amortized) | `O(n)` |
+| Space            | `O(n)` |
+
+---
+
+### G. Sliding Window Maximum
+
+**Problem:** Given an array and a window size `k`, find the maximum element in every contiguous subwindow of size `k` as it slides from left to right.
+
+**Intuition:** The brute force approach scans each window of size k separately — O(n×k). For a window of size 1000 over an array of 1 million elements, that's a billion operations.
+
+The smarter approach uses a **monotonic deque** (double-ended queue). The key insight: if element A is to the left of element B in the window, and A ≤ B, then A can never be the maximum of any current or future window — B is both larger and more recent. So A is completely useless and can be discarded immediately.
+
+The deque stores indices in decreasing order of their values. The front of the deque always holds the index of the current maximum. As the window slides:
+- **Remove from back**: any element smaller than the new element is popped from the back (it's useless — the new element is larger and will outlast it in the window)
+- **Remove from front**: if the front index has fallen outside the current window, pop it from the front
+- **Record answer**: the front of the deque is always the index of the window's maximum
+
+Each element is added to the deque once and removed once — **amortized O(n)** overall.
+
+**Approach:** Use a deque of indices, maintained in decreasing order of values. For each new element: pop from back while back element ≤ current. Pop from front if out of window. Front = current max.
+
+```
+Array: [2, 1, 5, 3, 6, 4, 8, 7]   k=3
+
+Window [2,1,5]:
+  i=0: deque empty, add 0               deque: [0]       values: [2]
+  i=1: arr[1]=1 < arr[0]=2, add         deque: [0,1]     values: [2,1]
+  i=2: arr[2]=5 > arr[1]=1 → pop 1
+       arr[2]=5 > arr[0]=2 → pop 0
+       add 2                            deque: [2]       values: [5]
+  window complete → max = arr[2] = 5
+
+Window [1,5,3]:
+  i=3: arr[3]=3 < arr[2]=5, add  deque: [2,3]            values: [5,3]
+  front=2, window=[1..3] → 2 still in → ok
+  max = arr[2] = 5
+
+Window [5,3,6]:
+  i=4: arr[4]=6 > arr[3]=3 → pop 3
+       arr[4]=6 > arr[2]=5 → pop 2
+       add 4                     deque: [4]              values: [6]
+  max = arr[4] = 6
+
+Window [3,6,4]:
+  i=5: arr[5]=4 < arr[4]=6, add  deque: [4,5]            values: [6,4]
+  max = arr[4] = 6
+
+Window [6,4,8]:
+  i=6: arr[6]=8 > arr[5]=4 → pop 5
+       arr[6]=8 > arr[4]=6 → pop 4
+       add 6                     deque: [6]              values: [8]
+  max = arr[6] = 8
+
+Window [4,8,7]:
+  i=7: arr[7]=7 < arr[6]=8, add  deque: [6,7]            values: [8,7]
+  max = arr[6] = 8
+
+Result: [5, 5, 6, 6, 8, 8]
+```
+
+| Complexity       | Value  |
+| ---------------- | ------ |
+| Time (amortized) | `O(n)` |
+| Space            | `O(k)` |
+
+---
+
+## Valid Parentheses
+
+**Problem:** Given a string of brackets `()`, `{}`, `[]`, determine if every opening bracket has a correctly matching closing bracket in the right order.
+
+**Intuition:** The tricky part isn't just counting brackets — it's the nesting order. Consider `([)]` — the counts are balanced but it's invalid because the square bracket closes before the round bracket that was opened inside it.
+
+The rule is: the most recently opened bracket must always be the next one closed. That's LIFO — exactly what a stack enforces. Every time you open a bracket, push it. Every time you close one, check whether it matches whatever's on top of the stack. If it does, pop and continue. If it doesn't — or the stack is empty when you try to pop — the string is invalid. An empty stack at the end means fully valid.
+
+**Approach:** Push opening delimiters. On a closing delimiter, pop top and verify it's the matching opener. Invalid if mismatch or stack is empty on close. Invalid if stack is non-empty at end.
+
+```
+Input: () (() [()])
+
+( → push             Stack: [(]
+) → pop (, matches ) Stack: []              ✓
+( → push             Stack: [(]
+( → push             Stack: [(, (]
+) → pop (, matches ) Stack: [(]             ✓
+[ → push             Stack: [(, []
+( → push             Stack: [(, [, (]
+) → pop (, matches ) Stack: [(, []          ✓
+] → pop [, matches ] Stack: [(]             ✓
+) → pop (, matches ) Stack: []              ✓  → Valid
+
+Failure cases:
+  Closing bracket doesn't match top → Invalid  (e.g. [) found [ on top)
+  Stack empty when closing → Invalid  (extra closing bracket)
+  Stack non-empty at end   → Invalid  (unclosed opening brackets)
+```
+
+---
+
+## Expression Evaluation
+
+### A. Infix → Postfix Conversion
+
+**Problem:** Convert a standard math expression like `A * B - (C + D) + E` into postfix (Reverse Polish Notation) where operators come after their operands.
+
+**Intuition:** Humans write infix — `3 + 4 * 2` — and instinctively know `*` runs before `+` due to precedence. Computers don't have this instinct. They need a format where evaluation order is already baked in, with no ambiguity.
+
+Postfix achieves this. `3 4 2 * +` means: multiply 4 and 2 (they're adjacent to `*`), then add 3. No precedence rules needed at runtime.
+
+The stack acts as a "waiting area" for operators. Operands go straight to output. Operators wait in the stack until their correct moment to be emitted — which is when a lower-precedence operator arrives, a bracket closes, or the expression ends.
+
+**Precedence:** `^` > `* /` > `+ -`. Equal precedence is left-associative (pop before pushing new one).
+
+**Approach:** Operands → output immediately. Operators → pop anything of higher/equal precedence first, then push. `(` → always push. `)` → pop until `(`.
+
+```
+Convert: A * B - (C + D) + E
+
+A   → operand → output: A
+*   → stack empty, push                       stack: [*]        output: A
+B   → operand → output: A B
+-   → * has higher prec than -, pop *         stack: [-]        output: A B *
+      then push -
+(   → always push (                           stack: [-, (]
+C   → operand → output: A B * C
++   → top is (, don't compare across (, push  stack: [-, (, +]
+D   → operand → output: A B * C D
+)   → pop until matching (: pop +             stack: [-]        output: A B * C D +
+      discard (
++   → equal prec to -, pop -, push +          stack: [+]        output: A B * C D + -
+E   → operand → output: A B * C D + - E
+EOF → pop all remaining: pop +                stack: []         output: A B * C D + - E +
+
+Final Postfix: A B * C D + - E +
+```
+
+| Complexity | Value  |
+| ---------- | ------ |
+| Time       | `O(n)` |
+| Space      | `O(n)` |
+
+---
+
+### B. Postfix Evaluation
+
+**Problem:** Given an expression in postfix notation like `1 2 3 * + 5 -`, compute its value.
+
+**Intuition:** Postfix is designed to be evaluated simply. Numbers are pushed as they appear. When an operator appears, its operands are always the two most recently pushed items — sitting right on top of the stack. Pop both, apply the operator, push the result. That result may itself be consumed by the next operator. The last item in the stack is the final answer.
+
+**Approach:** Scan left to right. Push operands. On an operator, pop two (second pop = left operand, first pop = right operand), compute, push result.
+
+```
+Evaluate: 1 2 3 * + 5 -
+
+1   → push                                    stack: [1]
+2   → push                                    stack: [1, 2]
+3   → push                                    stack: [1, 2, 3]
+*   → pop 3 (right), pop 2 (left) → 2*3=6     stack: [1, 6]
++   → pop 6 (right), pop 1 (left) → 1+6=7     stack: [7]
+5   → push                                    stack: [7, 5]
+-   → pop 5 (right), pop 7 (left) → 7-5=2     stack: [2]
+
+One element remains → Result: 2
+```
+
+| Complexity | Value  |
+| ---------- | ------ |
+| Time       | `O(n)` |
+| Space      | `O(n)` |
+
+---
+
+### C. Prefix Evaluation
+
+**Problem:** Given an expression in prefix notation like `- + 1 * 2 3 5`, compute its value. Operators come before their operands.
+
+**Intuition:** Prefix is the mirror of postfix. In postfix you scan left to right; in prefix, scan **right to left** and the same logic applies — operators act on the two most recently seen numbers. First pop = left operand, second pop = right operand.
+
+**Approach:** Scan right to left. Push operands. On an operator, pop two (first pop = left, second pop = right), compute, push result.
+
+```
+Evaluate: - + 1 * 2 3 5
+Equivalent infix: (1 + (2 * 3)) - 5 = 7 - 5 = 2
+
+Scan right to left: 5  3  2  *  1  +  -
+
+5   → push                                    stack: [5]
+3   → push                                    stack: [5, 3]
+2   → push                                    stack: [5, 3, 2]
+*   → pop 2 (left), pop 3 (right) → 2*3=6     stack: [5, 6]
+1   → push                                    stack: [5, 6, 1]
++   → pop 1 (left), pop 6 (right) → 1+6=7     stack: [5, 7]
+-   → pop 7 (left), pop 5 (right) → 7-5=2     stack: [2]
+
+Result: 2
+```
+
+| Complexity | Value  |
+| ---------- | ------ |
+| Time       | `O(n)` |
+| Space      | `O(n)` |
+
+---
+
+### D. Postfix → Infix Conversion
+
+**Problem:** Convert a postfix expression back to a human-readable infix expression with explicit brackets.
+
+**Intuition:** In postfix evaluation you pop two numbers and apply an operator. Here instead of computing a number, you build a string. When you see an operator, pop two strings (subexpressions), wrap them in brackets with the operator between them, and push that new string back. The final string on the stack is the full infix expression.
+
+**Approach:** Scan left to right. Push operands as strings. On an operator, pop two strings (second pop = left, first pop = right), combine as `"(" + left + op + right + ")"`, push result.
+
+```
+Postfix: A B * C D + - E +
+
+A   → push "A"                                      stack: ["A"]
+B   → push "B"                                      stack: ["A", "B"]
+*   → pop "B" (right), pop "A" (left)
+      combine → "(A*B)"                             stack: ["(A*B)"]
+C   → push "C"                                      stack: ["(A*B)", "C"]
+D   → push "D"                                      stack: ["(A*B)", "C", "D"]
++   → pop "D" (right), pop "C" (left)
+      combine → "(C+D)"                             stack: ["(A*B)", "(C+D)"]
+-   → pop "(C+D)" (right), pop "(A*B)" (left)
+      combine → "((A*B)-(C+D))"                     stack: ["((A*B)-(C+D))"]
+E   → push "E"                                      stack: ["((A*B)-(C+D))", "E"]
++   → pop "E" (right), pop "((A*B)-(C+D))" (left)
+      combine → "(((A*B)-(C+D))+E)"                 stack: ["(((A*B)-(C+D))+E)"]
+
+Result: (((A*B)-(C+D))+E)
+```
+
+| Complexity | Value  |
+| ---------- | ------ |
+| Time       | `O(n)` |
+| Space      | `O(n)` |
+
+---
+
+### E. Prefix → Infix Conversion
+
+**Problem:** Convert a prefix expression to infix with explicit brackets.
+
+**Intuition:** Same idea as Postfix → Infix, but scan right to left (mirroring how prefix is evaluated). Pop two operand strings, wrap them around the operator, push back.
+
+**Approach:** Scan right to left. Push operands as strings. On an operator, pop two strings (first pop = left, second pop = right), combine as `"(" + left + op + right + ")"`, push result.
+
+```
+Prefix: - + A * B C D
+
+Scan right to left: D  C  B  *  A  +  -
+
+D   → push "D"                                  stack: ["D"]
+C   → push "C"                                  stack: ["D", "C"]
+B   → push "B"                                  stack: ["D", "C", "B"]
+*   → pop "B" (left), pop "C" (right)
+      combine → "(B*C)"                         stack: ["D", "(B*C)"]
+A   → push "A"                                  stack: ["D", "(B*C)", "A"]
++   → pop "A" (left), pop "(B*C)" (right)
+      combine → "(A+(B*C))"                     stack: ["D", "(A+(B*C))"]
+-   → pop "(A+(B*C))" (left), pop "D" (right)
+      combine → "((A+(B*C))-D)"                 stack: ["((A+(B*C))-D)"]
+
+Result: ((A+(B*C))-D)
+```
+
+| Complexity | Value  |
+| ---------- | ------ |
+| Time       | `O(n)` |
+| Space      | `O(n)` |
+
+---
+
+## Histogram / Area Problems
+
+### Largest Rectangle in Histogram
+
+**Problem:** Given an array of bar heights representing a histogram, find the area of the largest rectangle that fits entirely within the histogram bars.
+
+**Intuition:** For any single bar, ask: how wide can a rectangle be if it uses this bar's height? It extends left and right as long as neighbours are at least as tall. The moment it hits a shorter bar on either side, the rectangle stops.
+
+The expensive way checks every pair of boundaries — O(n²). The monotonic stack approach is smarter: you don't need to check all pairs. A bar's right boundary is identified the moment a shorter bar arrives to its right. The stack detects this automatically — when a shorter bar comes in, it triggers computation for every taller bar it undercuts. Those taller bars can't extend right past this shorter bar anyway, so resolve them immediately.
+
+**Amortized analysis:** Each bar is pushed once and popped once. Total operations = 2n → O(n) amortized.
+
+**Approach:** Increasing stack of indices. When a shorter bar arrives, pop and compute: `area = height × (i - stackTop - 1)`. At EOF, pop all remaining bars using full array width.
+
+```
+Heights: [2, 1, 5, 6, 2, 3]
+
+i=0: push 0                                                 stack: [0]
+i=1: height[1]=1 < height[0]=2
+     pop 0 → height=2, left boundary=-1 (stack empty)
+     width = 1 - (-1) - 1 = 1  → area=2×1=2    max=2
+     push 1                                                 stack: [1]
+i=2: push 2                                                 stack: [1, 2]
+i=3: push 3                                                 stack: [1, 2, 3]
+i=4: height[4]=2 < height[3]=6
+     pop 3 → height=6, left boundary=2
+     width = 4 - 2 - 1 = 1  → area=6×1=6        max=6
+     height[4]=2 < height[2]=5
+     pop 2 → height=5, left boundary=1
+     width = 4 - 1 - 1 = 2  → area=5×2=10       max=10
+     push 4                                                 stack: [1, 4]
+i=5: push 5                                                 stack: [1, 4, 5]
+
+EOF — right boundary = 6 (one past end):
+  pop 5 → height=3, left boundary=4, width=6-4-1=1  → area=3×1=3
+  pop 4 → height=2, left boundary=1, width=6-1-1=4  → area=2×4=8
+  pop 1 → height=1, no left boundary (-1), width=6-(-1)-1=6 → area=1×6=6
+
+Maximum Area: 10
+```
+
+| Complexity       | Value  |
+| ---------------- | ------ |
+| Time (amortized) | `O(n)` |
+| Space            | `O(n)` |
+
+---
+
+## Divide and Conquer
+
+### Maximum Contiguous Subsequence — O(n log n)
+
+**Problem:** Find the contiguous subarray whose elements sum to the largest possible value.
+
+**Intuition:** Split the array in half. The maximum subarray must be in one of exactly three places — it can't be anywhere else:
+1. Entirely in the left half
+2. Entirely in the right half  
+3. Crossing the midpoint (starts in left, ends in right)
+
+Cases 1 and 2 are smaller versions of the same problem — solve recursively. Case 3: scan left from mid accumulating the best prefix sum, scan right accumulating the best suffix sum, add both. Compare all three cases and return the max.
+
+Recurrence: `T(n) = 2T(n/2) + n` → **O(n log n)**
+
+**Recursion Tree (how the splitting looks):**
+
+```
+          [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+                        ↓ split
+        [-2, 1, -3, 4, -1]    [2, 1, -5, 4]
+                ↓ split              ↓ split
+       [-2, 1, -3]  [4, -1]    [2, 1]   [-5, 4]
+           ↓             ↓        ↓          ↓
+      [-2,1] [-3]   [4] [-1]   [2] [1]  [-5] [4]
+         ↓
+      [-2] [1]
+```
+
+Each level splits in half → log n levels. Each level does O(n) work for crossing sums → **O(n log n)** total.
+
+```
+Array: [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+              midpoint at index 4
+
+Left half:  [-2, 1, -3, 4, -1]  → max entirely in left  = 4
+Right half: [2, 1, -5, 4]       → max entirely in right = 3
+
+Crossing case — expand from midpoint:
+  Scan left from index 4:  -1 → 3(-1+4) → 0(-1+4-3) → ...  best prefix = 4  (just element 4)
+  Scan right from index 5:  2 → 3(2+1) → ...               best suffix = 3  (2+1)
+  Crossing sum = 4 + 3 = 7? No — subarray 4 -1 2 1 = 6
+
+Compare: left=4, right=3, crossing=6 → Maximum: 6
+Final subarray: [4, -1, 2, 1]
+```
+
+---
+
+## Hashing
+
+### A. Array Equality
+
+**Problem:** Given two arrays, determine if they contain exactly the same elements with the same frequencies, regardless of order.
+
+**Intuition:** Sorting both arrays and comparing works but costs O(n log n). Hashing does it in O(n): build a frequency ledger from array A, then subtract as you scan array B. If everything cancels to zero, they're identical.
+
+**Approach:** Frequency map from      
+A. Decrement scanning        
+B. All zeros → identical.
+
+```
+A = [1, 2, 3, 2]    B = [2, 1, 2, 3]
+
+Build ledger from A:  {1:1, 2:2, 3:1}
+Subtract using B:
+  see 2 → {1:1, 2:1, 3:1}
+  see 1 → {1:0, 2:1, 3:1}
+  see 2 → {1:0, 2:0, 3:1}
+  see 3 → {1:0, 2:0, 3:0}
+
+All zeros → Arrays are identical ✓
+Any non-zero → Arrays differ ✗
+```
+
+| Complexity | Value  |
+| ---------- | ------ |
+| Time       | `O(n)` |
+| Space      | `O(n)` |
+
+### B. Key Transformation
+
+**Problem:** Hashing requires mapping arbitrary keys (strings, objects, large integers) into a fixed-size array index. Key transformation is the process of converting a raw key into a valid hash index.
+
+**Intuition:** A hash table is just an array. Arrays need integer indices in range `[0, tableSize-1]`. Most real keys — names, URLs, IDs — aren't in that form. Key transformation is the bridge: turn any key into a well-distributed integer index. A bad transformation clusters entries, degrades performance to O(n), and defeats the purpose of hashing. A good one spreads keys uniformly.
+
+There are two stages:
+1. **Hash Function** — convert the key to an integer (the hash code)
+2. **Compression** — map the integer into the table's index range using `mod tableSize`
+
+
+#### Common Transformation Methods
+
+##### a. Integer Keys — Division Method
+
+The simplest approach: take the key modulo the table size.
+
+```
+index = key % tableSize
+Key: 157,  tableSize: 10
+index = 157 % 10 = 7
+Key: 423,  tableSize: 10
+index = 423 % 10 = 3
+```
+
+**Caveat:** Choose `tableSize` as a prime number. If tableSize shares factors with common key patterns (e.g. keys are all even, tableSize is even), clustering occurs.
+
+
+##### b. String Keys — Polynomial Rolling Hash
+
+Strings need to be converted to integers first. A naive sum of character ASCII values is poor — `"abc"` and `"bca"` give the same sum.
+
+The polynomial method weights each character by its position using a base `p`:
+
+```
+hash = s[0]×p⁰ + s[1]×p¹ + s[2]×p² + ... + s[n-1]×p^(n-1)
+index = hash % tableSize
+```
+Common choice: `p = 31` (for lowercase letters), `p = 37` (for mixed).
+
+```
+Key: "abc"   p=31   tableSize=101
+hash = 'a'×31⁰ + 'b'×31¹ + 'c'×31²
+= 97×1 + 98×31 + 99×961
+= 97 + 3038 + 95139
+= 98274
+index = 98274 % 101 = 7
+Key: "bca" → different weights → different hash → different index  ✓
+```
+
+
+##### c. Large Integer Keys — Folding Metho
+
+Split the key into equal-sized chunks and XOR or sum them together.
+
+```
+Key: 123456789   chunk size: 3
+Chunks: 123 | 456 | 789
+Sum: 123 + 456 + 789 = 1368
+index = 1368 % tableSize
+```
+Folding mixes all parts of the key into the final index, so two keys that differ in only their middle digits still produce distinct results.
+
+##### d. Multiplicative Method
+
+Multiply the key by a constant `A` (where `0 < A < 1`), extract the fractional part, scale by table size:
+
+``` 
+index = floor(tableSize × (key × A mod 1))
+ ```
+
+ Knuth recommends `A = (√5 - 1) / 2 ≈ 0.618` (golden ratio conjugate).
+
+ ```
+ Key: 123,  tableSize: 100,  A=0.618
+123 × 0.618 = 75.914
+fractional part = 0.914
+index = floor(100 × 0.914) = 91
+```
+
+Advantage: table size need not be prime — the golden ratio naturally distributes well.
+
+##### Collision Handling (what happens when two keys map to the same index)
+
+Key transformation can't guarantee uniqueness — two different keys may produce the same index. This is a **collision**.
+
+Two standard strategies:
+
+**Chaining** — each table slot holds a linked list of all keys that hashed there.
+
+```
+tableSize=5   keys: 10, 15, 20, 25
+10 % 5 = 0   → slot 0: [10]
+15 % 5 = 0   → slot 0: [10 → 15]
+20 % 5 = 0   → slot 0: [10 → 15 → 20]
+25 % 5 = 0   → slot 0: [10 → 15 → 20 → 25]
+```
+A terrible hash function (or too-small table) concentrates all keys in one chain → O(n) lookup.
+
+**Open Addressing (Linear Probing)** — on collision, scan forward for the next empty slot.
+
+```
+tableSize=7   insert keys: 10, 17, 24
+10 % 7 = 3   → slot 3 empty → place at 3
+17 % 7 = 3   → slot 3 taken → try 4 → empty → place at 4
+24 % 7 = 3   → slot 3 taken → try 4 taken → try 5 → empty → place at 5
+```
+
+Lookup follows the same probe sequence until the key is found or an empty slot is hit.
+
+
+##### Choosing a Good Table Size
+
+| Rule                          | Reason                                              |
+| ----------------------------- | --------------------------------------------------- |
+| Use a prime number            | Reduces clustering with modular hash functions      |
+| Keep load factor λ = n/m < 0.75 | Beyond this, collision rate rises sharply          |
+| Resize (rehash) when full     | Double table size and reinsert all keys             |
+
+> **Load factor** λ = (number of entries) / (table size). A well-tuned hash table maintains λ < 0.75 for O(1) average operations.
+
+| Operation | Average Case | Worst Case (bad hash) |
+| --------- | ------------ | --------------------- |
+| Insert    | O(1)         | O(n)                  |
+| Search    | O(1)         | O(n)                  |
+| Delete    | O(1)         | O(n)                  |
+
+---
+
+## Greedy Approach and 0/1 Knapsack
+
+### A. Greedy vs Dynamic Programming
+
+**Intuition:** A greedy algorithm always picks the locally best option — whatever looks optimal right now — without reconsidering past choices. DP is more careful: it evaluates all options systematically and remembers sub-problem results so they're never recomputed.
+
+| Property            | Greedy                         | Dynamic Programming               |
+| ------------------- | ------------------------------ | --------------------------------- |
+| Decision basis      | Local optimum at each step     | Global optimum across all steps   |
+| Past choices        | Never reconsidered             | Sub-problems stored and reused    |
+| Speed               | Usually faster                 | Slower but correct                |
+| Correctness         | May fail on complex problems   | Optimal when applicable           |
+| When it works       | Matroid / exchange argument    | Overlapping sub-problems + optimal substructure |
+| Space               | O(1) typically                 | O(n) or O(n×W) table              |
+
+```
+Coins: [1, 3, 4]   Target sum: 6
+
+Greedy — always pick largest coin that fits:
+  Pick 4 → remaining: 2
+  Pick 1 → remaining: 1
+  Pick 1 → remaining: 0
+  Coins used: 3   ✗
+
+DP — explore all combinations:
+  Pick 3 → remaining: 3
+  Pick 3 → remaining: 0
+  Coins used: 2   ✓
+
+Greedy failed: picking 4 forced two 1s.
+DP found the better path by not committing greedily.
+```
+
+
+### B. 0/1 Knapsack
+
+**Problem:** You have `n` items each with a weight and value. Bag capacity: `W`. Maximise total value. Each item is either taken whole or left — no fractions (hence 0/1).
+
+**Intuition:** Greedy (take best value-to-weight ratio first) fails here — it can leave capacity wasted with no small item to fill it. DP explores every item-capacity combination.
+
+The table `dp[i][w]` = maximum value using the first `i` items with capacity `w`. For each item, two choices: skip (inherit previous row) or take (add value, reduce capacity). Take the better of the two.
+
+**Recurrence:**
+```
+dp[i][w] = dp[i-1][w]                                if weight[i] > w   (doesn't fit)
+dp[i][w] = max(dp[i-1][w],
+               value[i] + dp[i-1][w - weight[i]])    otherwise
+```
+
+```
+Items: weight=[1,3,4,5]  value=[1,4,5,7]   W=7
+
+         w=0  w=1  w=2  w=3  w=4  w=5  w=6  w=7
+i=0       0    0    0    0    0    0    0    0      ← no items
+i=1(w=1)  0    1    1    1    1    1    1    1      ← take item 1 when w≥1
+i=2(w=3)  0    1    1    4    5    5    5    5      ← take item 2 when w≥3
+i=3(w=4)  0    1    1    4    5    6    6    9      ← item 2+3 fit in w=7: 4+5=9
+i=4(w=5)  0    1    1    4    5    7    8    9      ← item 4 alone beats some combos
+
+dp[4][7] = 9
+Traceback: item 3 (w=4,v=5) + item 2 (w=3,v=4) = weight 7, value 9  ✓
+```
+
+| Complexity | Value      |
+| ---------- | ---------- |
+| Time       | `O(n × W)` |
+| Space      | `O(n × W)` |
+
+> Optimisable to `O(W)` space using a single 1D array iterated in reverse — each row only depends on the row directly above it.
+
+
+### C. Kadane's Algorithm — O(n)
+
+**Problem:** Find the contiguous subarray with the maximum sum. This is the DP solution, improving the Divide & Conquer O(n log n) approach down to O(n).
+
+**Intuition:** At every position, one binary decision: extend the current running subarray, or abandon it and start fresh here. Abandon when the running sum is negative — a negative prefix only drags down whatever comes after it. Keep when positive — it helps. Track the best sum seen at any point.
+
+One pass, O(1) extra space — the running sum carries all the state you need.
+
+**Formula:**
+```
+M(i) = max(A[i],  M(i-1) + A[i])
+         ↑              ↑
+     start fresh    extend previous
+```
+
+```
+Array: [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+
+Index | A[i] | Decision                           | Curr Sum | Max Sum
+------|------|------------------------------------|----------|--------
+  0   |  -2  | first element, take it             |    -2    |   -2
+  1   |   1  | -2+1=-1 < 1 → start fresh at 1     |     1    |    1
+  2   |  -3  | 1+(-3)=-2 > -3 → extend            |    -2    |    1
+  3   |   4  | -2+4=2 < 4 → start fresh at 4      |     4    |    4
+  4   |  -1  | 4+(-1)=3 > -1 → extend             |     3    |    4
+  5   |   2  | 3+2=5 > 2 → extend                 |     5    |    5
+  6   |   1  | 5+1=6 > 1 → extend                 |     6    |    6   ← best
+  7   |  -5  | 6+(-5)=1 > -5 → extend             |     1    |    6
+  8   |   4  | 1+4=5 > 4 → extend                 |     5    |    6
+
+Maximum Sum: 6   (subarray: [4, -1, 2, 1])
+```
+
+| Complexity      | Value  |
+| --------------- | ------ |
+| Time            | `O(n)` |
+| Auxiliary Space | `O(1)` |
+
+
+
+
+## Leet Code Practice Problems
+
+<div className="leetcode-grid">
+
+<a className="leetcode-card" href="https://leetcode.com/problems/two-sum/" target="_blank">
+	<h3>1. Two Sum</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/container-with-most-water/" target="_blank">
+	<h3>11. Container With Most Water</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/valid-parentheses/" target="_blank">
+	<h3>20. Valid Parentheses</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/maximum-subarray/" target="_blank">
+	<h3>53. Maximum Subarray</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/trapping-rain-water/" target="_blank">
+	<h3>42. Trapping Rain Water</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank">
+	<h3>84. Largest Rectangle in Histogram</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/evaluate-reverse-polish-notation/" target="_blank">
+	<h3>150. Evaluate Reverse Polish Notation</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/min-stack/" target="_blank">
+	<h3>155. Min Stack</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/implement-stack-using-queues/" target="_blank">
+	<h3>225. Implement Stack using Queues</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank">
+	<h3>239. Sliding Window Maximum</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/coin-change/" target="_blank">
+	<h3>322. Coin Change</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/next-greater-element-i/" target="_blank">
+	<h3>496. Next Greater Element I</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/next-greater-element-ii/" target="_blank">
+	<h3>503. Next Greater Element II</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank">
+	<h3>560. Subarray Sum Equals K</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/baseball-game/" target="_blank">
+	<h3>682. Baseball Game</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/daily-temperatures/" target="_blank">
+	<h3>739. Daily Temperatures</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/asteroid-collision/" target="_blank">
+	<h3>735. Asteroid Collision</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/car-fleet/" target="_blank">
+	<h3>853. Car Fleet</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/online-stock-span/" target="_blank">
+	<h3>901. Online Stock Span</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/" target="_blank">
+	<h3>1047. Remove All Adjacent Duplicates In String</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/partition-equal-subset-sum/" target="_blank">
+	<h3>416. Partition Equal Subset Sum</h3>
+</a>
+
+</div>
+
+<style>
+{`
+.leetcode-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 16px;
+	margin-top: 20px;
+}
+
+.leetcode-card {
+	display: block;
+	padding: 18px;
+	border-radius: 14px;
+
+	background: var(--sl-color-bg);
+	border: 1px solid var(--sl-color-gray-5);
+
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.leetcode-card h3 {
+	margin: 0;
+	font-size: 16px;
+	color: var(--sl-color-text-accent);
+}
+
+.leetcode-card:hover {
+	background: var(--sl-color-bg-nav);
+	transform: translateY(-5px);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+	border-color: var(--sl-color-accent);
+}
+
+.leetcode-card:hover h3 {
+	color: var(--sl-color-white);
+}
+`}
+</style>
