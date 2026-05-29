@@ -1,0 +1,1864 @@
+---
+title: Introduction to VLSI
+---
+Very Large Scale Integration (VLSI) is the technology of integrating millions or billions of transistors onto a single semiconductor chip. Earlier electronic systems used separate components such as resistors, capacitors, and transistors connected externally. With advancements in semiconductor technology, these components could be integrated into compact Integrated Circuits (ICs), leading to the development of VLSI systems.
+
+VLSI is widely used in microprocessors, memory chips, smartphones, communication systems, and embedded devices. Modern processors contain billions of MOSFET transistors fabricated on silicon wafers using CMOS technology.
+
+The evolution of integration is classified as:
+
+- SSI: Small Scale Integration
+- MSI: Medium Scale Integration
+- LSI: Large Scale Integration
+- VLSI: Very Large Scale Integration
+
+A VLSI chip mainly consists of logic circuits, memory units, and interconnections.
+
+**Advantages of VLSI:**
+
+- Small size
+- High speed
+- Low power consumption
+- Better reliability
+- Reduced cost
+- High functionality
+
+The fabrication process involves oxidation, lithography, doping, etching, and deposition. CMOS technology is preferred because of its low power dissipation and high noise immunity.
+
+---
+
+## Moore's Law
+
+Moore's Law was proposed by Gordon Moore in 1965. It states that the number of transistors on a semiconductor chip doubles approximately every 18 to 24 months while the cost per transistor decreases.
+
+**Mathematically:**
+
+```
+Number of Transistors ∝ 2^(t/T)
+```
+
+where:
+
+- t = time
+- T = doubling period
+
+This observation became the driving force behind semiconductor development and miniaturization.
+
+**Graphically:**
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI1.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+As transistor count increases, electronic systems become faster, smaller, and more efficient. Technology nodes have reduced from micrometers to nanometers:
+
+```
+10 µm → 1 µm → 180 nm → 45 nm → 7 nm → 3 nm
+```
+
+**Advantages of Moore's Law:**
+
+- Increased processing speed
+- Better memory capacity
+- Smaller devices
+- Reduced cost
+- Improved performance
+
+However, continuous scaling introduces challenges:
+
+- Heat dissipation
+- Leakage currents
+- Short channel effects
+- Fabrication complexity
+
+Power consumption is given by: **P = CV²f**
+
+where:
+
+- C = capacitance
+- V = supply voltage
+- f = frequency
+
+**Major reasons for the need of VLSI:**
+
+- **Miniaturization** — Portable devices like smartphones and laptops require compact circuits.
+- **High Speed** — Smaller interconnections reduce propagation delay.
+
+Delay equation: **t = RC**
+
+where:
+
+- R = resistance
+- C = capacitance
+
+**Applications of VLSI include:**
+
+- Microprocessors
+- DSP systems
+- Memory devices
+- Embedded systems
+- AI hardware
+- Communication systems
+
+---
+
+## VLSI Design Hierarchy
+
+VLSI design hierarchy is a structured approach used to simplify the design of complex integrated circuits. Modern VLSI chips contain millions or billions of transistors, so the design is divided into multiple abstraction levels for easier implementation and verification.
+
+**Hierarchy flow:**
+
+| **Level** | **Description** |
+| --- | --- |
+| System Level | Defines the complete architecture and functionality of the electronic system. |
+| Behavioral Level | Describes circuit behavior using algorithms or HDLs without hardware details. |
+| RTL Level | Represents data transfer and operations between registers using clock signals. |
+| Gate Level | Describes the circuit using logic gates and flip-flops. |
+| Transistor Level | Implements logic gates using MOSFET transistors and electrical analysis. |
+| Layout Level | Defines physical placement of transistors, metal layers, and interconnections. |
+| Fabrication | Converts layout into a physical semiconductor chip using manufacturing processes. |
+
+---
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI2.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+## ASIC vs FPGA
+
+ASIC (Application Specific Integrated Circuit) is a custom chip designed for a fixed application, while FPGA (Field Programmable Gate Array) is a programmable hardware device that can be reconfigured after manufacturing. ASICs provide better performance and lower power consumption, whereas FPGAs offer flexibility and faster development.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI3.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+**Applications:**
+
+- ASIC → Mobile processors, AI chips
+- FPGA → Prototyping, DSP systems, Research
+
+---
+
+## Design Metrics
+
+Design metrics are parameters used to evaluate the quality and performance of a VLSI circuit. Designers optimize these metrics to achieve high performance, low power, small area, and reduced cost. Improving one metric often affects another, so proper trade-offs are necessary.
+
+**Important Metrics:**
+
+- Area
+- Speed
+- Power
+- Cost
+- Reliability
+
+### 1. Area
+
+Area refers to the physical silicon space occupied by a VLSI circuit on a chip. Smaller chip area reduces fabrication cost and increases the number of chips produced per wafer. Area mainly depends on transistor count, routing complexity, and layout optimization.
+
+**Area Relation:**
+
+```
+Chip Area ∝ Number of Transistors
+```
+
+**Advantages of Small Area:**
+
+- Lower manufacturing cost
+- Higher integration density
+- Smaller devices
+- Better performance
+
+### 2. Speed
+
+Speed represents how fast a VLSI circuit performs switching and computation. High-speed circuits are required in processors, communication systems, and memory devices. Circuit speed mainly depends on propagation delay and interconnect delay.
+
+**Propagation Delay Equation:**
+
+```
+t = RC
+```
+
+where:
+
+- R = resistance
+- C = capacitance
+
+**Performance Relation:**
+
+```
+Performance ∝ 1 / Delay
+```
+
+**Advantages of High Speed:**
+
+- Faster computation
+- Better processor performance
+- High data transfer rate
+
+### 3. Power
+
+Power consumption is a major concern in VLSI design, especially for portable and battery-operated devices. Excessive power causes heat generation and reduces reliability. CMOS circuits mainly consume dynamic power, static power, and short-circuit power.
+
+**Dynamic Power Equation:** P = CV²f
+
+where:
+
+- C = capacitance
+- V = supply voltage
+- f = switching frequency
+
+| **Types of Power** | **Cause** |
+| --- | --- |
+| Dynamic Power | Switching activity |
+| Static Power | Leakage current |
+| Short Circuit Power | Simultaneous conduction |
+
+**Power Reduction Techniques:**
+
+- Voltage scaling
+- Clock gating
+- Power gating
+- Low-power architectures
+
+**Advantages of Low Power:**
+
+- Better battery life
+- Reduced heating
+- Improved reliability
+
+### 4. Cost
+
+Cost refers to the total expense involved in designing, fabricating, testing, and packaging a VLSI chip. Reducing cost is important for commercial mass production. Chip cost depends on area, fabrication technology, manufacturing yield, and testing complexity.
+
+**Cost Equation:**
+
+```
+Cost per Chip = Wafer Cost / Number of Good Chips
+```
+
+| **Factors Affecting Cost** | **Cost Reduction Methods** |
+| --- | --- |
+| Chip area | Area optimization |
+| Technology node | Improved yield |
+| Manufacturing yield | Standard cell reuse |
+| Testing cost | Efficient testing |
+
+---
+
+## VLSI Design Flow
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI4.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### 1. System Specification
+
+This is the first stage of VLSI design where the system requirements are defined. Specifications include performance, functionality, power consumption, area, and interface details.
+
+### 2. Architectural Design
+
+The overall architecture of the system is planned based on the specifications. Major functional blocks and their connections are identified at this stage.
+
+### 3. Functional & Logic Design
+
+The required functionality is implemented using logic gates and digital circuits. HDL languages like Verilog or VHDL are used to describe the circuit behavior.
+
+### 4. Circuit Design
+
+The logic design is converted into transistor-level circuits using CMOS technology. Circuit simulation is performed to verify correctness and timing performance.
+
+### 5. Physical Design
+
+The circuit is converted into a physical layout representation on silicon. Placement, routing, clock design, and power routing are performed in this stage.
+
+### 6. Physical Verification & Signoff
+
+The layout is checked using DRC and LVS verification techniques. This stage ensures that the design follows fabrication rules and matches the schematic.
+
+### 7. Fabrication
+
+The verified layout is manufactured on a silicon wafer using semiconductor processes. Processes like lithography, etching, doping, and deposition are used to create the chip.
+
+### 8. Packaging & Testing
+
+The fabricated chip is packaged and tested for functionality and reliability. Packaging protects the chip and provides external electrical connections.
+
+---
+
+## VLSI Trends
+
+VLSI technology is continuously advancing to achieve higher speed, smaller chip size, lower power consumption, and better performance. Modern devices such as smartphones, AI processors, and IoT systems depend heavily on these advancements.
+
+### 1. ITRS Roadmap
+
+The ITRS (International Technology Roadmap for Semiconductors) provides future predictions and guidelines for semiconductor technology development. It helps industries improve transistor density, fabrication techniques, speed, and power efficiency.
+
+### 2. Technology Nodes
+
+Technology node refers to the minimum transistor size used in fabrication, such as 90 nm, 45 nm, 7 nm, and 3 nm. Smaller nodes allow higher transistor density, faster circuits, lower power consumption, and compact chip design.
+
+### 3. Scaling Trends
+
+Scaling means reducing transistor dimensions to integrate more transistors on a single chip. It improves speed and reduces chip area, but excessive scaling causes leakage current, short channel effects, and heat generation.
+
+### 4. Low Power Trends
+
+Modern VLSI systems focus on reducing power consumption for better battery life and lower heating. Common techniques include:
+
+- Voltage scaling
+- Clock gating
+- Power gating
+
+Power equation: **P = CV²f**
+
+Reducing voltage greatly lowers dynamic power.
+
+### 5. System on Chip (SoC)
+
+SoC integrates processor, memory, GPU, communication modules, and peripherals onto a single chip.
+
+**Advantages:**
+
+- Compact size
+- Low power
+- High performance
+- Reduced cost
+
+**Applications:**
+
+- Smartphones
+- Embedded systems
+- IoT devices
+- AI hardware
+
+---
+
+## DRC and LVS
+
+| **Feature** | **Design Rule Check (DRC)** | **Layout vs Schematic (LVS)** |
+| --- | --- | --- |
+| Definition | DRC checks whether the physical layout follows fabrication design rules. | LVS checks whether the layout matches the original circuit schematic/netlist. |
+| Purpose | Ensures the layout can be manufactured correctly. | Ensures the designed layout implements the intended circuit correctly. |
+| Main Check | Verifies spacing, width, overlap, and geometry rules. | Verifies connectivity and component matching. |
+| Focus Area | Physical geometry verification. | Electrical connectivity verification. |
+| Errors Detected | Width violations, spacing violations, overlap issues. | Missing connections, wrong transistor connections, shorts, opens. |
+| Input | Physical layout data. | Layout and schematic/netlist. |
+| Output | DRC report showing rule violations. | LVS report showing matched or mismatched circuits. |
+| Importance | Prevents fabrication failures. | Prevents functional circuit errors. |
+| Performed During | Physical verification stage. | Physical verification stage. |
+| Example | Metal lines placed too close causing a spacing violation. | Layout transistor connection differs from schematic connection. |
+
+---
+
+## MOS Structure
+
+MOS stands for Metal Oxide Semiconductor. The MOS structure is the basic foundation of MOSFET devices used in VLSI circuits. A MOS structure mainly consists of three layers:
+
+- Metal layer (Gate)
+- Oxide layer (SiO₂)
+- Semiconductor substrate
+
+Generally, a p-type semiconductor substrate is used for NMOS devices and an n-type substrate is used for PMOS devices. The oxide layer acts as an insulator between the gate and substrate.
+
+**Basic MOS Structure:**
+
+```
+   Metal Gate
+
+ ───────────────
+
+      SiO₂
+
+ ───────────────
+
+ p-type Silicon
+
+ ───────────────
+```
+
+When voltage is applied at the gate terminal, electric charges are induced in the semiconductor region near the oxide interface. Depending on the applied gate voltage, the MOS structure operates in three conditions:
+
+- Accumulation
+- Depletion
+- Inversion
+
+The diagram explains the operating regions of an NMOS transistor based on drain voltage (VD), gate voltage (VG), and threshold voltage (VT). When VG > VT, an electron channel forms between source and drain.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI5.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### (a) Linear Region / Triode Region
+
+**Condition:** VD &lt;&lt; (VG − VT)
+
+A complete channel exists between source and drain, allowing easy electron flow.
+
+**Characteristics:**
+
+- MOSFET behaves like a resistor
+- Drain current increases with VD
+- Channel is continuous and thick
+
+**Current equation:**
+
+```
+ID = μn Cox (W/L) [(VG − VT)VD − VD²/2]
+```
+
+### (b) Pinch-Off Condition
+
+**Condition:** VD = (VG − VT)
+
+The channel near the drain becomes very thin and pinch-off begins.
+
+**Characteristics:**
+
+- Channel narrows near drain
+- Transition from linear to saturation region
+- Drain current approaches maximum value
+
+### (c) Saturation Region
+
+**Condition:** VD > (VG − VT)
+
+The channel is pinched off near the drain, and current becomes nearly constant.
+
+**Characteristics:**
+
+- MOSFET acts like a current source
+- Used in amplifiers and switching circuits
+- Increasing VD has very little effect on current
+
+**Current equation:**
+
+```
+ID = (1/2) μn Cox (W/L) (VG − VT)²
+```
+
+---
+
+## Energy Band Diagram
+
+The energy band diagram explains the movement and distribution of electrons and holes inside the MOS structure. It shows how energy levels change when gate voltage is applied.
+
+**Main energy levels:**
+
+- Conduction Band (Ec)
+- Valence Band (Ev)
+- Fermi Level (Ef)
+
+**Basic Band Diagram:**
+
+```
+Energy
+↑
+| Ec ─────────
+|
+| Ef ─────
+|
+| Ev ─────────
+|________________→ Distance
+```
+
+---
+
+## MOSFET Basics
+
+MOSFET stands for Metal Oxide Semiconductor Field Effect Transistor. It is the most important semiconductor device used in VLSI circuits and CMOS technology. MOSFETs are voltage-controlled devices in which the gate voltage controls the current flow between source and drain terminals.
+
+**A MOSFET has four terminals:**
+
+- Gate (G)
+- Source (S)
+- Drain (D)
+- Body/Substrate (B)
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI6.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+The oxide layer (SiO₂) electrically isolates the gate from the substrate. When voltage is applied at the gate, an electric field controls the formation of a conducting channel between source and drain.
+
+**Advantages of MOSFET:**
+
+- High input impedance
+- Low power consumption
+- Small size
+- Fast switching speed
+
+**MOSFETs are widely used in:**
+
+- Digital ICs
+- Memory circuits
+- Processors
+- Amplifiers
+
+---
+
+## NMOS Structure
+
+An NMOS transistor is formed on a p-type substrate with two heavily doped n+ regions acting as source and drain terminals.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI7.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+**Operation:**
+
+When positive gate voltage is applied:
+
+- Electrons are attracted toward the gate
+- An n-type inversion channel forms
+- Current flows from drain to source
+
+**Characteristics:**
+
+- Uses electrons as carriers
+- Faster operation due to high electron mobility
+- Turns ON for positive gate voltage
+
+**Condition for ON state:** VG > VT
+
+where VT is threshold voltage.
+
+---
+
+## PMOS Structure
+
+A PMOS transistor is formed on an n-type substrate with p+ source and drain regions.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI8.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+**Operation:**
+
+When negative gate voltage is applied:
+
+- Holes accumulate near the surface
+- A p-type channel forms
+- Current flows through holes
+
+**Characteristics:**
+
+- Uses holes as carriers
+- Slower than NMOS
+- Turns ON for negative gate voltage
+
+**Condition for ON state:** VG &lt; VT
+
+---
+
+## Regions of Operation
+
+MOSFET operation depends on gate voltage (VGS) and drain voltage (VDS). The three important operating regions are:
+
+- Cutoff Region
+- Linear Region
+- Saturation Region
+
+### Cutoff Region
+
+**Condition:** VGS &lt; VT
+
+In this region:
+
+- No inversion channel forms
+- Drain current is nearly zero
+- MOSFET behaves like an open switch
+
+**Characteristics:**
+
+- Device is OFF
+- No current conduction
+
+**Applications:**
+
+- Digital logic OFF state
+
+### Linear Region
+
+**Condition:** VGS > VT, VDS &lt; (VGS − VT)
+
+A conducting channel forms completely between source and drain.
+
+**Characteristics:**
+
+- MOSFET behaves like a resistor
+- Drain current increases with VDS
+- Used in switching applications
+
+**Current equation:**
+
+```
+ID = μn Cox (W/L) [(VGS − VT)VDS − VDS²/2]
+```
+
+### Saturation Region
+
+**Condition:** VGS > VT, VDS ≥ (VGS − VT)
+
+The channel is pinched off near the drain terminal.
+
+**Characteristics:**
+
+- Drain current becomes nearly constant
+- MOSFET acts like a current source
+- Used in amplifiers
+
+**Current equation:**
+
+```
+ID = (1/2) μn Cox (W/L) (VGS − VT)²
+```
+
+---
+
+## I-V Characteristics
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI9.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+| **Region** | **NMOS Equations** | **PMOS Equations** |
+| --- | --- | --- |
+| Cutoff Region | Condition: VGS &lt; VT, ID ≈ 0 | Condition: VSG &lt; │VT│, ID ≈ 0 |
+| Linear / Triode Region | Condition: VGS > VT, VDS &lt; (VGS − VT) ID = μn Cox (W/L) [(VGS − VT)VDS − (VDS²/2)] | Condition: VSG > │VT│, VSD &lt; (VSG − │VT│) ID = μp Cox (W/L) [(VSG − │VT│)VSD − (VSD²/2)] |
+| Saturation Region | Condition: VGS > VT, VDS ≥ (VGS − VT) ID = (1/2) μn Cox (W/L) (VGS − VT)² | Condition: VSG > │VT│, VSD ≥ (VSG − │VT│) ID = (1/2) μp Cox (W/L) (VSG − │VT│)² |
+
+**Key observations:**
+
+- At small VDS, device behaves like a resistor
+- At large VDS, current saturates
+- Increasing VGS increases drive current
+
+---
+
+## C-V Characteristics
+
+The C-V characteristics describe the variation of MOS capacitance with gate voltage due to changes in surface charge distribution.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI10.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+**Total capacitance depends on:**
+
+- Oxide capacitance (Cox)
+- Depletion capacitance (Cdep)
+- Inversion charge
+
+**Accumulation:**
+
+- Surface rich in majority carriers
+- C ≈ Cox
+
+**Depletion:**
+
+- Depletion region increases
+- C decreases
+
+**Inversion:**
+
+- In strong inversion, inversion layer forms
+- Low-frequency: C returns toward Cox
+- High-frequency: C remains low due to delayed response of minority carriers
+
+**Equivalent form:**
+
+```
+1/C = 1/Cox + 1/Cdep
+```
+
+**Impact:**
+
+- Controls switching delay
+- Affects dynamic power (P = CV²f)
+- Determines high-frequency response
+
+---
+
+## Drain Current Equation
+
+The drain current equation models MOSFET conduction based on device physics and terminal voltages.
+
+**Long-channel model:**
+
+Linear region:
+
+```
+ID = μn Cox (W/L) [(VGS − VT)VDS − (VDS²/2)]
+```
+
+Saturation region:
+
+```
+ID = (1/2) μn Cox (W/L)(VGS − VT)²
+```
+
+Including channel length modulation:
+
+```
+ID = (1/2) μn Cox (W/L)(VGS − VT)² (1 + λVDS)
+```
+
+**Key parameters:**
+
+- μn: carrier mobility
+- Cox: gate oxide capacitance per unit area
+- W/L: aspect ratio
+- VT: threshold voltage
+
+**Key insight:**
+
+- Current is proportional to (W/L)
+- Strong quadratic dependence on overdrive voltage (VGS − VT)
+- Real devices deviate due to short-channel effects
+
+This equation forms the basis for CMOS inverter delay and analog biasing models.
+
+---
+
+## Threshold Voltage
+
+Threshold voltage (VT) is the gate voltage at which strong inversion occurs at the semiconductor surface.
+
+**At threshold:**
+
+- Surface potential = 2ϕF
+- Electron concentration equals bulk concentration
+- Conducting channel begins to form
+
+**General expression:**
+
+```
+VT = VFB + 2ϕF + (√(2εs q NA 2ϕF)) / Cox
+```
+
+**Key components:**
+
+- VFB: flat-band voltage (work function difference + oxide charge)
+- ϕF: Fermi potential (depends on doping)
+- NA: substrate doping concentration
+- Cox: oxide capacitance
+
+**Important implication:**
+
+VT controls the switching point of CMOS logic gates.
+
+- Low VT → faster switching but higher leakage
+- High VT → lower leakage but slower operation
+
+---
+
+## MOS Non-Idealities
+
+MOSFET non-idealities refer to the deviation of real device behavior from the ideal long-channel MOS model. These effects become dominant in deep-submicron technologies and strongly influence current, voltage, delay, and leakage. The three most important non-idealities are channel length modulation, subthreshold conduction, and body effect. These phenomena modify the drain current equation and are essential for accurate VLSI circuit design and modeling.
+
+### 1. Channel Length Modulation (CLM)
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI11.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+In ideal saturation, drain current is constant. However, as VDS increases, the depletion region at the drain expands into the channel, effectively reducing channel length L. Since ID ∝ 1/L, current increases slightly with VDS. This is modeled by:
+
+```
+ID = (1/2) μn Cox (W/L)(VGS − VT)²(1 + λVDS)
+```
+
+where λ is channel length modulation parameter. CLM introduces finite output resistance ro = 1/(λID), making MOSFETs non-ideal current sources. It reduces voltage gain in amplifiers and becomes stronger as channel length decreases in modern CMOS technologies.
+
+### 2. Subthreshold Conduction
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI12.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+When VGS &lt; VT, ideal current is zero, but in reality a small diffusion current flows due to minority carriers. This region is called weak inversion. Drain current varies exponentially:
+
+```
+ID = I0 exp((VGS − VT)/(nVT)) (1 − exp(−VDS/VT))
+```
+
+where VT (thermal voltage) = kT/q. This behavior is diffusion-dominated, not drift-dominated. Subthreshold slope is defined as S = (d log ID / d VGS)⁻¹. It limits OFF-state leakage power in CMOS circuits. As device scaling continues, subthreshold leakage becomes a major contributor to static power consumption.
+
+### 3. Body Effect
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI13.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Body effect arises when source-to-body voltage VSB ≠ 0, modifying threshold voltage due to widening depletion region. The threshold voltage increases because additional charge is required to invert the surface. It is given by:
+
+```
+VT = VT0 + γ(√(2ϕF + VSB) − √(2ϕF))
+```
+
+where γ is body effect coefficient. Physically, reverse biasing the body increases depletion width, reducing channel charge for a given gate voltage. This reduces drain current and increases delay. Body effect is significant in stacked transistors and circuits where source is not at substrate potential. It is a key consideration in CMOS logic design and analog biasing circuits.
+
+---
+
+## MOS Scaling
+
+MOS scaling is the reduction of device dimensions (L, W, tox) to improve density and speed while maintaining controllable device behavior. Delay improves due to reduced capacitance and shorter channel paths.
+
+**Key relation:**
+
+```
+τ ≈ (CL · VDD) / ID
+```
+
+**Scaling effects (ideal case):**
+
+```
+L, W, tox → 1/S
+VDD → 1/S (ideal)
+C → 1/S
+ID → 1/S
+Delay → 1/S
+Power/device → 1/S²
+```
+
+**Simple structure view:**
+
+```
+Gate
+│
+SiO2
+│
+Source — Channel — Drain
+```
+
+As scaling progresses, electrostatics worsen and leakage increases. Modern scaling is limited by Vth constraints and power density rather than geometry.
+
+| **Parameter** | **Constant Field Scaling** | **Constant Voltage Scaling** | **Small Geometry Effects** |
+| --- | --- | --- | --- |
+| Basic idea | Scale all dimensions + voltage | Scale dimensions only | Effects due to extreme scaling limits |
+| Scaling factor | L, W, tox, V → 1/S | L, W, tox → 1/S; V = constant | Not a scaling rule, but physical deviation |
+| Electric field (E = V/L) | Constant | Increases by S | Very high, non-uniform |
+| Threshold voltage (Vth) | Scales down | ~constant | Fluctuates, roll-off |
+| Drain current (ID) | ↓ 1/S | ~constant / slight increase | Velocity saturation limits ID |
+| Capacitance (C) | ↓ 1/S | ↓ 1/S | Parasitics dominate |
+| Delay (τ ≈ CV/I) | ↓ 1/S | improves but not ideal | Saturates / worsens |
+| Power per device | ↓ 1/S² | weak reduction / may increase density power | leakage dominated |
+| Power density | constant | increases (≈ S) | very high due to leakage |
+| Main limitation | Vth scaling limit | heat + reliability | physics limits (mobility, quantum, variability) |
+| Key effects | Ideal Dennard scaling | hot carriers, leakage | velocity sat, DIBL, variability |
+| Device behavior | well-controlled | partially controlled | non-ideal nanoscale regime |
+
+---
+
+## CMOS Inverter
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI14.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+The CMOS inverter is the basic building block of digital CMOS circuits. It is made using two complementary transistors: a pMOS (pull-up network) and an nMOS (pull-down network). Both are connected between VDD and GND, with their gates tied together as input and their drains connected as output. This arrangement ensures that only one path conducts at a time, depending on the input.
+
+When Vin = 0 (LOW), the pMOS turns ON because VGS,p is negative enough (VGS,p &lt; Vtp), while the nMOS remains OFF since VGS,n = 0 &lt; Vtn. So the output is pulled up to VDD (logic HIGH). When Vin = VDD (HIGH), the pMOS turns OFF and the nMOS turns ON, pulling the output down to GND (logic LOW). This complementary action ensures full voltage swing and very low static power consumption because ideally one transistor is always OFF in steady state.
+
+The drain current behavior of the nMOS is described as:
+
+In saturation region:
+
+```
+ID = (μn · Cox / 2) · (W/L) · (VGS − Vtn)²,  for VDS ≥ VGS − Vtn
+```
+
+In linear (triode) region:
+
+```
+ID = (μn · Cox) · (W/L) · [(VGS − Vtn)·VDS − VDS²/2]
+```
+
+**Operation summary:**
+
+```
+Vin = 0 → pMOS ON, nMOS OFF → Vout = VDD (HIGH)
+Vin = VDD → pMOS OFF, nMOS ON → Vout = GND (LOW)
+```
+
+---
+
+## Voltage Transfer Characteristics
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI15.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+The Voltage Transfer Characteristics (VTC) of a CMOS inverter is the graph of output voltage (Vout) versus input voltage (Vin). It describes the static behavior of the inverter and shows how the output transitions from logic HIGH (VOH) to logic LOW (VOL) as input varies from 0 to VDD. Unlike an ideal inverter, the transition is gradual due to finite gain of MOS transistors.
+
+**Operating Regions of CMOS Inverter VTC**
+
+The VTC can be divided into five regions based on the operating states of nMOS and pMOS:
+
+| **Region** | **Vin Range** | **nMOS State** | **pMOS State** | **Output Behavior** |
+| --- | --- | --- | --- | --- |
+| 1 | 0 → VIL | Cutoff | Linear/Saturation ON | VOH ≈ VDD |
+| 2 | VIL → Vm | Cutoff | ON | Nearly constant HIGH |
+| 3 | Around Vm | Saturation | Saturation | Sharp transition region |
+| 4 | Vm → VIH | ON | Cutoff | Falling output |
+| 5 | VIH → VDD | ON | Cutoff | VOL ≈ 0 |
+
+**Important Voltage Levels in VTC**
+
+| **Parameter** | **Definition** |
+| --- | --- |
+| VOH | Maximum output voltage (logic HIGH), ≈ VDD |
+| VOL | Minimum output voltage (logic LOW), ≈ 0 |
+| VIL | Maximum input voltage still interpreted as logic LOW |
+| VIH | Minimum input voltage interpreted as logic HIGH |
+| Vm | Switching threshold where Vin = Vout |
+
+### Switching Threshold (Vm)
+
+The switching threshold is the point where the inverter switches state, i.e., Vin = Vout, and both transistors are typically in saturation.
+
+**Condition:**
+
+```
+IDn = IDp
+```
+
+Using MOSFET saturation equations:
+
+```
+IDn = (kn / 2) (Vm − Vtn)²
+IDp = (kp / 2) (VDD + Vtp − Vm)²
+```
+
+Equating currents:
+
+```
+(kn / 2)(Vm − Vtn)² = (kp / 2)(VDD + Vtp − Vm)²
+```
+
+Final expression for switching threshold:
+
+```
+Vm = [Vtn + r (VDD + Vtp)] / (1 + r)
+```
+
+where
+
+```
+r = √(kp / kn)
+r = √[(μp (W/L)p) / (μn (W/L)n)]
+```
+
+**Physical Interpretation of Vm**
+
+- Vm determines the balance point of the inverter
+- It depends on transistor strength ratio
+- Shifting Vm changes switching preference of the inverter
+
+**Design effects:**
+
+| **Design Change** | **Effect on Vm** |
+| --- | --- |
+| Increase pMOS width (W/L)p | Vm increases (shifts right) |
+| Increase nMOS width (W/L)n | Vm decreases (shifts left) |
+
+**Symmetric CMOS Inverter**
+
+A symmetric inverter is designed such that:
+
+```
+Vm = VDD / 2
+```
+
+Condition for symmetry: Since μn > μp (typically 2–3 times), pMOS must be stronger (wider).
+
+Approximate design rule:
+
+```
+(W/L)p ≈ 2 × (W/L)n
+```
+
+This ensures balanced rise and fall characteristics and equal noise margins.
+
+### Noise Margins
+
+Noise margin defines the tolerance of the inverter to input noise without causing logic errors.
+
+**Definitions:**
+
+```
+NMH = VOH − VIH (high-level noise margin)
+NML = VIL − VOL (low-level noise margin)
+```
+
+**Graphically:**
+
+- VIL and VIH are obtained at points where slope of VTC = −1
+- These points define the boundary between valid logic levels
+
+**Ideal CMOS Case:**
+
+```
+VOH = VDD
+VOL = 0
+VIL ≈ VIH ≈ VDD / 2
+```
+
+Therefore:
+
+```
+NMH = NML = VDD / 2
+```
+
+**Design Insights and Observations**
+
+- A steeper VTC around Vm indicates higher gain and better switching behavior.
+- Wider transition region reduces noise immunity.
+- Proper sizing of (W/L)p and (W/L)n controls Vm and noise margins.
+- CMOS inverter provides full rail-to-rail swing (0 to VDD).
+- Static power dissipation is ideally zero due to complementary switching.
+
+---
+
+## RC Model of CMOS Inverter
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI16.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+In first-order analysis, a CMOS inverter is modeled as a resistor–capacitor (RC) network. MOSFETs are treated as equivalent resistors and the output node is modeled as a lumped load capacitance (CL). This allows simple delay estimation without full device-level solving.
+
+**Equivalent Model**
+
+| **Transition** | **Conducting device** | **Path** |
+| --- | --- | --- |
+| Vin 0 → 1 | nMOS ON | CL discharges through Rn |
+| Vin 1 → 0 | pMOS ON | CL charges through Rp |
+
+### Propagation Delay
+
+| **Parameter** | **Meaning** |
+| --- | --- |
+| tPHL | HIGH → LOW output transition |
+| tPLH | LOW → HIGH output transition |
+| tp | Average delay |
+
+**Delay Equations (RC model):**
+
+```
+tPHL = 0.69 · Rn · CL
+tPLH = 0.69 · Rp · CL
+tp = (tPHL + tPLH) / 2
+```
+
+**Rise and Fall Time:**
+
+```
+tfall = 2.2 · Rn · CL
+trise = 2.2 · Rp · CL
+```
+
+**Key idea:**
+
+- nMOS controls discharge (fall time)
+- pMOS controls charge (rise time)
+
+**Origin of 0.69:**
+
+From RC step response:
+
+```
+V(t) = VDD(1 − e^(−t/RC))
+At Vout = VDD/2 → t = RC ln(2) ≈ 0.69RC
+```
+
+### Equivalent Resistance
+
+Since MOSFET resistance varies during switching, an average value is used:
+
+```
+Req ≈ (3/4) · VDD / Iavg
+```
+
+Series effect:
+
+```
+k series nMOS → Req ≈ k · Runit
+```
+
+**Design insights:**
+
+| **Factor** | **Effect** |
+| --- | --- |
+| Higher CL | Increases delay |
+| Higher Rn | Slower fall |
+| Higher Rp | Slower rise |
+| Larger W/L | Reduces delay |
+
+---
+
+## Power Dissipation
+
+The total power dissipation in a CMOS circuit consists of dynamic power, short-circuit power, and static power.
+
+```
+P_total = P_dynamic + P_short-circuit + P_static
+```
+
+### Dynamic Power Dissipation
+
+Dynamic power is due to charging and discharging of the load capacitance C_L during switching activity.
+
+```
+P_dynamic = α · C_L · V_DD² · f
+```
+
+where α is the switching activity factor, C_L is the load capacitance, V_DD is the supply voltage, and f is the switching frequency.
+
+During a 0 → 1 transition, energy C_L·V_DD² is drawn from the supply. Half of this energy is stored on the capacitor and half is dissipated in the pMOS network. During the 1 → 0 transition, the stored energy is dissipated in the nMOS network. Hence, energy dissipated per complete cycle is C_L·V_DD².
+
+### Short-Circuit Power Dissipation
+
+Short-circuit power occurs when both pMOS and nMOS conduct simultaneously during input transitions due to finite rise and fall times.
+
+```
+P_short = I_peak · V_DD · t_sc · f
+```
+
+This results in a direct current path from V_DD to ground. It is significant when input transition time is comparable to the inverter switching time and is reduced for sharp input edges.
+
+### Static Power Dissipation
+
+Static power is caused by leakage currents when the circuit is not switching.
+
+```
+P_static = I_leak · V_DD
+```
+
+Leakage components include subthreshold conduction, gate oxide tunneling, and junction leakage. This component becomes dominant in deeply scaled technologies.
+
+### Total Power Dissipation
+
+```
+P_total = α·C_L·V_DD²·f + I_peak·V_DD·t_sc·f + I_leak·V_DD
+```
+
+Among these components, dynamic power dominates in conventional CMOS operation, while static power becomes increasingly important in nanoscale technologies. Short-circuit power is generally a secondary effect dependent on input transition time.
+
+---
+
+## CMOS NAND Gate
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI17.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+A 2-input CMOS NAND gate consists of a pull-up network (PUN) formed by two pMOS transistors connected in parallel and a pull-down network (PDN) formed by two nMOS transistors connected in series. The parallel pMOS network ensures that the output is connected to VDD whenever at least one input is LOW, while the series nMOS network connects the output to ground only when both inputs are HIGH. Thus, the circuit realizes the NAND function:
+
+```
+Output = NOT(A · B)
+```
+
+### Operation
+
+When both inputs A and B are LOW, both pMOS transistors are turned ON and both nMOS transistors remain OFF. The output node is therefore connected to VDD through the pull-up network, producing a logic HIGH at the output.
+
+When A = 0 and B = 1, the pMOS transistor connected to A remains ON while the corresponding nMOS transistor remains OFF. Although one nMOS transistor conducts, the pull-down path is incomplete because the series network requires both nMOS devices to conduct simultaneously. Hence, the output remains connected to VDD and stays HIGH.
+
+Similarly, when A = 1 and B = 0, one pMOS transistor still conducts and one nMOS transistor remains OFF, preventing a conducting path to ground. The output therefore remains HIGH.
+
+Only when both A and B are HIGH do both pMOS transistors turn OFF and both nMOS transistors turn ON. This creates a conducting path between the output node and ground through the series nMOS network, pulling the output LOW.
+
+Because the pull-down network contains two series nMOS transistors, the effective resistance during discharge is larger than that of a simple inverter, leading to increased propagation delay.
+
+---
+
+## CMOS NOR Gate
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI18.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+A 2-input CMOS NOR gate is the dual of the NAND gate. The pull-up network consists of two pMOS transistors connected in series, while the pull-down network consists of two nMOS transistors connected in parallel. The gate implements the NOR function:
+
+```
+Output = NOT(A + B)
+```
+
+### Operation
+
+When both inputs A and B are LOW, both pMOS transistors conduct and both nMOS transistors remain OFF. Since the pMOS devices are connected in series, a complete conducting path is formed between VDD and the output node, causing the output to become HIGH.
+
+When either input becomes HIGH, the corresponding pMOS transistor turns OFF and the corresponding nMOS transistor turns ON. The conducting path through the pull-up network is interrupted, while the pull-down network provides a path to ground through one of the parallel nMOS transistors. Consequently, the output is pulled LOW.
+
+When both inputs are HIGH, both pMOS transistors are OFF and both nMOS transistors are ON. The output node is therefore strongly connected to ground through the parallel pull-down network, producing a logic LOW.
+
+Since the pull-up network contains series-connected pMOS devices, whose mobility is already lower than that of nMOS devices, the charging path resistance becomes large. As a result, CMOS NOR gates exhibit slower pull-up transitions and larger delays compared to NAND gates.
+
+---
+
+## AOI and OAI Complex Gates
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI19.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+AND-OR-INVERT (AOI) and OR-AND-INVERT (OAI) gates implement complex Boolean expressions using a single complementary CMOS stage. For example, an AOI21 gate realizes the function:
+
+```
+Output = NOT(A · B + C)
+```
+
+These gates reduce transistor count and eliminate intermediate nodes that would otherwise require additional inverters or buffers. Consequently, AOI and OAI structures occupy smaller silicon area, consume lower power, and provide faster operation than equivalent multistage implementations.
+
+---
+
+## Transmission Gate Logic
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI20.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+A CMOS transmission gate consists of an nMOS transistor and a pMOS transistor connected in parallel and controlled by complementary control signals S and S̄. The parallel combination allows bidirectional signal transfer with low resistance.
+
+When S = 1 and S̄ = 0, both transistors conduct simultaneously. The transmission gate behaves as a closed switch and allows the input signal to propagate to the output. The nMOS transistor efficiently passes a strong logic LOW, while the pMOS transistor efficiently passes a strong logic HIGH. Together, they provide nearly full voltage swing at the output.
+
+When S = 0 and S̄ = 1, both transistors turn OFF, disconnecting the input from the output and placing the transmission gate in a high-impedance state.
+
+The equivalent resistance of the transmission gate is given by:
+
+```
+R_TG = R_n || R_p
+```
+
+Near V_DD/2, both transistors conduct strongly and the equivalent resistance becomes minimum.
+
+In contrast, an nMOS pass transistor alone suffers from threshold voltage loss while passing a HIGH level:
+
+```
+V_out,max = V_DD − V_tn
+```
+
+Thus, transmission gates are preferred in CMOS design because they eliminate the threshold voltage degradation associated with single-transistor pass logic.
+
+---
+
+## Dynamic Logic
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI21.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Dynamic CMOS logic improves speed and reduces transistor count by replacing the static pull-up network of CMOS logic with a clock-controlled precharge transistor. A dynamic logic gate consists of a pMOS precharge transistor connected to V_DD, an nMOS pull-down network (PDN) implementing the logic function, and an nMOS evaluation transistor controlled by the clock.
+
+Unlike static CMOS, dynamic logic does not require a complementary pull-up network. As a result, the number of transistors is significantly reduced, leading to smaller area and lower input capacitance.
+
+The operation of dynamic CMOS logic is divided into two phases controlled by the clock signal.
+
+During the **precharge phase (CLK = 0)**, the pMOS precharge transistor MP turns ON and charges the output node capacitance C_out to V_DD. At the same time, the evaluation transistor MN_e remains OFF, preventing any discharge path to ground. Hence, the output node is precharged to logic HIGH independent of the input values.
+
+During the **evaluation phase (CLK = 1)**, the precharge transistor turns OFF and the evaluation transistor turns ON. The output behavior now depends on the state of the pull-down network. If the input combination activates the PDN, a conducting path is created between the output node and ground, causing the output capacitance to discharge. The output voltage therefore transitions from HIGH to LOW. If the PDN remains OFF, the output node retains its precharged value of V_DD.
+
+Thus, during evaluation:
+
+```
+Out = NOT[f(inputs)]
+
+If PDN conducts:
+V_out → 0
+
+If PDN is OFF:
+V_out remains at V_DD
+```
+
+The discharge delay of the output node is approximated by:
+
+```
+t_d ≈ 0.69 · R_PDN · C_out
+```
+
+where R_PDN is the equivalent resistance of the conducting pull-down network and C_out is the output capacitance.
+
+Dynamic logic offers several advantages over static CMOS logic. Since there is no complementary pull-up network, the transistor count is nearly reduced by half. The reduced capacitance and absence of pMOS pull-up contention during evaluation result in faster switching speed.
+
+However, dynamic logic also suffers from several limitations. The stored charge on the output node can be disturbed by leakage currents, charge sharing, and clock feedthrough effects. In addition, dynamic gates cannot be directly cascaded because the output may temporarily discharge during evaluation, producing incorrect transitions in subsequent stages. Furthermore, the output can only make a HIGH-to-LOW transition during evaluation, leading to the monotonicity constraint in dynamic circuits.
+
+---
+
+## Cascading Dynamic Logic
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI22.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### Charge Sharing
+
+In dynamic CMOS logic, the output node is precharged to V_DD during the precharge phase. During evaluation, if internal nodes of the pull-down network remain uncharged, charge redistribution can occur between the output capacitance and the internal parasitic capacitances. This phenomenon is known as charge sharing.
+
+Consider an internal node capacitance C_x initially at 0 V and an output capacitance C_out initially charged to V_DD. When the evaluation network partially conducts, charge from the output node is shared with the internal capacitance, causing the output voltage to drop even though there is no complete discharge path to ground.
+
+Using charge conservation:
+
+```
+V_out,final = V_DD · C_out / (C_out + C_x)
+```
+
+Hence, the output voltage reduction is:
+
+```
+ΔV_out = −V_DD · C_x / (C_out + C_x)
+```
+
+If the voltage drop becomes sufficiently large, the next stage may interpret the output incorrectly, leading to logic failure.
+
+To reduce charge sharing, a weak pMOS keeper transistor is connected between V_DD and the output node. The keeper replenishes lost charge and compensates for leakage currents. The keeper transistor must be carefully sized. A very small keeper cannot restore the output effectively, while a large keeper increases contention with the pull-down network during evaluation and degrades speed.
+
+Another approach is to precharge internal nodes using additional transistors so that no charge redistribution occurs during evaluation.
+
+### Clock Feedthrough
+
+Clock feedthrough arises due to capacitive coupling between the clock signal and the output node through the gate-drain capacitance of the precharge transistor.
+
+When the clock transitions from 0 to 1 at the start of evaluation, the voltage change at the gate of the precharge transistor couples through C_gd onto the output node, producing a voltage spike.
+
+The magnitude of the coupled voltage is approximately:
+
+```
+ΔV_feedthrough = ΔV_CLK · C_gd / (C_gd + C_out)
+```
+
+where C_gd is the gate-drain capacitance of the precharge transistor and C_out is the output capacitance.
+
+Clock feedthrough can introduce unwanted glitches and disturb the stored logic value. The effect is minimized by reducing the size of the precharge transistor, thereby reducing C_gd, or by increasing the output capacitance.
+
+### Charge Leakage
+
+In dynamic logic, information is stored temporarily as charge on the output capacitance. Leakage currents gradually discharge this stored charge even when the pull-down network is OFF.
+
+**The major leakage mechanisms are:**
+
+- Subthreshold leakage
+- Gate oxide tunneling leakage
+- Junction leakage
+
+As leakage currents discharge the output node, the stored HIGH voltage decreases with time. Therefore, dynamic logic circuits require periodic refreshing through the precharge phase. This imposes a lower limit on the operating clock frequency, since excessively long clock periods allow leakage to corrupt the stored data before the next precharge cycle.
+
+---
+
+## Domino Logic
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI23.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Domino logic is a modified form of dynamic CMOS logic designed to overcome the cascading problem of conventional dynamic gates. In domino logic, each dynamic gate is followed by a static CMOS inverter. The dynamic stage produces an active-LOW output, which is converted into a non-inverting active-HIGH signal by the inverter. This ensures that outputs during evaluation can only make a LOW-to-HIGH transition, satisfying the monotonicity requirement needed for cascading dynamic stages.
+
+During the precharge phase (CLK = 0), the dynamic node of every stage is precharged to V_DD through the pMOS precharge transistor. Consequently, the outputs of the following static inverters become LOW.
+
+During the evaluation phase (CLK = 1), the precharge transistor turns OFF and the evaluation transistor turns ON. If the pull-down network of a stage conducts, the dynamic node discharges to ground. The output of the static inverter therefore transitions from LOW to HIGH. This HIGH output can activate the next dynamic stage, causing a sequential propagation effect similar to falling dominoes, hence the name domino logic.
+
+Because the inverter output only makes a monotonic 0 → 1 transition during evaluation, false discharges and cascading glitches are avoided.
+
+Domino logic offers higher speed than static CMOS because the pull-up network is eliminated, reducing capacitance and transistor count. However, it still suffers from charge leakage and requires careful clocking and keeper transistor design.
+
+**Keeper Transistor Sizing**
+
+A weak pMOS keeper transistor is connected between V_DD and the dynamic output node to compensate for leakage and charge sharing effects.
+
+Typical sizing rule:
+
+```
+W_keeper ≈ (1/5 to 1/10) × W_PDN
+```
+
+The keeper must be strong enough to maintain the precharged voltage but weak enough so that the pull-down network can discharge the output during evaluation without excessive contention.
+
+---
+
+## np-CMOS (NORA CMOS)
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI24.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+np-CMOS, also called NORA CMOS, extends domino logic by alternating n-type and p-type dynamic stages. This removes the need for static inverters between stages and allows both inverting and non-inverting logic functions to be implemented efficiently.
+
+**An n-type dynamic gate uses:**
+
+- pMOS precharge transistor
+- nMOS evaluation network
+
+**A p-type dynamic gate uses:**
+
+- nMOS precharge transistor
+- pMOS evaluation network
+
+**Operation of np-CMOS is clock-phase dependent.**
+
+When CLK = 0:
+
+- n-type gates are in precharge mode
+- p-type gates are in evaluation mode
+
+When CLK = 1:
+
+- n-type gates evaluate
+- p-type gates precharge
+
+Thus, one set of stages evaluates while the other precharges, enabling continuous pipelined operation and high throughput.
+
+**Alternation Rule**
+
+- Output of n-type gate drives p-type gate
+- Output of p-type gate drives n-type gate
+
+```
+n-type gate:
+Out = NOT[f_n(inputs)] during CLK = 1
+
+p-type gate:
+Out = NOT[f_p(inputs)] during CLK = 0
+```
+
+**Advantages of np-CMOS:**
+
+- Supports both inverting and non-inverting functions
+- Eliminates static inverter overhead
+- Higher throughput due to dual-phase operation
+- Reduced area and capacitance
+- Widely used in high-speed arithmetic circuits such as adders and multipliers
+
+---
+
+## Memory Classification
+
+Semiconductor memories are classified based on volatility and access mechanism. Volatile memories lose stored information when power is removed, whereas non-volatile memories retain data permanently.
+
+The two major memory categories are RAM and ROM.
+
+| **Memory Type** | **Volatile** | **Cell Structure** | **Speed** | **Application** |
+| --- | --- | --- | --- | --- |
+| SRAM | Yes | 6T | Very fast | Cache memory |
+| DRAM | Yes | 1T + 1C | Moderate | Main memory |
+
+### Memory Architecture
+
+A semiconductor memory array is organized into rows and columns. Rows are selected using wordlines (WL), while columns are connected through bitlines (BL). Address decoders activate a particular wordline corresponding to the requested memory location.
+
+Sense amplifiers connected to the bitlines detect very small voltage differences generated during read operations and amplify them to full logic levels. Additional peripheral circuits include row decoders, column decoders, write drivers, refresh logic, and I/O buffers.
+
+---
+
+## 6T SRAM Cell
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI25.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+The conventional SRAM cell consists of two cross-coupled CMOS inverters forming a bistable latch and two access transistors controlled by the wordline.
+
+The cross-coupled inverters store complementary values Q and Q̄. Since positive feedback exists between the inverters, the cell can retain data indefinitely as long as power is supplied.
+
+### Read Operation
+
+Before reading, both BL and BL̄ are precharged to V_DD. When the wordline is asserted, the access transistors connect the internal storage nodes to the bitlines.
+
+Assume: Q = 0 and Q̄ = 1
+
+The bitline connected to Q begins to discharge slightly through the pull-down transistor of the inverter, while the complementary bitline remains near V_DD. This creates a small differential voltage between BL and BL̄.
+
+The sense amplifier detects this small voltage difference and amplifies it to full logic swing.
+
+To prevent accidental flipping of the stored data during read, the pull-down transistor inside the cell must be stronger than the access transistor.
+
+**Cell Ratio:**
+
+```
+CR = β_n,driver / β_n,access
+```
+
+Typical requirement: CR > 1.5
+
+### Write Operation
+
+To write new data, complementary values are forced onto BL and BL̄ by the write drivers. When the wordline is activated, the bitline voltages overpower the internal feedback of the cross-coupled inverters and force the cell into the new state.
+
+The access transistor must therefore be sufficiently strong compared to the pull-up pMOS transistor.
+
+**Pull-up Ratio:**
+
+```
+PR = β_n,access / β_p,load
+```
+
+Typical requirement: PR > 1.8
+
+### Static Noise Margin (SNM)
+
+The static noise margin represents the maximum DC noise voltage that the SRAM cell can tolerate without changing its stored state.
+
+Graphically, SNM is obtained from the butterfly curve and is defined as the side length of the largest square that can fit inside the butterfly lobes.
+
+---
+
+## 1T DRAM Cell
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI26.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+A modern DRAM cell consists of one access transistor and one storage capacitor.
+
+The capacitor stores charge representing logic data:
+
+- Charged capacitor → logic 1
+- Discharged capacitor → logic 0
+
+When the wordline is asserted, the access transistor connects the storage capacitor to the bitline.
+
+Because only one transistor and one capacitor are used, DRAM achieves extremely high density compared to SRAM.
+
+### DRAM Read Operation
+
+Reading a DRAM cell is based on charge sharing between the storage capacitor and the bitline capacitance.
+
+The bitline voltage change is:
+
+```
+ΔV_BL = V_s · C_s / (C_s + C_BL)
+```
+
+where:
+
+- C_s = storage capacitance
+- C_BL = bitline capacitance
+- V_s = stored voltage
+
+Since C_BL is much larger than C_s, the resulting voltage change is very small, typically 50–150 mV. A sense amplifier is therefore required to detect and amplify the signal.
+
+Because charge is removed from the capacitor during read, the operation is destructive. Hence, the sensed value must be restored back into the cell after every read operation.
+
+---
+
+## 3T DRAM Cell
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI27.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+The older 3T DRAM cell used separate transistors for read and write operations, enabling non-destructive reads. However, its large area overhead made it less attractive compared to the compact 1T1C DRAM structure.
+
+### Refresh Operation
+
+Charge stored on the DRAM capacitor gradually leaks away due to junction leakage and subthreshold conduction.
+
+The retention time is approximately:
+
+```
+t_ret ≈ C_s · V_DD / (2I_leak)
+```
+
+Typical DRAM retention times are 32–64 ms. Therefore, every row in the memory array must be periodically refreshed within this interval.
+
+The refresh operation consumes bandwidth and power but is essential for reliable DRAM operation.
+
+---
+
+## Timing Issues
+
+The correct operation of digital VLSI systems depends critically on timing behavior. Since signals require finite time to propagate through logic gates, interconnects, and storage elements, improper synchronization may lead to setup violations, hold violations, metastability, and functional failure. Timing analysis therefore forms an essential part of digital circuit design.
+
+### Timing Classification
+
+Digital systems are broadly classified into synchronous systems and asynchronous systems depending on the method used for controlling data transfer.
+
+### Synchronous Systems
+
+In synchronous systems, all sequential elements are controlled by a common clock signal. Data transfer occurs only at discrete clock edges, making system operation highly predictable.
+
+The primary advantage of synchronous design is the simplicity of timing analysis and verification. Since all operations are synchronized to the clock, complex timing interactions are minimized. However, synchronous systems require a carefully designed clock distribution network, and the overall system speed is limited by the worst-case propagation delay.
+
+Most modern processors, microcontrollers, and digital integrated circuits employ synchronous design techniques.
+
+### Asynchronous Systems
+
+Asynchronous systems operate without a global clock. Data transfers are controlled using local handshaking and event-driven signaling.
+
+Since there is no clock distribution network, asynchronous systems can potentially achieve lower power consumption and higher average operating speed. However, timing analysis becomes significantly more complex because circuit operation depends directly on gate and interconnect delays. Asynchronous systems are also more susceptible to hazards and race conditions.
+
+---
+
+## Clocking Concepts
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DVLSI/week3/DVLSI28.png"
+  alt="DVLSI Week 3"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+The clock signal provides temporal synchronization between sequential elements in a digital system. Ideally, the clock edge should arrive simultaneously at all flip-flops. In practice, however, variations in interconnect delay and buffering introduce timing uncertainties.
+
+### 1. Clock Skew
+
+Clock skew is defined as the difference in clock arrival times between two sequential elements.
+
+```
+Clock Skew = t_clk,destination − t_clk,source
+```
+
+Positive skew occurs when the clock reaches the destination flip-flop later than the source flip-flop, whereas negative skew occurs when it arrives earlier.
+
+Excessive clock skew reduces timing margins and may lead to setup or hold time violations.
+
+### 2. Clock Jitter
+
+Clock jitter refers to short-term variations in the timing position of the clock edge with respect to its ideal location.
+
+**The major sources of jitter include:**
+
+- Supply voltage fluctuations
+- PLL instability
+- Crosstalk noise
+- Thermal noise
+
+Jitter introduces uncertainty in clock timing and reduces the maximum reliable operating frequency of the system.
+
+### 3. Setup Time
+
+Setup time is the minimum time interval before the active clock edge during which the input data must remain stable to ensure correct storage.
+
+If the input changes too close to the clock edge, the flip-flop may fail to capture the correct value and enter a metastable state.
+
+**The setup timing condition is:**
+
+```
+T_clk ≥ T_clk→Q + T_comb + T_setup + T_skew
+```
+
+where:
+
+- T_clk→Q = clock-to-output delay of source flip-flop
+- T_comb = combinational logic delay
+- T_setup = setup time requirement
+
+### 4. Hold Time
+
+Hold time is the minimum time interval after the active clock edge during which the input data must remain stable.
+
+If the input changes before the hold interval expires, incorrect data may overwrite the stored value.
+
+**The hold condition is:**
+
+```
+T_clk→Q + T_min ≥ T_hold + T_skew
+```
+
+where:
+
+- T_min = minimum combinational delay
+
+---
+
+## Sources of Timing Errors
+
+### 1. Process Variations
+
+Process variations arise due to manufacturing imperfections that affect transistor dimensions, threshold voltage, oxide thickness, and carrier mobility. These variations produce uncertainty in propagation delay and timing behavior.
+
+Process variations are generally classified into:
+
+- Die-to-die variations
+- Within-die variations
+
+As technology scales into deep submicron dimensions, process variation effects become increasingly significant.
+
+### 2. Interconnect Delay
+
+In modern VLSI circuits, interconnect delay often dominates gate delay due to increasing wire resistance and capacitance.
+
+The delay of an interconnect line is approximately given by:
+
+```
+t_wire ≈ R_wire · C_wire
+```
+
+Long global wires therefore require careful routing and buffering to maintain timing performance.
+
+### 3. Supply Noise
+
+Variations in supply voltage affect transistor drive strength and propagation delay.
+
+**Important sources include:**
+
+- IR drop
+- Ground bounce
+- Simultaneous switching noise
+
+Supply noise reduces timing margins and may cause timing failures in high-speed circuits.

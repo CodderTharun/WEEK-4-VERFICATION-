@@ -191,6 +191,14 @@ items: [
       
     ],
   },
+  {
+    label: "Digital VLSI",
+    collapsed: true,
+    items: [
+      { label: "Week 3", link: "/ece/week-3/digitalvlsi" },
+      
+    ],
+  },
 ],
         },
 
