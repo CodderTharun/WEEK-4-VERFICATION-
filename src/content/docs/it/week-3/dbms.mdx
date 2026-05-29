@@ -1,66 +1,2667 @@
 ---
-title: DBMS - Week 3
-description: Normalization and Data Integrity
+title : DBMS
+---
+  
+
+## UNION and UNION ALL
+
+  
+
+### A. UNION Operator
+
+  
+
+UNION is a SQL operation that combines the results of two or more SELECT queries into one result set. It removes duplicate rows, ensuring the final output contains only unique records. The operation also implicitly sorts the result set to eliminate duplicates.
+
+  
+
+#### 1. Syntax
+
+  
+
+```sql
+
+SELECT column1, column2, column3
+
+FROM table1
+
+UNION
+
+SELECT column1, column2, column3
+
+FROM table2;
+
+```
+
+  
+
+In the above syntax:
+
+  
+
+- **Combines Data:** Combines the results of two SELECT queries from table1 and table2.
+
+- **Columns Selected:** Retrieves column1, column2, and column3 from both tables.
+
+- **Removes Duplicates:** The UNION operator ensures that only unique rows are included in the final result.
+
+- **No Duplicates:** If any row appears in both tables, it will appear only once in the result set.
+
+  
+
+#### 2. Example
+
+  
+
+```sql
+
+SELECT * FROM customer
+
+WHERE CustomerID BETWEEN 1 AND 5
+
+UNION
+
+SELECT * FROM customer
+
+WHERE CustomerID BETWEEN 1 AND 5;
+
+```
+  <p align="center">
+  <img
+    src="https://raw.githubusercontent.com/ramachandraaa/LGP/main/DBMS3.39.png"
+    alt="Diagram"
+    width="60%"
+  />
+</p>
+
+
+### B. UNION ALL Operator
+
+  
+
+UNION ALL is used to combine the results of two or more SELECT queries into one result set. Unlike UNION, it does not remove duplicate rows, so all values (including repeated ones) are included in the output. Because it skips the step of checking for duplicates, UNION ALL is faster and more efficient. It is useful when you want to keep all records exactly as they are.
+
+  
+
+#### 1. Syntax
+
+  
+
+```sql
+
+SELECT column1, column2, column3
+
+FROM table1
+
+UNION ALL
+
+SELECT column1, column2, column3
+
+FROM table2;
+
+```
+
+  
+
+In the above syntax:
+
+  
+
+- **Combines Data:** Combines results from two SELECT queries from table1 and table2.
+
+- **Columns Selected:** Retrieves column1, column2, and column3 from both tables.
+
+- **Includes Duplicates:** The UNION ALL operator includes all rows, even if they are duplicates between the two tables.
+
+- **No Filtering:** Unlike UNION, it doesn't remove duplicate rows, so all data from both tables is included.
+
+  
+
+#### 2. Query
+
+  
+
+```sql
+
+SELECT * FROM customer
+
+WHERE CustomerID BETWEEN 1 AND 5
+
+UNION ALL
+
+SELECT * FROM customer
+
+WHERE CustomerID BETWEEN 1 AND 5;
+
+```
+
+  <p align="center">
+  <img
+    src="https://raw.githubusercontent.com/ramachandraaa/LGP/main/DBMS3.40.png"
+    alt="Diagram"
+    width="60%"
+  />
+</p>
+
+
+
+### C. Difference Between UNION and UNION ALL
+
+  
+
+| UNION | UNION ALL |
+|---|---|
+| Removes duplicate rows, returning only unique records. | Includes all rows, even duplicates, from both result sets. |
+| Slower due to the need to eliminate duplicates. | Faster, as it doesn't check for duplicates and simply combines the rows. |
+| The result set is smaller as duplicates are removed. | The result set is larger because duplicates are included. |
+| UNION removes duplicates internally (via sorting or hashing), but the final result order is not guaranteed unless ORDER BY is specified. | No sorting is done unless explicitly mentioned using ORDER BY. |
+| Use when you need distinct results in the final output. | Use when retaining all rows, including duplicates, is important. |
+| Requires more processing power because of the duplicate elimination process. | More efficient as no additional computation is needed to remove duplicates. |
+| NULLs are treated as duplicates if they appear in both result sets. | NULLs are treated as regular values and included in the result, even if repeated. |
+| Works well for queries where distinct data is crucial, like in reporting. | Suitable for queries where duplicates are not problematic, such as transaction logs or detailed data analysis. |
+| Can be used in cases where you want to enforce uniqueness across different datasets. | Useful for combining large datasets where duplicate entries represent meaningful records, like in data aggregation. |
+| SQL engine performs a distinct operation internally to remove duplicates. | No distinct operation is performed; all rows, including exact duplicates, are included. |
+| Suitable when result accuracy is more important than performance. | Preferred when performance is the priority and duplicates don't interfere with analysis or data quality. |
+
+  
+
+---
+
+  
+
+## SQL SELECT INTO Statement
+
+  
+
+The SELECT INTO statement in SQL is used to create a new table and copy data from an existing table or query in one step. It automatically creates the new table with the same structure (columns and data types) as the original. This makes it easy to take backups, extract specific data, or prepare data for analysis. It saves time because you don't need to create the table separately.
+
+  
+
+### A. Key Features of SELECT INTO
+
+  
+
+- Creates a new table with the same schema and data types as the source table.
+
+- Copies selected rows and columns based on conditions (optional).
+
+- Eliminates the need to manually create the target table before inserting data.
+
+  
+
+### B. Syntax
+
+  
+
+```sql
+
+SELECT column1, column2...
+
+INTO new_table
+
+FROM source_table
+
+WHERE condition;
+
+```
+
+  
+
+#### 1. Key Terms
+
+  
+
+- **column1, column2:** Specifies the columns to be copied from the source table.
+
+- **new_table:** The name of the new table to be created.
+
+- **source_table:** The table from which data will be copied.
+
+- **condition:** (Optional) A condition to filter the rows that will be copied. If omitted, all rows are copied.
+
+  
+
+### C. Step-by-Step Guide
+
+  
+
+#### 1. Step 1 — Select the columns you want
+
+  
+
+Choose which columns to copy. Use `*` for all columns, or list specific ones:
+
+  
+
+```sql
+
+SELECT * -- all columns
+
+SELECT id, name -- specific columns
+
+```
+
+  
+
+#### 2. Step 2 — Specify the destination table
+
+  
+
+The INTO clause names the new table. It must not already exist:
+
+  
+
+```sql
+
+SELECT id, name
+
+INTO customers_backup
+
+FROM customers;
+
+```
+
+  
+
+#### 3. Step 3 — Choose your source
+
+  
+
+After FROM, name the source table or join multiple tables:
+
+  
+
+```sql
+
+SELECT o.id, c.name, o.total
+
+INTO orders_summary
+
+FROM orders o
+
+JOIN customers c ON o.customer_id = c.id;
+
+```
+
+  
+
+#### 4. Step 4 — Filter rows (optional)
+
+  
+
+Add a WHERE clause to copy only matching rows:
+
+  
+
+```sql
+
+SELECT *
+
+INTO us_customers
+
+FROM customers
+
+WHERE country = 'USA';
+
+```
+
+  
+
+#### 5. Step 5 — Copy structure only (no data)
+
+  
+
+Use a false condition to create an empty copy of the table's structure:
+
+  
+
+```sql
+
+SELECT *
+
+INTO customers_empty
+
+FROM customers
+
+WHERE 1 = 0;
+
+```
+
+  
+
+### D. Common Use Cases
+
+  
+
+| Use Case | Example |
+|---|---|
+| Backup a table | `SELECT * INTO orders_bak FROM orders` |
+| Archive old records | `SELECT * INTO orders_2023 FROM orders WHERE YEAR(date) = 2023` |
+| Create a working copy | `SELECT * INTO temp_analysis FROM sales` |
+| Flatten a joined result | Copy joined data into a denormalized table |
+
+  
+
+### E. Differences Between SELECT INTO and INSERT INTO SELECT
+
+  
+
+| Feature | SELECT INTO | INSERT INTO SELECT |
+|---|---|---|
+| Table Creation | Creates the table if it doesn't exist | Requires the table to exist beforehand |
+| Performance | Faster for large datasets | Slower due to table existence checks |
+| Flexibility | Less flexible; creates table schema | More flexible; works with existing tables |
+| Syntax Example | `SELECT * INTO NewTable FROM OldTable;` | `INSERT INTO ExistingTable SELECT * FROM OldTable;` |
+
+  
+
+---
+
+  
+
+## CREATE TABLE Statement
+
+  
+
+Creating tables in MySQL is essential for organizing and managing data within a database. Tables store data in rows and columns, similar to a spreadsheet structure.
+
+  
+
+- Tables can be created using the Command Line Interface (CLI) with the CREATE TABLE statement.
+
+- Tables can also be created using tools like MySQL Workbench (GUI).
+
+- Tables help organize data in a structured format.
+
+- While creating tables, you can define columns, data types, and constraints.
+
+  
+
+### A. Using Command Line Client
+
+  
+
+#### 1. Syntax
+
+  
+
+```sql
+
+CREATE TABLE table_name (
+
+column1_name datatype constraints,
+
+column2_name datatype constraints,
+
+...
+
+columnN_name datatype constraints
+
+);
+
+```
+
+  
+
+- **column_name:** This is the name of each column in the table.
+
+- **datatype:** This is the data type of the column (e.g., INT, VARCHAR, DATE, etc.).
+
+- **constraints:** These are optional and define rules for the data in the column, such as NOT NULL, UNIQUE, PRIMARY KEY, FOREIGN KEY, etc.
+
+  
+
+#### 2. Step 1: Open MySQL Command Line Client
+
+  
+
+Run the following command to log in to MySQL:
+
+  
+
+```bash
+
+mysql -u your_username -p
+
+```
+
+  
+
+(Replace `your_username` with your MySQL username. After running the command, you will be asked to enter your password.)
+
+  
+
+#### 3. Step 2: Create a Table
+
+  
+
+Once logged in, run the following query to create an employees table.
+
+  
+
+```sql
+
+CREATE TABLE employees (
+
+id INT AUTO_INCREMENT PRIMARY KEY,
+
+name VARCHAR(100),
+
+age INT,
+
+department VARCHAR(100),
+
+salary DECIMAL(10, 2)
+
+);
+
+```
+
+  
+
+#### 4. Step 3: Verify the Table Structure
+
+  
+
+To verify that the table was created successfully, use the DESCRIBE statement to view the structure of the employees table:
+
+  
+
+```sql
+
+DESCRIBE employees;
+
+```
+
+ <p align="center">
+  <img
+    src="https://raw.githubusercontent.com/ramachandraaa/LGP/main/DBMS3.41.png"
+    alt="Diagram"
+    width="60%"
+  />
+</p>
+
+
+  
+
+- Displays the structure of the employees table, including all defined columns.
+
+- Shows details for each column such as data type and constraints specified in the CREATE TABLE statement.
+
+  
+
+---
+
+  
+
+## SQL Indexes
+
+  
+
+Indexes in SQL are special structures that improve the speed of data retrieval by providing quick access to records, reducing the need to scan the entire table, and helping make database queries more efficient.
+
+
+  <p align="center">
+  <img
+    src="https://raw.githubusercontent.com/ramachandraaa/LGP/main/DBMS3.42.png"
+    alt="Diagram"
+    width="60%"
+  />
+</p>
+
+
+
+### A. Creating an Index
+
+  
+
+#### 1. Syntax
+
+  
+
+```sql
+
+CREATE INDEX index_name ON table_name (column);
+
+```
+
+  
+
+#### 2. Query
+
+  
+
+```sql
+
+CREATE INDEX idx_product_id ON Sales (product_id);
+
+```
+
+  
+
+### B. Confirming and Viewing Indexes
+
+  
+
+We can view all the indexes in a database to understand which ones are in use and confirm their structure.
+
+  
+
+#### 1. Syntax
+
+  
+
+```sql
+
+SHOW INDEXES FROM table_name;
+
+```
+
+  
+
+#### 2. Query
+
+  
+
+```sql
+
+SHOW INDEXES FROM Sales;
+
+```
+
+  
+
+### C. Removing an Index
+
+  
+
+Indexes take up storage and add overhead on write operations (INSERT, UPDATE, DELETE). If an index is no longer needed, it can be removed.
+
+  
+
+#### 1. Syntax
+
+  
+
+```sql
+
+DROP INDEX index_name ON table_name;
+
+```
+
+  
+
+#### 2. Query
+
+  
+
+```sql
+
+DROP INDEX idx_product_quantity ON Sales;
+
+```
+
+  
+
+### D. Altering an Index
+
+  
+
+If an index requires adjustments, such as reorganizing or rebuilding, it can be altered without affecting the data. This is useful for optimizing index performance as tables grow larger.
+
+  
+
+#### 1. Syntax
+
+  
+
+```sql
+
+ALTER INDEX IndexName ON TableName REBUILD;
+
+```
+
+  
+
+#### 2. Query
+
+  
+
+```sql
+
+ALTER INDEX idx_product_id ON Sales REBUILD;
+
+```
+
+  
+
+### E. Renaming an Index
+
+  
+
+Renaming an index might be necessary for clarity or consistency. While SQL does not directly support renaming indexes, we can use a combination of commands to achieve this.
+
+  
+
+#### 1. Syntax
+
+  
+
+```sql
+
+EXEC sp_rename 'old_index_name', 'new_index_name', 'INDEX';
+
+```
+
+  
+
+#### 2. Query
+
+  
+
+```sql
+
+EXEC sp_rename 'idx_product_quantity', 'idx_prod_qty', 'INDEX';
+
+```
+
+  
+
+---
+
+  
+
+## Query Processing
+
+  
+
+Query processing is the process of retrieving data from a database by converting high-level SQL queries into low-level operations that the system can execute. It involves multiple steps such as translation, optimization, and execution to ensure data is accessed efficiently from physical storage.
+
+  
+
+- It converts high-level SQL queries into low-level operations.
+
+- Includes steps: translation, optimization, and execution.
+
+- Optimization helps choose the most efficient query plan.
+
+- The final execution happens at the physical storage level.
+
+- Involves stages like parsing, planning, and execution.
+
+- Requires basic knowledge of relational algebra and file organization.
+
+  
+
+The actions involved are: Parsing and translation, Optimization, Evaluation.
+
+  
+ <p align="center">
+  <img
+    src="https://raw.githubusercontent.com/ramachandraaa/LGP/main/DBMS3.43.png"
+    alt="Diagram"
+    width="60%"
+  />
+</p>
+
+
+
+### A. Parsing
+
+  
+
+During parsing, the database checks the query for:
+
+  
+
+- **Syntax check** → correct SQL format
+
+- **Semantic check** → correct table/column names
+
+- **Shared pool check** → checks if query already exists (to reuse)
+
+  
+
+SQL queries are first converted into relational algebra expressions. High-level SQL is then translated into low-level operations that work at the physical storage level. The system applies query optimization to choose the best way to execute the query. Finally, the query is executed to retrieve data efficiently. SQL is used because it is easy for humans to understand, while the system converts it into machine-level instructions.
+
+  
+
+#### 1. Syntax (Example Query with Error)
+
+  
+
+```sql
+
+SELECT * FORM employee
+
+```
+
+  
+
+#### 2. Step 1: Parsing
+
+  
+
+- **Semantic Check** → Ensures the query is meaningful (e.g., tables/columns exist).
+
+- **Shared Pool Check** → Checks if the same query (using hash code) already exists.
+
+- If found, the database reuses the existing plan (faster execution).
+
+  
+
+#### 3. Step 2: Optimization
+
+  
+
+The database analyzes different execution plans and selects the most efficient (lowest cost) plan. Optimization is mainly done for DML statements (like SELECT, INSERT, UPDATE). The database catalog stores information used for optimization.
+
+  
+
+##### a. Row Source Generation
+
+  
+
+Converts the chosen plan into a detailed executable form (step-by-step operations). This plan is used by the SQL engine to produce the final result.
+
+  
+
+#### 4. Step 3: Evaluation (Execution)
+
+  
+
+The database executes the optimized query plan. Retrieves and displays the final result to the user.
+
+  
+
+---
+
+  
+
+## PL/SQL
+
+  
+
+### A. Introduction
+
+  
+
+PL/SQL (Procedural Language/SQL) is Oracle's extension of SQL that adds procedural features like loops, conditions, and error handling. It allows developers to write powerful programs that combine SQL queries with logic to control how data is processed. With PL/SQL, complex operations, calculations, and error handling can be performed directly within the Oracle database, making data manipulation more efficient and flexible.
+
+  
+
+### B. Key Features of PL/SQL
+
+  
+
+- **Block Structure:** PL/SQL can execute a number of queries in one block using single command.
+
+- **Procedural Constructs:** One can create a PL/SQL unit such as procedures, functions, packages, triggers, and types, which are stored in the database for reuse by applications.
+
+- **Error Handling:** PL/SQL provides a feature to handle the exception which occurs in PL/SQL block known as exception handling block.
+
+- **Reusable Code:** Create stored procedures, functions, triggers, and packages, which can be executed repeatedly.
+
+- **Performance:** Reduces network traffic by executing multiple SQL statements within a single block.
+
+  
+
+### C. Structure of PL/SQL Block
+
+  
+
+PL/SQL is an extension of SQL that adds programming features like loops, conditions, and control statements, making it more powerful and flexible than basic SQL. It allows users to write structured programs, and the main unit in PL/SQL is called a block. A program in PL/SQL is made up of one or more blocks, which can also be placed inside one another (nested) for better organization and control.
+
+  
+ <p align="center">
+  <img
+    src="https://raw.githubusercontent.com/ramachandraaa/LGP/main/DBMS3.44.png"
+    alt="Diagram"
+    width="60%"
+  />
+</p>
+
+
+
+### D. Differences Between SQL and PL/SQL
+
+  
+
+| Feature | SQL | PL/SQL |
+|---|---|---|
+| Purpose | SQL is a single query that is used to perform DML and DDL operations. | PL/SQL is a block of codes that used to write the entire program blocks/procedure/function, etc. |
+| Nature | It is declarative, that defines what needs to be done, rather than how things need to be done. | PL/SQL is procedural that defines how the things needs to be done. |
+| Execution | Executes single statement. | Executes block of code. |
+| Use Case | Data retrieval, manipulation and definition (e.g. SELECT, INSERT, UPDATE). | Mainly used to create an application. |
+| Syntax | SQL statements only. | SQL Statements combined with procedural logic. |
+| Data Handling | Performs actions directly on the database. | Can contain SQL inside its blocks and is used for more control over data handling. |
+
+  
+
+### E. PL/SQL Architecture
+
+  
+
+PL/SQL architecture describes how PL/SQL code interacts with the Oracle Database engine during execution.
+
+  
+
+- The PL/SQL Engine processes procedural statements like loops and conditions.
+
+- The SQL Engine executes SQL statements such as SELECT, INSERT, UPDATE and DELETE.
+
+- Both engines work together for efficient execution of PL/SQL programs.
+
+- PL/SQL blocks are sent to the Oracle server for processing.
+
+- It reduces network traffic by executing multiple statements together.
+
+  
+
+#### 1. Components of PL/SQL Architecture
+
+  
+
+ <p align="center">
+  <img
+    src="https://raw.githubusercontent.com/ramachandraaa/LGP/main/DBMS3.45.png"
+    alt="Diagram"
+    width="60%"
+  />
+</p>
+
+
+
+##### a. PL/SQL Engine
+
+  
+
+The PL/SQL engine is responsible for executing procedural statements in a PL/SQL program. It handles operations like variables, loops, conditions, functions and exception handling.
+
+  
+
+**Functions:**
+
+  
+
+- Executes procedural code
+
+- Handles loops and conditions
+
+- Processes functions and procedures
+
+- Sends SQL statements to SQL engine
+
+  
+
+##### b. SQL Engine
+
+  
+
+The SQL engine executes SQL statements present in the PL/SQL block. It processes commands like SELECT, INSERT, UPDATE and DELETE. It communicates with the Oracle Database Server to retrieve or modify data.
+
+  
+
+**Functions:**
+
+  
+
+- Executes SQL queries
+
+- Retrieves data from tables
+
+- Updates and deletes records
+
+- Communicates with database server
+
+  
+
+##### c. Oracle Database Server
+
+  
+
+The Oracle Database Server stores and manages all database data. It contains tables, views, indexes and other database objects. It accesses the database server whenever data operations are needed.
+
+  
+
+**Functions:**
+
+  
+
+- Stores database data
+
+- Maintains tables and indexes
+
+- Manages transactions
+
+- Provides security and recovery
+
+  
+
+#### 2. Working of PL/SQL Architecture
+
+  
+
+##### a. Step 1: User Submits PL/SQL Block
+
+  
+
+The process starts when the user submits a PL/SQL block to the Oracle Database.
+
+  
+
+##### b. Step 2: PL/SQL Engine Processes Procedural Statements
+
+  
+
+The PL/SQL engine checks and executes all procedural statements such as: Variables, Conditions, Loops, Functions. If a SQL statement is found, it is sent to the SQL engine.
+
+  
+
+##### c. Step 3: SQL Engine Executes SQL Statements
+
+  
+
+The SQL engine receives SQL commands like SELECT, INSERT, UPDATE, DELETE. It processes these queries and communicates with the Oracle Database Server.
+
+  
+
+##### d. Step 4: Oracle Database Server Performs Operations
+
+  
+
+The Oracle Database Server performs the required database operations such as: Retrieving data, Updating records, Inserting rows, Deleting data.
+
+  
+
+##### e. Step 5: Result is Returned
+
+  
+
+After execution, the SQL engine sends the result back to the PL/SQL engine. The PL/SQL engine returns the final output to the user.
+
+  
+
+### F. Variables
+
+  
+
+A variable in PL/SQL is a named memory location used to store data values. The value stored in a variable can change during the execution of a program.
+
+  
+
+#### 1. Important Points About PL/SQL Variables
+
+  
+
+- All variables must be declared before they can be used in a PL/SQL block. Declaration involves specifying the variable's name and data type.
+
+- You can declare variables as constants using the CONSTANT keyword, ensuring their value cannot be changed once assigned.
+
+- Use `%TYPE` whenever possible to avoid data type mismatches and to ensure compatibility with changes in database schema.
+
+- Avoid using Oracle reserved keywords as variable names.
+
+  
+
+#### 2. Declaration of Variables
+
+  
+
+Variables are declared in the DECLARE section of a PL/SQL block. Declaration must be done before using the variable.
+
+  
+
+##### a. Syntax
+
+  
+
+```sql
+
+variable_name datatype [NOT NULL] [:= initial_value];
+
+```
+
+  
+
+##### b. Components of Declaration
+
+  
+
+- **Variable Name** → Identifier used to refer to the variable
+
+- **Datatype** → Defines the type of value (NUMBER, VARCHAR2, DATE, etc.)
+
+- **NOT NULL** → Ensures variable cannot store NULL values
+
+- **Initialization (:=)** → Assigns a default value at declaration
+
+  
+
+##### c. Example
+
+  
+
+```sql
+
+DECLARE
+
+v_name VARCHAR2(50);
+
+v_age NUMBER := 20;
+
+BEGIN
+
+v_name := 'John';
+
+DBMS_OUTPUT.PUT_LINE(v_name || ' is ' || v_age || ' years old');
+
+END;
+
+```
+
+  
+
+#### 3. Types of Variables
+
+  
+
+- **Scalar Variables** – Store single values. Examples: NUMBER, CHAR, DATE
+
+- **Composite Variables** – Store multiple values as a group. Examples: RECORD, TABLE
+
+- **Reference Variables** – Store references to other data. Example: REF CURSOR
+
+- **LOB Variables (Large Objects)** – Store large data. Examples: BLOB, CLOB
+
+  
+
+#### 4. Special Attributes
+
+  
+
+##### a. %TYPE
+
+  
+
+Declares a variable with the same datatype as a table column.
+
+  
+
+##### b. %ROWTYPE
+
+  
+
+Declares a variable that can store an entire row of a table.
+
+  
+
+##### c. Example
+
+  
+
+```sql
+
+DECLARE
+
+v_salary employees.salary%TYPE;
+
+BEGIN
+
+v_salary := 50000;
+
+END;
+
+```
+
+  
+
+#### 5. Important Points
+
+  
+
+- Variables must be declared before BEGIN block execution.
+
+- Assignment is done using `:=` operator.
+
+- PL/SQL is case-insensitive.
+
+- Variables improve readability and flexibility of code.
+
+- Values can be changed dynamically during execution.
+
+  
+
+### G. Data Types
+
+  
+
+PL/SQL data types define the kind of data stored in columns.
+
+  
+
+- They support storage of numbers, text, and dates.
+
+- Ensure efficient storage and better performance.
+
+- Maintain data accuracy and consistency.
+
+- Prevent invalid data entry.
+
+  
+
 ---
 
 
+ <p align="center">
+  <img
+    src="https://raw.githubusercontent.com/ramachandraaa/LGP/main/DBMS3.46.png"
+    alt="Diagram"
+    width="60%"
+  />
+</p>
 
-## Database Normalization
 
-Normalization organizes data to minimize redundancy.
 
-### Normal Forms
+  
 
-1. **1NF (First Normal Form)**
-   - Remove repeating groups
-   - All values are atomic
+## Scalar Data Types in PL/SQL
 
-2. **2NF (Second Normal Form)**
-   - Must be in 1NF
-   - Remove partial dependencies
+  
 
-3. **3NF (Third Normal Form)**
-   - Must be in 2NF
-   - Remove transitive dependencies
+Scalar data types are basic types that store only one value at a time, like numbers, characters or even logical values each representing an individual value. The scalar data types are categorized into:
 
-4. **BCNF (Boyce-Codd Normal Form)**
-   - Stricter version of 3NF
+  
 
-### Functional Dependencies
+| Data Type | Description |
+|---|---|
+| Numeric Types | Stores numbers and decimal values. |
+| Character Types | Stores text and strings. |
+| Boolean Types | Stores TRUE or FALSE. |
+| Datetime Types | Stores date and time values |
 
-Describes relationships between attributes.
+  
+
+### A. Numeric Data Types & Subtypes in PL/SQL
+
+  
+
+Numeric data types store numbers, both integers and real numbers and allow developers to perform arithmetic operations. The main numeric types include:
+
+  
+
+| Data Type | Description |
+|---|---|
+| NUMBER | Stores fixed-point and floating-point numbers with precision and scale. |
+| BINARY_INTEGER | Stores signed integer values efficiently. |
+| FLOAT | Stores floating-point numbers with optional precision. |
+
+  
+
+#### 1. For Example
+
+  
+
+```sql
+
+DECLARE
+
+num1 NUMBER(5,2) := 123.45;
+
+num2 PLS_INTEGER := 100;
+
+num3 FLOAT(10) := 45.67;
+
+BEGIN
+
+DBMS_OUTPUT.PUT_LINE(num1);
+
+DBMS_OUTPUT.PUT_LINE(num2);
+
+DBMS_OUTPUT.PUT_LINE(num3);
+
+END;
 
 ```
-StudentID → Name, Age
+
+  
+
+---
+
+  
+
+## PL/SQL CASE Statement
+
+  
+
+PL/SQL stands for Procedural Language Extension to the Structured Query Language and it is designed specifically for Oracle databases it extends Structured Query Language (SQL) capabilities by allowing the creation of stored procedures, functions, and triggers.
+
+  
+
+The PL/SQL CASE statement is a powerful conditional control structure in Oracle databases that allows you to execute different blocks of code based on specified conditions. Here, we explore the syntax, types, and practical use cases of the PL/SQL CASE statement to make better decisions and improve your ability to use conditional logic in Oracle PL/SQL.
+
+  
+
+### A. CASE Statement in PL/SQL
+
+  
+
+CASE statement gives you a clear way to handle conditional logic within PL/SQL blocks. It is a conditional control statement that allows you to execute different blocks of code based on the specified conditions. It is particularly useful when dealing with multiple conditions and provides a more readable and maintainable alternative to nested IF-ELSE statements.
+
+  
+
+```sql
+
+CASE
+
+WHEN condition_1 THEN
+
+-- code block for condition_1
+
+WHEN condition_2 THEN
+
+-- code block for condition_2
+
+...
+
+ELSE
+
+-- default code block
+
+END CASE;
+
 ```
 
-## Data Integrity
+  
 
-Ensuring data quality and consistency.
+The syntax starts with the keyword CASE, followed by multiple WHEN clauses that specify conditions. If a condition evaluates as true, the corresponding code block is executed. If none of the conditions are met, the ELSE clause (optional) provides a default action.
 
-### Constraints
+  
 
-1. **Primary Key** - Unique identifier
-2. **Foreign Key** - Reference to another table
-3. **Unique** - No duplicate values
-4. **NOT NULL** - Value must exist
-5. **CHECK** - Custom validation
-6. **DEFAULT** - Default value
+### B. Types of CASE Statement
 
-### Referential Integrity
+  
 
-Maintaining consistency through foreign keys.
+#### 1. Simple CASE Statement
 
-### This Week
+  
 
-- Identifying normal forms
-- Normalizing tables
-- Creating relationships
-- Data integrity constraints
-- ACID properties (Atomicity, Consistency, Isolation, Durability)
+In a Simple CASE statement, the value of an expression is compared to constant values (predefined). It is useful when you want to match a single expression with different constant values.
 
-### Practice
+  
 
-- Normalize denormalized tables
-- Create referential integrity
-- Design proper schemas
+##### a. Example
+
+  
+
+```sql
+
+DECLARE
+
+day_number NUMBER := 1;
+
+day_name VARCHAR2(20);
+
+BEGIN
+
+CASE day_number
+
+WHEN 1 THEN
+
+day_name := 'Monday';
+
+WHEN 2 THEN
+
+day_name := 'Tuesday';
+
+WHEN 3 THEN
+
+day_name := 'Wednesday';
+
+WHEN 4 THEN
+
+day_name := 'Thursday';
+
+WHEN 5 THEN
+
+day_name := 'Friday';
+
+WHEN 6 THEN
+
+day_name := 'Saturday';
+
+WHEN 7 THEN
+
+day_name := 'Sunday';
+
+ELSE
+
+day_name := 'Invalid day';
+
+END CASE;
+
+  
+
+DBMS_OUTPUT.PUT_LINE('The day is: ' || day_name);
+
+END;
+
+```
+
+  
+
+In this example,
+
+- The variable `day_number` is set to `1` that representing Monday.
+
+- The Simple CASE statement then checks the value of `day_number` and assigns the corresponding day name to the variable `day_name`.
+
+- The output will be `The day is: Monday`
+
+  
+
+**Output:**
+
+  
+
+```
+
+Statement processed.
+
+The day is: Monday
+
+```
+
+  
+
+#### 2. Searched CASE Statement
+
+  
+
+In a Searched CASE statement, each condition is evaluated independently. It allows for more complex conditions such as comparisons, logical operators, and functions.
+
+  
+
+##### a. Example
+
+  
+
+```sql
+
+DECLARE
+
+product_price NUMBER := 120.50;
+
+product_category VARCHAR2(20);
+
+BEGIN
+
+CASE
+
+WHEN product_price < 50 THEN
+
+product_category := 'Low Cost';
+
+WHEN product_price >= 50 AND product_price <= 100 THEN
+
+product_category := 'Medium Cost';
+
+WHEN product_price > 100 THEN
+
+product_category := 'High Cost';
+
+ELSE
+
+product_category := 'Invalid Price';
+
+END CASE;
+
+  
+
+DBMS_OUTPUT.PUT_LINE('The product falls into the category: ' || product_category);
+
+END;
+
+```
+
+  
+
+In this example,
+
+- The variable `product_price` is set to `120.50`.
+
+- The Searched CASE statement evaluates different conditions based on the value of `product_price` and assigns the appropriate category to the variable `product_category`.
+
+- The output will be `The product falls into the category: High Cost`.
+
+  
+
+**Output:**
+
+  
+
+```
+
+Statement processed.
+
+The product falls into the category: High Cost
+
+```
+
+  
+
+### C. CASE Statement vs CASE Expression
+
+  
+
+| CASE Statement | CASE Expression |
+|---|---|
+| CASE Statement is used to handle flow control within procedural code and it determines which code block to execute based on specified conditions. | CASE Expression in SQL is used for transforming or selecting values within a query and returning different results based on conditions. |
+| It is limited to PL/SQL blocks such as procedures, functions, and blocks. | It is primarily used within SQL statements like SELECT, WHERE, and ORDER BY clauses. |
+| It supports both Simple CASE and Searched CASE. | It only supports Searched CASE. |
+| It supports ELSE clause for defining a default action. | It also supports ELSE clause for defining a default action. |
+
+  
+
+### D. Important Points About PL/SQL CASE Statement
+
+  
+
+- Both Simple and Searched CASE statements support an optional ELSE clause to handle situations where no conditions are met.
+
+- CASE statement controls procedural logic within PL/SQL, while CASE expression is used within SQL queries like SELECT, WHERE, and ORDER BY.
+
+- It is primarily used within PL/SQL procedural blocks but not in standalone SQL queries unless it is a CASE expression.
+
+- CASE statements are used for decision-making within PL/SQL blocks, such as stored procedures, functions, and triggers.
+
+  
+
+---
+
+  
+
+## PL/SQL Loops
+
+  
+
+PL/SQL stands for Procedural Language Extension to the Structured Query Language and it is designed specifically for Oracle databases it extends Structured Query Language (SQL) capabilities by allowing the creation of stored procedures, functions, and triggers. It is a block-structured language that combines SQL with the procedural features of programming languages.
+
+  
+
+In this article, we will learn about How to use the Loop statement of PL/SQL with all its features like EXIT, EXIT WHEN, and Nested Loop for example.
+
+  
+
+### A. LOOP Statement in PL/SQL
+
+  
+
+One of the key features in PL/SQL for controlling program flow is the LOOP statement. The LOOP statement is a feature of PL/SQL that allows you to repeatedly execute a block of code until a specified condition is satisfied.
+
+  
+
+Procedural Language/Structured Query Language (PL/SQL) provides a robust environment for database programming, allowing developers to create powerful and efficient code for Oracle databases.
+
+
+ <p align="center">
+  <img
+    src="https://raw.githubusercontent.com/ramachandraaa/LGP/main/DBMS3.47.png"
+    alt="Diagram"
+    width="60%"
+  />
+</p>
+
+
+  
+
+#### 1. Syntax
+
+  
+
+```sql
+
+LOOP
+
+-- Code block to be executed repeatedly
+
+END LOOP;
+
+```
+
+  
+
+### B. EXIT Statement
+
+  
+
+The EXIT statement is used to break the loop whether the loop condition has been satisfied or not. This statement is particularly useful when you want to terminate the loop based on certain conditions within the loop block.
+
+  
+
+#### 1. Syntax
+
+  
+
+```sql
+
+LOOP
+
+-- Code block
+
+IF condition THEN
+
+EXIT;
+
+END IF;
+
+END LOOP;
+
+```
+
+  
+
+#### 2. Example of PL/SQL LOOP with Conditional EXIT
+
+  
+
+In this example, we showcase the application of a PL/SQL LOOP construct with a conditional EXIT statement. The code demonstrates a scenario where a loop iterates a specific block of code, printing iteration numbers, and breaks out of the loop when a predefined condition is met.
+
+  
+
+##### a. Example
+
+  
+
+```sql
+
+DECLARE
+
+counter NUMBER := 1;
+
+BEGIN
+
+LOOP
+
+DBMS_OUTPUT.PUT_LINE('This is iteration number ' || counter);
+
+IF counter = 3 THEN
+
+EXIT;
+
+END IF;
+
+counter := counter + 1;
+
+END LOOP;
+
+END;
+
+/
+
+```
+
+  
+
+**Output:**
+
+  
+
+```
+
+Statement processed.
+
+This is iteration number 1
+
+This is iteration number 2
+
+This is iteration number 3
+
+```
+
+  
+
+##### b. Explanation
+
+  
+
+- Initially counter variable is set to $1$.
+
+- The LOOP statement repeatedly executes the code block within it.
+
+- Inside the loop, `DBMS_OUTPUT.PUT_LINE` is used to print Iteration number (value of counter).
+
+- The counter is incremented by $1$ in each iteration.
+
+- IF statement is executed when the value of counter will become $3$ and The EXIT statement is executed and loop stops.
+
+  
+
+### C. EXIT WHEN Statement
+
+  
+
+The EXIT WHEN statement allows for a more concise way to specify the condition under which a loop should exit. It checks the condition directly within the loop's syntax.
+
+  
+
+#### 1. Syntax
+
+  
+
+```sql
+
+LOOP
+
+-- Code block
+
+EXIT WHEN condition;
+
+END LOOP;
+
+```
+
+  
+
+#### 2. Example of PL/SQL LOOP with EXIT WHEN
+
+  
+
+The purpose of this example is to show how to print "GeeksForGeeks" repeatedly using a PL/SQL LOOP construct. With the help of the EXIT WHEN statement, the loop can be controlled to end when a counter variable reaches a predetermined threshold.
+
+  
+
+##### a. Example
+
+  
+
+```sql
+
+DECLARE
+
+counter NUMBER := 1; -- Initialization of the counter variable
+
+  
+
+BEGIN
+
+-- Loop that prints "GeeksForGeeks" five times
+
+LOOP
+
+DBMS_OUTPUT.PUT_LINE('GeeksForGeeks');
+
+  
+
+counter := counter + 1; -- Increment the counter
+
+  
+
+EXIT WHEN counter > 5; -- Exit the loop when counter exceeds 5
+
+END LOOP;
+
+END;
+
+/
+
+```
+
+  
+
+**Output:**
+
+  
+
+```
+
+Statement processed.
+
+GeeksForGeeks
+
+GeeksForGeeks
+
+GeeksForGeeks
+
+GeeksForGeeks
+
+GeeksForGeeks
+
+```
+
+  
+
+##### b. Explanation
+
+  
+
+- Initially counter variable is set to $1$.
+
+- The LOOP statement repeatedly executes the code block within it.
+
+- Inside the loop, `DBMS_OUTPUT.PUT_LINE` is used to print "GeeksForGeeks".
+
+- The counter is incremented by $1$ in each iteration.
+
+- The EXIT WHEN statement is executed when the loop when the counter exceeds $5$.
+
+---
+
+  
+
+## Nested Loops
+
+  
+
+Nested Loop is a Loop inside Loop and PL/SQL supports nested loops that allows you to have multiple levels of iteration within a program. This is achieved by placing one or more LOOP statements inside another. Each nested loop has its own set of loop control statements.
+
+  
+
+### A. Syntax
+
+  
+
+```sql
+
+-- Outer Loop
+
+LOOP
+
+-- Code block
+
+-- Inner Loop
+
+LOOP
+
+-- Inner loop code block
+
+EXIT WHEN inner_condition;
+
+END LOOP;
+
+EXIT WHEN outer_condition;
+
+END LOOP;
+
+```
+
+  
+
+### B. Example of PL/SQL Nested FOR Loop Simultaneous Iteration
+
+  
+
+In this example, we will create nested FOR loops that iterate over two ranges, demonstrating simultaneous iteration.
+
+  
+
+##### a. Example
+
+  
+
+```sql
+
+DECLARE
+
+outer_counter NUMBER := 1;
+
+inner_counter NUMBER := 1;
+
+BEGIN
+
+FOR outer_counter IN 1..3 LOOP
+
+DBMS_OUTPUT.PUT_LINE('Outer Loop - Iteration ' || outer_counter);
+
+FOR inner_counter IN 1..2 LOOP
+
+DBMS_OUTPUT.PUT_LINE('Inner Loop - Iteration ' || inner_counter);
+
+END LOOP;
+
+END LOOP;
+
+END;
+
+/
+
+```
+
+  
+
+**Output:**
+
+  
+
+```
+
+Statement processed.
+
+Outer Loop - Iteration 1
+
+Inner Loop - Iteration 1
+
+Inner Loop - Iteration 2
+
+Outer Loop - Iteration 2
+
+Inner Loop - Iteration 1
+
+Inner Loop - Iteration 2
+
+Outer Loop - Iteration 3
+
+Inner Loop - Iteration 1
+
+Inner Loop - Iteration 2
+
+```
+
+  
+
+**Explanation:**
+
+  
+
+- There are two nested loops
+
+- The outer FOR loop (`FOR outer_counter IN 1..3 LOOP`) runs three times.
+
+- Inside the outer FOR loop, there is an inner FOR loop (`FOR inner_counter IN 1..2 LOOP`) that runs two times for each iteration of the outer loop.
+
+- `DBMS_OUTPUT.PUT_LINE` statements is used to print output.
+
+  
+
+### C. Conclusion
+
+  
+
+Pl/SQL is a Procedural Language that is used to write program blocks, procedures, functions, cursors, triggers for databases. It Provides a LOOP statement facility that is used to repeatedly execute a block of code. and It's other feature like EXIT and EXIT WHEN statement are used to stop loop based on specific conditions and It also support Nested loop functionality.
+
+  
+
+---
+
+  
+
+## PL/SQL Exception Handling
+
+  
+
+An exception represents an error condition that interrupts the standard execution flow of a program. PL/SQL utilizes an exception block to identify these faults, allowing developers to catch and address errors effectively.
+
+  
+
+### A. Syntax
+
+  
+
+```sql
+
+DECLARE
+
+-- Declaration of variables;
+
+BEGIN
+
+-- SQL and Procedural logic;
+
+EXCEPTION
+
+-- Error handling routines;
+
+END;
+
+```
+
+  
+
+PL/SQL categorizes exceptions into two primary types:
+
+  
+
+- User-defined exceptions
+
+- System-defined exceptions
+
+  
+
+### B. Methods of Exception Handling
+
+  
+
+There are two distinct ways to handle exceptions in PL/SQL:
+
+  
+
+#### 1. System-Defined Exceptions
+
+  
+
+These predefined exceptions are automatically triggered by the Oracle engine when internal rules or constraints are breached. Common examples include `NO_DATA_FOUND`, `TOO_MANY_ROWS`, and `ZERO_DIVIDE`.
+
+  
+
+##### a. Example Implementation
+
+  
+
+```sql
+
+DECLARE
+
+a NUMBER := 10;
+
+b NUMBER := 0;
+
+c NUMBER;
+
+BEGIN
+
+c := a / b; -- Triggers division by zero error
+
+DBMS_OUTPUT.PUT_LINE('Result: ' || c);
+
+EXCEPTION
+
+WHEN ZERO_DIVIDE THEN
+
+DBMS_OUTPUT.PUT_LINE('Error: Division by zero is not permitted.');
+
+END;
+
+```
+
+  
+
+**Output:**
+
+  
+
+```
+
+Error: Division by zero is not permitted.
+
+```
+
+  
+
+**Logic Breakdown:**
+
+  
+
+- **Declaration Phase:** Variables `a` and `b` are initialized with $10$ and $0$, respectively.
+
+- **Execution Attempt:** The program attempts the division of `a` by `b`, resulting in a runtime error.
+
+- **Error Capture:** The EXCEPTION block detects the `ZERO_DIVIDE` condition.
+
+- **Result:** A custom error message is displayed to the user.
+
+  
+
+#### 2. Varieties of System-Defined Exceptions
+
+  
+
+System-defined exceptions are classified into two sub-categories:
+
+  
+
+##### a. Named System Exception
+
+  
+
+These are exceptions assigned specific names by Oracle, such as `ACCESS_INTO_NULL`, `DUP_VAL_ON_INDEX`, `LOGIN_DENIED`, etc.
+
+  
+
+**Syntax:**
+
+  
+
+```sql
+
+DECLARE
+
+-- Variable to simulate NULL access
+
+v_null_var VARCHAR2(10);
+
+-- Variable to simulate duplicate insertion
+
+v_id NUMBER := 1;
+
+BEGIN
+
+-- 1. ACCESS_INTO_NULL example
+
+BEGIN
+
+-- Trying to access NULL variable
+
+IF v_null_var = 'test' THEN
+
+NULL;
+
+END IF;
+
+EXCEPTION
+
+WHEN ACCESS_INTO_NULL THEN
+
+DBMS_OUTPUT.PUT_LINE('Caught ACCESS_INTO_NULL exception');
+
+END;
+
+-- 2. DUP_VAL_ON_INDEX example
+
+BEGIN
+
+-- Attempt to insert duplicate value into unique index
+
+INSERT INTO employees (employee_id, name)
+
+VALUES (v_id, 'John Doe');
+
+-- Insert again with same employee_id to cause DUP_VAL_ON_INDEX
+
+INSERT INTO employees (employee_id, name)
+
+VALUES (v_id, 'Jane Doe');
+
+COMMIT;
+
+EXCEPTION
+
+WHEN DUP_VAL_ON_INDEX THEN
+
+DBMS_OUTPUT.PUT_LINE('Caught DUP_VAL_ON_INDEX exception: Duplicate value');
+
+END;
+
+END;
+
+```
+
+  
+
+To better understand these concepts, let's examine a practical example using a table called "geeks."
+
+  
+
+We will explore several common exceptions by first setting up our environment with the following SQL commands:
+
+  
+
+```sql
+
+-- Step 1: Create the geeks table
+
+CREATE TABLE geeks (
+
+g_id INT PRIMARY KEY, -- Primary Key to trigger DUP_VAL_ON_INDEX
+
+g_name VARCHAR(20),
+
+marks INT
+
+);
+
+-- Step 2: Populate the table with sample data
+
+INSERT INTO geeks VALUES (1, 'Suraj', 100);
+
+INSERT INTO geeks VALUES (2, 'Praveen', 97);
+
+INSERT INTO geeks VALUES (3, 'Jessie', 99);
+
+```
+
+  
+
+**Output:**
+
+  
+
+| g_id | g_name | marks |
+|---|---|---|
+| 1 | Suraj | 100 |
+| 2 | Praveen | 97 |
+| 3 | Jessie | 99 |
+
+  
+
+**Key observations from this setup:**
+
+  
+
+- **Table Definition:** The "geeks" table consists of three columns: `g_id` (integer), `g_name` (string), and `marks` (integer).
+
+- **Constraint Enforcement:** By defining `g_id` as the PRIMARY KEY, Oracle ensures that all entries in this column remain unique.
+
+- **Data Population:** We have successfully inserted three records representing individual student scores.
+
+  
+
+##### b. Unnamed System Exception
+
+  
+
+These are internal error conditions that Oracle predefines but does not assign a specific name. They occur less frequently and are managed using their specific numeric Oracle error codes.
+
+  
+
+**Syntax:**
+
+  
+
+```sql
+
+DECLARE
+
+exception_name EXCEPTION;
+
+PRAGMA EXCEPTION_INIT(exception_name, -error_code);
+
+BEGIN
+
+-- Logic that might trigger the unnamed error
+
+EXCEPTION
+
+WHEN exception_name THEN
+
+-- Handling logic
+
+END;
+
+```
+
+  
+
+Consider this practical implementation:
+
+  
+
+```sql
+
+DECLARE
+
+fk_violation EXCEPTION;
+
+PRAGMA EXCEPTION_INIT(fk_violation, -2292);
+
+BEGIN
+
+DELETE FROM departments WHERE department_id = 10;
+
+EXCEPTION
+
+WHEN fk_violation THEN
+
+DBMS_OUTPUT.PUT_LINE('Error: Cannot delete department. Employees exist in it.');
+
+END;
+
+```
+
+  
+
+**Output:**
+
+  
+
+```
+
+Error: Cannot delete department. Employees exist in it.
+
+```
+
+  
+
+**Logic Breakdown:**
+
+  
+
+- **Initialization:** We define "fk_violation" as a custom name for foreign key issues.
+
+- **Mapping:** The PRAGMA directive links this name to error code $-2292$.
+
+- **Action:** The block tries to remove a specific department record.
+
+- **Detection:** If dependent records prevent the deletion, the error is caught.
+
+- **Response:** A descriptive error message is presented to the user.
+
+  
+
+#### 3. User-Defined Exceptions
+
+  
+
+These are bespoke exceptions created by developers to manage specific business logic failures that standard Oracle exceptions do not cover. They require explicit declaration and must be triggered manually using the RAISE keyword.
+
+  
+
+**Syntax:**
+
+  
+
+```sql
+
+DECLARE
+
+exception_name EXCEPTION; -- Explicit declaration
+
+BEGIN
+
+IF condition THEN
+
+RAISE exception_name; -- Triggering the exception
+
+END IF;
+
+EXCEPTION
+
+WHEN exception_name THEN -- Handling block
+
+DBMS_OUTPUT.PUT_LINE('Exception handled');
+
+END;
+
+```
+
+  
+
+Let's apply this to a division validation problem where we divide a non-negative integer "x" by "y" under these conditions:
+
+  
+
+- $y$ cannot be zero (prevents zero division).
+
+- The result must be at least $1$ (requires $y$ to be less than or equal to $x$).
+
+  
+
+```sql
+
+DECLARE
+
+x INT := &x;
+
+y INT := &y;
+
+div_r FLOAT;
+
+exp1 EXCEPTION;
+
+exp2 EXCEPTION;
+
+BEGIN
+
+IF y = 0 THEN
+
+RAISE exp1;
+
+ELSIF y > x THEN
+
+RAISE exp2;
+
+ELSE
+
+div_r := x / y;
+
+DBMS_OUTPUT.PUT_LINE('The result is ' || div_r);
+
+END IF;
+
+EXCEPTION
+
+WHEN exp1 THEN
+
+DBMS_OUTPUT.PUT_LINE('Error: Division by zero is not allowed');
+
+WHEN exp2 THEN
+
+DBMS_OUTPUT.PUT_LINE('Error: y is greater than x, please check the input');
+
+END;
+
+```
+
+  
+
+**Output:**
+
+  
+
+```
+
+ZERO_DIVIDE: Cannot divide by zero
+
+```
+
+  
+
+**In this implementation:**
+
+  
+
+- **Input Handling:** The system requests runtime values for both $x$ and $y$.
+
+- **Validation:** It verifies if $y$ is zero or larger than $x$, triggering the appropriate error if needed.
+
+- **Execution:** In the absence of errors, it computes the quotient and displays the output.
+
+- **Error Management:** The EXCEPTION block provides clear, contextual feedback for each failure state.
+
+  
+
+**Syntax:**
+
+  
+
+```sql
+
+RAISE_APPLICATION_ERROR(error_number, 'error_message');
+
+```
+
+  
+
+Observe how this works in practice:
+
+  
+
+```sql
+
+DECLARE
+
+myex EXCEPTION;
+
+n NUMBER := 10;
+
+BEGIN
+
+FOR i IN 1..n LOOP
+
+DBMS_OUTPUT.PUT_LINE(i*i);
+
+IF i*i = 36 THEN
+
+RAISE myex;
+
+END IF;
+
+END LOOP;
+
+EXCEPTION
+
+WHEN myex THEN
+
+RAISE_APPLICATION_ERROR(-20015, 'Welcome to GeeksForGeeks');
+
+END;
+
+```
+
+  
+
+**Output:**
+
+  
+
+```
+
+1
+
+4
+
+9
+
+16
+
+25
+
+36
+
+Error Report:ORA-20015: Welcome to GeeksForGeeks ORA-06512: at line 13
+
+```
+
+  
+
+---
+
+  
+
+## SQL Stored Procedures
+
+  
+
+### A. What is a Stored Procedure?
+
+  
+
+A stored procedure is a precompiled collection of SQL statements that can be saved and reused within a database. Instead of rewriting the same SQL query repeatedly, you can save it as a procedure and execute it with a simple call. These procedures can also accept parameters, allowing them to perform actions based on the specific values passed to them during execution.
+
+  
+
+### B. Key Benefits of Stored Procedures
+
+  
+
+Stored procedures are essential tools in database management, offering several distinct advantages:
+
+  
+
+- **Code Reusability:** A single procedure can be utilized by multiple applications, ensuring consistency.
+
+- **Improved Performance:** Since they are precompiled, stored procedures generally execute faster than standard queries.
+
+- **Database Security:** Permissions can be restricted to the procedure itself, limiting direct user access to underlying tables.
+
+- **Easy Maintenance:** Updating the logic in one procedure automatically updates it for all users.
+
+  
+
+### C. Stored Procedure Syntax (SQL Server)
+
+  
+
+To define a new stored procedure, use the following CREATE PROCEDURE syntax:
+
+  
+
+```sql
+
+CREATE PROCEDURE procedure_name
+
+@param1 datatype,
+
+@param2 datatype
+
+AS
+
+BEGIN
+
+-- SQL statements to be executed
+
+SELECT column1, column2
+
+FROM table_name
+
+WHERE columnN = @paramN;
+
+END;
+
+```
+
+  
+
+Tip: For MySQL-specific syntax, refer to the documentation on MySQL Stored Procedures.
+
+  
+
+### D. Execute a Stored Procedure
+
+  
+
+To trigger the execution of a stored procedure, use the EXEC command:
+
+  
+
+```sql
+
+EXEC procedure_name @param1 = 'value1', @param2 = 'value2';
+
+```
+
+  
+
+### E. Drop a Stored Procedure
+
+  
+
+To permanently remove a stored procedure from the database, use the DROP PROCEDURE statement:
+
+  
+
+```sql
+
+DROP PROCEDURE procedure_name;
+
+```
+
+  
+
+Tip: To prevent errors if the procedure does not exist, include the IF EXISTS clause:
+
+  
+
+```sql
+
+DROP PROCEDURE IF EXISTS procedure_name;
+
+```
+
+  
+
+### F. Demo Database
+
+  
+
+The following data is a sample from the "Customers" table in the Northwind database:
+
+  
+
+| CustomerID | CustomerName | ContactName | Address | City | PostalCode | Country |
+|---|---|---|---|---|---|---|
+| 1 | Alfreds Futterkiste | Maria Anders | Obere Str. 57 | Berlin | 12209 | Germany |
+| 2 | Ana Trujillo Emparedados y helados | Ana Trujillo | Avda. de la Constitución 2222 | México D.F. | 05021 | Mexico |
+| 3 | Antonio Moreno Taquería | Antonio Moreno | Mataderos 2312 | México D.F. | 05023 | Mexico |
+| 4 | Around the Horn | Thomas Hardy | 120 Hanover Sq. | London | WA1 1DP | UK |
+
+  
+
+### G. Stored Procedure Example
+
+  
+
+The SQL block below defines a procedure called "GetCustomersByCity," which retrieves all customer records from a specified city within the "Customers" table:
+
+  
+
+#### 1. Example
+
+  
+
+```sql
+
+CREATE PROCEDURE GetCustomersByCity
+
+@City nvarchar(50)
+
+AS
+
+BEGIN
+
+SELECT * FROM Customers
+
+WHERE City = @City;
+
+END;
+
+```
+
+  
+
+To execute this procedure, pass the parameter value (e.g., 'London') to fetch the matching records:
+
+  
+
+#### 2. Example
+
+  
+
+```sql
+
+EXEC GetCustomersByCity @City = 'London';
+
+```
+
+  
+
+### H. Stored Procedure With Multiple Parameters
+
+  
+
+Defining multiple parameters is straightforward; simply separate each parameter name and data type with a comma, as shown in the example below.
+
+  
+
+This SQL script creates a procedure that filters customers based on both a specific City and a specific PostalCode:
+
+  
+
+#### 1. Example
+
+  
+
+```sql
+
+CREATE PROCEDURE GetCustomersByCity
+
+@City nvarchar(50),
+
+@PostalCode nvarchar(10)
+
+AS
+
+BEGIN
+
+SELECT * FROM Customers
+
+WHERE City = @City AND PostalCode = @PostalCode;
+
+END;
+
+```
+
+  
+
+Execute the multi-parameter procedure as follows:
+
+  
+
+#### 2. Example
+
+  
+
+```sql
+
+EXEC GetCustomersByCity @City = 'London', @PostalCode = 'WA1 1DP';
+
+```

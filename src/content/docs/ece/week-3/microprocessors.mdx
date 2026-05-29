@@ -1,55 +1,1192 @@
 ---
-title: Microprocessors - Week 3
-description: Interrupts and I/O interfacing
+title: Microprocessor and Embedded Systems
 ---
 
+## **Microprocessor**
+
+A microprocessor serves as the central processing unit (CPU) of a computing system, integrated onto a single semiconductor microchip to function as its primary "brain." It is fundamentally responsible for fetching, decoding, and executing both mathematical and logical instructions, while simultaneously coordinating data flow between memory and external peripheral devices.
 
 
-## Interrupts
 
-Events that pause execution for immediate handling.
+### **A. Block Diagram of a Microprocessor (8086 Model)**
 
-### Interrupt Types
+The architecture of the 8086 microprocessor is structured into two distinct functional units that operate in a parallel, simultaneous fashion:
 
-- RESET - System reset
-- INT 5.5, 6.5, 7.5 - Maskable interrupts
-- TRAP - Non-maskable interrupt
+![8086 Microprocessor Block Diagram](https://raw.githubusercontent.com/podummy04/images/refs/heads/main/ECE/MPES/week3/diagram_8086_block.png)
 
-### Interrupt Handling
+1. **Bus Interface Unit (BIU):** This unit establishes the connection to external memory and the data bus. It incorporates an address conversion mechanism for physical address calculation, segment registers (CS, DS, SS, ES), an Instruction Pointer (IP), and an instruction byte queue with a 6-byte capacity for pre-fetching instructions.
 
-1. Save program counter
-2. Execute interrupt routine
-3. Return to main program
+2. **Execution Unit (EU):** This component is dedicated to instruction execution. It houses the Arithmetic Logic Unit (ALU) for computational processing, a suite of general-purpose and index registers (AX, BX, CX, DX, SP, BP, SI, DI), a Flags register for status tracking, and the necessary decoding and control circuitry.
 
-### Interrupt Priorities
 
-Different priority levels for handling multiple interrupts.
 
-## I/O Interfacing
+### **B. Functional Operation of a Microprocessor**
 
-Connecting microprocessor to devices.
+The microprocessor operates through a continuous, looping fetch-decode-execute cycle. Within the 8086 model, this sequence is implemented as follows:
 
-### I/O Modes
+- **Fetching:** The BIU retrieves instruction bytes from memory, depositing them into an internal First-In-First-Out (FIFO) instruction queue.
+- **Decoding:** The EU interprets the initial opcode byte from the queue to determine the required action, reading subsequent bytes if the instruction format requires it.
+- **Executing:** The EU carries out the instruction—often utilizing the ALU for data processing—and archives the result before immediately re-initiating the cycle. The independent nature of the BIU and EU allows for instruction pre-fetching, which optimizes overall processing speed.
 
-- Polling - Check device status
-- Interrupt-driven - Device signals when ready
-- DMA - Direct memory access
 
-### Ports
+### **C. Classifications of Microprocessor Architectures**
 
-- Parallel ports - Multiple bits simultaneously
-- Serial ports - Bits sent one at a time
+Microprocessors are engineered with specialized architectures to accommodate the diverse performance and power requirements of modern computing environments. The primary structural paradigms are categorized as follows:
 
-### This Week
+#### 1. Complex Instruction Set Computer (CISC)
 
-- Interrupt structure
-- Interrupt service routines
-- 8255 programmable interface
-- Serial communication basics
-- Port programming
+The CISC philosophy prioritizes minimizing the total number of instructions within a program by shifting operational complexity onto the hardware level.
 
-### Practice
+- This architecture utilizes a comprehensive set of variable-length instructions, where a single command can execute multiple internal operations—such as memory retrieval, mathematical computation, and write-back.
+- Due to this inherent complexity, instructions often span multiple clock cycles for completion, with execution times varying significantly based on the specified operands.
+- CISC relies on microprogrammed control logic and sophisticated hardware, which complicates the implementation of instruction pipelining.
+- The presence of complex addressing modes allows for direct memory manipulation, thereby reducing the necessity for a high count of general-purpose registers.
+- A significant advantage of this approach is highly compact code size, which optimizes memory utilization. Canonical examples include the **Intel x86** and **80386** processors.
 
-- Write interrupt handlers
-- Program parallel/serial ports
-- Design I/O interfaces
+#### 2. Reduced Instruction Set Computer (RISC)
+
+RISC architecture focuses on maximizing efficiency by reducing the number of cycles required per instruction, delegating the assembly of complex tasks to the compiler software.
+
+- Design simplicity is achieved through a small, uniform set of fixed-length instructions, each of which is engineered to execute within a single clock cycle.
+- This uniformity makes RISC highly compatible with advanced pipelining techniques, allowing for overlapping execution stages. Furthermore, the reliance on hard-wired control logic requires significantly fewer transistors during fabrication.
+- Adhering to a strict load/store model, memory access is restricted to dedicated instructions, necessitating a larger volume of general-purpose registers for register-to-register processing.
+- While RISC programs tend to have a larger memory footprint due to the breakdown of tasks into elementary instructions, the architecture remains the standard for performance-oriented systems like **ARM**, **MIPS**, and **RISC-V**.
+
+
+
+### **D. Characteristics of a Microprocessor**
+
+A microprocessor's operational efficacy and architectural capabilities are defined by several fundamental performance metrics:
+
+- **Word Size:** This attribute represents the total volume of data the processor is capable of manipulating within a single operation. A more expansive word size enables the simultaneous processing of larger data sets, thereby significantly enhancing overall throughput.
+- **Clock Speed:** This metric quantifies the frequency at which the microprocessor executes instructions. It is typically expressed in Megahertz (MHz) or Gigahertz (GHz) units.
+- **Number of Processor Cores:** A core functions as an autonomous processing unit tasked with individual instruction execution. Contemporary architectures often integrate multiple cores—such as dual, quad, or octa-core configurations—to facilitate concurrent task management and robust multitasking performance.
+- **Pipelining:** This architectural technique deconstructs sequential processes into discrete sub-operations. By executing these segments in parallel across dedicated stages, the system achieves a substantial increase in processing efficiency.
+
+
+
+### **E. Functions of a Microprocessor**
+
+In its most fundamental capacity, the microprocessor ingests binary input data, processes it in accordance with stored instructions, and produces a binary output. It executes these requirements through three primary functional domains:
+
+- **Arithmetic Operations:** The processor executes elementary mathematical computations, including addition, subtraction, multiplication, and division. Practical implementations include numeric summation, interest rate calculation within financial systems, and distance derivation for GPS navigation.
+- **Logical Operations:** The microprocessor evaluates multiple data values to facilitate decision-making based on defined logical criteria. Real-world examples include password verification during authentication, parameter-based data sorting, and the automated categorization of electronic mail based on keyword analysis.
+- **Data Handling:** This function governs the transfer, storage, and retrieval of information across various subsystems of the computer. Practical utility is demonstrated in the fetching of web-based content and the archiving of digital assets to non-volatile storage media.
+
+
+
+### **F. Applications of Microprocessors**
+
+Serving as the primary "brain" and central processing unit for digital infrastructures, microprocessors are integral to nearly all modern technological domains:
+
+- **Computing and Consumer Devices:** They constitute the core circuitry of personal computers, laptops, mobile handsets, and wearable technology.
+- **Embedded Logic and Appliances:** Microprocessors function as dedicated controllers in domestic appliances, such as microwave ovens and washing machines, managing critical operations like thermal regulation.
+- **Transportation Systems:** Within the automotive sector, they manage engine control units, facilitate real-time anti-lock braking processing, and support satellite-based navigation.
+- **High-Performance and Specialized Engineering:** They are deployed in enterprise servers, industrial robotics, medical instrumentation, and space exploration probes. Furthermore, specialized variants like Digital Signal Processors (DSPs) are utilized for intensive multimedia processing.
+
+
+
+## **The 8086 Microprocessor**
+
+Developed by Intel, the 8086 serves as a foundational 16-bit microprocessor architecture. It is engineered with a 16-bit internal structure, a 16-bit external data bus, and a 20-bit address bus, enabling an addressable memory space of up to **1 MB** and support for **64K I/O ports**. Operational clock frequencies for the series include 5 MHz (8086), 8 MHz (8086-2), and 10 MHz (8086-1).
+
+The internal architecture is bifurcated into two autonomous functional units that operate in an asynchronous manner to facilitate instruction pipelining, thereby enhancing overall system throughput:
+
+
+
+### **A. Execution Unit (EU)**
+
+This unit is dedicated to the decoding and execution of instructions. Its primary structural components comprise:
+
+- **Arithmetic Logic Unit (ALU):** Responsible for the implementation of all arithmetic computations (addition, subtraction, multiplication, division) and logical evaluations (OR, AND, NOT).
+- **General Purpose Registers:** A suite of eight 8-bit registers (AH, AL, BH, BL, CH, CL, DH, DL) that can be functionally coupled to operate as four 16-bit registers (AX, BX, CX, DX).
+- **Pointers and Index Registers:** This group includes specialized registers such as the Stack Pointer (SP), Base Pointer (BP), Source Index (SI), and Destination Index (DI).
+- **Flag Register:** A 16-bit status register containing 9 active flags that monitor the processor's internal state.
+ - **Conditional Flags:** These provide immediate feedback on the results of the preceding operation (including Carry, Auxiliary, Parity, Zero, Sign, and Overflow).
+  - **Control Flags:** These govern EU operations, featuring the Trap flag for debugging, the Interrupt flag for signal management, and the Direction flag for string manipulation.
+
+
+### **B. Bus Interface Unit (BIU)**
+
+The BIU coordinates all external bus activities, including the retrieval of instructions, operand read/write cycles, and the derivation of physical memory addresses.
+
+- **Instruction Queue:** The BIU maintains an internal queue capable of pre-fetching up to 6 bytes of instruction stream data while the EU is engaged, ensuring a continuous pipeline for optimized execution.
+- **Segment Registers:** Four 16-bit specialized registers—CS (Code Segment), DS (Data Segment), SS (Stack Segment), and ES (Extra Segment)—house the base addresses for memory segmentation.
+- **Instruction Pointer (IP):** A dedicated 16-bit register that tracks the memory location of the next scheduled instruction.
+- **Address Generation:** The BIU derives a 20-bit physical address by shifting the 16-bit segment address and summating it with the 16-bit offset value.
+
+
+#### **1. 8086 Flag Register**
+
+The 8086 architecture incorporates a 16-bit status register containing 9 active flags, which are functionally categorized into two primary domains: **Conditional Flags** and **Control Flags**.
+
+#### a. Conditional Flags (6)
+
+These flags provide immediate feedback by reflecting the state of the processor following the execution of arithmetic or logical instructions.
+
+| Flag | Description |
+|------|-------------|
+| **Carry Flag (CF)** | Triggered if an arithmetic operation results in an overflow out of the Most Significant Bit (MSB). |
+| **Auxiliary Flag (AF)** | Active if a carry or borrow occurs between the lower and upper nibbles (D3 to D4); essential for Binary Coded Decimal (BCD) operations. |
+| **Parity Flag (PF)** | Transitions to high if the lower 8 bits of a result contain an even number of logical 1s. |
+| **Zero Flag (ZF)** | Set to 1 in instances where the result of an operation is exactly zero. |
+| **Sign Flag (SF)** | Reflects a negative result by transitioning to 1. |
+| **Overflow Flag (OF)** | Indicates that the computational result has exceeded the architectural capacity of the system. |
+
+#### b. Control Flags (3)
+
+These are managed programmatically to govern specific microprocessor operations.
+
+| Flag | Description |
+|------|-------------|
+| **Trap Flag (TF)** | Facilitates single-step execution, serving as a vital mechanism for system debugging. |
+| **Interrupt Flag (IF)** | Manages the handling of external maskable interrupts (INTR); enabled when high (1) and suppressed when low (0). |
+| **Direction Flag (DF)** | Governs string processing directionality; when active, memory access proceeds from higher to lower addresses. |
+
+
+## **Microprocessor — 8086 Pin Configuration**
+
+As the pioneering 16-bit microprocessor, the 8086 is housed in a **40-pin Dual Inline Package (DIP)**. A comprehensive analysis of its pin configuration reveals the following functional specializations:
+### **A. 8086 Pin Configuration**
+
+![8086 Pin Configuration Diagram](https://raw.githubusercontent.com/podummy04/images/refs/heads/main/ECE/MPES/week3/diagram_8086_pin.png)
+
+#### **1. Power Supply and Clock Signals**
+
+- **VCC and VSS:** The architecture necessitates a 5V DC supply at VCC (pin 40), utilizing VSS (pins 1 and 20) for ground synchronization.
+- **Clock (CLK):** Located at pin 19, this provides critical timing synchronization, with operational frequencies varying across chip iterations (5MHz, 8MHz, or 10MHz).
+
+#### **2. Address and Data Buses**
+
+- **AD0–AD15 (Address/Data Bus):** These 16 lines function as a multiplexed bus, conveying a 16-bit address during the initial clock cycle and transitioning to 16-bit data thereafter. Higher and lower order bytes are distributed across AD8–AD15 and AD0–AD7, respectively.
+- **A16–A19 / S3–S6 (Address/Status Bus):** Similar to the primary bus, these 4 lines are multiplexed to carry 4-bit address fragments during the first cycle before transitioning to status signal output.
+
+#### **3. Control and Status Signals**
+
+| Signal | Pin | Description |
+|--------|-----|-------------|
+| **S7/BHE** (Bus High Enable) | 34 | Signifies data transfers occurring via the high-order data bus (D8–D15); activates following the first clock cycle. |
+| **RD** (Read) | 32 | Facilitates all read-based operational cycles. |
+| **WR** (Write) | 29 | Governs the writing of data to memory or I/O devices, contingent upon the state of the M/IO signal. |
+| **Ready** | 22 | An active-high signal acknowledging data transfer readiness from I/O peripherals; a low state induces a wait condition. |
+| **M/IO** | 28 | Distinguishes between I/O (high) and memory (low) operations. |
+| **ALE** (Address Enable Latch) | 25 | A positive pulse signaling the availability of a valid address on the multiplexed lines during the start of an operation. |
+| **DEN** (Data Enable) | 26 | Enables the 8286 Transceiver for data separation from the multiplexed bus. |
+| **DT/R** (Data Transmit/Receive) | 27 | Governs the transceiver's data flow directionality—transmitting when high and receiving when low. |
+| **S0, S1, S2** | 26–28 | Status signals allowing an external 8288 Bus Controller to derive memory and I/O control timing. |
+| **QS1 and QS0** | 24–25 | Report the real-time status of the internal instruction queue. |
+| **LOCK** | 29 | Acts as a resource safeguard, instructing auxiliary processors to maintain bus independence during specific instruction execution. |
+
+#### **4. Interrupt and Bus Arbitration Signals**
+
+| Signal | Pin | Description |
+|--------|-----|-------------|
+| **RESET** | 21 | Causes immediate activity termination and processor initialization; must remain high for 4 cycles to reset the system. |
+| **INTR** | 18 | A maskable interrupt request, sampled at the conclusion of each instruction cycle. |
+| **NMI** | 17 | An edge-triggered non-maskable interrupt that forces an immediate request to the CPU. |
+| **INTA** | 24 | Serves as the acknowledgement signal for processed interrupts. |
+| **TEST** | 23 | Induces a wait state until an IDLE state is reached, ensuring controlled execution. |
+| **HOLD** | 31 | Indicates that external peripherals are requesting primary bus access. |
+| **HLDA** | 30 | Hold Acknowledgement signal confirming that the processor has accepted the bus request. |
+| **RQ/GT1 and RQ/GT0** | — | Priority-based Request/Grant signals for bus release, where RQ/GT0 takes precedence over RQ/GT1. |
+
+
+### **B. Architectural Instruction Sets of the 8086**
+
+The operational versatility of the 8086 microprocessor is derived from its comprehensive support of eight distinct instructional categories:
+
+- Data Transfer Instructions
+- Arithmetic Instructions
+- Bit Manipulation Instructions
+- String Instructions
+- Program Execution Transfer (Branch & Loop)
+- Processor Control Instructions
+- Iteration Control Instructions
+- Interrupt Instructions
+
+
+
+#### 1. Data Transfer Instructions
+
+This group facilitates the migration of data between source and destination operands.
+
+**Instructions for Word and Byte Transfer:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `MOV` | Executes the copying of a specified byte or word from the source to the designated destination. |
+| `PUSH` | Transfers a word onto the apex of the architectural stack. |
+| `POP` | Retrieves the top-most word from the stack and archives it at the provided location. |
+| `PUSHA` | Deposits the collective contents of all general-purpose registers onto the stack. |
+| `POPA` | Populates all registers with corresponding word data retrieved from the stack. |
+| `XCHG` | Implements a data exchange between two specified memory or register locations. |
+| `XLAT` | Translates a byte within the AL register via a lookup table maintained in memory. |
+
+**Instructions for Port Communication (I/O):**
+
+| Instruction | Description |
+|-------------|-------------|
+| `IN` | Facilitates the reading of a byte or word from a designated port into the accumulator. |
+| `OUT` | Dispatches a byte or word from the accumulator to the specified output port. |
+
+**Instructions for Address Manipulation:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `LEA` | Loads the effective address of an operand into the target register. |
+| `LDS` | Populates the DS register along with a specified register using data from memory. |
+| `LES` | Synchronizes the ES register and an additional register with memory-sourced addresses. |
+
+**Instructions for Flag Register Transfers:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `LAHF` | Transfers the lower byte of the status flag register into the AH register. |
+| `SAHF` | Archives the contents of the AH register into the low byte of the flag register. |
+| `PUSHF` | Copies the entirety of the flag register onto the stack top. |
+| `POPF` | Restores the flag register using the word data currently at the apex of the stack. |
+
+
+
+#### 2. Arithmetic Instructions
+
+These instructions enable the processor to execute fundamental mathematical operations, encompassing summation, subtraction, multiplication, and division.
+
+**Instructions for Addition Operations:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `ADD` | Combines two bytes or words together. |
+| `ADC` | Implements addition while accounting for a carry bit. |
+| `INC` | Increments the value of the specified byte or word by one. |
+| `AAA` | Adjusts ASCII values following an addition process. |
+| `DAA` | Performs decimal adjustment after addition or subtraction operations. |
+
+**Instructions for Subtraction Operations:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `SUB` | Performs subtraction between bytes or words. |
+| `SBB` | Executes subtraction considering the borrow state. |
+| `DEC` | Reduces the provided byte or word value by one. |
+| `NEG` | Negates bit values to generate a 2's complement result. |
+| `CMP` | Compares two bytes or words to facilitate logical branching. |
+| `AAS` | Corrects ASCII codes following subtraction. |
+| `DAS` | Provides decimal adjustment specifically for subtraction results. |
+
+**Instructions for Multiplication Operations:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `MUL` | Multiplies unsigned bytes or words. |
+| `IMUL` | Multiplies signed bytes or words. |
+| `AAM` | Adjusts ASCII codes subsequent to a multiplication operation. |
+
+**Instructions for Division Operations:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `DIV` | Divides unsigned words by bytes or unsigned double words by words. |
+| `IDIV` | Divides signed words by bytes or signed double words by words. |
+| `AAD` | Adjusts ASCII codes following division. |
+| `CBW` | Extends a byte into a word by copying the sign bit. |
+| `CWD` | Extends a word into a double word using sign bit propagation. |
+
+
+
+#### 3. Bit Manipulation Instructions
+
+This category encompasses operations governing individual data bits, primarily focused on logical and shift mechanisms.
+
+**Instructions for Logical Operations:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `NOT` | Inverts the state of each bit within a byte or word. |
+| `AND` | Implements a bitwise AND between corresponding bits of two operands. |
+| `OR` | Executes a bitwise OR across operand bit pairs. |
+| `XOR` | Facilitates an Exclusive-OR operation on each bit pair within bytes or words. |
+| `TEST` | Evaluates operands to update status flags without altering the source data. |
+
+**Instructions for Shift Operations:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `SHL/SAL` | Shifts bits leftward, populating the Least Significant Bits (LSBs) with zeros. |
+| `SHR` | Shifts bits rightward, inserting zeros into the Most Significant Bits (MSBs). |
+| `SAR` | Shifts bits rightward while preserving the original state of the MSB. |
+
+**Instructions for Rotate Operations:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `ROL` | Rotates bits left, transferring MSB to LSB and to the Carry Flag (CF). |
+| `ROR` | Rotates bits right, transferring LSB to MSB and to the Carry Flag (CF). |
+| `RCR` | Rotates bits right through the Carry Flag; LSB moves to CF, and CF moves to MSB. |
+| `RCL` | Rotates bits left through the Carry Flag; MSB moves to CF, and CF moves to LSB. |
+
+
+
+#### 4. String Instructions
+
+A string is defined as a contiguous grouping of bytes or words within memory. The following instructions are dedicated to their manipulation:
+
+| Instruction | Description |
+|-------------|-------------|
+| `REP` | Continuously repeats the specified instruction until the CX register reaches zero. |
+| `REPE/REPZ` | Repeats until the CX register reaches zero or the Zero Flag (ZF) transitions to one. |
+| `REPNE/REPNZ` | Maintains iteration until CX is zero or the Zero Flag (ZF) is reset to one. |
+| `MOVS/MOVSB/MOVSW` | Transfers byte or word data between architectural strings. |
+| `CMPS/CMPSB/CMPSW` | Executes a comparison between the components of two specified strings. |
+| `INS/INSB/INSW` | Sources string data from an I/O port and populates the provided memory location. |
+| `OUTS/OUTSB/OUTSW` | Dispatches string data from memory to the designated I/O port. |
+| `SCAS/SCASB/SCASW` | Scans a string and evaluates its contents against the AL (byte) or AX (word) registers. |
+| `LODS/LODSB/LODSW` | Loads a string byte or word into the corresponding AL or AX register. |
+
+
+
+### **C. Program Execution Transfer Instructions (Branch and Loop Instructions)**
+
+These instructions facilitate the redirection of program flow by branching to alternative memory locations during execution.
+
+**1. Unconditional Transfer Instructions:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `CALL` | Invokes a procedure while automatically archiving the return address onto the architectural stack. |
+| `RET` | Facilitates the return from a procedure back to the primary calling program. |
+| `JMP` | Directs the processor to immediately proceed to a specified memory address for the next instruction. |
+
+**2. Conditional Transfer Instructions:**
+
+| Instruction | Condition |
+|-------------|-----------|
+| `JA/JNBE` | Jump if above, or neither below nor equal. |
+| `JAE/JNB` | Jump if above or equal, or not below. |
+| `JBE/JNA` | Jump if below or equal, or not above. |
+| `JC` | Jump when the Carry Flag (CF) is active (1). |
+| `JE/JZ` | Jump if the Zero Flag (ZF) is high (1), indicating equality. |
+| `JG/JNLE` | Jump if greater, or not less than or equal. |
+| `JGE/JNL` | Jump if greater than or equal, or not less than. |
+| `JL/JNGE` | Jump if less than, or not greater than or equal. |
+| `JLE/JNG` | Jump if less than or equal, or not greater than. |
+| `JNC` | Jump when the Carry Flag (CF) is cleared (0). |
+| `JNE/JNZ` | Jump if not equal, or the Zero Flag (ZF) is reset (0). |
+| `JNO` | Jump provided the Overflow Flag (OF) remains at zero. |
+| `JNP/JPO` | Jump if parity is not detected or is odd (PF = 0). |
+| `JNS` | Jump if the result does not carry a sign (SF = 0). |
+| `JO` | Jump if the Overflow Flag (OF) transitions to high (1). |
+| `JP/JPE` | Jump if parity is detected or even (PF = 1). |
+| `JS` | Jump when the Sign Flag (SF) is active (1). |
+
+**3. Processor Control Instructions:**
+
+These instructions govern the processor's behavior by programmatically adjusting internal flag states.
+
+| Instruction | Description |
+|-------------|-------------|
+| `STC` | Transitions the Carry Flag (CF) to high (1). |
+| `CLC` | Resets the Carry Flag (CF) to its low state (0). |
+| `CMC` | Negates the current logic state of the Carry Flag (CF). |
+| `STD` | Activates the Direction Flag (DF), setting it to 1. |
+| `CLD` | Clears the Direction Flag (DF), resetting it to 0. |
+| `STI` | Enables external maskable interrupts (INTR) by setting the interrupt flag to 1. |
+| `CLI` | Suppresses interrupt signal requests by clearing the interrupt flag to 0. |
+
+**4. Iteration Control Instructions:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `LOOP` | Maintains the iteration of a group of instructions until the CX register reaches zero. |
+| `LOOPE/LOOPZ` | Continues iteration until either CX is zero or the Zero Flag (ZF) is reset to 0. |
+| `LOOPNE/LOOPNZ` | Perpetuates a loop until the CX register is zero or the Zero Flag (ZF) transitions to high (1). |
+| `JCXZ` | Triggers a jump to a designated memory address specifically when the CX register contains zero. |
+
+**5. Interrupt Instructions:**
+
+| Instruction | Description |
+|-------------|-------------|
+| `INT` | Disrupts the standard execution flow to invoke the specified interrupt service routine. |
+| `INTO` | Forces an immediate interrupt request if the Overflow Flag (OF) is currently active (1). |
+| `IRET` | Archives the return to the primary program from an interrupt service environment. |
+
+
+
+## **8086 Addressing Modes**
+
+Addressing modes delineate the various methodologies employed to specify the source operand within an instruction. The 8086 microprocessor architecture utilizes **eight distinct addressing modes** for programmatic execution:
+
+### **A. Immediate Addressing Mode**
+
+The data operand is included directly within the instruction itself.
+
+```asm
+MOV CX, 4929H
+ADD AX, 2387H
+MOV AL, FFH
+```
+
+### **B. Register Addressing Mode**
+
+A specified internal register serves as the primary source for the operand.
+
+```asm
+MOV CX, AX   ; copies the contents of the 16-bit AX register into the 16-bit CX register
+ADD BX, AX
+```
+
+### **C. Direct Addressing Mode**
+
+The explicit memory location's effective address is declared within the instruction.
+
+```asm
+MOV AX, [1592H]
+MOV AL, [0300H]
+```
+
+### **D. Register Indirect Addressing Mode**
+
+Memory addressing is performed via an offset address stored in designated pointer or index registers (BX, BP, SI, or DI).
+
+```asm
+MOV AX, [BX]   ; Transfers contents from address in BX to AX
+ADD CX, [BX]
+```
+
+### **E. Based Addressing Mode**
+
+The operand's offset is derived by summating the contents of the base registers (BX or BP) with a specified 8-bit or 16-bit displacement.
+
+```asm
+MOV DX, [BX+04]
+ADD CL, [BX+08]
+```
+
+### **F. Indexed Addressing Mode**
+
+The offset address is calculated by combining the contents of the index registers (SI or DI) with 8-bit or 16-bit displacement values.
+
+```asm
+MOV BX, [SI+16]
+ADD AL, [DI+16]
+```
+
+### **G. Based-Index Addressing Mode**
+
+The operand's offset is computed by summating the contents of a base register with those of an index register.
+
+```asm
+ADD CX, [BX+SI]
+MOV AX, [BX+DI]
+```
+
+### **H. Based-Indexed with Displacement Mode**
+
+The operand's offset is derived through the summation of a base register, an index register, and a specified 8-bit or 16-bit displacement.
+
+```asm
+MOV AX, [BX+DI+08]
+ADD CX, [BX+SI+16]
+```
+
+
+
+### **I. Architectural Modes: Minimum vs. Maximum Mode**
+
+The 8086 processor is designed with a flexible configuration that supports two distinct operational modes, toggled via the logic state of the **MN/MX'** pin.
+
+#### 1. Minimum Mode (MN/MX' = 1)
+
+- **System Design:** Engineered for streamlined, single-processor architectures, typical of early personal computers and embedded logic systems.
+- **Functionality:** The 8086 retains exclusive control over the system bus, directly generating all command signals—such as ALE, DEN and M/IO—without external assistance.
+- **Advantages:** Simplified hardware footprint with fewer peripheral components, providing a highly cost-efficient solution.
+
+#### 2. Maximum Mode (MN/MX' = 0)
+
+- **System Design:** Specifically tailored for sophisticated multi-processor or coprocessor environments, including high-performance servers and advanced workstations.
+- **Functionality:** The 8086 cedes direct bus control to allow for shared global resource management, outputting a 3-bit status code (S0, S1, S2) instead of direct command signals.
+- **External Controllers:** An external **8288 Bus Controller** is required to decode status outputs and generate the necessary memory and I/O timing. Additionally, an **8289 Bus Arbiter** is often deployed to manage bus access across multiple processors.
+- **Advantages and Drawbacks:** While this mode significantly improves performance through parallel processing, the reliance on auxiliary hardware like the 8288 increases both circuit complexity and fabrication costs.
+
+
+
+## **8051 Microcontroller**
+
+Developed by Intel in 1981, the 8051 serves as a foundational **8-bit microcontroller** architecture. It is extensively deployed within embedded systems to facilitate control-oriented applications, with the 8051 family encompassing a diverse range of derivatives featuring enhanced functional capabilities.
+
+![8051 Pin Diagram](https://raw.githubusercontent.com/podummy04/images/refs/heads/main/ECE/MPES/week3/diagram_8051_pin.png)
+
+
+
+### **A. Key Features of the 8051**
+
+The 8051 is engineered as a foundational 8-bit microcontroller housed within a 40-pin Dual Inline Package (DIP). Distinguished from general-purpose microprocessors, it functions as a self-contained, standalone system integrating critical internal peripherals.
+
+![8051 Internal Block Diagram](https://raw.githubusercontent.com/podummy04/images/refs/heads/main/ECE/MPES/week3/diagram_8051_block.png)
+
+The primary architectural features comprise:
+
+- **CPU and Architecture:** An 8-bit CPU utilizing Harvard architecture, featuring bifurcated logical memory spaces to maintain program (code) and data independence.
+- **Memory Configuration:** Includes 128 bytes of internal RAM, 128 bytes of Special Function Registers (SFRs), and a 16-bit address bus facilitating access to up to 64 KB of external memory.
+- **Register Suite:** Features a 16-bit Program Counter (PC), an 8-bit Stack Pointer (SP) and an 8-bit Processor Status Word (PSW) for status tracking.
+- **Integrated Peripherals:** Incorporates 32 I/O pins (structured as four 8-bit ports), two 16-bit timers/counters (T0 and T1), a full-duplex serial I/O port, and five vectored interrupts.
+- **Clock Cycle Synchronization:** A single instruction cycle is executed across 12 clock cycles deconstructed into six discrete states (S1 to S6).
+
+
+### **B. Internal Memory Organization**
+
+The 8051's internal data memory is structured into specialized functional domains to optimize real-time control efficiency:
+
+| Memory Region | Address Range | Description |
+|---------------|---------------|-------------|
+| **Register Banks** | 00H – 1FH (32 bytes) | Four autonomous register banks (Bank 0–3), each housing eight 8-bit registers (R0–R7). Bank selection is governed by RS0 and RS1 bits within the PSW. |
+| **Bit-Addressable Area** | 20H – 2FH (16 bytes) | Provides 128 individually addressable bits (00H–7FH), facilitating direct manipulation of single bits for specialized control tasks. |
+| **General Purpose RAM** | 30H – 7FH (80 bytes) | Contiguous read/write workspace for general data storage. |
+| **Special Function Registers (SFRs)** | 80H – FFH (128 bytes) | Hosts core architectural registers including the Accumulator (ACC), B register, Port Latches (P0–P3), Stack Pointer (SP) and Data Pointer (DPTR). |
+
+
+### **C. I/O Port Configuration**
+
+The architecture incorporates four 8-bit bidirectional ports (P0, P1, P2, and P3) to facilitate external interfacing:
+
+- **Port 0 (P0):** A true bidirectional port that operates in a floating (tristated) state when configured as an input. Lacking internal pull-ups, it necessitates external resistors for digital output and serves as the multiplexed address/data bus during external memory access.
+- **Ports 1, 2, and 3:** Engineered as quasi-bidirectional ports featuring integrated internal pull-up resistors to maintain signal integrity.
+- **Alternate Functions (Port 3):** Port 3 pins support programmatic specialization, enabling standard I/O or dedicated alternate functions such as serial communication (RxD, TxD), external interrupts (INT0, INT1) and timer inputs (T0, T1).
+
+
+### **D. Timers and Counters**
+
+The 8051 incorporates two 16-bit programmable UP timers/counters, designated as **T0** and **T1**:
+
+- **Operational Modes:** In "timer" mode, the register increments with every machine cycle (1/12th of the oscillator frequency). Conversely, "counter" mode triggers increments in response to high-to-low (1-to-0) transitions on external input pins.
+- **Control Architecture:** Functionality is governed by the **TMOD** (Timer Mode control) register, which selects between four operating modes—including 13-bit, 16-bit and 8-bit auto-reload—and the **TCON** (Timer Control) register, which manages run states and overflow status flags.
+
+
+### **E. Interrupts**
+
+The microcontroller architecture facilitates the management of asynchronous events through five vectored interrupts:
+
+- External Interrupt 0 (INT0)
+- Timer 0 Overflow (TF0)
+- External Interrupt 1 (INT1)
+- Timer 1 Overflow (TF1)
+- Serial Port Interrupt (RI/TI)
+
+Individual interrupt management is enabled via the **IE** (Interrupt Enable) register, while prioritization (high or low) is configured through the **IP** (Interrupt Priority) register. Concurrent interrupt requests are resolved via an internal polling sequence based on architectural priority levels.
+
+### **F. Applications**
+
+Engineered specifically as a dedicated controller for hardware orchestration, the 8051 architecture is extensively deployed across a diverse spectrum of embedded system domains:
+
+- Consumer Electronics and Personal Devices
+- Industrial Automation and Logic Control
+- Automotive Subsystems and Telematics
+- Medical Instrumentation and Healthcare Equipment
+- Robotics and Autonomous Systems
+
+### **G. Advantages**
+
+| Benefit | Description |
+|---------|-------------|
+| **Architectural Simplicity** | The design facilitates streamlined programmatic execution and efficient external peripheral interfacing. |
+| **Operational Efficiency** | Provides a cost-efficient solution characterized by minimal power consumption requirements. |
+| **System Dependability** | Demonstrates high reliability for specialized, control-oriented applications. |
+
+
+## **Microprocessor vs. Microcontroller**
+
+| Feature | Microprocessor (MP) | Microcontroller (MC) |
+|---------|---------------------|----------------------|
+| **Definition** | A general-purpose digital processor that serves as the central processing unit (CPU) for a computer system. | An integrated circuit that combines a processor core, memory (RAM/ROM), and programmable I/O peripherals on a single chip. |
+| **Architecture** | Requires external memory (RAM, ROM) and I/O interfacing for operation; instruction execution involves constant data movement across external buses. | Functions as a self-contained system with internal bus structures, requiring minimal external components to perform dedicated tasks. |
+| **Performance** | Features high computational power and significantly higher clock speeds (GHz) to facilitate complex, multi-tasking operations. | Clock speeds are generally lower (MHz range), optimized for real-time control and power efficiency rather than raw throughput. |
+| **Applications** | Primarily utilized in general-purpose computing systems, workstations and high-performance servers. | Typically deployed as "embedded controllers" in specific applications like appliances, automotive systems and IoT devices. |
+| **Examples** | Intel 8085, 8086 and the modern Intel Core or AMD Ryzen series. | Intel 8051, Microchip PIC and ARM Cortex-M based architectures. |
+
+
+## **Embedded Systems**
+
+An embedded system is characterized as a specialized computing infrastructure engineered to execute a dedicated, singular task within a more expansive mechanical or electrical framework.
+
+- **Architectural Characteristics:** These systems are defined by real-time operational requirements, compact form factors, application-specific engineering, and streamlined user interfaces.
+- **Structural Classifications:** System architectures are categorized as:
+  - **Stand-alone** (e.g., microwave ovens)
+  - **Real-time** (e.g., anti-lock braking systems)
+  - **Networked** (e.g., smart home devices)
+  - **Mobile** (e.g., digital watches)
+- **Operational Benefits:** Embedded logic provides high processing efficiency, compact hardware integration and robust system reliability.
+
+
+## **Structural Components of Embedded Systems**
+
+An embedded system achieves robust, real-time operational efficacy through the seamless integration of hardware and software components. Unlike general-purpose computing platforms, embedded logic is meticulously optimized for specific functional domains such as environmental sensing, logic control, monitoring and data communication.
+
+![Embedded System Components Diagram](https://raw.githubusercontent.com/podummy04/images/refs/heads/main/ECE/MPES/week3/diagram_embedded_components.png)
+
+
+### **A. Hardware Framework of Embedded Systems**
+
+The hardware framework constitutes the primary physical foundation of an embedded system. It comprises a suite of processing units, memory subsystems, input/output peripherals and communication modules that operate in a synchronized fashion to facilitate efficient task execution.
+
+#### 1. Processor Unit
+
+Serving as the primary "brain" of the system, the processor is responsible for the execution of mathematical and logical instructions, the processing of data sets and the orchestration of all interconnected hardware components.
+
+**a) Microcontroller (MCU)**
+
+A microcontroller functions as a self-contained, standalone integrated circuit that combines the CPU, memory, timers and I/O ports onto a single semiconductor microchip.
+
+*Features:*
+- Compact hardware footprint and high cost-efficiency.
+- Minimal power consumption requirements.
+- Tailored for dedicated hardware control and logic orchestration.
+- Extensively utilized within real-time system architectures.
+
+*Applications:*
+- Domestic appliances such as washing machines.
+- Traffic light regulation and logic controllers.
+- Smart home automation and consumer electronics.
+- Internet of Things (IoT) technological infrastructures.
+
+**b) Microprocessor (MPU)**
+
+A microprocessor serves as a general-purpose CPU that necessitates the integration of external memory devices and peripherals for system operation.
+
+*Features:*
+- Superior computational power and data processing capabilities.
+- Engineered to support sophisticated, multi-tasking operating systems.
+- Optimal for computationally intensive and high-throughput applications.
+
+*Applications:*
+- Personal computers, laptops and advanced workstations.
+- Sophisticated industrial automation and logic frameworks.
+- Robotics and high-performance autonomous systems.
+- Digital multimedia processing and high-end consumer electronics.
+
+**c) Digital Signal Processor (DSP)**
+
+A DSP represents a specialized architecture optimized for high-speed mathematical computations and intensive signal processing tasks.
+
+*Features:*
+- Rapid implementation of complex arithmetic operations.
+- Highly efficient manipulation of real-time data streams.
+- Architectural specialization for digital filtering and spectral signal analysis.
+
+*Applications:*
+- Real-time audio and speech processing.
+- Image processing and digital vision systems.
+- Radar infrastructures and satellite communication.
+- Broadband and high-speed communication systems.
+
+
+#### 2. Memory System
+
+The memory system archives critical instruction sets, program code and temporary data required for real-time execution.
+
+**a) RAM (Random Access Memory)**
+
+RAM functions as volatile memory, where stored data is immediately lost upon the termination of the power supply.
+
+*Functions:*
+- Archives temporary variables during computational processing.
+- Maintains real-time runtime data required for logic execution.
+- Serves as the primary workspace during program execution.
+
+*Characteristics:*
+- Exceptional data access speeds to optimize system throughput.
+- Facilitates simultaneous read and write operational cycles.
+- Provides non-permanent storage for active data sets.
+
+**b) ROM (Read Only Memory)**
+
+ROM is non-volatile memory designed to permanently archive system firmware and foundational instructions.
+
+*Characteristics:*
+- Ensures data persistence even following a complete power loss.
+- Dedicated to the storage of bootloaders and low-level firmware.
+
+*Types:*
+- PROM (Programmable Read Only Memory)
+- EPROM (Erasable Programmable ROM)
+- EEPROM (Electrically Erasable Programmable ROM)
+- Flash Memory architectures
+
+**c) Flash Memory**
+
+Flash memory is ubiquitously deployed within modern embedded systems due to its robust support for programmatic reconfiguration.
+
+*Advantages:*
+- Non-volatile storage with persistent data retention.
+- Supports electrical erasure and rewriting mechanisms.
+- Expansive storage capacity for complex program code.
+
+*Applications:*
+- Archiving system firmware.
+- IoT devices and networked sensor nodes.
+- Embedded Linux distributions and mobile systems.
+
+
+#### 3. Input Devices and Sensors
+
+Input devices facilitate data ingestion from the external environment, transmuting physical quantities into digital electrical signals for processor analysis.
+
+*Common Sensors:*
+- Temperature sensing modules.
+- Atmospheric pressure transducers.
+- Optical light sensors.
+- Kinetic motion detectors.
+- Humidity and moisture sensors.
+
+*Functions:*
+- Facilitates automated data acquisition.
+- Supports continuous environmental monitoring.
+- Generates feedback required for closed-loop control.
+
+
+#### 4. Output Devices and Actuators
+
+Output devices execute physical actions based on processed binary data dispatched from the processor.
+
+*Types of Actuators:*
+- Electric motors (servo, stepper, DC).
+- LED indicators and display modules.
+- Electromechanical relays for power switching.
+- Audible buzzers and alarm systems.
+- Visual graphical displays (LCD/OLED).
+
+*Functions:*
+- Orchestrates the control of expansive physical systems.
+- Produces defined visual or mechanical system outputs.
+- Executes real-time commands sourced from the central processor.
+
+
+#### 5. Communication Interfaces
+
+Communication interfaces empower embedded systems to perform external data exchanges with peripheral devices, specialized sensors or expansive networks.
+
+**a) UART (Universal Asynchronous Receiver Transmitter)**
+
+- Facilitates asynchronous serial data communication.
+- Provides a streamlined, low-cost interfacing solution.
+- Utilized for system debugging and elementary device-to-device communication.
+
+*Applications:* Interfacing with GPS navigation modules, Bluetooth wireless communication modules.
+
+**b) SPI (Serial Peripheral Interface)**
+
+- Supports high-speed, synchronous data communication.
+- Designed to coordinate multiple slave devices via a single master controller.
+
+*Features:* Accelerated data transfer throughput, full-duplex operational capability for simultaneous data flow.
+
+*Applications:* SD non-volatile storage cards, high-resolution LCD display modules, high-performance sensor arrays.
+
+**c) I2C (Inter-Integrated Circuit)**
+
+- A robust two-wire communication protocol.
+- Facilitates complex multi-master and multi-slave architectural configurations.
+
+*Features:* Simplified hardware wiring requirements, unique address-based data targeting mechanism.
+
+*Applications:* External EEPROM memory modules, Real-Time Clock (RTC) peripherals, standard sensor interfacing.
+
+
+### **B. Software Hierarchy of Embedded Systems**
+
+The software hierarchy governs the allocation of hardware resources and empowers the embedded architecture to execute its designated functional specializations.
+
+#### 1. Firmware
+
+Firmware is categorized as low-level software permanently archived within non-volatile ROM or Flash memory modules.
+
+*Functions:*
+- Initializes and synchronizes internal hardware components.
+- Orchestrates the control of peripheral subsystems.
+- Establishes foundational device operational capabilities.
+
+*Characteristics:*
+- Maintains intimate interaction with the physical hardware layer.
+- Typically developed using C or low-level Assembly programming languages.
+- Resides within non-volatile memory architectures to ensure persistence.
+
+#### 2. Operating System
+
+Sophisticated embedded systems often deploy an operating system to manage global resource allocation and task scheduling.
+
+**a) RTOS (Real-Time Operating System)**
+
+An RTOS is engineered to manage concurrent tasks within stringent, deterministic timing constraints.
+
+*Features:*
+- Guarantees deterministic response latency.
+- Advanced programmatic task scheduling mechanisms.
+- Robust support for parallel multitasking operations.
+- Efficient management of vectored interrupts.
+
+*Canonical RTOS Implementations:* FreeRTOS, VxWorks, RTLinux, and Zephyr.
+
+*Applications:* Critical medical instrumentation, high-performance automotive telematics, aerospace systems and orbital exploration platforms.
+
+#### 3. Application Software
+
+Application software facilitates the specific, high-level functional domain for which the embedded framework was originally engineered.
+
+*Functions:*
+- Manages end-user interaction and interface logic.
+- Executes application-specific data processing tasks.
+- Maintains continuous system monitoring and operational control.
+- Facilitates autonomous, parameter-based decision making.
+
+
+#### 4. Functional Operation of an Embedded System
+
+The operational cycle of an embedded system is implemented through a structured, multi-stage sequence:
+
+1. Sensors perform automated environmental data acquisition.
+2. The central processor analyzes inputs via firmware and application logic.
+3. The memory hierarchy archives persistent program code and temporary data sets.
+4. Communication interfaces facilitate information exchange with external infrastructures.
+5. Actuators or output devices implement the final required physical action.
+
+
+## **C. Comparative Analysis: RISC vs. CISC Architecture**
+
+| Feature | RISC (Reduced Instruction Set Computer) | CISC (Complex Instruction Set Computer) |
+|---------|----------------------------------------|----------------------------------------|
+| **Instruction Set** | Uses a small set of fewer, simple instructions. | Features a large set of complex instructions. |
+| **Execution Time** | Executes instructions faster, typically in a single clock cycle. | Some instructions require multiple clock cycles to complete. |
+| **Code Length** | Requires more lines of code to execute a program. | Requires fewer lines of code to execute a program. |
+| **Hardware & Architecture** | Easier to pipeline and optimize due to simpler hardware. | Features a much more complex hardware design. |
+| **Examples** | ARM, MIPS | Intel x86, VAX |
+
+
+## **D. Architectural Memory Hierarchy**
+
+The memory hierarchy organizes system storage based on performance metrics such as response latency and capacity, ensuring the CPU retrieves data from the highest feasible level to optimize throughput.
+
+**Hierarchical Levels (Fastest to Largest):**
+
+```
+Registers → Cache Memory (L1, L2, L3) → Main Memory (RAM) → Secondary Storage (HDDs, SSDs) → Tertiary Storage (Optical/Tape)
+```
+
+**Principle of Locality:** The effectiveness of the hierarchy is predicated on:
+- **Temporal Locality:** Repeated access to recently accessed data.
+- **Spatial Locality:** Access to adjacent memory locations.
+
+
+## **E. Functional Interrupt Mechanisms**
+
+#### 1. Interrupts in Microprocessors
+
+An interrupt functions as a specialized signaling mechanism that induces a temporary suspension of standard program execution, enabling the processor to provide an immediate response to critical events or peripheral service requests. This architecture significantly enhances system efficiency by allowing the CPU to operate in a reactive capacity rather than continuously polling external devices.
+
+#### 2. Types of Interrupts
+
+#### a) Hardware Interrupts
+
+These interrupts originate from external hardware peripherals, such as keyboard interfaces, internal timers, environmental sensors, or I/O ports.
+
+*Examples:* Keyboard input events, timer overflow conditions, serial port data arrival.
+
+*Features:*
+- Generated via external circuitry.
+- Utilized for real-time device synchronization and communication.
+
+#### b) Software Interrupts
+
+Software interrupts are triggered internally through the execution of specialized instructional sets within an active program.
+
+*Features:*
+- Initiated by programmatic software instructions.
+- Deployed for system calls and debugging procedures.
+
+*Example:* Within the 8086 microprocessor architecture, `INT 21H` serves to invoke DOS-based service routines.
+
+####  c) Maskable Interrupts
+
+These interrupts are characterized by their ability to be programmatically disabled or ignored by the processor as required.
+
+*Features:*
+- Allocated lower operational priority.
+- Governed via software-based control flags.
+
+*Example:* The INTR pin utilized in the 8086 architecture.
+
+#### d) Non-Maskable Interrupts (NMI)
+
+These represent high-priority interrupts that the processor cannot suppress, primarily due to their association with critical system conditions.
+
+*Features:*
+- Architecturally immune to exclusion or suppression.
+- Reserved for emergency signaling and system recovery.
+
+*Examples:* Sudden power failure, critical memory parity errors, severe hardware malfunction.
+
+
+#### 3. Interrupt Handling Sequence
+
+Upon the occurrence of an interrupt, the processor initiates a structured, multi-stage sequence to facilitate a secure response:
+
+1. The CPU finalizes the execution of the current instruction.
+2. The existing processor status and flags are archived.
+3. The Program Status Word (PSW) and Instruction Pointer (IP) are deposited onto the architectural stack.
+4. Control is transferred to the designated Interrupt Service Routine (ISR).
+5. The ISR implements the required functional task.
+6. Following execution, the saved architectural state is restored from the stack.
+7. The CPU re-initiates the primary program at the point of suspension.
+
+#### a) Interrupt Service Routine (ISR)
+
+An ISR is categorized as a specialized functional domain containing the instruction sets required to manage a specific interrupt request.
+
+#### 4. Interrupt Handling in the 8086 Microprocessor
+
+Within the 8086 architecture, interrupt orchestration is meticulously managed through the synchronization of the architectural stack and the **Interrupt Vector Table (IVT)**.
+
+Upon interrupt detection, the 8086 archives these registers onto the stack:
+- FLAGS register (Status Word)
+- Code Segment (CS)
+- Instruction Pointer (IP)
+
+Data is migrated to the stack via the SS and SP registers. Following the archival of the system state, the CPU retrieves the target ISR address from the **Interrupt Vector Table (IVT)**. The IVT is maintained at physical memory location `0000:0000`, with each interrupt type occupying a 4-byte segment. The specific ISR offset is derived using the formula:
+
+```
+ISR offset = 0000:(4 × N)
+```
+
+where **N** represents the interrupt type identifier.
+
+
+#### 5. Advantages of Interrupt Mechanisms
+
+| Benefit | Description |
+|---------|-------------|
+| Optimized CPU resource utilization | Prevents wasteful polling cycles. |
+| Accelerated response latency | Enables immediate response to high-priority events. |
+| Concurrent multitasking | Robust support for parallel task environments. |
+| Enhanced real-time performance | Critical for time-sensitive embedded applications. |
+| Reduced polling overhead | Mitigates unnecessary programmatic overhead. |
+
+
+## **F. Timers and Event Counters**
+
+These essential architectural peripherals are deployed to quantify time intervals, implement programmatic delays, and track external events.
+
+- **Timer Functional Domain:** Utilizes the processor's internal clock signal to generate high-precision temporal delays required for real-time control applications.
+- **Counter Functional Domain:** Operates via external event triggers, summating external pulses to facilitate event-driven processing tasks.
+- **Practical Applications:** Used for delay derivation, frequency measurement, and Pulse Width Modulation (PWM). A standard example is the **Intel 8253/8254** timer, featuring three autonomous 16-bit counters.
+
+
+## **G. Serial Communication Architecture**
+
+Serial communication is characterized by the sequential transmission of data bits over a singular wire or communication channel. Due to its inherent simplicity and robust capability for long-distance information exchange, it is ubiquitously deployed within modern embedded systems.
+
+**Structural Paradigms of Communication:**
+
+- **Synchronous:** Orchestrates data flow via a common clock signal shared between the transmitter and receiver.
+- **Asynchronous:** Operates without a unified clock, utilizing start and stop bits for temporal synchronization.
+- **Common Protocols:** Encompasses standard frameworks such as RS-232, USART/UART, and the SPI/I2C protocols commonly utilized for sensor interfacing.
+- **Architectural Assessment:** Provides a cost-efficient solution with reduced wiring overhead for long-range transmission; however, it demonstrates lower throughput compared to parallel architectures for high-volume data sets.
+
+
+## **H. Direct Memory Access (DMA) Mechanisms**
+
+DMA functions as a sophisticated architectural technique that facilitates the autonomous migration of data between peripheral devices and the memory subsystem **without requiring active CPU intervention**.
+
+- **Functional Methodology:** The DMA controller assumes temporary governance of the system bus, managing the direct information transfer between I/O peripherals and memory, and notifying the processor upon task completion.
+- **Operational Benefits:** This mechanism substantially mitigates CPU overhead and significantly accelerates data transfer throughput.
+- **Canonical Implementation:** The **Intel 8237** serves as a standard DMA controller utilized within these architectural frameworks.
+
+
+## **I. Memory Interfacing and Logical Connectivity**
+
+Memory interfacing represents the physical and logical integration of storage devices with the microprocessor, facilitating the systematic read and write of binary information.
+
+**Critical Architectural Elements:**
+
+- **Address Decoding:** Ensures that individual memory components react exclusively to their uniquely assigned address ranges.
+- **Chip Select (CS) Signals:** Deployed to activate specific memory chips during read or write operations.
+- **Read/Write Control:** Manages the directionality of data flow between the processor and memory.
+- **Functional RAM Variants:** Static RAM (SRAM) provides accelerated access for cache applications, while Dynamic RAM (DRAM) offers a cost-effective solution for main memory capacity.
+
+
+## **J. Input/Output (I/O) Interfacing Techniques**
+
+I/O interfacing facilitates the connection of input peripherals (e.g., keyboards, ADC modules) and output devices (e.g., LED/LCD modules, DACs) to the central processing infrastructure.
+
+**Methodologies of Interfacing:**
+
+- **Memory-Mapped I/O:** The processor addresses I/O devices as if they were standard memory locations within a unified space.
+- **Isolated (Port-Mapped) I/O:** Utilizes a dedicated, independent address space specifically reserved for I/O port communication.
+- **Functional Implementation:** The **Intel 8255 Programmable Peripheral Interface (PPI)** represents a foundational chip for the simultaneous orchestration of multiple I/O ports.
+
+
+## **K. Programmable Interrupt Controllers**
+
+An interrupt controller functions as a specialized peripheral tasked with the management and prioritization of diverse interrupt signals prior to their delivery to the microprocessor.
+
+- **Architectural Utility:** Essential for robust multitasking, this device resolves simultaneous requests via prioritization and queuing mechanisms to alert the CPU.
+- **Functional Features and Examples:** The **Intel 8259A** facilitates up to 8 vectored priority interrupts, supporting both fixed and rotating priority schemes. It allows for programmatic interrupt masking and can be cascaded to expand system interrupt capacity.
+
+
+## **L. Microprocessor Status Flags**
+
+Flags represent specialized hardware flip-flops that transition between logic states to report the internal status of the processor or the results derived from the preceding arithmetic and logical operations.
+
+| Flag | Description |
+|------|-------------|
+| **Zero Flag (ZF)** | Transitions to 1 when the result of an operation is precisely zero. |
+| **Sign Flag (SF)** | Reflects a negative computational result by transitioning to a high state. |
+| **Carry Flag (CF)** | Activated if an operation generates an overflow from the Most Significant Bit (MSB). |
+| **Parity Flag (PF)** | Sets to high if the resulting binary string contains an even count of logical 1s. |
+| **Auxiliary Carry Flag (AF)** | Essential for Binary-Coded Decimal (BCD) arithmetic operations. |
+
+**Programmatic Utility:** Assembly language programmers utilize these flags to govern program flow via conditional jump and branching instructions.
+
+
+#### 1. Bus Organization
+
+A bus is categorized as a system of parallel architectural lines engineered to facilitate the transfer of data, memory addresses, and synchronization signals between the microprocessor and its internal or external subsystems.
+
+- **Data Bus:** This bidirectional pathway conveys the actual binary information being processed between the central processor, memory subsystems, and I/O peripherals. The architectural width of the data bus (e.g., 8-bit or 16-bit) defines the total volume of data capable of being manipulated within a single operational cycle.
+
+- **Address Bus:** This unidirectional bus transmits specific memory or I/O addresses to pinpoint the exact destination for data retrieval or storage. The bit-width of the address bus determines the maximum addressable memory capacity available to the processor.
+
+- **Control Bus:** This bus conducts the necessary timing and synchronization signals required to coordinate system-wide operations, encompassing Read/Write commands, interrupt requests, Clock signals, and system Reset cycles.
+
+
+#### 2. Instruction Formats
+
+The instruction format delineates the structural layout of bits within a singular instruction, defining how the processor interprets programmatic commands.
+
+**Common Fields:** An instruction format is deconstructed into:
+- **Opcode** — specifying the functional operation
+- **Operand** — representing the source data or its memory location
+- **Addressing Mode** — dictating the methodology for operand evaluation
+
+**Types of Formats:**
+
+| Format | Description |
+|--------|-------------|
+| **Zero-address instructions** | Utilize implicit operands, typically associated with architectural stack operations. |
+| **One-address instructions** | Implement operations using the accumulator and a singular specified operand. |
+| **Two-address instructions** | Require the explicit declaration of two distinct operands. |
+| **Three-address instructions** | Facilitate complex operations by specifying three individual operands. |
+
+
+#### 3. Assembler and Assembler Directives
+
+An assembler serves as a specialized software framework tasked with the translation of human-readable assembly language instructions into executable binary machine code.
+
+**Assembler Directives:** These represent specialized instructions targeted exclusively at the assembler software rather than the processor hardware. They are utilized to delineate memory segments, allocate variables, and define architectural constants.
+
+**Common Directives:**
+
+| Directive | Description |
+|-----------|-------------|
+| `ORG` | Establishes the initial memory offset for program execution. |
+| `DB` (Define Byte) | Reserves and initializes 8-bit data segments. |
+| `DW` (Define Word) | Allocates and populates 16-bit word data within memory. |
+| `EQU` | Facilitates the definition of static constants within the source code. |
+
+
+## **M. Assembly Language Programming Examples for 8051 Microcontroller**
+
+### Example 1: Arithmetic Operation — Multiplying Two 8-bit Data Values
+
+```asm
+ORG 0000H
+MOV A, #05H     ; Source operand 1
+MOV B, #04H     ; Source operand 2
+MUL AB          ; Implementation of product between A and B
+MOV 30H, A      ; Archival of lower-order byte
+MOV 31H, B      ; Archival of higher-order byte
+END
+```
+
+**Operational Result:**
+- `05H × 04H = 14H`
+- Lower byte archived at memory location `30H`
+- Higher byte archived at memory location `31H`
+
+
+### Example 2: Logical Algorithm — Identifying the Maximum Value within an Array
+
+```asm
+ORG 0000H
+MOV R0, #40H        ; Base memory address
+MOV R1, #05H        ; Count of array components
+MOV A, @R0          ; Initialization of largest value with first element
+INC R0
+DEC R1
+BACK:
+    CJNE A, @R0, CHECK
+    SJMP NEXT
+CHECK:
+    JNC NEXT        ; Branch if A exceeds current data component
+    MOV A, @R0      ; Synchronization of maximum value
+NEXT:
+    INC R0
+    DJNZ R1, BACK
+MOV 50H, A          ; Archival of identified maximum value
+END
+```
+
+**Dataset Illustration:**
+
+| Address | Value |
+|---------|-------|
+| 40H | 25H |
+| 41H | 11H |
+| 42H | 7AH |
+| 43H | 39H |
+| 44H | 18H |
+
+Maximum value → archived at memory location `50H`.
+
+### Example 3: Peripheral Interfacing — Square Wave Generation via Port Pin
+
+```asm
+ORG 0000H
+START:
+    SETB P1.0       ; Transition P1.0 to HIGH state
+    ACALL DELAY
+    CLR P1.0        ; Transition P1.0 to LOW state
+    ACALL DELAY
+    SJMP START
+
+DELAY:
+    MOV R2, #255
+HERE1:
+    MOV R3, #255
+HERE2:
+    DJNZ R3, HERE2
+    DJNZ R2, HERE1
+    RET
+END
+```
+
+**System Output:** Continuous square wave output observed at port pin `P1.0`.
+
+
+### Example 4: Logic Control — Quantifying Binary "1" Count in a Singular Byte
+
+```asm
+ORG 0000H
+MOV A, #0AFH        ; Representative data byte
+MOV R0, #08H        ; Count of 8 bits per byte
+MOV R1, #00H        ; Accumulator for bit count
+BACK:
+    RRC A           ; Logical rotate right via carry flag
+    JNC SKIP        ; Branch if carry flag resides at 0 state
+    INC R1          ; Increment tally for detected "1"s
+SKIP:
+    DJNZ R0, BACK
+MOV 40H, R1         ; Archival of final bit count
+END
+```
+
+**Operational Result:**
+- Summation of logic HIGH (1) bits within register A.
+- Final result archived at memory location `40H`.

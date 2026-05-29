@@ -183,6 +183,14 @@ items: [
       
     ],
   },
+  {
+    label: "Microprocessors and Embedded Systems",
+    collapsed: true,
+    items: [
+      { label: "Week 3", link: "/ece/week-3/microprocessors" },
+      
+    ],
+  },
 ],
         },
 
@@ -327,7 +335,7 @@ items: [
     items: [
       { label: "Week 1", link: "/it/week-1/dbms" },
       { label: "Week 2", link: "/it/week-2/dbms" },
-      //{ label: "Week 3", link: "/it/week-1/dbms" },
+      { label: "Week 3", link: "/it/week-3/dbms" },
       //{ label: "Week 4", link: "/it/week-1/dbms" },
       //{ label: "Week 5", link: "/it/week-1/dbms" },
     ],
@@ -411,7 +419,7 @@ items: [
               items: [
                 { label: "Week 1", link: "/mech/week-1/thermodynamics" },
                 { label: "Week 2", link: "/mech/week-2/thermodynamics" },
-                //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
+                //{ label: "Week 3", link: "/mech/week-3/thermodynamics" },
                 //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
                 //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
               ],
@@ -423,6 +431,28 @@ items: [
               items: [
                 { label: "Week 1", link: "/mech/week-1/strength-materials" },
                 { label: "Week 2", link: "/mech/week-2/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+              ],
+            },
+            {
+              label: "Applied Thermodynamics",
+              collapsed: true,
+              items: [
+                { label: "Week 3", link: "/mech/week-3/thermodynamics" },
+                //{ label: "Week 2", link: "/mech/week-2/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+              ],
+            },
+            {
+              label: "Fluid Mechanics",
+              collapsed: true,
+              items: [
+                { label: "Week 3", link: "/mech/week-3/fluid-mechanics" },
+                //{ label: "Week 2", link: "/mech/week-2/strength-materials" },
                 //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
                 //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
                 //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
