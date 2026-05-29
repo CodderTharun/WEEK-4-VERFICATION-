@@ -5,21 +5,18 @@ title: AMPLIFIERS
 An amplifier is an electronic circuit or device used to increase the amplitude, voltage, current, or power level of an input signal without changing the basic shape of the signal. Amplifiers are widely used in communication systems, audio systems, radio transmitters, television circuits, and signal processing applications. The main purpose of an amplifier is to take a weak signal and produce a stronger version of the same signal at the output.
 
 <img
-  src="/EEE/AE1.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE1.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
-The input signal applied to the amplifier is generally very weak. The amplifier uses energy
-from a DC power supply and transfers it to the input signal, thereby increasing the signal
-strength at the output.
+The input signal applied to the amplifier is generally very weak. The amplifier uses energy from a DC power supply and transfers it to the input signal, thereby increasing the signal strength at the output.
 
-Amplifiers are mainly used with analogue signals, although digital amplification is also
-possible in certain applications.
+Amplifiers are mainly used with analogue signals, although digital amplification is also possible in certain applications.
 
 ## TRANSISTOR AS AN AMPLIFIER
 
@@ -31,29 +28,30 @@ Transistors such as:
 
 can be used as amplifiers.
 
-For proper amplification, the transistor must operate in the active region. Therefore, suitable
-DC biasing must be provided.
+For proper amplification, the transistor must operate in the active region. Therefore, suitable DC biasing must be provided.
 
-WHY BIASING IS NECESSARY
+### WHY BIASING IS NECESSARY
 
 <img
-  src="/EEE/AE2.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE2.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
 | Parameter | Cutoff Region | Active Region | Saturation Region |
 |---|---|---|---|
 | Q-Point Location | Below active region | Middle of load line | Above active region |
-| Condition | $V_{BE} < 0.7\ \text{V}$ (Silicon transistor) | Base-emitter forward biased, base-collector reverse biased | Both base-emitter and base-collector junctions forward biased |
+| Condition | $V_{BE} < 0.7\,\text{V}$ (Silicon transistor) | Base-emitter forward biased, base-collector reverse biased | Both base-emitter and base-collector junctions forward biased |
 | Transistor State | OFF state | Linear / Amplifier operation | Fully ON state |
-| Collector Current (IC) | $I_C \approx 0$ | $I_C = \beta I_B$ | $I_C$ is maximum, limited by external circuit $I_C \approx \frac{V_{CC}}{R_C}$ |
+| Collector Current ($I_C$) | $I_C \approx 0$ | $I_C = \beta I_B$ | $I_C$ is maximum, limited by external circuit $\left(I_C \approx \dfrac{V_{CC}}{R_C}\right)$ |
 | Output Behavior | No output current flows | Output is amplified and proportional to input | Maximum current flows, behaves like closed switch |
 | Application | Switch OFF state | Amplifiers | Switch ON state |
+
+---
 
 ## 1. GAIN OF AMPLIFIER
 
@@ -65,69 +63,51 @@ Gain is the ratio of output quantity to input quantity.
 
 Voltage gain is the ratio of output voltage to input voltage.
 
-Formula:
-
-\[
+$$
 A_v = \frac{V_{out}}{V_{in}}
-\]
+$$
 
-If:
+If $V_{out} > V_{in}$, then amplification occurs.
 
-\[
-V_{out} > V_{in}
-\]
-
-then amplification occurs.
-
-### 2.b CURRENT GAIN
+### 1.b CURRENT GAIN
 
 Current gain is the ratio of output current to input current.
 
-Formula:
-
-\[
+$$
 A_i = \frac{I_{out}}{I_{in}}
-\]
+$$
 
 For transistor:
 
-\[
+$$
 A_i = \frac{I_C}{I_B} = \beta
-\]
+$$
 
-### 3.c POWER GAIN
+### 1.c POWER GAIN
 
 Power gain is the ratio of output power to input power.
 
-Formula:
-
-\[
+$$
 A_p = \frac{P_{out}}{P_{in}}
-\]
+$$
 
-Since:
+Since $P = VI$, power gain can also be written as:
 
-\[
-P = VI
-\]
-
-Power gain can also be written as:
-
-\[
+$$
 A_p = A_v \times A_i
-\]
+$$
 
 Thus power gain equals product of voltage gain and current gain.
+
+---
 
 ## INPUT IMPEDANCE
 
 Input impedance is the opposition offered by the amplifier to the input signal.
 
-Formula:
-
-\[
+$$
 Z_{in} = \frac{V_{in}}{I_{in}}
-\]
+$$
 
 A high input impedance is desirable because:
 
@@ -138,42 +118,44 @@ A high input impedance is desirable because:
 
 Output impedance is the opposition offered by the amplifier at the output terminal.
 
-Formula:
-
-\[
+$$
 Z_{out} = \frac{V_{out}}{I_{out}}
-\]
+$$
 
 A low output impedance is desirable because:
 
 - More power is transferred to load
 - Output voltage drop becomes smaller
 
+---
+
 ## SINGLE STAGE AND MULTISTAGE AMPLIFIERS
 
 <img
-  src="/EEE/AE3.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE3.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
-## Single Stage Amplifier (\( n = 1 \))
+### Single Stage Amplifier ($n = 1$)
 
 Contains only one amplifying transistor stage.
 
-## Multistage Amplifier (\( n > 1 \))
+### Multistage Amplifier ($n > 1$)
 
 Contains multiple amplifier stages connected together to obtain higher gain.
 
 Overall gain of multistage amplifier:
 
-\[
+$$
 A_v(\text{total}) = A_{v1} \times A_{v2} \times A_{v3}
-\]
+$$
+
+---
 
 ## 2. CLASSIFICATION OF AMPLIFIERS
 
@@ -183,11 +165,9 @@ Amplifiers are classified based on signal level and mode of operation.
 
 These amplifiers are designed to amplify small input signals.
 
-Main objective:
+**Main objective:** Increase voltage amplitude.
 
-Increase voltage amplitude.
-
-Characteristics:
+**Characteristics:**
 
 - Small output power
 - High voltage gain
@@ -201,93 +181,75 @@ These amplifiers convert DC power from supply into AC power at output.
 
 Power transistors are generally used because large currents are involved.
 
+---
+
 ## 3. CLASS A AMPLIFIER
 
 <img
-  src="/EEE/AE4.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE4.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
-In Class A operation:
+In Class A operation, the transistor conducts for the entire $360^\circ$ of input cycle.
 
-- Transistor conducts for entire \(360^\circ\) of input cycle.
+**Conduction angle:** $360^\circ$
 
-Conduction angle:
+### WORKING
 
-\[
-360^\circ
-\]
-
-## WORKING
-
-The transistor remains in active region throughout the complete cycle.
-
-Therefore:
+The transistor remains in active region throughout the complete cycle. Therefore:
 
 - Entire signal gets amplified
 - Output distortion is very low
 
-## ADVANTAGES
+### ADVANTAGES
 
 - Excellent signal quality
 - Very low distortion
 
-## DISADVANTAGES
+### DISADVANTAGES
 
 - Very low efficiency
 - Large power loss as heat
 
-Maximum efficiency:
+**Maximum efficiency:** $\approx 25\%$ to $30\%$
 
-\[
-\approx 25\% \text{ to } 30\%
-\]
+---
 
 ## 4. CLASS B AMPLIFIER
 
 <img
-  src="/EEE/AE5.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE5.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
-In Class B operation:
+In Class B operation, each transistor conducts for only half cycle of input signal.
 
-- Each transistor conducts for only half cycle of input signal.
+**Conduction angle:** $180^\circ$
 
-Conduction angle:
+### WORKING
 
-\[
-180^\circ
-\]
+One transistor amplifies positive half cycle. Another complementary transistor amplifies negative half cycle. Both outputs combine to produce complete waveform.
 
-## WORKING
-
-One transistor amplifies positive half cycle.
-
-Another complementary transistor amplifies negative half cycle.
-
-Both outputs combine to produce complete waveform.
-
-## ADVANTAGES
+### ADVANTAGES
 
 - Higher efficiency than Class A
 - Less power loss
 
-## DISADVANTAGES
+### DISADVANTAGES
 
 - Crossover distortion occurs near zero crossing
 
-## WHY CROSSOVER DISTORTION OCCURS
+### WHY CROSSOVER DISTORTION OCCURS
 
 Near zero voltage:
 
@@ -295,39 +257,31 @@ Near zero voltage:
 - Small dead region appears
 - Output waveform becomes distorted
 
-Maximum efficiency:
+**Maximum efficiency:** $\approx 78.5\%$
 
-\[
-\approx 78.5\%
-\]
+---
 
-## 4. CLASS AB AMPLIFIER
+## 5. CLASS AB AMPLIFIER
 
 <img
-  src="/EEE/AE6.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE6.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
 Class AB operation combines advantages of Class A and Class B.
 
-Conduction angle:
+**Conduction angle:** More than $180^\circ$ but less than $360^\circ$
 
-\[
-\text{More than } 180^\circ \text{ but less than } 360^\circ
-\]
+### WORKING
 
-## WORKING
+Both transistors conduct slightly beyond half cycle. This removes dead region responsible for crossover distortion.
 
-Both transistors conduct slightly beyond half cycle.
-
-This removes dead region responsible for crossover distortion.
-
-## ADVANTAGES
+### ADVANTAGES
 
 - Reduced distortion
 - Better efficiency than Class A
@@ -335,130 +289,128 @@ This removes dead region responsible for crossover distortion.
 
 Therefore Class AB is widely used in audio amplifiers.
 
-## 5. FEEDBACK AMPLIFIER
+---
 
-A feedback amplifier is an electronic circuit in which a portion of the output signal is
-returned back to the input. This feedback helps control the amplifier’s performance and
-improves stability, gain control, bandwidth, and distortion characteristics.
+## 6. FEEDBACK AMPLIFIER
+
+A feedback amplifier is an electronic circuit in which a portion of the output signal is returned back to the input. This feedback helps control the amplifier's performance and improves stability, gain control, bandwidth, and distortion characteristics.
 
 In a feedback system:
 
 - Output is sampled
-- A fraction is fed back to input using feedback factor \(\beta\)
+- A fraction is fed back to input using feedback factor $\beta$
 - Input is modified based on feedback signal
 
-## BASIC WORKING RELATION
+### BASIC WORKING RELATION
 
 Feedback signal:
 
-\[
+$$
 V_f = \beta V_o
-\]
+$$
 
-Input signal with feedback:
+**Negative feedback** — input signal with feedback:
 
-Negative feedback:
-
-\[
+$$
 V_i = V_s - \beta V_o
-\]
+$$
 
-Positive feedback:
+**Positive feedback** — input signal with feedback:
 
-\[
+$$
 V_i = V_s + \beta V_o
-\]
+$$
 
 Amplifier output:
 
-\[
+$$
 V_o = A \times V_i
-\]
+$$
 
-Substituting:
+**Substituting for Negative feedback:**
 
-Negative feedback:
-
-\[
+$$
 V_o = A(V_s - \beta V_o)
-\]
+$$
 
-\[
+$$
 V_o = AV_s - A\beta V_o
-\]
+$$
 
-\[
+$$
 V_o(1 + A\beta) = AV_s
-\]
+$$
 
-Closed-loop gain:
+**Closed-loop gain (Negative feedback):**
 
-\[
+$$
 A_f = \frac{V_o}{V_s} = \frac{A}{1 + A\beta}
-\]
+$$
 
-Positive feedback:
+**Substituting for Positive feedback:**
 
-\[
+$$
 V_o = A(V_s + \beta V_o)
-\]
+$$
 
-\[
+$$
 V_o = AV_s + A\beta V_o
-\]
+$$
 
-\[
+$$
 V_o(1 - A\beta) = AV_s
-\]
+$$
 
-Closed-loop gain:
+**Closed-loop gain (Positive feedback):**
 
-\[
+$$
 A_f = \frac{A}{1 - A\beta}
-\]
+$$
 
-## UNITY FEEDBACK
+### UNITY FEEDBACK
 
-Unity feedback means \(\beta = 1\).
+Unity feedback means $\beta = 1$.
 
 Negative feedback:
 
-\[
+$$
 A_f = \frac{A}{1 + A}
-\]
+$$
 
 Positive feedback:
 
-\[
+$$
 A_f = \frac{A}{1 - A}
-\]
+$$
 
-## FEEDBACK TYPES
+---
 
-### 1. POSITIVE FEEDBACK
+### FEEDBACK TYPES
+
+#### 1. POSITIVE FEEDBACK
 
 Feedback signal is in phase with input, so it adds to input signal.
 
-Effects:
+**Effects:**
 
 - Increases gain
 - Reduces stability
 - Can lead to oscillations
 - Used in oscillators and signal regeneration
 
-Condition for oscillation (important idea):
+**Condition for oscillation:**
 
-\[
+$$
 A\beta = 1
-\]
+$$
 
 (with correct phase condition)
 
-### 2. NEGATIVE FEEDBACK
+#### 2. NEGATIVE FEEDBACK
 
 Feedback signal is opposite in phase to input, so it subtracts from input signal.
 
-Effects:
+**Effects:**
 
 - Reduces gain
 - Improves stability
@@ -466,19 +418,19 @@ Effects:
 - Increases bandwidth
 - Improves linearity
 
-## FEEDBACK TOPOLOGIES
+---
+
+### FEEDBACK TOPOLOGIES
 
 <img
-  src="/EEE/AE7.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE7.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
-
-## FEEDBACK TOPOLOGIES
 
 | Topology | Signal Sampled | Feedback Applied | Input Connection | Effect |
 |---|---|---|---|---|
@@ -487,369 +439,313 @@ Effects:
 | Current Series | Current | Series with input | Series | High input impedance, high output impedance |
 | Current Shunt | Current | Parallel to input | Shunt | Low input impedance, high output impedance |
 
-## EFFECT OF NEGATIVE FEEDBACK
+### EFFECT OF NEGATIVE FEEDBACK
 
-### GAIN
+**Gain:**
 
-\[
+$$
 A_f = \frac{A}{1 + A\beta}
-\]
+$$
 
 Gain decreases but becomes stable.
 
-### BANDWIDTH
+**Bandwidth:**
 
-\[
+$$
 BW_f = BW(1 + A\beta)
-\]
+$$
 
 Bandwidth increases with feedback.
 
-### DISTORTION
+**Distortion:**
 
-\[
+$$
 D_f = \frac{D}{1 + A\beta}
-\]
+$$
 
 Distortion reduces significantly.
 
-### NOISE
+**Noise:**
 
-\[
+$$
 N_f = \frac{N}{1 + A\beta}
-\]
+$$
 
 Noise gets reduced.
 
-### STABILITY
+**Stability:** Feedback reduces sensitivity to transistor parameter changes (temperature, aging), so stability improves.
 
-Feedback reduces sensitivity to transistor parameter changes (temperature, aging), so stability
-improves.
+---
 
-## 6. OPERATIONAL AMPLIFIER (OP-AMP) BASICS
+## 7. OPERATIONAL AMPLIFIER (OP-AMP) BASICS
 
-An operational amplifier (op-amp) is a high-gain electronic voltage amplifier with two inputs
-and one output. It is mainly used with external feedback components like resistors and
-capacitors to perform mathematical and signal-processing operations such as amplification,
-addition, subtraction, integration, and differentiation. The key idea is that the op-amp itself
-has very high gain but we control it using feedback so that it behaves in a stable and
-predictable way in real circuits.
+An operational amplifier (op-amp) is a high-gain electronic voltage amplifier with two inputs and one output. It is mainly used with external feedback components like resistors and capacitors to perform mathematical and signal-processing operations such as amplification, addition, subtraction, integration, and differentiation. The key idea is that the op-amp itself has very high gain but we control it using feedback so that it behaves in a stable and predictable way in real circuits.
 
-## BASIC STRUCTURE
+### BASIC STRUCTURE
 
 <img
-  src="/EEE/AE8.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE8.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
 An op-amp has three terminals:
 
-1. Inverting input (\(-\))
-2. Non-inverting input (\(+\))
+1. Inverting input ($-$)
+2. Non-inverting input ($+$)
 3. Output
 
 The output depends on the difference between the two input voltages:
 
-\[
+$$
 V_{out} = A(V_{+} - V_{-})
-\]
+$$
 
-Where:
+Where $A$ = open-loop gain (very large in ideal case).
 
-\[
-A = \text{open-loop gain (very large in ideal case)}
-\]
+The op-amp does not amplify each input separately. Instead, it amplifies only the difference between the two inputs. Because the open-loop gain is extremely high, even a very small difference between the inputs can drive the output to saturation if feedback is not used.
 
-The op-amp does not amplify each input separately. Instead, it amplifies only the difference
-between the two inputs. Because the open-loop gain is extremely high, even a very small
-difference between the inputs can drive the output to saturation if feedback is not used.
-
-## WORKING PRINCIPLE
+### WORKING PRINCIPLE
 
 The op-amp amplifies only the difference between the two input signals.
 
-If:
-
-\[
-V_{+} = V_{-} \rightarrow \text{Output} = 0
-\]
-
-(ideal case)
-
-If:
-
-\[
-V_{+} > V_{-} \rightarrow \text{Positive output}
-\]
-
-\[
-V_{+} < V_{-} \rightarrow \text{Negative output}
-\]
+- If $V_{+} = V_{-}$ → Output $= 0$ (ideal case)
+- If $V_{+} > V_{-}$ → Positive output
+- If $V_{+} < V_{-}$ → Negative output
 
 So, op-amp behaves as a differential amplifier.
 
-## IDEAL OP-AMP CHARACTERISTICS
+---
 
-### 1. Infinite open-loop gain:
+### IDEAL OP-AMP CHARACTERISTICS
 
-\[
+**1. Infinite open-loop gain:**
+
+$$
 A \rightarrow \infty
-\]
+$$
 
-This means even a tiny input difference is enough to produce a full-scale output. In
-real life, this gain is very large but not infinite, typically around \(10^5\) to \(10^6\).
+This means even a tiny input difference is enough to produce a full-scale output. In real life, this gain is very large but not infinite, typically around $10^5$ to $10^6$.
 
-### 2. Infinite input impedance:
+**2. Infinite input impedance:**
 
-\[
+$$
 Z_{in} \rightarrow \infty
-\]
+$$
 
-(no input current flows)
+(no input current flows) — The op-amp does not draw current from the signal source. This prevents loading effect and ensures the input signal is not disturbed.
 
-This means the op-amp does not draw current from the signal source. This is
-important because it prevents loading effect and ensures the input signal is not
-disturbed.
+**3. Zero output impedance:**
 
-### 3. Zero output impedance:
-
-\[
+$$
 Z_{out} \rightarrow 0
-\]
+$$
 
-(acts as ideal voltage source)
+(acts as ideal voltage source) — The op-amp can drive any load without losing output voltage. In real op-amps, output impedance is low but not zero.
 
-This means the op-amp can drive any load without losing output voltage. In real
-op-amps, output impedance is low but not zero.
+**4. Infinite bandwidth:** Can amplify all frequencies — an ideal op-amp would amplify DC to infinite frequency equally. In reality, gain decreases as frequency increases due to internal limitations.
 
-### 4. Infinite bandwidth:
+**5. Zero offset voltage:** Output is zero when inputs are equal. There is no unwanted output when both inputs are at the same potential. Practical op-amps show small offset due to internal mismatches.
 
-Can amplify all frequencies an ideal op-amp would amplify DC to infinite frequency equally. In reality, gain
-decreases as frequency increases due to internal limitations.
+---
 
-### 5. Zero offset voltage:
-
-Output is zero when inputs are equal
-
-This means there is no unwanted output when both inputs are at the same potential.
-Practical op-amps show small offset due to internal mismatches.
-
-## 1. VIRTUAL SHORT
+### 1. VIRTUAL SHORT
 
 Due to very high gain and negative feedback:
 
-\[
+$$
 V_{+} \approx V_{-}
-\]
+$$
 
-This does NOT mean the terminals are physically connected. It only means the circuit forces
-both input voltages to be almost equal. This happens because any tiny difference is
-immediately corrected by the high gain output response.
+This does NOT mean the terminals are physically connected. It only means the circuit forces both input voltages to be almost equal. This happens because any tiny difference is immediately corrected by the high gain output response.
 
-## 2. VIRTUAL GROUND
+### 2. VIRTUAL GROUND
 
-If one input is grounded and feedback is used:
+If one input is grounded and feedback is used, that node behaves like ground ($0\,V$) even though not physically connected. Feedback forces the node to maintain nearly zero voltage. Even if current flows into that node, the voltage remains at approximately zero due to op-amp action.
 
-That node behaves like ground (\(0V\)) even though not physically connected.
+### 3. GAIN WITH NEGATIVE FEEDBACK
 
-This happens because feedback forces the node to maintain nearly zero voltage. Even if
-current flows into that node, the voltage remains at approximately zero due to op-amp action.
+Open-loop gain is very high, so feedback controls final gain. Closed-loop gain becomes stable and predictable because it depends mainly on external resistors. This removes dependency on internal transistor parameters.
 
-## 3. GAIN WITH NEGATIVE FEEDBACK
-
-Open-loop gain is very high, so feedback controls final gain.
-
-Closed-loop gain becomes stable and predictable because it depends mainly on external
-resistors. This is very useful because it removes dependency on internal transistor parameters.
-
-## 4. OP-AMP FREQUENCY BEHAVIOR
+### 4. OP-AMP FREQUENCY BEHAVIOR
 
 Gain decreases as frequency increases.
 
-Gain-Bandwidth Product (GBP):
+**Gain-Bandwidth Product (GBP):**
 
-\[
+$$
 GBP = \text{Gain} \times \text{Bandwidth}
-\]
+$$
 
-This is constant for a given op-amp.
+This is constant for a given op-amp. At low frequency, the op-amp gives high gain, but as frequency increases, internal capacitances start limiting the response. This is why high-gain amplifier circuits have lower bandwidth.
 
-At low frequency, the op-amp gives high gain, but as frequency increases, internal
-capacitances start limiting the response. This is why high-gain amplifier circuits have lower
-bandwidth.
+---
 
 ### OP-AMP CONFIGURATIONS
 
 #### 1. INVERTING AMPLIFIER
 
 <img
-  src="/EEE/AE9.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE9.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
-### Circuit:
+**Circuit:** Input applied to inverting terminal through resistor $R_{in}$. Non-inverting terminal is grounded.
 
-Input applied to inverting terminal through resistor \(R_{in}\). Non-inverting terminal is grounded.
+**Formula:**
 
-### Formula:
-
-\[
+$$
 A_v = \frac{V_{out}}{V_{in}} = -\left(\frac{R_f}{R_{in}}\right)
-\]
+$$
 
-### Working:
+**Working:** The input signal is converted into a current through $R_{in}$, and this current flows through feedback resistor $R_f$ to produce output voltage. The negative sign indicates $180^\circ$ phase shift between input and output. This configuration is widely used because gain can be easily controlled using resistor ratio.
 
-The input signal is converted into a current through \(R_{in}\), and this current flows through
-feedback resistor \(R_f\) to produce output voltage. The negative sign indicates \(180^\circ\) phase shift
-between input and output. This configuration is widely used because gain can be easily
-controlled using resistor ratio.
+---
 
-## 2. NON-INVERTING AMPLIFIER
+#### 2. NON-INVERTING AMPLIFIER
 
 <img
-  src="/EEE/AE10.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE10.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
 Input applied to non-inverting terminal.
 
-### Formula:
+**Formula:**
 
-\[
+$$
 A_v = 1 + \left(\frac{R_f}{R_{in}}\right)
-\]
+$$
 
-### Working:
+**Working:** The input signal is directly applied to the non-inverting input, and feedback is used to control gain. The output remains in phase with the input signal, meaning no phase inversion occurs. This is used when high input impedance and signal buffering are required.
 
-The input signal is directly applied to the non-inverting input, and feedback is used to control
-gain. The output remains in phase with the input signal, meaning no phase inversion occurs.
-This is used when high input impedance and signal buffering are required.
+---
 
-## 3. VOLTAGE FOLLOWER (UNITY GAIN)
+#### 3. VOLTAGE FOLLOWER (UNITY GAIN)
 
-### Special case:
+**Special case:**
 
-\[
-R_f = 0,\quad R_{in} \rightarrow \infty
-\]
+$$
+R_f = 0, \quad R_{in} \rightarrow \infty
+$$
 
-\[
+$$
 A_v = 1
-\]
+$$
 
-### Working:
+**Working:** The output is directly connected to the inverting input, forcing output to follow input exactly. It does not amplify voltage, but it provides current gain and impedance matching. This is mainly used as a buffer between two stages.
 
-The output is directly connected to the inverting input, forcing output to follow input exactly.
-It does not amplify voltage, but it provides current gain and impedance matching. This is
-mainly used as a buffer between two stages.
+---
 
-## 4. SUMMING AMPLIFIER (ADDER)
+#### 4. SUMMING AMPLIFIER (ADDER)
 
 <img
-  src="/EEE/AE11.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE11.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
 Multiple inputs applied to inverting terminal.
-Formula:
-Vout = −Rf (V1/R1 + V2/R2 + ...)
-If all resistors equal:
-Vout = − (V1 + V2 + V3 + ...)
-Working:
-Each input signal produces a proportional current, and all currents add at the summing node.
-The op-amp converts this summed current into a single output voltage. This is widely used in
-audio mixing and signal combining circuits.
-5. SUBTRACTOR (DIFFERENTIAL AMPLIFIER)
+
+**Formula:**
+
+$$
+V_{out} = -R_f \left(\frac{V_1}{R_1} + \frac{V_2}{R_2} + \cdots\right)
+$$
+
+If all resistors are equal:
+
+$$
+V_{out} = -(V_1 + V_2 + V_3 + \cdots)
+$$
+
+**Working:** Each input signal produces a proportional current, and all currents add at the summing node. The op-amp converts this summed current into a single output voltage. This is widely used in audio mixing and signal combining circuits.
+
+---
+
+#### 5. SUBTRACTOR (DIFFERENTIAL AMPLIFIER)
 
 <img
-  src="/EEE/AE12.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE12.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
-### Formula:
+**Formula:**
 
-\[
+$$
 V_{out} = \left(\frac{R_f}{R_1}\right)(V_2 - V_1)
-\]
+$$
 
-### Working:
+**Working:** This circuit amplifies the difference between two input signals while rejecting common signals. It is especially useful in removing noise that is present in both signals. It is widely used in sensor signal conditioning.
 
-This circuit amplifies the difference between two input signals while rejecting common
-signals. It is especially useful in removing noise that is present in both signals. It is widely
-used in sensor signal conditioning.
+---
 
-## 6. INTEGRATOR
+#### 6. INTEGRATOR
 
 <img
-  src="/EEE/AE13.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE13.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
-### Formula:
+**Formula:**
 
-\[
+$$
 V_{out} = -\frac{1}{RC} \int V_{in}\, dt
-\]
+$$
 
-### Working:
+**Working:** The capacitor in feedback path accumulates charge over time based on input signal. Because of this, the output becomes the mathematical integral of the input. It converts square waves into triangular waves and is used in analog computation and signal shaping.
 
-The capacitor in feedback path accumulates charge over time based on input signal. Because
-of this, the output becomes the mathematical integral of the input. It converts square waves
-into triangular waves and is used in analog computation and signal shaping.
+---
 
-## 7. DIFFERENTIATOR
+#### 7. DIFFERENTIATOR
 
 <img
-  src="/EEE/AE14.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE14.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
-### Formula:
+**Formula:**
 
-\[
+$$
 V_{out} = -RC \left(\frac{dV_{in}}{dt}\right)
-\]
+$$
 
-### Working:
+**Working:** The capacitor reacts to changes in input voltage, producing current only when the input is changing. This makes output proportional to the rate of change of input signal. It is useful for edge detection and waveform sharpening.
 
-The capacitor reacts to changes in input voltage, producing current only when the input is
-changing. This makes output proportional to the rate of change of input signal. It is useful for
-edge detection and waveform sharpening.
+---
 
 # B. OSCILLATORS
 
@@ -857,29 +753,26 @@ edge detection and waveform sharpening.
 
 An oscillator is basically an amplifier with positive feedback.
 
-### Working idea:
+**Working idea:**
 
 - Noise or small disturbance starts the signal
 - Positive feedback reinforces it
 - Signal keeps sustaining itself
 
-### Condition:
+**Condition:** The circuit must return a portion of output back to input in correct phase and magnitude.
 
-The circuit must return a portion of output back to input in correct phase and magnitude.
+---
 
 ## BARKHAUSEN CRITERION
 
 For sustained oscillations in a feedback system:
 
-1. \(|A\beta| = 1\)
+1. $|A\beta| = 1$
+2. Total phase shift $= 0^\circ$ or $360^\circ$
 
-2. Total phase shift = \(0^\circ\) or \(360^\circ\)
+This means the signal fed back to the input must be exactly equal in magnitude and in correct phase so that it reinforces itself continuously. If the loop gain is less than $1$, oscillations die out due to loss. If it is greater than $1$, oscillations grow and become distorted or unstable. This condition is essential in oscillator design where we intentionally create continuous wave generation without external input.
 
-This means the signal fed back to the input must be exactly equal in magnitude and in correct
-phase so that it reinforces itself continuously. If the loop gain is less than \(1\), oscillations die
-out due to loss. If it is greater than \(1\), oscillations grow and become distorted or unstable. This
-condition is essential in oscillator design where we intentionally create continuous wave
-generation without external input.
+---
 
 ## FREQUENCY OF OSCILLATION
 
@@ -887,203 +780,192 @@ The frequency of oscillation is the frequency at which the circuit naturally pro
 
 It depends on:
 
-- Resistors (\(R\))
-- Capacitors (\(C\))
-- Inductors (\(L\))
+- Resistors ($R$)
+- Capacitors ($C$)
+- Inductors ($L$)
 - Feedback network design
 
 Each oscillator type has its own frequency formula based on its circuit configuration.
 
+---
+
 ## 1. RC PHASE SHIFT OSCILLATOR
 
 <img
-  src="/EEE/AE15.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE15.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
-This oscillator uses resistors and capacitors to produce a phase shift of \(180^\circ\), and an inverting
-amplifier adds another \(180^\circ\), making total phase shift \(360^\circ\).
+This oscillator uses resistors and capacitors to produce a phase shift of $180^\circ$, and an inverting amplifier adds another $180^\circ$, making total phase shift $360^\circ$.
 
-### Frequency:
+**Frequency:**
 
-\[
+$$
 f = \frac{1}{2\pi RC\sqrt{6}}
-\]
+$$
 
-### Working:
+**Working:**
 
 - Three RC networks are used
-- Each provides \(60^\circ\) phase shift
-- Total RC network gives \(180^\circ\)
-- Amplifier provides remaining \(180^\circ\)
+- Each provides $60^\circ$ phase shift
+- Total RC network gives $180^\circ$
+- Amplifier provides remaining $180^\circ$
 
-### Condition:
+**Condition:** Gain must be at least $29$ for oscillation.
 
-Gain must be at least \(29\) for oscillation.
+**Use:** Low-frequency signal generation (audio range)
 
-### Use:
-
-Low-frequency signal generation (audio range)
+---
 
 ## 2. WIEN BRIDGE OSCILLATOR
 
 This oscillator uses a bridge network made of resistors and capacitors.
 
-### Frequency:
+**Frequency:**
 
-\[
+$$
 f = \frac{1}{2\pi RC}
-\]
+$$
 
-### Working:
+**Working:**
 
 - Provides zero phase shift at resonance
 - Positive feedback occurs only at one frequency
 - Produces very stable sine wave
 
-### Condition:
+**Condition:** Gain must be exactly $3$ for sustained oscillation.
 
-Gain must be exactly \(3\) for sustained oscillation
+**Use:** Audio frequency generation and testing instruments
 
-### Use:
-
-Audio frequency generation and testing instruments
+---
 
 ## 3. HARTLEY OSCILLATOR
 
 <img
-  src="/EEE/AE16.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE16.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
 This oscillator uses inductors and capacitors (LC tank circuit).
 
-### Frequency:
+**Frequency:**
 
-\[
+$$
 f = \frac{1}{2\pi \sqrt{L_{eq}C}}
-\]
+$$
 
-Where:
+Where $L_{eq} = L_1 + L_2$ (with mutual inductance if present).
 
-\[
-L_{eq} = L_1 + L_2
-\]
-
-(with mutual inductance if present)
-
-### Working:
+**Working:**
 
 - Feedback is taken from inductor tap
 - LC tank produces oscillations
-- Energy transfers between \(L\) and \(C\)
+- Energy transfers between $L$ and $C$
 
-### Use:
+**Use:** RF signal generation (radio frequency)
 
-RF signal generation (radio frequency)
+---
 
 ## 4. COLPITTS OSCILLATOR
 
 <img
-  src="/EEE/AE17.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE17.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
 This is also an LC oscillator but uses capacitive voltage division.
 
-### Frequency:
+**Frequency:**
 
-\[
+$$
 f = \frac{1}{2\pi \sqrt{LC_{eq}}}
-\]
+$$
 
 Where:
 
-\[
+$$
 C_{eq} = \frac{C_1 \times C_2}{C_1 + C_2}
-\]
+$$
 
-### Working:
+**Working:**
 
 - Feedback is taken from capacitor divider
 - LC tank sets frequency
 - More stable than Hartley in many cases
 
-### Use:
+**Use:** High-frequency RF applications
 
-High-frequency RF applications
+---
 
 ## 5. CRYSTAL OSCILLATOR
 
 <img
-  src="/EEE/AE18.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE18.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
 <img
-  src="/EEE/AE19.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE19.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
 <img
-  src="/EEE/AE20.png"
-  alt="Diagram"
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/analogelectronics/week3/AE20.png"
+  alt="AE1"
   style={{
-    width: "60%",
+    width: "65%",
     display: "block",
-    margin: "auto"
+    margin: "20px auto"
   }}
 />
 
 This oscillator uses a quartz crystal as a frequency-determining element.
 
-## Working:
+**Working:**
 
 - Quartz exhibits piezoelectric effect
 - Vibrates at a very precise natural frequency
-- Acts like a very high \(Q\) resonant circuit
+- Acts like a very high $Q$ resonant circuit
 
-## Frequency:
+**Frequency:** $f$ depends on crystal cut and thickness.
 
-\[
-f \text{ depends on crystal cut and thickness}
-\]
-
-## Advantages:
+**Advantages:**
 
 - Extremely stable frequency
 - Very low drift
 
-## Use:
+**Use:**
 
 - Microcontrollers
 - Clocks
 - Communication systems
+
+---
 
 ## COMPARISON OF OSCILLATORS
 
@@ -1095,160 +977,92 @@ f \text{ depends on crystal cut and thickness}
 | Colpitts | High frequency | $L, C$ | High | RF communication |
 | Crystal | Very stable, fixed frequency | Quartz crystal | Very high | Clocks, microcontrollers |
 
+---
+
 # Problems
 
-## 1. A negative feedback amplifier has an open-loop gain of 500 and a feedback factor of 0.02. Calculate the loop gain and the closed-loop gain of the amplifier.
+## 1. Negative Feedback Amplifier — Loop Gain and Closed-Loop Gain
 
-### Given:
+A negative feedback amplifier has an open-loop gain of 500 and a feedback factor of 0.02. Calculate the loop gain and the closed-loop gain of the amplifier.
 
-\[
-A = 500
-\]
+**Given:**
 
-\[
-\beta = 0.02
-\]
+$$
+A = 500, \quad \beta = 0.02
+$$
 
-### Step 1: Loop Gain
+**Step 1: Loop Gain**
 
-\[
-A\beta = A \times \beta
-\]
+$$
+A\beta = A \times \beta = 500 \times 0.02 = 10
+$$
 
-\[
-A\beta = 500 \times 0.02
-\]
+$$\boxed{A\beta = 10}$$
 
-\[
-A\beta = 10
-\]
+**Step 2: Closed-Loop Gain**
 
-Loop Gain = \(10\)
+$$
+A_f = \frac{A}{1 + A\beta} = \frac{500}{1 + 10} = \frac{500}{11}
+$$
 
-### Step 2: Closed-Loop Gain
-
-\[
-A_f = \frac{A}{1 + A\beta}
-\]
-
-\[
-A_f = \frac{500}{1 + 10}
-\]
-
-\[
-A_f = \frac{500}{11}
-\]
-
-\[
-A_f = 45.45
-\]
-
-Closed-Loop Gain = \(45.45\)
+$$\boxed{A_f = 45.45}$$
 
 ---
 
-## 2. An inverting operational amplifier circuit uses an input resistor of \(5\,k\Omega\) and a feedback resistor of \(100\,k\Omega\). If the input voltage is \(0.2\,V\), calculate the voltage gain and output voltage.
+## 2. Inverting Op-Amp — Voltage Gain and Output Voltage
 
-### Given:
+An inverting operational amplifier circuit uses an input resistor of $5\,k\Omega$ and a feedback resistor of $100\,k\Omega$. If the input voltage is $0.2\,V$, calculate the voltage gain and output voltage.
 
-\[
-R_{in} = 5k\Omega
-\]
+**Given:**
 
-\[
-R_f = 100k\Omega
-\]
+$$
+R_{in} = 5\,k\Omega, \quad R_f = 100\,k\Omega, \quad V_{in} = 0.2\,V
+$$
 
-\[
-V_{in} = 0.2V
-\]
+**Step 1: Calculate Voltage Gain**
 
-### Step 1: Calculate Voltage Gain
+$$
+A_v = -\left(\frac{R_f}{R_{in}}\right) = -\left(\frac{100k}{5k}\right) = -20
+$$
 
-\[
-A_v = -\left(\frac{R_f}{R_{in}}\right)
-\]
+$$\boxed{A_v = -20}$$
 
-\[
-A_v = -\left(\frac{100k}{5k}\right)
-\]
+**Step 2: Calculate Output Voltage**
 
-\[
-A_v = -20
-\]
+$$
+V_{out} = A_v \times V_{in} = -20 \times 0.2
+$$
 
-Voltage Gain = \(-20\)
+$$\boxed{V_{out} = -4\,V}$$
 
-### Step 2: Calculate Output Voltage
+---
 
-\[
-V_{out} = A_v \times V_{in}
-\]
+## 3. Colpitts Oscillator — Equivalent Capacitance and Frequency
 
-\[
-V_{out} = -20 \times 0.2
-\]
+A Colpitts oscillator uses an inductor of $20\,\mu H$ and two capacitors of $100\,pF$ and $400\,pF$. Calculate the equivalent capacitance and the frequency of oscillation.
 
-\[
-V_{out} = -4V
-\]
+**Given:**
 
-Output Voltage = \(-4V\)
+$$
+L = 20\,\mu H = 20 \times 10^{-6}\,H
+$$
 
-## 3. A Colpitts oscillator uses an inductor of \(20\,\mu H\) and two capacitors of \(100\,pF\) and \(400\,pF\). Calculate the equivalent capacitance and the frequency of oscillation.
+$$
+C_1 = 100\,pF = 100 \times 10^{-12}\,F, \quad C_2 = 400\,pF = 400 \times 10^{-12}\,F
+$$
 
-### Given:
+**Step 1: Equivalent Capacitance**
 
-\[
-L = 20\mu H = 20 \times 10^{-6}\ H
-\]
+$$
+C_{eq} = \frac{C_1 \times C_2}{C_1 + C_2} = \frac{100 \times 400}{100 + 400}\,pF = \frac{40000}{500}
+$$
 
-\[
-C_1 = 100pF = 100 \times 10^{-12}\ F
-\]
+$$\boxed{C_{eq} = 80\,pF = 80 \times 10^{-12}\,F}$$
 
-\[
-C_2 = 400pF = 400 \times 10^{-12}\ F
-\]
+**Step 2: Frequency of Oscillation**
 
-### Equivalent capacitance:
+$$
+f = \frac{1}{2\pi\sqrt{LC_{eq}}} = \frac{1}{2\pi\sqrt{20 \times 10^{-6} \times 80 \times 10^{-12}}}
+$$
 
-\[
-C_{eq} = \frac{C_1 \times C_2}{C_1 + C_2}
-\]
-
-\[
-C_{eq} = \frac{100 \times 400}{100 + 400}\ pF
-\]
-
-\[
-C_{eq} = \frac{40000}{500}
-\]
-
-\[
-C_{eq} = 80pF
-\]
-
-\[
-C_{eq} = 80 \times 10^{-12}\ F
-\]
-
-### Frequency of oscillation:
-
-\[
-f = \frac{1}{2\pi\sqrt{LC_{eq}}}
-\]
-
-\[
-f = \frac{1}{2\pi\sqrt{20 \times 10^{-6} \times 80 \times 10^{-12}}}
-\]
-
-\[
-f \approx 3.98\ MHz
-\]
-
-### Answer:
-
-Equivalent capacitance = \(80pF\)
-
-Frequency of oscillation \(\approx 3.98\ MHz\).
+$$\boxed{f \approx 3.98\,MHz}$$
