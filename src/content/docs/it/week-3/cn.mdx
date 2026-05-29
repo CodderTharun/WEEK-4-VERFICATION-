@@ -1,55 +1,1226 @@
 ---
-title: CN - Week 3
-description: Routing and Network Layer
+title: Computer Networks
 ---
 
+## The Network Layer
 
+The Network Layer is the **5th layer from the top** and the **3rd layer from the bottom** of the OSI Model. It is one of the most important layers and plays a key role in data transmission.
 
-## Routing
+The main job of this layer is to maintain the quality of data and transmit it from its source to its destination. It also handles **routing** – choosing the best path to transmit data, not just transmitting the packet. Data is transmitted in the form of **packets** via various logical network pathways between devices.
 
-Routing is the process of forwarding data packets from source to destination.
+---
 
-### Routing Concepts
+## Functions of the Network Layer
 
-- **Router** - Device that forwards packets
-- **Routing Table** - Table at each router with routes
-- **Hop** - Each router a packet passes through
-- **TTL** - Time To Live (prevents infinite loops)
+### A. Assigning Logical Address
+Provides unique IP addresses to devices for identification and communication across networks.
 
-### Routing Protocols
+### B. Packetizing
+Encapsulates data into packets for efficient transmission.
 
-1. **Distance Vector Routing**
-   - RIP (Routing Information Protocol)
-   - EIGRP (Enhanced IGRP)
+### C. Host-to-Host Delivery
+Ensures data is delivered from the sender to the intended receiver across networks.
 
-2. **Link State Routing**
-   - OSPF (Open Shortest Path First)
-   - IS-IS
+### D. Forwarding
+Moves packets from the input to the appropriate output interface in a router, based on the destination address.
 
-3. **Path Vector Routing**
-   - BGP (Border Gateway Protocol)
+### E. Fragmentation and Reassembly
+Splits large packets into smaller fragments for transmission and reassembles them at the destination.
 
-### IP Routing
+### F. Logical Subnetting
+Divides larger networks into smaller subnetworks for better management and routing efficiency.
 
-- Routing based on destination IP address
-- Longest prefix match
-- Default gateway
+### G. Network Address Translation (NAT)
+Maps private IP addresses to a public IP for internet access, conserving IPs and adding security.
 
-### Network Layers Review
+### H. Routing
+Determines the best path for packets to travel to their destination across multiple networks.
 
-- **Physical Layer** - Transmission medium
-- **Data Link Layer** - MAC addressing, switching
-- **Network Layer** - IP routing, logical addressing
+---
 
-### This Week
+## How the Network Layer Works
 
-- Routing algorithms basics
-- Static vs dynamic routing
-- Routing table interpretation
-- Common routing protocols
+1. Every device gets a unique **IP address** to identify it on the network.
+2. Data is packaged into small **packets**, with labels showing source and destination.
+3. **Routers** figure out the best path to send the packets to their destination.
+4. Packets travel step by step through different routers until they reach the right device.
+5. If a packet is too big, it gets broken into smaller pieces to fit through the network.
+6. At the destination, the pieces are put back together into the original data.
+7. If something goes wrong (e.g., destination can't be reached), an **error message** is sent back.
 
-### Practice
+---
 
-- Create routing tables
-- Trace packet routes
-- Understand routing decisions
+## Advantages and Limitations of the Network Layer
+
+### A. Advantages
+- Data is broken down into packets, making transmission easier and eliminating weak points.
+- Routers reduce network congestion by facilitating collision and broadcast domain management.
+- Various forwarding methods allow flexible data packet transmission across network nodes.
+
+### B. Limitations
+- No **flow control** mechanism is provided by the network layer design.
+- Too many datagrams in transit can cause **congestion**, straining network routers.
+- Routers may **lose data packets** if there are too many datagrams.
+- **Indirect control** cannot be implemented since packets are broken up before being sent; effective error control systems are also lacking.
+
+---
+
+## Services Offered by the Network Layer
+
+### A. Assigning Logical Address
+
+Logical addressing is the process of assigning unique IP addresses (IPv4 or IPv6) to devices within a network. Unlike physical (MAC) addresses, logical addresses can change based on network configurations. These addresses are hierarchical and identify both the network and the device within it.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/1.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### B. Packetizing
+
+The source host adds a header containing source/destination addresses and other relevant information to the payload received from the upper layer, then delivers the packet to the data link layer. The destination host receives the packet, decapsulates it, and delivers the payload to the corresponding upper layer protocol.
+
+> Routers in the path are **not allowed** to change either the source or destination address, nor to decapsulate packets unless fragmentation is needed.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/2.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### C. Host-to-Host Delivery
+
+The network layer ensures data is transferred from the source device to the destination device across one or multiple networks. This involves:
+- Determining the destination address.
+- Ensuring data is transmitted without duplication or corruption.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/3.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### D. Forwarding
+
+When a router receives a packet from an attached network, it needs to forward it to another network. Routers use:
+- **Routing tables** – store information about possible paths to different networks.
+- **Forwarding decisions** – based on the destination IP address in the packet header.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/4.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### E. Fragmentation and Reassembly
+
+Some networks have a **Maximum Transmission Unit (MTU)** that defines the largest packet size they can handle. If a packet exceeds the MTU, the network layer:
+- Fragments the packet into smaller pieces.
+- Adds headers to each fragment for identification and sequencing.
+
+At the destination, fragments are reassembled into the original packet.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/5.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### F. Logical Subnetting
+
+Logical subnetting divides a large IP network into smaller, more manageable sub-networks (subnets). Benefits include:
+- Improved network performance by reducing congestion.
+- Enhanced security by isolating parts of a network.
+- Simplified network management and troubleshooting.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/6.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### G. Network Address Translation (NAT)
+
+NAT allows multiple devices in a private network to share a single public IP address for internet access by:
+- Translating private IP addresses to a public IP address for outbound traffic.
+- Reversing the process for inbound traffic.
+
+**Benefits:** conserves IPv4 addresses and enhances security by masking internal IPs.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/7.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### H. Routing
+
+Routing is the process of moving data from one device to another. The network layer specifies strategies to find the best possible route. Routing protocols help routers coordinate with each other and establish communication throughout the network.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/8.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+---
+
+## IP Addressing
+
+An **Internet Protocol (IP) address** is the unique identifying number assigned to every device connected to the internet.
+
+There are two versions:
+- **IPv4** – 32-bit address, space for up to ~4 billion addresses.
+- **IPv6** – 128-bit address, space for trillions of addresses.
+
+IP addresses also come in types: **public, private, static, and dynamic**.
+
+### A. How an IP Address Works
+
+IP addresses are not random – they are mathematically assigned by the **Internet Assigned Numbers Authority (IANA)**. The full range runs from `0.0.0.0` to `255.255.255.255`.
+
+### B. Types of IP Addresses
+
+| Type | Description |
+|------|-------------|
+| **Public** | Assigned to the main device (router) connecting to the ISP; visible to the internet. |
+| **Private** | Assigned by a home/office router to internal devices; not visible externally. |
+| **Static** | Manually configured and fixed; does not change automatically. |
+| **Dynamic** | Automatically assigned by DHCP; may change with each session. |
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/9.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### C. Data Routing
+
+1. Data is divided into packets.
+2. Each packet contains the destination IP address.
+3. Routers read the destination IP and determine the best path.
+4. Routers communicate with each other to maintain efficient routes.
+
+### D. LAN vs. WAN
+
+- **LAN** – Devices communicate directly using local IP addresses; DHCP or static assignment.
+- **WAN** – Data travels through multiple routers across the internet using destination IP addresses.
+
+### E. Network Address Translation (NAT)
+
+Most devices on a home/business network share a single public IP. NAT maps multiple local IPs to a single public IP, conserving addresses and hiding internal network structures.
+
+---
+
+## Real-World Scenario: Sending an Email from New York to Tokyo
+
+1. **Assigning IPs** – Alice's laptop has a private IP (`192.168.1.5`); Bob's computer has a private IP (`192.168.2.4`).
+2. **Connection to Internet** – Both routers have public IPs assigned by their ISPs.
+3. **Sending the Email** – Alice's email is packaged into data packets with source and destination IPs.
+4. **Routing the Packets** – Packets pass through multiple routers globally (e.g., Canada, Germany, Japan).
+5. **Reaching Bob** – Packets arrive at Bob's email server in Tokyo and are reassembled.
+6. **Bob Accesses the Email** – Bob's computer requests the email from the server via his local network IP.
+
+> Both routers perform **NAT** to translate between private and public IPs. If public IPs are dynamic, **DNS** helps keep domain-to-IP mappings current.
+
+---
+
+## IPv4
+
+IPv4 is the fourth version of the Internet Protocol, first deployed in 1982. It uses **32-bit binary numbers**, represented as four octets (e.g., `192.168.1.1`), each ranging from 0–255.
+
+### A. Reserved IP Address Classes
+
+| Address | Purpose |
+|---------|---------|
+| `0.0.0.0` | Default network (non-routeable meta address) |
+| `127.0.0.1` | Loopback address (device identifies itself) |
+| `169.254.0.1–169.254.254.254` | Auto-assigned when DHCP fails |
+| `255.255.255.255` | Broadcast to all devices on the network |
+
+### B. Subnet Classes
+
+| Class | IP Range |
+|-------|----------|
+| **A** | `10.0.0.0` – `10.255.255.255` |
+| **B** | `172.16.0.0` – `172.31.255.255` |
+| **C** | `192.168.0.0` – `192.168.255.255` |
+| **D (Multicast)** | `224.0.0.0` – `239.255.255.255` |
+| **E (Experimental)** | `240.0.0.0` – `254.255.255.254` |
+
+---
+
+## IP Address vs. MAC Address
+
+| Feature | IP Address | MAC Address |
+|---------|-----------|-------------|
+| **Purpose** | Identifies network connection | Identifies physical device |
+| **Assigned by** | ISP | Manufacturer |
+| **Layer** | Network Layer | Data Link Layer |
+| **Size** | 4 bytes (IPv4) or 16 bytes (IPv6) | 6-byte hexadecimal |
+| **Mutability** | Can change dynamically | Static |
+| **Visibility** | Easily discoverable | Only visible on LAN |
+
+---
+
+## Security Threats Related to IP Addresses
+
+### A. Threats
+- Tracking physical location via IP address.
+- Targeting your network with a **DDoS attack**.
+- Using your IP to download illegal content.
+- **Online stalking** and **social engineering**.
+
+### B. 5 Ways to Protect Your IP Address
+
+1. Use a **VPN**.
+2. Use a **proxy server**.
+3. Have your ISP use **dynamic IP addresses**.
+4. Employ a **NAT firewall** to hide your private IP.
+5. **Reset your modem** to potentially change your IP.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/10.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+---
+
+## IPv6
+
+**Internet Protocol version 6 (IPv6)** was developed by the IETF to address IPv4 exhaustion. It uses a **128-bit address** ($2^{128}$ address space) in hexadecimal format separated by colons (`:`).
+
+### A. IPv6 Address Format
+
+- **8 groups**, each representing 2 bytes (16 bits).
+- Each hex digit is 4 bits.
+- Delimiter: colon (`:`).
+
+### B. Why IPv6 Was Needed
+
+| Reason | Description |
+|--------|-------------|
+| **Large Address Space** | 128-bit vs. 32-bit – a massive increase. |
+| **Better Header Format** | Options separated from the base header; speeds up routing. |
+| **New Options** | Supports additional functionalities. |
+| **Extensibility** | Designed to allow protocol extension. |
+| **Resource Allocation** | Traffic class and flow label fields for real-time audio/video. |
+| **Security** | Encryption and authentication options for confidentiality and integrity. |
+
+### C. IPv6 Addressing Methods
+
+- **Unicast** – Identifies a single interface; packet delivered to that specific interface.
+- **Multicast** – Used by multiple hosts in a group; packet distributed to all interfaces in the group.
+- **Anycast** – Assigned to a group of interfaces; packet delivered to only the nearest one.
+
+---
+
+## Introduction to Subnetting
+
+**Subnetting** is the process of dividing a large network into smaller, more manageable logical segments called **subnets**. Each subnet operates as its own isolated communication space.
+
+### A. Why Subnetting Is Important
+
+Consider a company using a Class C network (`192.168.1.0/24`) with 256 addresses but only 80 devices across Sales (20), HR (10), and IT (50).
+
+#### 1. Without Subnetting
+- 176 IP addresses are wasted.
+- All departments share the same network, causing congestion.
+- No logical separation – security risks exist between departments.
+
+#### 2. With Subnetting
+
+| Department | Subnet | IPs Allocated |
+|------------|--------|---------------|
+| Sales | `192.168.1.0/27` | 32 IPs |
+| HR | `192.168.1.32/28` | 16 IPs |
+| IT | `192.168.1.48/26` | 64 IPs |
+
+Benefits: IP efficiency, better performance, improved security, reduced broadcast domains.
+
+---
+
+## Key Concepts in Subnetting
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/11.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### A. IPv4 Address Structure
+
+An IPv4 address is a **32-bit** label made of two parts:
+- **Network Portion (Network ID)** – Identifies the network.
+- **Host Portion (Host ID)** – Identifies a specific device within the network.
+
+### B. Classful IP Addressing
+
+| Class | Network ID Bits | Host ID Bits |
+|-------|----------------|-------------|
+| A | 8 | 24 |
+| B | 16 | 16 |
+| C | 24 | 8 |
+
+### C. Subnet Mask
+
+A **32-bit number** that separates the network portion from the host portion:
+- `1`s → network bits
+- `0`s → host bits
+
+Example: `255.255.255.0` = `/24`
+
+### D. CIDR Notation
+
+**Classless Inter-Domain Routing (CIDR)** uses slash notation: `/n` where `n` = number of network bits.
+
+Example: `192.168.1.0/24` → first 24 bits are network ID.
+
+---
+
+## How Subnetting Works
+
+Subnetting **borrows bits from the host portion** to create additional subnets.
+
+**Example:** Subnetting `193.1.2.0/24` into two subnets (borrow 1 bit):
+
+### A. Subnet 1 (Subnet bit = 0)
+
+- Range: `193.1.2.0` – `193.1.2.127`
+- Network Address: `193.1.2.0`
+- Broadcast: `193.1.2.127`
+- Usable Hosts: 126
+- CIDR: `/25`
+
+### B. Subnet 2 (Subnet bit = 1)
+
+- Range: `193.1.2.128` – `193.1.2.255`
+- Network Address: `193.1.2.128`
+- Broadcast: `193.1.2.255`
+- Usable Hosts: 126
+- CIDR: `/25`
+
+### C. Key Formulas
+
+| Formula | Description |
+|---------|-------------|
+| $2^n$ | Number of subnets ($n$ = borrowed bits) |
+| $2^h - 2$ | Usable hosts per subnet ($h$ = remaining host bits) |
+
+> As subnets increase (more bits borrowed), usable hosts per subnet decrease.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/12.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+---
+
+## Subnetting Example Problems
+
+### A. Example 1
+
+Network: `201.35.2.0`, Netmask: `255.255.255.192` (2 bits borrowed, 64 addresses per subnet)
+
+| Subnet | Host Range | Broadcast |
+|--------|-----------|-----------|
+| `201.35.2.0/26` | `.1` – `.62` | `.63` |
+| `201.35.2.64/26` | `.65` – `.126` | `.127` |
+| `201.35.2.128/26` | `.129` – `.190` | `.191` |
+| `201.35.2.192/26` | `.193` – `.254` | `.255` |
+
+- `201.35.2.129` → **Valid host** (in Subnet 3 range)
+- `201.35.2.191` → **Invalid** (broadcast address of Subnet 3)
+- `201.35.2.255` → **Invalid** (broadcast address of Subnet 4)
+
+### B. Example 2
+
+Network: `201.32.64.0`, Netmask: `255.255.255.248` (5 bits borrowed, 8 addresses per subnet)
+
+A valid broadcast address has all host bits set to `1` (last 3 bits = `111`).
+
+- `201.32.64.135` → `10000111` → host bits `111` → **Valid broadcast**
+- `201.32.64.240` → `11110000` → host bits `000` → **NOT a valid broadcast** ✓
+- `201.32.64.207` → `11001111` → host bits `111` → **Valid broadcast**
+- `201.32.64.231` → `11100111` → host bits `111` → **Valid broadcast**
+
+---
+
+## Role of Subnet Mask
+
+A subnet mask helps network devices determine:
+- Whether a destination device is on the **same local network** (direct communication).
+- Or on a **different network** (requires a router).
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/13.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/14.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### A. Bitwise AND Operation
+
+To find the Network ID, perform a **bitwise AND** between the IP address and the subnet mask.
+
+**Example:** IP `200.1.2.20`, Subnet Mask `255.255.255.192` (`/26`)
+
+$$
+\begin{align}
+\text{IP:}   &\quad 11001000.00000001.00000010.00010100 \\
+\text{Mask:} &\quad 11111111.11111111.11111111.11000000 \\
+\text{AND:}  &\quad 11001000.00000001.00000010.00000000 \rightarrow \texttt{200.1.2.0}
+\end{align}
+$$
+
+---
+
+## Advantages and Disadvantages of Subnetting
+
+### A. Advantages
+
+- **Enhanced Security** – Logical isolation between network segments.
+- **Better Performance** – Reduces broadcast traffic and congestion.
+- **Efficient IP Use** – Minimizes wasted IP addresses.
+- **QoS Support** – Allows prioritizing specific subnets/applications.
+- **Easier Management** – Smaller networks are simpler to maintain.
+- **Scalability** – New subnets can be added without re-architecting the network.
+
+### B. Disadvantages
+
+- **Increased Complexity** – Requires careful planning and configuration.
+- **Additional IP Waste** – Each subnet still reserves 2 addresses (Network ID + Broadcast ID).
+- **Increased Cost** – Requires additional hardware (routers, switches, bridges).
+
+---
+
+## How to Calculate Hosts in a Subnet
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/15.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### A. Core Formulas
+
+$$
+\text{Usable Hosts per Subnet} = 2^h - 2 \quad (h = \text{number of host bits})
+$$
+
+$$
+\text{Total Number of Subnets} = 2^s \quad (s = \text{number of borrowed bits})
+$$
+
+### B. Examples
+
+| CIDR | Network Bits | Host Bits | Usable Hosts | Subnets (from /24) |
+|------|-------------|----------|-------------|-------------------|
+| `/25` | 25 | 7 | 126 | 2 |
+| `/26` | 26 | 6 | 62 | 4 |
+| `/27` | 27 | 5 | 30 | 8 |
+
+---
+
+## Steps to Analyze an IP Address
+
+### A. Step 1: Identify the Class
+
+| Class | First Octet Range | Default Mask |
+|-------|-----------------|-------------|
+| A | 1–126 | `255.0.0.0` (`/8`) |
+| B | 128–191 | `255.255.0.0` (`/16`) |
+| C | 192–223 | `255.255.255.0` (`/24`) |
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/16.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### B. Step 2: Find the Network IP (Bitwise AND)
+
+#### 1. Example – IP `9.1.5.31` (Class A)
+
+$$
+\begin{align}
+  &\texttt{00001001.00000001.00000101.00011111} \quad (9.1.5.31) \\
+\& \; &\texttt{11111111.00000000.00000000.00000000} \quad (255.0.0.0) \\
+= \; &\texttt{00001001.00000000.00000000.00000000} \rightarrow \texttt{9.0.0.0}
+\end{align}
+$$
+
+Host bits $= 24 \Rightarrow$ Usable Hosts $= 2^{24} - 2$ | Broadcast $= \texttt{9.255.255.255}$
+
+#### 2. Example – IP `201.20.30.40` (Class C)
+
+$$
+\begin{align}
+  &\texttt{11001001.00010100.00011110.00101000} \quad (201.20.30.40) \\
+\& \; &\texttt{11111111.11111111.11111111.00000000} \quad (255.255.255.0) \\
+= \; &\texttt{11001001.00010100.00011110.00000000} \rightarrow \texttt{201.20.30.0}
+\end{align}
+$$
+
+Host bits $= 8 \Rightarrow$ Usable Hosts $= 2^8 - 2 = 254$ | Broadcast $= \texttt{201.20.30.255}$
+
+---
+
+## Classless Inter-Domain Routing (CIDR)
+
+CIDR is a modern method for IP address allocation that moves away from rigid class-based addressing.
+
+**Format:** `a.b.c.d/n`
+- `n` = number of network prefix bits
+- Remaining $32 - n$ bits = host identifier
+
+### A. Why CIDR Was Needed
+
+Under classful addressing, an organization needing 16,384 hosts would have to purchase a Class B block (65,534 hosts), wasting 49,150 addresses. CIDR allows IANA to allocate exactly the needed block size.
+
+### B. Key Advantages of CIDR
+
+- **Efficient IP Use** – Allocates precisely sized blocks, reducing waste.
+- **Flexibility** – Supports diverse and complex network designs.
+- **Route Aggregation (Supernetting)** – Multiple smaller routes merged into one, reducing routing table sizes.
+- **Reduced Administrative Overhead** – Simplifies IP management.
+
+### C. Disadvantages of CIDR
+
+- **Complexity** – Requires additional training and expertise.
+- **Compatibility Issues** – Some legacy devices may not support CIDR.
+- **Security Concerns** – Arbitrary block sizes can complicate firewall rules and ACLs.
+
+### D. Rules for Valid CIDR Blocks
+
+1. **Contiguity** – All IP addresses must be sequential with no gaps.
+2. **Power of 2** – Total addresses must be $2^n$.
+3. **Divisibility** – First IP must be evenly divisible by the block size (least significant host bits = all `0`s).
+
+**Example:** Is `100.1.2.32` – `100.1.2.47` a valid CIDR block?
+- Contiguous? ✅
+- Total $= 16 = 2^4$ ✅
+- $32 \div 16 = 2$ (no remainder), last 4 bits of 32 = `0000` ✅
+- **Valid CIDR block: `100.1.2.32/28`** ✅
+
+---
+
+## What Is Routing?
+
+**Routing** is the process of selecting the best path for IP packets to travel from source to destination across one or more networks. It is handled primarily by **routers**.
+
+### A. What Is a Router?
+
+A router is a network device that:
+- Operates at **Layer 3 (Network Layer)** of the OSI Model.
+- Forwards data packets between different networks.
+- Directs traffic based on destination IP address.
+- Determines the most efficient path using routing metrics.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/17.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+---
+
+## Types of Routing
+
+| Type | Description |
+|------|-------------|
+| **Static Routing** | Manually configured by administrators; complete control but not suitable for large networks. |
+| **Dynamic Routing** | Automatically updates routes using algorithms; preferred for modern complex networks. |
+| **Default Routing** | Sends packets to a pre-defined gateway if no specific route is found; commonly used for single exit points. Default route = `0.0.0.0/0`. |
+
+---
+
+## Routing Tables
+
+A **routing table** is a data structure used by routers to determine where to forward packets.
+
+### A. Key Fields in a Routing Table
+
+| Field | Description |
+|-------|-------------|
+| **Network ID / Destination** | IP network address of the destination |
+| **Subnet Mask** | Used to match destination IP to network ID |
+| **Next Hop** | IP address of the next router |
+| **Outgoing Interface** | Local interface through which packet exits |
+| **Metric** | Cost value (hop count, bandwidth) to choose best path |
+| **Default Route** | `0.0.0.0/0` – used when no specific route matches |
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/18.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### B. How Routing Tables Are Populated
+
+- **Directly Connected Networks** – Added automatically.
+- **Static Routing** – Manually configured by an administrator.
+- **Dynamic Routing** – Built automatically via routing protocols (OSPF, EIGRP, BGP).
+
+### C. Route Determination Process
+
+1. Extract destination IP from the packet.
+2. Perform bitwise AND with subnet masks of all table entries.
+3. **Single match** → forward via corresponding interface.
+4. **Multiple matches** → use **Longest Prefix Match** (most specific route).
+5. **No match** → forward to default route interface.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/19.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/20.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+---
+
+## Routing Protocol Types
+
+### A. Distance Vector Routing (DVR)
+
+- Routers share their **entire routing table** with adjacent neighbors periodically.
+- Uses the **Bellman-Ford Algorithm**.
+- Example: **RIP** (uses hop count as metric).
+
+**Bellman-Ford Equation:**
+
+$$
+D_x(y) = \min_v \{ C(x,v) + D_v(y) \}
+$$
+
+- $D_x(y)$ = least cost from router $x$ to destination $y$
+- $C(x,v)$ = cost from router $x$ to neighbor $v$
+- $D_v(y)$ = neighbor $v$'s estimated cost to $y$
+
+#### 1. Advantages of DVR
+- Finds shortest paths effectively.
+- Simple to implement; applicable across LAN, MAN, WAN.
+
+#### 2. Disadvantages of DVR
+- Slower convergence.
+- Susceptible to **Count-to-Infinity** problem (routing loops).
+- Higher bandwidth use due to full-table broadcasts.
+- Larger routing tables in big networks.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/21.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### B. Link State Routing
+
+- Routers advertise **only their directly connected links** when changes occur.
+- Routers build a complete topology map.
+- Uses **Dijkstra's Algorithm**.
+- Examples: **OSPF**, **IS-IS**.
+- Supports variable-length subnet masks → highly scalable.
+
+### C. Hybrid / Advanced Protocols
+
+| Protocol | Description |
+|---------|-------------|
+| **EIGRP** | Cisco-proprietary; combines distance-vector and link-state features; fast convergence. |
+| **BGP** | Path-vector protocol for inter-domain routing between Autonomous Systems on the global internet. |
+
+---
+
+## Key Routing Metrics
+
+| Metric | Description |
+|--------|-------------|
+| **Hop Count** | Number of routers a packet must traverse. |
+| **Bandwidth** | Available capacity of a link (higher = preferred). |
+| **Delay** | Time for a packet to travel source to destination (lower = preferred). |
+| **Load** | Amount of traffic on a path (less = preferred). |
+| **Reliability** | Stability and availability of a link (more = preferred). |
+
+---
+
+## The Transport Layer
+
+The Transport Layer handles getting data from one application on one computer to another application on another computer. The two key protocols are **TCP** and **UDP**.
+
+---
+
+## TCP – Transmission Control Protocol
+
+TCP is the **reliable, connection-oriented** delivery protocol of the internet. It guarantees data arrives completely, in order, and without errors.
+
+### A. How TCP Works
+
+#### 1. Three-Way Handshake (Connection Establishment)
+
+```
+Client                          Server
+  |--- SYN (seq=x) ------------->|
+  |<-- SYN-ACK (seq=y, ack=x+1) -|
+  |--- ACK (ack=y+1) ------------>|
+        Connection Established
+```
+
+- **SYN** – Client says "I want to connect" and sends its initial sequence number.
+- **SYN-ACK** – Server acknowledges and sends its own sequence number.
+- **ACK** – Client confirms receipt; connection is established.
+
+#### 2. Reliability Mechanisms
+
+| Mechanism | Description |
+|-----------|-------------|
+| **Acknowledgements (ACKs)** | Receiver confirms each segment; sender retransmits if no ACK received. |
+| **Sequence Numbers** | Allow correct ordering even if segments arrive out of order. |
+| **Checksums** | Detect corrupted data; discarded segments trigger retransmission. |
+| **Flow Control (Sliding Window)** | Receiver advertises available buffer space; sender limits data accordingly. |
+| **Congestion Control** | Detects network congestion and slows sending rate (slow start, fast retransmit). |
+| **Segmentation** | Breaks large data into segments ≤ Maximum Segment Size (MSS). |
+
+### B. TCP Header Fields (20–60 bytes)
+
+| Field | Size | Description |
+|-------|------|-------------|
+| Source Port | 16 bits | Sending application port |
+| Destination Port | 16 bits | Receiving application port |
+| Sequence Number | 32 bits | Byte number of first byte in segment |
+| Acknowledgement Number | 32 bits | Next sequence number expected |
+| Data Offset | 4 bits | Length of TCP header |
+| Reserved | 6 bits | Future use |
+| Control Flags | 6 bits | URG, ACK, PSH, RST, SYN, FIN |
+| Window Size | 16 bits | Receiver's available buffer (flow control) |
+| Checksum | 16 bits | Error detection |
+| Urgent Pointer | 16 bits | Points to end of urgent data (if URG set) |
+| Options | Variable | MSS, window scaling, timestamps, etc. |
+
+### C. When to Use TCP
+
+- **Web Browsing (HTTP/HTTPS)** – All HTML, CSS, and images must arrive perfectly.
+- **Email (SMTP, IMAP, POP3)** – Every character and attachment must be complete.
+- **File Transfer (FTP, SFTP)** – A single corrupt bit ruins the file.
+- **Remote Access (SSH, Telnet)** – Every keystroke must be received correctly.
+- **Online Banking** – Transactions require perfect accuracy.
+
+---
+
+## UDP – User Datagram Protocol
+
+UDP is the **connectionless, best-effort** protocol. It prioritizes speed and low overhead over reliability.
+
+### A. How UDP Works
+
+- **No handshake** – Data is sent immediately without connection setup.
+- **No ACKs** – Sender doesn't wait for confirmation.
+- **No retransmission** – Lost datagrams stay lost.
+- **No ordering guarantee** – Datagrams may arrive out of order.
+- **No flow or congestion control** – Data is sent as fast as the application dictates.
+- **Minimal overhead** – Extremely fast processing.
+
+### B. UDP Header (Always 8 bytes)
+
+| Field | Size | Description |
+|-------|------|-------------|
+| Source Port | 16 bits | Sending application port |
+| Destination Port | 16 bits | Receiving application port |
+| Length | 16 bits | Length of header + data |
+| Checksum | 16 bits | Error detection (optional in IPv4, mandatory in IPv6) |
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/25.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### C. When to Use UDP
+
+- **VoIP (Zoom, Skype)** – Missing milliseconds of audio is better than choppy delays.
+- **Online Gaming** – Latency matters more than perfect delivery.
+- **Live Video Streaming** – A dropped frame is better than buffering.
+- **DNS** – Small, fast queries; retry is quick if one fails.
+- **SNMP** – Small status queries for network device monitoring.
+- **DHCP** – Broadcast-based IP assignment; speed and simplicity are key.
+
+---
+
+## TCP vs. UDP Summary
+
+| Feature | TCP | UDP |
+|---------|-----|-----|
+| Connection | Connection-oriented | Connectionless |
+| Reliability | Guaranteed delivery | Best effort |
+| Ordering | In-order delivery | No ordering guarantee |
+| Flow Control | Yes (sliding window) | No |
+| Congestion Control | Yes | No |
+| Speed | Slower (overhead) | Faster (minimal overhead) |
+| Header Size | 20–60 bytes | 8 bytes |
+| Use Cases | Web, email, file transfer, SSH | VoIP, gaming, streaming, DNS |
+
+---
+
+## TCP Three-Way Handshake – Detailed
+
+### A. TCP Segment Structure
+
+| Field | Size | Description |
+|-------|------|-------------|
+| Source/Destination Port | 16 bits | Identifies sending/receiving application ports |
+| Sequence Number | 32 bits | Byte number of first byte in this segment |
+| Acknowledgement Number | 32 bits | Next byte number expected from the other side |
+| Header Length (HLEN) | 4 bits | TCP header length in 4-byte words (range 5–15) |
+| Control Flags | $6 \times 1$ bit | URG, ACK, PSH, RST, SYN, FIN |
+| Window Size | 16 bits | Receiver's available buffer (flow control) |
+| Checksum | 16 bits | Mandatory error control |
+| Urgent Pointer | 16 bits | Valid when URG flag is set |
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/26.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### B. Handshake Steps with Parameters
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/27.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+#### 1. Step 1 – Client SYN
+- $\text{Seq} = 521$ (random initial sequence number)
+- $\text{SYN} = 1$
+- $\text{MSS} = 1460 \text{ B}$ (client's max segment size)
+- $\text{Window} = 14600 \text{ B}$
+
+#### 2. Step 2 – Server SYN-ACK
+- $\text{Seq} = 2000$ (server's random initial sequence number)
+- $\text{SYN} = 1$, $\text{ACK} = 1$
+- $\text{MSS} = 500 \text{ B}$ (agreed MSS $= \min(1460, 500) = 500 \text{ B}$)
+- $\text{Window} = 10000 \text{ B}$
+- $\text{Ack} = 522$ ($521 + 1$; SYN consumes 1 sequence number)
+- Sender can transmit $10000 \div 500 = 20$ packets
+
+#### 3. Step 3 – Client ACK
+- $\text{Seq} = 522$
+- $\text{ACK} = 1$
+- $\text{Ack} = 2001$ ($2000 + 1$)
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/29.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### C. Key Takeaways
+
+- **Why 3-way?** Ensures both sides are ready, agree on sequence numbers, and confirm receipt of SYN packets.
+- **Full-Duplex** – Both sides can send and receive simultaneously.
+- **MSS Negotiation** – Both parties agree on the minimum MSS to prevent fragmentation.
+- **SYN and FIN flags each consume 1 sequence number**, even without payload data.
+
+---
+
+## TCP Connection Termination
+
+### A. Graceful Release – Four-Way Handshake
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/30.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+```
+Client                          Server
+  |--- FIN ---------------------->|  (Client sends FIN, enters FIN_WAIT_1)
+  |<-- ACK -----------------------|  (Server enters CLOSE_WAIT)
+  |                               |  (Server sends remaining data if any)
+  |<-- FIN -----------------------|  (Server sends FIN, enters LAST_ACK)
+  |--- ACK ---------------------->|  (Client enters TIME_WAIT)
+  |    [waits 2×MSL, then CLOSED] |  (Server enters CLOSED on ACK receipt)
+```
+
+#### 1. TCP States – Client Side
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/31.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+| State | Trigger |
+|-------|---------|
+| `ESTABLISHED` | Initial state |
+| `FIN_WAIT_1` | Client sends FIN |
+| `FIN_WAIT_2` | Client receives ACK from server |
+| `TIME_WAIT` | Client receives FIN from server |
+| `CLOSED` | Timer expires |
+
+#### 2. TCP States – Server Side
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/32.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+| State | Trigger |
+|-------|---------|
+| `ESTABLISHED` | Initial state |
+| `CLOSE_WAIT` | Server receives FIN from client |
+| `LAST_ACK` | Server sends FIN |
+| `CLOSED` | Server receives final ACK |
+
+> **TIME_WAIT** purpose: ensures the final ACK arrives at the server, and prevents stale packets from a previous connection from interfering with a new one. Duration: typically $2 \times \text{MSL}$ (30s, 1 min, or 2 min).
+
+### B. Abrupt Release – RST Segment
+
+An **RST (Reset)** segment immediately terminates a connection. Reasons include:
+- Receiving a non-SYN segment for a non-existing connection.
+- Receiving a segment with an invalid header.
+- Lack of resources or remote host becoming unreachable.
+
+---
+
+## Congestion Control
+
+**Congestion** occurs when data volume exceeds network capacity – analogous to a traffic jam – causing delays and packet loss.
+
+### A. Effects of Effective Congestion Control
+
+- Improved network stability.
+- Reduced latency and packet loss.
+- Enhanced throughput.
+- Fairness in resource allocation.
+- Better user experience.
+- Prevention of **congestion collapse**.
+
+---
+
+## Congestion Control Algorithms
+
+### A. Leaky Bucket Algorithm
+
+Converts **bursty, irregular traffic** into a **steady, uniform stream**.
+
+**Analogy:** A bucket with a constant-sized hole – no matter how fast water is poured in, it drains at a constant rate. Overflow is discarded.
+
+#### 1. How it works
+1. Packets are placed into a finite queue (the "bucket").
+2. Packets are transmitted at a **constant, predetermined rate**.
+3. If the queue is full, excess packets are **dropped**.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/33.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+#### 2. Disadvantages
+- Rigid output rate regardless of available bandwidth.
+- Inefficient when the network has spare capacity.
+
+### B. Token Bucket Algorithm
+
+Offers more flexibility, especially for **bursty traffic**.
+
+#### 1. How it works
+1. **Tokens** are generated at a fixed rate and placed into a bucket.
+2. The bucket has a **maximum capacity** – excess tokens are discarded.
+3. To send a packet, it must **consume one token**.
+4. If tokens are available, the packet is sent immediately.
+5. If no tokens are available, the packet must wait (or is dropped).
+6. Accumulated tokens allow **bursts** to be sent at full network rate.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/IT/CN/week3/34.png"
+  alt="Week 3 CN Diagram"
+  style={{
+    width: "100%",
+    height: "100%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+**Advantage over Leaky Bucket:** Allows controlled bursts when tokens have accumulated, making it more efficient for applications with infrequent large bursts.
+
+---
+
+## Advantages and Disadvantages of Congestion Control
+
+### A. Advantages
+
+- Stable network operation.
+- Reduced delays and less data loss.
+- Optimal resource utilization and throughput.
+- Scalable to increasing traffic volumes.
+- Adaptive to changing network conditions.
+
+### B. Disadvantages
+
+- Implementation complexity.
+- Additional overhead from control mechanisms.
+- Algorithm sensitivity to specific network conditions.
+- Difficulty in fairly allocating resources for critical applications.
+- Effectiveness limited by outdated network infrastructure.
