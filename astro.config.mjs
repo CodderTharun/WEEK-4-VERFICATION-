@@ -297,6 +297,17 @@ items: [
       //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
     ],
   },
+   {
+    label: "MCES",
+    collapsed: true,
+    items: [
+      { label: "Week 3", link: "/eee/week-3/mces" },
+      //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
+    ],
+  },
  // {
   //  label: "Power Electronics ",
    // collapsed: true,
