@@ -258,7 +258,7 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 2", link: "/eee/week-2/analog-electronics" },
-      //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
+      { label: "Week 3", link: "/eee/week-3/analog-electronics" },
       //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
       //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
       //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
@@ -280,6 +280,17 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 2", link: "/eee/week-2/electrical-machines" },
+      //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
+    ],
+  },
+  {
+    label: "Control Sytems",
+    collapsed: true,
+    items: [
+      { label: "Week 3", link: "/eee/week-3/control-systems" },
       //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
       //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
       //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },

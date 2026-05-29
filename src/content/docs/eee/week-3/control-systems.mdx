@@ -1,45 +1,1270 @@
 ---
-title: Control Systems - Week 3
-description: Frequency domain analysis
+title: Control Systems
 ---
 
+A control system manages commands, directs or regulates the behavior of other devices or systems using control loops.
+It can range from a single home heating controller using a thermostat controlling a domestic boiler to large Industrial
+control systems which are used for controlling processes or machines. A control system is a system which provides the
+desired response by controlling the output.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS1.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+---
+
+## A. Classification of Control Systems
+
+Based on different parameters, we can classify the control systems into the following ways.
+
+### 1. Continuous Time and Discrete-Time Control Systems
+
+Control systems can be classified based on the type of signal used:
+
+- **Continuous time control systems** — all signals are continuous in time.
+- **Discrete time control systems** — one or more discrete time signals exist.
+
+### 2. SISO and MIMO Control Systems
+
+Control systems can be classified based on the number of inputs and outputs:
+
+- **SISO** (Single Input and Single Output) — one input and one output.
+- **MIMO** (Multiple Inputs and Multiple Outputs) — more than one input and more than one output.
+
+### 3. Open Loop and Closed Loop Control Systems
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS2.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Control systems can be classified based on the feedback path:
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS3.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+- **Open loop control systems** — output is not fed back to the input, so the control action is independent of the desired output.
+- **Closed loop control systems** — output is fed back to the input, so the control action is dependent on the desired output.
+
+The error detector produces an error signal, which is the difference between the input and the feedback signal.
+This feedback signal is obtained from the feedback elements block by considering the output of the overall system
+as input. The error signal is applied as input to a controller, which produces an actuating signal to control the plant.
+The output is adjusted automatically until the desired response is achieved — hence closed loop systems are also called
+**automatic control systems**. A traffic lights control system with a sensor at the input is a classic example.
 
 
-## Bode Plot
+| Feature | Open Loop | Closed Loop |
+|---|---|---|
+| Control action | Independent of desired output | Dependent on desired output |
+| Feedback path | Not present | Present |
+| Also called | Non-feedback control systems | Feedback control systems |
+| Design complexity | Easy | Difficult |
+| Cost | Economical | Costlier |
+| Accuracy | Inaccurate | Accurate |
 
-### Magnitude Plot
-- Logarithmic frequency scale
-- Magnitude in dB
+---
 
-### Phase Plot
-- Phase angle vs frequency
-- -90°/decade per pole
+## B. Types of Feedback
 
-## Nyquist Plot
+### 1. Positive Feedback
 
-- Polar plot of G(jω)
-- Stability determination
-- Gain and phase margins
+Positive feedback **adds** the reference input $R(s)$ and the feedback output.
 
-## Frequency Response
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS4.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
 
-### Bandwidth
-- Frequency range for acceptable response
+The transfer function of a positive feedback control system is:
 
-### Resonant Peak
-- Maximum response at resonant frequency
+$$
+T = \frac{G}{1 - GH}
+$$
 
-### This Week
+Where:
+- $T$ = transfer function (overall gain) of the positive feedback control system
+- $G$ = open loop gain (function of frequency)
+- $H$ = gain of the feedback path (function of frequency)
 
-- Bode plot construction
-- Nyquist analysis
-- Gain and phase margins
-- Stability from frequency plots
-- Compensator design
-- Lead and lag compensation
+### 2. Negative Feedback
 
-### Practice
+Negative feedback **reduces** the error between the reference input $R(s)$ and the system output.
 
-- Draw Bode plots
-- Analyze using Nyquist
-- Design compensators
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS5.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+The transfer function of a negative feedback control system is:
+
+$$
+T = \frac{G}{1 + GH}
+$$
+
+Where:
+- $T$ = transfer function (overall gain) of the negative feedback control system
+- $G$ = open loop gain (function of frequency)
+- $H$ = gain of the feedback path (function of frequency)
+
+---
+
+## C. Representation of Transfer Function
+
+### 1. Block Diagrams
+
+Block diagrams consist of a single block or a combination of blocks, used to represent control systems in pictorial form.
+
+#### a. Basic Elements of a Block Diagram
+
+The basic elements of a block diagram are: **block**, **summing point**, and **take-off point**.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS6.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+**1. Block**
+
+The transfer function of a component is represented by a block (single input, single output).
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS7.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+For a block with input $X(s)$, output $Y(s)$, and transfer function $G(s)$:
+
+$$
+G(s) = \frac{Y(s)}{X(s)}
+\implies Y(s) = G(s)\, X(s)
+$$
+
+**2. Summing Point**
+
+Represented by a circle with a cross (×) inside. It has two or more inputs and a single output, producing their algebraic sum.
+
+Examples:
+
+$$
+Y = A + B
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS8.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+Y = A - B
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS9.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+Y = A + B - C
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS10.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+**3. Take-off Point**
+
+A point from which the same input signal can be passed through more than one branch, allowing the same input to be applied to one or more blocks or summing points.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS11.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+#### b. Basic Connections for Blocks
+
+**1. Series (Cascade) Connection**
+
+For two blocks $G_1(s)$ and $G_2(s)$ in series, the equivalent single block has transfer function:
+
+$$
+G(s) = G_1(s) \cdot G_2(s)
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS12.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+For $n$ blocks in series:
+
+$$
+G(s) = G_1(s) \cdot G_2(s) \cdots G_n(s) = \prod_{i=1}^{n} G_i(s)
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS13.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+**2. Parallel Connection**
+
+For two blocks $G_1(s)$ and $G_2(s)$ in parallel (with outputs connected to a summing point), the equivalent single block has transfer function:
+
+$$
+G(s) = G_1(s) + G_2(s)
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS14.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+For $n$ blocks in parallel:
+
+$$
+G(s) = \sum_{i=1}^{n} G_i(s)
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS15.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+**3. Feedback Connection**
+
+For a negative feedback loop with forward path $G(s)$ and feedback path $H(s)$, the closed loop transfer function is:
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS16.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+T(s) = \frac{G(s)}{1 + G(s)\,H(s)}
+$$
+
+For a positive feedback loop:
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS17.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+T(s) = \frac{G(s)}{1 - G(s)\,H(s)}
+$$
+
+---
+
+## D. Block Diagram Reduction Rules
+
+Follow these rules to simplify (reduce) a block diagram:
+
+1. Check for blocks connected in **series** and simplify.
+2. Check for blocks connected in **parallel** and simplify.
+3. Check for blocks connected in a **feedback loop** and simplify.
+4. If there is difficulty with a **take-off point**, shift it towards the **right**.
+5. If there is difficulty with **summing points**, shift them towards the **left**.
+6. Repeat until a single block (overall transfer function) is obtained.
+
+**For block diagrams with multiple inputs:**
+
+1. Find the transfer function by considering **one input at a time**, setting all remaining inputs to zero.
+2. Repeat for each remaining input.
+3. Sum all individual transfer functions to get the overall transfer function.
+
+> **Note:** Block diagram reduction can be time-consuming for complex systems. Signal flow graphs overcome this drawback.
+
+---
+
+## E. Signal Flow Graph
+
+A signal flow graph is a graphical representation of algebraic equations. **Nodes** and **branches** are its basic elements.
+
+### 1. Node
+
+A node represents a variable or signal. There are three types:
+
+- **Input Node** — has only outgoing branches.
+- **Output Node** — has only incoming branches.
+- **Mixed Node** — has both incoming and outgoing branches.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS18.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### 2. Branch
+
+A branch is a line segment joining two nodes. It has both a **gain** and a **direction**.
+
+For example, a signal flow graph with four branches may have gains $a$, $b$, $c$, and $-d$.
+
+### 3. Construction of a Signal Flow Graph
+
+A signal flow graph is constructed from a set of algebraic equations by:
+
+1. Identifying all variables as nodes.
+2. Drawing directed branches between nodes with the corresponding gains.
+3. Ensuring input nodes have only outgoing branches and output nodes have only incoming branches.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS19.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS20.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS21.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+#### 2. Conversion of Block Diagrams into Signal Flow Graphs
+
+Follow these steps to convert a block diagram into its equivalent signal flow graph:
+
+1. Represent all signals, variables, summing points, and take-off points of the block diagram as **nodes** in the signal flow graph.
+2. Represent the **blocks** of the block diagram as **branches** in the signal flow graph.
+3. Represent the **transfer functions** inside the blocks as **gains** of the corresponding branches.
+4. Connect the nodes as per the block diagram. If there is a connection between two nodes with no block in between (e.g., between summing points, between a summing point and a take-off point, between input and summing point, or between take-off point and output), represent the gain of that branch as **1**.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS22.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS23.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+**Example:** To convert a block diagram, represent the input signal $R(s)$ and output signal $C(s)$ as the input and output nodes of the signal flow graph. Label all remaining nodes (e.g., $y_1$ to $y_9$) corresponding to summing points, take-off points, and intermediate variables between blocks.
+
+---
+
+#### 3. Mason's Gain Formula
+
+Suppose there are $N$ forward paths in a signal flow graph. The gain between the input and output nodes — i.e., the transfer function of the system — can be calculated using **Mason's Gain Formula**:
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS24.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Where:
+- $C(s)$ = output node
+- $R(s)$ = input node
+- $T$ = transfer function (gain between $R(s)$ and $C(s)$)
+- $P_i$ = gain of the $i$-th forward path
+- $\Delta$ = graph determinant, defined as:
+
+$$
+\Delta = 1 - \left(\sum \text{individual loop gains}\right) + \left(\sum \text{gain products of all 2 non-touching loops}\right) - \left(\sum \text{gain products of all 3 non-touching loops}\right) + \cdots
+$$
+
+- $\Delta_i$ = the value of $\Delta$ after removing all loops that **touch** the $i$-th forward path
+
+---
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS25.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS26.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS27.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+### Steady-State Error
+
+The steady-state error can be calculated from the open-loop or closed-loop transfer function for **unity feedback systems** using the **Final Value Theorem**:
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS28.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS29.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+e_{ss} = \lim_{s \to 0} \, s \, E(s)
+$$
+
+> **Note:** This theorem can only be applied if $sE(s)$ has poles with negative real parts.
+
+For a closed-loop system with transfer function $T(s)$, the error signal is:
+
+$$
+E(s) = R(s) - C(s) = R(s) - T(s)\,R(s) = \left[1 - T(s)\right] R(s)
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS30.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+---
+
+## F. Types of Controllers
+
+### 1. Proportional Controller
+
+With proportional control, the actuator applies a corrective force proportional to the error:
+
+$$
+\text{Output}_P = K_P \times E
+$$
+
+Where:
+- $\text{Output}_P$ = system output due to proportional control
+- $K_P$ = proportional gain constant
+
+---
+
+### 2. Derivative Controller
+
+The derivative controller produces an output proportional to the **derivative** of the error signal:
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS31.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS32.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+\text{Output}_D = K_D \frac{dE}{dt}
+$$
+
+In the Laplace domain, the transfer function of the derivative controller is:
+
+$$
+G_D(s) = K_D s
+$$
+
+Where $K_D$ is the derivative constant.
+
+> The derivative controller is used to make an **unstable** control system **stable**.
+
+---
+
+### 3. Integral Controller
+
+The integral controller produces an output proportional to the **integral** of the error signal:
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS33.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+\text{Output}_I = K_I \int E \, dt
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS34.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+In the Laplace domain, the transfer function of the integral controller is:
+
+$$
+G_I(s) = \frac{K_I}{s}
+$$
+
+Where $K_I$ is the integral constant.
+
+> The integral controller is used to **decrease the steady-state error**.
+
+---
+
+### 4. Proportional Derivative (PD) Controller
+
+The PD controller combines the outputs of proportional and derivative controllers:
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS35.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+\text{Output}_{PD} = K_P E + K_D \frac{dE}{dt}
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS36.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Transfer function:
+
+$$
+G_{PD}(s) = K_P + K_D s
+$$
+
+> The PD controller is used to **improve stability** without affecting the steady-state error.
+
+---
+
+### 5. Proportional Integral (PI) Controller
+
+The PI controller combines the outputs of proportional and integral controllers:
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS37.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+\text{Output}_{PI} = K_P E + K_I \int E \, dt
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS38.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Transfer function:
+
+$$
+G_{PI}(s) = K_P + \frac{K_I}{s}
+$$
+
+> The PI controller is used to **decrease steady-state error** without affecting stability.
+
+---
+
+### 6. Proportional Integral Derivative (PID) Controller
+
+The PID controller combines the outputs of all three — proportional, integral, and derivative controllers:
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS39.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+\text{Output}_{PID} = K_P E + K_I \int E \, dt + K_D \frac{dE}{dt}
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS40.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Transfer function:
+
+$$
+G_{PID}(s) = K_P + \frac{K_I}{s} + K_D s
+$$
+
+---
+
+## G. Stability Analysis
+
+A system is said to be **stable** if its output is under control; otherwise it is **unstable**. A stable system produces a **bounded output** for a given **bounded input**.
+
+### 1. Types of Systems Based on Stability
+
+#### a. Absolutely Stable System
+
+A system stable for **all ranges** of system component values. 
+
+- An open-loop system is absolutely stable if **all poles** of the open-loop transfer function lie in the **left half** of the $s$-plane.
+- A closed-loop system is absolutely stable if **all poles** of the closed-loop transfer function lie in the **left half** of the $s$-plane.
+
+#### b. Conditionally Stable System
+
+A system stable only for a **certain range** of system component values.
+
+#### c. Marginally Stable System
+
+A system that produces an output with **constant amplitude and constant frequency** of oscillations for a bounded input.
+
+- An open-loop system is marginally stable if **any two poles** of the open-loop transfer function lie on the **imaginary axis**.
+- A closed-loop system is marginally stable if **any two poles** of the closed-loop transfer function lie on the **imaginary axis**.
+
+> Stability analysis in the $s$-domain is typically performed using the **Routh–Hurwitz stability criterion**, which requires the characteristic equation of the closed-loop control system.
+
+---
+
+### 2. Root Locus
+
+Follow these rules to construct a root locus:
+
+**Rule 1** — Locate the open-loop poles and zeros in the $s$-plane.
+
+**Rule 2** — Find the number of root locus branches $N$:
+
+$$
+N = \begin{cases} P & \text{if } P \geq Z \\ Z & \text{if } P < Z \end{cases}
+$$
+
+Where $P$ = number of finite open-loop poles, $Z$ = number of finite open-loop zeros.
+
+**Rule 3** — Identify real-axis root locus branches. A point on the real axis lies on the root locus if the **total number of open-loop poles and zeros to its right is odd**.
+
+**Rule 4** — Find the centroid and angles of asymptotes.
+
+- If $P = Z$: all branches start at finite open-loop poles and end at finite open-loop zeros.
+- If $P > Z$: $Z$ branches end at finite zeros; $P - Z$ branches end at **infinite zeros** along asymptotes.
+- If $P < Z$: $P$ branches start at finite poles; $Z - P$ branches start at **infinite poles**.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS41.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+The centroid $\alpha$ (intersection of asymptotes on the real axis) is:
+
+$$
+\alpha = \frac{\sum \text{(real parts of open-loop poles)} - \sum \text{(real parts of open-loop zeros)}}{P - Z}
+$$
+
+The angles of asymptotes are:
+
+$$
+\theta_k = \frac{(2k+1) \times 180°}{P - Z}, \quad k = 0, 1, 2, \ldots, (P - Z - 1)
+$$
+
+**Rule 5** — Find intersection points with the imaginary axis using the **Routh array method**:
+
+1. If all elements of any row of the Routh array are zero, the root locus branch intersects the imaginary axis.
+2. Identify the row such that making the first element zero causes the entire row to vanish. Find $K$ for this condition.
+3. Substitute this $K$ into the auxiliary equation to obtain the intersection point.
+
+**Rule 6** — Find break-away and break-in points:
+
+- A **break-away point** exists between two open-loop poles on the real axis root locus.
+- A **break-in point** exists between two open-loop zeros on the real axis root locus.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS42.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+Steps to find these points:
+1. Write $K$ in terms of $s$ from the characteristic equation $1 + G(s)H(s) = 0$.
+2. Differentiate and set equal to zero:
+
+$$
+\frac{dK}{ds} = 0
+$$
+
+3. The values of $s$ that yield **positive** $K$ are the break points.
+
+**Rule 7** — Find the **angle of departure** (at complex conjugate open-loop poles) and **angle of arrival** (at complex conjugate open-loop zeros):
+
+$$
+\text{Angle of departure} = 180° - \angle G(s)H(s)\big|_{s = \text{pole}}
+$$
+
+$$
+\text{Angle of arrival} = 180° + \angle G(s)H(s)\big|_{s = \text{zero}}
+$$
+
+The formula for the angle of departure $\phi_d$ is:
+
+$$
+\phi_d = 180° - \sum \angle(\text{zeros from pole}) + \sum \angle(\text{poles from pole})
+$$
+
+---
+
+**Example:** Draw the root locus for the open-loop transfer function:
+
+$$
+G(s)H(s) = \frac{K}{s(s+1)(s+5)}
+$$
+
+**Step 1 — Locate poles and zeros**
+
+The open-loop transfer function has three poles at $s = 0$, $s = -1$, $s = -5$, and no finite zeros. Therefore, the number of root locus branches equals the number of poles:
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS43.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+$$
+N = P = 3
+$$
+
+The real-axis root locus branches are:
+- The line segment between $s = -1$ and $s = 0$
+- The line segment to the left of $s = -5$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS44.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+**Step 2 — Centroid and asymptotes**
+
+$$
+\alpha = \frac{(0 + (-1) + (-5)) - 0}{3 - 0} = \frac{-6}{3} = -2
+$$
+
+The angles of asymptotes are:
+
+$$
+\theta_k = \frac{(2k+1) \times 180°}{3}, \quad k = 0, 1, 2
+\implies \theta = 60°,\ 180°,\ 300°
+$$
+
+**Step 3 — Imaginary axis crossings and break-away point**
+
+Since two asymptotes have angles of $60°$ and $300°$, two root locus branches intersect the imaginary axis. Using the Routh array method, the intersections occur at:
+
+$$
+s = \pm j\sqrt{5}
+$$
+
+There is one break-away point on the real-axis branch between $s = -1$ and $s = 0$, located at:
+
+$$
+s = -0.473
+$$
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/EEE/controlsystems/week3/CS45.png"
+  alt="CS1"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "20px auto"
+  }}
+/>
+
+---
+
+### 3. Frequency Response Analysis
+
+The response of a system can be partitioned into a **transient response** and a **steady-state response**. The steady-state response of a system to an input sinusoidal signal is known as the **frequency response**.
+
+For a sinusoidal input applied to a Linear Time-Invariant (LTI) system, the steady-state output is also sinusoidal with the **same frequency**, but different amplitude and phase.
+
+Let the input signal be:
+
+$$
+r(t) = A \sin(\omega_0 t)
+$$
+
+The open-loop transfer function evaluated on the imaginary axis:
+
+$$
+G(j\omega) = |G(j\omega)| \angle G(j\omega)
+$$
+
+At $\omega = \omega_0$:
+
+$$
+G(j\omega_0) = |G(j\omega_0)| \angle G(j\omega_0)
+$$
+
+The output signal is:
+
+$$
+c(t) = A \cdot |G(j\omega_0)| \cdot \sin\!\left(\omega_0 t + \angle G(j\omega_0)\right)
+$$
+
+Where:
+- $A$ = amplitude of the input sinusoidal signal
+- $\omega_0$ = angular frequency of the input signal, with $\omega_0 = 2\pi f_0$
+- $f_0$ = frequency of the input sinusoidal signal
+
+The **output amplitude** is the input amplitude multiplied by $|G(j\omega_0)|$.  
+The **output phase** is the input phase added to $\angle G(j\omega_0)$.
+
+---
+
+### 4. Stability Analysis using Bode Plots
+
+From Bode plots, stability is determined using four parameters:
+
+**1. Phase Cross-over Frequency ($\omega_{pc}$)**
+
+The frequency at which the phase plot equals $-180°$. Unit: rad/sec.
+
+**2. Gain Cross-over Frequency ($\omega_{gc}$)**
+
+The frequency at which the magnitude plot equals $0\ \text{dB}$. Unit: rad/sec.
+
+| Condition | Stability |
+|---|---|
+| $\omega_{pc} > \omega_{gc}$ | Stable |
+| $\omega_{pc} = \omega_{gc}$ | Marginally stable |
+| $\omega_{pc} < \omega_{gc}$ | Unstable |
+
+**3. Gain Margin (GM)**
+
+$$
+GM = -20 \log M_{pc} \quad \text{(dB)}
+$$
+
+Where $M_{pc}$ is the magnitude at the phase cross-over frequency.
+
+**4. Phase Margin (PM)**
+
+$$
+PM = 180° + \phi_{gc}
+$$
+
+Where $\phi_{gc}$ is the phase angle at the gain cross-over frequency.
+
+| Condition | Stability |
+|---|---|
+| $GM > 0$ and $PM > 0$ | Stable |
+| $GM = 0$ and $PM = 0$ | Marginally stable |
+| $GM < 0$ or $PM < 0$ | Unstable |
+
+---
+
+### 5. Routh–Hurwitz Stability Criterion
+
+The Routh–Hurwitz criterion has one **necessary condition** and one **sufficient condition**.
+
+**Necessary Condition**
+
+All coefficients of the characteristic polynomial must be **positive**. Consider the $n$-th order characteristic equation:
+
+$$
+a_0 s^n + a_1 s^{n-1} + a_2 s^{n-2} + \cdots + a_{n-1} s + a_n = 0
+$$
+
+No coefficient should be zero or negative.
+
+**Sufficient Condition**
+
+All elements of the **first column** of the Routh array must have the **same sign** (all positive or all negative).
+
+---
+
+### 6. Routh Array Method
+
+If all roots of the characteristic equation lie in the left half of the $s$-plane, the system is **stable**. The number of sign changes in the first column of the Routh array equals the number of roots in the right half of the $s$-plane.
+
+**Routh Array Structure** for the polynomial $a_0 s^n + a_1 s^{n-1} + \cdots + a_n = 0$:
+
+| Row | Col 1 | Col 2 | Col 3 | $\cdots$ |
+|---|---|---|---|---|
+| $s^n$ | $a_0$ | $a_2$ | $a_4$ | $\cdots$ |
+| $s^{n-1}$ | $a_1$ | $a_3$ | $a_5$ | $\cdots$ |
+| $s^{n-2}$ | $b_1$ | $b_2$ | $b_3$ | $\cdots$ |
+| $s^{n-3}$ | $c_1$ | $c_2$ | $\cdots$ | |
+| $\vdots$ | $\vdots$ | $\vdots$ | | |
+| $s^0$ | $a_n$ | | | |
+
+Where:
+
+$$
+b_1 = \frac{a_1 a_2 - a_3 a_0}{a_1}, \quad b_2 = \frac{a_1 a_4 - a_5 a_0}{a_1}, \quad b_3 = \frac{a_1 a_6 - a_7 a_0}{a_1}
+$$
+
+$$
+c_1 = \frac{b_1 a_3 - b_2 a_1}{b_1}, \quad c_2 = \frac{b_1 a_5 - b_3 a_1}{b_1}
+$$
+
+> **Note:** If any row elements share a common factor, divide through by it to simplify.
+
+---
+
+**Example 1:** Find the stability of:
+
+$$
+s^4 + 3s^3 + 3s^2 + 2s + 1 = 0
+$$
+
+**Step 1 — Necessary condition:** All coefficients are positive. ✓
+
+**Step 2 — Routh array:**
+
+| Row | Col 1 | Col 2 |
+|---|---|---|
+| $s^4$ | $1$ | $3$ | $1$ |
+| $s^3$ | $3$ | $2$ | |
+| $s^2$ | $\dfrac{3 \cdot 3 - 2 \cdot 1}{3} = \dfrac{7}{3}$ | $\dfrac{3 \cdot 1 - 0 \cdot 1}{3} = 1$ | |
+| $s^1$ | $\dfrac{\frac{7}{3} \cdot 2 - 1 \cdot 3}{\frac{7}{3}} = \dfrac{5}{7}$ | | |
+| $s^0$ | $1$ | | |
+
+**Step 3 — Sufficient condition:** All first-column elements $\left(1,\ 3,\ \frac{7}{3},\ \frac{5}{7},\ 1\right)$ are positive. No sign changes. **The system is stable.** ✓
+
+---
+
+#### Special Cases of the Routh Array
+
+**Special Case (i) — First element of a row is zero**
+
+Replace the zero with a small positive value $\epsilon$, complete the Routh table, then evaluate sign changes as $\epsilon \to 0$.
+
+**Example:** Find the stability of:
+
+$$
+s^4 + 2s^3 + s^2 + 2s + 1 = 0
+$$
+
+**Step 1 — Necessary condition:** All coefficients positive. ✓
+
+**Step 2 — Routh array** (row $s^3$ divided by common factor 2):
+
+| Row | Col 1 | Col 2 |
+|---|---|---|
+| $s^4$ | $1$ | $1$ | $1$ |
+| $s^3$ | $1$ | $1$ | |
+| $s^2$ | $\dfrac{1 \cdot 1 - 1 \cdot 1}{1} = 0 \to \epsilon$ | $1$ | |
+| $s^1$ | $\dfrac{\epsilon \cdot 1 - 1 \cdot 1}{\epsilon} = \dfrac{\epsilon - 1}{\epsilon}$ | | |
+| $s^0$ | $1$ | | |
+
+As $\epsilon \to 0$:
+
+$$
+\frac{\epsilon - 1}{\epsilon} \to -\infty
+$$
+
+There are **two sign changes** in the first column ($\epsilon > 0 \to -\infty \to 1$). **The system is unstable.**
+
+---
+
+**Special Case (ii) — All elements of a row are zero**
+
+1. Write the **auxiliary equation** $A(s)$ from the row immediately above the zero row.
+2. Differentiate $A(s)$ with respect to $s$.
+3. Replace the zero row with the coefficients of $\dfrac{dA(s)}{ds}$.
+
+**Example:** Find the stability of:
+
+$$
+s^5 + 3s^4 + s^3 + 3s^2 + s + 3 = 0
+$$
+
+**Step 1 — Necessary condition:** All coefficients positive. ✓
+
+**Step 2 — Routh array** (row $s^4$ divided by common factor 3):
+
+| Row | Col 1 | Col 2 | Col 3 |
+|---|---|---|---|
+| $s^5$ | $1$ | $1$ | $1$ |
+| $s^4$ | $1$ | $1$ | $1$ |
+| $s^3$ | $0$ | $0$ | |
+
+All elements of row $s^3$ are zero. Write the auxiliary equation from row $s^4$:
+
+$$
+A(s) = s^4 + s^2 + 1
+$$
+
+$$
+\frac{dA(s)}{ds} = 4s^3 + 2s
+$$
+
+Replace row $s^3$ with coefficients $4,\ 2$ (simplified to $2,\ 1$):
+
+| Row | Col 1 | Col 2 |
+|---|---|---|
+| $s^5$ | $1$ | $1$ | $1$ |
+| $s^4$ | $1$ | $1$ | $1$ |
+| $s^3$ | $2$ | $1$ | |
+| $s^2$ | $\dfrac{2 \cdot 1 - 1 \cdot 1}{2} = 0.5$ | $\dfrac{2 \cdot 1 - 0 \cdot 1}{2} = 1$ | |
+| $s^1$ | $\dfrac{0.5 \cdot 1 - 1 \cdot 2}{0.5} = -3$ | | |
+| $s^0$ | $1$ | | |
+
+**Step 3 — Sufficient condition:** There are **two sign changes** in the first column ($0.5 \to -3 \to 1$). **The system is unstable.**
+
+> **Note:** The Routh–Hurwitz criterion only tells us whether poles lie in the left half-plane, right half-plane, or on the imaginary axis — not the exact nature of the system response. To overcome this limitation, **root locus** analysis is used.
+
+---
+
+## Worked Problem: Unity Feedback System Stability
+
+**Given:**
+
+$$
+G(s) = \frac{K}{s(s+2)(s+5)}
+$$
+
+Find the range of $K$ for stability, the condition for marginal stability, and the frequency of oscillation.
+
+**Characteristic equation:**
+
+$$
+1 + G(s) = 0 \implies s(s+2)(s+5) + K = 0
+$$
+
+$$
+s^3 + 7s^2 + 10s + K = 0
+$$
+
+**Routh array:**
+
+| Row | Col 1 | Col 2 |
+|---|---|---|
+| $s^3$ | $1$ | $10$ |
+| $s^2$ | $7$ | $K$ |
+| $s^1$ | $\dfrac{70 - K}{7}$ | $0$ |
+| $s^0$ | $K$ | |
+
+**Condition for stability** (all first-column elements positive):
+
+$$
+\frac{70 - K}{7} > 0 \implies K < 70 \qquad \text{and} \qquad K > 0
+$$
+
+$$
+\boxed{0 < K < 70}
+$$
+
+**Condition for marginal stability:**
+
+$$
+\frac{70 - K}{7} = 0 \implies K = 70
+$$
+
+**Frequency of oscillation** (from the auxiliary equation at row $s^2$):
+
+$$
+7s^2 + 70 = 0 \implies s^2 + 10 = 0 \implies s = \pm j\sqrt{10}
+$$
+
+$$
+\boxed{\omega = \sqrt{10} \approx 3.16 \ \text{rad/sec}}
+$$
