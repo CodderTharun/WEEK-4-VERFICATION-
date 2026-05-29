@@ -1,6 +1,581 @@
 ---
-title: AIML Week 3
+title: Introduction to Deep Learning
+---
+
+Deep Learning is transforming the way machines understand, learn and interact with complex data. Deep learning mimics neural networks of the human brain, it enables computers to autonomously uncover patterns and make informed decisions from vast amounts of unstructured data.
+
+## Difference between Machine Learning and Deep Learning
+
+| **Aspect** | **Machine Learning** | **Deep Learning** |
+|---|---|---|
+| **Basic Idea** | Applies statistical algorithms to learn patterns from data | Uses artificial neural networks to learn patterns from data |
+| **Data Requirement** | Works well with small to medium datasets | Requires a large amount of data |
+| **Task Complexity** | Better for simple and low-label tasks | Better for complex tasks like image and text processing |
+| **Training Time** | Takes less time to train | Takes more time to train |
+| **Feature Extraction** | Features are manually selected and extracted | Features are automatically extracted |
+| **Learning Process** | Not end-to-end | End-to-end learning |
+| **Model Complexity** | Less complex | Highly complex |
+| **Interpretability** | Easy to understand and explain | Hard to interpret (black box) |
+| **Hardware Requirement** | Can run on CPU, needs less computing power | Needs GPU and high-performance systems |
+| **Use Cases** | Spam detection, recommendation systems | Image recognition, NLP, speech recognition |
 
 ---
 
-# AIML WEEK -1 NOTES
+# Neural Networks
+
+Neural networks are machine learning models that mimic the complex functions of the human brain. These models consist of interconnected nodes or neurons that process data, learn patterns and enable tasks such as pattern recognition and decision making.
+
+Neural networks are capable of learning and identifying patterns directly from data without pre-defined rules. These networks are built from several key components:
+
+- **Neurons:** The basic units that receive inputs, each neuron is governed by a threshold and an activation function.
+- **Connections:** Links between neurons that carry information, regulated by weights and biases.
+- **Weights and Biases:** These parameters determine the strength and influence of connections.
+- **Propagation Functions:** Mechanisms that help process and transfer data across layers of neurons.
+- **Learning Rule:** The method that adjusts weights and biases over time to improve accuracy.
+
+## Importance of Neural Networks
+
+- **Identify Complex Patterns:** Recognize intricate structures and relationships in data; adapt to dynamic and changing environments.
+- **Learn from Data:** Handle vast datasets efficiently; improve performance with experience and retraining.
+- **Drive Key Technologies:** Power natural language processing (NLP); enable self-driving vehicles; support automated decision-making systems.
+- **Boost Efficiency:** Streamline workflows and processes; enhance productivity across industries.
+- **Backbone of AI:** Serve as the core driver of artificial intelligence progress; continue shaping the future of technology and innovation.
+<img src="https://raw.githubusercontent.com/podummy04/images/main/IT/AIML/week3/aiml3.1.png" height="500" width="500" />
+---
+
+## Types of Neural Networks
+
+### A. Feedforward Neural Networks (FNNs)
+
+They are the simplest type of ANN, where data flows in one direction from input to output. It is used for basic tasks like classification.
+
+### B. Convolutional Neural Networks (CNNs)
+
+They are specialized for processing grid-like data, such as images. CNNs use convolutional layers to detect spatial hierarchies, making them ideal for computer vision tasks.
+
+### C. Recurrent Neural Networks (RNNs)
+
+They are able to process sequential data, such as time series and natural language. RNNs have loops to retain information over time, enabling applications like language modeling and speech recognition. Variants like LSTMs and GRUs address vanishing gradient issues.
+
+### D. Generative Adversarial Networks (GANs)
+
+This consist of two networks—a generator and a discriminator—that compete to create realistic data. GANs are widely used for image generation, style transfer and data augmentation.
+
+### E. Autoencoders
+
+They are unsupervised networks that learn efficient data encodings. They compress input data into a latent representation and reconstruct it, useful for dimensionality reduction and anomaly detection.
+
+### F. Transformer Networks
+
+It has revolutionized NLP with self-attention mechanisms. Transformers excel at tasks like translation, text generation and sentiment analysis, powering models like GPT and BERT.
+
+---
+
+## Applications
+
+- **Image and Video Recognition:** CNNs are extensively used in applications such as facial recognition, autonomous driving and medical image analysis.
+- **Natural Language Processing (NLP):** RNNs and transformers power language translation, chatbots and sentiment analysis.
+- **Finance:** Predicting stock prices, fraud detection and risk management.
+- **Healthcare:** Neural networks assist in diagnosing diseases, analyzing medical images and personalizing treatment plans.
+- **Gaming and Autonomous Systems:** Neural networks enable real-time decision-making, enhancing user experience in video games and enabling autonomous systems like self-driving cars.
+
+---
+
+# Activation Functions in Neural Networks
+
+An activation function is applied to the weighted sum of inputs before producing the final output of a neuron. It introduces non-linearity, allowing the network to learn complex patterns.
+
+- Applied after the weighted sum of inputs
+- Introduces non-linearity into the model
+- Enables learning of complex data patterns
+- Without it, the network behaves like a linear model
+
+---
+
+## Types of Activation Functions in Deep Learning
+
+### 1. Linear Activation Function
+
+Linear Activation Function resembles straight line define by \( y = x \). No matter how many layers the neural network contains if they all use linear activation functions the output is a linear combination of the input.
+
+- The range of the output spans from \( -\infty \) to \( +\infty \).
+- Output is a linear combination of inputs.
+- Using it in all layers makes the network behave like a linear model.
+- Limits the ability to learn complex patterns.
+- Commonly used in the output layer for regression tasks.
+- Often combined with non-linear functions in hidden layers for better learning.
+
+---
+
+### 2. Non-Linear Activation Functions
+
+#### A. Sigmoid Function
+
+Sigmoid Activation Function is characterized by 'S' shape. It is mathematically defined as:
+
+$$
+\sigma(x) = \frac{1}{1 + e^{-x}}
+$$
+
+- It allows neural networks to handle and model complex patterns that linear equations cannot.
+- The output ranges between 0 and 1, hence useful for binary classification.
+- The function exhibits a steep gradient when x values are between -2 and 2.
+- This sensitivity means that small changes in input x can cause significant changes in output y which is critical during the training process.
+
+---
+
+#### B. Tanh Activation Function
+
+Tanh function (hyperbolic tangent function) is a shifted version of the sigmoid, allowing it to stretch across the y-axis. It is defined as:
+
+$$
+\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}
+$$
+
+- Outputs values from -1 to +1.
+- Enables modeling of complex data patterns.
+- Commonly used in hidden layers due to its zero-centered output, facilitating easier learning for subsequent layers.
+
+---
+
+#### C. ReLU (Rectified Linear Unit) Function
+
+ReLU activation is defined by
+
+$$
+A(x) = \max(0, x)
+$$
+
+This means that if the input \( x \) is positive, ReLU returns \( x \), if the input is negative, it returns 0.
+
+- Value Range is \( [0,\infty) \)
+- Introduces non-linearity, enabling learning of complex patterns
+- Computationally efficient due to simple operations
+- Activates only positive neurons, making the network sparse and efficient
+- Commonly used in hidden layers for faster training and better performance
+
+---
+
+#### D. Leaky ReLU
+
+Leaky ReLU is similar to ReLU but allows a small negative slope (\( \alpha \), e.g., 0.01) instead of zero.
+
+$$
+A(x)=
+\begin{cases}
+x, & x > 0 \\
+\alpha x, & x \leq 0
+\end{cases}
+$$
+
+- Solves the “dying ReLU” problem, where neurons get stuck with zero outputs.
+- Range: \( (-\infty,\infty) \)
+- Preferred in some cases for better gradient flow.
+
+---
+
+#### E. SoftPlus Function
+
+Softplus function is defined mathematically as:
+
+$$
+A(x)=\log(1+e^x)
+$$
+
+- It is similar to ReLU but avoids sharp transitions by being fully differentiable.
+- The Softplus function is non-linear.
+- The function outputs values in the range \( (0,\infty) \), similar to ReLU, but without the hard zero threshold that ReLU has.
+- Softplus is a smooth, continuous function, meaning it avoids the sharp discontinuities of ReLU which can sometimes lead to problems during optimization.
+
+---
+
+### 3. Exponential Linear Units
+
+#### A. ELU (Exponential Linear Unit) Function
+
+ELU (Exponential Linear Unit) is a non-linear activation function that improves learning speed and helps reduce the vanishing gradient problem. It behaves like ReLU for positive inputs but allows smooth negative values.
+
+$$
+ELU(x)=
+\begin{cases}
+x, & x > 0 \\
+\alpha(e^x-1), & x \leq 0
+\end{cases}
+$$
+
+- Output range is \( (-\alpha,\infty) \)
+- Introduces non-linearity for learning complex patterns
+- Allows negative outputs, helping maintain zero-centered activations
+- Smooth and differentiable, supporting stable training
+
+---
+
+#### B. SELU (Scaled Exponential Linear Unit) Function
+
+SELU is a scaled version of ELU designed for self-normalizing neural networks, helping maintain stable activations during training.
+
+$$
+SELU(x)=
+\lambda
+\begin{cases}
+x, & x > 0 \\
+\alpha(e^x-1), & x \leq 0
+\end{cases}
+$$
+
+where \( \lambda \approx 1.05 \) and \( \alpha \approx 1.67 \)
+
+- Output range is \( (-\lambda\alpha,\infty) \)
+- Maintains near zero mean and unit variance (self-normalizing)
+- Helps prevent vanishing and exploding gradients
+- Works well in deep fully connected networks
+- Can reduce the need for batch normalization in some cases
+
+---
+
+### 4. Output Layer Activation Functions
+
+#### A. Sigmoid Activation Function
+
+Sigmoid function produces an S-shaped curve and maps input values into a probability-like range between 0 and 1 and is used to find the final output of the neural network for binary classification problems. It is defined as:
+
+$$
+\sigma(x)=\frac{1}{1+e^{-x}}
+$$
+
+- Output range is \( (0,1) \)
+- Produces probability-like outputs
+- Commonly used in the output layer for binary classification
+- Smooth and differentiable, useful for gradient-based learning
+
+---
+
+#### .B Softmax Function
+
+Softmax function is used for multi-class classification and converts raw output scores into probabilities for each class.
+
+$$
+Softmax(x_i)=\frac{e^{x_i}}{\sum_{j=1}^{n}e^{x_j}}
+$$
+
+- Transforms outputs into values between 0 and 1
+- Ensures all probabilities sum to 1
+- Highlights the most likely class among multiple options
+- Commonly used in the output layer for multi-class classification
+- Helps interpret model outputs as probabilities
+
+---
+
+# Vanishing and Exploding Gradients Problems in Deep Learning
+
+Vanishing and exploding gradients are common problems in deep neural networks that occur during backpropagation. They make training difficult by causing gradients to become extremely small or excessively large.
+
+- Vanishing gradients slow or stop learning in earlier layers
+- Exploding gradients cause unstable and very large weight updates
+- Both problems affect convergence and model performance
+- Commonly seen in very deep neural networks and RNNs
+
+---
+
+## Vanishing Gradient Problem
+
+Vanishing gradients occur when gradients become extremely small during backpropagation, causing earlier layers to learn very slowly or stop learning completely.
+
+- Common in deep neural networks and RNNs
+- Earlier layers receive very small updates
+- Slows down or prevents effective learning
+- Often caused by repeated multiplication of small gradient values
+
+---
+
+## Exploding Gradient Problem
+
+Exploding gradients occur when gradients grow too large during backpropagation, leading to unstable weight updates and divergence in loss. When derivatives or weights are greater than 1, their repeated multiplication across layers leads to exponential growth.
+
+- Causes massive weight updates causing the model loss to oscillate or diverge.
+<img src="https://raw.githubusercontent.com/podummy04/images/main/IT/AIML/week3/aiml3.2.png" height="500" width="500" />
+---
+
+## Causes of Vanishing and Exploding Gradients
+
+Several factors can cause gradients to become too small or too large during backpropagation.
+
+- Activation functions like Sigmoid and Tanh produce small derivatives, shrinking gradients
+- Improper weight initialization can cause gradients to vanish or explode
+- Deep networks repeatedly multiply gradients, increasing instability
+- High learning rates or unscaled inputs can lead to exploding gradients
+
+## Techniques to Fix Vanishing and Exploding Gradients
+
+Vanishing and exploding gradients make training deep neural networks difficult. The following methods help stabilize gradient flow and improve learning.
+
+### 1. Proper Weight Initialization
+
+Choosing the right weight initialization keeps gradients balanced during backpropagation.
+
+- Xavier Initialization: Keeps activation variance consistent across layers to stabilize gradients.
+- Kaiming Initialization: Scales weights for ReLU to preserve signal strength and prevent gradient decay.
+
+### 2. Use Non Saturating Activation Functions
+
+Sigmoid and Tanh can shrink gradients. Using ReLU or its variants prevents vanishing gradients:
+
+- ReLU: Basic rectified linear unit.
+- Leaky ReLU: Allows small gradients for negative inputs.
+- ELU / SELU: Helps maintain self normalizing properties.
+
+### 3. Apply Batch Normalization
+
+Normalizes layer inputs to have zero mean and unit variance, stabilizing gradients and accelerating convergence.
+
+### 4. Gradient Clipping
+
+Limits gradients to a maximum threshold to prevent them from exploding and destabilizing training.
+
+---
+
+## Effects of Vanishing and Exploding Gradients in RNNs
+
+Recurrent Neural Networks (RNNs) process sequences step by step, using past outputs as inputs for future steps which makes them particularly sensitive to gradient issues during training.
+
+- Causes loss of long-term memory, making earlier information difficult to retain
+- Large gradients can lead to unstable training and divergence
+- Reduces ability to learn long-range sequential dependencies
+- Makes optimization highly sensitive to learning rate and initialization
+- Advanced architectures like LSTM and GRU help stabilize gradients using gating mechanisms
+- Techniques such as gradient clipping, proper initialization and normalization improve training stability
+
+---
+
+## Challenges
+
+Vanishing and exploding gradients create several difficulties during neural network training.
+
+- Vanishing gradients cause very slow or stopped learning in earlier layers
+- Exploding gradients lead to unstable updates and diverging loss
+- Long-term dependencies become difficult to learn in sequence models
+- Training may converge poorly or fail completely
+- Requires careful tuning of learning rates and weight initialization
+
+---
+
+# Attention Mechanism in ML
+
+The attention mechanism allows models to focus on the most important parts of input data by assigning different weights to different elements. This helps prioritize relevant information instead of treating everything equally and forms the core of models like Transformers and BERT.
+
+- It improves how models handle long sequences in data.
+- It helps capture relationships between distant elements in a sequence.
+- Enhances interpretability by showing which parts of input influenced the output.
+- Widely applied in translation, summarization, image captioning and speech processing.
+
+---
+
+## Types of Attention Mechanisms
+
+- **Soft Attention:** Differentiable mechanism using softmax and is widely used in NLP and transformers.
+- **Hard Attention:** A non-differentiable approach that selects specific input parts using sampling, usually trained with reinforcement learning.
+- **Self-Attention:** Enables each input element to attend to other aspects in the same sequence.
+- **Multi-Head Attention:** Uses multiple attention heads to capture diverse features from different representation subspaces.
+- **Additive Attention:** Uses a feed-forward neural network to calculate attention scores instead of dot products.
+
+---
+
+# Transformers in Machine Learning
+
+Transformer is a neural network architecture used for various machine learning tasks, especially in natural language processing and computer vision. It focuses on understanding relationships within data to process information more effectively.
+
+- Uses attention mechanisms to capture relationships between inputs
+- Processes entire sequences at once instead of step by step
+- Improves performance on tasks involving context and dependencies
+- Widely used across NLP, vision and other AI applications
+
+---
+
+## Need For Transformers Model
+
+Transformer architecture uses attention to process an entire sentence at once instead of reading words sequentially. This helps overcome limitations of models like RNNs and LSTMs that process data step by step.
+
+- Traditional models like RNNs (Recurrent Neural Networks) suffer from the vanishing gradient problem which leads to long-term memory loss.
+- RNNs process text sequentially meaning they analyze words one at a time.
+- While adding more memory cells in LSTMs (Long Short-Term Memory networks) helped address the vanishing gradient issue they still process words one by one. This sequential processing means LSTMs can't analyze an entire sentence at once.
+- Traditional Seq2Seq models compress the entire input into a single fixed-size context vector.
+- This creates an information bottleneck, especially for long sequences.
+- Important context may be lost during compression, reducing performance.
+- Transformers solve this by using attention to access all tokens directly without compression.
+<img src="https://raw.githubusercontent.com/podummy04/images/main/IT/AIML/week3/aiml3.3.png" height="500" width="500" />
+---
+
+### 1. Self Attention Mechanism
+
+The self attention mechanism allows transformers to determine which words in a sentence are most relevant to each other. This is done using a scaled dot-product attention approach.
+
+Each word in a sequence is mapped to three vectors:
+
+- Query (Q)
+- Key (K)
+- Value (V)
+
+Attention scores are computed as:
+
+$$
+Attention(Q,K,V)=softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+$$
+
+---
+
+### 2. Multi-Head Attention
+
+Instead of one attention mechanism, transformers use multiple attention heads running in parallel. Each head captures different relationships or patterns in the data, enriching the model’s understanding.
+
+---
+
+### 3. Positional Encoding
+
+Unlike RNNs, transformers lack an inherent understanding of word order since they process data in parallel. To solve this problem Positional Encodings are added to token embeddings providing information about the position of each token within a sequence.
+
+---
+
+### 4. Position-wise Feed-Forward Networks
+
+The Feed-Forward Networks consist of two linear transformations with a ReLU activation. It is applied independently to each position in the sequence. This transformation helps refine the encoded representation at each position.
+
+Mathematically:
+
+$$
+FFN(x)=max(0,xW_1+b_1)W_2+b_2
+$$
+
+---
+
+### 5. Add & Norm (Residual Connections and Layer Normalization)
+
+Each sub-layer in the transformer (such as self-attention and feed-forward networks) is followed by an Add & Norm step.
+
+- **Residual Connection (Add):** The input of a layer is added to its output. This helps in preserving information and prevents vanishing gradients in deep networks.
+- **Layer Normalization (Norm):** The combined output is normalized to stabilize training and improve convergence.
+
+This structure ensures better gradient flow and allows training of deep transformer models efficiently.
+
+---
+
+### 6. Embeddings
+
+Transformers cannot work with raw words as they need numbers. So, each input token (word or subword) is converted into a vector, called an embedding.
+
+- Both encoder input tokens and decoder input tokens are converted into embeddings.
+- These embeddings are trainable, meaning the model learns the best numeric representation for each token.
+- The same weight matrix is shared for Encoder embeddings, Decoder embeddings and the final linear layer before softmax.
+- The embeddings are scaled by model to keep values stable before adding positional encoding.
+
+---
+
+### 7. Encoder-Decoder Architecture
+
+The encoder-decoder structure is key to transformer models. The encoder processes the input sequence into a vector, while the decoder converts this vector back into a sequence. Each encoder and decoder layer includes self-attention and feed-forward layers.
+
+Transformers apply attention in three different places:
+
+#### A. Encoder Self-Attention
+
+- Q, K, V all come from the encoder’s previous layer.
+- Every word can attend to every other word in the input.
+- This helps the encoder understand full context (long-range meaning).
+
+#### B. Decoder Self-Attention (Masked)
+
+- Q, K, V all come from the decoder’s previous layer.
+- Future tokens are masked (blocked), so each position only sees previous tokens.
+- This keeps decoding auto-regressive i.e the model predicts one word at a time.
+
+#### C. Encoder–Decoder Attention
+
+- Queries come from the decoder.
+- Keys and Values come from the encoder output.
+- This lets the decoder look at important parts of the input sentence while generating output.
+
+Together, these three attention types allow the transformer to read the entire input at once and then generate outputs step-by-step with full context.
+
+---
+
+## 8. Softmax Layer for Output Prediction
+
+After the decoder processes the sequence, it must predict the next token.
+
+- The decoder output is passed through a linear layer (whose weights are shared with embeddings).
+- Then the softmax function converts these scores into probabilities.
+- The token with the highest probability becomes the predicted next word.
+
+---
+
+## Applications
+
+- **NLP Tasks:** Transformers are used for machine translation, text summarization, named entity recognition and sentiment analysis.
+- **Speech Recognition:** They process audio signals to convert speech into transcribed text.
+- **Computer Vision:** Transformers are applied to image classification, object detection and image generation.
+- **Recommendation Systems:** They provide personalized recommendations based on user preferences.
+- **Text and Music Generation:** Transformers are used for generating text like articles and composing music.
+
+---
+
+## Limitations
+
+- Require high computational power, making them expensive to train
+- Consume large memory, especially for long sequences
+- Need large datasets to perform well
+- Have input length limits, making very long text handling difficult
+- Can behave like a black box, reducing interpretability
+- Risk of overfitting if not properly regularized
+
+---
+
+# Comparison of ANN vs CNN vs RNN
+
+| **Feature** | **ANN** | **CNN** | **RNN** |
+|---|---|---|---|
+| **Definition** | Feed-forward network of neurons processing input to output, optionally with hidden layers | Convolutional layers for automatic spatial feature extraction in images or videos | Neural network with recurrent connections to process sequential data |
+| **Type of Data** | Tabular, structured data | Images, videos, spatial data | Sequential, time-series, text, speech |
+| **Fixed-Length Input** | Yes, it has fixed-size vectors | Yes, fixed-size images it takes | No, as it handles variable-length sequences |
+| **Model Complexity** | Simple to moderate | Moderate to high | High |
+| **Applications** | Pattern recognition, basic computer vision | Image recognition, object detection, text digitization | Text-to-speech, language modeling, time-series prediction |
+
+---
+
+# GPT vs BERT
+<img src="https://raw.githubusercontent.com/podummy04/images/main/IT/AIML/week3/aiml3.4.png" height="500" width="500" />
+## Difference between BERT and GPT
+
+| **Feature** | **BERT** | **GPT** |
+|---|---|---|
+| **Architecture Type** | Encoder only Transformer | Decoder only Transformer |
+| **Attention Type** | Multi head Attention | Masked Multi head Attention |
+| **Context Handling** | Considers both left and right context simultaneously | Considers only left context |
+| **Primary Purpose** | Understanding and extracting meaning from text | Generating coherent and context relevant text |
+| **Training Objective** | Masked Language Modeling (MLM) predicts masked words using full context | Causal Language Modeling predicts the next word based on past words |
+| **Typical Output** | Classifications, embeddings, extracted answers | Generated sentences, paragraphs or code |
+| **Best Suited For** | Sentiment analysis, question answering, classification | Story writing, chatbots, code generation, creative tasks |
+
+---
+
+## Key Points
+
+- GPT excels in tasks that require text generation. Its autoregressive feature makes it ideal for applications where the generation of coherent and contextually appropriate text is important.
+- BERT is superior for tasks that require understanding the context and different languages making it suitable for NLP tasks like named entity recognition (NER), question answering and language understanding.
+
+---
+
+## Advantages of Transformers
+
+- Efficient Energy Transfer: Transformers enables us to efficiently transfer energy from one circuit to another with minimum loss of energy. Due to this feature it can be used in so many electric appliances.
+- Voltage regulation: They can reduce or increases the voltage as per need without any complex mechanism.
+- Compact Design: The design of transformers are quite compact which prevents it from outer damage also they are lightweight enabling us to use them in almost wherever we want.
+- Versatility: We have already discussed two types of transformers so they are not only responsible for stepping up the voltage but also they can step down the voltage whenever you needed.
+- Long Lifespan: The transformers have usually very long life span, they are water proof and even when they are poorly maintained they have almost greater life span than any other electric devices at that condition.
+
+---
+
+## Disadvantages of Transformers
+
+- **Cost:** Transformers are quite expensive in almost all cases especially those which are designed for high voltage conversion. The cost is due to the coil wire which is used in wiring.
+- Efficiency Losses: Transformers are efficient no doubt but still during the transfer of the power there is still some loss in that.
+- Maintenance Requirements: They need high and regular maintenance to ensure better and efficient performance. We need to monitor the oil level, conducting inspection, and addressing potential issues.
+- Environmental Impact: Transformers are always outdoor when it comes to heavy usage thus they are always prone to environmental impacts of cyclone, heavy rain etc... They contain materials like oil and all if they are not maintained properly they might get destroyed because of environmental impacts.
