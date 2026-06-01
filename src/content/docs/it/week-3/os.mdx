@@ -1,8 +1,6 @@
 ---
-title: OS
+title: Memory Management
 ---
-
-## Memory Management 
 
 In a uni-programming system, main memory is divided into two parts: one part for the operating system (resident monitor, kernel) and one part for the user program currently being executed. In a multiprogramming system, the “user” part of memory must be further subdivided to accommodate multiple processes. The task of subdivision is carried out dynamically by the operating system and is known as memory management.
 
@@ -105,7 +103,10 @@ Paging is a memory management technique used by modern operating systems to mana
 -   **Page Number** − The page number is the index of a page in the logical address space.    
 -   **Frame Number** − The frame number is the index of a frame in the physical address space.    
 -   **Page Size** − The page size is the size of each page and frame. It is usually represented as a power of 2, For example, 4KB, 8KB, etc.
-
+-   **Page Hit** - A page hit occurs when the page requested by the CPU is already present in one of the main memory frames. Since the page is available in memory, no page replacement or disk access is required.
+    **Example:** If the pages currently in memory are `{2, 0, 1}` and the CPU requests page `0`, it is a **page hit** because page `0` is already present in memory.
+-   **Page Fault** - A page fault occurs when the page requested by the CPU is not present in main memory. The operating system must load the page from secondary storage into memory, which may require replacing an existing page.
+    **Example:** If he pages currently in memory are `{2, 0, 1}` and the CPU requests page `4`, it is a **page fault** because page `4` is not present in memory.
 ### Structure of the Page Table
 There are different structures of page table described as follows: 
 ### 1. Hierarchical Page table: 
@@ -263,9 +264,124 @@ When a process tries to access a page in physical memory, the CPU checks the pag
 #### 3. Page Replacement Algorithms
 
 If there are no free frames available in physical memory, the OS uses **page replacement algorithms** to decide which page is to be removed from physical memory to free up space for the new page. Some common page replacement algorithms are −
--   **Least Recently Used (LRU)** − The LRU algorithm removes the page that has not been used for the longest time.    
--   **First-In-First-Out (FIFO)** − The FIFO algorithm removes the oldest page in memory.
-- **Optimal Page Replacement** − The optimal page replacement algorithm removes the page that will not be used for the longest period in the future (This is a theoretical concept and cannot be implemented in practice).
+##### A. Least Recently Used (LRU)
+The LRU algorithm removes the page that has not been used for the longest time. 
+     ##### Steps
+
+1. Start with empty page frames.
+2. For each page reference:
+   - Check whether the page is already present in a frame.
+   - If the page is present:
+     - It is a **page hit**.
+     - Update its recent-use information.
+   - If the page is not present:
+     - It is a **page fault**.
+     - If there is an empty frame, load the page into it.
+     - Otherwise:
+       - Find the page that was used least recently.
+       - Remove that page from memory.
+       - Insert the new page into the freed frame.
+3. Repeat until all page references are processed.
+4. Count the total number of page faults and page hits.
+
+##### Example
+
+Reference String:`7, 0, 1, 2, 0, 3, 0, 4`  
+Number of Frames: `3`
+
+| Page | Frames After Replacement | Result |
+|------|--------------------------|--------|
+| 7 | 7 - - | Fault |
+| 0 | 7 0 - | Fault |
+| 1 | 7 0 1 | Fault |
+| 2 | 2 0 1 | Fault (7 removed) |
+| 0 | 2 0 1 | Hit |
+| 3 | 2 0 3 | Fault (1 removed) |
+| 0 | 2 0 3 | Hit |
+| 4 | 4 0 3 | Fault (2 removed) |
+
+- Total Page Faults: 6
+- Total Page Hits: 2
+
+##### B. First-In-First-Out (FIFO)
+
+The FIFO algorithm removes the page that entered memory first (the oldest page).
+
+##### Steps
+
+1. Start with empty page frames.
+2. For each page reference:
+   - Check whether the page is already present in a frame.
+   - If the page is present:
+     - It is a **page hit**.
+   - If the page is not present:
+     - It is a **page fault**.
+     - If there is an empty frame, load the page into it.
+     - Otherwise:
+       - Remove the page that entered memory first.
+       - Insert the new page into the freed frame.
+3. Repeat until all page references are processed.
+4. Count the total number of page faults and page hits.
+
+##### Example
+
+Reference String: `7, 0, 1, 2, 0, 3, 0, 4`  
+Number of Frames: `3`
+
+| Page | Frames After Replacement | Result |
+|------|--------------------------|--------|
+| 7 | 7 - - | Fault |
+| 0 | 7 0 - | Fault |
+| 1 | 7 0 1 | Fault |
+| 2 | 2 0 1 | Fault (7 removed) |
+| 0 | 2 0 1 | Hit |
+| 3 | 2 3 1 | Fault (0 removed) |
+| 0 | 2 3 0 | Fault (1 removed) |
+| 4 | 4 3 0 | Fault (2 removed) |
+
+- Total Page Faults: 7  
+- Total Page Hits: 1
+
+##### C. Optimal Page Replacement
+
+The Optimal Page Replacement algorithm removes the page that will not be used for the longest period in the future.
+
+##### Steps
+
+1. Start with empty page frames.
+2. For each page reference:
+   - Check whether the page is already present in a frame.
+   - If the page is present:
+     - It is a **page hit**.
+   - If the page is not present:
+     - It is a **page fault**.
+     - If there is an empty frame, load the page into it.
+     - Otherwise:
+       - Look ahead in the reference string.
+       - Find the page whose next use is farthest in the future (or is never used again).
+       - Remove that page from memory.
+       - Insert the new page into the freed frame.
+3. Repeat until all page references are processed.
+4. Count the total number of page faults and page hits.
+
+##### Example
+
+Reference String: `7, 0, 1, 2, 0, 3, 0, 4`  
+Number of Frames: `3`
+
+| Page | Frames After Replacement | Result |
+|------|--------------------------|--------|
+| 7 | 7 - - | Fault |
+| 0 | 7 0 - | Fault |
+| 1 | 7 0 1 | Fault |
+| 2 | 2 0 1 | Fault (7 removed) |
+| 0 | 2 0 1 | Hit |
+| 3 | 3 0 1 | Fault (2 removed) |
+| 0 | 3 0 1 | Hit |
+| 4 | 4 0 1 | Fault (3 removed) |
+
+- Total Page Faults: 6  
+- Total Page Hits: 2
 
 #### 4. Thrashing
 **Thrashing** occurs when a system spends more time handling page faults than executing actual processes. This can happen if the size of process is larger than the available physical memory. Meaning, if the size of your RAM is less, the system may constantly swap pages in and out of memory, which leads to thrashing. To avoid thrashing, the OS will implement strategies such as adjusting the degree of multiprogramming or using working set models.
