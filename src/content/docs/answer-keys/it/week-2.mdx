@@ -1,98 +1,1167 @@
 ---
-title: IT Department - Week 2 Answer Keys
+title: Week 2 Answer Keys
 description: Solutions and answer keys for IT Department Week 2 problems
 ---
-
-# IT Department - Week 2 Answer Keys
-
-## Data Structures and Algorithms (DSA)
-
-### Problem Set 1: Trees and Graphs
-**Q1: Binary tree traversals**
-```
-Pre-order (Root → Left → Right)
-In-order (Left → Root → Right)
-Post-order (Left → Right → Root)
-Level-order (BFS)
-```
-
-**Q2: Graph DFS implementation**
-```
-Answer: Recursive/Stack-based traversal
-- Mark visited nodes
-- Explore all reachable nodes
-- Time: O(V+E)
-```
-
-## Computer Networks (CN)
-
-### Problem Set 1: Routing Protocols
-**Q1: Dijkstra's algorithm routing**
-```
-Answer: Shortest path routing
-- SPF (Shortest Path First)
-- Used in OSPF
-```
-
-**Q2: IP Address Classes**
-- Class A: 1.0.0.0 to 126.255.255.255
-- Class B: 128.0.0.0 to 191.255.255.255
-- Class C: 192.0.0.0 to 223.255.255.255
-
-## Object-Oriented Programming (OOPS)
-
-### Problem Set 1: Polymorphism
-**Q1: Method overloading**
-```
-Answer: Same method name, different parameters
-- Constructor overloading
-- Function overloading
-```
-
-**Q2: Method overriding**
-```
-Answer: Redefine parent class method in child
-- Achieves runtime polymorphism
-- Uses virtual functions (C++) or @Override (Java)
-```
-
-## Operating Systems (OS)
-
-### Problem Set 1: Memory Management
-**Q1: Paging vs Segmentation**
-- Paging: Fixed-size pages, No fragmentation
-- Segmentation: Variable-size, External fragmentation
-
-**Q2: Page Replacement Algorithms**
-- FIFO: First In First Out
-- LRU: Least Recently Used
-- Optimal: Replace page not used for longest time
-
-## Database Management Systems (DBMS)
-
-### Problem Set 1: Normalization
-**Q1: Types of Normal Forms**
-- 1NF: No repeating groups
-- 2NF: 1NF + No partial dependency
-- 3NF: 2NF + No transitive dependency
-- BCNF: Every determinant is a candidate key
-
-**Q2: Functional Dependencies**
-```
-Answer: A → B means if two rows equal in A, 
-they must be equal in B
-```
+## Test 2 (ECE) 
+**Total Questions: 45**
 
 ---
 
-## Summary Table
+## Question 1
+1. The speed of a boat when travelling downstream is 32 km/h, whereas when 
+travelling upstream it is 28 km/h. What is the speed of the boat in still water and 
+the speed of the stream? 
+- A) 30 km/h, 2 km/h 
+- B) 28 km/h, 4 km/h 
+- C) 32 km/h, 2 km/h 
+- D) 30 km/h, 4 km/h
 
-| Concept | Answer |
-|---------|--------|
-| BST Search | O(log n) avg, O(n) worst |
-| Graph Cycle | DFS with color marking |
-| Subnetting | Use CIDR notation |
-| Deadlock Recovery | Preemption, Rollback |
-| ACID Properties | Atomicity, Consistency, Isolation, Durability |
+Correct Answer: A) 30 km/h, 2 km/h
 
-**Review Date:** Practice with different test cases
+Explanation: 
+Speed of boat in still water 
+= (1/2) × (32 + 28) 
+= (1/2) × 60 
+= 30 km/h 
+
+Speed of stream 
+= (1/2) × (32 − 28) 
+= (1/2) × 4 
+= 2 km/h 
+
+---
+## Question 2
+
+2. A train is moving at a speed of 132 km/h. If the length of the train is 110 m, how 
+long will it take to cross a railway platform 165 m long? 
+
+- A) 5 sec 
+- B) 6 sec 
+- C) 7.5 sec 
+- D) 8 sec 
+
+Correct Answer: C) 7.5 sec
+
+Explanation: 
+Speed of train 
+= (132 × 5) / 18 m/s 
+= 110 / 3 m/s 
+
+Total distance covered 
+= Length of train + Length of platform 
+= 110 + 165 
+= 275 m 
+
+Time taken 
+= Distance / Speed 
+= 275 ÷ (110/3) 
+= 275 × 3 / 110 
+= 7.5 sec 
+
+---
+
+## Question 3
+3. How many arrangements can be made out of the letters of the word 
+“ENGINEERING”? 
+
+- A) 277200 
+- B) 302400 
+- C) 554400 
+- D) 138600 
+
+Correct Answer: A) 277200
+
+Explanation: 
+The word “ENGINEERING” contains 11 letters: 
+E = 3, N = 3, G = 2, I = 2, R = 1 
+
+Number of arrangements 
+= 11! / (3! × 3! × 2! × 2!) 
+= 39916800 / (6 × 6 × 2 × 2) 
+= 39916800 / 144 
+= 277200 
+
+---
+## Question 4
+
+4. In how many different ways can the letters of the word “DAUGHTER” be 
+arranged so that the vowels always come together? 
+- A) 2160 
+- B) 4320 
+- C) 5040 
+- D) 7200 
+
+Correct Answer: B) 4320
+
+Explanation: 
+The word “DAUGHTER” contains 8 different letters. 
+Vowels = A, U, E 
+
+Treat the vowels together as one letter. 
+So, the units to arrange are: 
+D, G, H, T, R, (AUE) 
+
+Total units = 6 
+
+Number of ways to arrange these 6 units 
+= 6! 
+= 720 
+
+The vowels A, U, E can be arranged among themselves in 
+= 3! 
+= 6 ways 
+
+Required number of arrangements 
+= 720 × 6 
+= 4320 ways 
+
+
+---
+
+## Question 5
+
+5. Out of 5 women and 4 men, a committee of three members is to be formed in such a way that at least one member is a woman. In how many different ways can it be done? (Bank P.O., 2009)
+
+- A) 76
+- B) 80
+- C) 84
+- D) 96
+
+Correct Answer: C) 84
+
+Explanation:
+
+Possible cases:
+
+1 woman and 2 men
+
+= ⁵C₁ × ⁴C₂
+
+= 5 × 6
+
+= 30
+
+2 women and 1 man
+
+= ⁵C₂ × ⁴C₁
+
+= 10 × 4
+
+= 40
+
+3 women
+
+= ⁵C₃
+
+= 10
+
+Total number of ways
+
+= 30 + 40 + 10
+
+= 84
+
+---
+
+## Question 6
+
+6. In a simultaneous throw of a pair of dice, find the probability of getting a total more than 7.
+
+- A) 5/12
+- B) 7/12
+- C) 1/2
+- D) 15/36
+
+Correct Answer: A) 5/12
+
+Explanation:
+
+Total possible outcomes when two dice are thrown
+
+= 6 × 6
+
+= 36
+
+Sums greater than 7 are:
+
+Sum = 8 → 5 outcomes
+
+Sum = 9 → 4 outcomes
+
+Sum = 10 → 3 outcomes
+
+Sum = 11 → 2 outcomes
+
+Sum = 12 → 1 outcome
+
+Total favourable outcomes
+
+= 5 + 4 + 3 + 2 + 1
+
+= 15
+
+Probability
+
+= 15 / 36
+
+= 5 / 12
+
+---
+
+## Question 7
+
+7. A bag contains 6 white and 4 black balls. Two balls are drawn at random. Find the probability that they are of the same colour.
+
+- A) 7/15
+- B) 8/15
+- C) 21/45
+- D) 2/5
+
+Correct Answer: A) 7/15
+
+Explanation:
+
+Total number of balls
+
+= 6 + 4
+
+= 10
+
+Total ways of drawing 2 balls
+
+= ¹⁰C₂
+
+= (10 × 9) / (2 × 1)
+
+= 45
+
+Ways of drawing 2 white balls
+
+= ⁶C₂
+
+= (6 × 5) / (2 × 1)
+
+= 15
+
+Ways of drawing 2 black balls
+
+= ⁴C₂
+
+= (4 × 3) / (2 × 1)
+
+= 6
+
+Favourable outcomes
+
+= 15 + 6
+
+= 21
+
+Probability
+
+= 21 / 45
+
+= 7 / 15
+
+---
+
+## Question 8
+
+8. Two cards are drawn together from a pack of 52 cards. The probability that one is a spade and one is a heart, is
+
+- A) 3/20
+- B) 29/34
+- C) 47/100
+- D) 13/102
+
+Correct Answer: D) 13/102
+
+Explanation:
+
+Total number of ways of drawing 2 cards from 52 cards
+
+= ⁵²C₂
+
+= (52 × 51) / (2 × 1)
+
+= 1326
+
+Number of ways of choosing 1 spade out of 13
+
+= ¹³C₁
+
+= 13
+
+Number of ways of choosing 1 heart out of 13
+
+= ¹³C₁
+
+= 13
+
+Favourable outcomes
+
+= 13 × 13
+
+= 169
+
+Probability
+
+= 169 / 1326
+
+= 13 / 102
+
+---
+
+## Question 9
+
+9. The value of k for which the quadratic equation kx(x − 2) + 6 = 0 has equal roots is:
+
+- A) 2
+- B) 3
+- C) 6
+- D) −6
+
+Correct Answer: C) 6
+
+Explanation:
+
+Given equation:
+
+kx(x − 2) + 6 = 0
+
+kx² − 2kx + 6 = 0
+
+Here,
+
+a = k
+
+b = −2k
+
+c = 6
+
+For equal roots,
+
+b² − 4ac = 0
+
+(−2k)² − 4(k)(6) = 0
+
+4k² − 24k = 0
+
+4k(k − 6) = 0
+
+k = 0 or 6
+
+Since k ≠ 0 for a quadratic equation,
+
+k = 6
+
+---
+
+## Question 10
+
+10. Quadratic equation corresponding to the roots 2 + √5 and 2 − √5 is:
+
+- A) x² − 4x − 1 = 0
+- B) x² + 4x − 1 = 0
+- C) x² − 2x − 1 = 0
+- D) x² − 4x + 1 = 0
+
+Correct Answer: A) x² − 4x − 1 = 0
+
+Explanation:
+
+Given roots:
+
+α = 2 + √5
+
+β = 2 − √5
+
+Sum of roots
+
+= α + β
+
+= (2 + √5) + (2 − √5)
+
+= 4
+
+Product of roots
+
+= αβ
+
+= (2 + √5)(2 − √5)
+
+= 4 − 5
+
+= −1
+
+Quadratic equation:
+
+x² − (sum of roots)x + product of roots = 0
+
+x² − 4x − 1 = 0
+
+Hence, the required equation is
+
+x² − 4x − 1 = 0
+
+---
+
+## Question 11
+
+11. Which feature is mainly responsible for runtime polymorphism?
+
+- A) Function overloading
+- B) Constructors
+- C) Function overriding
+- D) Encapsulation
+
+Correct Answer: C) Function overriding
+
+Explanation:
+
+Runtime polymorphism is achieved through function overriding.
+
+In method overriding, a child class provides its own implementation of a method already defined in the parent class.
+
+The method that gets executed is determined during program execution (runtime), which enables runtime polymorphism.
+
+---
+
+## Question 12
+
+12. Why is composition considered stronger than aggregation?
+
+- A) Child objects are independent
+- B) Parent objects are optional
+- C) Child objects cannot exist independently
+- D) Multiple inheritance is required
+
+Correct Answer: C) Child objects cannot exist independently
+
+Explanation:
+
+Composition represents a strong "has-a" relationship.
+
+The lifetime of the child object depends on the parent object.
+
+If the parent object is destroyed, the child object is also destroyed.
+
+Therefore, child objects cannot exist independently of the parent object.
+
+---
+
+## Question 13
+
+13. Which characteristic belongs to shallow copy?
+
+- A) Creates separate memory allocation
+- B) Creates completely independent objects
+- C) Copies references of nested objects
+- D) Avoids side effects completely
+
+Correct Answer: C) Copies references of nested objects
+
+Explanation:
+
+A shallow copy copies the values of an object but does not create copies of nested objects.
+
+Instead, it copies references to those nested objects.
+
+As a result, changes made to shared nested objects may affect both the original and copied objects.
+
+---
+
+## Question 14
+
+14. Which software design combination is considered best?
+
+- A) High Coupling + Low Cohesion
+- B) Low Coupling + High Cohesion
+- C) High Coupling + High Cohesion
+- D) Low Coupling + Low Cohesion
+
+Correct Answer: B) Low Coupling + High Cohesion
+
+Explanation:
+
+Low coupling minimizes dependencies between modules.
+
+High cohesion ensures that related functionalities are grouped within the same module.
+
+This combination improves maintainability, reusability, readability, and overall software quality.
+
+---
+
+## Question 15
+
+15. Which statement correctly differentiates abstraction and encapsulation?
+
+- A) Both focus only on hiding data
+- B) Encapsulation hides implementation details only
+- C) Abstraction hides implementation while encapsulation hides data
+- D) Both are implemented only using inheritance
+
+Correct Answer: C) Abstraction hides implementation while encapsulation hides data
+
+Explanation:
+
+Abstraction focuses on hiding unnecessary implementation details and exposing only essential features.
+
+Encapsulation focuses on bundling data and methods together while restricting direct access to the data.
+
+Thus, abstraction hides complexity, whereas encapsulation protects data.
+
+---
+
+## Question 16
+
+16. Which statement about overloading and overriding is correct?
+
+- A) Overloading requires inheritance
+- B) Overriding requires inheritance
+- C) Both require inheritance
+- D) Neither requires inheritance
+
+Correct Answer: B) Overriding requires inheritance
+
+Explanation:
+
+Function overloading allows multiple methods with the same name but different parameters within the same class.
+
+Function overriding occurs when a child class provides a new implementation for a method inherited from a parent class.
+
+Therefore, overriding requires inheritance, whereas overloading does not.
+
+---
+## Question 17
+
+17. Which of the following machine learning algorithms is based on the idea of bagging?
+
+- A) K-Means
+- B) Random Forest
+- C) Logistic Regression
+- D) SVM
+
+Correct Answer: B) Random Forest
+
+Explanation:
+
+Random Forest is an ensemble learning algorithm based on the bagging technique.
+
+Multiple decision trees are trained on randomly selected subsets of the training data.
+
+The predictions from all trees are then combined to produce the final result, improving accuracy and reducing overfitting.
+
+---
+
+## Question 18
+
+18. Which of the following is a disadvantage of Decision Trees?
+
+- A) High training speed
+- B) Easy interpretation
+- C) Prone to overfitting
+- D) Works well with non-linear data
+
+Correct Answer: C) Prone to overfitting
+
+Explanation:
+
+Decision Trees can grow very deep and complex when trained without restrictions.
+
+As a result, they may memorize patterns in the training data rather than learning general trends.
+
+This leads to overfitting and poor performance on unseen data.
+
+---
+
+## Question 19
+
+19. Dimensionality reduction is primarily used to:
+
+- A) Reduce the number of features
+- B) Increase data imbalance
+- C) Generate labels automatically
+- D) Increase variance
+
+Correct Answer: A) Reduce the number of features
+
+Explanation:
+
+Dimensionality reduction techniques aim to reduce the number of input features while preserving important information.
+
+Methods such as PCA transform the original data into a smaller set of meaningful features.
+
+This reduces computational cost and can improve model performance.
+
+---
+
+## Question 20
+
+20. What is the main purpose of Regression in Machine Learning?
+
+- A) Group similar data
+- B) Predict numerical values
+- C) Detect anomalies
+- D) Classify categories
+
+Correct Answer: B) Predict numerical values
+
+Explanation:
+
+Regression algorithms are used when the output variable is continuous.
+
+They estimate numerical values such as house prices, salaries, temperatures, or sales forecasts.
+
+The goal is to model the relationship between input variables and a numerical target.
+
+---
+
+## Question 21
+
+21. Hierarchical Clustering stops when:
+
+- A) All data points are merged into one cluster
+- B) Data becomes labeled
+- C) Accuracy reaches 100%
+- D) Features are reduced
+
+Correct Answer: A) All data points are merged into one cluster
+
+Explanation:
+
+In agglomerative hierarchical clustering, each data point initially forms its own cluster.
+
+Clusters are merged step by step based on similarity.
+
+The process continues until all data points are combined into a single cluster, forming a dendrogram.
+
+---
+
+## Question 22
+
+22. What is the combined main purpose of Cost Function and Loss Function in Machine Learning?
+
+- A) To store training data
+- B) To measure prediction errors and improve model accuracy
+- C) To increase dataset size
+- D) To classify unlabeled data
+
+Correct Answer: B) To measure prediction errors and improve model accuracy
+
+Explanation:
+
+A Loss Function measures the error for an individual prediction.
+
+A Cost Function represents the average or total error across the entire dataset.
+
+Optimization algorithms attempt to minimize the cost function so that the model makes more accurate predictions.
+
+---
+
+## Question 23
+
+23. What is the primary purpose of a Software Requirement Specification (SRS) document?
+
+- A) To define coding standards
+- B) To document system requirements and constraints
+- C) To record test cases
+- D) To track project expenses
+
+Correct Answer: B) To document system requirements and constraints
+
+Explanation:
+
+An SRS document describes the functional and non-functional requirements of a software system.
+
+It serves as a formal agreement between stakeholders and developers.
+
+The document clearly specifies what the system should do and the constraints under which it must operate.
+
+---
+
+## Question 24
+
+24. In the Spiral Model, which activity is considered the most critical in each iteration?
+
+- A) Coding
+- B) Documentation
+- C) Risk Analysis
+- D) Maintenance
+
+Correct Answer: C) Risk Analysis
+
+Explanation:
+
+The Spiral Model is a risk-driven software development process.
+
+Each iteration begins with identifying, evaluating, and mitigating potential risks.
+
+Addressing risks early helps improve project success and reduces the likelihood of major failures.
+
+---
+
+## Question 25
+
+25. Which testing level is performed to verify that individual software components function correctly in isolation?
+
+- A) Integration Testing
+- B) System Testing
+- C) Unit Testing
+- D) Acceptance Testing
+
+Correct Answer: C) Unit Testing
+
+Explanation:
+
+Unit Testing focuses on testing individual modules, classes, or functions independently.
+
+The objective is to verify that each component behaves correctly before it is integrated with other parts of the system.
+
+This helps identify defects early in the development process.
+
+---
+## Question 26
+
+26. The V-Model is an extension of the Waterfall Model because it emphasizes:
+
+- A) Continuous deployment
+- B) Parallel development teams
+- C) Validation and Verification activities for each development phase
+- D) Rapid prototyping
+
+Correct Answer: C) Validation and Verification activities for each development phase
+
+Explanation:
+
+The V-Model extends the Waterfall Model by associating each development phase with a corresponding testing phase.
+
+This approach ensures that verification and validation activities are planned from the beginning of the project.
+
+As a result, defects can be detected and addressed earlier in the development lifecycle.
+
+---
+
+## Question 27
+
+27. Which of the following is NOT typically considered a functional requirement?
+
+- A) User authentication
+- B) Report generation
+- C) Response time under 2 seconds
+- D) Data entry validation
+
+Correct Answer: C) Response time under 2 seconds
+
+Explanation:
+
+Functional requirements describe what a system should do.
+
+Examples include user authentication, report generation, and data validation.
+
+Response time specifies how well the system should perform and is therefore considered a non-functional requirement.
+
+---
+
+## Question 28
+
+28. During maintenance, modifications made to improve system performance and maintainability without changing functionality are classified as:
+
+- A) Corrective Maintenance
+- B) Adaptive Maintenance
+- C) Perfective Maintenance
+- D) Preventive Maintenance
+
+Correct Answer: D) Preventive Maintenance
+
+Explanation:
+
+Preventive maintenance focuses on improving the software structure and maintainability before problems occur.
+
+The objective is to reduce future risks and make the system easier to manage.
+
+Unlike perfective maintenance, it does not introduce new functionality or modify existing behavior.
+
+---
+
+## Question 29
+
+29. What does the PROJECT (π) operation do in Relational Algebra?
+
+- A) Filters rows based on a condition
+- B) Combines two relations based on a common attribute
+- C) Selects specific columns from a relation and removes duplicates
+- D) Finds tuples related to all tuples in another relation
+
+Correct Answer: C) Selects specific columns from a relation and removes duplicates
+
+Explanation:
+
+The PROJECT (π) operation is used to retrieve selected attributes from a relation.
+
+Only the specified columns are retained in the result.
+
+Any duplicate rows generated after projection are automatically removed.
+
+---
+
+## Question 30
+
+30. Which SQL keyword is used to sort query results in descending order?
+
+- A) GROUP BY column DESC
+- B) SORT BY column DESC
+- C) ORDER BY column DESC
+- D) FILTER BY column DESC
+
+Correct Answer: C) ORDER BY column DESC
+
+Explanation:
+
+The ORDER BY clause is used to sort the records returned by a query.
+
+Adding the DESC keyword arranges the results in descending order.
+
+For example:
+
+SELECT * FROM Employees ORDER BY salary DESC;
+
+This statement displays employee records sorted from the highest salary to the lowest salary.
+
+---
+## Question 31
+
+31. In ER-to-Relational mapping, what happens to simple attributes of a relationship in a 1-to-1 mapping?
+
+- A) They are discarded and not mapped to any table
+- B) They are added to both tables as duplicate columns
+- C) They are stored in a separate new relation
+- D) They are added to the relation chosen as S (the total participation side)
+
+Correct Answer: D) They are added to the relation chosen as S (the total participation side)
+
+Explanation:
+
+In a 1-to-1 relationship mapping, one relation is selected to store the foreign key of the other relation.
+
+The relation chosen is usually the one with total participation in the relationship.
+
+Any simple attributes belonging to the relationship are also added directly to this relation along with the foreign key.
+
+---
+
+## Question 32
+
+32. What is the correct order of clauses in a SQL query that uses GROUP BY and HAVING?
+
+- A) SELECT → HAVING → WHERE → GROUP BY → FROM
+- B) SELECT → FROM → HAVING → GROUP BY → WHERE
+- C) SELECT → FROM → WHERE → GROUP BY → HAVING
+- D) SELECT → FROM → GROUP BY → WHERE → HAVING
+
+Correct Answer: C) SELECT → FROM → WHERE → GROUP BY → HAVING
+
+Explanation:
+
+The standard SQL clause order is:
+
+SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY
+
+The WHERE clause filters individual rows before grouping.
+
+The GROUP BY clause creates groups from the filtered rows.
+
+The HAVING clause then filters the grouped results.
+
+---
+
+## Question 33
+
+33. In a relational schema, EMPLOYEE(Emp_ID, Name, Dept_ID) and DEPARTMENT(Dept_ID, Dept_Name, Mgr_Emp_ID). The attribute Mgr_Emp_ID in DEPARTMENT refers to the Emp_ID of the manager. What kind of relationship does Mgr_Emp_ID represent?
+
+- A) Mgr_Emp_ID is a composite key because it combines department and employee information
+- B) Mgr_Emp_ID is the primary key of DEPARTMENT since every department must have a manager
+- C) Mgr_Emp_ID is a candidate key of EMPLOYEE because managers are uniquely identified employees
+- D) A foreign key in DEPARTMENT that references the EMPLOYEE table
+
+Correct Answer: D) A foreign key in DEPARTMENT that references the EMPLOYEE table
+
+Explanation:
+
+The attribute Mgr_Emp_ID stores the employee ID of the department manager.
+
+Since it references Emp_ID from the EMPLOYEE table, it establishes a relationship between the two tables.
+
+Therefore, Mgr_Emp_ID acts as a foreign key in the DEPARTMENT table referencing EMPLOYEE(Emp_ID).
+
+---
+
+## Question 34
+
+34. Which JOIN will return only the rows that have matching values in both tables?
+
+- A) LEFT JOIN
+- B) RIGHT JOIN
+- C) INNER JOIN
+- D) FULL OUTER JOIN
+
+Correct Answer: C) INNER JOIN
+
+Explanation:
+
+INNER JOIN returns only those records that have matching values in both tables.
+
+Rows without a matching record in the other table are excluded from the result.
+
+This makes INNER JOIN the most commonly used join when only matching data is required.
+
+---
+
+## Question 35
+
+35. What is the primary purpose of the Framing function in the Data Link Layer?
+
+- A) To assign IP addresses to data packets
+- B) To divide raw bit-streams into structured data units called frames
+- C) To regulate the speed of data transmission
+- D) To detect and correct errors in data
+
+Correct Answer: B) To divide raw bit-streams into structured data units called frames
+
+Explanation:
+
+The Data Link Layer receives a continuous stream of bits from the Physical Layer.
+
+Framing organizes this bit stream into manageable units called frames.
+
+These frames enable reliable node-to-node communication across the network.
+
+---
+
+## Question 36
+
+36. In ARP, when System A wants to find the MAC address of System B, how does it send the request and how does System B respond?
+
+- A) Unicast request — Broadcast response
+- B) Multicast request — Unicast response
+- C) Broadcast request — Unicast response
+- D) Broadcast request — Broadcast response
+
+Correct Answer: C) Broadcast request — Unicast response
+
+Explanation:
+
+When System A knows the IP address of System B but not its MAC address, it sends an ARP Request to all devices on the local network using a broadcast message.
+
+The device whose IP address matches the request identifies itself and sends an ARP Reply directly back to System A using unicast communication.
+
+Thus, ARP uses a Broadcast Request followed by a Unicast Response.
+
+---
+## Question 37
+
+37. What does CSMA/CD do immediately after detecting a collision on the channel?
+
+- A) Drops the frame permanently and waits for retransmission request
+- B) Continues transmitting and ignores the collision
+- C) Stops transmitting, sends a jam signal, and waits a random backoff time before retrying
+- D) Switches to CSMA/CA mode automatically
+
+Correct Answer: C) Stops transmitting, sends a jam signal, and waits a random backoff time before retrying
+
+Explanation:
+
+When a collision is detected, the transmitting station immediately stops sending data.
+
+A jam signal is then transmitted so that all stations on the network become aware of the collision.
+
+Afterward, the station waits for a randomly selected backoff period before attempting retransmission, reducing the chance of repeated collisions.
+
+---
+
+## Question 38
+
+38. What is the maximum throughput of Pure ALOHA and at what offered load (G) does it occur?
+
+- A) 36.8% at G = 1
+- B) 18.4% at G = 0.5
+- C) 50% at G = 0.5
+- D) 18.4% at G = 1
+
+Correct Answer: B) 18.4% at G = 0.5
+
+Explanation:
+
+The throughput of Pure ALOHA is given by:
+
+S = G × e⁻²ᴳ
+
+Maximum throughput occurs when:
+
+G = 0.5
+
+Substituting the value:
+
+S = 0.5 × e⁻¹
+
+≈ 0.184
+
+Therefore, the maximum throughput is approximately 18.4% of the channel capacity.
+
+---
+
+## Question 39
+
+39. Why does Simple Parity Check fail to detect even-numbered bit errors?
+
+- A) Because it only checks the last bit of the data
+- B) Because it uses multiplication instead of addition
+- C) Because two flipped bits cancel each other out, keeping the parity count even
+- D) Because it cannot handle data longer than 8 bits
+
+Correct Answer: C) Because two flipped bits cancel each other out, keeping the parity count even
+
+Explanation:
+
+Parity checking works by verifying whether the total number of 1s remains even or odd.
+
+If an even number of bits change during transmission, the parity remains unchanged.
+
+As a result, the receiver incorrectly assumes that no transmission error has occurred.
+
+This limitation makes parity checking unable to detect many even-numbered bit errors.
+
+---
+
+## Question 40
+
+40. In CRC error detection, how does the receiver confirm that received data is error-free?
+
+- A) By comparing the received data with a stored copy of the original
+- B) By checking if the division of received data by the divisor gives zero remainder
+- C) By recalculating the checksum and comparing it with the sent checksum
+- D) By counting the number of 1s in the received data
+
+Correct Answer: B) By checking if the division of received data by the divisor gives zero remainder
+
+Explanation:
+
+CRC uses binary polynomial division for error detection.
+
+The sender appends CRC bits so that the transmitted data becomes exactly divisible by a predefined divisor.
+
+At the receiver side, the same division is performed.
+
+If the remainder is zero, the data is considered error-free; otherwise, an error is assumed to have occurred during transmission.
+
+---
+
+## Question 41
+
+41. What is a deadlock in an operating system?
+
+- A) A process finishes execution
+- B) Multiple processes execute simultaneously
+- C) Two or more processes wait forever for resources held by each other
+- D) A process releases all resources
+
+Correct Answer: C) Two or more processes wait forever for resources held by each other
+
+Explanation:
+
+A deadlock occurs when two or more processes are unable to proceed because each process is waiting for a resource currently held by another process.
+
+Since none of the processes can obtain the required resource, all of them remain blocked indefinitely.
+
+As a result, the system cannot make further progress until the deadlock is resolved.
+
+---
+
+## Question 42
+
+42. Which of the following is NOT a necessary condition for deadlock?
+
+- A) Mutual Exclusion
+- B) Hold and Wait
+- C) Process Synchronization
+- D) Circular Wait
+
+Correct Answer: C) Process Synchronization
+
+Explanation:
+
+A deadlock can occur only when all four Coffman conditions are present:
+
+• Mutual Exclusion  
+• Hold and Wait  
+• No Preemption  
+• Circular Wait
+
+Process synchronization helps coordinate processes but is not one of the necessary conditions for deadlock.
+
+---
+
+## Question 43
+
+43. A system is said to be in a safe state if:
+
+- A) No process is running
+- B) There exists at least one safe sequence
+- C) All resources are free
+- D) Deadlock has already occurred
+
+Correct Answer: B) There exists at least one safe sequence
+
+Explanation:
+
+A system is considered safe when there exists at least one order in which all processes can obtain the required resources and complete execution.
+
+Such an order is called a safe sequence.
+
+A safe state guarantees that deadlock can be avoided if resources are allocated carefully.
+
+---
+
+## Question 44
+
+44. Which graph is used for deadlock detection when there is only one instance of each resource type?
+
+- A) Precedence Graph
+- B) Resource Allocation Graph
+- C) Wait-For Graph
+- D) State Transition Graph
+
+Correct Answer: C) Wait-For Graph
+
+Explanation:
+
+A Wait-For Graph is a simplified form of a Resource Allocation Graph used when each resource type has only one instance.
+
+In this graph, nodes represent processes and edges indicate that one process is waiting for another.
+
+If a cycle exists in the Wait-For Graph, a deadlock is present.
+
+---
+
+## Question 45
+
+45. In the Resource Request Algorithm of Banker’s Algorithm, after verifying Request ≤ Need and Request ≤ Available, what happens next?
+
+- A) Process is terminated
+- B) Resources are allocated temporarily and safety algorithm is checked
+- C) Deadlock is declared immediately
+- D) All resources are released
+
+Correct Answer: B) Resources are allocated temporarily and safety algorithm is checked
+
+Explanation:
+
+Once the requested resources satisfy both Request ≤ Need and Request ≤ Available, the system assumes the allocation temporarily.
+
+The available, allocated, and needed resource values are updated accordingly.
+
+The Safety Algorithm is then executed to verify whether the system remains in a safe state.
+
+Only if the system stays safe is the resource request permanently granted.
+
+---

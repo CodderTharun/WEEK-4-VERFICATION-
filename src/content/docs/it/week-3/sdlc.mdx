@@ -1,9 +1,8 @@
 ---
-title: SDLC
+title: High Level Design (HLD)
 description: HLD Notes
 ---
 
-# High Level Design (HLD)
 ## Introduction to HLD
 
 High Level Design (HLD) focuses on the overall architecture and structure of software systems.
@@ -37,7 +36,7 @@ Examples of systems requiring HLD:
   style={{
     width: "65%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
@@ -137,7 +136,7 @@ Horizontal scaling is more commonly used in modern distributed systems.
   style={{
     width: "65%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
@@ -188,7 +187,7 @@ YouTube distributes traffic across multiple servers using load balancers.
   style={{
     width: "65%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
@@ -235,9 +234,82 @@ This improves speed significantly.
   style={{
     width: "65%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
+
+### E. Redis
+
+Redis (Remote Dictionary Server) is an in-memory data store commonly used for caching.
+
+Unlike traditional databases, Redis stores data in RAM, making data access extremely fast.
+
+### F. Why Redis is Popular
+
+- Very fast read and write operations
+- Reduces database load
+- Supports key-value storage
+- Supports expiration (TTL)
+- Easy to scale
+
+### G. Example of Redis Caching
+
+Suppose a user profile is frequently accessed.
+
+Without Redis:
+
+User → Database → Response
+
+Every request hits the database.
+
+With Redis:
+
+User → Redis Cache → Response
+
+Only if data is not found in Redis:
+
+User → Database → Redis → Response
+
+This significantly reduces database traffic.
+
+### H. Cache Expiration (TTL)
+
+TTL stands for Time To Live.
+
+It specifies how long data should remain in cache.
+
+#### Example
+
+A user's profile can be cached for:
+
+- 10 minutes
+- 30 minutes
+- 1 hour
+
+After TTL expires:
+
+- Data is removed automatically
+- Fresh data is fetched from the database
+
+### I. Redis in Real Applications
+
+Redis is commonly used for:
+
+- User sessions
+- User profiles
+- Trending posts
+- News feeds
+- API response caching
+- Rate limiting
+
+### J. Redis vs Database
+
+| Redis | Database |
+| --- | --- |
+| Stored in RAM | Stored on Disk |
+| Extremely Fast | Comparatively Slower |
+| Temporary Storage | Permanent Storage |
+| Used for Caching | Used for Persistent Data |
 
 
 
@@ -297,6 +369,7 @@ NoSQL databases store unstructured or semi-structured data.
 
 #### 2. Examples
 
+- DynamoDB 
 - MongoDB
 - Cassandra
 
@@ -317,7 +390,7 @@ NoSQL databases store unstructured or semi-structured data.
   style={{
     width: "65%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
@@ -363,7 +436,7 @@ Users:
   style={{
     width: "65%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
@@ -373,22 +446,47 @@ Users:
 
 An API Gateway acts as a single entry point for all client requests.
 
+Instead of clients directly communicating with multiple services, all requests first go through the API Gateway.
+
 It handles:
 
 - Authentication
 - Routing
-- Rate limiting
-- Request forwarding
+- Rate Limiting
+- Request Forwarding
+- Request Validation
 
 ### A. Benefits
 
 - Better security
 - Centralized request handling
 - Simplified architecture
+- Easier monitoring
+- Better control over APIs
 
 #### 1. Example
 
-Mobile applications communicate with the API Gateway instead of directly contacting every service.
+Consider an application with multiple services:
+
+- User Service
+- Post Service
+- Payment Service
+- Search Service
+
+Without an API Gateway:
+
+Client → User Service  
+Client → Payment Service  
+Client → Search Service  
+Client → Post Service
+
+The client must know the address of every service.
+
+With an API Gateway:
+
+Client → API Gateway → Appropriate Service
+
+This simplifies communication.
 
 <img
   src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/api-gateway.png"
@@ -396,15 +494,109 @@ Mobile applications communicate with the API Gateway instead of directly contact
   style={{
     width: "65%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
+### B. API Gateway vs Load Balancer
+
+API Gateway and Load Balancer are often confused because both sit in front of servers and handle incoming requests.
+
+However, they solve different problems.
+
+| Feature | Load Balancer | API Gateway |
+| --- | --- | --- |
+| Main Purpose | Distribute Traffic | Manage APIs |
+| Works At | Infrastructure Level | Application Level |
+| Authentication | Usually No | Yes |
+| Rate Limiting | Usually No | Yes |
+| API Routing | No | Yes |
+| Request Validation | No | Yes |
+| Traffic Distribution | Yes | Limited |
+| Business Logic Awareness | No | Yes |
+
+### C. Load Balancer
+
+A Load Balancer answers:
+
+**"Which server should handle this request?"**
+
+#### 1. Example
+
+User → Load Balancer → Server 1
+
+User → Load Balancer → Server 2
+
+User → Load Balancer → Server 3
+
+#### 2. Responsibilities
+
+- Distribute traffic
+- Prevent server overload
+- Improve availability
+- Improve scalability
+
+The Load Balancer does not care whether the request is:
+
+- Login
+- Payment
+- Search
+- Upload
+
+It only decides which server should receive the request.
+
+### D. API Gateway
+
+An API Gateway answers:
+
+**"Which service should handle this request?"**
+
+#### 1. Example
+
+- `/login` → User Service
+- `/payment` → Payment Service
+- `/search` → Search Service
+- `/posts` → Post Service
+
+The API Gateway understands the request and routes it to the appropriate service.
+
+#### 2. Additional Responsibilities
+
+- Authenticate users
+- Validate tokens
+- Apply rate limiting
+- Block malicious requests
+
+### E. Using Both Together
+
+In real-world systems both are commonly used together.
+
+#### 1. Flow
+
+User → Load Balancer → API Gateway → Services
+
+#### 2. Example
+
+User->Load Balancer->API Gateway->User Service / Payment Service / Search Service / Post Service
+
+Here:
+
+- Load Balancer distributes traffic
+- API Gateway manages APIs
+- Services execute business logic
+
+### F. Easy Memories
+
+**Load Balancer → "Which Server?"**
+
+**API Gateway → "Which Service?"**
 
 
 ## Message Queues
 
 Message Queues help systems communicate asynchronously.
+
+Instead of one service directly waiting for another service to complete its work, messages can be placed in a queue and processed later.
 
 They are useful for:
 
@@ -412,27 +604,8 @@ They are useful for:
 - Background jobs
 - Email systems
 - Order processing
-
-### A. Popular Queue Systems
-
-- Kafka
-- RabbitMQ
-
-### B. Example
-
-In Amazon:
-
 - Payment processing
-- Email sending
-- Notification sending
-
-can happen asynchronously using queues.
-
-### C. Advantages
-
-- Reduces system load
-- Better scalability
-- Better fault tolerance
+- Event-driven systems
 
 <img
   src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/message-queue.png"
@@ -440,46 +613,306 @@ can happen asynchronously using queues.
   style={{
     width: "65%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
+
+### A. Popular Queue Systems
+
+- Kafka
+- RabbitMQ
+
+Kafka is one of the most widely used distributed event streaming platforms in modern large-scale systems.
+
+### B. Kafka
+
+Apache Kafka is a distributed message queue and event streaming platform used to handle large volumes of data efficiently.
+
+Kafka allows different services to communicate asynchronously without directly depending on each other.
+
+Instead of one service immediately waiting for another service to complete its task:
+
+- A message is placed into Kafka
+- Kafka stores the message
+- Consumer services process the message later
+
+This improves:
+
+- Scalability
+- Reliability
+- Fault Tolerance
+- System Performance
+
+#### 1. Kafka Components
+
+##### a. Producer
+
+The service that sends messages to Kafka.
+
+Examples:
+
+- Order Service
+- Payment Service
+- User Service
+
+##### b. Topic
+
+A category where messages are stored.
+
+Examples:
+
+- Orders Topic
+- Payments Topic
+- Notifications Topic
+
+##### c. Consumer
+
+The service that reads messages from Kafka.
+
+Examples:
+
+- Email Service
+- Notification Service
+- Analytics Service
+
+### C. Example
+
+Suppose a user places an order on Amazon.
+
+Without Kafka:
+
+Order Service → Email Service
+
+The Order Service must wait for the Email Service to complete.
+
+With Kafka:
+
+Order Service → Kafka → Email Service
+
+The order is completed immediately while the email is processed separately.
+
+This makes the system:
+
+- Faster
+- More scalable
+- More reliable
+
+### D. Why Companies Use Kafka
+
+Kafka is used by companies such as:
+
+- Netflix
+- LinkedIn
+- Uber
+- Amazon
+
+because it can process millions of messages efficiently and reliably.
+
+### E. RabbitMQ
+
+RabbitMQ is another popular message queue system.
+
+It is commonly used when:
+
+- Reliable message delivery is required
+- Work needs to be distributed across multiple workers
+- Applications require traditional queue-based communication
+
+### F. Advantages
+
+- Reduces system load
+- Better scalability
+- Better fault tolerance
+- Supports asynchronous communication
+- Prevents services from becoming tightly coupled
 
 
 
 ## Monolithic vs Microservices
 
+Software systems are commonly built using either a Monolithic Architecture or a Microservices Architecture.
+
+The choice depends on:
+
+- Project size
+- Team size
+- Scalability requirements
+- Complexity of the application
+
 ### A. Monolithic Architecture
 
-All components are built as one single application.
+In a Monolithic Architecture, the entire application is built and deployed as a single unit.
 
-#### 1. Advantages
+All components are part of the same application, including:
 
-- Easier to build initially
-- Simple deployment
+- User Management
+- Authentication
+- Payments
+- Products
+- Notifications
 
-#### 2. Limitations
+Everything runs together.
 
-- Difficult to scale
-- Difficult to maintain for large systems
+#### 1. Example
+
+Consider an E-Commerce application.
+
+```text
+User Module
+Product Module
+Payment Module
+Order Module
+Notification Module
+        ↓
+ Single Application
+```
+
+All modules are packaged and deployed together.
+
+#### 2. Advantages
+
+- Easier to develop initially
+- Easier debugging
+- Simpler deployment
+- Suitable for small projects
+
+#### 3. Limitations
+
+- Difficult to scale specific components
+- Large codebase becomes difficult to maintain
+- Small changes require redeploying the entire application
+- Failure in one module may affect the whole application
+
+#### 4. Real-World Example
+
+Many startups begin with a monolithic architecture because:
+
+- Development is faster
+- Infrastructure is simpler
+- Team size is small
 
 ### B. Microservices Architecture
 
-The application is divided into smaller independent services.
+In a Microservices Architecture, the application is divided into multiple independent services.
 
-#### 1. Advantages
+Each service handles a specific business function.
+
+Examples:
+
+- User Service
+- Product Service
+- Payment Service
+- Order Service
+- Notification Service
+
+Each service can be developed, deployed, and scaled independently.
+
+#### 1. Example
+
+E-Commerce Application
+
+```text
+User Service
+       │
+Product Service
+       │
+Payment Service
+       │
+Order Service
+       │
+Notification Service
+```
+
+Each service may have:
+
+- Its own codebase
+- Its own database
+- Its own deployment process
+
+#### 2. Advantages
 
 - Better scalability
 - Independent deployment
 - Easier maintenance
+- Faster development for large teams
+- Failure of one service does not necessarily affect others
 
-#### 2. Limitations
+#### 3. Limitations
 
-- Complex communication
-- Difficult debugging
+- More complex architecture
+- Network communication overhead
+- More difficult debugging
+- Increased infrastructure cost
 
-#### 3. Example
+#### 4. Real-World Examples
 
-Netflix uses microservices architecture.
+Many large companies use Microservices:
+
+- Netflix
+- Amazon
+- Uber
+- Spotify
+
+Example:
+
+Netflix has separate services for:
+
+- User Accounts
+- Recommendations
+- Billing
+- Streaming
+- Search
+
+Each service can be scaled independently.
+
+### C. Monolithic vs Microservices
+
+| Feature | Monolithic | Microservices |
+| --- | --- | --- |
+| Deployment | Single Application | Multiple Services |
+| Scalability | Entire App | Individual Services |
+| Complexity | Lower | Higher |
+| Maintenance | Difficult for Large Apps | Easier |
+| Development Speed | Faster Initially | Better for Large Teams |
+| Infrastructure Cost | Lower | Higher |
+| Fault Isolation | Poor | Better |
+
+### D. When to Use Monolithic Architecture
+
+Monolithic architecture is suitable when:
+
+- Building a small application
+- Working with a small team
+- Project requirements are simple
+- Rapid development is needed
+
+Examples:
+
+- College Projects
+- Internal Company Tools
+- Small Business Applications
+
+### E. When to Use Microservices Architecture
+
+Microservices architecture is suitable when:
+
+- Application has millions of users
+- Multiple teams work on the project
+- High scalability is required
+- Different modules need independent deployments
+
+Examples:
+
+- Netflix
+- Amazon
+- Instagram
+- Uber
+
+### F. Easy Memories
+
+**Monolithic = Everything Together**
+
+**Microservices = Divide and Manage Independently**
 
 <img
   src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/monolith-vs-microservices.png"
@@ -487,11 +920,9 @@ Netflix uses microservices architecture.
   style={{
     width: "65%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
-
-
 
 ## CAP Theorem
 
@@ -538,7 +969,6 @@ The system should continue working even if communication between servers fails.
 If servers in India and the USA lose connection:
 
 - The system should still continue functioning.
-
 ### D. CP Systems
 
 CP systems prioritize:
@@ -548,7 +978,34 @@ CP systems prioritize:
 
 #### 1. Example
 
-Banking systems
+Banking Systems
+
+Suppose a user transfers ₹10,000 from one account to another.
+
+The system must ensure:
+
+- Every server shows the same balance
+- No incorrect balances are displayed
+
+If a network partition occurs:
+
+- The system may temporarily reject requests
+- The system prefers correctness over availability
+
+This means users may experience delays, but the data always remains accurate.
+
+#### 2. Why CP Systems Exist
+
+In some applications:
+
+- Incorrect data is unacceptable
+- Data accuracy is more important than availability
+
+Examples:
+
+- Banking Systems
+- Payment Systems
+- Stock Trading Platforms
 
 ### E. AP Systems
 
@@ -559,14 +1016,130 @@ AP systems prioritize:
 
 #### 1. Example
 
-Instagram likes and YouTube views.
+Instagram Likes
 
-### F. Eventual Consistency
+Suppose a post currently has:
 
-Eventual consistency means:
+- 100 likes
 
-Data may not update instantly everywhere,
-but eventually all servers become synchronized.
+User A likes the post.
+
+Immediately after the like:
+
+- User A may see 101 likes
+- User B may still see 100 likes
+
+This happens because all servers have not synchronized yet.
+
+The system continues serving requests even though every server may not have the latest data.
+
+#### 2. Eventual Consistency
+
+To maintain Availability and Partition Tolerance, many distributed systems use Eventual Consistency.
+
+Eventual Consistency means:
+
+- Data may not be updated instantly on every server
+- Different users may temporarily see slightly different data
+- After some time, all servers become synchronized
+
+A few seconds later:
+
+- Every user sees 101 likes
+
+This is called Eventual Consistency.
+
+#### 3. Why AP Systems Exist
+
+Applications such as:
+
+- Instagram
+- Facebook
+- YouTube
+- Twitter
+
+prioritize:
+
+- Fast responses
+- High availability
+- Global scalability
+
+A delay of a few seconds in likes, views, or follower counts is acceptable.
+
+Therefore these systems prefer:
+
+Availability + Partition Tolerance
+
+and use Eventual Consistency.
+
+### F. CA Systems
+
+CA systems prioritize:
+
+- Consistency
+- Availability
+
+#### 1. Example
+
+Traditional Single Database Applications
+
+Consider a college management system running on a single database server.
+
+The system provides:
+
+- Correct data
+- Immediate responses
+
+because there is no network partition between multiple servers.
+
+#### 2. Why CA Systems are Rare
+
+In distributed systems, network failures are unavoidable.
+
+When servers are distributed across:
+
+- Different cities
+- Different countries
+- Different data centers
+
+Partition Tolerance becomes mandatory.
+
+Therefore, in real-world distributed systems:
+
+- CP systems are common
+- AP systems are common
+- Pure CA systems are extremely rare
+
+#### 3. Example Applications
+
+- Small Internal Applications
+- Single Server Systems
+- Local Database Applications
+
+### G. Easy Memory Trick
+
+**CP → Correctness First**
+
+Examples:
+
+- Banking
+- Payments
+- Trading Systems
+
+**AP → Always Available**
+
+Examples:
+
+- Instagram
+- Facebook
+- YouTube
+
+**CA → Single-System Consistency**
+
+Examples:
+
+- Local Applications
+- Single Database Systems
 
 <img
   src="https://raw.githubusercontent.com/podummy04/images/main/IT/SDLC/Week3/cap-theorem.png"
@@ -574,7 +1147,7 @@ but eventually all servers become synchronized.
   style={{
     width: "60%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
@@ -627,7 +1200,7 @@ When watching YouTube videos:
   style={{
     width: "65%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
@@ -747,7 +1320,7 @@ Main components include:
   style={{
     width: "75%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
@@ -860,7 +1433,7 @@ If a viral YouTube link is accessed millions of times:
   style={{
     width: "70%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
@@ -897,7 +1470,7 @@ The short URL is returned to the user.
   style={{
     width: "70%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
@@ -1037,7 +1610,7 @@ Base62 allows:
   style={{
     width: "55%",
     display: "block",
-    margin: "20px auto"
+    margin: "auto"
   }}
 />
 
@@ -1155,8 +1728,8 @@ This architecture provides:
   alt="Final URL Shortener Architecture"
   style={{
     width: "75%",
-    margin: "20px auto",
-    display: "block"
+    display: "block",
+    margin: "auto"
   }}
 />
 

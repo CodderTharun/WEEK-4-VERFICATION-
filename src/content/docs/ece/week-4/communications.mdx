@@ -1,58 +1,1498 @@
 ---
-title: Communications - Week 4
-description: Noise and error correction
+title: communications
 ---
 
 
 
-## Noise
+## Unit 1: Communication Fundamentals
 
-Unwanted signal degrading quality.
+### A. Electromagnetic Spectrum
 
-### Noise Types
+Electromagnetic (EM) waves are self-sustaining, mutually perpendicular oscillations of electric and magnetic fields that propagate through space at the speed of light. The entire continuum of EM waves, ordered by frequency or wavelength, constitutes the **electromagnetic spectrum**.
 
-- Thermal noise (Johnson noise)
-- Shot noise
-- Flicker noise
-- Interference
+The fundamental relationship between frequency $f$, wavelength $\lambda$, and the speed of light $c$ is:
 
-### Signal-to-Noise Ratio
+$$c = f\lambda \qquad c \approx 3 \times 10^8 \text{ m/s in free space}$$
 
-SNR = Ps/Pn (dB)
+Higher frequency implies shorter wavelength, higher photon energy, and generally greater atmospheric absorption.
 
-### Error Probability
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C1.png?raw=true" alt="Electromagnetic Spectrum showing all bands from ELF to Gamma rays with frequency, wavelength, and application annotations" style="max-width:100%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 1.1 — The Electromagnetic Spectrum</p>
+</div>
+</html>
 
-Depends on:
-- Modulation scheme
-- SNR
-- Channel characteristics
 
-## Error Correction
+| Band | Frequency Range | Wavelength | Applications |
+|------|----------------|------------|--------------|
+| ELF | 3–30 Hz | 100,000–10,000 km | Submarine communication |
+| VLF | 3–30 kHz | 100–10 km | Navigation, submarine |
+| LF | 30–300 kHz | 10–1 km | AM broadcasting, LORAN |
+| MF | 300 kHz–3 MHz | 1000–100 m | AM radio |
+| HF | 3–30 MHz | 100–10 m | Shortwave, sky-wave comms |
+| VHF | 30–300 MHz | 10–1 m | FM radio, TV, aircraft |
+| UHF | 300 MHz–3 GHz | 100–10 cm | TV, cellular, radar |
+| SHF | 3–30 GHz | 10–1 cm | Microwave, satellite |
+| EHF | 30–300 GHz | 10–1 mm | Millimeter-wave, radar |
+| Infrared | 300 GHz–430 THz | 1 mm–700 nm | Thermal imaging, fiber optics |
+| Visible Light | 430–770 THz | 700–390 nm | Optical fiber, LiDAR |
+| UV / X-Ray / Gamma | 770 THz–30 EHz | 390 nm–10 pm | Medical, scientific, industrial imaging |
 
-### Error Detection
 
-- Parity check
-- Checksum
-- CRC (Cyclic Redundancy Check)
 
-### Error Correction
+### B. Microwave and Optical Spectrum
 
-- Hamming code
-- Reed-Solomon
-- Turbo codes
-- LDPC codes
+#### 1. Microwave Spectrum (300 MHz – 300 GHz)
 
-### This Week
+Microwaves occupy a critical segment of the spectrum. IEEE convention sub-divides them into named bands:
 
-- Noise analysis
-- Signal recovery
-- Error correction codes
-- Channel coding
-- Information theory
-- Shannon capacity
+| IEEE Band | Frequency | Typical Application |
+|-----------|-----------|---------------------|
+| L | 1–2 GHz | GPS, mobile |
+| S | 2–4 GHz | Weather radar, WiFi |
+| C | 4–8 GHz | Satellite TV, long-haul |
+| X | 8–12 GHz | Military radar, satellite |
+| Ku | 12–18 GHz | Direct broadcast satellite |
+| K | 18–26.5 GHz | Radar, mm-wave comms |
+| Ka | 26.5–40 GHz | High-capacity satellite |
+| V | 40–75 GHz | 5G backhaul |
+| W | 75–110 GHz | Automotive radar, imaging |
 
-### Practice
+Microwaves are favoured for communications because they support large bandwidths, travel in straight lines (LOS), can be focused with compact antennas, and benefit from clear atmospheric windows.
 
-- Calculate SNR
-- Design error correction
-- Analyze channel capacity
+#### 2. Optical Spectrum and Fiber Transmission Windows
+
+Silica fiber has three well-defined low-loss transmission windows:
+
+| Window | Wavelength | Attenuation | Primary Use |
+|--------|-----------|-------------|-------------|
+| 1st | 850 nm | $\sim$2 dB/km | Short-range multimode |
+| 2nd | 1310 nm | $\sim$0.35 dB/km | Standard single-mode |
+| 3rd | 1550 nm | $\sim$0.2 dB/km | Long-haul, DWDM |
+
+The **1550 nm window** dominates long-distance optical communication for three reasons:
+
+- Minimum silica attenuation ($\sim$0.2 dB/km)
+- Overlaps the gain band of Erbium-Doped Fiber Amplifiers (EDFA)
+- Stable DFB laser sources available at this wavelength
+
+
+
+### C. Wave Equations
+
+EM wave behaviour is governed by Maxwell's equations. In a source-free, linear, isotropic medium these are:
+
+$$\nabla \times \mathbf{E} = -\mu \frac{\partial \mathbf{H}}{\partial t} \qquad \text{(Faraday's Law)}$$
+
+$$\nabla \times \mathbf{H} = \varepsilon \frac{\partial \mathbf{E}}{\partial t} \qquad \text{(Ampere's Law)}$$
+
+$$\nabla \cdot \mathbf{E} = 0 \qquad \nabla \cdot \mathbf{H} = 0$$
+
+#### 1. Vector Wave Equation
+
+Taking the curl of Faraday's law and substituting Ampere's law:
+
+$$\nabla^2 \mathbf{E} = \mu\varepsilon \frac{\partial^2 \mathbf{E}}{\partial t^2} \qquad \nabla^2 \mathbf{H} = \mu\varepsilon \frac{\partial^2 \mathbf{H}}{\partial t^2}$$
+
+For a uniform plane wave propagating in the $+z$ direction with $\mathbf{E}$ polarised along $\hat{x}$:
+
+$$\mathbf{E}(z,t) = E_0 \cos(\omega t - \beta z)\,\hat{x}$$
+
+$$\mathbf{H}(z,t) = H_0 \cos(\omega t - \beta z)\,\hat{y}$$
+
+where $\omega = 2\pi f$ is the angular frequency and $\beta = \omega\sqrt{\mu\varepsilon} = 2\pi/\lambda$ is the phase constant.
+
+#### 2. Intrinsic Impedance
+
+The ratio of electric to magnetic field amplitudes defines the **intrinsic impedance**:
+
+$$\eta = \sqrt{\frac{\mu}{\varepsilon}} \qquad \Rightarrow \qquad \eta_0 = \sqrt{\frac{\mu_0}{\varepsilon_0}} = 120\pi \approx 377\,\Omega \quad \text{(free space)}$$
+
+#### 3. Propagation in a Lossy Medium
+
+In a medium with conductivity $\sigma$, the propagation constant becomes complex:
+
+$$\gamma = \alpha + j\beta$$
+
+$$\alpha = \omega\sqrt{\frac{\mu\varepsilon}{2}}\left[\sqrt{1+\left(\frac{\sigma}{\omega\varepsilon}\right)^2} - 1\right]^{1/2} \quad \text{(Np/m)}$$
+
+$$\beta = \omega\sqrt{\frac{\mu\varepsilon}{2}}\left[\sqrt{1+\left(\frac{\sigma}{\omega\varepsilon}\right)^2} + 1\right]^{1/2} \quad \text{(rad/m)}$$
+
+The field decays as $E(z) = E_0\,e^{-\alpha z}$. The **skin depth** $\delta$ is the depth at which field intensity falls to $1/e \approx 37\%$:
+
+$$\delta = \frac{1}{\alpha} = \sqrt{\frac{2}{\omega\mu\sigma}} \qquad \text{(valid for good conductors: } \sigma \gg \omega\varepsilon\text{)}$$
+
+
+
+### D. Poynting Vector
+
+The **Poynting vector** $\mathbf{S}$ represents the instantaneous power flow per unit area (power density) of an EM wave:
+
+$$\mathbf{S} = \mathbf{E} \times \mathbf{H} \quad \text{(W/m}^2\text{)}$$
+
+It points in the direction of energy propagation and its magnitude is the wave intensity.
+
+#### 1. Time-Averaged Poynting Vector
+
+For sinusoidal steady-state fields:
+
+$$\mathbf{S}_\text{avg} = \frac{1}{2}\,\operatorname{Re}(\mathbf{E} \times \mathbf{H}^*) \quad \text{(W/m}^2\text{)}$$
+
+For a plane wave in free space:
+
+$$S_\text{avg} = \frac{|E_0|^2}{2\eta_0}$$
+
+#### 2. Poynting's Theorem (Conservation of Energy)
+
+$$\nabla \cdot \mathbf{S} = -\frac{\partial u}{\partial t} - \mathbf{J} \cdot \mathbf{E}$$
+
+where $u$ is the stored EM energy density and $\mathbf{J} \cdot \mathbf{E}$ is the Ohmic dissipation. This states that the net power flowing out of a volume equals the rate of decrease of stored energy plus dissipation.
+
+- $\mathbf{S}_\text{avg}$ gives the power intercepted per unit aperture area of a receiving antenna.
+- In a waveguide: total transmitted power $= \iint \mathbf{S}_\text{avg} \cdot d\mathbf{A}$ over the cross-section.
+
+
+
+### E. Polarization
+
+**Polarization** describes the orientation of the electric field vector in the plane transverse to the direction of propagation. It is characterised by the path traced by the $\mathbf{E}$-field tip over one cycle.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C2.png?raw=true" alt="Diagram showing Linear, Circular (LHCP and RHCP), and Elliptical polarization patterns with E-field tip traces" style="max-width:85%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 1.2 — Types of Polarization</p>
+</div>
+</html>
+
+
+#### 1. Linear Polarization
+
+$E_x$ and $E_y$ components are present but in phase ($\delta = 0^\circ$ or $180^\circ$). The E-field oscillates along a fixed line.
+
+$$\mathbf{E} = (E_x\,\hat{x} + E_y\,\hat{y})\cos(\omega t - \beta z)$$
+
+- **Horizontal polarization** — $\mathbf{E}$ in the horizontal plane
+- **Vertical polarization** — $\mathbf{E}$ in the vertical plane
+
+#### 2. Circular Polarization
+
+$E_x = E_y = E_0$ with a $90^\circ$ phase difference. The E-field tip traces a circle.
+
+$$E_x = E_0\cos(\omega t - \beta z), \qquad E_y = \pm E_0\sin(\omega t - \beta z)$$
+
+- $+$ sign $\rightarrow$ **Left-Hand Circular Polarization (LHCP)**
+- $-$ sign $\rightarrow$ **Right-Hand Circular Polarization (RHCP)**
+
+#### 3. Elliptical Polarization
+
+The general case: $E_x \neq E_y$ or phase difference $\delta \neq 90^\circ$. The E-field traces an ellipse. Both linear and circular polarization are degenerate forms of elliptical polarization.
+
+#### 4. Polarization in Practice
+
+- Satellite links use circular polarization to avoid ionospheric Faraday rotation causing polarization mismatch.
+- A vertically polarised antenna cannot receive a horizontally polarised signal; the **Polarization Loss Factor** is:
+
+$$\text{PLF} = |\hat{a}_w \cdot \hat{a}_a|^2$$
+
+where $\hat{a}_w$ and $\hat{a}_a$ are the wave and antenna polarization unit vectors respectively.
+
+---
+
+### F. Phase Velocity and Group Velocity
+
+#### 1. Phase Velocity
+
+The speed at which a surface of constant phase (wavefront) advances:
+
+$$v_p = \frac{\omega}{\beta} = f\lambda$$
+
+In free space $v_p = c$. In a dispersive medium $\beta$ is not linear in $\omega$, so $v_p$ becomes frequency-dependent.
+
+#### 2. Group Velocity
+
+A real signal occupies a band of frequencies. The **envelope** of the resulting wave packet propagates at the group velocity:
+
+$$v_g = \frac{d\omega}{d\beta}$$
+
+#### 3. Relationship and Dispersion
+
+In free space $v_p = v_g = c$. In a hollow metallic waveguide:
+
+$$v_p \cdot v_g = c^2 \qquad \Rightarrow \qquad v_p > c,\quad v_g < c$$
+
+$v_p > c$ is permitted because no information is carried by a pure wavefront. Information (signal energy) travels at $v_g \leq c$.
+
+| Quantity | Physical Meaning | Can exceed $c$? |
+|----------|-----------------|----------------|
+| Phase velocity $v_p$ | Speed of wavefronts | Yes |
+| Group velocity $v_g$ | Speed of signal envelope/energy | No |
+
+**Dispersion** arises when $v_g$ depends on frequency — different spectral components of a pulse arrive at different times, causing pulse broadening. The key descriptor is:
+
+$$D = \frac{d\tau_g}{d\lambda} \quad \text{(ps/nm{\cdot}km)} \qquad \tau_g = \frac{L}{v_g} = L\frac{d\beta}{d\omega}$$
+
+---
+
+## Unit 2: Antennas & Propagation
+
+### A. Antenna Parameters
+
+An antenna is a transducer converting guided electromagnetic waves (transmission-line currents) into free-space EM waves, and vice versa.
+
+#### 1. Radiation Pattern
+
+The **radiation pattern** is a graphical representation of the radiated field intensity as a function of angular direction $(\theta, \phi)$ at a fixed far-field distance.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C3.png?raw=true" alt="3D and 2D radiation pattern of a half-wave dipole showing main lobe, side lobes, back lobe and nulls with HPBW marked" style="max-width:80%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 2.1 — Radiation Pattern of a Half-Wave Dipole</p>
+</div>
+</html>
+
+
+- **Main lobe** — direction of maximum radiation
+- **Side lobes** — secondary radiation in other directions (undesired)
+- **Back lobe** — radiation opposite to the main lobe
+- **Null** — direction of zero radiation
+- **HPBW (Half-Power Beamwidth)** — angle between $-3\,\text{dB}$ points of the main lobe
+- **FNBW (First-Null Beamwidth)** — angle between first nulls; $\approx 2 \times \text{HPBW}$
+
+#### 2. Directivity and Gain
+
+**Directivity** $D$ is the ratio of radiation intensity in a direction to the average radiation intensity:
+
+$$D(\theta,\phi) = \frac{U(\theta,\phi)}{U_\text{avg}} = \frac{4\pi\, U(\theta,\phi)}{P_\text{rad}}$$
+
+**Gain** $G$ incorporates ohmic and dielectric losses via radiation efficiency $\eta_r$:
+
+$$G = \eta_r\, D \qquad G\,(\text{dBi}) = 10\log_{10} G$$
+
+For a lossless antenna $G = D$.
+
+#### 3. Effective Aperture
+
+The **effective aperture** $A_e$ is the equivalent capture area relating received power to incident power density:
+
+$$P_r = S_\text{avg} \cdot A_e \qquad A_e = \frac{G\lambda^2}{4\pi}$$
+
+#### 4. Radiation Resistance
+
+A fictitious resistance $R_r$ that dissipates the same power as the antenna radiates:
+
+$$P_\text{rad} = \frac{1}{2}I_0^2\, R_r$$
+
+Total input resistance: $R_\text{in} = R_r + R_\text{loss}$. Radiation efficiency:
+
+$$\eta_r = \frac{R_r}{R_r + R_\text{loss}}$$
+
+#### 5. Input Impedance and VSWR
+
+Mismatch between antenna impedance $Z_\text{in}$ and transmission line $Z_0$ causes reflections:
+
+$$\Gamma = \frac{Z_\text{in} - Z_0}{Z_\text{in} + Z_0} \qquad \text{VSWR} = \frac{1+|\Gamma|}{1-|\Gamma|} \qquad \text{Return Loss (dB)} = -20\log_{10}|\Gamma|$$
+
+
+
+### B. Dipole, Monopole, and Loop Antennas
+
+#### 1. Half-Wave Dipole
+
+Two conductors each of length $\lambda/4$, fed at the centre. The most fundamental resonant antenna.
+
+$$E_\theta = j\frac{60\,I_0}{r}\cdot\frac{\cos\!\left(\dfrac{\pi}{2}\cos\theta\right)}{\sin\theta}$$
+
+| Parameter | Value |
+|-----------|-------|
+| Radiation resistance $R_r$ | $\approx 73.1\,\Omega$ |
+| Input impedance $Z_\text{in}$ | $73 + j42.5\,\Omega$ (exact $\lambda/2$) |
+| Directivity | $1.64\;(2.15\,\text{dBi})$ |
+| HPBW (E-plane) | $78^\circ$ |
+
+The reactive part $j42.5\,\Omega$ is eliminated by shortening the dipole by $\approx 5\%$.
+
+#### 2. Short (Hertzian) Dipole
+
+An infinitesimally short dipole ($L \ll \lambda$) with uniform current:
+
+$$R_r = 80\pi^2\!\left(\frac{L}{\lambda}\right)^2 \qquad D = 1.5\;(1.76\,\text{dBi})$$
+
+#### 3. Monopole Antenna
+
+Half a dipole placed over a ground plane; the image principle creates the missing half. For a $\lambda/4$ monopole:
+
+$$R_r = 36.5\,\Omega \qquad D = 3.28\;(5.15\,\text{dBi})$$
+
+It radiates only into the upper hemisphere, doubling the effective directivity compared to a dipole.
+
+**Applications** — AM broadcast towers, vehicle antennas, base station antennas.
+
+#### 4. Loop Antenna
+
+##### a. Small Loop ($C \ll \lambda$) — magnetic dipole
+
+- Pattern: null in the plane of the loop, maximum perpendicular to it
+- $R_r = 20\pi^2(C/\lambda)^4$ (very low — poor radiator)
+- Used in direction-finding, AM receivers
+
+##### b. Large Loop ($C \approx \lambda$)
+
+- $R_r \approx 73\,\Omega$; much more efficient
+- Used in UHF TV antennas, broadband applications
+
+
+
+### C. Antenna Arrays
+
+Single elements have fixed patterns. Combining multiple elements into an **array** synthesises patterns with higher directivity, controllable beam shape, and steerable beams.
+
+#### 1. Array Factor (AF)
+
+For any array, the total far-field is the element pattern multiplied by the Array Factor:
+
+$$\mathbf{E}_\text{total} = \mathbf{E}_\text{element} \times AF$$
+
+The AF depends only on the geometry and excitation of the array.
+
+#### 2. N-Element Uniform Linear Array (ULA)
+
+$N$ isotropic elements spaced $d$ apart with progressive phase shift $\delta$ between adjacent elements. Defining $\psi = \beta d\cos\theta + \delta$:
+
+$$AF = \sum_{n=0}^{N-1} e^{jn\psi} = \frac{\sin(N\psi/2)}{N\sin(\psi/2)}$$
+
+- **Broadside array** ($\delta = 0$): main beam at $\theta = 90^\circ$ (perpendicular to array axis)
+- **End-fire array** ($\delta = \pm\beta d$): main beam along array axis ($\theta = 0^\circ$ or $180^\circ$)
+- **Phased array**: electronic beam steering achieved by varying $\delta$, directing the main beam to any desired $\theta_0$:
+
+$$\delta = -\beta d\cos\theta_0$$
+
+HPBW for broadside array: $\approx 0.886\,\lambda/(Nd)$.
+
+#### 3. Side Lobe Level
+
+For a uniform ULA the first side lobe is at $-13.26\,\text{dB}$. **Amplitude tapering** (Taylor, Chebyshev distributions) reduces side lobes at the cost of a wider main beam.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C4.png?raw=true" alt="Array factor radiation patterns for N=4 and N=8 element linear arrays comparing broadside and end-fire configurations with side lobe levels marked" style="max-width:85%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 2.2 — Array Factor Patterns for Uniform Linear Arrays</p>
+</div>
+</html>
+
+
+
+### D. Ground, Space, and Sky Wave Propagation
+
+Radio waves travel from transmitter to receiver by three principal mechanisms, each dominant in a different frequency range.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C5.png?raw=true" alt="Diagram illustrating ground wave hugging Earth's surface, space wave (direct + ground-reflected) for VHF/UHF LOS links, and sky wave bouncing off the ionosphere back to Earth" style="max-width:90%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 2.3 — Propagation Modes: Ground Wave, Space Wave, Sky Wave</p>
+</div>
+</html>
+
+
+#### 1. Ground Wave Propagation
+
+Ground waves travel along the Earth's surface by **diffraction**, following the curvature of the Earth.
+
+- Dominant below 2 MHz (LF, MF bands)
+- Only vertically polarised waves propagate effectively (horizontal component is absorbed by the ground)
+- Attenuation increases sharply with frequency; impractical above $\sim$3 MHz
+- Range: up to 1500 km for MF broadcast stations
+
+#### 2. Space Wave Propagation
+
+Space waves consist of a **direct ray** and a **ground-reflected ray**. These interfere at the receiver.
+
+Line-of-sight distance (using 4/3 Earth radius model for standard refraction):
+
+$$d_\text{LOS} \approx 4.12\!\left(\sqrt{h_t} + \sqrt{h_r}\right) \quad \text{km} \qquad (h \text{ in metres})$$
+
+- Dominant mode for VHF and above (FM radio, TV, cellular, microwave links)
+- Requires unobstructed LOS between Tx and Rx
+
+#### 3. Sky Wave (Ionospheric) Propagation
+
+The **ionosphere** (60–1000 km altitude) is created by solar UV ionization and has distinct layers (D, E, F1, F2) that refract and reflect HF radio waves back to Earth.
+
+- Effective in the HF band (3–30 MHz)
+- Enables trans-oceanic communication via multiple hops
+- The D layer absorbs lower-HF frequencies during daytime
+- Conditions vary with time of day, season, and solar activity
+
+
+### E. Critical Frequency, MUF, and Skip Distance
+
+#### 1. Critical Frequency
+
+The **critical frequency** $f_c$ is the highest frequency at which a **vertically incident** wave is reflected by the ionosphere. Above $f_c$ the wave escapes:
+
+$$f_c = 9\sqrt{N_\text{max}} \quad \text{(Hz)}$$
+
+where $N_\text{max}$ is the peak electron density (electrons/m³). Typical values: $f_c \approx 3$–$10$ MHz for the F-layer.
+
+#### 2. Maximum Usable Frequency (MUF)
+
+For a wave striking the ionosphere at oblique incidence angle $\theta$ from vertical, the **secant law** (Martyn's law) gives:
+
+$$\text{MUF} = \frac{f_c}{\cos\theta} = f_c \cdot \sec\theta$$
+
+For a communication path of length $d$ over a layer at virtual height $h$:
+
+$$\cos\theta = \frac{h}{\sqrt{h^2 + (d/2)^2}} \qquad \Rightarrow \qquad \text{MUF} \approx f_c\sqrt{1+\left(\frac{d}{2h}\right)^2}$$
+
+The **Optimum Working Frequency (OWF)** is set at 85% of MUF to allow for fluctuations.
+
+#### 3. Skip Distance
+
+The **skip distance** $D_\text{skip}$ is the minimum ground distance from the transmitter at which sky-wave communication is possible for a given frequency:
+
+$$D_\text{skip} = 2h\sqrt{\left(\frac{f}{f_c}\right)^2 - 1}$$
+
+The region between the end of the ground-wave range and $D_\text{skip}$ is the **skip zone** — a dead zone where neither mode provides reliable coverage.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C6.png?raw=true" alt="Diagram showing ionospheric reflection geometry with transmitter, skip zone, ground wave coverage, sky wave first hop landing, and skip distance labelled with layer height h" style="max-width:88%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 2.4 — Skip Distance and Skip Zone</p>
+</div>
+</html>
+
+
+### F. Fading and Path Loss
+
+#### 1. Free-Space Path Loss (Friis Equation)
+
+The received power at range $R$:
+
+$$P_r = P_t G_t G_r \left(\frac{\lambda}{4\pi R}\right)^2$$
+
+**Free-Space Path Loss (FSPL)**:
+
+$$\text{FSPL} = \left(\frac{4\pi R}{\lambda}\right)^2 = \left(\frac{4\pi f R}{c}\right)^2$$
+
+$$\text{FSPL (dB)} = 20\log_{10} f_\text{MHz} + 20\log_{10} d_\text{km} + 32.44$$
+
+#### 2. Log-Distance Path Loss Model
+
+For realistic environments:
+
+$$PL(d)\,[\text{dB}] = PL(d_0) + 10n\log_{10}\!\left(\frac{d}{d_0}\right) + X_\sigma$$
+
+- $n$ = path-loss exponent: 2 (free space), 2.5–4 (urban), 4–6 (indoor)
+- $X_\sigma$ = zero-mean Gaussian shadow fading variable, $\sigma \approx 6$–$10\,\text{dB}$
+
+#### 3. Fading Types
+
+**Classification by spectral behaviour:**
+
+- **Flat fading** — signal bandwidth $\ll$ coherence bandwidth $B_c$; all frequency components fade equally
+- **Frequency-selective fading** — signal bandwidth $\gg B_c$; different spectral components fade differently; causes ISI
+
+**Classification by rate of variation:**
+
+- **Fast fading** — channel changes faster than symbol rate; high Doppler; common in vehicular comms
+- **Slow fading** — channel changes slowly; dominated by shadowing from buildings and terrain
+
+**Statistical models:**
+
+- **Rayleigh fading** — no dominant LOS path; envelope follows Rayleigh distribution; typical in urban canyons
+- **Rician fading** — dominant LOS path present; envelope follows Rician distribution; $K$-factor = ratio of LOS power to scattered power
+
+#### 4. Multipath Channel Parameters
+
+| Parameter | Definition | Typical Values |
+|-----------|-----------|---------------|
+| Delay spread $\sigma_\tau$ | RMS spread of multipath delays | 1–10 µs (urban) |
+| Coherence bandwidth $B_c$ | $\approx 1/(5\sigma_\tau)$ | $\sim$20–200 kHz |
+| Doppler spread $B_D$ | Spectral broadening due to motion | 10–1000 Hz |
+| Coherence time $T_c$ | $\approx 1/B_D$ | 1 ms–100 ms |
+
+---
+
+## Unit 3: Microwave Engineering
+
+### A. Waveguides
+
+A **waveguide** is a hollow metallic tube that confines and guides EM waves along its length by means of successive total reflections off the perfectly conducting walls. At microwave frequencies, coaxial cables become prohibitively lossy; waveguides offer low loss, high power handling, and zero radiation leakage.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C7.png?raw=true" alt="Rectangular waveguide cross-section showing dimensions a (broad wall) and b (narrow wall), coordinate axes x, y, z, and E-field lines for TE10 mode drawn as sine-shaped lines across the broad wall" style="max-width:75%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 3.1 — Rectangular Waveguide Geometry and TE₁₀ E-field Distribution</p>
+</div>
+</html>
+
+
+For a wave propagating in $+z$:
+
+$$\mathbf{E}(x,y,z) = \mathbf{E}_t(x,y)\,e^{-j\beta z} \qquad \mathbf{H}(x,y,z) = \mathbf{H}_t(x,y)\,e^{-j\beta z}$$
+
+The transverse fields are derived from two scalar potentials: $E_z$ (for TM modes) and $H_z$ (for TE modes). The boundary condition is $E_\text{tangential} = 0$ at conducting walls.
+
+---
+
+### B. TE, TM, and TEM Modes
+
+#### 1. TEM Mode
+
+- $E_z = 0$ and $H_z = 0$ simultaneously
+- Requires **two separate conductors** (e.g., coaxial cable, parallel-plate line)
+- Cannot exist in a single-conductor hollow waveguide
+- No cutoff frequency — propagates at all frequencies including DC
+
+#### 2. TE (Transverse Electric) Modes
+
+- $E_z = 0$, $H_z \neq 0$
+- Electric field has no longitudinal component
+- Designated $\text{TE}_{mn}$ (also written $H_{mn}$)
+- Cutoff frequency depends on mode indices $m$, $n$
+
+#### 3. TM (Transverse Magnetic) Modes
+
+- $H_z = 0$, $E_z \neq 0$
+- Magnetic field has no longitudinal component
+- Designated $\text{TM}_{mn}$ (also written $E_{mn}$)
+
+#### 4. Cutoff Frequency
+
+Below the cutoff frequency $f_c$, fields decay exponentially (evanescent waves). Above $f_c$, waves propagate.
+
+For a **rectangular waveguide** ($a \times b$, $a > b$):
+
+$$f_{c_{mn}} = \frac{c}{2}\sqrt{\left(\frac{m}{a}\right)^2+\left(\frac{n}{b}\right)^2}$$
+
+For a **circular waveguide** (radius $r$):
+
+$$f_{c_{mn}}^{\,\text{TE}} = \frac{\chi'_{mn}\,c}{2\pi r} \qquad f_{c_{mn}}^{\,\text{TM}} = \frac{\chi_{mn}\,c}{2\pi r}$$
+
+where $\chi'_{mn}$ and $\chi_{mn}$ are zeros of $J'_m$ and $J_m$ (Bessel functions) respectively.
+
+---
+
+### C. Rectangular Waveguide — TE$_{10}$ Mode
+
+The $\text{TE}_{10}$ mode is the **dominant mode** of the rectangular waveguide ($a > b$) because it has the lowest cutoff frequency of all modes.
+
+#### 1. Cutoff Frequency and Single-Mode Bandwidth
+
+Setting $m=1$, $n=0$:
+
+$$f_{c_{10}} = \frac{c}{2a} \qquad \lambda_{c_{10}} = 2a$$
+
+Single-mode operation (only $\text{TE}_{10}$ propagates) requires:
+
+$$\frac{c}{2a} < f < \frac{c}{a}$$
+
+#### 2. Field Expressions
+
+$$H_z = H_0\cos\!\left(\frac{\pi x}{a}\right)e^{-j\beta z}$$
+
+$$E_y = j\frac{\omega\mu a}{\pi}\,H_0\sin\!\left(\frac{\pi x}{a}\right)e^{-j\beta z}$$
+
+$$H_x = j\frac{\beta a}{\pi}\,H_0\sin\!\left(\frac{\pi x}{a}\right)e^{-j\beta z}$$
+
+$$E_x = E_z = H_y = 0$$
+
+The electric field is purely $y$-directed, varies as $\sin(\pi x/a)$, is zero at $x=0$ and $x=a$ (boundary condition satisfied), and peaks at the centre $x = a/2$.
+
+#### 3. Derived Wave Parameters
+
+$$\beta = \frac{2\pi}{\lambda}\sqrt{1-\left(\frac{f_c}{f}\right)^2} \qquad \lambda_g = \frac{\lambda}{\sqrt{1-(f_c/f)^2}}$$
+
+$$v_p = \frac{c}{\sqrt{1-(f_c/f)^2}} > c \qquad v_g = c\sqrt{1-\left(\frac{f_c}{f}\right)^2} < c$$
+
+$$Z_{\text{TE}} = \frac{\eta_0}{\sqrt{1-(f_c/f)^2}} > \eta_0 \qquad v_p \cdot v_g = c^2$$
+
+#### 4. Transmitted Power
+
+$$P = \frac{ab}{4Z_\text{TE}}\,|E_{y,\text{max}}|^2 \quad \text{(W)}$$
+
+#### 5. Attenuation
+
+Two loss mechanisms:
+
+- **Conductor loss** $\alpha_c \propto \sqrt{f}$ — ohmic heating in walls due to skin effect
+- **Dielectric loss** $\alpha_d \propto f$ — if a dielectric fills the guide
+
+Total: $\alpha = \alpha_c + \alpha_d$ (Np/m or dB/m).
+
+---
+
+### D. S-Parameters
+
+At microwave frequencies, voltages and currents are not easily measured. **Scattering parameters (S-parameters)** characterise a network in terms of normalised travelling-wave amplitudes.
+
+#### 1. Definition
+
+For an $N$-port network, with all ports terminated in their reference impedances ($Z_0$) except port $j$:
+
+$$S_{ij} = \frac{b_i}{a_j}\bigg|_{a_k=0,\;k\neq j}$$
+
+where $a_j$ = normalised incident wave at port $j$, $b_i$ = normalised reflected/transmitted wave at port $i$.
+
+#### 2. Physical Meaning of 2-Port S-Parameters
+
+| Parameter | Meaning |
+|-----------|---------|
+| $S_{11}$ | Input reflection coefficient (port 2 matched) |
+| $S_{21}$ | Forward transmission (insertion gain/loss) |
+| $S_{12}$ | Reverse transmission |
+| $S_{22}$ | Output reflection coefficient (port 1 matched) |
+
+#### 3. Key Properties
+
+- **Reciprocal network**: $S_{ij} = S_{ji}$ — S-matrix is symmetric
+- **Lossless network**: $\mathbf{S}^\dagger \mathbf{S} = \mathbf{I}$ — S-matrix is unitary; $\sum_i|S_{ij}|^2 = 1$ for each column $j$
+- **Matched network**: $S_{11} = S_{22} = 0$
+
+#### 4. dB Conversions
+
+$$\text{Insertion loss} = -20\log_{10}|S_{21}|\;(\text{dB}) \qquad \text{Return loss} = -20\log_{10}|S_{11}|\;(\text{dB})$$
+
+$$\text{Isolation} = -20\log_{10}|S_{12}|\;(\text{dB})$$
+
+---
+
+### E. Tee Junctions
+
+A **tee junction** is a three-port waveguide junction used to split or combine power.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C8.png?raw=true" alt="3D diagram of a Magic Tee (hybrid tee) waveguide junction with ports labelled: Port 1 H-arm (sum), Port 2 E-arm (difference), Port 3 and Port 4 collinear ports, showing E-field orientation in each arm" style="max-width:78%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 3.2 — Magic Tee (Hybrid Tee) Waveguide Junction</p>
+</div>
+</html>
+
+
+#### 1. E-Plane Tee (Series Tee)
+
+The input (port 3) enters through the **narrow wall** (E-field plane). Waves from port 3 arrive at ports 1 and 2 **out of phase** ($180^\circ$). The junction adds/subtracts fields at the collinear ports.
+
+#### 2. H-Plane Tee (Shunt Tee)
+
+The input (port 3) enters through the **broad wall** (H-field plane). Waves arrive at ports 1 and 2 **in phase**. Power splits equally with no phase reversal.
+
+#### 3. Magic Tee (Hybrid Tee)
+
+A combination of E-plane and H-plane tees forming a **four-port** device:
+
+- **Port 1 (H-arm / Sum port)**: $\Sigma$ — waves from ports 3 and 4 add
+- **Port 2 (E-arm / Difference port)**: $\Delta$ — waves from ports 3 and 4 subtract
+- **Ports 3 & 4** — collinear ports
+
+Key property: Ports 1 and 2 are mutually **isolated**. The ideal S-matrix:
+
+$$\mathbf{S} = \frac{1}{\sqrt{2}}\begin{pmatrix}0 & 0 & 1 & 1 \\ 0 & 0 & 1 & -1 \\ 1 & 1 & 0 & 0 \\ 1 & -1 & 0 & 0\end{pmatrix}$$
+
+**Applications** — balanced mixers, bridge circuits, power dividers, duplexers.
+
+---
+
+### F. Directional Coupler, Isolator, and Circulator
+
+#### 1. Directional Coupler
+
+A **four-port** device that samples a fraction of the power travelling in one direction while largely ignoring the reverse direction.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C9.png?raw=true" alt="Diagram of a directional coupler with Ports 1 (Input), 2 (Through), 3 (Coupled), 4 (Isolated) labelled, with arrows showing power flow direction and coupling fraction indicated" style="max-width:78%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 3.3 — Directional Coupler Port Convention</p>
+</div>
+</html>
+
+
+Power flow: Port 1 $\to$ Port 2 (through), Port 1 $\to$ Port 3 (coupled), Port 1 $\to$ Port 4 (isolated).
+
+$$C = -20\log_{10}|S_{31}|\;(\text{dB}) \qquad \text{Isolation } I = -20\log_{10}|S_{41}|\;(\text{dB})$$
+
+$$\text{Directivity } D_c = C - I \;(\text{dB})$$
+
+For an ideal coupler: $I = C + D_c$.
+
+- **Branch-line coupler** — $3\,\text{dB}$ hybrid, $90^\circ$ phase split
+- **Rat-race (ring) coupler** — $3\,\text{dB}$ hybrid, $180^\circ$ phase split
+
+#### 2. Isolator
+
+A **two-port non-reciprocal** device that permits forward transmission with low loss but strongly attenuates reverse-travelling signals.
+
+$$S_{21} \approx 0\,\text{dB (forward)} \qquad S_{12} \approx -20\;\text{to}\;{-30}\,\text{dB (reverse)}$$
+
+Made from **ferrite** material (e.g., YIG — Yttrium Iron Garnet) biased by a DC magnetic field. The asymmetric permeability tensor of the biased ferrite breaks reciprocity.
+
+**Applications** — protecting oscillators and power amplifiers from reflected power, preventing source pulling.
+
+#### 3. Circulator
+
+A **three-port non-reciprocal** device where power entering any port exits only at the next port in the prescribed rotation direction:
+
+$$\text{Port 1} \to \text{Port 2} \to \text{Port 3} \to \text{Port 1}$$
+
+Ideal S-matrix:
+
+$$\mathbf{S} = \begin{pmatrix}0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0\end{pmatrix}$$
+
+**Key application — Duplexer**: Transmitter $\to$ Port 1, Antenna $\to$ Port 2, Receiver $\to$ Port 3. The transmit signal reaches the antenna and is blocked from the receiver; the echo from the antenna goes to the receiver and is blocked from the transmitter. Both share a single antenna with near-zero mutual interference.
+
+---
+
+## Unit 4: Microwave Devices & Radar
+
+### A. Microwave Tubes
+
+Conventional transistors fail at high microwave frequencies due to transit-time effects. Microwave tubes deliberately exploit electron transit time to generate and amplify high-power microwave signals.
+
+#### 1. Klystron
+
+The klystron amplifies microwave signals using **velocity modulation** of an electron beam.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C10.png?raw=true" alt="Cross-section of a two-cavity klystron showing electron gun, buncher cavity, drift space with electron bunching illustrated, catcher cavity, and collector, with RF input at buncher and output at catcher" style="max-width:90%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 4.1 — Two-Cavity Klystron Operation</p>
+</div>
+</html>
+
+**Operation:**
+
+- An electron gun produces a continuous, uniform-velocity beam.
+- Electrons enter the **buncher cavity** where the RF input modulates their velocity (alternately accelerating and decelerating electrons).
+- In the **drift space**, faster electrons catch up to slower ones, forming dense **bunches**.
+- Bunched electrons pass through the **catcher cavity**, inducing large RF currents at the output frequency.
+- The amplified output signal is extracted from the catcher.
+
+| Parameter | Value |
+|-----------|-------|
+| Gain | 30–60 dB (multi-cavity) |
+| Power | Watts to megawatts (pulsed) |
+| Efficiency | 10–40% |
+| Frequency | 0.5–100 GHz |
+
+**Reflex Klystron** — single-cavity oscillator using a repeller electrode to reflect and redirect the beam through the same cavity twice. Oscillation frequency is controlled by the repeller voltage (transit-time control). Used as a local oscillator.
+
+#### 2. Magnetron
+
+The magnetron is a crossed-field, high-power microwave **oscillator**.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C11.png?raw=true" alt="Cross-section of a cylindrical magnetron showing central cathode, surrounding anode block with resonant cavity slots, axial magnetic field arrows (into page), radial electric field lines, and the cycloidal electron path forming a rotating space-charge wheel between cathode and anode" style="max-width:72%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 4.2 — Magnetron Cross-Section and Electron Paths</p>
+</div>
+</html>
+
+
+**Structure** — cylindrical cathode surrounded by an anode block with resonant cavity slots arranged symmetrically.
+
+**Operation:**
+
+- Radial DC electric field accelerates electrons outward; axial DC magnetic field bends paths into cycloidal trajectories.
+- Electrons pass cavity slots, inducing RF oscillations at the resonant frequency.
+- $\pi$-mode operation: adjacent cavities are $180^\circ$ out of phase; the electron cloud forms a rotating **"space-charge wheel"** synchronised to the RF field.
+- Energy is continuously extracted by the rotating bunched cloud.
+
+| Parameter | Value |
+|-----------|-------|
+| Peak power | 1 kW to several MW (pulsed) |
+| Efficiency | 40–70% (highest of all microwave tubes) |
+| Frequency | 1–40 GHz |
+
+**Applications** — pulsed radar transmitters, microwave ovens ($2.45\,\text{GHz}$, $\sim$700 W).
+
+#### 3. Traveling Wave Tube (TWT)
+
+The TWT is a **broadband microwave amplifier** in which the RF wave and electron beam interact continuously over an extended distance.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C12.png?raw=true" alt="Cross-section of a TWT showing electron gun on the left, helical slow-wave structure (helix) along the length with RF input coupler at left end and output coupler at right end, and collector on the far right, with electrons bunching progressively along the helix length" style="max-width:92%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 4.3 — Traveling Wave Tube Structure</p>
+</div>
+</html>
+
+
+**Operation:**
+
+- An electron gun generates a focused beam.
+- The RF input is applied to a **helix slow-wave structure** that slows the wave velocity to approximately the beam velocity:
+
+$$v_{\text{phase,helix}} \approx c \cdot \frac{p}{2\pi r}$$
+
+where $p$ = helix pitch, $r$ = helix radius.
+
+- Continuous interaction over the helix length causes cumulative **velocity modulation $\to$ density modulation (bunching)**.
+- Bunched electrons continuously transfer kinetic energy to the travelling wave.
+- The amplified wave exits at the output coupler.
+
+| Parameter | Value |
+|-----------|-------|
+| Gain | 20–60 dB |
+| Bandwidth | Very wide — octave or more |
+| Power | Watts (space) to kilowatts (radar) |
+| Efficiency | 20–35% |
+
+**Applications** — satellite transponder HPAs (High-Power Amplifiers), ECM (Electronic Countermeasures), radar.
+
+---
+
+### B. Microwave Semiconductor Devices
+
+#### 1. Gunn Diode
+
+Exploits the **Transferred Electron Effect (TEE / Gunn effect)** in n-type GaAs or InP.
+
+**Principle** — GaAs has a two-valley conduction band: a lower valley (high mobility $\mu$, low effective mass) and an upper valley (low mobility, high effective mass). When the applied field exceeds a threshold ($\approx 3.2\,\text{kV/cm}$), electrons transfer to the upper valley causing current to *decrease* with increasing voltage — **negative differential resistance (NDR)**.
+
+**Operation** — High-field domains (dipole layers) nucleate and drift toward the anode. Each domain arrival triggers a current pulse. Oscillation frequency in transit-time mode: $f \approx v_d/L$ (typically 1–100 GHz).
+
+**Applications** — low-noise oscillators, LO sources in radar and point-to-point links.
+
+#### 2. Tunnel Diode
+
+Utilises **quantum mechanical tunnelling** through a very thin ($\approx$ few nm) p-n junction formed with very heavy doping on both sides.
+
+At low forward bias, carriers tunnel through the depletion region producing a **peak current**. As bias increases, tunnelling probability decreases, giving a **negative resistance region** between $V_1$ (peak) and $V_2$ (valley).
+
+- Very fast operation (picosecond switching); frequency capability up to $\sim$100 GHz
+- Very low power, low noise
+- NDR used for oscillation and amplification
+
+#### 3. IMPATT Diode
+
+**IMPATT** = **IMP**act ionization **A**valanche **T**ransit **T**ime.
+
+**Principle** — Combines two delay mechanisms to produce negative resistance:
+
+- An RF voltage superimposed on a reverse-biased junction drives periodic avalanche multiplication; the avalanche current pulse lags the applied voltage by $\sim 90^\circ$ (finite ionization build-up time).
+- The generated carriers drift across the depletion region with an additional $\sim 90^\circ$ delay.
+- Total $180^\circ$ phase shift between $V$ and $I$ constitutes **negative resistance**.
+
+$$Z_\text{IMPATT} = -|R| + jX$$
+
+| Parameter | Value |
+|-----------|-------|
+| Power | Watts at mm-wave frequencies |
+| Efficiency | 15–25% |
+| Frequency | 3–300 GHz |
+| Noise | High (avalanche noise) |
+
+#### 4. TRAPATT Diode
+
+**TRAPATT** = **TRAP**ped **P**lasma **A**valanche **T**riggered **T**ransit.
+
+An extension of IMPATT in which a very high voltage pulse initiates complete avalanche breakdown, filling the depletion region with a dense electron-hole **plasma**. The plasma is trapped and slowly extracted, producing a large current pulse.
+
+- Higher efficiency (up to 60–75%) than IMPATT
+- Operates at lower frequencies (0.5–10 GHz)
+- Generates high peak power
+
+**Applications** — high-power phased-array radar transmitters, electronic warfare.
+
+#### 5. BARITT Diode
+
+**BARITT** = **BAR**rier **I**njection **T**ransit **T**ime.
+
+Similar transit-time mechanism to IMPATT but uses **minority carrier injection** over a forward-biased barrier junction rather than avalanche multiplication. Lower noise than IMPATT; lower power.
+
+**Applications** — low-power oscillators, proximity sensors, burglar alarms.
+
+---
+
+### C. Radar Principles
+
+**RADAR** = **R**adio **D**etection **A**nd **R**anging.
+
+A radar transmits EM pulses, detects echoes from targets, and extracts range, velocity, and angular position.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C13.png?raw=true" alt="Block diagram of a monostatic pulsed radar: Waveform generator → Power amplifier (Klystron/Magnetron/TWT) → Duplexer → Antenna; Echo → Duplexer → Low-noise receiver → Signal processor → Display. Timing/synchroniser connected to all blocks." style="max-width:92%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 4.4 — Monostatic Pulsed Radar Block Diagram</p>
+</div>
+</html>
+
+
+**Basic operation:**
+
+- Transmitter generates a short high-power RF pulse; antenna radiates it as a directive beam.
+- Echo from the target returns to the antenna after round-trip time $\tau$.
+- Range from time delay: $R = c\tau/2$.
+- Duplexer (circulator or TR switch) isolates Tx from Rx while sharing a single antenna.
+
+#### 1. Radar Cross Section (RCS)
+
+$\sigma$ is a measure of how strongly a target scatters radar energy back toward the radar. It has units of m² but is not simply the physical area.
+
+| Target | Typical RCS |
+|--------|------------|
+| Bird | $\sim 0.01\,\text{m}^2$ |
+| Person | $\sim 1\,\text{m}^2$ |
+| Car | $\sim 100\,\text{m}^2$ |
+| Fighter aircraft | $1$–$100\,\text{m}^2$ |
+| Stealth aircraft | $< 0.001\,\text{m}^2$ |
+| Large ship | $10^3$–$10^4\,\text{m}^2$ |
+
+---
+
+### D. Radar Range Equation
+
+The power received from a target at range $R$:
+
+$$P_r = \frac{P_t\,G_t\,A_r\,\sigma}{(4\pi)^2\,R^4}$$
+
+Substituting $A_r = G_r\lambda^2/(4\pi)$ for a monostatic radar ($G_t = G_r = G$):
+
+$$\boxed{P_r = \frac{P_t\,G^2\,\lambda^2\,\sigma}{(4\pi)^3\,R^4}}$$
+
+**Maximum detectable range** (when $P_r = S_\text{min}$, the minimum detectable signal):
+
+$$R_\text{max} = \left[\frac{P_t\,G^2\,\lambda^2\,\sigma}{(4\pi)^3\,S_\text{min}}\right]^{1/4}$$
+
+The minimum detectable signal incorporating noise:
+
+$$S_\text{min} = k\,T_0\,B\,F\cdot(S/N)_\text{min}$$
+
+where $k = 1.38\times10^{-23}\,\text{J/K}$, $T_0 = 290\,\text{K}$, $B$ = receiver noise bandwidth, $F$ = noise figure.
+
+**Key observation:** $R_\text{max} \propto P_t^{1/4}$ — doubling power extends range by only $2^{1/4} \approx 19\%$. Increasing antenna gain is far more effective since $R_\text{max} \propto G^{1/2}$.
+
+---
+
+### E. Radar Types
+
+#### 1. CW (Continuous Wave) Radar
+
+Transmits a continuous unmodulated wave. Cannot determine range (no time reference) but measures **Doppler velocity** precisely.
+
+$$f_d = \frac{2v_r}{\lambda} = \frac{2v_r f}{c}$$
+
+Positive $f_d$ for approaching targets, negative for receding. **Applications** — police speed guns, sports speed measurement, wind profilers.
+
+#### 2. Pulsed Radar
+
+Short high-power pulses with repetition interval $T = 1/\text{PRF}$.
+
+$$\text{Range resolution:}\quad \Delta R = \frac{c\tau}{2} \qquad \text{Max unambiguous range:}\quad R_u = \frac{c}{2\,\text{PRF}}$$
+
+$$\text{Duty cycle} = \tau \cdot \text{PRF} \qquad \text{Average power} = P_t \cdot \text{duty cycle}$$
+
+A minimum range blind zone of $c\tau/2$ exists due to the pulse duration.
+
+#### 3. FMCW (Frequency Modulated CW) Radar
+
+Transmits a linearly frequency-swept (chirped) signal. The **beat frequency** between the simultaneous Tx and Rx signals gives range:
+
+$$f_b = \frac{2R \cdot \Delta f}{c \cdot T_m} \qquad \Rightarrow \qquad R = \frac{f_b\,c\,T_m}{2\,\Delta f}$$
+
+where $\Delta f$ = frequency deviation, $T_m$ = modulation period. Lower peak power, simultaneous range and velocity measurement, simple hardware.
+
+**Applications** — automotive radar (77 GHz), radar altimeters, level gauges.
+
+#### 4. Doppler and Pulsed Doppler Radar
+
+Combines pulsed operation with Doppler frequency processing. The received pulse train from a moving target carries a Doppler shift; a bank of Doppler filters separates clutter (zero-Doppler) from moving targets. Provides both range and velocity simultaneously.
+
+#### 5. MTI (Moving Target Indicator) Radar
+
+MTI cancels **stationary clutter** (ground, buildings) by **pulse-to-pulse subtraction**. Stationary targets produce identical returns each pulse and cancel; moving targets produce varying returns and survive.
+
+A **delay-line canceller** subtracts the current pulse return from the stored previous one.
+
+**Blind velocities** — moving targets are invisible when their Doppler shift is a multiple of the PRF:
+
+$$v_\text{blind} = \frac{n\,\lambda\,\text{PRF}}{2}, \qquad n = 1, 2, 3, \ldots$$
+
+**Staggered PRF** (alternating between two or more PRFs) moves the blind velocities to different speeds, virtually eliminating them.
+
+#### 6. Phased Array Radar
+
+An array of hundreds to thousands of antenna elements, each with an electronically controlled phase shifter and/or attenuator. No mechanical movement is required.
+
+$$\text{Phase increment for beam at } \theta_0\text{:} \quad \Delta\phi = \beta d\sin\theta_0$$
+
+Capabilities:
+
+- Beam steering in microseconds (vs. seconds for mechanical)
+- Simultaneous multiple independent beams
+- Adaptive nulling against jammers (adaptive beamforming)
+- High reliability — graceful degradation with element failures
+
+**Applications** — airborne AESA (Active Electronically Scanned Array) fighters, ballistic missile defence, shipborne air defence (Aegis).
+
+---
+
+## Unit 5: Optical Fiber Communication
+
+### A. Fiber Structure
+
+An optical fiber is a cylindrical dielectric waveguide that confines and guides light along its length through **total internal reflection (TIR)** at the core-cladding boundary.
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C14.png?raw=true" alt="Cutaway diagram of an optical fiber showing concentric layers: central silica core (8-62.5 µm diameter, refractive index n1), surrounding silica cladding (125 µm OD, n2 less than n1), acrylate buffer coating (250 µm), and outer jacket, with refractive index profile shown alongside as a step-index profile" style="max-width:82%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 5.1 — Optical Fiber Cross-Section and Refractive Index Profile</p>
+</div>
+</html>
+
+
+| Layer | Material | Diameter | Function |
+|-------|---------|---------|---------|
+| Core | Doped silica (SiO$_2$) | 8–62.5 µm | Light-guiding region, $n_1$ |
+| Cladding | Silica | 125 µm OD | Lower index $n_2 < n_1$; confines light |
+| Buffer coating | Acrylate polymer | 250 µm | Mechanical protection |
+| Jacket | PVC / nylon | 900 µm+ | Environmental protection |
+
+**Condition for guiding:** $n_1 > n_2$.
+
+Typical values: $n_1 \approx 1.468$, $n_2 \approx 1.455$ (silica at 1550 nm).
+
+**Critical angle** for TIR at the core-cladding boundary:
+
+$$\theta_c = \arcsin\!\left(\frac{n_2}{n_1}\right)$$
+
+Rays striking the interface at angles greater than $\theta_c$ from the normal are totally reflected and guided.
+
+---
+
+### B. Numerical Aperture
+
+The **Numerical Aperture (NA)** defines the half-angle of the acceptance cone — the range of angles from the fiber axis within which injected light will be guided.
+
+$$\boxed{NA = n_0\sin\theta_\text{max} = \sqrt{n_1^2 - n_2^2}}$$
+
+For air ($n_0 = 1$): $NA = \sqrt{n_1^2 - n_2^2}$.
+
+Introducing the **relative refractive index difference** $\Delta$:
+
+$$\Delta = \frac{n_1^2 - n_2^2}{2n_1^2} \approx \frac{n_1 - n_2}{n_1} \qquad \Rightarrow \qquad NA \approx n_1\sqrt{2\Delta}$$
+
+| Fiber Type | Typical NA |
+|-----------|-----------|
+| Step-index multimode | 0.2–0.5 |
+| Graded-index multimode | 0.2–0.3 |
+| Single-mode (SMF) | 0.10–0.15 |
+
+Higher NA captures more light from the source (important for LED coupling) but increases modal dispersion in multimode fibers.
+
+---
+
+### C. Single-Mode and Multimode Fibers
+
+#### 1. V-Number (Normalised Frequency)
+
+The V-number determines the number of modes the fiber can support:
+
+$$V = \frac{2\pi a}{\lambda}\cdot NA = \frac{2\pi a}{\lambda}\sqrt{n_1^2 - n_2^2}$$
+
+where $a$ is the core radius.
+
+- $V < 2.405$: only the fundamental $\text{HE}_{11}$ (LP$_{01}$) mode propagates $\to$ **single-mode fiber**
+- $V > 2.405$: multiple modes $\to$ **multimode fiber**; approximate mode count $N \approx V^2/2$
+
+#### 2. Multimode Step-Index Fiber
+
+- Large core (50–100 µm), large NA
+- Hundreds to thousands of modes, each following a different ray path
+- Simple and cheap to couple light into
+- High **modal dispersion** due to different path lengths for different modes ($\Delta\tau \approx n_1\Delta L/c$)
+- Bandwidth-distance product typically $\sim 20\,\text{MHz{\cdot}km}$
+- Used for short-distance links ($<$2 km), LANs, sensors
+
+#### 3. Multimode Graded-Index Fiber
+
+The refractive index decreases from the core centre toward the cladding following a power-law profile:
+
+$$n(r) = n_1\sqrt{1 - 2\Delta\left(\frac{r}{a}\right)^\alpha}, \qquad r \leq a$$
+
+For **optimal** $\alpha = 2$ (parabolic profile):
+
+- Higher-order modes travel longer paths but mostly through lower-index (faster-propagation) regions.
+- Different modes arrive at nearly the same time — modal dispersion is dramatically reduced.
+- Bandwidth-distance product up to several GHz$\cdot$km.
+
+#### 4. Single-Mode Fiber (SMF)
+
+- Core diameter 8–10 µm; $V < 2.405$
+- Single $\text{HE}_{11}$ mode — no modal dispersion
+- Very low attenuation: $\sim 0.2\,\text{dB/km}$ at 1550 nm
+- Dominant technology for long-haul, metro, and submarine links
+
+**Key SMF standards:**
+
+| Standard | Description | Zero-dispersion wavelength |
+|---------|-------------|----------------|
+| ITU-T G.652 (SSMF) | Standard SMF | $\sim$1310 nm |
+| ITU-T G.653 (DSF) | Dispersion-shifted | $\sim$1550 nm |
+| ITU-T G.655 (NZDSF) | Non-zero DSF | Slightly away from 1550 nm |
+
+NZDSF intentionally maintains a small non-zero dispersion at 1550 nm to suppress **Four-Wave Mixing (FWM)** in WDM systems.
+
+---
+
+### D. Attenuation and Dispersion
+
+#### 1. Fiber Attenuation
+
+$$\alpha\,(\text{dB/km}) = -\frac{10}{L}\log_{10}\!\left(\frac{P_\text{out}}{P_\text{in}}\right)$$
+
+**Mechanisms:**
+
+##### a. Rayleigh Scattering
+
+Caused by sub-wavelength density fluctuations frozen in during glass solidification. Dominant below 1600 nm:
+
+$$\alpha_R \propto \frac{1}{\lambda^4}$$
+
+##### b. Absorption
+
+- **OH$^{-}$ ion absorption** — water peaks at 950, 1240, and 1383 nm; eliminated in "low-water-peak" (LWP) fibers (ITU-T G.652.C/D)
+- **Infrared absorption** — molecular vibrations of SiO$_2$; dominant above $\sim$1700 nm
+- **UV absorption** — electronic transitions; relevant below 700 nm
+
+##### c. Bending Losses
+
+- **Macrobending** — deliberate large-radius bends during installation; field evanescently leaks out
+- **Microbending** — microscopic random deformations from cabling/mechanical stress
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C15.png?raw=true" alt="Graph of silica fiber attenuation (dB/km) vs wavelength (nm) from 800 to 1700 nm showing Rayleigh scattering slope on the left, OH minus water peak at 1383 nm, minimum attenuation at 1550 nm (0.2 dB/km), and the C-band and L-band DWDM windows shaded" style="max-width:88%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 5.2 — Silica Fiber Attenuation Spectrum</p>
+</div>
+</html>
+
+
+#### 2. Dispersion
+
+**Modal dispersion** (multimode only) — different modes travel at different speeds. Step-index pulse broadening:
+
+$$\Delta\tau_\text{modal} \approx \frac{n_1\,\Delta\,L}{c}$$
+
+**Chromatic dispersion** — two components, both present in single-mode fiber:
+
+$$D_C = D_M + D_W \quad \text{(ps/nm{\cdot}km)}$$
+
+- **Material dispersion** $D_M$: $n(\lambda)$ dependence of glass; zero near 1270 nm for silica
+- **Waveguide dispersion** $D_W$: variation of field confinement with wavelength; allows engineering of the zero-dispersion wavelength
+
+Pulse broadening:
+
+$$\sigma_\text{CD} = |D_C|\cdot L\cdot\Delta\lambda$$
+
+**Polarization Mode Dispersion (PMD)** — real SMF has slight birefringence; two orthogonal polarization modes travel at slightly different speeds. Characterised by Differential Group Delay (DGD):
+
+$$\text{DGD} = D_\text{PMD}\sqrt{L} \quad \text{(ps)}$$
+
+PMD limits 40 Gbps+ ultra-long-haul systems.
+
+---
+
+### E. Optical Sources — LED and Laser
+
+#### 1. LED
+
+LEDs emit by **spontaneous emission** — electron-hole recombination in a forward-biased $p$-$n$ junction.
+
+| Parameter | Typical Value |
+|-----------|--------------|
+| Spectral width $\Delta\lambda$ | 25–100 nm |
+| Output power | $-20$ to $-10$ dBm |
+| Modulation bandwidth | Up to $\sim$200 MHz |
+| Coherence | Incoherent |
+
+Modulation bandwidth limited by minority carrier lifetime $\tau$:
+
+$$f_{3\,\text{dB}} = \frac{1}{2\pi\tau}$$
+
+- **Surface-emitting LED (SLED)** — Lambertian emission; simple, low cost
+- **Edge-emitting LED (ELED)** — better fiber coupling, higher bandwidth
+
+**Applications** — short-haul multimode links, LANs, plastic optical fiber systems.
+
+#### 2. Laser Diode
+
+LDs emit by **stimulated emission** — incident photons trigger emission of identical photons (same wavelength, phase, direction). Three requirements for lasing:
+
+- **Population inversion** — more carriers in excited state (achieved by heavy injection current $I > I_\text{th}$)
+- **Optical feedback** — resonant cavity (Fabry-Perot cleaved facets, DFB grating)
+- **Threshold gain** — round-trip gain must equal or exceed total losses
+
+$$P_\text{out} = \eta_d (I - I_\text{th}) \qquad \text{for } I > I_\text{th}$$
+
+**Types of Laser Diodes:**
+
+##### a. Fabry-Perot (FP) LD
+
+- Cavity formed by cleaved facets ($R \approx 32\%$ each)
+- Supports multiple longitudinal modes; spectral width $\sim$2–8 nm
+- Suitable for multimode fiber and low-speed single-mode links
+
+##### b. DFB (Distributed Feedback) LD
+
+- Bragg grating embedded in the active layer selects a single wavelength
+- Single longitudinal mode; linewidth $< 0.1$ nm
+- Side-mode suppression ratio (SMSR) $> 40$ dB
+- Essential for long-haul SMF and WDM systems
+
+##### c. VCSEL (Vertical-Cavity Surface-Emitting Laser)
+
+- Vertical emission, circular beam, low threshold ($< 1$ mA)
+- Easy to fabricate in 2D arrays
+- Used in datacom (850 nm), optical interconnects, 3D sensing
+
+| Parameter | FP LD | DFB LD |
+|-----------|-------|--------|
+| Linewidth | 2–8 nm | $<$0.1 nm |
+| Modes | Multi | Single |
+| SMSR | Poor | $>$40 dB |
+| WDM suitability | No | Yes |
+| Direct modulation BW | 1–3 GHz | 5–30 GHz |
+
+---
+
+### F. Optical Detectors — PIN and APD
+
+#### 1. PIN Photodiode
+
+A $p$-$i$-$n$ diode with an undoped (intrinsic) layer between $p$ and $n$, fully depleted under reverse bias.
+
+**Operation** — photons absorbed in the wide depletion region generate electron-hole pairs; carriers swept by the field produce a **photocurrent**.
+
+$$\mathcal{R} = \frac{I_\text{ph}}{P_\text{in}} = \frac{\eta q}{h\nu} = \frac{\eta\lambda\,(\mu\text{m})}{1.24} \quad \text{(A/W)}$$
+
+| Parameter | InGaAs PIN (1550 nm) |
+|-----------|---------------------|
+| Responsivity | 0.8–0.95 A/W |
+| Bandwidth | 1–50 GHz |
+| Internal gain | 1 |
+| Bias voltage | 5–30 V |
+
+#### 2. APD (Avalanche Photodiode)
+
+Operates at much higher reverse bias; photogenerated carriers initiate **impact ionization** (avalanche multiplication) producing additional electron-hole pairs.
+
+$$M = \frac{I_\text{APD}}{I_\text{PIN}} \quad (M = 5\text{–}100) \qquad \mathcal{R}_\text{APD} = M\cdot\mathcal{R}_\text{PIN}$$
+
+The avalanche process introduces **excess noise**:
+
+$$F(M) = M^x \qquad (x = 0.3\text{–}0.5 \text{ for InGaAs APD})$$
+
+SNR improvement factor: $\sim M/\sqrt{F(M)}$, not $M$ (noise also grows).
+
+| Parameter | PIN | APD |
+|-----------|-----|-----|
+| Internal gain | 1 | 10–100 |
+| Sensitivity improvement | Baseline | $+$5 to $+$10 dB |
+| Noise | Lower | Higher (excess) |
+| Bias | 5–30 V | 100–200 V |
+| Cost | Lower | Higher |
+| Use | Short/medium haul | Long-haul |
+
+---
+
+### G. Optical Receivers and EDFA
+
+#### 1. Optical Receiver Architecture
+
+$$\text{Fiber} \;\to\; \underbrace{\text{Photodetector}}_\text{PIN/APD} \;\to\; \underbrace{\text{TIA}}_\text{Transimpedance Amp} \;\to\; \underbrace{\text{Equaliser/Filter}}_\text{Pulse shaping} \;\to\; \underbrace{\text{Decision circuit}}_\text{CDR}$$
+
+**Receiver sensitivity** — minimum average optical power for a target BER (typically $10^{-9}$).
+
+**Dominant noise sources:**
+
+$$\sigma^2_\text{thermal} = \frac{4kTB}{R_L} \qquad \sigma^2_\text{shot} = 2q\,I_\text{ph}\,B$$
+
+At high data rates, thermal noise dominates in PIN receivers; using an APD or optical pre-amplifier (EDFA) can improve sensitivity by 5–15 dB.
+
+#### 2. EDFA (Erbium-Doped Fiber Amplifier)
+
+The EDFA is the critical enabling technology for long-haul optical networking and WDM systems. It amplifies light directly in the optical domain — no optical-to-electrical-to-optical (OEO) conversion required.
+
+**Principle:**
+
+- A silica fiber is doped with **Er$^{3+}$** ions in its core.
+- A **pump laser** (980 nm or 1480 nm) excites Er$^{3+}$ from the ground state $^4I_{15/2}$ to an excited state, creating population inversion.
+- Signal photons (1530–1565 nm, C-band) trigger stimulated emission; the signal is amplified.
+- The pump and signal co-propagate (co-pumping) or counter-propagate (counter-pumping).
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C16.png?raw=true" alt="EDFA schematic: signal input at 1550 nm enters a WDM coupler where it combines with pump laser light (980 nm or 1480 nm), propagates through the erbium-doped fiber (EDF) section where stimulated emission amplifies the signal, isolator at output prevents back-reflections, amplified signal exits; energy level diagram inset showing 980 nm pump exciting Er3+ to upper level and 1550 nm signal triggering stimulated emission" style="max-width:88%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 5.3 — EDFA Schematic and Er³⁺ Energy Level Diagram</p>
+</div>
+</html>
+
+
+| Parameter | Value |
+|-----------|-------|
+| Gain | 20–40 dB |
+| C-band gain bandwidth | 1530–1565 nm |
+| L-band (extended) | 1565–1610 nm |
+| Noise figure | 4–6 dB |
+| Output power | Up to $+30$ dBm |
+
+**Amplified Spontaneous Emission (ASE)** — spontaneous emission events throughout the EDF are also amplified, producing a broadband noise floor that accumulates in cascaded EDFA chains.
+
+**EDFA deployment types:**
+
+- **Booster** — immediately after the transmitter; amplifies to maximum launch power
+- **Inline** — periodically along the span (every 60–120 km) to compensate for fiber loss
+- **Pre-amplifier** — just before the receiver to enhance sensitivity
+
+**Noise in cascaded EDFA chain** (Optical SNR after $N$ amplifiers):
+
+$$\text{OSNR} = \frac{P_\text{signal}}{N \cdot P_\text{ASE}}$$
+
+This limits the number of amplifiers before regeneration is required.
+
+---
+
+## Unit 6: Communication Networks & Navigation
+
+### A. SONET/SDH
+
+**SONET** (Synchronous Optical NETwork — North America, ANSI) and **SDH** (Synchronous Digital Hierarchy — international, ITU-T G.707) are the foundational synchronous multiplexing standards for high-speed optical transport.
+
+#### 1. Hierarchy
+
+| SONET | SDH | Line Rate | Remarks |
+|-------|-----|-----------|---------|
+| OC-1 / STS-1 | STM-0 | 51.84 Mbps | Basic SONET building block |
+| OC-3 / STS-3 | STM-1 | 155.52 Mbps | Basic SDH building block |
+| OC-12 / STS-12 | STM-4 | 622.08 Mbps | — |
+| OC-48 / STS-48 | STM-16 | 2.488 Gbps | Common WAN rate |
+| OC-192 / STS-192 | STM-64 | 9.953 Gbps | 10G Ethernet transport |
+| OC-768 / STS-768 | STM-256 | 39.8 Gbps | 40G transport |
+
+SONET/SDH line rates are exact multiples of the base STS-1/STM-1 rate.
+
+#### 2. SONET STS-1 Frame Structure
+
+The STS-1 frame has a fixed structure:
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C17.png?raw=true" alt="SONET STS-1 frame structure: 9-row by 90-column grid with the first 3 columns coloured as Transport Overhead (rows 1-3 Section OH, rows 4-9 Line OH) and columns 4-90 as the Synchronous Payload Envelope containing 1 column of Path Overhead and 86 columns of STS-1 payload capacity, byte order indicated left-to-right top-to-bottom" style="max-width:82%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 6.1 — SONET STS-1 Frame Structure</p>
+</div>
+</html>
+
+- $9\,\text{rows} \times 90\,\text{columns} = 810\,\text{bytes}$
+- Transmitted at $8000\,\text{frames/s}$ $\Rightarrow$ $51.84\,\text{Mbps}$
+- **Columns 1–3** (27 bytes): Transport Overhead (Section OH + Line OH) — for framing, performance monitoring, orderwire, data communications
+- **Columns 4–90** (783 bytes): Synchronous Payload Envelope (SPE) — contains Path Overhead + user payload
+
+#### 3. Key Features
+
+- **Synchronous multiplexing** — all NEs synchronised to a common stratum clock; lower-speed tributaries can be added/dropped byte-synchronously without full demultiplexing.
+- **Add/Drop Multiplexers (ADM)** — insert or extract tributaries at any node.
+- **Self-healing rings** — UPSR (Unidirectional Path Switched Ring) and BLSR/MS-SPRing (Bidirectional Line Switched Ring) restore traffic in $< 50$ ms on fibre cut.
+- **Rich OAM&P overhead** — performance monitoring, fault isolation, automatic protection switching (APS).
+
+---
+
+### B. Instrument Landing System (ILS)
+
+The **ILS** is a ground-based precision approach aid providing both lateral (**Localizer**) and vertical (**Glide Slope**) guidance to runway threshold in low-visibility conditions. It is the worldwide standard precision approach system (ICAO Annex 10).
+
+#### 1. Localizer (LLZ)
+
+Provides **lateral** (left-right) guidance — aligns the aircraft with the runway centreline.
+
+- Antenna: Phased array at the far (departure) end of the runway
+- Frequency: 108–112 MHz (VHF), 25 kHz spacing
+- Two overlapping cardioid patterns, one modulated at **90 Hz** (left side) and one at **150 Hz** (right side)
+- **DDM (Difference in Depth of Modulation):**
+
+<html>
+<div style="text-align:center; margin: 1.5em 0;">
+  <img src="https://github.com/SonupriyaSSarode/Images-to-LGP/blob/main/C18.png?raw=true" alt="ILS airport geometry diagram: runway shown in plan view with localizer antenna array at the far end radiating a narrow LLZ beam centred on the runway extended centreline; glide slope antenna near the touchdown zone radiating the 3-degree glide path; outer, middle, and inner marker beacons shown at respective distances along the approach; inset showing the DDM signal (150Hz lobe on the right, 90Hz lobe on the left, overlap zone = centreline)" style="max-width:90%; border:1px solid #ccc; border-radius:6px;" />
+  <p style="font-size:0.85em; color:#555; margin-top:0.4em;">Figure 6.5 — ILS Geometry and Signal Structure</p>
+</div>
+</html>
+
+
+$$\text{DDM} = m_{150} - m_{90}$$
+
+- DDM $> 0$ $\to$ aircraft right of centreline $\to$ fly left
+- DDM $< 0$ $\to$ aircraft left of centreline $\to$ fly right
+- DDM $= 0$ $\to$ on centreline
+
+Angular coverage: $\pm 35^\circ$ from centreline; precision sector $\pm 3^\circ$.
+
+#### 2. Glide Slope (G/S)
+
+Provides **vertical** (up-down) guidance — establishes the ideal descent profile (typically a $3^\circ$ glide path).
+
+- Antenna: Array offset to the side of the runway touchdown zone
+- Frequency: 329.15–335 MHz (UHF), paired directly with Localizer VHF channels
+- Operates on an identical DDM principle using overlapping **90 Hz** (upper beam sector) and **150 Hz** (lower beam sector) fields
+
+#### 3. Marker Beacons
+
+Provide point-distance indicators along the approach path using highly directional vertical cones operating at **75 MHz**:
+
+- **Outer Marker (OM)**: 7–12 km out; indicates intercept point.
+- **Middle Marker (MM)**: $\sim$1 km out; indicates visual transition threshold checkpoints.
+
+---
+
+### C. Radar Altimeter
+
+The **radar altimeter** measures the aircraft's **absolute height above the terrain directly beneath** (AGL — Above Ground Level), using an FMCW radar technique. Unlike a barometric altimeter (which measures atmospheric pressure relative to sea level), the radar altimeter responds directly to terrain clearance.
+
+#### 1. Operating Principle (FMCW)
+
+A linearly frequency-swept signal is transmitted downward. The echo from the ground is delayed by the two-way travel time. Mixing the received echo with the current transmitted signal produces a **beat frequency** proportional to altitude:
+
+$$h = \frac{f_b\,c\,T_m}{2\,\Delta f}$$
+
+where $\Delta f$ = frequency deviation (typically 150 MHz), $T_m$ = modulation period, $c$ = speed of light.
+
+#### 2. Key Parameters
+
+| Parameter | Value |
+|-----------|-------|
+| Frequency band | 4.2–4.4 GHz (C-band, ICAO allocated) |
+| Altitude range | 0–750 m (civil); 0–1500 m (military) |
+| Accuracy | $\pm 0.5$ m or $\pm 2\%$ altitude (whichever greater) |
+| Update rate | $\geq 25$ Hz |
+
+#### 3. Applications
+
+- **Approach and landing** — provides terrain clearance below the ILS decision height; triggers **Decision Height (DH)** alert
+- **Autopilot / autothrottle** — automatic landing (CAT III ILS) uses radar altimeter to time flare manoeuvre
+- **Helicopter operations** — low-level obstacle avoidance
+- **Military** — terrain following/avoidance at very low altitude; precision weapon delivery
+
+---
+
+### D. Synthetic Aperture Radar (SAR)
+
+A SAR is a coherent, side-looking airborne or spaceborne radar that uses the **forward motion of the platform** to synthesise an aperture many times longer than the physical antenna, achieving fine azimuth resolution independent of range.
+
+#### 1. Resolution Analysis
+
+**Real Aperture Radar (RAR) azimuth resolution** degrades linearly with range:
+
+$$\delta_\text{az}^\text{RAR} = \frac{R\lambda}{D}$$
+
+For $R = 500$ km, $\lambda = 5$ cm, $D = 5$ m: $\delta_\text{az} = 5$ km — far too coarse for imaging.
+
+**SAR azimuth resolution** — as the platform travels a synthetic aperture $L_s$, it coherently accumulates returns from each ground scatterer:
+
+$$\delta_\text{az}^\text{SAR} = \frac{D}{2}$$
+
+This result is **independent of range and wavelength**. Counterintuitively, a *shorter* physical antenna gives *finer* resolution because it illuminates each ground patch for a *longer* time.
+
+**Range resolution** — determined by the transmitted chirp bandwidth $B$:
+
+$$\delta_r = \frac{c}{2B}$$
+
+A 150 MHz bandwidth gives $\delta_r = 1$ m.

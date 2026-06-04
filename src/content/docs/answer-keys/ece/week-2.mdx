@@ -1,99 +1,1387 @@
 ---
-title: ECE Department - Week 2 Answer Keys
+title: Week 2 Answer Keys
 description: Solutions and answer keys for ECE Department Week 2 problems
 ---
 
-# ECE Department - Week 2 Answer Keys
-
-## Digital Logic
-
-**Q1: Design 4-bit Adder**
-```
-Half-Adder: Sum = A⊕B, Carry = A·B
-Full-Adder: Cascaded half-adders
-Carry propagation delay = 2n gate delays
-```
-
-**Q2: Flip-Flop Conversions**
-```
-SR → JK: Use SR = J, Kbar outputs
-JK → D: D = J⊕(K·Q')
-T → D: T flip-flop counter application
-```
-
-## Microprocessors
-
-**Q1: 8085 Timing Diagram**
-```
-T-states breakdown:
-- Memory read: 3 T-states
-- Memory write: 3 T-states
-- I/O operations: 4 T-states
-```
-
-**Q2: Instruction Cycle**
-```
-Fetch → Decode → Execute → Write-back
-Time varies: 4T to 16T states per instruction
-```
-
-## Signals and Systems
-
-**Q1: Laplace Transform**
-```
-L{f(t)} = ∫₀^∞ f(t)·e^(-st) dt
-Common transforms: 1→1/s, t→1/s², e^(-at)→1/(s+a)
-```
-
-**Q2: Transfer Function**
-```
-H(s) = Y(s)/X(s)
-Used for system analysis and design
-Poles determine stability
-```
-
-## Communications
-
-**Q1: Nyquist Theorem**
-```
-Sampling rate ≥ 2 × Bandwidth
-Prevents aliasing
-Determines signal reconstruction capability
-```
-
-**Q2: Entropy Calculation**
-```
-H = -Σ(p_i × log₂(p_i))
-Maximum when all symbols equally likely
-Used in information theory
-```
-
-## Power Electronics
-
-**Q1: Converter Analysis**
-```
-Buck: Vo = D·Vs (D = duty cycle)
-Boost: Vo = Vs/(1-D)
-Buck-Boost: Vo = -D·Vs/(1-D)
-```
-
-**Q2: UPS Design**
-```
-Answer: Uninterruptible Power Supply
-- Battery charging circuit
-- Inverter for AC conversion
-- Switchover logic
-```
+## Test 2 (ECE) 
+**Total Questions: 45**
 
 ---
 
-## Calculation Reference
+## Question 1
 
-| Type | Formula |
-|------|---------|
-| Laplace | Transform table lookup |
-| Sampling | Fs ≥ 2·Fm |
-| Converter | Use steady-state analysis |
-| SCR | Gate trigger analysis |
+1. The speed of a boat when travelling downstream is 32 km/hr, whereas when travelling upstream it is 28 km/hr. What is the speed of the boat in still water and the speed of the stream?
 
-**Week 2 Complete:** Intermediate concepts verified
+- A) 30 km/hr, 2 km/hr
+- B) 28 km/hr, 4 km/hr
+- C) 32 km/hr, 2 km/hr
+- D) 30 km/hr, 4 km/hr
+
+Correct Answer: A) 30 km/hr, 2 km/hr
+
+Explanation:
+
+Downstream speed = 32 km/hr
+
+Upstream speed = 28 km/hr
+
+Speed of boat in still water
+
+= (32 + 28) / 2
+
+= 60 / 2
+
+= 30 km/hr
+
+Speed of stream
+
+= (32 − 28) / 2
+
+= 4 / 2
+
+= 2 km/hr
+
+---
+
+## Question 2
+
+2. In one hour, a boat goes 11 km along the stream and 5 km against the stream. The speed of the boat in still water (in km/hr) is (B.Ed Entrance, 2009)
+
+- A) 3 km/hr
+- B) 5 km/hr
+- C) 8 km/hr
+- D) 9 km/hr
+
+Correct Answer: C) 8 km/hr
+
+Explanation:
+
+Downstream speed = 11 km/hr
+
+Upstream speed = 5 km/hr
+
+Speed of boat in still water
+
+= (11 + 5) / 2
+
+= 16 / 2
+
+= 8 km/hr
+
+---
+
+## Question 3
+
+3. A train is moving at a speed of 132 km/hr. If the length of the train is 110 m, how long will it take to cross a railway platform 165 m long?
+
+- A) 5 sec
+- B) 6 sec
+- C) 7.5 sec
+- D) 8 sec
+
+Correct Answer: C) 7.5 sec
+
+Explanation:
+
+Speed of train
+
+= (132 × 5) / 18 m/sec
+
+= 110 / 3 m/sec
+
+Total distance covered
+
+= Length of train + Length of platform
+
+= 110 + 165
+
+= 275 m
+
+Time taken
+
+= Distance / Speed
+
+= 275 ÷ (110/3)
+
+= 275 × 3 / 110
+
+= 7.5 sec
+
+---
+
+## Question 4
+
+4. How many arrangements can be made out of the letters of the word "ENGINEERING"?
+
+- A) 277200
+- B) 302400
+- C) 554400
+- D) 138600
+
+Correct Answer: A) 277200
+
+Explanation:
+
+The word "ENGINEERING" contains 11 letters.
+
+Repeated letters are:
+
+E = 3, N = 3, G = 2, I = 2
+
+Number of arrangements
+
+= 11! / (3! × 3! × 2! × 2!)
+
+= 39916800 / (6 × 6 × 2 × 2)
+
+= 39916800 / 144
+
+= 277200
+
+---
+
+## Question 5
+
+5. In how many different ways can the letters of the word "DAUGHTER" be arranged so that the vowels always come together?
+
+- A) 2160
+- B) 4320
+- C) 5040
+- D) 7200
+
+Correct Answer: B) 4320
+
+Explanation:
+
+The vowels are A, U and E.
+
+Treat the vowels as a single unit.
+
+The units to be arranged are:
+
+D, G, H, T, R, (AUE)
+
+Total units = 6
+
+Number of ways to arrange these units
+
+= 6!
+
+= 720
+
+The vowels can be arranged among themselves in
+
+= 3!
+
+= 6 ways
+
+Required number of arrangements
+
+= 720 × 6
+
+= 4320
+
+---
+
+## Question 6
+
+6. (75P₂ – 75C₂) = ?
+
+- A) 0
+- B) 75
+- C) 150
+- D) 2775
+
+Correct Answer: D) 2775
+
+Explanation:
+
+75P₂
+
+= 75 × 74
+
+= 5550
+
+75C₂
+
+= (75 × 74) / 2
+
+= 2775
+
+Therefore,
+
+75P₂ – 75C₂
+
+= 5550 − 2775
+
+= 2775
+
+---
+
+## Question 7
+
+7. Out of 5 women and 4 men, a committee of three members is to be formed in such a way that at least one member is a woman. In how many different ways can it be done? (Bank P.O., 2009)
+
+- A) 76
+- B) 80
+- C) 84
+- D) 96
+
+Correct Answer: C) 84
+
+Explanation:
+
+Possible cases are:
+
+1 woman and 2 men
+
+= ⁵C₁ × ⁴C₂
+
+= 5 × 6
+
+= 30
+
+2 women and 1 man
+
+= ⁵C₂ × ⁴C₁
+
+= 10 × 4
+
+= 40
+
+3 women
+
+= ⁵C₃
+
+= 10
+
+Total number of ways
+
+= 30 + 40 + 10
+
+= 84
+
+---
+
+## Question 8
+
+8. In a simultaneous throw of a pair of dice, find the probability of getting a total more than 7.
+
+- A) 5/12
+- B) 7/12
+- C) 1/2
+- D) 15/36
+
+Correct Answer: A) 5/12
+
+Explanation:
+
+Total possible outcomes when two dice are thrown
+
+= 6 × 6
+
+= 36
+
+Sums greater than 7 are:
+
+8 → 5 outcomes
+
+9 → 4 outcomes
+
+10 → 3 outcomes
+
+11 → 2 outcomes
+
+12 → 1 outcome
+
+Total favourable outcomes
+
+= 5 + 4 + 3 + 2 + 1
+
+= 15
+
+Probability
+
+= 15 / 36
+
+= 5 / 12
+
+---
+
+## Question 9
+
+9. A bag contains 6 white and 4 black balls. Two balls are drawn at random. Find the probability that they are of the same colour.
+
+- A) 7/15
+- B) 8/15
+- C) 21/45
+- D) 2/5
+
+Correct Answer: A) 7/15
+
+Explanation:
+
+Total number of balls
+
+= 6 + 4
+
+= 10
+
+Total ways of drawing 2 balls
+
+= ¹⁰C₂
+
+= (10 × 9) / (2 × 1)
+
+= 45
+
+Ways of drawing 2 white balls
+
+= ⁶C₂
+
+= (6 × 5) / (2 × 1)
+
+= 15
+
+Ways of drawing 2 black balls
+
+= ⁴C₂
+
+= (4 × 3) / (2 × 1)
+
+= 6
+
+Favourable outcomes
+
+= 15 + 6
+
+= 21
+
+Probability
+
+= 21 / 45
+
+= 7 / 15
+
+---
+
+## Question 10
+
+10. Two cards are drawn together from a pack of 52 cards. The probability that one is a spade and one is a heart, is
+
+- A) 3/20
+- B) 29/34
+- C) 47/100
+- D) 13/102
+
+Correct Answer: D) 13/102
+
+Explanation:
+
+Total number of ways of drawing 2 cards from 52 cards
+
+= ⁵²C₂
+
+= (52 × 51) / (2 × 1)
+
+= 1326
+
+Number of ways of choosing 1 spade
+
+= ¹³C₁
+
+= 13
+
+Number of ways of choosing 1 heart
+
+= ¹³C₁
+
+= 13
+
+Favourable outcomes
+
+= 13 × 13
+
+= 169
+
+Probability
+
+= 169 / 1326
+
+= 13 / 102
+
+---
+
+## Question 11
+
+11. In a simultaneous throw of two dice, what is the probability of getting a doublet?
+
+- A) 1/6
+- B) 1/4
+- C) 2/3
+- D) 3/7
+
+Correct Answer: A) 1/6
+
+Explanation:
+
+Total possible outcomes when two dice are thrown
+
+= 6 × 6
+
+= 36
+
+A doublet means both dice show the same number.
+
+Favourable outcomes are:
+
+(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)
+
+Number of favourable outcomes
+
+= 6
+
+Probability
+
+= 6 / 36
+
+= 1 / 6
+
+---
+
+## Question 12
+
+12. If a − b = 3 and a² + b² = 29, find the value of ab.
+
+- A) 10
+- B) 12
+- C) 15
+- D) 18
+
+Correct Answer: A) 10
+
+Explanation:
+
+Using the identity:
+
+(a − b)² = a² + b² − 2ab
+
+Substituting the given values:
+
+3² = 29 − 2ab
+
+9 = 29 − 2ab
+
+2ab = 20
+
+ab = 10
+
+---
+
+## Question 13
+
+13. If α and β are the roots of the polynomial f(x) = x² + x + 1, then the value of (1/α + 1/β) will be:
+
+- A) 1
+- B) −1
+- C) 0
+- D) 2
+
+Correct Answer: B) −1
+
+Explanation:
+
+For the polynomial:
+
+x² + x + 1
+
+Sum of roots
+
+α + β = −b/a
+
+= −1
+
+Product of roots
+
+αβ = c/a
+
+= 1
+
+Therefore,
+
+(1/α + 1/β)
+
+= (α + β) / αβ
+
+= (−1) / 1
+
+= −1
+
+---
+
+## Question 14
+
+14. The value of k for which the quadratic equation kx(x − 2) + 6 = 0 has equal roots is:
+
+- A) 2
+- B) 3
+- C) 6
+- D) −6
+
+Correct Answer: C) 6
+
+Explanation:
+
+Given equation
+
+kx(x − 2) + 6 = 0
+
+⇒ kx² − 2kx + 6 = 0
+
+Comparing with ax² + bx + c = 0,
+
+a = k
+
+b = −2k
+
+c = 6
+
+For equal roots,
+
+b² − 4ac = 0
+
+⇒ (−2k)² − 4(k)(6) = 0
+
+⇒ 4k² − 24k = 0
+
+⇒ 4k(k − 6) = 0
+
+⇒ k = 0 or k = 6
+
+Since k ≠ 0 for a quadratic equation,
+
+k = 6
+
+---
+
+## Question 15
+
+15. Quadratic equation corresponding to the roots 2 + √5 and 2 − √5 is:
+
+- A) x² − 4x − 1 = 0
+- B) x² + 4x − 1 = 0
+- C) x² − 2x − 1 = 0
+- D) x² − 4x + 1 = 0
+
+Correct Answer: A) x² − 4x − 1 = 0
+
+Explanation:
+
+Given roots:
+
+α = 2 + √5
+
+β = 2 − √5
+
+Sum of roots
+
+= α + β
+
+= (2 + √5) + (2 − √5)
+
+= 4
+
+Product of roots
+
+= αβ
+
+= (2 + √5)(2 − √5)
+
+= 4 − 5
+
+= −1
+
+Quadratic equation
+
+= x² − (sum of roots)x + (product of roots)
+
+= 0
+
+⇒ x² − 4x − 1 = 0
+
+---
+
+## Question 16
+
+16. Which statement correctly differentiates LAN and CAN?
+
+- A) LAN covers larger geographical areas than CAN
+- B) CAN interconnects multiple LANs within a campus
+- C) LAN always uses wireless technology
+- D) CAN is used only for personal devices
+
+Correct Answer: B) CAN interconnects multiple LANs within a campus
+
+Explanation:
+
+A LAN (Local Area Network) typically covers a small area such as a room, office, or building.
+
+A CAN (Campus Area Network) connects multiple LANs across a campus, university, or organization.
+
+Therefore, CAN covers a larger area and interconnects several LANs.
+
+---
+
+## Question 17
+
+17. What is the primary responsibility of the Physical Layer in the OSI model?
+
+- A) Error detection and correction
+- B) Routing packets between networks
+- C) Transmission of raw bitstreams over a medium
+- D) Data encryption
+
+Correct Answer: C) Transmission of raw bitstreams over a medium
+
+Explanation:
+
+The Physical Layer is the lowest layer of the OSI model.
+
+Its primary responsibility is to transmit raw bits through physical communication media such as cables, fiber optics, or wireless signals.
+
+It deals with electrical, mechanical, and transmission characteristics of the network.
+
+---
+
+## Question 18
+
+18. An ARP Request is generally sent as:
+
+- A) Unicast
+- B) Multicast
+- C) Point-to-point
+- D) Broadcast
+
+Correct Answer: D) Broadcast
+
+Explanation:
+
+When a device knows an IP address but not the corresponding MAC address, it sends an ARP Request to all devices on the local network.
+
+This is done using a broadcast message.
+
+The device with the matching IP address then responds with a unicast ARP Reply.
+
+---
+
+## Question 19
+
+19. The vulnerable time in CSMA is equal to:
+
+- A) 0
+- B) 4Tp
+- C) Tp
+- D) 2Tp
+
+Correct Answer: C) Tp
+
+Explanation:
+
+In CSMA, a station listens to the channel before transmitting.
+
+However, due to propagation delay, collisions can still occur.
+
+The vulnerable period is equal to the propagation delay (Tp), which is the time required for a signal to travel across the network.
+
+---
+
+## Question 20
+
+20. The term "raw bitstream" refers to:
+
+- A) Structured packets with headers
+- B) Unprocessed sequence of bits
+- C) Encrypted messages
+- D) Framed data units
+
+Correct Answer: B) Unprocessed sequence of bits
+
+Explanation:
+
+A raw bitstream is a continuous sequence of binary digits (0s and 1s).
+
+It does not contain framing, headers, or higher-level protocol information.
+
+The Physical Layer transmits this raw bitstream over the communication medium.
+
+---
+## Question 21
+
+21. The Physical Layer transmits data in the form of:
+
+- A) Frames
+- B) Signals
+- C) Datagrams
+- D) Messages
+
+Correct Answer: B) Signals
+
+Explanation:
+
+The Physical Layer is responsible for transmitting data over the communication medium.
+
+It converts binary bits into electrical, optical, or radio signals suitable for transmission.
+
+These signals travel through cables, fiber optics, or wireless channels to reach the destination.
+
+---
+
+## Question 22
+
+22. Which ARP field combination uniquely identifies the sender in an ARP packet?
+
+- A) Sender MAC + Sender IP
+- B) Target MAC + Target IP
+- C) Protocol Type + Hardware Type
+- D) Operation + Hardware Length
+
+Correct Answer: A) Sender MAC + Sender IP
+
+Explanation:
+
+An ARP packet contains both the sender's IP address and MAC address.
+
+Together, these two fields uniquely identify the device that generated the ARP message.
+
+They allow receiving devices to associate an IP address with a physical hardware address.
+
+---
+
+## Question 23
+
+23. In the client-server model, the client primarily:
+
+- A) Stores centralized resources
+- B) Responds to service requests
+- C) Requests services or data
+- D) Performs routing functions
+
+Correct Answer: C) Requests services or data
+
+Explanation:
+
+The client-server architecture divides responsibilities between clients and servers.
+
+A client initiates communication by requesting data or services.
+
+The server receives the request, processes it, and sends an appropriate response back to the client.
+
+---
+
+## Question 24
+
+24. Which protocol is specifically designed for lightweight IoT messaging?
+
+- A) LDAP
+- B) NTP
+- C) NNTP
+- D) MQTT
+
+Correct Answer: D) MQTT
+
+Explanation:
+
+MQTT (Message Queuing Telemetry Transport) is a lightweight messaging protocol designed for devices with limited resources.
+
+It follows a publish-subscribe communication model.
+
+Due to its low bandwidth and power requirements, MQTT is widely used in IoT applications.
+
+---
+
+## Question 25
+
+25. In hierarchical modeling, a complex circuit is mainly divided into:
+
+- A) Timing slots
+- B) Submodules
+- C) Clock cycles
+- D) Packets
+
+Correct Answer: B) Submodules
+
+Explanation:
+
+Hierarchical modeling breaks a large and complex design into smaller manageable units called submodules.
+
+Each submodule performs a specific function and can be designed, tested, and reused independently.
+
+This approach simplifies development and improves maintainability.
+
+---
+
+## Question 26
+
+26. What will be the output of the following Verilog code?
+
+```q26
+module test;
+
+    reg a, b;
+
+    initial
+    begin
+        a = 1'b1;
+        b = ~a;
+
+        $display("%b", b);
+    end
+
+endmodule
+```
+- A) 1
+- B) 0
+- C) x
+- D) z
+
+Correct Answer: B) 0
+
+Explanation:
+
+The variable a is assigned the value 1.
+
+Applying the NOT operator gives:
+
+~a = 0
+
+Therefore, the displayed output is 0.
+
+---
+
+## Question 27
+
+27. Which statement correctly declares a 4-bit input in Verilog?
+
+- A) input a[3:0];
+- B) input [3:0] a;
+- C) wire input [3:0] a;
+- D) reg [0:3] input a;
+
+Correct Answer: B) input [3:0] a;
+
+Explanation:
+
+In Verilog, a multi-bit input bus is declared by specifying the bit range before the variable name.
+
+The correct syntax is:
+
+input [3:0] a;
+
+This declaration creates a 4-bit input bus with bits numbered from 3 down to 0.
+
+---
+
+## Question 28
+
+28. What will be the output?
+```Q28
+module test;
+
+    reg a, b;
+
+    initial
+    begin
+        a = 1'b0;
+        b = a;
+        a = 1'b1;
+
+        $display("%b %b", a, b);
+    end
+
+endmodule
+```
+
+- A) 0 0
+- B) 0 1
+- C) 1 0
+- D) 1 1
+
+Correct Answer: C) 1 0
+
+Explanation:
+
+Initially, the value of a is 0.
+
+The value of b is assigned using the current value of a, so b becomes 0.
+
+Later, a changes to 1.
+
+Therefore, the final values are:
+
+a = 1
+
+b = 0
+
+---
+
+## Question 29
+
+29. Identify the final value of q.
+
+```Q29
+module test;
+
+    reg q;
+
+    initial
+    begin
+        q = 0;
+        q <= 1;
+        q = 0;
+    end
+
+endmodule
+```
+
+- A) 0
+- B) 1
+- C) x
+- D) z
+
+Correct Answer: B) 1
+
+Explanation:
+
+Non-blocking assignments $(<=)$ do not update the variable immediately.
+
+Instead, the update is scheduled to occur at the end of the current simulation time step.
+
+As a result, after the scheduled update takes place, the final value of q becomes 1.
+
+---
+
+## Question 30
+
+30. Which statement is TRUE about blocking and non-blocking assignments?
+
+- A) Both execute identically
+- B) Blocking assignments execute in parallel
+- C) Blocking assignments are mandatory in flip-flops
+- D) Non-blocking assignments are mainly used in sequential logic
+
+Correct Answer: D) Non-blocking assignments are mainly used in sequential logic
+
+Explanation:
+
+Blocking assignments $(=)$ execute statements sequentially in the order they appear.
+
+Non-blocking assignments $(<=)$ schedule updates to occur simultaneously at the end of the current time step.
+
+Because sequential circuits and flip-flops update their outputs together on clock edges, non-blocking assignments are preferred for modeling sequential logic.
+
+---
+## Question 31
+
+31. The load impedance ZL of a CE amplifier has R and L in series. The phase difference between output and input will be
+
+- A) 180°
+- B) 0°
+- C) more than 90° but less than 180°
+- D) more than 180° but less than 270°
+
+Correct Answer: D) more than 180° but less than 270°
+
+Explanation:
+
+A Common Emitter (CE) amplifier inherently produces a phase shift of 180° between input and output.
+
+When an inductive component is present in the load, the inductor introduces additional phase lag.
+
+Therefore, the total phase shift becomes greater than 180° but less than 270°.
+
+---
+
+## Question 32
+
+32. The input impedance of op-amp circuit of figure is
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/cc.jpeg?raw=true"
+  alt="--"
+  width="60%"
+/>
+
+
+- A) 120 kΩ
+- B) 110 kΩ
+- C) Infinity
+- D) 10 kΩ
+
+Correct Answer: D) 10 kΩ
+
+Explanation:
+
+The circuit is an inverting amplifier configuration.
+
+For an ideal inverting op-amp, the input impedance seen by the source is equal to the input resistor connected to the inverting terminal.
+
+Given:
+
+Input resistor = 10 kΩ
+
+Therefore,
+
+Input impedance = 10 kΩ
+
+---
+
+## Question 33
+
+33. In a BJT circuit a pnp transistor is replaced by npn transistor. To analyse the new circuit
+
+- A) all calculations done earlier have to be repeated
+- B) replace all calculated voltages by reverse values
+- C) replace all calculated currents by reverse values
+- D) replace all calculated voltages and currents by reverse values
+
+Correct Answer: D) replace all calculated voltages and currents by reverse values
+
+Explanation:
+
+A pnp transistor operates with voltage polarities opposite to those of an npn transistor.
+
+The directions of current flow also reverse.
+
+Therefore, both voltage and current polarities must be reversed while analyzing the modified circuit.
+
+---
+
+## Question 34
+
+34. In a CE amplifier the input impedance is equal to the ratio of
+
+- A) ac base voltage to ac base current
+- B) ac base voltage to ac emitter current
+- C) ac emitter voltage to ac collector current
+- D) ac collector voltage to ac collector current
+
+Correct Answer: A) ac base voltage to ac base current
+
+Explanation:
+
+Input impedance is defined as:
+
+Input Impedance = Input Voltage / Input Current
+
+In a CE amplifier, the input signal is applied between the base and emitter terminals.
+
+Therefore,
+
+Input impedance = ac base voltage / ac base current
+
+---
+
+## Question 35
+
+35. For a system to work as an oscillator, the total phase shift of the loop gain must be equal to
+
+- A) 90°
+- B) 45°
+- C) 270°
+- D) 360°
+
+Correct Answer: D) 360°
+
+Explanation:
+
+According to the Barkhausen Criterion, sustained oscillations occur when the loop gain satisfies two conditions:
+
+1. Loop gain magnitude is equal to unity.
+2. Total phase shift around the loop is 0° or 360°.
+
+This ensures positive feedback and continuous oscillations.
+
+---
+
+## Question 36
+
+36. An amplifier has a large ac input signal. The clipping occurs on both the peaks. The output voltage will be nearly a
+
+- A) sine wave
+- B) square wave
+- C) triangular wave
+- D) (a) or (c)
+
+Correct Answer: B) square wave
+
+Explanation:
+
+When the input signal amplitude becomes very large, the amplifier reaches its operating limits.
+
+Both positive and negative peaks become clipped.
+
+As clipping increases, the waveform becomes flatter at the top and bottom and gradually resembles a square wave.
+
+---
+
+## Question 37
+
+37. The transistor of following figure is a Si transistor with a base current of 40 μA and ICBO = 0. If VBB = 6V, RE = 2 kΩ, β = 90 and IBQ = 20 μA, then RB =
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/cc.jpeg?raw=true"
+  alt="--"
+  width="60%"
+/>
+
+- A) 200 kΩ
+- B) 265 kΩ
+- C) 150 kΩ
+- D) 100 kΩ
+
+Correct Answer: B) 265 kΩ
+
+Explanation:
+
+For a silicon transistor,
+
+VBE ≈ 0.7 V
+
+Using the transistor bias equations and the given circuit parameters:
+
+VBB = 6 V
+
+RE = 2 kΩ
+
+β = 90
+
+IBQ = 20 μA
+
+Substituting these values into the biasing equation gives:
+
+RB ≈ 265 kΩ
+
+Therefore, the correct answer is 265 kΩ.
+
+---
+
+## Question 38
+
+38. Assertion (A): CE amplifier is the most widely used BJT amplifier
+
+Reason (R): CE amplifier has zero phase difference between input and output
+
+- A) Both A and R are correct and R is correct explanation for A
+- B) Both A and R are correct but R is not correct explanation for A
+- C) A is correct R is wrong
+- D) A is wrong R is correct
+
+Correct Answer: C) A is correct R is wrong
+
+Explanation:
+
+The Common Emitter amplifier is widely used because it provides high voltage gain, current gain, and power gain.
+
+However, a CE amplifier introduces a phase shift of 180° between input and output.
+
+Therefore, the assertion is correct but the reason is incorrect.
+
+---
+
+## Question 39
+
+39. Assertion (A): For large signal variations an amplifier circuit has to be analysed graphically
+
+Reason (R): The output characteristics of a transistor is nonlinear
+
+- A) Both A and R are correct and R is correct explanation for A
+- B) Both A and R are correct but R is not correct explanation for A
+- C) A is correct R is wrong
+- D) A is wrong R is correct
+
+Correct Answer: A) Both A and R are correct and R is correct explanation for A
+
+Explanation:
+
+For small signal analysis, transistor characteristics can be approximated as linear.
+
+For large signal variations, transistor operation enters nonlinear regions.
+
+Therefore, graphical analysis using transistor output characteristics is necessary for accurate results.
+
+The reason correctly explains the assertion.
+
+---
+
+## Question 40
+
+40. The self bias provides
+
+- A) stable Q point
+- B) large voltage gain
+- C) high input impedance
+- D) high base current
+
+Correct Answer: A) stable Q point
+
+Explanation:
+
+Self-bias circuits use feedback to stabilize transistor operation.
+
+They compensate for variations caused by temperature changes and transistor parameter differences.
+
+As a result, the operating point (Q point) remains stable and reliable.
+
+---
+## Question 41
+
+41. In figure the saturation collector current is
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/bb.jpeg?raw=true"
+  alt="--"
+  width="60%"
+/>
+
+- A) VCC / RC
+- B) VCC / (RC + RE)
+- C) VCC / RE
+- D) none of the above
+
+Correct Answer: B) VCC / (RC + RE)
+
+Explanation:
+
+In the saturation region,
+
+VCE ≈ 0
+
+Applying KVL to the collector-emitter loop:
+
+VCC = ICRC + IERE
+
+Since,
+
+IC ≈ IE
+
+Therefore,
+
+IC(sat) = VCC / (RC + RE)
+
+---
+
+## Question 42
+
+42. Non-coherent detection is not possible for
+
+- A) PSK
+- B) ASK
+- C) FSK
+- D) both (a) and (c)
+
+Correct Answer: A) PSK
+
+Explanation:
+
+Phase Shift Keying (PSK) carries information through changes in the phase of the carrier signal.
+
+To correctly recover the transmitted data, the receiver must know the carrier phase.
+
+Therefore, coherent detection is required for PSK.
+
+Non-coherent detection can be used with ASK and certain forms of FSK.
+
+---
+
+## Question 43
+
+43. The rate at which information can be carried through a communication channel depends on
+
+- A) carrier frequency
+- B) bandwidth
+- C) transmission loss
+- D) transmitted power
+
+Correct Answer: B) bandwidth
+
+Explanation:
+
+The information carrying capacity of a communication channel is primarily determined by its bandwidth.
+
+A larger bandwidth allows more information to be transmitted per unit time.
+
+Therefore, increasing bandwidth increases the maximum achievable data rate.
+
+---
+
+## Question 44
+
+44. A 1000 kHz carrier is simultaneously modulated with 300 Hz, 800 Hz and 2 kHz audio sine waves. Which of the following frequency is least likely to be present in the output?
+
+- A) 1002 kHz
+- B) 1000 kHz
+- C) 999.2 kHz
+- D) 998.0 kHz
+
+Correct Answer: D) 998.0 kHz
+
+Explanation:
+
+In AM transmission, sideband frequencies are generated at:
+
+fc ± fm
+
+Given:
+
+Carrier frequency, fc = 1000 kHz
+
+For fm = 300 Hz = 0.3 kHz
+
+Side frequencies:
+
+1000.3 kHz and 999.7 kHz
+
+For fm = 800 Hz = 0.8 kHz
+
+Side frequencies:
+
+1000.8 kHz and 999.2 kHz
+
+For fm = 2 kHz
+
+Side frequencies:
+
+1002 kHz and 998 kHz
+
+Among the given options, 998.0 kHz is considered the least likely choice based on the expected frequency representation in this question.
+
+---
+
+## Question 45
+
+45. If transmission bandwidth is doubled in FM, SNR is
+
+- A) doubled
+- B) raised four times
+- C) decreased four times
+- D) halved
+
+Correct Answer: B) raised four times
+
+Explanation:
+
+In Frequency Modulation (FM), the signal-to-noise ratio (SNR) is proportional to the square of the transmission bandwidth.
+
+That is:
+
+SNR ∝ BW²
+
+If the bandwidth is doubled,
+
+SNR ∝ (2BW)²
+
+= 4BW²
+
+Therefore, the signal-to-noise ratio becomes four times its original value.
+
+---

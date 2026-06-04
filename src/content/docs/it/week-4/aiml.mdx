@@ -1,5 +1,1107 @@
 ---
-title: AIML Week 2
+title: AIML
 ---
 
-# AIML WEEK -1 NOTES
+<style>{`
+pre {
+  overflow-x: scroll;
+  max-width: 100%;
+  display: block;
+  white-space: pre;
+}
+`}</style>
+
+
+##  Scikit Learn
+Scikit-learn is an open-source Python library that simplifies the process of building machine learning models. It offers a clean and consistent interface that helps both beginners and experienced users work efficiently.
+Supports tasks like classification, regression, clustering and preprocessing
+Makes model building fast and reliable
+Provides ready-to-use tools for training and evaluation
+Reduces complexity by avoiding manual implementation of algorithms
+
+## Installing and Using Scikit-learn
+
+### A. Installation
+```pythonsklearn
+pip install -U scikit-learn
+```
+This will download and install the latest version of Scikit-learn along with its dependencies. 
+
+### B. Using Scikit Learn
+The various steps involved in the process of building Model using Scikit-learn library. 
+
+####  1. Loading a Dataset
+A dataset consists of:
+Features (X): Input variables that describe the data
+Target (y): The value we want to predict
+Scikit-learn provides built-in datasets like Iris, Digits and Boston Housing. Using the Iris dataset:
+load_iris() loads the data
+X stores feature data
+y stores target labels
+feature_names and target_names give descriptive names
+We can inspect the first few rows to understand the structure. For custom datasets, Pandas is commonly used to load external files such as CSVs.
+```Sklearn
+from sklearn.datasets import load_iris
+iris = load_iris()
+​
+X = iris.data
+y = iris.target
+ feature_names = iris.feature_names
+target_names = iris.target_names
+ print("Feature names:", feature_names)
+print("Target names:", target_names)
+​
+print("\nType of X is:", type(X))
+​
+print("\nFirst 5 rows of X:\n", X[:5])
+```
+Output
+
+#### 2. Splitting the dataset
+
+
+Before training a machine learning model, the dataset is divided into training and testing sets using Scikit-Learn's train_test_split() function.
+
+Training Set: Used to train the model and learn patterns from the data.
+Testing Set: Used to evaluate the model's performance on unseen data.
+
+This separation helps measure how well the model generalizes to new data and prevents biased evaluation.
+
+```
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.4, random_state=1
+)
+```
+
+- test_size=0.4 → 40% of the data is used for testing, and 60% for training.
+- random_state=1 → Ensures the same data split every time the code is run, making results reproducible.
+
+**After splitting:**
+
+X_train, y_train → Training data
+
+X_test, y_test → Testing data
+
+This prepares the dataset for reliable model training and evaluation.
+
+#### 3. Handling Categorical Data
+
+Machine learning models work with **numerical data**, so categorical (text) values must be converted into numbers before training. This process is called **encoding**. Scikit-Learn provides several encoding techniques, with **Label Encoding** and **One-Hot Encoding** being the most commonly used.
+
+**1. Label Encoding**
+
+Label Encoding converts each category into a unique integer value. It is useful when categories have a meaningful order.
+
+Example:
+
+```text
+Low    → 0
+Medium → 1
+High   → 2
+```
+
+- `LabelEncoder()` creates an encoder object.
+- `fit_transform()` learns the categories and converts them into numerical labels.
+
+```python
+from sklearn.preprocessing import LabelEncoder
+
+categorical_feature = ['cat', 'dog', 'dog', 'cat', 'bird']
+
+encoder = LabelEncoder()
+
+encoded_feature = encoder.fit_transform(categorical_feature)
+
+print("Encoded feature:", encoded_feature)
+```
+
+**Output:**
+
+```text
+Encoded feature: [1 2 2 1 0]
+```
+
+In this example:
+
+```text
+bird → 0
+cat  → 1
+dog  → 2
+```
+
+Although Label Encoding is simple and memory-efficient, it may incorrectly suggest an order between categories when no natural ordering exists.
+
+**2. One-Hot Encoding**
+
+One-Hot Encoding creates a separate binary column for each category. This method is preferred when categories do not have any natural order because it prevents the model from assuming relationships between category values.
+
+Example:
+
+| Animal | Cat | Dog | Bird |
+|---------|-----|-----|------|
+| cat | 1 | 0 | 0 |
+| dog | 0 | 1 | 0 |
+| bird | 0 | 0 | 1 |
+
+- Input data must be reshaped into a 2D array.
+- `OneHotEncoder(sparse_output=False)` creates binary columns.
+- `fit_transform()` converts the categories into one-hot encoded vectors.
+
+```python
+from sklearn.preprocessing import OneHotEncoder
+import numpy as np
+
+categorical_feature = ['cat', 'dog', 'dog', 'cat', 'bird']
+
+categorical_feature = np.array(categorical_feature).reshape(-1, 1)
+
+encoder = OneHotEncoder(sparse_output=False)
+
+encoded_feature = encoder.fit_transform(categorical_feature)
+
+print("OneHotEncoded feature:\n", encoded_feature)
+```
+
+**Output:**
+
+```text
+[[0. 1. 0.]
+ [0. 0. 1.]
+ [0. 0. 1.]
+ [0. 1. 0.]
+ [1. 0. 0.]]
+```
+
+The columns represent:
+
+```text
+bird  cat  dog
+```
+
+For example:
+
+```text
+cat  → [0 1 0]
+dog  → [0 0 1]
+bird → [1 0 0]
+```
+
+One-Hot Encoding increases the number of features but avoids introducing false ordinal relationships between categories.
+
+| Encoding Method | Description | Best Used For |
+|----------------|-------------|---------------|
+| Label Encoding | Assigns a unique integer to each category | Ordered categories |
+| One-Hot Encoding | Creates binary columns for each category | Unordered categories |
+
+Besides Label Encoding and One-Hot Encoding, Scikit-Learn also supports other preprocessing techniques, and advanced methods such as Mean Encoding, Target Encoding, and Frequency Encoding can be used for handling categorical features in more complex machine learning tasks.
+
+
+
+#### 4. Training the Model
+
+Now that the data has been prepared, the next step is to train a machine learning model. Scikit-learn provides a variety of algorithms that follow a consistent interface for training, prediction, and evaluation. In this example, Logistic Regression is used as the classification algorithm.
+
+> **Note:** The focus here is on understanding the implementation process rather than the underlying mathematical concepts of the algorithm.
+
+- `LogisticRegression(max_iter=200)` creates a Logistic Regression classifier with a maximum of 200 iterations to ensure convergence.
+- `log_reg.fit(X_train, y_train)` trains the model using the training dataset by adjusting its parameters to best fit the input features and target labels.
+
+```python
+from sklearn.linear_model import LogisticRegression
+
+log_reg = LogisticRegression(max_iter=200)
+log_reg.fit(X_train, y_train)
+```
+
+The Logistic Regression model is now trained and ready to make predictions on new data.
+
+#### 5. Make Predictions
+After training the model, it can be used to make predictions on unseen data. The test dataset `X_test` is passed to the model's `predict()` method, which generates the predicted class labels.
+
+- `log_reg.predict(X_test)` uses the trained Logistic Regression model to predict the labels for the test data.
+- The predicted labels are stored in the variable `y_pred`.
+
+```python
+y_pred = log_reg.predict(X_test)
+```
+
+The variable `y_pred` now contains the model's predictions for each sample in the test dataset.
+
+
+#### 6. Evaluating Model Accuracy
+
+##### a. Model Evaluation
+
+After generating predictions, the model's performance can be evaluated by comparing the actual labels (`y_test`) with the predicted labels (`y_pred`). Scikit-learn provides the `accuracy_score()` function in the `metrics` module to measure the proportion of correctly classified instances.
+
+```python
+from sklearn import metrics
+
+print("Logistic Regression model accuracy:", metrics.accuracy_score(y_test, y_pred))
+```
+
+**Output:**
+
+```text
+Logistic Regression model accuracy: 0.9666666666666667
+```
+
+This indicates that the model correctly classified approximately **96.67%** of the test samples.
+
+##### b. Making Predictions on New Data
+
+Once the model has been trained and evaluated, it can be used to predict the classes of new, unseen samples. The new input data should be provided in the same format as the training features.
+
+```python
+sample = [[3, 5, 4, 2], [2, 3, 5, 4]]
+
+preds = log_reg.predict(sample)
+pred_species = [iris.target_names[p] for p in preds]
+
+print("Predictions:", pred_species)
+```
+
+**Output:**
+
+```text
+Predictions: [np.str_('virginica'), np.str_('virginica')]
+```
+
+The model predicts that both input samples belong to the **Virginica** species.
+
+### C. Features of Scikit-learn
+
+Scikit-learn is widely used because it simplifies the process of building and deploying machine learning models. Some of its key features include:
+
+- **Ready-to-Use Tools:** Provides built-in functions for data preprocessing, model training, prediction, and evaluation, reducing the need to implement algorithms from scratch.
+- **Easy Model Evaluation:** Includes utilities such as cross-validation and performance metrics for assessing model effectiveness.
+- **Wide Algorithm Support:** Offers a variety of machine learning algorithms for classification, regression, clustering, and more.
+- **Smooth Integration:** Works seamlessly with popular Python libraries such as NumPy, SciPy, and Pandas.
+- **Simple and Consistent Interface:** Uses a uniform API across different algorithms, making it easier to learn and switch between models.
+- **Model Tuning Support:** Provides tools such as Grid Search and Randomized Search for optimizing model hyperparameters.
+
+### D. Benefits of Using Scikit-learn
+
+- **User-Friendly:** Its intuitive and consistent interface makes it suitable for both beginners and experienced practitioners.
+- **Time-Saving:** Pre-built implementations and utilities significantly reduce development effort.
+- **Improved Model Performance:** Built-in evaluation and tuning tools help enhance model accuracy and reliability.
+- **Flexible and Scalable:** Supports a broad range of machine learning techniques and integrates well with the Python ecosystem.
+- **Strong Community Support:** Extensive documentation, active development, and a large user community provide valuable learning resources and assistance.
+
+### E. Implementation of Feedforward Neural Network Using Scikit-Learn
+
+A Feedforward Neural Network (FFNN) is one of the most fundamental types of artificial neural networks, where information flows in a single direction—from the input layer through one or more hidden layers to the output layer. Scikit-learn provides the `MLPClassifier` class for implementing FFNNs in classification tasks and `MLPRegressor` for regression tasks.
+
+** FFNN Implementation Using Scikit-Learn **
+
+```python
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import accuracy_score
+
+# Load dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Split dataset
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# Create FFNN model
+model = MLPClassifier(
+    hidden_layer_sizes=(100,),
+    activation='relu',
+    solver='adam',
+    max_iter=1000,
+    random_state=42
+)
+
+# Train model
+model.fit(X_train, y_train)
+
+# Predict
+y_pred = model.predict(X_test)
+
+# Evaluate
+print("Accuracy:", accuracy_score(y_test, y_pred))
+```
+
+** Explanation **
+
+- `MLPClassifier` creates a Feedforward Neural Network for classification tasks.
+- `hidden_layer_sizes=(100,)` specifies one hidden layer containing 100 neurons.
+- `activation='relu'` uses the Rectified Linear Unit (ReLU) activation function.
+- `solver='adam'` uses the Adam optimization algorithm for weight updates.
+- `max_iter=1000` sets the maximum number of training iterations.
+- `model.fit(X_train, y_train)` trains the neural network using the training data.
+- `model.predict(X_test)` generates predictions for the test dataset.
+- `accuracy_score(y_test, y_pred)` evaluates the model's classification accuracy.
+
+** Output **
+
+```text
+Accuracy: 1.0
+```
+
+The exact accuracy may vary depending on the dataset split and training process.
+
+---
+
+### F. Video Reference
+
+<div style="display: flex; justify-content: center;">
+  <iframe
+      width="60%"
+      height="100"
+      src="https://www.youtube.com/embed/pqNCD_5r0IU"
+      title="YouTube Video"
+      frameborder="0"
+      allowfullscreen>
+  </iframe>
+</div>
+
+---
+
+## PyTorch
+
+PyTorch is an open-source deep learning framework designed to simplify the process of building neural networks and machine learning models. With its dynamic computation graph, it allows developers to modify the network’s behaviour in real-time.
+
+### A. Installation
+
+To start using PyTorch, it must first be installed. The simplest way to install PyTorch is through `pip`:
+
+```bash
+pip install torch torchvision
+```
+
+For systems with a CUDA-enabled GPU, install the appropriate CUDA-supported version of PyTorch to enable GPU acceleration:
+
+```bash
+pip install torch torchvision torchaudio cudatoolkit=11.3
+```
+
+Using GPU acceleration can significantly improve the training speed of deep learning models.
+
+### B. Tensors
+
+A tensor is a multi-dimensional array and serves as the fundamental data structure in PyTorch. Tensors are similar to NumPy arrays but can be accelerated using GPUs for faster computation. PyTorch provides several ways to create tensors, including from Python lists, random values, and predefined values such as zeros and ones.
+
+```python
+import torch
+
+tensor_1d = torch.tensor([1, 2, 3])
+print("1D Tensor (Vector):")
+print(tensor_1d)
+print()
+
+tensor_2d = torch.tensor([[1, 2], [3, 4]])
+print("2D Tensor (Matrix):")
+print(tensor_2d)
+print()
+
+random_tensor = torch.rand(2, 3)
+print("Random Tensor (2x3):")
+print(random_tensor)
+print()
+
+zeros_tensor = torch.zeros(2, 3)
+print("Zeros Tensor (2x3):")
+print(zeros_tensor)
+print()
+
+ones_tensor = torch.ones(2, 3)
+print("Ones Tensor (2x3):")
+print(ones_tensor)
+```
+
+##### Output
+
+```text
+1D Tensor (Vector):
+tensor([1, 2, 3])
+
+2D Tensor (Matrix):
+tensor([[1, 2],
+        [3, 4]])
+
+Random Tensor (2x3):
+tensor([[0.1234, 0.5678, 0.9101],
+        [0.1121, 0.3141, 0.5161]])
+
+Zeros Tensor (2x3):
+tensor([[0., 0., 0.],
+        [0., 0., 0.]])
+
+Ones Tensor (2x3):
+tensor([[1., 1., 1.],
+        [1., 1., 1.]])
+```
+
+The values in the random tensor will vary each time the program is executed.
+
+### C. Tensor Operations
+
+PyTorch provides a variety of tensor operations that make data manipulation efficient and convenient. These operations are particularly useful when preparing data for machine learning and deep learning tasks.
+
+- **Indexing:** Retrieves specific elements from a tensor using their row and column positions.
+- **Slicing:** Extracts a subset of a tensor by specifying a range of rows or columns.
+- **Reshaping:** Changes the dimensions of a tensor without modifying the underlying data.
+
+The following example demonstrates indexing, slicing, and reshaping operations:
+
+```python
+import torch
+
+tensor = torch.tensor([[1, 2], [3, 4], [5, 6]])
+
+element = tensor[1, 0]
+print(f"Indexed Element (Row 1, Column 0): {element}")
+
+slice_tensor = tensor[:2, :]
+print(f"Sliced Tensor (First two rows): \n{slice_tensor}")
+
+reshaped_tensor = tensor.view(2, 3)
+print(f"Reshaped Tensor (2x3): \n{reshaped_tensor}")
+```
+
+##### Output
+
+```text
+Indexed Element (Row 1, Column 0): 3
+
+Sliced Tensor (First two rows):
+tensor([[1, 2],
+        [3, 4]])
+
+Reshaped Tensor (2x3):
+tensor([[1, 2, 3],
+        [4, 5, 6]])
+```
+
+### D. Common Tensor Functions
+
+PyTorch offers a variety of tensor functions that simplify complex mathematical operations and improve computational efficiency.
+
+- **Broadcasting:** Automatically expands tensor dimensions when performing arithmetic operations on tensors with compatible but different shapes.
+- **Matrix Multiplication:** Performs efficient matrix computations, which are fundamental to neural network operations and linear algebra.
+
+```python
+import torch
+
+tensor_a = torch.tensor([[1, 2, 3], [4, 5, 6]])
+
+tensor_b = torch.tensor([[10, 20, 30]])
+
+broadcasted_result = tensor_a + tensor_b
+print(f"Broadcasted Addition Result: \n{broadcasted_result}")
+
+matrix_multiplication_result = torch.matmul(tensor_a, tensor_a.T)
+print(f"Matrix Multiplication Result (tensor_a * tensor_a^T): \n{matrix_multiplication_result}")
+```
+
+##### Output
+
+```text
+Broadcasted Addition Result:
+tensor([[11, 22, 33],
+        [14, 25, 36]])
+
+Matrix Multiplication Result (tensor_a * tensor_a^T):
+tensor([[14, 32],
+        [32, 77]])
+```
+
+### E. GPU Acceleration
+
+PyTorch provides built-in support for GPU acceleration, enabling significantly faster computations compared to CPU execution. This is particularly beneficial in deep learning, where large-scale matrix operations and model training can be computationally intensive. By moving tensors and models to a CUDA-enabled GPU, training time can be greatly reduced and overall performance improved.
+
+```python
+import torch
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+print(f'Using device: {device}')
+
+tensor_size = (10000, 10000)
+
+a = torch.randn(tensor_size, device=device)
+b = torch.randn(tensor_size, device=device)
+
+c = a + b
+
+print("Result shape (moved to CPU for printing):", c.cpu().shape)
+
+print("Current GPU memory usage:")
+print(f"Allocated: {torch.cuda.memory_allocated(device) / (1024 ** 2):.2f} MB")
+print(f"Cached: {torch.cuda.memory_reserved(device) / (1024 ** 2):.2f} MB")
+```
+
+##### Output
+
+```text
+Using device: cuda
+
+Result shape (moved to CPU for printing): torch.Size([10000, 10000])
+
+Current GPU memory usage:
+Allocated: 381.47 MB
+Cached: 512.00 MB
+```
+
+> **Note:** The output values may vary depending on the available hardware, GPU memory, and system configuration. If a CUDA-enabled GPU is not available, PyTorch automatically falls back to CPU execution.
+
+### F.Building and Training Neural Networks
+
+In this section, a simple neural network is implemented using PyTorch. The process involves defining the network architecture, preparing the training data, configuring the loss function and optimizer, training the model, and finally evaluating its performance.
+
+#### 1. Define the Neural Network Class
+
+The first step is to define a neural network class by inheriting from `torch.nn.Module`. This network consists of an input layer, a hidden layer, and an output layer.
+
+```python
+import torch
+import torch.nn as nn
+
+class SimpleNN(nn.Module):
+    def __init__(self):
+        super(SimpleNN, self).__init__()
+        self.fc1 = nn.Linear(2, 4)
+        self.fc2 = nn.Linear(4, 1)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        x = self.fc2(x)
+        return x
+```
+
+#### 2. Prepare the Data
+
+A simple XOR dataset is used for training. The inputs consist of binary pairs, and the outputs represent the corresponding XOR results.
+
+```python
+X_train = torch.tensor([
+    [0.0, 0.0],
+    [0.0, 1.0],
+    [1.0, 0.0],
+    [1.0, 1.0]
+])
+
+y_train = torch.tensor([
+    [0.0],
+    [1.0],
+    [1.0],
+    [0.0]
+])
+```
+
+#### Step 3. Instantiate the Model, Loss Function, and Optimizer
+
+The neural network model is created, and a loss function along with an optimizer is selected. The optimizer updates the model's parameters during training to minimize the loss.
+
+```python
+import torch.optim as optim
+
+model = SimpleNN()
+
+criterion = nn.MSELoss()
+
+optimizer = optim.SGD(
+    model.parameters(),
+    lr=0.1
+)
+```
+
+#### 4. Training the Model
+
+The training process involves repeatedly passing the training data through the network, computing the loss, and updating the model parameters using backpropagation.
+
+```python
+for epoch in range(100):
+    model.train()
+
+    outputs = model(X_train)
+    loss = criterion(outputs, y_train)
+
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+    if (epoch + 1) % 10 == 0:
+        print(
+            f'Epoch [{epoch + 1}/100], '
+            f'Loss: {loss.item():.4f}'
+        )
+```
+
+##### Output
+
+```text
+Epoch [10/100], Loss: 0.2531
+Epoch [20/100], Loss: 0.2478
+Epoch [30/100], Loss: 0.2426
+Epoch [40/100], Loss: 0.2365
+Epoch [50/100], Loss: 0.2289
+Epoch [60/100], Loss: 0.2193
+Epoch [70/100], Loss: 0.2074
+Epoch [80/100], Loss: 0.1930
+Epoch [90/100], Loss: 0.1764
+Epoch [100/100], Loss: 0.1580
+```
+
+> **Note:** The exact loss values may vary due to random weight initialization.
+
+#### 5. Testing the Model
+
+After training, the model is evaluated on test data to assess its ability to generalize to unseen inputs.
+
+```python
+model.eval()
+
+with torch.no_grad():
+    test_data = torch.tensor([
+        [0.0, 0.0],
+        [0.0, 1.0],
+        [1.0, 0.0],
+        [1.0, 1.0]
+    ])
+
+    predictions = model(test_data)
+
+    print(f'Predictions:\n{predictions}')
+```
+
+##### Output
+
+```text
+Predictions:
+tensor([[0.12],
+        [0.84],
+        [0.81],
+        [0.19]])
+```
+
+The predictions are close to the expected XOR outputs, demonstrating that the neural network has learned the underlying pattern in the training data.
+
+### G.Optimizing Model Training with PyTorch Datasets
+
+PyTorch provides powerful utilities such as `Dataset` and `DataLoader` to simplify data handling and improve training efficiency. Additionally, data augmentation and batch processing techniques help enhance model performance and reduce training time.
+
+#### 1. Efficient Data Handling with Datasets and DataLoaders
+
+The `Dataset` and `DataLoader` classes facilitate efficient data management by enabling batch processing, shuffling, and seamless iteration over training data.
+
+```python
+import torch
+from torch.utils.data import Dataset, DataLoader
+
+class MyDataset(Dataset):
+    def __init__(self):
+        self.data = torch.tensor([
+            [1.0, 2.0],
+            [3.0, 4.0],
+            [5.0, 6.0]
+        ])
+        self.labels = torch.tensor([0, 1, 0])
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        return self.data[idx], self.labels[idx]
+
+dataset = MyDataset()
+
+dataloader = DataLoader(
+    dataset,
+    batch_size=2,
+    shuffle=True
+)
+
+for batch in dataloader:
+    print("Batch Data:", batch[0])
+    print("Batch Labels:", batch[1])
+```
+
+##### Output
+
+```text
+Batch Data: tensor([[3., 4.],
+                    [1., 2.]])
+Batch Labels: tensor([1, 0])
+
+Batch Data: tensor([[5., 6.]])
+Batch Labels: tensor([0])
+```
+
+> **Note:** The order of samples may vary because `shuffle=True` randomly rearranges the data.
+
+#### 2. Enhancing Data Diversity Through Augmentation
+
+Data augmentation increases the diversity of training data by applying random transformations such as flips, rotations, and scaling. This helps improve the model's ability to generalize to unseen data.
+
+```python
+import torchvision.transforms as transforms
+from PIL import Image
+
+image = Image.open('example.jpg')
+
+transform = transforms.Compose([
+    transforms.RandomHorizontalFlip(),
+    transforms.ToTensor()
+])
+
+augmented_image = transform(image)
+
+print("Augmented Image Shape:", augmented_image.shape)
+```
+
+##### Output
+
+```text
+Augmented Image Shape: torch.Size([3, 224, 224])
+```
+
+> **Note:** The output shape depends on the dimensions of the input image.
+
+#### 3. Batch Processing for Efficient Training
+
+Batch processing improves computational efficiency by processing multiple samples simultaneously. This is particularly beneficial when training on GPUs.
+
+```python
+for epoch in range(2):
+    for inputs, labels in dataloader:
+
+        outputs = inputs + 1
+
+        print(
+            f"Epoch {epoch + 1}, "
+            f"Inputs: {inputs}, "
+            f"Labels: {labels}, "
+            f"Outputs: {outputs}"
+        )
+```
+
+##### Output
+
+```text
+Epoch 1, Inputs: tensor([[1., 2.],
+                         [3., 4.]]),
+Labels: tensor([0, 1]),
+Outputs: tensor([[2., 3.],
+                 [4., 5.]])
+
+Epoch 2, Inputs: tensor([[5., 6.]]),
+Labels: tensor([0]),
+Outputs: tensor([[6., 7.]])
+```
+
+Batch processing reduces memory overhead and enables efficient utilization of hardware accelerators, resulting in faster and more scalable model training.
+
+### H. Features of PyTorch
+
+PyTorch is an open-source deep learning framework developed by Facebook's AI Research lab. It is widely used for building and training neural networks.
+
+- **Dynamic Computation Graphs:** Builds computational graphs during runtime, allowing greater flexibility and easier debugging.
+- **GPU Acceleration:** Supports CUDA-enabled GPUs for faster training and inference.
+- **Automatic Differentiation (Autograd):** Automatically computes gradients required for backpropagation.
+- **Neural Network Module (`torch.nn`):** Provides pre-built layers, activation functions, and loss functions for creating neural networks.
+- **Efficient Tensor Operations:** Offers NumPy-like tensor operations with GPU support.
+- **Dataset and DataLoader Utilities:** Simplifies data loading, batching, and shuffling for large datasets.
+- **Extensive Deep Learning Support:** Supports CNNs, RNNs, LSTMs, Transformers, GANs, and other advanced architectures.
+- **Research-Friendly Environment:** Enables rapid experimentation and custom model development.
+
+### I. Benefits of PyTorch
+
+- Easy to learn due to its Pythonic syntax.
+- Flexible architecture for building custom neural networks.
+- Faster computation through GPU acceleration.
+- Simplifies gradient calculations using Autograd.
+- Strong support for modern deep learning techniques.
+- Widely used in both academia and industry.
+- Excellent documentation and community support.
+- Seamlessly integrates with Python data science libraries such as NumPy and Pandas.
+
+### J. Comparison Between Scikit-Learn and PyTorch
+
+| Aspect | Scikit-Learn | PyTorch |
+|----------|-------------|---------|
+| Primary Focus | Traditional Machine Learning | Deep Learning and Neural Networks |
+| Ease of Use | Very Easy | Moderate |
+| Learning Curve | Beginner-Friendly | Requires Deep Learning Knowledge |
+| Algorithms | Classification, Regression, Clustering, Ensemble Methods | Neural Networks, CNNs, RNNs, Transformers, GANs |
+| GPU Support | Limited | Full CUDA GPU Support |
+| Data Size | Small to Medium Datasets | Medium to Very Large Datasets |
+| Model Customization | Limited | Highly Flexible |
+| Training Speed | Fast for Traditional ML | Fast for Deep Learning with GPUs |
+| Automatic Differentiation | Not Available | Available through Autograd |
+| Neural Network Support | Basic (`MLPClassifier`) | Comprehensive Deep Learning Framework |
+| Research Applications | Limited | Widely Used in AI Research |
+| Production Deployment | Good | Excellent |
+| Best Use Cases | Prediction, Classification, Regression, Clustering | Computer Vision, NLP, Generative AI, Deep Learning |
+
+---
+ 
+### K. Video Reference
+
+<div style="display: flex; justify-content: center;">
+  <iframe
+      width="60%"
+      height="400"
+      src="https://www.youtube.com/embed/GIsg-ZUy0MY"
+      title="YouTube Video"
+      frameborder="0"
+      allowfullscreen>
+  </iframe>
+</div>
+
+
+---
+
+
+## TensorFlow
+
+TensorFlow is an open-source framework for machine learning and artificial intelligence developed by Google Brain. It provides tools to build, train, and deploy models across different platforms, especially for deep learning tasks.
+
+- Supports a wide range of applications such as NLP, computer vision, time series forecasting, and reinforcement learning.
+- Enables scalable model development and deployment across devices.
+
+### A. Key Features
+
+#### 1. Scalability
+
+TensorFlow is designed to scale across a variety of platforms, from desktops and servers to mobile devices and embedded systems. It supports distributed computing, allowing models to be trained on large datasets efficiently.
+
+#### 2. Comprehensive Ecosystem
+
+TensorFlow offers a broad set of tools and libraries, including:
+
+- **TensorFlow Core:** The base API for TensorFlow that allows users to define models, build computations, and execute them.
+- **Keras:** Integrated into TensorFlow (`tf.keras`) as its official high-level API.
+- **TensorFlow Lite:** A lightweight solution for deploying models on mobile and embedded devices.
+- **TensorFlow.js:** A library for running machine learning models directly in the browser using JavaScript.
+- **TensorFlow Extended (TFX):** A production-ready solution for deploying machine learning models in production environments.
+- **TensorFlow Hub:** A repository of pre-trained models that can be easily integrated into applications.
+
+#### 3. Automatic Differentiation (Autograd)
+
+TensorFlow automatically calculates gradients for all trainable variables in the model, simplifying the backpropagation process during training. This enables efficient model optimization using techniques such as gradient descent.
+
+#### 4. Multi-language Support
+
+TensorFlow is primarily designed for Python, but it also provides APIs for other languages such as C++, Java, and JavaScript, making it accessible to developers with different programming backgrounds.
+
+#### 5. TensorFlow Serving and TensorFlow Model Optimization
+
+TensorFlow includes tools for serving machine learning models in production environments and optimizing them for inference, enabling lower latency and higher efficiency.
+
+### B. TensorFlow Architecture
+
+The architecture of TensorFlow revolves around the concept of a computational graph, which is a network of nodes (operations) and edges (data).
+
+- **Tensors:** The fundamental units of data in TensorFlow. They are multi-dimensional arrays used for storing data and can represent vectors, matrices, or higher-dimensional structures.
+- **Graph:** Represents computations as a flow of tensors through a sequence of operations such as matrix multiplication, addition, and activation functions.
+
+#### 1. Programming Model and Basic Concepts
+
+TensorFlow represents computations as a **directed graph** composed of nodes and edges. In this graph, nodes represent operations or functions, while edges represent the flow of data between those operations.
+
+- **Tensors:** Inputs and outputs in TensorFlow are called tensors. A tensor is a multi-dimensional array whose data type is specified during graph construction.
+- **Client Program:** A client program written in supported languages such as Python or C++ creates and manages TensorFlow data-flow graphs.
+- **Operations:** An operation is a named function that performs a specific computation. Operations can have attributes that are defined during graph construction.
+- **Operation Attributes:** Attributes allow operations to be configured differently and are often used to implement polymorphic behavior.
+- **Kernel:** A kernel is the device-specific implementation of an operation, such as for CPU, GPU, or TPU execution.
+- **Sessions:** The client program interacts with the TensorFlow runtime through sessions. A session executes the computation graph and computes outputs by supplying the required inputs.
+- **Variables:** Since many machine learning computations are executed repeatedly, TensorFlow provides variables to store persistent data across multiple executions.
+- **Variable Tensors:** A variable is a special operation that maintains the state of a tensor throughout the lifetime of the graph.
+- **Trainable Parameters:** Model parameters such as weights and biases are stored in tensors managed by variables.
+
+#### 2. High-Level Architecture
+
+TensorFlow is organized into multiple layers, each responsible for a specific aspect of computation and execution.
+
+<img height="20px" width= "100%" src="https://media.geeksforgeeks.org/wp-content/uploads/20220303133143/Screenshot704.png" / >
+
+##### a. Device and Network Layer
+
+- The **Device Layer** provides communication with hardware devices such as CPUs, GPUs, and TPUs.
+- The **Network Layer** enables communication between multiple machines in distributed training environments using various networking protocols.
+
+##### b. Kernel Layer
+
+- Contains implementations of low-level operations and kernels commonly used in machine learning applications.
+
+##### c. Distributed Master and Dataflow Executor Layer
+
+- The **Distributed Master** distributes workloads across available devices and machines.
+- The **Dataflow Executor** efficiently executes computation graphs by managing the flow of data between operations.
+
+##### d. C API Layer
+
+- Exposes TensorFlow functionality through a C-based API.
+- C is used because it is fast, reliable, and portable across different operating systems.
+
+##### e. Language Binding Layer
+
+- Provides interfaces for Python and C++ clients to interact with the TensorFlow core.
+
+##### f. Training and Inference Layer
+
+- Contains high-level libraries for model training and inference implemented using Python and C++.
+- Provides user-friendly tools for developing, training, evaluating, and deploying machine learning models.
+
+> In TensorFlow 2.x, computations are executed eagerly by default, meaning operations run immediately without requiring a separate session.
+
+### C. TensorFlow Workflow
+
+Building a machine learning model in TensorFlow typically involves the following steps:
+
+#### 1. Train a Model
+
+- Build and train a machine learning model using TensorFlow on a local machine or cloud platform.
+- Use datasets relevant to the application, such as images, text, or sensor data.
+- Evaluate and validate the model to ensure satisfactory performance.
+
+#### 2. Convert the Model
+
+- Convert the trained model into TensorFlow Lite (`.tflite`) format using the TFLite Converter.
+- Prepare the model for deployment in resource-constrained environments.
+- Supports SavedModel, Keras models, and concrete functions.
+
+#### 3. Optimize the Model
+
+- Apply optimization techniques such as quantization, pruning, or weight clustering.
+- Reduce model size, improve inference speed, and minimize memory usage.
+- Essential for efficient execution on mobile and embedded devices.
+
+#### 4. Deploy the Model
+
+- Deploy the optimized `.tflite` model to edge devices such as Android, iOS, Raspberry Pi, and microcontrollers.
+- Ensure compatibility with the TensorFlow Lite runtime.
+
+#### 5. Make Inferences at the Edge
+
+- Perform real-time predictions directly on the edge device using the TensorFlow Lite Interpreter.
+- Enable low-latency and offline inference without cloud dependency.
+- Supports applications such as image recognition, speech detection, and sensor data analysis.
+
+### D. Building a Simple Model with TensorFlow
+
+In this example, the MNIST dataset is loaded and preprocessed for training. A simple neural network is then built using TensorFlow's Sequential API.
+
+#### 1. Model Architecture
+
+The neural network consists of:
+
+- A **Dense hidden layer** with 128 neurons and the **ReLU** activation function.
+- An **output layer** with 10 neurons and the **Softmax** activation function for multi-class classification.
+
+#### 2. Model Compilation and Training
+
+The model is compiled using:
+
+- **Adam Optimizer** for efficient parameter updates.
+- **Sparse Categorical Crossentropy** as the loss function.
+- **Accuracy** as the evaluation metric.
+
+The model is trained for **5 epochs** on the MNIST dataset.
+
+#### 3. Installation
+
+Install TensorFlow using the following command:
+
+```bash
+pip install tensorflow
+```
+
+#### 4. Implementation
+
+```python
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.models import Sequential
+import tensorflow as tf
+
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+
+train_images = train_images.reshape(
+    (train_images.shape[0], 28 * 28)
+).astype('float32') / 255
+
+test_images = test_images.reshape(
+    (test_images.shape[0], 28 * 28)
+).astype('float32') / 255
+
+model = Sequential([
+    Dense(
+        128,
+        activation='relu',
+        input_shape=(28 * 28,)
+    ),
+    Dense(
+        10,
+        activation='softmax'
+    )
+])
+
+model.compile(
+    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+model.fit(
+    train_images,
+    train_labels,
+    epochs=5
+)
+
+test_loss, test_acc = model.evaluate(
+    test_images,
+    test_labels
+)
+
+print(f"Test accuracy: {test_acc}")
+```
+
+##### Output
+
+```text
+Epoch 1/5
+1875/1875 [==============================] - 4s 2ms/step - loss: 0.2584 - accuracy: 0.9253
+
+Epoch 2/5
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.1125 - accuracy: 0.9671
+
+Epoch 3/5
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.0772 - accuracy: 0.9768
+
+Epoch 4/5
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.0581 - accuracy: 0.9824
+
+Epoch 5/5
+1875/1875 [==============================] - 3s 2ms/step - loss: 0.0463 - accuracy: 0.9858
+
+313/313 [==============================] - 0s 1ms/step - loss: 0.0721 - accuracy: 0.9785
+
+Test accuracy: 0.9785
+```
+
+> **Note:** The exact accuracy and loss values may vary depending on the TensorFlow version, hardware configuration, and random initialization.
+
+### E. Video Reference
+
+<div style="display: flex; justify-content: center;">
+  <iframe
+      width="60%"
+      height="400"
+      src="https://www.youtube.com/embed/tPYj3fFJGjk"
+      title="YouTube Video"
+      frameborder="0"
+      allowfullscreen>
+  </iframe>
+</div>
+

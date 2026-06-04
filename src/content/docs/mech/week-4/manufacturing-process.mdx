@@ -1,0 +1,1418 @@
+---
+title: Manufacturing Processes
+---
+
+## Pattern Classification, Materials, and Allowances
+
+### A. Introduction to Casting
+
+Metal casting is the process of pouring molten metal into a mould cavity of the desired shape and allowing it to solidify. The solidified object is called the casting. It is one of the oldest net-shape manufacturing processes.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp1.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+Two key definitions:
+
+* **Process definition:** Molten metal flows by gravity or other force into a mould where it solidifies in the shape of the mould cavity.
+* Casting can produce very large and complex parts; castings exceeding 100 tons are possible.
+
+---
+
+### B. Pattern Classification (Types of Patterns)
+
+A pattern is a replica of the casting to be produced, used to create the mould cavity.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp2.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| Pattern Type | Key Characteristics & Use |
+|---|---|
+| Solid / Single Piece | Simplest type; no joints or partings. Used for simple, large castings. Moulder cuts runners/risers manually. |
+| Split (Two-Piece) | Two halves joined by dowel pins; one in cope, one in drag. Line of separation = parting line. Used for intricate shapes. |
+| Gated Pattern | Group of patterns with integrated gates/runners. Used for mass production of small castings. |
+| Loose Piece | Assembly of removable component pieces that allow withdrawal from mould. Slower moulding; high maintenance. |
+| Sweep Pattern | Rotating wooden board on a vertical spindle. Used for large, symmetric circular-section castings. |
+| Match Plate | Split pattern mounted on both sides of a metal/wooden plate. Used for mass production of small castings. |
+| Cope & Drag | Two-part pattern moulded separately; assembled to form complete cavity. For very large, heavy castings. |
+| Follow Board | Modified bottom board supporting structurally weak patterns during ramming of the drag. |
+| Skeleton Pattern | Wooden frame outlining shape; used with hand-shaping for large, simple geometric castings. |
+
+---
+
+### C. Pattern Materials
+
+| Material | Properties & Use |
+|---|---|
+| Wood (Deodar, Teak, Mahogany) | Lightweight, low cost, easily shaped. Most common. Changes shape under moist conditions. |
+| Metal (Cast Iron, Aluminium, Brass) | Long life, dimensional accuracy. Cast from a wooden 'Master Pattern'. Used for large production runs. |
+| Plaster of Paris | High compressive strength (~300 kg/cm²). Used for small, intricate patterns requiring close dimensional control. |
+| Wax | Used exclusively in investment casting. Poured into a split die; melts out during casting. |
+| Plastic | High strength, wear resistance, lightweight, fine surface finish. Increasingly used. |
+
+---
+
+### D. Pattern Allowances
+
+Patterns are made larger than the finished casting to compensate for various phenomena:
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp3.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+#### 1. Shrinkage Allowance
+
+* All metals contract (shrink) in volume as they cool from liquid to solid and then further as they cool to room temperature.
+* The pattern must be made larger than the desired casting by the shrinkage amount so the final cooled casting comes out to the correct size.
+* Shrinkage occurs in two stages: liquid-to-solid (solidification shrinkage) and solid-to-room-temperature (cooling shrinkage).
+* Ferrous metals (cast iron, steel) shrink more and need higher allowance than non-ferrous metals (aluminium, copper alloys).
+* Typical values: Cast iron ≈ 10 mm/m, Steel ≈ 20 mm/m, Aluminium ≈ 13 mm/m, Brass ≈ 15 mm/m.
+* A special ruler called a **shrink rule** (or contraction rule) is used by pattern makers — its graduations are already scaled up by the shrinkage factor, so no manual calculation is needed when measuring.
+* Different shrinkage rules exist for different metals; using the wrong one causes undersized or oversized castings.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp4.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+#### 2. Machining Allowance
+
+* Cast surfaces are rough and may have oxide scale, porosity near the surface, or dimensional inaccuracies — so surfaces that need a fine finish or tight tolerance must be machined after casting.
+* Extra stock (additional thickness) is added to those surfaces on the pattern so there is material left to cut away during machining.
+* The amount of extra stock depends on four factors:
+
+##### a. Casting Method
+
+* Sand casting needs more allowance (~3–6 mm) than investment casting (~0.5–1 mm) because sand casting gives a rougher surface.
+
+##### b. Metal Type
+
+* Harder metals like steel need more allowance because they are harder to machine cleanly and tool wear is higher.
+
+##### c. Machining Method
+
+* Rough turning needs less pre-stock than precision grinding.
+
+##### d. Part Size
+
+* Larger parts have more thermal distortion and handling errors, so they get more allowance.
+
+* Only surfaces that will actually be machined receive this allowance; other surfaces are left as-cast.
+* If machining allowance is too small, the machinist may "break through" the clean layer and hit porosity; if too large, machining time and material waste increase.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp5.png?raw=true"
+  alt="Diagram"
+  style={{ width: "60%", display: "block", margin: "auto" }}
+/>
+
+#### 3. Draft Allowance (Taper Allowance)
+
+* When a pattern is withdrawn from the packed sand mould, vertical surfaces (parallel to the direction of withdrawal) can scrape and damage the mould walls.
+* To prevent this, all vertical surfaces of the pattern are given a slight taper (draft angle) so the pattern lifts away cleanly without contact.
+* External surfaces (outer walls of a boss or projection) need less draft: **10–25 mm per metre** of height, because they pull away from the sand.
+* Internal surfaces (cores, holes, recesses) need more draft: **40–70 mm per metre**, because the sand grips them more tightly as the pattern is withdrawn.
+* Draft is always added in the direction of withdrawal, making the pattern slightly larger at the parting line end.
+* Insufficient draft causes mould damage, torn surfaces, and broken mould edges — leading to defective castings.
+* In automated moulding (machine moulding), even small draft angles are critical because withdrawal is fast and forceful.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp6.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+#### 4. Distortion Allowance (Camber Allowance)
+
+* Castings with irregular, non-symmetric, or U/T/H shapes (like frames, beds, or ribbed plates) cool unevenly, because thicker sections cool slower than thinner ones — this creates internal stresses that cause the casting to warp or distort.
+* The distortion is predictable for a given design, so the pattern is deliberately made with the opposite (inverse) distortion pre-built in.
+* When the casting warps during cooling, the opposite distortion neutralises it, and the final part comes out flat and true to shape.
+* **Example:** if a long thin casting is expected to sag 2 mm at its centre, the pattern is made with a 2 mm upward camber at the centre.
+* Unlike other allowances, distortion allowance is determined by experience and trial — it is specific to each casting design and cannot be calculated from a simple formula.
+* It is also called **camber allowance** when applied to long, slender castings prone to bowing.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp7.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+#### 5. Rapping / Shake Allowance
+
+* Before withdrawing the pattern from the mould, the moulder taps (raps) it sideways with a mallet to loosen it from the sand — this "rapping" causes the mould cavity to enlarge very slightly in all horizontal directions.
+* Because the cavity is now fractionally bigger than the pattern, the casting will come out slightly oversized.
+* To compensate, the pattern is made slightly **undersized** — this is a **negative allowance** (the only one among the five that makes the pattern smaller, not larger).
+* The amount is very small — typically 0.5–1 mm depending on part size — and is applied to horizontal dimensions only.
+* In machine moulding where patterns are withdrawn mechanically without rapping, this allowance is reduced or eliminated.
+* If ignored on hand-moulded work, castings come out fractionally oversize, which may push them out of tolerance, especially on precision parts.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp8.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+---
+
+## Green Sand, Core Sand, Shell, and Investment Moulding
+
+### A. Composition of Moulding Sand
+
+* **Silica Sand:** Main constituent. Provides permeability, chemical resistivity, and refractoriness.
+* **Binder (Clay):** Imparts strength and cohesiveness. Organic (linseed oil, resins — for cores) or inorganic (Portland cement, clay, sodium silicate).
+* **Water:** 2–8%. Forms microfilm around clay, activating bonding action.
+* **Additives:** Coal dust, wood flour, molasses — improve properties or add new characteristics.
+
+---
+
+### B. Types of Moulding Sand
+
+#### 1. Green Sand
+
+* The most widely used moulding sand in foundries — "green" does not mean the colour green, it means the sand is used in its moist, unbaked condition (just as mixed).
+* **Composition:** 18–30% clay (usually bentonite) as binder + 6–8% water + silica sand as the bulk filler.
+* The clay forms a thin film around each sand grain, and water activates the clay's bonding action — together they give the sand its strength and plasticity.
+* Soft, light, and highly porous — this porosity is important because it lets gases generated during pouring escape, preventing gas holes in the casting.
+* Used for small to medium castings in metals like grey cast iron, aluminium, and copper alloys.
+* Moulds are made and used immediately without any drying or baking — this makes the process fast and cheap.
+* **Main limitation:** the presence of moisture can cause steam-related defects (blowholes, porosity) if the mould is not properly vented or if pouring temperature is too high.
+* Shelf life is short — the mould must be poured soon after making, as it dries out and loses strength over time.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp9.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+#### 2. Dry Sand
+
+* Dry sand is essentially green sand that has been oven-dried to remove all or most of its moisture before the mould is used.
+* Drying temperature is typically **150–350°C** for several hours, depending on mould size and clay content.
+* Removing moisture makes the mould significantly stronger and harder — it resists the erosive pressure of molten metal better than green sand.
+* More compact and dimensionally stable — less likely to shift, crack, or collapse under the weight of heavy pours.
+* Used for large and heavy castings (machine tool beds, engine blocks, large pipes) where the hydrostatic pressure of the molten metal is too high for a green sand mould to hold.
+* Because there is no moisture, steam-related defects are eliminated, giving cleaner casting surfaces.
+* **Disadvantages:** extra time and energy are needed for drying; the mould is less permeable after drying; and if not poured immediately after drying, the mould can reabsorb moisture from the air.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp10.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+#### 3. Facing Sand
+
+* Facing sand forms the thin layer directly in contact with the pattern — it is the first sand layer rammed against the pattern surface before backing sand fills the rest of the mould.
+* **Composition:** fine silica sand + clay, sometimes with additives like coal dust or graphite.
+* Must have **high strength** to hold the sharp details of the mould cavity under the impact and pressure of molten metal.
+* Must have **high refractoriness** (ability to resist very high temperatures without fusing or breaking down) because it is in direct contact with the hot metal.
+* Fine grain size gives the casting a smoother surface finish — coarser backing sand behind it is never in contact with the metal.
+* Typically only **20–30 mm thick** around the pattern; backing sand fills the rest of the flask.
+* Contains additives like coal dust (in iron casting) which burns off and creates a reducing atmosphere at the mould face, preventing oxidation and improving surface finish.
+* Using fresh, clean facing sand for each mould is important — contaminated or worn facing sand causes rough, defective casting surfaces.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp11.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+#### 4. Loam Sand
+
+* Loam sand has a much higher clay content than green sand — approximately **50% clay + 18–20% water** + some chopped straw, horse dung, or fibrous material historically.
+* The result is a thick, plastic, paste-like mixture that can be applied (plastered) over surfaces like a clay coating.
+* Not used to make a conventional rammed mould — instead, used to plaster the inner surfaces of large moulds built up with soft (unfired) bricks or a framework.
+* Used for very large, simple-shaped castings like large cylinders, bells, and pipes, where making a conventional mould from sand would be impractical.
+* The loam paste is applied in layers over the brick structure, each layer dried before the next is applied, building up the mould surface gradually.
+* A **sweep pattern** (rotating board) is often used with loam moulding to shape the inner surface of cylindrical cavities.
+* Very labour-intensive and slow — largely replaced by other methods in modern foundries, but still used for very large or one-off castings.
+* The high clay content means very low permeability, so adequate venting must be built into the mould structure.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp12.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+#### 5. Backing Sand (Floor Sand / Black Sand)
+
+* Backing sand is the bulk fill sand used to fill the mould flask behind the facing sand layer — it never comes in direct contact with the molten metal.
+* It is essentially reused moulding sand from previous moulds that has already been in contact with hot metal — this is why it is also called **black sand** (it is darkened by burned-out carbon additives and fine metal particles).
+* Because it is recycled and used far from the metal, its quality requirements are much lower than facing sand — it just needs to provide mechanical support and bulk to the mould.
+* Recycling backing sand makes the process economical — fresh facing sand is expensive, so reusing old sand for the backing layer reduces overall sand cost.
+* Before reuse, backing sand is **reconditioned** — broken up, screened to remove lumps and metal fragments, and water/clay are added back to restore some of its original properties.
+* Over many recycles, backing sand degrades (clay burns out, grain shape changes) and must eventually be discarded or blended with fresh sand.
+* The combination of fresh facing sand at the mould surface and recycled backing sand behind it balances quality and economy in the moulding process.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp13.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+#### 6. Parting Sand
+
+* Parting sand is applied to the surfaces of the pattern and the parting line (the joint between the cope and drag) before the second half of the mould is rammed.
+* It is a fine, dry, sharp (angular), **clay-free sand** — having no clay is essential so it does not bond to anything.
+* Its primary job is to act as a **release agent**: it prevents the green sand of the cope from bonding or sticking to the green sand of the drag when the two halves are separated.
+* It also prevents the sand from sticking to the pattern surface during withdrawal.
+* Being clay-free and fine, it does not add strength — it is purely a separating medium, similar in function to a release spray used in die casting.
+* Applied as a thin dusting (shaken from a bag) — excess parting sand can weaken the mould surface, so only a fine coat is used.
+* **Burnt parting sand** (fine silica calcined at high temperature) is preferred because it is very dry and non-cohesive, ensuring clean separation every time.
+* Without parting sand, separating the cope from the drag would tear the mould cavity, destroying the mould before it can be used.
+
+#### 7. Core Sand
+
+* Core sand is used specifically to make **cores** — inserts placed inside the mould cavity to create internal holes, passages, and undercuts in the casting (e.g., water jackets in engine blocks, hollow pipe bores).
+* **Base composition:** silica sand + core oil as binder. Core oil can be linseed oil, mineral oil, fish oil, or synthetic resins.
+* After the core is shaped (in a core box), it is baked in an oven at **200–250°C** — the heat polymerises the core oil, creating a hard, strong bond between the grains.
+* Baked cores are much stronger and harder than moulding sand — they must withstand being surrounded by molten metal without breaking, eroding, or collapsing.
+* Cores must also be **collapsible** after casting — once the metal solidifies, the core must be breakable so it can be shaken or knocked out of the internal cavity. Core sand is designed to lose its strength after the heat of casting, making this easier.
+* Permeability is critical for core sand — gases generated inside the core (from binder burning) must be able to vent out through the **core prints** (ends of the core that extend outside the cavity) to avoid porosity in the casting.
+* Modern foundries often use **shell cores** (resin-coated sand cured on a hot core box) or **cold-box cores** (chemically cured at room temperature) instead of traditional oil-baked cores, for faster production and better dimensional accuracy.
+
+---
+
+### C. Properties of Moulding Sand
+
+* **Porosity / Permeability:** Ability to pass gases generated during solidification. Prevents porosity and gas holes in casting.
+* **Plasticity / Flowability:** Ability to acquire shape under pressure and retain it. Increases with clay and water content.
+* **Adhesiveness:** Ability of sand to adhere to mould box walls, holding the mould intact.
+* **Cohesiveness (Green/Dry Strength):** Strength of sand particle-to-particle bonding. Retains mould shape under molten metal pressure.
+* **Refractoriness:** Resistance to high temperature without fusing. Measured by sinter point (not melting point).
+
+---
+
+### D. Green Sand vs. Dry Sand — Expendable Mould Casting
+
+* **Expendable mould:** mould is destroyed to remove the casting (e.g., Sand Casting).
+* **Permanent mould:** mould is reused.
+
+---
+
+### E. Shell Moulding
+
+Shell moulding uses a resin-bonded sand mixture (phenolic resin + silica sand) applied over a heated metal pattern. The resin cures to form a thin, strong shell.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp14.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* Pattern heated to **175–370°C**. Resin-sand mix dumped/blown onto pattern and cured for 10–30 seconds.
+* Two shell halves bonded together to form mould. Better dimensional accuracy and surface finish than green sand.
+* Suitable for small-to-medium castings with complex geometry.
+
+---
+
+### F. Investment Casting (Lost Wax Process)
+
+Investment casting uses an expendable wax pattern surrounded ('invested') by a ceramic slurry that hardens into the mould shell. The wax is then melted out.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp15.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* Wax pattern produced in a metal die. Pattern cluster assembled on a sprue.
+* Repeated dipping in ceramic slurry + stucco layers build the shell.
+* **Dewaxing:** Shell heated in autoclave/furnace to melt and drain wax (hence 'lost wax').
+* Shell fired at high temperature for strength. Molten metal poured into hot shell.
+* Excellent dimensional accuracy, fine surface finish. Suitable for complex shapes in aerospace/medical industries.
+
+---
+
+## Gating and Riser Systems
+
+The gating system controls the flow of molten metal into the mould cavity. Its proper design prevents defects.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp16.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp17.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| Component | Function |
+|---|---|
+| Pouring Basin / Cup | Receives molten metal from ladle. Reduces turbulence and slag entry. |
+| Sprue | Vertical channel connecting pouring basin to runner. Controls flow rate. |
+| Runner | Horizontal channel distributing metal from sprue to multiple gates. |
+| Gate (Ingate) | Final opening into mould cavity. Controls metal entry velocity and direction. |
+| Riser (Feeder) | Reservoir of molten metal that feeds the casting as it shrinks during solidification. Prevents shrinkage cavities. |
+| Choke | Smallest cross-section in the gating system; controls metal flow rate. |
+
+Riser design criteria: A riser must solidify **after** the casting. Riser volume and location determined by **Chvorinov's Rule:**
+
+```
+Solidification Time  ∝  (Volume / Surface Area)²
+```
+
+---
+
+## Melting Furnaces (Cupola, Resistance, and Induction)
+
+### A. Cupola Furnace
+
+Used to melt scrap iron/pig iron for grey cast iron, nodular cast iron, some malleable iron, and copper-base alloys.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp18.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* **Construction:** Vertical steel shell lined with refractory brick. Charge loaded through charging door roughly mid-height.
+* **Charge layers:** metal charge → coke fuel → limestone flux (alternating layers).
+* Air forced through tuyeres near hearth ignites coke; hot gases rise and preheat descending charge.
+
+#### 1. Zones of the Cupola (bottom to top)
+
+| Zone | Reaction / Function |
+|---|---|
+| Well | Space below tuyeres. Collects molten metal before tapping. |
+| Combustion Zone (Oxidising Zone) | C + O₂ → CO₂ + Heat; Si + O₂ → SiO₂; 2Mn + O₂ → 2MnO. Maximum temperature zone. |
+| Reducing Zone (Protective Zone) | CO₂ + C → 2CO (endothermic). Temperature drops to ~1200°C. CO prevents oxidation of metal. |
+| Melting Zone | Metal charge begins to melt. Carbon pickup: 3Fe + 2CO → Fe₃C + CO₂. |
+| Preheating Zone | Alternating charge layers preheated from ambient to ~1090°C before entering melting zone. |
+| Stack | Empty passage above preheating zone. Carries combustion gases to atmosphere. |
+
+#### 2. Advantages and Limitations
+
+* **Advantages:** Simple, economical, continuous operation, can refine charge, environmentally better than electric.
+* **Limitations:** Carbon and sulphur pickup; Si/Mn loss; difficult to control temperature precisely.
+
+---
+
+### B. Crucible Furnaces (for Non-Ferrous Metals)
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp19.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| Type | Description |
+|---|---|
+| Pit Furnace | Crucible placed below floor level in a pit; coke-fired with natural draft from chimney. |
+| Coke-Fired Stationary Furnace | Above floor level; coke fuel; blower for forced draft. Small quantities of non-ferrous metals. |
+| Oil-Fired Tilting Furnace | Mounted on pedestals; oil-fired; tilts via geared handwheel for pouring. Easy temperature control, low pollution. |
+
+---
+
+### C. Resistance Furnace / Induction Furnace
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp20.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* **Resistance Furnace:** Heat generated by electrical resistance of heating elements (nichrome, SiC). Precise temperature control.
+* **Induction Furnace:** High-frequency electromagnetic field induced in charge; eddy currents generate heat. No combustion gases; very clean melt; excellent for precise alloy control. Widely used for steel, cast iron, non-ferrous alloys.
+* **Electric Arc Furnace (EAF):** Heat from electric arc between electrodes and charge. Very high temperatures; primarily for melting steel and alloy steels. High power consumption but high melting capacity.
+
+---
+
+## Die Casting (Gravity and Pressure) and Centrifugal Casting
+
+### A. Gravity Die Casting (Permanent Mould Casting)
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp21.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+Molten metal poured by gravity into a reusable metal mould (die). Better dimensional accuracy and surface finish than sand casting. Suitable for aluminium, zinc, magnesium, copper alloys.
+
+---
+
+### B. Pressure Die Casting
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp22.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| Parameter | Hot Chamber | Cold Chamber |
+|---|---|---|
+| Injection Mechanism | Plunger integrated into molten metal bath | Separate shot chamber; metal ladled in manually |
+| Pressure | 7–35 MPa | 14–140 MPa |
+| Suitable Metals | Low-melting alloys: zinc, lead, tin | Higher-melting alloys: aluminium, brass, magnesium |
+| Cycle Time | Shorter (faster) | Longer (slower) |
+
+---
+
+### C. Centrifugal Casting
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp23.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* **True Centrifugal Casting:** Mould rotated about its own axis. Centrifugal force throws metal against mould wall, creating hollow cylindrical castings (pipes, tubes, bushings). Denser outer layer; slag/impurities migrate inward.
+* **Semi-Centrifugal Casting:** Rotation about central axis; non-hollow parts (wheels, pulleys) with uniform density.
+* **Centrifuging:** Multiple mould cavities arranged around a central sprue; spinning forces metal outward into cavities.
+
+---
+
+## Solidification Variables and Directional Solidification
+
+* Solidification begins at the mould walls (nucleation) and progresses inward toward the thermal centre.
+* **Directional solidification:** Engineered so that solidification progresses from the extremities toward the riser, ensuring molten metal is always available to feed shrinkage.
+* Chvorinov's Rule governs solidification time. Sections with lower V/A ratio solidify first.
+* Methods to promote directional solidification: **chills** (metal inserts to accelerate cooling in selected regions), **padding** (adding material to change local V/A ratio), and riser placement.
+* Columnar grains grow perpendicular to mould walls; equiaxed grains form in the centre of the casting.
+
+---
+
+## Arc, Resistance, and Special Welding (Laser, Electron Beam)
+
+### A. Definition and Classification
+
+**Welding:** A material joining process in which two or more parts are coalesced at their contacting surfaces by suitable application of heat and/or pressure, with or without filler material.
+
+#### 1. Classification by Energy Source
+
+* **Chemical Energy:** Gas welding (OAW/OFW), Thermit welding, Explosive welding
+* **Electrical Energy:** Arc welding (SMAW, SAW, GMAW, GTAW), Resistance welding
+* **Mechanical Energy:** Friction welding, Ultrasonic welding
+* **Radiation Energy:** Laser beam welding (LBW), Electron beam welding (EBW)
+
+#### 2. Fusion vs. Pressure (Solid State) Welding
+
+| Fusion Welding | Pressure / Solid State Welding |
+|---|---|
+| Heat melts base metal (and filler) | Pressure applied; may use heat below melting point |
+| OAW, SMAW, GMAW, GTAW, SAW, EBW, LBW | Resistance welding, Friction welding, Ultrasonic, Explosive, Diffusion welding |
+| Filler metal generally used | No filler metal required |
+| Heat affected zone (HAZ) present | Smaller or no HAZ in solid state processes |
+
+---
+
+### B. Weld Joint Types
+
+| Joint Type | Description |
+|---|---|
+| Butt Joint | Parts in the same plane, joined at edges. Most common for groove welds. |
+| Corner Joint | Parts at right angle, joined at corner. Common in box structures. |
+| Lap Joint | Two overlapping parts. Used with fillet, spot, and seam welds. |
+| Tee Joint | One part perpendicular to other (T-shape). Joined with fillet welds. |
+| Edge Joint | Parallel parts with common edge. Joined at common edges. |
+
+---
+
+### C. Oxyacetylene Welding (OAW)
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp24.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+OAW burns acetylene (C₂H₂) + oxygen to produce a flame up to 3480°C. Two-stage combustion:
+
+* **Stage 1:** C₂H₂ + O₂ → 2CO + H₂ + Heat
+* **Stage 2:** 2CO + H₂ + 1.5O₂ → 2CO₂ + H₂O + Heat
+
+#### 1. Types of OAW Flame
+
+| Flame Type | O₂ : C₂H₂ Ratio | Characteristics & Applications |
+|---|---|---|
+| Neutral Flame | ~1 : 1 | No chemical effect on weld metal. Used for mild steel, stainless steel, cast iron, copper, aluminium. |
+| Carburizing (Reducing) Flame | >1 part C₂H₂ | Excess acetylene. Acetylene feather visible. ~3038°C. Introduces carbon into weld; used for high-carbon steel hardfacing, but unsuitable for metals that absorb carbon. |
+| Oxidizing Flame | >1 part O₂ | Excess oxygen. Shorter, fan-shaped envelope. ~3500°C. Used for copper-base metals, zinc-base metals, manganese steel. |
+
+---
+
+### D. Arc Welding (AW) — Principles
+
+An electric arc (ionised plasma column at ~5500°C) established between electrode and workpiece melts the base metal. Filler metal is added to increase joint volume and strength.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp25.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* **DCEP (Direct Current Electrode Positive):** Electrode = anode; higher heat at electrode — consumable electrode melts faster. Deeper penetration.
+* **DCEN (Direct Current Electrode Negative):** Electrode = cathode; higher heat at workpiece. Used with non-consumable electrodes.
+* **Arc Blow:** Deflection of arc due to unbalanced magnetic fields during DC welding of ferromagnetic materials. Worst at corners. Remedy: switch to AC, change electrode angle, use back-step technique.
+
+---
+
+### E. Shielded Metal Arc Welding (SMAW)
+
+* Consumable coated electrode (225–450 mm long, 2.5–9.5 mm dia). Rod coating = cellulose + oxides + carbonates + binders.
+* **Coating functions:** generates shielding gas (CO₂), forms slag to protect weld pool, adds alloying elements.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp26.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* **Base metals:** steels, stainless steels, cast iron. Not suitable for aluminium, copper, titanium.
+* **Limitation:** Frequent electrode changes reduce arc time. Current range limited by electrode length (resistance heating of electrode).
+
+---
+
+### F. Submerged Arc Welding (SAW)
+
+* Continuous bare wire electrode. Arc shielded under a layer of granular flux fed from a hopper.
+* Flux nearest arc melts → slag; flux farther away remains granular and is recycled.
+* No arc flash or spatter visible — process is submerged. High deposition rates.
+* **Applications:** structural steel fabrication (I-beams), large pipes, pressure vessels.
+* **Limitation:** Only flat/horizontal position (gravity feed of flux). Backup plate often needed.
+
+---
+
+### G. Gas Tungsten Arc Welding (GTAW / TIG)
+
+* Non-consumable tungsten electrode (m.p. 3410°C). Inert shielding gas: Argon, Helium, or Ar-He mix.
+* Filler rod added separately (not transferred across arc). Can also weld autogenously (no filler).
+* High-quality welds, no spatter, no flux — minimal post-weld cleaning.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp27.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* **Applications:** aluminium, stainless steel, titanium, dissimilar metals, thin-gauge materials.
+* **Not suitable for:** cast iron, wrought iron, tungsten itself.
+
+---
+
+### H. Plasma Arc Welding (PAW)
+
+* Variant of GTAW. Tungsten electrode in a constricting nozzle forces high-velocity inert gas (Ar, Ar-H₂) through the arc, creating a constricted plasma jet.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp28.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* Temperatures reach **17,000°C** or higher — can weld any metal including tungsten.
+* **Two modes:**
+  * **Non-transferred arc** (arc between electrode and nozzle — used for non-conductive materials)
+  * **Transferred arc** (arc between electrode and workpiece — used for metals; greater penetration)
+* **Advantages:** excellent arc stability, high travel speed, precise penetration control, outstanding weld quality.
+* **Limitations:** high equipment cost, large torch size restricts access in tight joints.
+
+---
+
+### I. Resistance Welding
+
+Heat generated by **H = I²Rt**, where I = current, R = interface resistance, t = time. No filler metal needed.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp29.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| Process | Description & Application |
+|---|---|
+| Spot Welding | Point fusion of lap joint between opposing electrodes. Joint not airtight. Workpiece up to 3 mm thick. ~10,000 spot welds per car body. |
+| Seam Welding | Rotating wheel electrodes create continuous overlapping spot welds along a lap joint. Produces airtight/leak-proof joint. Used for fuel tanks, containers. |
+| Projection Welding | Embossed projections on one workpiece concentrate current and heat. Projections collapse under pressure, forming weld nuggets. Good for attaching fasteners. |
+
+---
+
+### J. Special Welding Processes
+
+#### 1. Laser Beam Welding (LBW)
+
+* Concentrated coherent light beam focused to a small spot. Very high energy density; deep, narrow weld with minimal HAZ.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp30.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* No filler required; can weld dissimilar metals. Excellent for precision and thin-gauge applications.
+* **Limitations:** high equipment cost; precise joint fit-up required; reflective materials (Cu, Al) are challenging.
+
+#### 2. Electron Beam Welding (EBW)
+
+* Focused high-velocity electron beam in a vacuum chamber generates heat on impact. Vacuum prevents beam scattering and oxidation.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp31.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* Produces extremely deep, narrow welds with very small HAZ. Fusion ratio (depth/width) can exceed **25:1**.
+* Used for aerospace, nuclear, and high-precision components. Necklace cracking defect can occur if penetration is incomplete.
+
+#### 3. Thermit Welding
+
+* **Chemical reaction:** 8Al + 3Fe₃O₄ → 9Fe + 4Al₂O₃ + Heat (≈3000°C). Iron produced is filler metal; Al₂O₃ is slag.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp32.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* Ignition powder (Ba₂O₂) initiates reaction at lower temperature. Used for joining railway rails, large castings repair in remote locations.
+
+---
+
+### K. Solid State Welding
+
+#### 1. Friction Welding (FRW)
+
+* One part rotates against a stationary part; frictional heat raises interface temperature to hot-working range. Axial force then forges the joint.
+* Flash (extruded material) forms and must be trimmed. No melting; no filler, flux, or shielding gas needed.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp33.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* **Friction Stir Welding (FSW):** Non-consumable rotating pin tool traverses joint. Used for aluminium alloys in aerospace and marine industries.
+
+#### 2. Explosive Welding (EXW)
+
+* Flyer plate accelerated by controlled detonation to obliquely impact the base plate (resting on an anvil). High-pressure impact creates metallurgical bond.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp34.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* Oxide films expelled by jet created at bonding front. Detonation velocity must be ≤120% of material's sonic velocity.
+* Joins dissimilar metals: Cu-Steel, Al-Steel, Ti-Steel, Ni-Steel.
+
+#### 3. Induction Welding
+
+* Radio-frequency induction coil generates electromagnetic field. Eddy currents (conductive materials) and hysteresis losses (ferromagnetic materials) generate heat.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp35.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* Non-conductive plastics can be welded using embedded metallic or carbon fibre susceptors. Used extensively for carbon-fibre-reinforced plastics in aerospace.
+
+---
+
+### L. Welding Defects — Causes and Remedies
+
+| Defect | Primary Causes | Remedies |
+|---|---|---|
+| Weld Crack (Hot/Cold) | Poor ductility, residual stress, rigid joint, high S/C content, hydrogen in ferrous welds | Use ductile filler; preheat; control cooling rate; reduce joint gap |
+| Undercut | Excessive arc voltage, wrong electrode angle, high travel speed, large electrode | Reduce arc length/voltage; use smaller electrode; reduce travel speed; maintain 30–45° electrode angle |
+| Spatter | High current, long arc, incorrect polarity, poor gas shielding | Reduce current and arc length; use correct polarity; improve shielding |
+| Porosity | Improperly coated electrode, long arc, high current, surface contamination (rust/oil) | Proper electrode selection; clean surfaces; reduce current; use shorter arc |
+| Overlap | Excessive current, large electrode, improper technique | Reduce current; use smaller electrode; correct technique |
+| Slag Inclusion | Low current density, high travel speed, unclean weld surface, wrong electrode angle | Increase current; reduce speed; clean weld edges between passes; correct electrode angle |
+| Incomplete Fusion | Low heat input, weld pool ahead of arc, low joint angle, incorrect torch angle | Increase current; reduce travel speed; increase joint angle; correct electrode position |
+| Incomplete Penetration | Insufficient deposition, wrong electrode size, poor technique | Increase deposition; use correct electrode size and technique |
+| Necklace Cracking | Incomplete electron beam penetration (EBW), high speed, Ni alloys/SS/carbon steels | Correct EBW technique; constant speed; proper material selection |
+
+---
+
+## Heat Affected Zone (HAZ) and Weld Metallurgy
+
+The HAZ is the region of base metal adjacent to the fusion zone that has not melted but whose microstructure and mechanical properties have been altered by welding heat.
+
+* **Fusion Zone:** Base metal + filler metal that completely melted and re-solidified. Cast-like columnar microstructure.
+* **HAZ:** Temperature ranged from just above recrystallisation temperature to near liquidus. Grain growth, sensitisation (in stainless steels), hardening (in hardenable steels) occur.
+* **Unaffected Base Metal:** Beyond HAZ; unaltered microstructure.
+* **Factors affecting HAZ size:** Heat input (J/mm), thermal conductivity, preheat temperature.
+* High-heat processes (SMAW, SAW) produce larger HAZ. Low-heat, high-energy-density processes (LBW, EBW, FSW) produce very narrow HAZ.
+
+---
+
+## Mechanics of Orthogonal and Oblique Cutting
+
+### A. Mechanics of Orthogonal Cutting
+
+Orthogonal cutting: The cutting edge is perpendicular to the cutting velocity vector (2D simplification). Forces and chip formation are analysed in a single plane.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp36.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* **Cutting velocity (V):** velocity of tool relative to workpiece.
+* **Depth of cut (t₁):** undeformed chip thickness.
+* **Chip thickness (t₂):** deformed chip thickness after shearing.
+* **Chip thickness ratio (r):** r = t₁ / t₂ = sin φ / cos(φ − α), where φ = shear angle, α = rake angle.
+
+---
+
+### B. Oblique Cutting
+
+In oblique cutting, the cutting edge is inclined at the **inclination angle (i)** to the normal of the cutting direction. Most practical machining operations (turning, milling) are oblique cutting.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp37.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* Chip flows at the chip flow angle η (approximately equal to inclination angle i for small values).
+* Oblique cutting improves surface finish and reduces forces compared to orthogonal cutting.
+
+---
+
+## Merchant Circle Diagram and Chip Formation
+
+### A. Merchant Circle Diagram
+
+The Merchant Circle Diagram (MCD) represents all forces acting in orthogonal cutting as a vector diagram (circle). From the MCD:
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp38.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* **Cutting Force (Fc):** Tangential force in the direction of cutting velocity. Primary force driving the process.
+* **Thrust / Feed Force (Ft):** Perpendicular to cutting direction (in feed direction).
+* **Friction Angle (β):** tan β = μ (friction coefficient at tool–chip interface).
+* **Shear Force (Fs):** Along shear plane. Fs = Fc cos φ − Ft sin φ.
+* **Normal Force on Shear Plane (Fn):** Fn = Fc sin φ + Ft cos φ.
+
+**Merchant's shear angle equation (minimum energy criterion):**
+
+```
+φ = 45° + α/2 − β/2
+```
+
+Increasing rake angle (α) or decreasing friction (β) increases shear angle, which reduces chip thickness and cutting force.
+
+A circle drawn with the resultant cutting force (R) as diameter. All forces — Fc, Ft, Fs, Fn, friction force F, normal force N — are represented as chords of this circle.
+
+* Used to derive: shear angle φ, friction angle β, cutting force Fc, and thrust force Ft analytically.
+* **Key relationship:** R = √(Fc² + Ft²) = resultant force.
+
+---
+
+### B. Chip Formation
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp39.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| Chip Type | Conditions & Characteristics |
+|---|---|
+| Continuous Chip | Ductile material, high cutting speed, small depth of cut, sharp tool, large rake angle. Good surface finish. Chip curling required. |
+| Discontinuous Chip | Brittle material (cast iron), low cutting speed, large depth of cut, small rake angle. Poor finish but easy chip disposal. |
+| Continuous Chip with Built-Up Edge (BUE) | Ductile material, low-to-medium speed. Material welds onto tool face under pressure/heat. Deteriorates surface finish; can cause tool damage. |
+| Serrated / Segmented Chip | Semi-continuous; occurs in hard-to-cut materials (Ti alloys, stainless steel, Inconel). Cyclic variation in chip thickness. |
+
+---
+
+## Indexing Methods in Milling (Simple, Compound, Differential)
+
+Indexing is the process of rotating the workpiece by a precise fraction of a revolution between milling cuts to produce equally spaced features (teeth, holes, slots).
+
+A standard indexing head uses a **40:1 worm gear ratio**; therefore 40 turns of the crank = 1 full revolution of the workpiece.
+
+| Indexing Method | Formula & Application |
+|---|---|
+| Simple (Plain) Indexing | Crank turns = 40/N, where N = number of divisions required. Uses indexing plate with concentric hole circles. |
+| Compound Indexing | Two movements of indexing crank on different hole circles, combined to achieve fractional turns not possible with simple indexing. n₁/H₁ ± n₂/H₂ = 40/N. |
+| Differential Indexing | Indexing plate itself rotates via a gear train connected to the dividing head spindle. Used when required divisions cannot be achieved by compound indexing. Gear ratio selected to give plate rotation = difference needed. |
+| Angular Indexing | Crank turns = (degrees × 40) / 360. Converts angular displacement to crank turns. |
+
+---
+
+## Tool Wear Mechanisms and Tool Life Equations
+
+### A. Tool Wear Mechanisms
+
+* **Adhesive Wear:** Asperities on tool and chip surfaces bond under pressure and are pulled off as chip slides. Dominant at low-to-medium cutting speeds.
+* **Abrasive Wear:** Hard particles (carbides, oxides) in workpiece scratch tool surface. Causes flank wear.
+* **Diffusion Wear:** At high temperatures, atoms diffuse between tool and chip material along concentration gradients. Significant in HSS and carbide tools at high speeds.
+* **Chemical / Oxidation Wear:** Tool material reacts with oxygen or workpiece material at elevated temperatures. Creates pits and notches.
+* **Fracture / Chipping:** Mechanical breakage of tool cutting edge due to impact loading, interrupted cuts, or brittle tool materials.
+
+---
+
+### B. Types of Tool Wear
+
+* **Flank Wear (VB):** Wear land on the clearance face. Measured by VB (flank wear land width). Main criterion for tool life.
+* **Crater Wear:** Concave wear on tool rake face due to chip sliding. Weakens tool edge.
+
+---
+
+### C. Taylor's Tool Life Equation
+
+**Basic Taylor's Equation:**
+
+```
+VTⁿ = C
+```
+
+Where: V = cutting speed (m/min), T = tool life (min), n = Taylor's exponent, C = cutting speed for T = 1 min.
+
+**Extended Taylor's equation** accounting for feed and depth of cut:
+
+```
+VTⁿ f^x d^y = C
+```
+
+| Tool Material | Taylor's Exponent (n) |
+|---|---|
+| High Speed Steel (HSS) | 0.08 – 0.2 |
+| Cemented Carbide | 0.2 – 0.5 |
+| Ceramics / CBN | 0.5 – 0.7 |
+
+---
+
+### D. Taylor's Tool Life Graph
+
+Plot of log(V) vs. log(T). A straight line with slope −n (Taylor's exponent). The y-intercept gives log(C).
+
+* Steeper slope (larger n) = tool material more sensitive to speed changes.
+* C = cutting speed that gives tool life of exactly 1 minute.
+
+---
+
+## Hot and Cold Working of Metals
+
+| Parameter | Cold Working | Hot Working |
+|---|---|---|
+| Temperature Range | Below recrystallisation temp. (< 0.3 Tm) | Above recrystallisation temp. (> 0.5 Tm) |
+| Strength / Hardness | Increases (work hardening dominant) | No significant change (recovery occurs simultaneously) |
+| Ductility | Decreases | Maintained / improved |
+| Surface Finish | Bright, accurate (bright bars) | Scale formation; decarburisation in steel (black bars) |
+| Dimensional Accuracy | High | Lower (scale, thermal expansion) |
+| Residual Stresses | Present (must be relieved by annealing) | Absent (simultaneous recovery) |
+| Equipment Capacity | Higher forces required | Lower forces (material softer at elevated temp.) |
+| Complex Shapes | Difficult (limited ductility at room temp.) | Easy (higher ductility at high temp.) |
+
+---
+
+### A. Recovery, Recrystallisation, and Grain Growth
+
+* **Recovery:** Low temperature. Point defect annihilation; dislocation rearrangement into sub-grain boundaries. No change in grain structure. Small decrease in hardness.
+* **Recrystallisation:** Above recrystallisation temperature (≈ 0.3–0.5 Tm absolute). Nucleation and growth of new strain-free grains. Significant decrease in strength/hardness; increase in ductility. Cold work effects erased.
+* **Grain Growth:** Further heating after recrystallisation. Grain boundary migration; average grain size increases (ASTM grain size number decreases). Reduces hardness/strength further.
+
+---
+
+### B. Recovery–Recrystallisation–Grain Growth Graph
+
+A schematic showing changes in a cold-worked metal upon annealing (increasing temperature):
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp40.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* **Stage 1 (Recovery):** Slight decrease in hardness/strength; no change in grain size; residual stress decreases.
+* **Stage 2 (Recrystallisation):** Sharp decrease in hardness/strength; grain size drops to small, strain-free grains; ductility increases.
+* **Stage 3 (Grain Growth):** Further hardness/strength decrease; grain size increases continuously with temperature/time.
+
+---
+
+## Forging (Drop and Press) and Rolling (Angle of Bite)
+
+### A. Forging
+
+Forging: Deformation by compressive stresses, usually between shaped dies, to produce a part of desired geometry with improved mechanical properties (refined grain structure, favourable flow lines).
+
+#### 1. Types of Forging — by Die Constraint
+
+| Type | Description |
+|---|---|
+| Open Die Forging (Upsetting) | Work compressed between flat platens; unconstrained lateral flow. Causes barrelling due to interface friction. For large forgings. |
+| Impression Die Forging (Closed Die with Flash) | Both dies have impressions. Constrained flow; excess metal escapes as flash. Flash trims after forging. Good dimensional control. |
+| Flashless (Precision) Forging | Workpiece completely enclosed in die; no flash. Requires precise billet volume. High accuracy. |
+
+#### 2. Types of Forging — by Loading
+
+| Type | Description |
+|---|---|
+| Drop / Hammer Forging | Impact loads from gravity drop or power-assisted ram. 60–150 blows/min. Energy = weight × height of drop. Rapid deformation; good for complex shapes. Dies susceptible to thermal shock. |
+| Press Forging (Hydraulic / Mechanical) | Gradual squeeze (static load). Hydraulic press: load-restricted; full load at any stroke position; ideal for extrusion-type forging. Mechanical press: stroke-restricted; energy from flywheel via crank/eccentric. |
+| Roll Forging | Grooved rolls with forging geometry on part of their circumference. Reduces cross-section or changes shape of bar stock. Used as pre-form for subsequent forging operations. |
+
+#### 3. Forging Operations
+
+* **Edging:** Shapes ends of bar stock; metal flow confined horizontally but free laterally.
+* **Fullering:** Reduces cross-section of a portion of stock; metal flows outward from centre.
+* **Swaging:** Produces bar with smaller diameter using concave dies; succession of rapid hammer blows.
+* **Heading:** Upsets end of bar to form bolt heads, nails; done on heading machines.
+
+#### 4. Forging Defects
+
+| Defect | Cause & Remedy |
+|---|---|
+| Unfilled Section | Poor die design, insufficient material, poor heating. Remedy: Redesign die; ensure adequate billet volume; correct heating. |
+| Cold Shut | Small surface cracks at sharp corners due to improper die design or excessive chilling. Remedy: Increase fillet radius. |
+| Scale Pits | Improper cleaning of forged surface; open environment forging. Remedy: Clean surfaces properly; use enclosed forging. |
+| Die Shift | Misalignment of upper and lower die. Remedy: Proper die alignment using notch/locating features. |
+| Flakes (Internal Cracks) | Rapid cooling causing internal hydrogen embrittlement. Remedy: Slow controlled cooling. |
+| Improper Grain Growth | Improper metal flow; poor die design. Remedy: Redesign die for correct metal flow. |
+| Surface Cracking | Excessive working at low temperature. Remedy: Maintain proper working temperature. |
+| Residual Stresses | Rapid cooling of forged part. Remedy: Slow cooling; stress-relief annealing. |
+
+---
+
+### B. Rolling Process
+
+Rolling reduces workpiece thickness by compressive forces between two counter-rotating rolls. The rolls simultaneously pull (by friction) and compress the workpiece.
+
+* **Flat Rolling (most common):** Reduces rectangular cross-section. Volume conservation: t₁w₁L₁ = t₂w₂L₂.
+* **Draft** = t₁ − t₂ (reduction in thickness per pass).
+* **True strain:** ε = ln(t₁/t₂).
+
+#### 1. Angle of Bite (Contact Angle)
+
+The angle of bite (α) is the maximum contact angle at which the rolls can draw in the workpiece by friction. Condition for entry: tan α ≤ μ (friction coefficient).
+
+```
+Maximum draft (Δt_max) = μ² × R
+```
+
+Where μ = friction coefficient, R = roll radius.
+
+For a workpiece of thickness t₁ to be rolled to t₂ by rolls of radius R:
+
+* **Contact arc length:** L = √(R × Δt), where Δt = t₁ − t₂.
+* The rolls can grip the material only if the friction force exceeds the separating force: μ ≥ tan(α).
+* **Maximum draft:** Δt_max = μ²R. Higher friction or larger roll radius allows greater reduction per pass.
+
+#### 2. Roll Mill Configurations
+
+| Configuration | Description |
+|---|---|
+| Two-High | Two opposing rolls; workpiece passes in one direction only. Simple; for hot rolling. |
+| Three-High | Three rolls; workpiece passed back and forth (up and back). Eliminates reversing mill drive. |
+| Four-High | Two small work rolls backed by two large backup rolls. Backup rolls prevent deflection of work rolls; for thin strip. |
+| Cluster Mill (Sendzimir) | Multiple backup rolls on each side of small work rolls. For very thin, hard strips. |
+| Tandem Mill | Series of rolling stands in sequence; continuous reduction. High production rate. |
+
+#### 3. Rolling Defects
+
+| Defect | Cause |
+|---|---|
+| Wavy Edges | Work rolls deflect (less pressure at edges); edges elongate more than centre → edges in compression → buckle/wave. |
+| Centre Buckle | Excess roll convexity; centre elongates more than edges → centre in compression → centre buckle. |
+| Edge Cracks | Tensile deformation at sheet edges due to spread restraint by friction at centre. |
+| Centre Split / Zipper Cracks | Centre severely restrained → high tensile stress → longitudinal centre cracks. |
+| Alligatoring | In hot rolling of slabs; centre layers separate, folding open like alligator jaws. |
+
+---
+
+## Drawing and Extrusion Processes
+
+### A. Drawing Process
+
+Drawing: Tensile force applied to workpiece to pull it through a die, reducing cross-section and increasing length.
+
+* **Wire Drawing:** Cold working. Thick wire passed through successive dies (each smaller). Maximum area reduction per pass: ≤45%. Dies of tungsten carbide or diamond.
+* **Rod Drawing:** Similar to wire drawing; rod kept straight (cannot be coiled). Heavier equipment required.
+* **Requirements:** Sufficient ductility; high tensile strength; clean, lubricated workpiece surface.
+
+---
+
+### B. Extrusion
+
+Extrusion: Compressive force pushes billet through a die orifice, producing a continuous shape with the die's cross-section.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp41.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+#### 1. Types of Extrusion
+
+| Extrusion Type | Description |
+|---|---|
+| Direct (Forward) Extrusion | Metal flows in direction of punch movement. Higher friction (billet contacts container). Most common. |
+| Indirect (Backward) Extrusion | Metal flows opposite to punch movement through annular space. Billet doesn't move relative to container → lower friction, lower force. |
+| Hydrostatic Extrusion | Fluid pressure (vegetable oil) transmits force to billet. No billet-container friction. Brittle materials can be extruded. Issues: seal leakage, uncontrolled extrusion speed. |
+| Impact Extrusion | High-speed punch impact (not slow press). Backward (most common), forward, or combined. Cold process; thin walls achievable (toothpaste tubes, battery cases). High production rate. |
+
+#### 2. Extrusion Defects
+
+* **Centre Burst (Arrowhead / Chevron Cracking):** Internal cracks along centreline from tensile stresses in outer deforming regions. Promoted by high die angles, low extrusion ratios, impurities. Detection difficult (internal).
+* **Piping (Tailpipe / Fishtailing):** Sink hole forms in billet end in direct extrusion. Prevented by using a dummy block slightly smaller than billet diameter.
+* **Surface Cracking:** High workpiece temperature, high extrusion speed, high strain rates cause surface cracks. Remedy: Reduce extrusion speed; control temperature.
+
+---
+
+## Sheet Metal Operations (Blanking, Piercing, and Trimming)
+
+### A. Introduction
+
+* **Sheet metal:** thickness 0.4–6 mm.
+* **Plate:** >6 mm.
+* Operations performed as cold working using punch-die tooling in presses.
+* Categories: **Cutting operations** (shearing, blanking, punching) and **Forming operations** (bending, deep drawing, stretching).
+
+---
+
+### B. Cutting Operations
+
+#### 1. Shearing, Blanking, and Punching
+
+| Operation | Description |
+|---|---|
+| Shearing | Straight-line cut to separate large sheets. No scrap (or minimal). Punch = upper blade, die = lower blade. |
+| Blanking | Punched-out piece is the desired part (blank). Surrounding stock is scrap. |
+| Punching (Piercing) | Punched-out piece is scrap (slug). Hole left in sheet is the desired feature. |
+| Trimming | Removes excess material (flash) from drawn or formed parts. Finishing operation. |
+
+#### 2. Clearance in Sheet Metal Cutting
+
+Clearance (c) is the gap between punch and die edges on each side. Too small → fracture lines pass each other → double burnishing, high forces. Too large → excessive burr.
+
+```
+c = Ac × t
+```
+
+| Material | Clearance Allowance (Ac) |
+|---|---|
+| Aluminium and alloys (soft) | 0.045 |
+| 6061-T Al, Brass, Soft cold-rolled steel, Stainless steel | 0.060 |
+| Cold-rolled steel (hard), Hard stainless steel | 0.075 |
+
+#### 3. Punch and Die Size Calculations
+
+Key principle: The sheared edge of the workpiece takes the size of the opening it passes through (die size for blank; punch size for hole).
+
+| Feature | Punch Size | Die Size |
+|---|---|---|
+| Blank (diameter Db) | Db − 2c | Db (die controls blank size) |
+| Hole (diameter Dh) | Dh (punch controls hole size) | Dh + 2c |
+
+#### 4. Cutting Force
+
+```
+F = τ × t × L
+```
+
+Where τ = shear strength (MPa), t = stock thickness (mm), L = perimeter length of cut (mm).
+
+---
+
+### C. Bending
+
+Bending strains sheet metal around a straight axis. Metal on inside of neutral plane is in compression; outside in tension. **Springback** occurs after bending (elastic recovery) — must be over-bent to compensate.
+
+* **V-bending:** Sheet pressed into V-shaped die with V-shaped punch. Simple and versatile.
+* **Edge (Wiping) Bending:** One end of sheet clamped; other end bent over wiping die. Creates 90° or other bends. More precise than V-bending.
+* **Minimum Bend Radius:** Determined by material ductility. Below minimum radius, outer fibres crack.
+
+---
+
+### D. Deep Drawing
+
+Deep drawing forms flat sheet into a cup-shaped, box-shaped, or complex concave part. Punch forces sheet metal into die cavity; blank-holder prevents wrinkling (buckling of flange).
+
+* **Drawability:** Characterised by Limiting Drawing Ratio (LDR) = D₀/Dp (blank diameter / punch diameter). Higher LDR = better drawability.
+* **Common products:** beverage cans, ammunition shells, sinks, cooking pots, automobile body panels.
+* **Defects:** Wrinkling (insufficient blank-holder pressure), Tearing/fracture (excessive draw ratio or insufficient clearance), Earing (anisotropy of sheet material).
+
+---
+
+### E. Dies Used in Sheet Metal Operations
+
+| Die Type | Description |
+|---|---|
+| Simple Die | Performs one cutting/forming operation per stroke at one stage. |
+| Compound Die | Performs more than one cutting operation (e.g., blanking + punching simultaneously) in one stroke at one stage. |
+| Progressive Die | Multiple operations performed in sequence at different stages per stroke. Strip advances (progresses) from stage to stage. Blanking is the last operation. |
+
+---
+
+### F. Presses
+
+| Press Type | Working Principle & Characteristics |
+|---|---|
+| Mechanical Press | Flywheel energy transmitted via crank, eccentric, or lever mechanism. Stroke-restricted. Fast; suitable for blanking and punching. |
+| Hydraulic Press | Fluid pressure on piston via hydraulic system. Load-restricted; full force available at any point in stroke. Better for deep drawing and forming. Slower; more expensive. |
+| Pneumatic Press | Compressed air cylinder. Smallest capacity; light-duty operations only. |
+
+---
+
+## Iron Graph and All Graphs
+
+### A. Iron–Carbon (Fe–Fe₃C) Phase Diagram
+
+The Iron-Carbon phase diagram maps the microstructural phases present in iron-carbon alloys (steels and cast irons) as a function of temperature and carbon content.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp42.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| Feature | Value / Description |
+|---|---|
+| Eutectic Point (Ledeburite) | 4.3% C, 1147°C. Liquid → Austenite + Fe₃C (Cementite). Forms ledeburite. |
+| Eutectoid Point | 0.77% C, 727°C. Austenite → Ferrite + Fe₃C (Cementite). Forms Pearlite (lamellar structure). |
+| Peritectic Point | 0.17% C, 1493°C. Liquid + δ-ferrite → Austenite (γ). |
+| A₁ Line (Lower Critical) | 727°C (Eutectoid temperature). Austenite transforms to Pearlite on cooling below this line. |
+| A₃ Line (Upper Critical — Hypoeutectoid) | Varies with carbon (911°C at 0% C to 727°C at 0.77% C). Start of austenite → ferrite transformation on cooling. |
+| Acm Line (Upper Critical — Hypereutectoid) | Varies from 727°C at 0.77% C to ~1147°C at 2.14% C. Start of austenite → cementite transformation on cooling. |
+| Steels | < 2.14% C. Consist of ferrite, pearlite, cementite depending on C content. |
+| Cast Irons | 2.14–6.67% C. Contain ledeburite; classified as grey, white, malleable, nodular. |
+
+#### 1. Microstructural Phases
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp43.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| Phase | Description & Properties |
+|---|---|
+| Ferrite (α) | BCC iron; max 0.022% C solubility at 727°C. Soft, ductile, magnetic below Curie temperature. |
+| Austenite (γ) | FCC iron; max 2.14% C solubility at 1147°C. Non-magnetic; precursor to most heat treatment. |
+| Cementite (Fe₃C) | Iron carbide; 6.67% C. Very hard and brittle. Strengthens steel in pearlite. |
+| Pearlite | Eutectoid mixture of ferrite + cementite (lamellar). Moderate strength and ductility. |
+| Martensite | Formed by rapid quenching of austenite. BCT structure; supersaturated with C. Very hard and brittle. |
+| Bainite | Formed at temperatures between pearlite and martensite formation. Acicular (needle-like) microstructure. Good combination of strength and toughness. |
+| Ledeburite | Eutectic mixture of austenite + cementite. Present in cast irons. |
+
+---
+
+### B. TTT Diagram (Time-Temperature-Transformation)
+
+The TTT (Isothermal Transformation) diagram shows the time required for austenite to transform to various products at a given constant temperature.
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp44.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+* **'C-curve' or 'S-curve' shape** due to competing effects of driving force (increases with undercooling) and diffusion rate (decreases with lower temperature).
+* **Nose of the C-curve:** Minimum incubation time (fastest transformation). Typically ~550°C for eutectoid steel.
+* **Martensite Start (Ms) and Finish (Mf) temperatures:** Horizontal lines below the C-curve. Martensite forms by quenching below Ms without holding.
+* **Critical Cooling Rate:** Minimum cooling rate to avoid the nose of the TTT curve and form fully martensitic structure.
+
+---
+
+### C. Stress–Strain Curve (for Metal Forming)
+
+<img
+  src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/Mech/mp45.png?raw=true"
+  alt="Diagram"
+  style={{
+    width: "60%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+| Region | Characteristics |
+|---|---|
+| Elastic Region (OA) | Linear; stress proportional to strain (Hooke's Law). E = σ/ε. Fully recoverable. |
+| Yield Point (A) | Onset of plastic deformation. Upper and lower yield point observed in mild steel (due to Luder bands). |
+| Plastic Region (A–C) | Permanent deformation. Work hardening occurs (flow stress increases with strain). |
+| Ultimate Tensile Strength (C) | Maximum engineering stress. Necking begins here. |
+| Fracture Point (D) | Failure. True fracture strain > necking strain. |

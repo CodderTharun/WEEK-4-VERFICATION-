@@ -1,110 +1,1309 @@
 ---
-title: EEE Department - Week 2 Answer Keys
+title: Week 2 Answer Keys
 description: Solutions and answer keys for EEE Department Week 2 problems
 ---
 
-# EEE Department - Week 2 Answer Keys
 
-## Circuit Theory - Advanced
-
-**Q1: Thevenin's Theorem**
-```
-1. Remove load
-2. Find Vth = open circuit voltage at load terminals
-3. Find Rth = resistance with sources deactivated
-4. Thevenin equivalent = Vth in series with Rth
-```
-
-**Q2: Superposition Theorem**
-```
-Total response = Sum of responses for each source
-- Turn off other sources (V-source→0, I-source→∞)
-- Calculate response to one source
-- Repeat and sum
-```
-
-## Power Systems - Analysis
-
-**Q1: Fault Analysis**
-```
-3-phase symmetric fault:
-Fault current = V / Z
-Time duration: Several cycles
-Protective devices: Circuit breaker trips
-```
-
-**Q2: Power Factor Correction**
-```
-Original: cos(φ) = 0.8, P = 100kW
-Qoriginal = P × tan(φ)
-Capacitor sizing: Qc = Q1 - Q2
-After correction: Improved PF
-```
-
-## Electrical Machines - Design
-
-**Q1: Synchronous Generator**
-```
-Frequency = 120f / P poles
-Voltage regulation = (Efld - V) / V
-Armature reaction effect
-Salient pole vs Cylindrical
-```
-
-**Q2: Induction Motor Performance**
-```
-Efficiency η = PL / (PL + Ploss)
-Copper loss: I²R (rotor + stator)
-Core loss: Hysteresis + Eddy
-Mechanical loss: Friction
-```
-
-## Control Systems - Analysis
-
-**Q1: Bode Plot**
-```
-Magnitude plot: 20 log|H(jω)|
-Phase plot: ∠H(jω)
-Gain margin: 20 log(1/GM)
-Phase margin: PM = 180° + ∠H(jωpc)
-```
-
-**Q2: Root Locus**
-```
-As K varies, poles move
-Branches start at open-loop poles
-End at zeros or infinity
-Rules: Angle, magnitude, breakaway
-```
-
-## Power Generation - Systems
-
-**Q1: Hydro Power Plant**
-```
-Power = ρ × g × Q × H
-Q: Flow rate
-H: Head
-Efficiency: Turbine type dependent
-Seasonal variation considerations
-```
-
-**Q2: Thermal Power Plant**
-```
-Rank of coal affects efficiency
-Combustion temperature
-Steam generation
-Turbine stages: HP, IP, LP
-```
+## Test 2 (EEE) 
+**Total Questions: 45**
 
 ---
 
-## Analysis Tools
+## Question 1
 
-| Tool | Purpose |
-|------|---------|
-| Thevenin | Simplify circuits |
-| Superposition | Analyze multi-source |
-| Bode | Frequency response |
-| Locus | Stability with parameter variation |
+1. The speed of a boat when travelling downstream is 32 km/hr, whereas when travelling upstream it is 28 km/hr. What is the speed of the boat in still water and the speed of the stream?
 
-**Week 2 Complete:** Intermediate analysis techniques solidified
+- A) 30 km/hr, 2 km/hr
+- B) 28 km/hr, 4 km/hr
+- C) 32 km/hr, 2 km/hr
+- D) 30 km/hr, 4 km/hr
+
+Correct Answer: A) 30 km/hr, 2 km/hr
+
+Explanation:
+
+Downstream speed = 32 km/hr
+
+Upstream speed = 28 km/hr
+
+Speed of boat in still water
+
+= (32 + 28) / 2
+
+= 60 / 2
+
+= 30 km/hr
+
+Speed of stream
+
+= (32 − 28) / 2
+
+= 4 / 2
+
+= 2 km/hr
+
+---
+
+## Question 2
+
+2. In one hour, a boat goes 11 km along the stream and 5 km against the stream. The speed of the boat in still water (in km/hr) is (B.Ed Entrance, 2009)
+
+- A) 3 km/hr
+- B) 5 km/hr
+- C) 8 km/hr
+- D) 9 km/hr
+
+Correct Answer: C) 8 km/hr
+
+Explanation:
+
+Downstream speed = 11 km/hr
+
+Upstream speed = 5 km/hr
+
+Speed of boat in still water
+
+= (11 + 5) / 2
+
+= 16 / 2
+
+= 8 km/hr
+
+---
+
+## Question 3
+
+3. A train is moving at a speed of 132 km/hr. If the length of the train is 110 m, how long will it take to cross a railway platform 165 m long?
+
+- A) 5 sec
+- B) 6 sec
+- C) 7.5 sec
+- D) 8 sec
+
+Correct Answer: C) 7.5 sec
+
+Explanation:
+
+Speed of train
+
+= (132 × 5) / 18 m/sec
+
+= 110 / 3 m/sec
+
+Total distance covered
+
+= Length of train + Length of platform
+
+= 110 + 165
+
+= 275 m
+
+Time taken
+
+= Distance / Speed
+
+= 275 ÷ (110/3)
+
+= 275 × 3 / 110
+
+= 7.5 sec
+
+---
+
+## Question 4
+
+4. How many arrangements can be made out of the letters of the word "ENGINEERING"?
+
+- A) 277200
+- B) 302400
+- C) 554400
+- D) 138600
+
+Correct Answer: A) 277200
+
+Explanation:
+
+The word "ENGINEERING" contains 11 letters.
+
+Repeated letters are:
+
+E = 3, N = 3, G = 2, I = 2
+
+Number of arrangements
+
+= 11! / (3! × 3! × 2! × 2!)
+
+= 39916800 / (6 × 6 × 2 × 2)
+
+= 39916800 / 144
+
+= 277200
+
+---
+
+## Question 5
+
+5. In how many different ways can the letters of the word "DAUGHTER" be arranged so that the vowels always come together?
+
+- A) 2160
+- B) 4320
+- C) 5040
+- D) 7200
+
+Correct Answer: B) 4320
+
+Explanation:
+
+The vowels are A, U and E.
+
+Treat the vowels as a single unit.
+
+The units to be arranged are:
+
+D, G, H, T, R, (AUE)
+
+Total units = 6
+
+Number of ways to arrange these units
+
+= 6!
+
+= 720
+
+The vowels can be arranged among themselves in
+
+= 3!
+
+= 6 ways
+
+Required number of arrangements
+
+= 720 × 6
+
+= 4320
+
+---
+
+## Question 6
+
+6. (75P₂ – 75C₂) = ?
+
+- A) 0
+- B) 75
+- C) 150
+- D) 2775
+
+Correct Answer: D) 2775
+
+Explanation:
+
+75P₂
+
+= 75 × 74
+
+= 5550
+
+75C₂
+
+= (75 × 74) / 2
+
+= 2775
+
+Therefore,
+
+75P₂ – 75C₂
+
+= 5550 − 2775
+
+= 2775
+
+---
+
+## Question 7
+
+7. Out of 5 women and 4 men, a committee of three members is to be formed in such a way that at least one member is a woman. In how many different ways can it be done? (Bank P.O., 2009)
+
+- A) 76
+- B) 80
+- C) 84
+- D) 96
+
+Correct Answer: C) 84
+
+Explanation:
+
+Possible cases are:
+
+1 woman and 2 men
+
+= ⁵C₁ × ⁴C₂
+
+= 5 × 6
+
+= 30
+
+2 women and 1 man
+
+= ⁵C₂ × ⁴C₁
+
+= 10 × 4
+
+= 40
+
+3 women
+
+= ⁵C₃
+
+= 10
+
+Total number of ways
+
+= 30 + 40 + 10
+
+= 84
+
+---
+
+## Question 8
+
+8. In a simultaneous throw of a pair of dice, find the probability of getting a total more than 7.
+
+- A) 5/12
+- B) 7/12
+- C) 1/2
+- D) 15/36
+
+Correct Answer: A) 5/12
+
+Explanation:
+
+Total possible outcomes when two dice are thrown
+
+= 6 × 6
+
+= 36
+
+Sums greater than 7 are:
+
+8 → 5 outcomes
+
+9 → 4 outcomes
+
+10 → 3 outcomes
+
+11 → 2 outcomes
+
+12 → 1 outcome
+
+Total favourable outcomes
+
+= 5 + 4 + 3 + 2 + 1
+
+= 15
+
+Probability
+
+= 15 / 36
+
+= 5 / 12
+
+---
+
+## Question 9
+
+9. A bag contains 6 white and 4 black balls. Two balls are drawn at random. Find the probability that they are of the same colour.
+
+- A) 7/15
+- B) 8/15
+- C) 21/45
+- D) 2/5
+
+Correct Answer: A) 7/15
+
+Explanation:
+
+Total number of balls
+
+= 6 + 4
+
+= 10
+
+Total ways of drawing 2 balls
+
+= ¹⁰C₂
+
+= (10 × 9) / (2 × 1)
+
+= 45
+
+Ways of drawing 2 white balls
+
+= ⁶C₂
+
+= (6 × 5) / (2 × 1)
+
+= 15
+
+Ways of drawing 2 black balls
+
+= ⁴C₂
+
+= (4 × 3) / (2 × 1)
+
+= 6
+
+Favourable outcomes
+
+= 15 + 6
+
+= 21
+
+Probability
+
+= 21 / 45
+
+= 7 / 15
+
+---
+
+## Question 10
+
+10. Two cards are drawn together from a pack of 52 cards. The probability that one is a spade and one is a heart, is
+
+- A) 3/20
+- B) 29/34
+- C) 47/100
+- D) 13/102
+
+Correct Answer: D) 13/102
+
+Explanation:
+
+Total number of ways of drawing 2 cards from 52 cards
+
+= ⁵²C₂
+
+= (52 × 51) / (2 × 1)
+
+= 1326
+
+Number of ways of choosing 1 spade
+
+= ¹³C₁
+
+= 13
+
+Number of ways of choosing 1 heart
+
+= ¹³C₁
+
+= 13
+
+Favourable outcomes
+
+= 13 × 13
+
+= 169
+
+Probability
+
+= 169 / 1326
+
+= 13 / 102
+
+---
+
+## Question 11
+
+11. In a simultaneous throw of two dice, what is the probability of getting a doublet?
+
+- A) 1/6
+- B) 1/4
+- C) 2/3
+- D) 3/7
+
+Correct Answer: A) 1/6
+
+Explanation:
+
+Total possible outcomes when two dice are thrown
+
+= 6 × 6
+
+= 36
+
+A doublet means both dice show the same number.
+
+Favourable outcomes are:
+
+(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)
+
+Number of favourable outcomes
+
+= 6
+
+Probability
+
+= 6 / 36
+
+= 1 / 6
+
+---
+
+## Question 12
+
+12. If a − b = 3 and a² + b² = 29, find the value of ab.
+
+- A) 10
+- B) 12
+- C) 15
+- D) 18
+
+Correct Answer: A) 10
+
+Explanation:
+
+Using the identity:
+
+(a − b)² = a² + b² − 2ab
+
+Substituting the given values:
+
+3² = 29 − 2ab
+
+9 = 29 − 2ab
+
+2ab = 20
+
+ab = 10
+
+---
+
+## Question 13
+
+13. If α and β are the roots of the polynomial f(x) = x² + x + 1, then the value of (1/α + 1/β) will be:
+
+- A) 1
+- B) −1
+- C) 0
+- D) 2
+
+Correct Answer: B) −1
+
+Explanation:
+
+For the polynomial:
+
+x² + x + 1
+
+Sum of roots
+
+α + β = −b/a
+
+= −1
+
+Product of roots
+
+αβ = c/a
+
+= 1
+
+Therefore,
+
+(1/α + 1/β)
+
+= (α + β) / αβ
+
+= (−1) / 1
+
+= −1
+
+---
+
+## Question 14
+
+14. The value of k for which the quadratic equation kx(x − 2) + 6 = 0 has equal roots is:
+
+- A) 2
+- B) 3
+- C) 6
+- D) −6
+
+Correct Answer: C) 6
+
+Explanation:
+
+Given equation
+
+kx(x − 2) + 6 = 0
+
+⇒ kx² − 2kx + 6 = 0
+
+Comparing with ax² + bx + c = 0,
+
+a = k
+
+b = −2k
+
+c = 6
+
+For equal roots,
+
+b² − 4ac = 0
+
+⇒ (−2k)² − 4(k)(6) = 0
+
+⇒ 4k² − 24k = 0
+
+⇒ 4k(k − 6) = 0
+
+⇒ k = 0 or k = 6
+
+Since k ≠ 0 for a quadratic equation,
+
+k = 6
+
+---
+
+## Question 15
+
+15. Quadratic equation corresponding to the roots 2 + √5 and 2 − √5 is:
+
+- A) x² − 4x − 1 = 0
+- B) x² + 4x − 1 = 0
+- C) x² − 2x − 1 = 0
+- D) x² − 4x + 1 = 0
+
+Correct Answer: A) x² − 4x − 1 = 0
+
+Explanation:
+
+Given roots:
+
+α = 2 + √5
+
+β = 2 − √5
+
+Sum of roots
+
+= α + β
+
+= (2 + √5) + (2 − √5)
+
+= 4
+
+Product of roots
+
+= αβ
+
+= (2 + √5)(2 − √5)
+
+= 4 − 5
+
+= −1
+
+Quadratic equation
+
+= x² − (sum of roots)x + (product of roots)
+
+= 0
+
+⇒ x² − 4x − 1 = 0
+
+---
+
+## Question 16
+
+16. Why does a gradient occur in a semiconductor?
+
+- A) Because of current flow
+- B) Because of diffusion current
+- C) Because of drift current
+- D) Because of difference in concentrations
+
+Correct Answer: D) Because of difference in concentrations
+
+Explanation:
+
+In a semiconductor, the concentration of charge carriers is not uniform throughout the material.
+
+Carriers naturally move from a region of higher concentration to a region of lower concentration.
+
+This concentration difference creates a concentration gradient, which gives rise to diffusion current.
+
+---
+
+## Question 17
+
+17. A uniformly doped semiconductor bar is subjected to an electric field directed along the +x axis. Electron concentration is also higher at the left end than the right end. Which statement is correct regarding electron drift and diffusion currents?
+
+- A) Both drift and diffusion currents are along +x direction
+- B) Drift current is along −x and diffusion current is along +x
+- C) Drift current is along +x and diffusion current is along −x
+- D) Both drift and diffusion currents are along −x direction
+
+Correct Answer: A) Both drift and diffusion currents are along +x direction
+
+Explanation:
+
+Electrons move opposite to the applied electric field.
+
+Since the electric field is along +x, electron motion is toward −x.
+
+Conventional current due to electron drift is opposite to electron motion and therefore flows along +x.
+
+For diffusion, electrons move from the region of high concentration on the left toward the region of low concentration on the right.
+
+The resulting diffusion current is also along +x.
+
+Therefore, both drift and diffusion currents are in the same direction.
+
+---
+
+## Question 18
+
+18. In a P-type semiconductor, acceptor energy levels are located:
+
+- A) Inside conduction band
+- B) Near conduction band
+- C) Near valence band
+- D) Exactly at Fermi level
+
+Correct Answer: C) Near valence band
+
+Explanation:
+
+P-type semiconductors are formed by adding trivalent impurities.
+
+These impurities create acceptor energy levels very close to the valence band.
+
+Only a small amount of energy is required for electrons to move into these levels, leaving behind holes in the valence band.
+
+---
+
+## Question 19
+
+19. Which statement about intrinsic semiconductors is FALSE?
+
+- A) Current conduction occurs due to both electrons and holes
+- B) Electron concentration equals hole concentration
+- C) Conductivity is relatively low
+- D) Majority carriers are electrons only
+
+Correct Answer: D) Majority carriers are electrons only
+
+Explanation:
+
+An intrinsic semiconductor is a pure semiconductor without any impurity doping.
+
+The number of electrons is equal to the number of holes.
+
+Since both carrier concentrations are equal, there are no majority or minority carriers.
+
+Therefore, statement D is false.
+
+---
+
+## Question 20
+
+20. A diode has a reverse saturation current Is. According to the Shockley equation, when the applied voltage is large and negative, the diode current approximately becomes:
+
+- A) +Is
+- B) 0
+- C) −Is
+- D) Infinite
+
+Correct Answer: C) −Is
+
+Explanation:
+
+The Shockley diode equation is:
+
+I = Is(e^(V/ηVT) − 1)
+
+For a large negative voltage,
+
+e^(V/ηVT) ≈ 0
+
+Therefore,
+
+I ≈ Is(0 − 1)
+
+I ≈ −Is
+
+Hence the diode current approaches the reverse saturation current.
+
+---
+
+## Question 21
+
+21. Which breakdown mechanism is dominant in a heavily doped diode operating at low reverse voltage?
+
+- A) Avalanche breakdown
+- B) Thermal breakdown
+- C) Zener breakdown
+- D) Diffusion breakdown
+
+Correct Answer: C) Zener breakdown
+
+Explanation:
+
+In heavily doped diodes, the depletion region becomes very thin.
+
+A strong electric field is produced even at low reverse voltages.
+
+This strong electric field causes electrons to tunnel across the junction, resulting in Zener breakdown.
+
+---
+
+## Question 22
+
+22. Peak Inverse Voltage (PIV) of a diode refers to:
+
+- A) Maximum forward current capability
+- B) Minimum voltage for conduction
+- C) Maximum reverse voltage without breakdown
+- D) Voltage across depletion layer only
+
+Correct Answer: C) Maximum reverse voltage without breakdown
+
+Explanation:
+
+Peak Inverse Voltage is the maximum reverse voltage that a diode can withstand safely.
+
+If the applied reverse voltage exceeds the PIV rating, the diode may enter breakdown and become damaged.
+
+---
+
+## Question 23
+
+23. A negative clipper allows which part of the waveform to appear at the output?
+
+- A) Only negative half cycle
+- B) Only positive half cycle
+- C) Both cycles equally
+- D) No output waveform
+
+Correct Answer: B) Only positive half cycle
+
+Explanation:
+
+A negative clipper removes or clips the negative portions of the input waveform.
+
+The positive half cycles are allowed to pass through unchanged.
+
+Therefore, only the positive portion appears at the output.
+
+---
+
+## Question 24
+
+24. Which statement correctly distinguishes a clamper from a clipper?
+
+- A) Clamper removes waveform portions
+- B) Clipper shifts DC level
+- C) Clamper shifts entire waveform without distortion
+- D) Both perform identical functions
+
+Correct Answer: C) Clamper shifts entire waveform without distortion
+
+Explanation:
+
+A clipper removes selected portions of a waveform above or below a reference level.
+
+A clamper does not remove any part of the waveform.
+
+Instead, it shifts the entire waveform upward or downward by adding a DC level while preserving its shape.
+
+---
+
+## Question 25
+
+25. In a CMOS inverter, when the input is logic 1:
+
+- A) Both NMOS and PMOS are ON
+- B) NMOS ON and PMOS OFF
+- C) NMOS OFF and PMOS ON
+- D) Both NMOS and PMOS are OFF
+
+Correct Answer: B) NMOS ON and PMOS OFF
+
+Explanation:
+
+In a CMOS inverter, a logic 1 applied to the input turns the NMOS transistor ON.
+
+At the same time, the PMOS transistor turns OFF.
+
+The output is connected to ground through the conducting NMOS transistor.
+
+Therefore, the output becomes logic 0.
+
+---
+
+## Question 26
+
+26. Why are power semiconductor devices mainly operated in switching mode?
+
+- A) To increase heat generation
+- B) To maximize power loss
+- C) To minimize power dissipation
+- D) To operate continuously in linear region
+
+Correct Answer: C) To minimize power dissipation
+
+Explanation:
+
+Power semiconductor devices are generally operated either fully ON or fully OFF.
+
+When fully ON, the voltage drop across the device is very small.
+
+When fully OFF, the current flowing through the device is nearly zero.
+
+As a result, power loss is minimized and efficiency is improved.
+
+---
+
+## Question 27
+
+27. A diode with large reverse recovery time is used in a high-frequency SMPS circuit. Which effect is MOST likely?
+
+- A) Reduced switching losses
+- B) Improved efficiency
+- C) Increased EMI noise and heating
+- D) Zero reverse current
+
+Correct Answer: C) Increased EMI noise and heating
+
+Explanation:
+
+A large reverse recovery time causes the diode to continue conducting briefly after switching.
+
+This results in higher switching losses, increased heat generation, greater electromagnetic interference (EMI), and reduced efficiency.
+
+Therefore, fast recovery diodes are preferred in SMPS and inverter applications.
+
+---
+
+## Question 28
+
+28. Why does an SCR (thyristor) continue conducting even after the gate signal is removed?
+
+- A) Gate continuously supplies current
+- B) Device enters bistable conduction state
+- C) Reverse bias immediately turns it OFF
+- D) Gate controls both ON and OFF operation
+
+Correct Answer: B) Device enters bistable conduction state
+
+Explanation:
+
+Once triggered, the SCR enters a regenerative conduction mode.
+
+Internal positive feedback within the PNPN structure keeps the device conducting.
+
+After turn-on, the gate no longer controls conduction.
+
+The SCR turns OFF only when the anode current falls below the holding current.
+
+---
+
+## Question 29
+
+29. Which statement correctly explains light generation in an LED?
+
+- A) Collision ionization produces photons
+- B) Electrons emit light during reverse breakdown
+- C) Electron-hole recombination releases energy as photons
+- D) Zener effect creates visible radiation
+
+Correct Answer: C) Electron-hole recombination releases energy as photons
+
+Explanation:
+
+In forward bias, electrons from the N-region recombine with holes from the P-region.
+
+During recombination, energy is released.
+
+In LEDs, this energy appears in the form of photons, producing visible light.
+
+This phenomenon is known as electroluminescence.
+
+---
+
+## Question 30
+
+30. Why is a photodiode generally operated in reverse bias?
+
+- A) Forward bias increases depletion width
+- B) Reverse bias improves sensitivity and response speed
+- C) Reverse bias blocks all photocurrent
+- D) Forward bias prevents recombination completely
+
+Correct Answer: B) Reverse bias improves sensitivity and response speed
+
+Explanation:
+
+Under reverse bias, the depletion region becomes wider.
+
+Photogenerated charge carriers are swept across the junction more rapidly.
+
+This improves both the response speed and sensitivity of the photodiode.
+
+Therefore, photodiodes are commonly operated in reverse bias.
+
+---
+
+## Question 31
+
+31. A Zener diode is heavily doped mainly to:
+
+- A) Increase forward resistance
+- B) Reduce breakdown voltage
+- C) Eliminate depletion region completely
+- D) Increase reverse leakage current infinitely
+
+Correct Answer: B) Reduce breakdown voltage
+
+Explanation:
+
+Heavy doping narrows the depletion region of the PN junction.
+
+A narrow depletion layer creates a strong electric field across the junction.
+
+As a result, Zener breakdown occurs at a lower reverse voltage, enabling effective voltage regulation.
+
+---
+
+## Question 32
+
+32. Why does a Schottky diode switch faster than a normal PN junction diode?
+
+- A) It has larger depletion region
+- B) It stores more minority carriers
+- C) It uses metal-semiconductor junction with very small charge storage
+- D) It operates only in forward bias
+
+Correct Answer: C) It uses metal-semiconductor junction with very small charge storage
+
+Explanation:
+
+A Schottky diode uses a metal-semiconductor junction instead of a PN junction.
+
+Since it has negligible minority carrier storage, reverse recovery time is extremely small.
+
+This results in very fast switching performance.
+
+---
+
+## Question 33
+
+33. Why is latching current always greater than holding current in an SCR?
+
+- A) SCR requires higher current initially to establish stable conduction
+- B) Holding current exists only in reverse bias
+- C) Gate current increases holding current infinitely
+- D) Latching current occurs after turn OFF
+
+Correct Answer: A) SCR requires higher current initially to establish stable conduction
+
+Explanation:
+
+Latching current is the minimum anode current required immediately after triggering to keep the SCR ON when the gate signal is removed.
+
+Holding current is the minimum current needed to maintain conduction after the SCR is already conducting.
+
+Therefore:
+
+IL > IH
+
+because establishing conduction initially requires a higher current.
+
+---
+
+## Question 34
+
+34. An IGBT combines which important features of MOSFET and BJT?
+
+- A) MOSFET’s low impedance and BJT’s slow switching
+- B) MOSFET’s high input impedance and BJT’s high current capability
+- C) MOSFET’s current control and BJT’s voltage control
+- D) MOSFET’s low voltage rating and BJT’s low efficiency
+
+Correct Answer: B) MOSFET’s high input impedance and BJT’s high current capability
+
+Explanation:
+
+An IGBT combines the advantages of both MOSFETs and BJTs.
+
+From the MOSFET, it inherits voltage-controlled operation and high input impedance.
+
+From the BJT, it inherits high current and voltage handling capability.
+
+These characteristics make IGBTs widely used in power electronic applications.
+
+---
+
+## Question 35
+
+35. In a boost chopper, why can the output voltage become greater than the input voltage?
+
+- A) The duty cycle becomes negative
+- B) Energy stored in the inductor during ON state is released during OFF state
+- C) The input DC source reverses polarity
+- D) The switch remains permanently ON
+
+Correct Answer: B) Energy stored in the inductor during ON state is released during OFF state
+
+Explanation:
+
+In a boost converter, the inductor stores energy when the switch is ON.
+
+When the switch turns OFF, the stored energy is released and adds to the source voltage.
+
+Therefore, the output voltage can become greater than the input voltage.
+
+The output voltage is given by:
+
+Vo = Vs / (1 − D)
+
+where D is the duty cycle.
+
+---
+
+## Question 36
+
+36. Why is a starter required for a DC motor?
+
+- A) To increase speed
+- B) To limit starting current
+- C) To reduce voltage
+- D) To increase torque
+
+Correct Answer: B) To limit starting current
+
+Explanation:
+
+At the moment of starting, the back EMF of a DC motor is zero because the rotor is stationary.
+
+As a result, a very large armature current flows.
+
+This excessive current can damage the motor windings.
+
+Therefore, a starter is used to limit the starting current.
+
+---
+
+## Question 37
+
+37. What is the function of the commutator in a DC machine?
+
+- A) Converts AC to DC
+- B) Converts DC to AC
+- C) Stores energy
+- D) Reduces losses
+
+Correct Answer: A) Converts AC to DC
+
+Explanation:
+
+The EMF induced in the armature winding is inherently alternating in nature.
+
+The commutator mechanically rectifies this alternating voltage.
+
+As a result, the output available at the terminals becomes DC.
+
+---
+
+## Question 38
+
+38. Why does an increase in supply frequency reduce the maximum torque of an induction motor?
+
+- A) Rotor resistance increases
+- B) Rotor reactance increases
+- C) Slip increases
+- D) Stator current decreases
+
+Correct Answer: B) Rotor reactance increases
+
+Explanation:
+
+Rotor reactance is directly proportional to frequency.
+
+When the supply frequency increases, rotor reactance also increases.
+
+The increased reactance reduces rotor current, which in turn reduces the maximum torque developed by the motor.
+
+---
+
+## Question 39
+
+39. Why is the open-circuit characteristic (OCC) of a synchronous generator non-linear?
+
+- A) Due to armature resistance
+- B) Due to leakage reactance
+- C) Due to magnetic saturation
+- D) Due to load variation
+
+Correct Answer: C) Due to magnetic saturation
+
+Explanation:
+
+Initially, generated voltage increases almost linearly with field current.
+
+At higher field currents, the magnetic core approaches saturation.
+
+As saturation increases, flux no longer rises proportionally with field current.
+
+Therefore, the OCC becomes non-linear.
+
+---
+
+## Question 40
+
+40. A 50 Hz transformer operates at 25 Hz with the same voltage. What happens to core flux?
+
+- A) Halves
+- B) Remains same
+- C) Doubles
+- D) Becomes zero
+
+Correct Answer: C) Doubles
+
+Explanation:
+
+The transformer flux is proportional to:
+
+Flux ∝ V/f
+
+When the frequency is reduced from 50 Hz to 25 Hz while keeping the voltage constant,
+
+Flux ∝ V/25
+
+which is twice the original value.
+
+Therefore, the core flux doubles and may cause saturation.
+
+---
+
+## Question 41
+
+41. In a DC generator, critical resistance is defined as:
+
+- A) Minimum resistance for operation
+- B) Maximum field resistance for voltage build-up
+- C) Armature resistance
+- D) Load resistance
+
+Correct Answer: B) Maximum field resistance for voltage build-up
+
+Explanation:
+
+A self-excited DC generator requires sufficient field current to build up voltage.
+
+If the field resistance exceeds a certain value, voltage build-up cannot occur.
+
+This limiting value is called the critical resistance.
+
+It depends on the generator speed and open-circuit characteristic (OCC).
+
+---
+
+## Question 42
+
+42. Assertion (A): A transformer draws magnetizing current even at no load.
+
+Reason (R): Core requires current to establish mutual flux.
+
+- A) Both A and R are true, and R is the correct explanation
+- B) Both A and R are true, but R is not the correct explanation
+- C) A is true, R is false
+- D) A is false, R is true
+
+Correct Answer: A) Both A and R are true, and R is the correct explanation
+
+Explanation:
+
+Even when no external load is connected, the transformer must establish magnetic flux in its core.
+
+A small magnetizing current is therefore drawn from the supply.
+
+This current produces the mutual flux necessary for transformer operation.
+
+Hence both the assertion and reason are true, and the reason correctly explains the assertion.
+
+---
+
+## Question 43
+
+43. A 50 Hz induction motor has a slip of 3%. What is rotor frequency?
+
+- A) 1.5 Hz
+- B) 2 Hz
+- C) 3 Hz
+- D) 5 Hz
+
+Correct Answer: A) 1.5 Hz
+
+Explanation:
+
+Rotor frequency is given by:
+
+fr = s × f
+
+Given:
+
+s = 3% = 0.03
+
+f = 50 Hz
+
+Therefore,
+
+fr = 0.03 × 50
+
+= 1.5 Hz
+
+---
+
+## Question 44
+
+44. Why does an induction motor draw heavy current at starting?
+
+- A) High back EMF
+- B) Low supply voltage
+- C) Absence of back EMF
+- D) High resistance
+
+Correct Answer: C) Absence of back EMF
+
+Explanation:
+
+At starting, the rotor is stationary.
+
+Since there is no rotation, no back EMF is produced.
+
+Without back EMF to oppose the supply voltage, a large current flows through the motor winding.
+
+Therefore, induction motors draw heavy current during starting.
+
+---
+
+## Question 45
+
+45. Why does voltage regulation of a transformer depend on load power factor?
+
+- A) Due to iron losses
+- B) Due to copper losses
+- C) Due to voltage drops in impedance
+- D) Due to frequency
+
+Correct Answer: C) Due to voltage drops in impedance
+
+Explanation:
+
+The voltage drop in a transformer depends on the load current and the transformer impedance.
+
+Since current and voltage may have a phase difference, the load power factor affects the magnitude of the voltage drop.
+
+Therefore, transformer voltage regulation varies with load power factor.
+
+---

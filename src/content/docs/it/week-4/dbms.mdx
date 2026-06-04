@@ -1,62 +1,752 @@
 ---
-title: DBMS - Week 4
-description: Transactions and Recovery
+title: Database Management Systems
 ---
 
+## Introduction to Database Normalization
 
+Normalization is an important process in database design that helps improve the database's efficiency, consistency, and accuracy. It makes it easier to manage and maintain the data and ensures that the database is adaptable to changing business needs.
 
-## Transactions
+#### 1. Organizing Attributes
+It is the process of organizing the attributes of the database to reduce or eliminate data redundancy (having the same data in different places), which otherwise unnecessarily increases the size of the database.
 
-A transaction is a sequence of operations that must be executed atomically.
+#### 2. Data Redundancy Issues
+Data redundancy leads to inconsistency problems during insert, delete, and update operations, making data management difficult.
 
-### ACID Properties
+#### 3. Table Splitting
+Normalization involves splitting a table into multiple tables, which must be linked each time a query requires data from the split tables.
 
-1. **Atomicity** - All or nothing
-2. **Consistency** - Valid state to valid state
-3. **Isolation** - No interference between transactions
-4. **Durability** - Permanent after commit
+### A. Example
 
-### Transaction States
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS1.png"
+  alt="--"
+  width="80%"
+/>
 
-- **Active** - Currently executing
-- **Partially Committed** - Executed but not committed
-- **Committed** - Successfully completed
-- **Failed** - Encountered error
-- **Aborted** - Rolled back
+**Before Normalization:** The table is prone to redundancy and anomalies (insertion, update, and deletion).
 
-### Concurrency Control
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS2.png"
+  alt="--"
+  width="80%"
+/>
 
-Multiple transactions running simultaneously.
+**After Normalization:** The data is divided into logical tables to ensure consistency, avoid redundancy and remove anomalies making the database efficient and reliable.
 
-### Isolation Levels
+### B. Problems in the Employee_Department Relation
 
-1. **Read Uncommitted** - Dirty reads possible
-2. **Read Committed** - No dirty reads
-3. **Repeatable Read** - No unrepeatable reads
-4. **Serializable** - Complete isolation
+#### 1. Insertion Anomaly
+If a new department is created but no employee is assigned to it yet, we cannot store its location because we need an employee record to insert. It shows an insertion anomaly.
 
-### Recovery
+#### 2. Update Anomaly
+If the location of the HR department changes, we must update it in multiple rows (for both Nick Wise and Lily Case). If one row is missed, the data becomes inconsistent.
 
-Restoring database after failure.
+#### 3. Deletion Anomaly
+If all employees in the IT department leave, we lose the department information, including its location.
 
-### Recovery Techniques
+#### 4. Redundancy
+The department location is repeated for every employee in the same department. It is redundant.
 
-- **Logging** - Record all changes
-- **Checkpointing** - Save consistent state
-- **Backup** - Full database copy
-- **Roll-back/Forward** - Undo or redo changes
+---
 
-### This Week
+## Need of Normalization
 
-- Transaction processing
-- ACID properties implementation
-- Concurrency control mechanisms
-- Locking protocols
-- Recovery mechanisms
-- Backup and restoration
+The primary objective for normalizing the relations is to eliminate the below anomalies. Failure to reduce anomalies results in data redundancy, which may threaten data integrity and cause additional issues as the database increases.
 
-### Practice
+#### 1. Insertion Anomalies
 
-- Design transactions
-- Implement locks
-- Handle failures
+Insertion anomalies occur when it is not possible to insert data into a database because the required fields are missing or because the data is incomplete. For example, if a database requires that every record has a primary key, but no value is provided for a particular record, it cannot be inserted into the database.
+
+#### 2. Deletion Anomalies
+
+Deletion anomalies occur when deleting a record from a database and can result in the unintentional loss of data. For example, if a database contains information about customers and orders, deleting a customer record may also delete all the orders associated with that customer.
+
+#### 3. Update Anomalies
+
+Updation of anomalies occur when modifying data in a database and can result in inconsistencies or errors. For example, if a database contains information about employees and their salaries, updating an employee's salary in one record but not in all related records could lead to incorrect calculations and reporting.
+
+---
+
+## Features of Database Normalization
+
+#### 1. Elimination of Data Redundancy
+
+One of the main features of normalization is to eliminate the data redundancy that can occur in a database. Data redundancy refers to the repetition of data in different parts of the database. Normalization helps in reducing or eliminating this redundancy, which can improve the efficiency and consistency of the database.
+
+#### 2. Ensuring Data Consistency
+
+Normalization helps in ensuring that the data in the database is consistent and accurate. By eliminating redundancy, normalization helps in preventing inconsistencies and contradictions that can arise due to different versions of the same data.
+
+#### 3. Simplification of Data Management
+
+Normalization simplifies the process of managing data in a database. By breaking down a complex data structure into simpler tables, normalization makes it easier to manage the data, update it, and retrieve it.
+
+#### 4. Improved Database Design
+
+Normalization helps in improving the overall design of the database. By organizing the data in a structured and systematic way, normalization makes it easier to design and maintain the database. It also makes the database more flexible and adaptable to changing business needs.
+
+#### 5. Standardization
+
+Normalization helps in standardizing the data in the database. By organizing the data into tables and defining relationships between them, normalization helps in ensuring that the data is stored in a consistent and uniform manner.
+
+---
+
+## Advantages of Normalization
+
+#### 1. Improved Overall Database Organization
+
+After normalization, your database will be structured and arranged in a way that is logical for all departments company-wide. With increased organization, duplication and location errors will be minimized and outdated versions of data can be more easily updated.
+
+#### 2. Data Consistency
+
+Consistent data is crucial for all teams within a business to stay on the same page. Normalization of data will ensure consistency across development, research, and sales teams. Consistent data will also improve workflow between departments and align their information sets.
+
+#### 3. Reduces Redundancy
+
+Redundancy is a commonly overlooked data storage issue. Reducing redundancy will ultimately help reduce file size and therefore speed up analysis and data processing time.
+
+#### 4. Cost Reduction
+
+Cost reduction due to normalization in DBMS involves a culmination of the previously mentioned benefits. For instance, if file size is reduced, data storage and processors won't need to be as large. Additionally, increased workflow due to consistency and organization will ensure that all employees are able to access the database information as quickly as possible, saving time for other necessary tasks.
+
+#### 5. Increased Security
+
+Because normalization requires that data is more accurately located and uniformly organized, security is significantly increased.
+
+---
+
+## Database Anomalies
+
+Anomalies means problems or inconsistency which happened during the operations performed on the table. There can be many reasons that anomalies occur for example,It occurs when data is stored multiple times unnecessarily in the database i.e. redundant data is present or it occurs when all the data is stored in a single table. Normalisation is used to overcome the anomalies. The different types of anomalies are insertion, deletion and updation anomalies.
+
+Let us consider the following STUDENT example to learn about types of anomalies:
+
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS3.png"
+  alt="--"
+  width="70%"
+/>
+
+### A. Insertion Anomaly
+
+When certain data or attributes cannot be inserted into the database without the presence of other data, it's called insertion anomaly.
+
+**For example,** let's take a branch named petroleum, now the data regarding petroleum cannot be stored in the table unless we insert a student who is in petroleum. Practically, branch existence is not dependent on student existence i.e. we must have the capability that we can store the data of a branch whether there are any students of that branch or not, but this can't be done because of insertion anomaly.
+
+```sql
+Insert into student values(7, 'G', 16, 'PETROLEUM', 104, 'NAMAN') 
+-- Values get inserted
+Select * from Student; 
+-- Data selected
+```
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS4.png"
+  alt="--"
+  width="70%"
+/>
+---
+
+### B. Deletion Anomaly
+
+If we delete any data from the database and any other information which is required also gets deleted with that deletion, then it is called deletion anomaly.
+
+**For example,** suppose a student of the electrical branch is leaving so now we have to delete the data of that student, but the problem is if we delete the student data, then branch data will also get deleted along with that as there is only one student present through which branch data is present.
+
+```sql
+Delete from STUDENT WHERE BRANCH= 'ELECTRICAL'; -- data get deleted
+Select * from STUDENT; -- data selected
+```
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS5.png"
+  alt="--"
+  width="70%"
+/>
+
+### C. Updation/Modification Anomaly
+
+If we want to update any single piece of data then we have to update all other copies, it comes under insertion anomaly.
+
+**For example,** suppose we need to change the hod name for civil branch, now as per requirement, only single data is to be changed, but we have to change the data at every other part so as to not make an inconsistent table.
+
+```sql
+Update STUDENT -- Table selected to perform task
+Set HOD_NAME= 'RAHUL' -- changes to be made
+WHERE BRANCH= 'CIVIL'; -- condition given
+Select * from STUDENT; -- Data selected
+```
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS6.png"
+  alt="--"
+  width="70%"
+/>
+
+---
+
+## Functional Dependency
+
+A functional dependency occurs when the value of one attribute (or a set of attributes) uniquely determines the value of another attribute. This relationship is denoted as:
+
+$$X \rightarrow Y$$
+
+Here, $X$ is the determinant, and $Y$ is the dependent attribute. This means that for each unique value of $X$, there is precisely one corresponding value of $Y$.
+
+### A. How to Represent Functional Dependency in DBMS
+
+#### 1. Equation Form
+
+Functional dependency is expressed in the form of equations. For example, if we have an employee record with fields "EmployeeID", "FirstName" and "LastName" we can specify the function as follows:
+
+$$\text{EmployeeID} \rightarrow \text{FirstName, LastName}$$
+
+#### 2. LHS and RHS
+
+There are two main features to represent functional dependency in DBMS: left (LHS) and right (RHS) of the arrow ($\rightarrow$). For example, if we have a table with attributes "X", "Y" and "Z" and the attribute "X" can determine the value of the attributes "Y" and "Z":
+
+$$X \rightarrow Y, Z$$
+
+#### 3. Interpretation
+
+This symbol indicates that the value in attributes $X$ determines the values in attributes $Y$ and $Z$. So if you know the value of $X$, you can also determine the value of $Y$ and $Z$.
+
+### B. Benefits of Functional Dependency in DBMS
+
+The concept of normalization is based on functional dependencies. Using functional dependencies, we break a table in multiple tables that helps us in preventing duplicate data and hence Improves Data Quality, less errors and better database design.
+
+### C. Types of Functional Dependencies
+
+A functional dependency occurs when one attribute uniquely determines another attribute within a relation. There are the following types of functional dependencies.
+
+#### 1. Trivial Functional Dependency
+
+In Trivial Functional Dependency, a dependent is always a subset of the determinant. i.e., If $X \rightarrow Y$ and $Y$ is the subset of $X$, then it is called a trivial functional dependency.
+
+Symbolically: $A \rightarrow B$ is a trivial functional dependency if $B$ is a subset of $A$.
+
+The following dependencies are also trivial: $A \rightarrow A$ & $B \rightarrow B$
+
+**Example:**
+
+| roll_no | name | age |
+|---------|------|-----|
+| 42      | abc  | 17  |
+| 43      | pqr  | 18  |
+| 44      | xyz  | 18  |
+
+Here, $\{roll\_no, name\} \rightarrow name$ is a trivial functional dependency, since the dependent name is a subset of the determinant set $\{roll\_no, name\}$. Similarly, $roll\_no \rightarrow roll\_no$ is also an example of trivial functional dependency.
+
+#### 2. Non-trivial Functional Dependency
+
+In Non-trivial functional dependency, the dependent is strictly not a subset of the determinant. i.e. If $X \rightarrow Y$ and $Y$ is not a subset of $X$, then it is called Non-trivial functional dependency.
+
+**Example:**
+
+| roll_no | name | age |
+|---------|------|-----|
+| 42      | abc  | 17  |
+| 43      | pqr  | 18  |
+| 44      | xyz  | 18  |
+
+Here, $roll\_no \rightarrow name$ is a non-trivial functional dependency, since the dependent name is not a subset of determinant $roll\_no$. Similarly, $\{roll\_no, name\} \rightarrow age$ is also a non-trivial functional dependency, since age is not a subset of $\{roll\_no, name\}$.
+
+#### 3. Semi Non Trivial Functional Dependencies
+
+A semi non-trivial functional dependency occurs when part of the dependent attribute (right-hand side) is included in the determinant (left-hand side), but not all of it. This is a middle ground between trivial and non-trivial functional dependencies. $X \rightarrow Y$ is called semi non-trivial when $X \cap Y \neq \emptyset$.
+
+**Example:**
+
+| student_ID | college_ID | course_name |
+|------------|------------|-------------|
+| 101        | CSE101     | Computer Science |
+| 102        | CSE102     | Data Structures |
+| 103        | CSE101     | Computer Science |
+
+$$\{StudentID, CourseID\} \rightarrow CourseID$$
+
+This is semi non-trivial because:
+- Part of the dependent attribute ($Course\_ID$) is already included in the determinant ($\{Student\_ID, Course\_ID\}$).
+- However, the dependency is not completely trivial because $\{StudentID\} \rightarrow CourseID$ is not implied directly.
+
+#### 4. Multivalued Functional Dependency
+
+In Multivalued functional dependency, entities of the dependent set are not dependent on each other. i.e. If $a \rightarrow \{b, c\}$ and there exists no functional dependency between $b$ and $c$, then it is called a multivalued functional dependency.
+
+**Example:**
+
+| bike_model | color | accessory |
+|------------|-------|-----------|
+| 101        | Black | Helmet    |
+| 101        | Black | Gloves    |
+| 101        | Red   | Helmet    |
+| 101        | Red   | Gloves    |
+
+In this table:
+- $X = bike\_model$
+- $Y = color$
+- $Z = accessory$
+
+For each bike model ($bike\_model$): There is a group of colors ($color$) and a group of accessories ($accessory$). The colors do not depend on the accessory, and the accessories do not depend on the colors. They are independent of each other. The sets of color and accessory are linked only to $bike\_model$.
+
+That's what makes it a multivalued dependency. In this case, these two columns (color and accessory) are said to be multivalued dependent on $bike\_model$. These dependencies can be represented like this:
+
+$$bike\_model \twoheadrightarrow color$$
+
+$$bike\_model \twoheadrightarrow accessory$$
+
+#### 5. Transitive Functional Dependency
+
+In transitive functional dependency, dependent is indirectly dependent on determinant. i.e. If $a \rightarrow b$ & $b \rightarrow c$, then according to the axiom of transitivity, $a \rightarrow c$. This is a transitive functional dependency.
+
+| enroll_no | name | department | building_no |
+|-----------|------|------------|-------------|
+| 41        | abc  | CO         | 4           |
+| 42        | pqr  | EC         | 2           |
+| 43        | xyz  | IT         | 1           |
+| 44        | abc  | EC         | 2           |
+
+Here, $enrol\_no \rightarrow dept$ and $dept \rightarrow building\_no$. Hence, according to the axiom of transitivity, $enrol\_no \rightarrow building\_no$ is a valid functional dependency. This is an indirect functional dependency, hence called Transitive functional dependency.
+
+#### 6. Fully Functional Dependency
+
+In full functional dependency an attribute or a set of attributes uniquely determines another attribute or set of attributes. If a relation $R$ has attributes $X$, $Y$, $Z$ with the dependencies $X \rightarrow Y$ and $X \rightarrow Z$ which states that those dependencies are fully functional.
+
+#### 7. Partial Functional Dependency
+
+In partial functional dependency a non key attribute depends on a part of the composite key, rather than the whole key. If a relation $R$ has attributes $X$, $Y$, $Z$ where $X$ and $Y$ are the composite key and $Z$ is non key attribute. Then $X \rightarrow Z$ is a partial functional dependency in RDBMS.
+
+---
+
+## Normal Forms in DBMS
+
+Most of the problems are very well prevented by knowing and applying the different normal forms in DBMS. Now, let us discuss normal forms in DBMS and understand how these actually keep our databases clean and efficient.
+
+| **Normal Forms** | **Description of Normal Forms** |
+|------------------|----------------------------------|
+| **First Normal Form (1NF)** | A relation is in **First Normal Form (1NF)** if every attribute contains only atomic (single-valued) values. |
+| **Second Normal Form (2NF)** | A relation is in **Second Normal Form (2NF)** if it is already in 1NF and every non-prime attribute is fully functionally dependent on the entire primary key. |
+| **Third Normal Form (3NF)** | A relation is in **Third Normal Form (3NF)** if it is already in 2NF and there is no transitive dependency for non-prime attributes. For every non-trivial functional dependency $X \rightarrow Y$, at least one of the following must hold: X is a super key, or Y is a prime attribute (each element of Y is part of some candidate key). |
+| **Boyce-Codd Normal Form (BCNF)** | A relation is in **BCNF** if: the relation is already in 3NF, and for every functional dependency $X \rightarrow Y$, $X$ must be a super key. |
+| **Fourth Normal Form (4NF)** | A relation is in **Fourth Normal Form (4NF)** if: the relation is already in BCNF, and the relation does not contain any multivalued dependency. |
+| **Fifth Normal Form (5NF)** | A relation is in **Fifth Normal Form (5NF)** if: the relation is already in 4NF, and it cannot be further decomposed without loss of information (join dependency). |
+
+---
+
+### A. First Normal Form (1NF): Ensuring Atomicity of Data
+
+First Normal Form (1NF) is all about making sure every piece of data in your table is atomic. Atomic means that each cell in a table contains only one value. No lists, no sets, just one value.
+
+Imagine a table storing student contact information. If a single cell holds multiple phone numbers, that's a problem.
+
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS7.png"
+  alt="--"
+  width="80%"
+/>
+
+**Code to apply 1NF:**
+
+```sql
+CREATE TABLE Students (
+  StudentID INT,
+  Name VARCHAR(50),
+  PhoneNumber VARCHAR(15)
+);
+-- Adding data
+INSERT INTO Students (StudentID, Name, PhoneNumber)
+VALUES
+(1, 'Rahul Sharma', '9876543210'),
+(1, 'Rahul Sharma', '9123456789'),
+(2, 'Anjali Verma', '9988776655'),
+(3, 'Priya Singh', '9876512345'),
+(3, 'Priya Singh', '9888123456'),
+(4, 'Rohan Kapoor', '9988123456'),
+(5, 'Neha Gupta', '9112233445'),
+(5, 'Neha Gupta', '9223344556');
+```
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS8.png"
+  alt="--"
+  width="80%"
+/>
+
+---
+
+### B. Second Normal Form (2NF): Eliminating Partial Dependencies
+
+Moving to the Second Normal Form (2NF), we focus on getting rid of partial dependencies. This means every non-key attribute must be fully dependent on the primary key.
+
+Consider a table where each student's name depends only on their StudentID, but course details are also mixed in:
+
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS9.png"
+  alt="--"
+  width="80%"
+/>
+
+**Code to apply 2NF:**
+
+```sql
+CREATE TABLE Students (
+  StudentID INT,
+  Name VARCHAR(50)
+);
+CREATE TABLE Courses (
+  CourseID INT,
+  CourseName VARCHAR(50),
+  Instructor VARCHAR(50)
+);
+CREATE TABLE StudentCourses (
+  StudentID INT,
+  CourseID INT
+);
+-- Adding data
+INSERT INTO Students (StudentID, Name)
+VALUES
+(1, 'Rahul Sharma'),
+(2, 'Anjali Verma'),
+(3, 'Priya Singh'),
+(4, 'Rohan Kapoor');
+INSERT INTO Courses (CourseID, CourseName, Instructor)
+VALUES
+(101, 'Mathematics', 'Dr. Mehta'),
+(102, 'Physics', 'Dr. Khan'),
+(103, 'Chemistry', 'Dr. Patel'),
+(104, 'Biology', 'Dr. Iyer');
+INSERT INTO StudentCourses (StudentID, CourseID)
+VALUES
+(1, 101),
+(1, 102),
+(2, 101),
+(3, 103),
+(4, 104);
+```
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS10.png"
+  alt="--"
+  width="100%"
+/>
+
+---
+
+### C. Third Normal Form (3NF): Removing Transitive Dependencies
+
+The Third Normal Form (3NF) takes it a step further. Here, we remove transitive dependencies, where non-key columns depend on other non-key columns.
+
+Let's say we have a table where each student's city depends on their postal code but not directly on the StudentID:
+
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS11.png"
+  alt="--"
+  width="90%"
+/>
+
+**Code to apply 3NF:**
+
+```sql
+CREATE TABLE StudentDetails (
+  StudentID INT,
+  Name VARCHAR(50),
+  PostalCode VARCHAR(10)
+);
+CREATE TABLE PostalCodes (
+  PostalCode VARCHAR(10),
+  City VARCHAR(50),
+  State VARCHAR(50)
+);
+-- Adding data
+INSERT INTO StudentDetails (StudentID, Name, PostalCode)
+VALUES
+(1, 'Rahul Sharma', '110001'),
+(2, 'Anjali Verma', '400001'),
+(3, 'Priya Singh', '600001'),
+(4, 'Rohan Kapoor', '110001'),
+(5, 'Neha Gupta', '400001');
+INSERT INTO PostalCodes (PostalCode, City, State)
+VALUES
+('110001', 'New Delhi', 'Delhi'),
+('400001', 'Mumbai', 'Maharashtra'),
+('600001', 'Chennai', 'Tamil Nadu');
+```
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS12.png"
+  alt="--"
+  width="90%"
+/>
+---
+
+### D. Boyce-Codd Normal Form (BCNF): A Stricter Version of 3NF
+
+Boyce-Codd Normal Form (BCNF) is like 3NF but stricter. Every determinant in the table must be a superkey. This implies that $X$ should be a superkey for each functional relationship $X \rightarrow Y$.
+
+Consider a scenario where an employee's project leader is determined by the ProjectID, but ProjectID isn't a primary key:
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS13.png"
+  alt="--"
+  width="90%"
+/>
+
+**Code to apply BCNF:**
+
+```sql
+CREATE TABLE Projects (
+  ProjectID INT,
+  ProjectLeader VARCHAR(50)
+);
+CREATE TABLE EmployeeProjects (
+  EmployeeID INT,
+  ProjectID INT,
+  Department VARCHAR(50)
+);
+-- Adding data
+INSERT INTO Projects (ProjectID, ProjectLeader)
+VALUES
+(201, 'Arjun Singh'),
+(202, 'Rohit Mehra'),
+(203, 'Neha Saini'),
+(204, 'Rajesh Gupta');
+INSERT INTO EmployeeProjects (EmployeeID, ProjectID, Department)
+VALUES
+(1, 201, 'HR'),
+(2, 202, 'IT'),
+(3, 201, 'HR'),
+(4, 203, 'IT'),
+(5, 204, 'Finance');
+```
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS14.png"
+  alt="--"
+  width="90%"
+/>
+---
+
+### E. Fourth Normal Form (4NF): Handling Multi-Valued Dependencies
+
+Fourth Normal Form (4NF) deals with multivalued dependencies. These occur when one column in a table depends on multiple values in another column.
+
+For example, a table that lists students and their multiple hobbies:
+
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS15.png"
+  alt="--"
+  width="90%"
+/>
+
+**Code to apply 4NF:**
+
+```sql
+CREATE TABLE Students (
+  StudentID INT,
+  Name VARCHAR(50)
+);
+CREATE TABLE Hobbies (
+  StudentID INT,
+  Hobby VARCHAR(50)
+);
+CREATE TABLE Languages (
+  StudentID INT,
+  Language VARCHAR(50)
+);
+-- Adding data
+INSERT INTO Students (StudentID, Name)
+VALUES
+(1, 'Rahul Sharma'),
+(2, 'Anjali Verma'),
+(3, 'Priya Singh');
+INSERT INTO Hobbies (StudentID, Hobby)
+VALUES
+(1, 'Painting'),
+(1, 'Cycling'),
+(2, 'Singing'),
+(2, 'Dancing'),
+(3, 'Reading');
+INSERT INTO Languages (StudentID, Language)
+VALUES
+(1, 'English'),
+(1, 'Hindi'),
+(2, 'English'),
+(2, 'Tamil'),
+(3, 'English');
+```
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS16.png"
+  alt="--"
+  width="90%"
+/>
+---
+
+#### F. Fifth Normal Form (5NF): Ensuring Lossless Decomposition
+
+Finally, the Fifth Normal Form (5NF) focuses on ensuring that data can be decomposed into smaller tables without losing any information.
+
+This is crucial when dealing with complex relationships, such as product assemblies:
+
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS17.png"
+  alt="--"
+  width="90%"
+/>
+
+**Code to apply 5NF:**
+
+```sql
+CREATE TABLE Assemblies (
+  AssemblyID INT,
+  ProductID INT
+);
+CREATE TABLE Products (
+  ProductID INT,
+  ComponentID INT
+);
+CREATE TABLE Suppliers (
+  ComponentID INT,
+  SupplierID INT
+);
+-- Adding data
+INSERT INTO Assemblies (AssemblyID, ProductID)
+VALUES
+(1, 301),
+(2, 302),
+(3, 303);
+INSERT INTO Products (ProductID, ComponentID)
+VALUES
+(301, 401),
+(301, 402),
+(302, 403),
+(302, 404),
+(303, 405);
+INSERT INTO Suppliers (ComponentID, SupplierID)
+VALUES
+(401, 501),
+(402, 502),
+(403, 501),
+(404, 503),
+(405, 504);
+```
+
+<img
+  src="https://raw.githubusercontent.com/ramachandraaa/LGP/refs/heads/main/DBMS18.png"
+  alt="--"
+  width="90%"
+/>
+---
+
+## Practical Examples
+
+### Case Study 1
+
+#### A. Scenario Description
+
+A retail company faced challenges managing its product catalog. The catalog contained thousands of products with varying attributes. The data had inconsistencies and redundancies. This situation led to difficulties in data retrieval and analysis.
+
+##### B. Normalization Process
+
+The company decided to implement Data Normalization to streamline its database. The process involved several steps:
+
+##### 1. Identify Entities and Attributes
+
+The team identified key entities such as products, categories, and suppliers.
+
+##### 2. Define Primary Keys
+
+Unique identifiers were established for each entity.
+
+##### 3. Apply First Normal Form (1NF)
+
+Each column was ensured to contain atomic values, and each record was made unique.
+
+##### 4. Apply Second Normal Form (2NF)
+
+Partial dependencies were eliminated by separating data into different tables.
+
+##### 5. Apply Third Normal Form (3NF)
+
+Transitive dependencies were removed to ensure non-key attributes depended only on the primary key.
+
+##### 6. Apply Boyce-Codd Normal Form (BCNF)
+
+Every determinant was ensured to be a candidate key.
+
+#### C. Results and Benefits
+
+The normalization process yielded significant benefits:
+
+##### 1. Improved Data Accuracy
+
+The elimination of redundant data entries enhanced data integrity.
+
+##### 2. Enhanced Query Performance
+
+Smaller, related tables improved database efficiency.
+
+##### 3. Streamlined Data Management
+
+Organized data simplified maintenance tasks.
+
+##### 4. Cost Savings
+
+Reduced storage requirements led to cost savings.
+
+Data Normalization proved crucial for the company's operations, providing a competitive edge in handling large datasets.
+
+---
+
+### Case Study 2
+
+#### A. Scenario Description
+
+A financial institution struggled with managing customer information. The database contained multiple entries for the same customers. This redundancy caused issues with data accuracy and customer service.
+
+#### B. Normalization Process
+
+The institution undertook Data Normalization to resolve these issues. The steps included:
+
+##### 1. Identify Entities and Attributes
+
+Key entities such as customers, accounts, and transactions were identified.
+
+##### 2. Define Primary Keys
+
+Unique identifiers were established for each entity.
+
+##### 3. Apply First Normal Form (1NF)
+
+Atomic values were ensured for each column, and records were made unique.
+
+##### 4. Apply Second Normal Form (2NF)
+
+Partial dependencies were eliminated by creating separate tables.
+
+##### 5. Apply Third Normal Form (3NF)
+
+Transitive dependencies were removed to ensure non-key attributes depended only on the primary key.
+
+##### 6. Apply Boyce-Codd Normal Form (BCNF)
+
+Every determinant was ensured to be a candidate key.
+
+#### C. Results and Benefits
+
+The normalization process provided several advantages:
+
+##### 1. Reduced Redundancy
+
+Duplicate entries were eliminated, enhancing data accuracy.
+
+##### 2. Improved Customer Service
+
+Accurate data allowed for better customer interactions.
+
+##### 3. Efficient Data Retrieval
+
+Smaller, related tables improved query performance.
+
+##### 4. Enhanced Data Integrity
+
+Organized data prevented errors and inconsistencies.
+
+Data Normalization played a vital role in the institution's data management strategy, ensuring accurate and reliable customer information.
+
+---
+
+## Conclusion
+
+Data normalization plays a crucial role in managing large datasets. This process ensures data consistency, reduces redundancy, and enhances data integrity. Companies benefit from improved data accuracy and cost savings. Data normalization simplifies data examination and operational enhancement. Professionals should apply normalization techniques to optimize data management.

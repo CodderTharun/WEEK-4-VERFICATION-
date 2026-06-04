@@ -1,65 +1,648 @@
 ---
-title: CN - Week 4
-description: Congestion Control and Flow Control
+title: Computer Networks
 ---
 
+## Session Layer (OSI Layer 5)
+
+The **Session Layer** is the 5th layer in the OSI model, responsible for setting up, coordinating, and terminating conversations, exchanges, and dialogues between applications at each end. It establishes, manages, and terminates connections between local and remote applications.
+
+> **Note:** Dialogue Control is implemented in the Session Layer in OSI, but in TCP/IP it is handled at the **Application Layer**.
+
+Session-layer services are commonly used in application environments that use **Remote Procedure Calls (RPCs)**.
+
+*Zone Information Protocol in AppleTalk* is a well-known example of a Session Layer implementation.
+
+---
+
+### A. Synchronization & Resynchronization
+
+The Session Layer uses synchronization and resynchronization techniques to ensure reliable and orderly communication:
+
+- **Synchronization Points** — Markers or tokens inserted into the data stream that act as checkpoints.
+- **Resynchronization** — Restores a session to a known state after a disruption (e.g., network failure or session timeout).
+
+---
+
+### B. Functions of the Session Layer
+
+| Function | Description |
+|---|---|
+| **Session Establishment** | Establishes and manages sessions (connection-oriented or connectionless); maps sessions to transport connections. |
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/a.jpeg?raw=true)
+
+| **Communication Synchronization** | Uses synchronization bits and checkpoints for reliable connectivity and recovery. |
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/b.jpeg?raw=true)
+
+| **Dialog Management** | Decides whose turn it is to transmit. Uses a token mechanism for half-duplex, or supports full-duplex for simultaneous transmission. |
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/c.jpeg?raw=true)
+
+| **Data Transfer** | Manages data exchange between systems. |
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/d.jpeg?raw=true)
+
+---
+
+### C. How the Session Layer Works
+
+1. Establishes connections, negotiating parameters like authentication and communication direction.
+2. Oversees data exchange using tokens to manage transmission rights and prevent collisions.
+3. Inserts synchronization checkpoints for recovery in case of disruptions.
+4. Ensures orderly communication, reducing message loss, duplication, or errors.
+5. Gracefully terminates the session once all data is exchanged and both sides agree to close.
+
+---
+
+### D. Session Layer Protocols
+
+#### 1. AppleTalk Data Stream Protocol (ADSP)
+
+Developed by Apple Inc. (released **1985**). Allows local area networks to connect with no prior setup. Strictly follows the OSI model.
+
+Sub-protocols:
+- **AARP** — AppleTalk Address Resolution Protocol
+- **NBP** — Name Binding Protocol
+
+#### 2. Real-time Transport Control Protocol (RTCP)
+
+Provides out-of-band statistics and control information for an RTP session. Sends periodic feedback on QoS — including transmitted octet/packet counts and packet loss — to participants in a streaming multimedia session.
+
+#### 3. Point-to-Point Tunneling Protocol (PPTP)
+
+Implements virtual private networks (VPNs). Uses a TCP control channel and Generic Routing Encapsulation (GRE) tunnel to encapsulate PPP packets. Provides security and remote access comparable to typical VPN products.
+
+#### 4. Password Authentication Protocol (PAP)
+
+A password-based authentication protocol used by PPP. Authentication occurs at initial link establishment via a **two-way handshake**:
+
+1. Client sends credentials.
+2. Server responds with Authentication-ACK after verification.
+
+#### 5. Remote Procedure Call Protocol (RPCP)
+
+Enables a program to execute a procedure in a different address space without explicitly coding remote interaction details. A form of client-server interaction via a request-response message-passing system.
+
+#### 6. Sockets Direct Protocol (SDP)
+
+Supports streams of sockets over **RDMA** (Remote Direct Memory Access) network fabrics. Provides an RDMA-accelerated alternative to TCP, transparently to the application.
+
+---
+
+## Presentation Layer (OSI Layer 6)
+
+The **Presentation Layer** is responsible for translating data between the application layer and the lower network layers. It acts as an intermediary that formats and encrypts data to ensure compatibility between different systems.
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/e.jpeg?raw=true)
 
 
-## Flow Control
+---
 
-Flow control regulates data transmission between sender and receiver.
+### A. Data Compression & Encryption
 
-### Stop and Wait
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/f.jpeg?raw=true)
 
-- Sender waits for acknowledgment
-- Simple but inefficient
-- Low throughput
+#### 1. Data Compression
 
-### Sliding Window
+Reduces the size of transmitted data to minimize bandwidth usage and accelerate transfer speeds.
 
-- Sender can transmit multiple frames
-- Receiver has window of acceptable frames
-- Better throughput
+- Common algorithms: **ZIP**, **GZIP**
+- Compression reduces transmitted data size, which can be expressed as:
 
-## Congestion Control
+$$
+\text{Compression Ratio} = \frac{\text{Original Size}}{\text{Compressed Size}}
+$$
 
-Prevents network congestion and packet loss.
+> Balance compression level with potential loss of data quality, especially for multimedia content.
 
-### Congestion Control Mechanisms
+#### 2. Data Encryption
 
-1. **TCP Congestion Control**
-   - Slow Start
-   - Congestion Avoidance
-   - Fast Retransmit
-   - Fast Recovery
+Converts data into a secure format accessible only by authorized users.
 
-### Congestion Signals
+- Common algorithms: **AES**, **RSA**
+- Protects against unauthorized access and data breaches
 
-- **Packet Loss** - Timeout or duplicate ACK
-- **Increased Delay** - Rising RTT
+---
 
-### Congestion Window (cwnd)
+### B. Data Formatting
 
-- Sender maintains window size
-- Adjusts based on feedback
+The Presentation Layer defines how data is structured so all parties interpret information consistently. For example, when transmitting financial data it may specify number formats, decimal places, or currency symbols.
 
-### This Week
+Inconsistent formatting can cause miscommunication, data corruption, or processing errors — making standardized formats essential for interoperability.
 
-- Flow control mechanisms
-- Congestion window management
-- TCP performance issues
-- Quality of Service (QoS)
-- Network performance metrics
+---
 
-### Metrics
+### C. Protocols at the Presentation Layer
 
-- **Throughput** - Data transmitted per unit time
-- **Latency** - Time for data to travel
-- **Jitter** - Variation in latency
-- **Packet Loss Rate** - Percentage of lost packets
+#### 1. SSL/TLS (Secure Sockets Layer / Transport Layer Security)
 
-### Practice
+Encrypts data between web browsers and servers. Provides **authentication**, **confidentiality**, and **data integrity** — especially important for online transactions.
 
-- Analyze congestion scenarios
-- Calculate throughput
-- Understand TCP behavior
+#### 2. MIME (Multipurpose Internet Mail Extensions)
+
+Allows exchange of different data types (text, images, audio) over email. Enables email clients to interpret and display various content types by specifying format and encoding.
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/g.jpeg?raw=true)
+
+---
+
+### D. Cross-Platform Communication
+
+The Presentation Layer standardizes data formats and encoding schemes so diverse systems (e.g., a Windows machine talking to a Linux server) can exchange and interpret data accurately. This is crucial for **cloud computing**, **web services**, and **API communications**.
+
+---
+
+## HTTP — HyperText Transfer Protocol
+
+**HTTP** is the foundational application-layer protocol governing data communication on the World Wide Web. It defines rules for how messages are formatted, transmitted, and interpreted between web clients (browsers) and web servers.
+
+---
+
+### A. Core Characteristics
+
+- **Request-Response Model** — A client sends a request; the server returns a response.
+- **Statelessness** — Each request is an independent transaction with no memory of previous interactions.
+
+---
+
+### B. HTTP Request & Response Structure
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/h.jpeg?raw=true)
+
+#### 1. Request Components
+
+| Component | Description |
+|---|---|
+| **Method (Verb)** | GET, POST, PUT, DELETE, PATCH |
+| **URL** | Resource location |
+| **Headers** | Metadata (e.g., Accept, Authorization) |
+| **Body** *(optional)* | Data payload for POST/PUT/PATCH |
+
+#### 2. Response Components
+
+| Component | Description |
+|---|---|
+| **Status Code** | e.g., `200 OK`, `404 Not Found` |
+| **Headers** | e.g., Content-Type, Content-Length |
+| **Body** | Requested content or error message |
+
+---
+
+### C. HTTP Methods
+
+| Method | Purpose | CRUD | Body | Success Status | Safe | Idempotent |
+|---|---|---|---|---|---|---|
+| `GET` | Retrieve data | Read | No | 200 | ✅ | ✅ |
+| `POST` | Create resource | Create | Yes | 201 | ❌ | ❌ |
+| `PUT` | Replace full resource | Update | Yes | 200/204 | ❌ | ✅ |
+| `PATCH` | Partial update | Update | Yes | 200/204 | ❌ | ❌ |
+| `DELETE` | Remove resource | Delete | No | 200/204 | ❌ | ✅ |
+
+- **Safe methods** — Do not change server state (e.g., GET, HEAD).
+- **Idempotent methods** — Repeated identical requests produce the same outcome (e.g., GET, PUT, DELETE).
+
+---
+
+### D. Advantages of HTTP
+
+- **Simplicity** — Messages are in plaintext; easy to debug and read.
+- **Flexibility** — Supports HTML, JSON, multimedia, and allows new methods/headers/content types.
+- **Universal Accessibility** — Any internet-connected device can use it (maintained by W3C).
+
+---
+
+### E. Disadvantages & Security Considerations
+
+#### 1. Plaintext Transmission
+
+- No encryption — data can be intercepted.
+- No server authentication.
+- Vulnerable to **man-in-the-middle attacks**.
+
+#### 2. DDoS & Slowloris Attacks
+
+HTTP is susceptible to application-layer DDoS attacks that exhaust resources by mimicking legitimate traffic:
+
+- Flooding endpoints
+- Exploiting CAPTCHAs/APIs
+- Consuming database/server resources
+
+#### 3. Performance Limitations (HTTP/1.x)
+
+- Head-of-line blocking
+- Multiple TCP connections required
+
+These limitations led to **HTTP/2** and **HTTP/3**, which improve speed and efficiency.
+
+---
+
+### F. HTTP Response Structure
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/i.jpeg?raw=true)
+
+An HTTP Response consists of three main parts.
+
+#### 1. Status Line
+
+Format: `HTTP/1.1 200 OK`
+
+| Component | Description |
+|---|---|
+| HTTP Version | e.g., `1.1` |
+| Status Code | 3-digit result code (e.g., `200`, `404`) |
+| Reason Phrase | Human-readable summary (e.g., `OK`, `Not Found`) |
+
+#### 2. Response Headers
+
+Key-value pairs providing metadata. Common headers:
+
+- `Content-Length`
+- `Content-Type`
+- `Date`
+- `Server`
+- `Set-Cookie`
+
+#### 3. Body *(Optional)*
+
+Carries the actual data. Formats include JSON, HTML, and images. Format is specified in the `Content-Type` header.
+
+On errors, the body may include:
+- The reason for the error
+- Actions needed to complete the request
+- A redirect link
+
+---
+
+## HTTPS — HyperText Transfer Protocol Secure
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/j.jpeg?raw=true)
+
+**HTTPS** is the secure variant of HTTP. It encrypts data transfer between the user's browser and the website using **SSL/TLS**.
+
+> A padlock icon in the URL bar indicates the page is secure. Browsers like Chrome actively mark non-HTTPS sites as **"Not Secure"**.
+
+---
+
+### A. How HTTPS Works
+
+HTTPS adds a layer of SSL/TLS on top of conventional HTTP. The underlying request-response model stays the same, but all communication is encrypted/decrypted over the SSL/TLS connection.
+
+**Without HTTPS:**
+```
+"This is a string of text that is completely readable"
+```
+
+**With HTTPS:**
+```
+"ITM0IRyiEhVpa6VnKyExMiEgNveroyWBPlgGyfkflYjDaaFf/Kn3bo3OfghBPDWo6AfSHlNtL8N7ITEwIXc1gU5X73xMsJormzzXlwOyrCs+9XCPk63Y+z0="
+```
+
+---
+
+### B. SSL/TLS & Public Key Infrastructure
+
+HTTPS uses **asymmetric public key infrastructure**:
+
+| Key | Role |
+|---|---|
+| **Private Key** | Decrypts data encrypted by the public key. Kept secret on the server. |
+| **Public Key** | Accessible to all users. Encrypts data that only the private key can decrypt. |
+
+The encryption relationship can be described as:
+
+$$
+\text{Encrypted Data} = E_{\text{pub}}(\text{Plaintext})
+$$
+
+$$
+\text{Plaintext} = D_{\text{priv}}(\text{Encrypted Data})
+$$
+
+Where $E_{\text{pub}}$ is encryption with the public key and $D_{\text{priv}}$ is decryption with the private key.
+
+#### TLS Handshake Process
+
+1. Browser requests the server's SSL/TLS certificate.
+2. Server sends its certificate (containing the public key), issued by a trusted **Certificate Authority (CA)**.
+3. Browser verifies the certificate and server identity.
+4. Browser encrypts a random session key using the server's public key and sends it.
+5. Server decrypts the session key using its private key.
+6. Both parties use the shared session key for **symmetric encryption** of all subsequent communication.
+
+This ensures:
+- **Confidentiality** — Data cannot be read by unauthorized parties.
+- **Integrity** — Data cannot be altered in transit.
+- **Authentication** — Client verifies server identity; prevents impersonation.
+
+
+---
+
+### C. Advantages of HTTPS
+
+- **Secure Communication** — Encryption during transmission.
+- **Data Integrity** — Encrypted data cannot be read or modified if intercepted.
+- **Faster Performance** — HTTP/2 and HTTP/3 (almost exclusively deployed over TLS) offer performance optimizations.
+- **SEO Advantage** — Search engines rank HTTPS sites higher.
+- **Accurate Analytics** — Better tracking of referral links for analytics software.
+
+---
+
+## FTP — File Transfer Protocol
+
+**FTP** is an internet tool (part of TCP/IP) developed by **Abhay Bhushan in 1971**. It facilitates transferring files between computers by providing access to directories on remote systems.
+
+- **Localhost** — The user's computer.
+- **Remote Host** — The server providing data.
+
+### A. Goals of FTP
+
+- Encourage direct use of remote computers.
+- Shield users from system variations (OS, directory/file structures).
+- Promote sharing of files and data.
+
+**Supported File Formats:** ASCII, EBCDIC, and binary (image) formats.
+
+---
+
+### B. Types of FTP Connections
+
+#### 1. Active FTP
+
+- Client establishes the **command channel**.
+- Server establishes the **data channel**.
+- ⚠️ Can cause problems with client-side firewalls.
+
+#### 2. Passive FTP
+
+- Client establishes **both** the command and data channels.
+- ✅ Works better when the client is behind a firewall.
+
+#### 3. Anonymous FTP
+
+Public access without a specific username/password. Users log in with `anonymous` as the username and `guest` (or email) as the password, with limited permissions.
+
+---
+
+### C. How FTP Works
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/l.jpeg?raw=true)
+
+FTP uses two communication channels:
+
+| Channel | Port | Purpose |
+|---|---|---|
+| **Command Channel** | Port 21 | Commands and responses (login, directory navigation) |
+| **Data Channel** | Port 20 (active) / dynamic (passive) | Actual file transfer |
+
+**General Steps:**
+
+1. Client contacts server on Port 21.
+2. Client authenticates (username/password or anonymous).
+3. Client sends commands over the command channel.
+4. A separate data connection is established for file transfer.
+5. Data connection is closed after transfer.
+
+
+
+---
+
+### D. Transmission Modes
+
+| Mode | Description |
+|---|---|
+| **Stream Mode** | Default; data transferred as a continuous byte stream. |
+| **Block Mode** | Data transferred in blocks with a 3-byte header. |
+| **Compressed Mode** | Used for large files to reduce size before transfer. |
+
+---
+
+### E. Common FTP Commands
+
+| Command | Description |
+|---|---|
+| `cd` | Change working directory on remote host |
+| `close` | Close the FTP connection |
+| `quit` | Quit FTP |
+| `pwd` | Display current working directory on remote host |
+| `dir` / `ls` | List directory contents |
+| `help` | List client FTP commands |
+| `remotehelp` | List server FTP commands |
+| `type` | Specify file type |
+| `struct` | Specify file structure |
+
+---
+
+### F. Advantages & Disadvantages of FTP
+
+| Advantages | Disadvantages |
+|---|---|
+| Handles multiple large files | No inherent encryption; credentials often in plaintext |
+| Efficient file organization and transfer | Uses multiple TCP/IP connections; hindered by firewalls |
+| Access control via user ID/password | Difficult to scan for viruses |
+| Supports resuming interrupted transfers | Limited user permissions and mobile access |
+| Easy to implement and use | Requires more memory and programming effort |
+
+---
+
+## SFTP — Secure File Transfer Protocol
+
+**SFTP** (also known as SSH File Transfer Protocol) is an advanced, secure version of FTP. It operates on the **client-server model** and typically uses **Port 22**.
+
+---
+
+### A. Key Features
+
+- Encrypts data during transfer.
+- Executes commands securely.
+- Compresses data for transmission.
+- Authentication via username/password and **public keys**.
+
+---
+
+### B. How SFTP Works
+
+SFTP applies **SSH Message Authentication Code (MAC)** to data packets. It establishes a secure connection, then encrypts all transferred data — including authentication and file content — over the SSH data stream, making intercepted data incomprehensible.
+
+Unlike FTP, SFTP only requires **a single port (22)** to be open on your firewall.
+
+---
+
+### C. Establishing an SFTP Session
+
+```bash
+# Test SSH access
+$ ssh your_username@your_server_ip
+
+# Connect to SFTP
+$ sftp your_username@your_server_ip
+
+# Custom port
+$ sftp -oPort=customport your_username@your_server_ip
+```
+
+Upon successful connection, the prompt changes to `sftp>`.
+
+---
+
+### D. Transferring Files with SFTP
+
+#### 1. Download (Remote → Local)
+
+```bash
+# Download a single file
+sftp> get remote-file
+
+# Download with a different local name
+sftp> get remote-file local-file
+
+# Download an entire directory
+sftp> get -r some-directory
+```
+
+#### 2. Upload (Local → Remote)
+
+```bash
+# Upload a single file
+sftp> put local-file
+
+# Upload an entire directory
+sftp> put -r local-directory
+```
+
+---
+
+### E. Advantages & Disadvantages of SFTP
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/l.jpeg?raw=true)
+
+| Advantages | Disadvantages |
+|---|---|
+| Fast and efficient large file transfers | Extensive protection features can be hard to manage |
+| Data sent in encrypted form | Not entirely immune to sophisticated cyberattacks |
+| Supports both user-to-server and server-to-server transfers | — |
+
+---
+
+### F. Securing an SFTP Server
+
+- Use strong, complex passwords.
+- Monitor accounts consistently for unusual activity.
+- Employ strong encryption algorithms.
+- Implement file-level security measures.
+- Use blacklists and whitelists to control access.
+
+---
+
+### G. SFTP Configuration
+
+| OS | Notes | Common Clients |
+|---|---|---|
+| **Windows** | SSH often preinstalled; configure inbound rules in Windows Firewall (Port 22) | WinSCP, FileZilla, Cyberduck |
+| **macOS** | SSH preinstalled; configure via System Preferences → Security & Privacy → Firewall | FileZilla, Cyberduck |
+| **Linux** | Install with `sudo apt install ssh`; allow port with `sudo ufw allow ssh` | FileZilla, open-source clients |
+
+---
+
+## DNS — Domain Name System
+
+The **Domain Name System (DNS)** translates human-readable domain names (e.g., `www.google.com`) into machine-readable IP addresses (e.g., `142.250.190.14`), enabling internet communication.
+
+DNS functions as a **hierarchical, distributed database**. Queries pass through multiple levels:
+
+$$
+\text{Root Server} \rightarrow \text{TLD Server} \rightarrow \text{Authoritative Server}
+$$
+
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/m.jpeg?raw=true)
+
+---
+
+### A. How DNS Works
+
+1. User types a URL (e.g., `https://www.example.com`) in the browser.
+2. Browser checks the **local cache** (browser, OS, or router).
+3. If not cached, query is sent to a **DNS Resolver**.
+4. Resolver may check host files, then queries a **Root DNS Server**.
+5. Root server points to the appropriate **TLD server** (e.g., `.org`).
+6. TLD server directs the resolver to the **Authoritative Nameserver**.
+7. Authoritative nameserver returns the exact IP address.
+8. Resolver passes the IP address to the computer.
+9. Browser connects to the server and loads the page.
+
+---
+
+### B. DNS Structure
+
+| Component | Description |
+|---|---|
+| **DNS Record** | Contains domain name, IP address, TTL (Time to Live), and related info. Stored in a tree-like structure. |
+| **Namespace** | Set of possible names (flat or hierarchical). A resolution mechanism maps names to values. |
+| **Name Server** | Implementation of the resolution mechanism. |
+
+> A **zone** is an administrative unit; a **domain** is a subtree.
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/n.jpeg?raw=true))
+
+---
+
+### C. Types of Domains
+
+| Type | Examples |
+|---|---|
+| **Generic Domains** | `.com` (commercial), `.edu` (educational), `.mil` (military), `.org` (nonprofit), `.net` |
+| **Country Domains** | `.in` (India), `.us`, `.uk` |
+| **Inverse Domains** | IP-to-domain name mapping (reverse DNS lookup) |
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/o.jpeg?raw=true)
+
+---
+
+### D. DNS Lookup (DNS Resolution)
+
+![Week 3 CN Diagram](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/CN/p.jpeg?raw=true)
+
+**DNS Lookup** is the process of translating a domain name into its corresponding IP address.
+
+$$
+\text{Domain Name} \xrightarrow{\text{DNS Resolution}} \text{IP Address}
+$$
+
+**Flow:** DNS Resolver → Root Server → TLD Server → Authoritative Server → IP returned to browser.
+
+#### Types of DNS Queries
+
+##### a. Recursive Query
+
+DNS server must respond with the requested record or an error — it does the full lookup on behalf of the client.
+
+##### b. Iterative Query
+
+DNS server returns the best answer it has (often a referral); the client continues querying further servers itself.
+
+##### c. Non-Recursive Query
+
+Resolver queries a server that already has the record cached — no further lookup needed.
+
+---
+
+### E. DNS Resolver
+
+The **DNS Resolver** (DNS Client) initiates the DNS Lookup process. It allows applications to access websites and services using user-friendly domain names, resolving the need to remember numeric IP addresses.
+
+---
+
+### F. DNS Caching
+
+DNS Caching stores previously resolved domain-to-IP mappings for a period of time (defined by the record's **TTL**) to speed up future lookups.
+
+$$
+\text{Cache Valid} \iff t_{\text{current}} - t_{\text{cached}} < \text{TTL}
+$$
+
+| Benefit | Description |
+|---|---|
+| **Speeds Up Access** | Quickly loads frequently visited sites without re-querying the network. |
+| **Reduces Internet Traffic** | Fewer requests across the internet reduces network congestion. |
+| **Enhances User Experience** | Faster load times lead to a smoother browsing experience. |

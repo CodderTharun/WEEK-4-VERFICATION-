@@ -95,7 +95,7 @@ $$F = 21 - 20 = 1$$
 > **Note:**
 > - If `F = 0`, the structure is a **stiff frame / truss**.
 > - If `F < 0`, it is a **super-tinker / indeterminate structure**.
-> - If `F \ge 1`, it is a **valid mechanism** (requires `F` inputs).
+> - If `F = 1`, it is a **valid mechanism** (requires `F` inputs).
 
 ---
 
@@ -127,11 +127,11 @@ $$s + l < p + q$$
 
 ##### a. Crank-Rocker
 
-Shortest link `s` is the input (adjacent to fixed link). `s` makes a full `360^\circ` rotation, while the output link oscillates.
+The shortest link `s` acts as the input and is adjacent to the fixed link. It completes a full $360^\circ$ rotation, while the output link cannot rotate completely and instead oscillates between two limiting positions. This type of mechanism is called a **Crank–Rocker Mechanism**.
 
 ##### b. Double-Crank (Drag-Link)
 
-Shortest link `s` is the fixed link. Both input and output links make full `360^\circ` rotations.
+Shortest link `s` is the fixed link. Both input and output links make full $360^\circ$ rotations.
 
 ##### c. Double-Rocker
 
@@ -145,13 +145,13 @@ $$s + l > p + q$$
 
 ##### a. Double-Rocker
 
-Fixing any link always results in a double-rocker mechanism. No single link can achieve a full `360^\circ` rotation.
+Fixing any link always results in a double-rocker mechanism. No single link can achieve a full $360^\circ$ rotation.
 
 ---
 
-## Transmission Angle (`\mu`) Formulation
+## Transmission Angle (`μ`) Formulation
 
-The transmission angle (`\mu`) is the angle between the coupler link and the output link. It is a critical metric evaluating the effectiveness of force transmission; optimizing `\mu` prevents mechanical locking (toggle positions).
+The transmission angle (`μ`) is the angle between the coupler link and the output link. It is a critical metric evaluating the effectiveness of force transmission; optimizing `μ` prevents mechanical locking (toggle positions).
 
 <img
   src="https://raw.githubusercontent.com/podummy04/images/main/Mech/KOM/week3/KOM-1.png"
@@ -166,31 +166,57 @@ The transmission angle (`\mu`) is the angle between the coupler link and the out
 
 ### A. Derivation
 
-Let `a` be the input link, `b` the coupler, `c` the output link, and `d` the fixed link. Let `\theta` be the input angle and `\mu` be the transmission angle.
+Let `a` be the input link, `b` the coupler, `c` the output link, and `d` the fixed link. Let `θ` be the input angle and `μ` be the transmission angle.
 
 Applying the law of cosines to the diagonal `k` across the linkage:
 
-$$k^2 = a^2 + d^2 - 2ad \cos\theta$$
+$$
+k^2 = a^2 + d^2 - 2ad cosθ
+$$
 
-$$k^2 = b^2 + c^2 - 2bc \cos\mu$$
+$$
+k^2 = b^2 + c^2 - 2bc cosμ
+$$
 
-Equating both expressions yields the core geometric relationship:
+Equating both expressions gives the fundamental geometric relationship:
 
-$$a^2 + d^2 - 2ad \cos\theta = b^2 + c^2 - 2bc \cos\mu$$
+$$
+a^2 + d^2 - 2ad cosθ = b^2 + c^2 - 2bc cosμ
+$$
 
 ### B. Extreme Values of Transmission Angle
 
-Differentiating the expression with respect to `\theta` to locate critical points:
+Differentiating the expression with respect to `θ` to locate critical points:
 
-$$ad \sin\theta - bc \sin\mu \cdot \frac{d\mu}{d\theta} = 0 \implies \frac{d\mu}{d\theta} = \frac{ad \sin\theta}{bc \sin\mu}$$
+$$
+ad \sin\theta - bc \sin\mu \cdot \frac{d\mu}{d\theta} = 0
+$$
 
-For `\frac{d\mu}{d\theta} = 0`, `\sin\theta` must equal `0`, meaning `\theta = 0^\circ` or `\theta = 180^\circ`.
+$$
+\frac{d\mu}{d\theta} = \frac{ad \sin\theta}{bc \sin\mu}
+$$
 
-#### 1. Minimum Transmission Angle (`\mu_{\text{min}}`) at `\theta = 0^\circ`
+For
+
+$$
+\frac{d\mu}{d\theta} = 0,
+$$
+
+$$
+\sin\theta = 0,
+$$
+
+which occurs when
+
+$$
+\theta = 0^\circ \quad \text{or} \quad \theta = 180^\circ.
+$$
+
+#### 1. Minimum Transmission Angle $\mu_{\text{min}}$ at $\theta = 0^\circ$
 
 $$\cos\mu_{\text{min}} = \frac{b^2 + c^2 - (d - a)^2}{2bc}$$
 
-#### 2. Maximum Transmission Angle (`\mu_{\text{max}}`) at `\theta = 180^\circ`
+#### 2. Maximum Transmission Angle $\mu_{\text{max}}$ at $\theta = 180^\circ$
 
 $$\cos\mu_{\text{max}} = \frac{b^2 + c^2 - (d + a)^2}{2bc}$$
 
@@ -206,7 +232,7 @@ The closed-loop vector equation for the four-bar mechanism is:
 
 $$\mathbf{a} + \mathbf{b} - \mathbf{c} - \mathbf{d} = 0$$
 
-Expressed in complex polar form using Euler's identity (`e^{i\alpha} = \cos\alpha + i\sin\alpha`).
+Expressed in complex polar form using Euler's identity $(e^{i\alpha} = \cos\alpha + i\sin\alpha)$.
 
 ---
 
@@ -261,21 +287,21 @@ The connecting rod (Link 3) is fixed.
 
 Using complex polar coordinates, the positions of the links are tracked dynamically. Let:
 
-- `a` = length of the crank
-- `b` = length of the coupler (connecting rod)
-- `\theta` = instantaneous crank angle
-- `\beta` = instantaneous coupler angle
-- `\omega_a, \alpha_a` = angular velocity and angular acceleration of the crank
-- `\omega_b, \alpha_b` = angular velocity and angular acceleration of the coupler
-- `\ddot{d}` = linear acceleration of the slider
+- a = length of the crank
+- b = length of the coupler (connecting rod)
+- $\theta$ = instantaneous crank angle
+- $\beta$ = instantaneous coupler angle
+- $\omega_a$, $\alpha_a$ = angular velocity and angular acceleration of the crank
+- $\omega_b$, $\alpha_b$ = angular velocity and angular acceleration of the coupler
+- $\ddot{d}$ = linear acceleration of the slider
 
 By setting up the loop closure equations and differentiating with respect to time, the analytical acceleration formulas are established:
 
-### A. Angular Acceleration of the Coupler (`\alpha_b`)
+### A. Angular Acceleration of the Coupler $\alpha_b$
 
 $$\alpha_b = \frac{a \alpha_a \cos\theta - a \omega_a^2 \sin\theta - b \omega_b^2 \sin\beta}{b \cos\beta}$$
 
-### B. Linear Acceleration of the Slider (`\ddot{d}`)
+### B. Linear Acceleration of the Slider $\ddot{d}$
 
 $$\ddot{d} = \frac{a \alpha_a \sin(\beta - \theta) - a \omega_a^2 \cos(\beta - \theta) - b \omega_b^2}{\cos\beta}$$
 
@@ -289,15 +315,15 @@ To design crankshafts, flywheels, and bearings safely, engineers must calculate 
 
 Let:
 
-- `m_R` = mass of the reciprocating parts
-- `\omega` = uniform angular velocity of the crank
-- `r` = crank radius (`a`)
-- `l` = connecting rod length (`b`)
-- `n` = obliquity ratio, defined as:
+- $$m_R$$ = mass of the reciprocating parts
+- $$\omega$$ = uniform angular velocity of the crank
+- $$r$$ = crank radius ($$a$$)
+- $$l$$ = connecting rod length ($$b$$)
+- $$n$$ = obliquity ratio, defined as:
 
 $$n = \frac{l}{r}$$
 
-The **Inertia Force (`F_I`)** opposing or assisting the piston movement is given by:
+The **Inertia Force $F_I$** opposing or assisting the piston movement is given by:
 
 $$F_I = m_R \cdot \omega^2 \cdot r \left( \cos\theta + \frac{\cos 2\theta}{n} \right)$$
 
@@ -359,7 +385,7 @@ Analytical derivations for the two primary functional applications—the Ellipti
 
 ### A. Elliptical Trammel Analytical Proof
 
-Let the two sliders be `A` and `B`, moving along the perpendicular `X` and `Y` axes respectively. Let `P` be any point on the connecting link extension at a distance `AP = a` and `BP = b`. Let the link make an angle `\theta` with the horizontal `X`-axis.
+Let the two sliders be `A` and `B`, moving along the perpendicular `X` and `Y` axes respectively. Let `P` be any point on the connecting link extension at a distance `AP = a` and `BP = b`. Let the link make an angle `θ` with the horizontal `X`-axis.
 
 From the geometric projection of the mechanism:
 
@@ -367,7 +393,7 @@ $$x = BP \cos\theta = b \cos\theta \implies \cos\theta = \frac{x}{b}$$
 
 $$y = AP \sin\theta = a \sin\theta \implies \sin\theta = \frac{y}{a}$$
 
-Using the fundamental trigonometric identity `\cos^2\theta + \sin^2\theta = 1`:
+Using the fundamental trigonometric identity $$\cos^2\theta + \sin^2\theta = 1$$:
 
 $$\frac{x^2}{b^2} + \frac{y^2}{a^2} = 1$$
 
@@ -383,16 +409,16 @@ When transferring torque through an Oldham's coupling, the lateral misalignment 
 
 Let:
 
-- `\omega` = uniform angular velocity of the driving and driven shafts
+- $\omega$ = uniform angular velocity of the driving and driven shafts
 - `d` = distance between the parallel axes of the misaligned shafts (lateral offset)
 
-The maximum linear velocity of sliding (`V_{s_{\text{max}}}`) of the central floating disc's tongue relative to the slotted flanges occurs during rotation and is given by the formula:
+The maximum linear velocity of sliding $V_{s_{\text{max}}}$ of the central floating disc's tongue relative to the slotted flanges occurs during rotation and is given by the formula:
 
 $$V_{s_{\text{max}}} = \omega \cdot d$$
 
 ### B. Power Loss due to Friction
 
-If `T_f` is the average frictional torque generated at the sliding surfaces, the power lost (`P_{\text{loss}}`) in the coupling is calculated using:
+If $T_f$ is the average frictional torque generated at the sliding surfaces, the power lost $P_{\text{loss}}$ in the coupling is calculated using:
 
 $$P_{\text{loss}} = T_f \cdot \omega$$
 
@@ -419,7 +445,7 @@ The **Whitworth quick-return mechanism** is a specific inversion of the slider-c
 
 ## Structural Configuration and Working Principle (Whitworth)
 
-The linkage consists of a fixed center distance, a driving crank, a sliding block, and a driven slotted lever that is capable of executing a full `360^\circ` continuous rotation.
+The linkage consists of a fixed center distance, a driving crank, a sliding block, and a driven slotted lever that is capable of executing a full $360^\circ$ continuous rotation.
 
 ### A. Operation
 
@@ -437,7 +463,7 @@ The extension of this fully rotating slotted lever is connected via a link/conne
 
 #### 4. Stroke Differential
 
-Because the fixed centers of the driving crank and the driven lever are offset, the driving crank must sweep through a larger angle (`\alpha`) for the forward stroke than the angle (`\beta`) required for the return stroke.
+Because the fixed centers of the driving crank and the driven lever are offset, the driving crank must sweep through a larger angle $\alpha$ for the forward stroke than the angle $\beta$ required for the return stroke.
 
 ---
 
@@ -445,9 +471,9 @@ Because the fixed centers of the driving crank and the driven lever are offset, 
 
 ### A. Time Ratio (TR)
 
-Let `\alpha` represent the angle swept by the driving crank during the forward cutting stroke, and let `\beta` represent the angle swept during the quick return stroke.
+Let $\alpha$ represent the angle swept by the driving crank during the forward cutting stroke, and let $\beta$ represent the angle swept during the quick return stroke.
 
-Since the driving crank moves at a constant angular velocity (`\omega`), the time taken for each stroke is directly proportional to its respective crank angle:
+Since the driving crank moves at a constant angular velocity $\omega$, the time taken for each stroke is directly proportional to its respective crank angle:
 
 $$\text{Time Ratio (TR)} = \frac{\text{Time of Return Stroke}}{\text{Time of Cutting Stroke}} = \frac{\beta}{\alpha}$$
 
@@ -455,7 +481,7 @@ The total geometric cycle equals a complete rotation:
 
 $$\alpha + \beta = 360^\circ$$
 
-Since `\alpha > \beta`, the return stroke takes less time than the cutting stroke, giving a time ratio less than unity (`\text{TR} < 1`).
+Since $\alpha$ > $\beta$, the return stroke takes less time than the cutting stroke, giving a time ratio less than unity ($\text{TR}$ < 1).
 
 ### B. Stroke Length Formulation
 
@@ -476,7 +502,7 @@ $$S = 2 \cdot \frac{L \cdot c}{R}$$
 | Parameter | Operational Impact | Industrial Significance |
 | :--- | :--- | :--- |
 | **Time Efficiency** | Significantly reduces the idle phase of the machining cycle. | Increases overall production throughput in slotting and shaping shops. |
-| **Force Transmission** | Driven link completes a full `360^\circ` rotation rather than oscillating. | Provides smoother kinematic transition and highly uniform force application compared to a crank-and-slotted-lever mechanism. |
+| **Force Transmission** | Driven link completes a full $360^\circ$ rotation rather than oscillating. | Provides smoother kinematic transition and highly uniform force application compared to a crank-and-slotted-lever mechanism. |
 | **Kinematic Limitations** | Concentrated sliding friction within the rotating slot. | Prone to severe tribological wear; requires robust lubrication schedules to maintain accuracy. |
 
 ---
@@ -508,7 +534,7 @@ A standard external Geneva mechanism consists of two primary moving elements: a 
 
 #### 1. Continuous Input Drive
 
-The drive wheel rotates at a uniform angular velocity (`\omega`). It carries a **drive pin** (or roller) positioned at a specific crank radius (`a`) and a raised circular **locking crescent** (blocking disc).
+The drive wheel rotates at a uniform angular velocity $\omega$. It carries a **drive pin** (or roller) positioned at a specific crank radius (`a`) and a raised circular **locking crescent** (blocking disc).
 
 #### 2. Tangential Engagement
 
@@ -532,7 +558,7 @@ To ensure the mechanism operates without binding, jamming, or interference, the 
 
 Let:
 
-- `n` = Number of slots in the driven wheel (`n \ge 3`; most commonly `n = 4` or `n = 6`)
+- `n` = Number of slots in the driven wheel ($n \ge 3$ most commonly `n = 4` or `n = 6`)
 - `c` = Center distance between the driving and driven shafts
 - `a` = Drive pin crank radius
 - `R` = Radius of the driven Geneva wheel
@@ -540,7 +566,7 @@ Let:
 
 ### B. Governing Equations
 
-#### 1. Angle Between Adjacent Slots (`\theta`)
+#### 1. Angle Between Adjacent Slots $\theta$
 
 The index angle step of the driven wheel is directly dependent on slot count:
 
@@ -564,11 +590,11 @@ $$s = a + R - c$$
 
 #### 5. Motion vs. Dwell Angular Allocation
 
-During one complete `360^\circ` revolution of the input drive wheel, the angular displacement of the drive wheel during which the driven wheel is actively moving (`\alpha_m`) is given by:
+During one complete $360^\circ$ revolution of the input drive wheel, the angular displacement of the drive wheel during which the driven wheel is actively moving $\alpha_m$ is given by:
 
 $$\alpha_m = 180^\circ - \frac{360^\circ}{n}$$
 
-The remaining angle corresponds to the stationary dwell period (`\alpha_d`):
+The remaining angle corresponds to the stationary dwell period $\alpha_d$:
 
 $$\alpha_d = 180^\circ + \frac{360^\circ}{n}$$
 
@@ -584,7 +610,7 @@ $$\alpha_d = 180^\circ + \frac{360^\circ}{n}$$
 
 ### B. Disadvantages
 
-- **Infinite Jerk Profiles:** At the points of entry and exit, the theoretical acceleration profile changes instantaneously, yielding infinite **jerk** (`\frac{da}{dt}`). This creates significant dynamic shock, audible noise, and rapid localized wear at high speeds.
+- **Infinite Jerk Profiles:** At the points of entry and exit, the theoretical acceleration profile changes instantaneously, yielding infinite **jerk** $\frac{da}{dt}$. This creates significant dynamic shock, audible noise, and rapid localized wear at high speeds.
 - **Inflexible Kinematic Timing:** The ratio of indexing time to dwell time is a fixed mathematical function of the slot count (`n`). The cycle profile cannot be modified without changing the entire physical wheel.
 - **Velocity Constraints:** Due to the inherent dynamic impact of the jerk profile, standard configurations are restricted to low-to-moderate velocity applications.
 
@@ -648,11 +674,11 @@ To ensure safe operation without slipping, spitting (where the pawl is pushed ou
 
 Let:
 
-- `F_N` = Normal force acting perpendicular to the tooth face
-- `F_f` = Frictional force along the contact interface (`F_f = \mu \cdot F_N`)
-- `\mu` = Coefficient of static friction between the pawl tip and the tooth face
-- `\phi` = Friction angle (`\tan\phi = \mu`)
-- `\alpha` = Tooth face angle (or pressure angle) relative to the radius line passing through the pawl pivot
+- $F_N$ = Normal force acting perpendicular to the tooth face
+- $F_f$ = Frictional force along the contact interface $F_f = \mu \cdot F_N$
+- $\mu$ = Coefficient of static friction between the pawl tip and the tooth face
+- $\phi$ = Friction angle $\tan\phi = \mu$
+- $\alpha$ = Tooth face angle (or pressure angle) relative to the radius line passing through the pawl pivot
 
 For the mechanism to be strictly **self-locking** (ensuring the pawl draws *into* the tooth rather than slipping out under a reverse load), the geometric face angle must satisfy the inequality:
 
@@ -667,9 +693,9 @@ $$\tan\alpha \le \mu$$
 Let:
 
 - `N` = Total number of teeth on the circumference of the ratchet wheel
-- `p_c` = Circular pitch measured along the tip diameter `D`
+- $p_c$ = Circular pitch measured along the tip diameter `D`
 
-The angular index step (`\theta`) representing the minimum increment of directional control or rotation is given by:
+The angular index step $\theta$ representing the minimum increment of directional control or rotation is given by:
 
 $$\theta = \frac{360^\circ}{N}$$
 
@@ -755,7 +781,7 @@ The drive pin is constrained inside a perfectly straight, perpendicular slot mac
 
 #### 3. Motion Decoupling
 
-As the crank executes a full `360^\circ` circle, the vertical component of the pin's displacement results in pure sliding up and down within the yoke's slot. Simultaneously, the horizontal component of the circular path directly drives the yoke back and forth along its linear guides.
+As the crank executes a full $360^\circ$ circle, the vertical component of the pin's displacement results in pure sliding up and down within the yoke's slot. Simultaneously, the horizontal component of the circular path directly drives the yoke back and forth along its linear guides.
 
 #### 4. Output Profile
 
@@ -765,13 +791,13 @@ Because the vertical movement is completely absorbed by the slot, the horizontal
 
 ## Kinematic Governing Equations (Scotch Yoke)
 
-Unlike a standard slider-crank mechanism—which contains higher-order non-linear terms due to the obliquity ratio (`n = l/r`) of the connecting rod—the Scotch yoke kinematics are purely sinusoidal.
+Unlike a standard slider-crank mechanism—which contains higher-order non-linear terms due to the obliquity ratio $n = l/r$ of the connecting rod—the Scotch yoke kinematics are purely sinusoidal.
 
 Let:
 
 - `r` = Crank radius (distance from rotation center to pin center)
-- `\omega` = Constant angular velocity of the crank (`\text{rad/s}`)
-- `\theta` = Instantaneous crank angle at time `t`, where `\theta = \omega t`
+- $\omega$ = Constant angular velocity of the crank $\text{rad/s}$
+- $\theta$ = Instantaneous crank angle at time `t`, where $\theta = \omega t$
 - `x, v, a` = Linear displacement, velocity, and acceleration of the yoke respectively
 
 ### A. Mathematical Formulations
@@ -790,9 +816,9 @@ Derived by differentiating the displacement with respect to time (`t`):
 
 $$v = \frac{dx}{dt} = -r\omega \sin(\omega t)$$
 
-##### a. Maximum Velocity (`v_{\text{max}}`)
+##### a. Maximum Velocity $v_{\text{max}}$
 
-Occurs at the exact center of the stroke (`\theta = 90^\circ` or `270^\circ`):
+Occurs at the exact center of the stroke $\theta = 90^\circ` or `270^\circ$:
 
 $$v_{\text{max}} = \pm r\omega$$
 
@@ -802,9 +828,9 @@ Derived by differentiating the velocity with respect to time (`t`):
 
 $$a = \frac{dv}{dt} = -r\omega^2 \cos(\omega t)$$
 
-##### a. Maximum Acceleration (`a_{\text{max}}`)
+##### a. Maximum Acceleration $a_{\text{max}}$
 
-Occurs at the dead centers / reversal points (`\theta = 0^\circ` or `180^\circ`):
+Occurs at the dead centers / reversal points $\theta = 0^\circ` or `180^\circ$:
 
 $$a_{\text{max}} = \pm r\omega^2$$
 
@@ -861,7 +887,7 @@ The coupling assembly is mechanically simple, consisting of three main structura
 ### A. Component Breakdown
 
 - **The Flanges:** Two identical flanges are rigidly keyed to the ends of the input and output shafts. Each flange features a deep, linear slot machined across its face.
-- **The Intermediate Link (Floating Disc):** A central circular disc sits sandwiched between the two flanges. This disc features two projection tongues machined on its opposite faces, oriented at exactly `90^\circ` (right angles) to one another.
+- **The Intermediate Link (Floating Disc):** A central circular disc sits sandwiched between the two flanges. This disc features two projection tongues machined on its opposite faces, oriented at exactly $90^\circ$ (right angles) to one another.
 
 ### B. Motion Transmission Loop
 
@@ -881,11 +907,11 @@ The vector resultant of these two independent, mutually perpendicular linear sli
 
 ## Kinematic Formulation & Mathematical Profile (Oldham's)
 
-During a full `360^\circ` operational cycle, the kinematic behavior of the intermediate disc defines the internal friction, power loss, and localized material wear.
+During a full $360^\circ$ operational cycle, the kinematic behavior of the intermediate disc defines the internal friction, power loss, and localized material wear.
 
 ### A. Locus of the Intermediate Disc Center
 
-Let the center of the driving shaft be `O_1` and the center of the driven shaft be `O_2`. The distance between these parallel axes represents the lateral misalignment offset (`d`).
+Let the center of the driving shaft be $O_1$ and the center of the driven shaft be $O_2$. The distance between these parallel axes represents the lateral misalignment offset (`d`).
 
 As the mechanism executes steady-state rotation, the geometric center of the central floating disc (`G`) continuously shifts. An analytical trace reveals that **the center of the intermediate disc describes a precise circular path** whose diameter is exactly equal to the distance between the shaft axes (`d`).
 
@@ -894,27 +920,27 @@ $$\text{Radius of Locus Circle } (R_g) = \frac{d}{2}$$
 
 ### B. Governing Equations
 
-#### 1. Angular Velocity (`\omega`)
+#### 1. Angular Velocity $\omega$
 
 Calculated from the shaft rotational speed (`N`) in r.p.m.:
 
 $$\omega = \frac{2\pi N}{60}$$
 
-#### 2. Maximum Velocity of Sliding (`V_{s_{\text{max}}}`)
+#### 2. Maximum Velocity of Sliding $V_{s_{\text{max}}}$
 
-Because the floating disc center rotates along its locus circle of radius `\frac{d}{2}` at an angular velocity of `2\omega` relative to the flanges, the maximum linear sliding velocity of each tongue relative to its flange slot matches the peripheral velocity of the disc center:
+Because the floating disc center rotates along its locus circle of radius $\frac{d}{2}$ at an angular velocity of $2\omega$ relative to the flanges, the maximum linear sliding velocity of each tongue relative to its flange slot matches the peripheral velocity of the disc center:
 
 $$V_{s_{\text{max}}} = \omega \cdot d$$
 
 Where:
 
-- `V_{s_{\text{max}}}` = Maximum velocity of sliding (`\text{m/s}`)
-- `\omega` = Angular velocity of the shafts (`\text{rad/s}`)
-- `d` = Lateral distance between parallel shaft axes (`\text{m}`)
+- $V_{s_{\text{max}}}$ = Maximum velocity of sliding $\text{m/s}$
+- $\omega$ = Angular velocity of the shafts $\text{rad/s}$
+- `d` = Lateral distance between parallel shaft axes $\text{m}$
 
-#### 3. Frictional Power Loss (`P_{\text{loss}}`)
+#### 3. Frictional Power Loss $P_{\text{loss}}$
 
-The continuous high-pressure sliding action generates a torque loss due to friction. If `T_f` is the average frictional torque opposing rotation:
+The continuous high-pressure sliding action generates a torque loss due to friction. If $T_f$ is the average frictional torque opposing rotation:
 
 $$P_{\text{loss}} = T_f \cdot \omega$$
 
@@ -924,23 +950,23 @@ $$P_{\text{loss}} = T_f \cdot \omega$$
 
 ### A. Problem Statement
 
-The lateral offset distance (`d`) between two parallel shafts connected via an Oldham's coupling is `18\text{ mm}`. The shafts are driven by a motor at a uniform speed of `160\text{ r.p.m.}`. Determine the angular velocity of the system and the maximum sliding velocity experienced by the intermediate disc tongues.
+The lateral offset distance (`d`) between two parallel shafts connected via an Oldham's coupling is $18\text{ mm}$. The shafts are driven by a motor at a uniform speed of $160\text{ r.p.m.}$. Determine the angular velocity of the system and the maximum sliding velocity experienced by the intermediate disc tongues.
 
 ### B. Solution
 
 #### 1. Convert Given Parameters to SI Units
 
 - Parallel shaft distance (`d`):
-  `d = 18\text{ mm} = 0.018\text{ m}`
+  $d = 18\text{ mm} = 0.018\text{ m}$
 - Rotational shaft speed (`N`):
 $$N = 160\text{ r.p.m.}$$
 
-#### 2. Evaluate Shaft Angular Velocity (`\omega`)
+#### 2. Evaluate Shaft Angular Velocity $\omega$
 
 $$\omega = \frac{2\pi \cdot 160}{60}$$
 $$\omega = \frac{320\pi}{60} \approx 16.755\text{ rad/s}$$
 
-#### 3. Calculate Maximum Velocity of Sliding (`V_{s_{\text{max}}}`)
+#### 3. Calculate Maximum Velocity of Sliding $V_{s_{\text{max}}}$
 
 Using the governing kinematic equation:
 
@@ -950,8 +976,8 @@ $$V_{s_{\text{max}}} \approx 0.302\text{ m/s}$$
 
 ### C. Final Design Metrics
 
-- **System Angular Velocity:** `16.76\text{ rad/s}`
-- **Maximum Tool Slide Velocity:** `0.302\text{ m/s}` (This value dictates the lubrication viscosity and surface hardening depth required for the coupling slots).
+- **System Angular Velocity:** $16.76\text{ rad/s}$
+- **Maximum Tool Slide Velocity:** $0.302\text{ m/s}$ (This value dictates the lubrication viscosity and surface hardening depth required for the coupling slots).
 
 ---
 
@@ -1009,11 +1035,11 @@ As the input crank `OQ` rotates about the fixed ground center `O`, the input poi
 
 #### 1. Collinearity Proof
 
-Because the assembly `BPCQ` forms a structural rhombus, the internal diagonal `QP` always bisects the joint angle `\angle BQC`. Triangles `\Delta AQC` and `\Delta AQB` share a common side `AQ` and have equal corresponding sides (`AC=AB` and `QC=QB`), making them congruent. This rigorous geometric symmetry guarantees that the grounded pivot `A`, the input pin `Q`, and the output tracer `P` **always remain strictly collinear** along a single line throughout the entire range of motion.
+Because the assembly `BPCQ` forms a structural rhombus, the internal diagonal `QP` always bisects the joint angle $\angle BQC$. Triangles $\Delta AQC$ and $\Delta AQB$ share a common side `AQ` and have equal corresponding sides (`AC=AB` and `QC=QB`), making them congruent. This rigorous geometric symmetry guarantees that the grounded pivot `A`, the input pin `Q`, and the output tracer `P` **always remain strictly collinear** along a single line throughout the entire range of motion.
 
 #### 2. Constant Product (Geometric Inversion)
 
-Let `R` define the geometric intersection point of the two diagonals of the rhombus (`BC` and `QP`). By definition, the diagonals of a rhombus intersect at exactly `90^\circ` and bisect each other (`BR = RC`).
+Let `R` define the geometric intersection point of the two diagonals of the rhombus (`BC` and `QP`). By definition, the diagonals of a rhombus intersect at exactly $90^\circ$ and bisect each other (`BR = RC`).
 
 Expressing the collinear distances from pivot `A`:
 
@@ -1028,7 +1054,7 @@ Evaluating the scalar product of the two distances:
 
 $$(AQ)(AP) = (AR - RQ)(AR + RQ) = (AR)^2 - (RQ)^2$$
 
-Applying the Pythagorean theorem to the adjacent right-angled triangles `\Delta ARC` and `\Delta QRC`:
+Applying the Pythagorean theorem to the adjacent right-angled triangles $\Delta ARC$ and $\Delta QRC$:
 
 $$\text{From } \Delta ARC: \quad (AR)^2 = (AC)^2 - (CR)^2$$
 $$\text{From } \Delta QRC: \quad (RQ)^2 = (CQ)^2 - (CR)^2$$
@@ -1129,14 +1155,14 @@ Where:
 
 Consider a configuration where the mechanism requires asymmetric constraints:
 
-- Rocker link lengths: `OA = 45\text{ mm}` and `QB = 90\text{ mm}`
-- Connecting coupler link: `AB = 60\text{ mm}`
+- Rocker link lengths: $OA = 45\text{ mm}$ and $QB = 90\text{ mm}$
+- Connecting coupler link: $AB = 60\text{ mm}$
 
 Using the inverse proportion criteria to find the tracer node position on an extended coupler line:
 
 $$\frac{PB}{AP} = \frac{45}{90} = \frac{1}{2} \implies AP = 2 \cdot PB$$
 
-Through coordinate kinematics matching this ratio across the spatial loop, the ideal point `P` that yields the minimum tracking error is calculated to be located at a precise distance of **`AP = 120\text{ mm}`** along the extended line of link `AB`.
+Through coordinate kinematics matching this ratio across the spatial loop, the ideal point `P` that yields the minimum tracking error is calculated to be located at a precise distance of $AP = 120\text{ mm}$ along the extended line of link `AB`.
 
 ---
 
@@ -1189,7 +1215,7 @@ Klein's approach simplifies kinematic calculations by directly overlaying both t
 
 #### 1. Configuration Layout
 
-Draw the slider-crank mechanism to a definite scale, where `OC` represents the crank rotating at a uniform angular velocity (`\omega`) and `PC` represents the connecting rod.
+Draw the slider-crank mechanism to a definite scale, where `OC` represents the crank rotating at a uniform angular velocity $\omega$ and `PC` represents the connecting rod.
 
 #### 2. Primary Joint Accelerations
 
@@ -1206,7 +1232,7 @@ To find the absolute acceleration of any arbitrary intermediate points (e.g., `D
 
 #### 4. Resultant Acceleration Vectors
 
-Connect these new intersection points back to the fixed rotation center `O`. The resulting vectors (`\mathbf{dO}, \mathbf{eO}, \mathbf{fO}, \mathbf{gO}`) represent the exact magnitude and direction of the absolute acceleration for points `D, E, F`, and `G` respectively.
+Connect these new intersection points back to the fixed rotation center `O`. The resulting vectors $\mathbf{dO}, \mathbf{eO}, \mathbf{fO}, \mathbf{gO}$ represent the exact magnitude and direction of the absolute acceleration for points `D, E, F`, and `G` respectively.
 
 ---
 
@@ -1226,11 +1252,11 @@ Connect these new intersection points back to the fixed rotation center `O`. The
 
 ## Kinematic Limitations (Klein's)
 
-The exact geometric proof of Klein's standard construction intrinsically assumes that the input crank (`OC`) rotates at a **constant, uniform angular velocity (`\omega`)**, meaning its angular acceleration is zero (`\alpha = 0`).
+The exact geometric proof of Klein's standard construction intrinsically assumes that the input crank (`OC`) rotates at a **constant, uniform angular velocity $\omega$ **, meaning its angular acceleration is zero $\alpha = 0$.
 
 ### A. Failure Case Example: Non-Uniform Crank Velocity
 
-Consider an internal combustion engine during initial start-up, throttling acceleration, or sudden braking. In these scenarios, the driving crank is subjected to an angular acceleration (`\alpha`).
+Consider an internal combustion engine during initial start-up, throttling acceleration, or sudden braking. In these scenarios, the driving crank is subjected to an angular acceleration $\alpha$.
 
 ---
 
@@ -1257,7 +1283,7 @@ Consider a configuration diagram of a slider-crank mechanism where `r` is define
 
 ## Velocity Polygon Formulation (Klein's Construction)
 
-To establish the velocity scale, let the crank length `r` represent the linear velocity of the crank pin relative to the fixed center (`V_{co}`).
+To establish the velocity scale, let the crank length `r` represent the linear velocity of the crank pin relative to the fixed center $V_{co}$.
 
 ### A. Construction Procedure
 
@@ -1273,13 +1299,13 @@ Draw a line from the fixed rotation center `O` that is perfectly perpendicular t
 
 Mark the intersection point where these two lines meet as `M`.
 
-The resulting triangle `\Delta OCM` represents the self-contained velocity polygon.
+The resulting triangle $\Delta OCM$ represents the self-contained velocity polygon.
 
 ### B. Kinematic Vector Meanings
 
-- `OC \longrightarrow` Magnitude of the velocity of point `C` relative to point `O` (`V_{co}`)
-- `CM \longrightarrow` Magnitude of the velocity of point `C` relative to point `P` (`V_{cp}`)
-- `OM \longrightarrow` Magnitude of the absolute slider velocity (`V_{po}`)
+- $OC \longrightarrow$ Magnitude of the velocity of point `C` relative to point `O` $V_{co}$
+- $CM \longrightarrow$ Magnitude of the velocity of point `C` relative to point `P` $V_{cp}$
+- $OM \longrightarrow$ Magnitude of the absolute slider velocity $V_{po}$
 
 ---
 
@@ -1313,11 +1339,11 @@ The resulting geometric quadrilateral `OCQN` forms the complete acceleration pol
 
 ### B. Kinematic Vector Meanings
 
-- `ON \longrightarrow` Absolute linear acceleration of the slider `P`
-- `OC \longrightarrow` Centripetal (radial) acceleration of the crank `OC`
-- `CQ \longrightarrow` Centripetal (radial) acceleration of the connecting rod link `CP`
-- `QN \longrightarrow` Tangential acceleration component of the connecting rod link `CP`
-- `CN \longrightarrow` Total resultant acceleration of the connecting rod link `CP`
+- $ON \longrightarrow$ Absolute linear acceleration of the slider `P`
+- $OC \longrightarrow$ Centripetal (radial) acceleration of the crank `OC`
+- $CQ \longrightarrow$ Centripetal (radial) acceleration of the connecting rod link `CP`
+- $QN \longrightarrow$ Tangential acceleration component of the connecting rod link `CP`
+- $CN \longrightarrow$ Total resultant acceleration of the connecting rod link `CP`
 
 ---
 
@@ -1325,7 +1351,7 @@ The resulting geometric quadrilateral `OCQN` forms the complete acceleration pol
 
 ### A. Definition
 
-In the kinematic acceleration analysis of planar linkages, the **Coriolis component of acceleration** (`a^c` or `f_{cr}`) arises whenever a coincident point (such as a slider) undergoes linear translation along a guiding link while that guiding link is simultaneously executing angular rotation.
+In the kinematic acceleration analysis of planar linkages, the **Coriolis component of acceleration** $a^c$ or $f_{cr}$ arises whenever a coincident point (such as a slider) undergoes linear translation along a guiding link while that guiding link is simultaneously executing angular rotation.
 
 When evaluating the absolute acceleration vector of a slider point `P` moving relative to a coincident point `Q` on a rotating guide link `A` relative to a fixed frame `O`, the loop closure vector equations yield a specific transverse acceleration term. The total absolute acceleration is modeled as:
 
@@ -1333,10 +1359,10 @@ $$\mathbf{a}_P = \mathbf{a}_Q + \mathbf{a}_{PQ}^r + \mathbf{a}_{PQ}^t + \mathbf{
 
 #### 1. Variables
 
-- `\mathbf{a}_Q` = Acceleration of the coincident point `Q` on the link
-- `\mathbf{a}_{PQ}^r` = Radial component of relative acceleration of the slider to the slot
-- `\mathbf{a}_{PQ}^t` = Tangential component of relative acceleration of the slider to the slot
-- `\mathbf{a}_{cr}` = Coriolis component of acceleration
+- $\mathbf{a}_Q$ = Acceleration of the coincident point `Q` on the link
+- $\mathbf{a}_{PQ}^r$ = Radial component of relative acceleration of the slider to the slot
+- $\mathbf{a}_{PQ}^t$ = Tangential component of relative acceleration of the slider to the slot
+- $\mathbf{a}_{cr}$ = Coriolis component of acceleration
 
 ---
 
@@ -1348,15 +1374,15 @@ $$a_{cr} = 2\omega v$$
 
 Where:
 
-- `\omega` = Angular velocity of the rotating guide link (`\text{rad/s}`)
-- `v` = Linear velocity of the slider relative to the rotating guide link (`\text{m/s}`)
+- $\omega$ = Angular velocity of the rotating guide link $\text{rad/s}$
+- `v` = Linear velocity of the slider relative to the rotating guide link $\text{m/s}$
 
 ### A. Analytical Engineering Example
 
 Consider a coincident link-slider interface during quick-return analysis:
 
-- Angular velocity of the guiding link (`\omega_{qa}`): `5.8\text{ rad/s}`
-- Relative sliding linear velocity (`v_{pq}`): `41.91\text{ m/s}` (derived from a textbook ratio of `\frac{0.68}{28.5}\text{ m/s}` matching scale factors)
+- Angular velocity of the guiding link $\omega_{qa}$: $5.8\text{ rad/s}$
+- Relative sliding linear velocity $v_{pq}$: $41.91\text{ m/s}$ (derived from a textbook ratio of $\frac{0.68}{28.5}\text{ m/s}$ matching scale factors)
 
 Evaluating the Coriolis acceleration magnitude:
 
@@ -1367,11 +1393,11 @@ $$a_{cr} = 2 \times 5.8\text{ rad/s} \times 41.91\text{ m/s} \approx 486\text{ m
 
 ## Determining the Vector Direction (Coriolis)
 
-To accurately plot the vector in an acceleration polygon, the exact spatial orientation of `\mathbf{a}_{cr}` must be established using a standard geometric rotation rule.
+To accurately plot the vector in an acceleration polygon, the exact spatial orientation of $\mathbf{a}_{cr}$ must be established using a standard geometric rotation rule.
 
-### A. The `90^\circ` Rotation Rule
+### A. The $90^\circ$ Rotation Rule
 
-The direction of the Coriolis acceleration vector is obtained by taking the relative linear velocity vector (`\mathbf{v}`) of the slider and **rotating it by exactly `90^\circ` in the direction of the guide link's angular velocity (`\omega`)**.
+The direction of the Coriolis acceleration vector is obtained by taking the relative linear velocity vector $\mathbf{v}$ of the slider and **rotating it by exactly $90^\circ$ in the direction of the guide link's angular velocity $\omega$ **.
 
 ---
 
@@ -1379,11 +1405,11 @@ The direction of the Coriolis acceleration vector is obtained by taking the rela
 
 ### A. Problem Statement
 
-In a crank and slotted-lever quick-return mechanism, the driving crank `OA` is **`150\text{ mm}`** long and rotates at a uniform speed of **`30\text{ r.p.m.}`** in the counter-clockwise direction. At a given instant, the crank makes an angle of `\theta = 60^\circ` with the vertical line of centers joining the fixed pivots.
+In a crank and slotted-lever quick-return mechanism, the driving crank `OA` is ** $150\text{ mm}$ ** long and rotates at a uniform speed of ** $30\text{ r.p.m.}$ ** in the counter-clockwise direction. At a given instant, the crank makes an angle of $\theta = 60^\circ$ with the vertical line of centers joining the fixed pivots.
 
-The slotted lever `BQC` oscillates about the fixed pivot `Q`, which is located vertically below `O` at a distance of `300\text{ mm}`. A slider attached to the crank pin `A` moves along the slotted lever.
+The slotted lever `BQC` oscillates about the fixed pivot `Q`, which is located vertically below `O` at a distance of $300\text{ mm}$. A slider attached to the crank pin `A` moves along the slotted lever.
 
-At this instantaneous position, a separate velocity analysis has determined that the linear velocity of slider `A` relative to the slotted lever is **`v = 0.35\text{ m/s}`** (directed upward along the lever), and the angular velocity of the slotted lever is **`\omega = 0.82\text{ rad/s}`** (counter-clockwise).
+At this instantaneous position, a separate velocity analysis has determined that the linear velocity of slider `A` relative to the slotted lever is ** $v = 0.35\text{ m/s}$ ** (directed upward along the lever), and the angular velocity of the slotted lever is ** $\omega = 0.82\text{ rad/s}$ ** (counter-clockwise).
 
 **Determine:**
 
@@ -1395,13 +1421,13 @@ At this instantaneous position, a separate velocity analysis has determined that
 #### 1. Identify and Convert Given Parameters
 
 - Crank radius (`OA`):
-  `OA = 150\text{ mm} = 0.15\text{ m}`
-- Angular velocity of the driving crank (`\omega_{OA}`):
-  `\omega_{OA} = \frac{2\pi \cdot 30}{60} = \pi \approx 3.142\text{ rad/s}`
-- Relative sliding velocity (`v`): `0.35\text{ m/s}` (directed outward from `Q` toward `C`)
-- Angular velocity of the slotted guide link (`\omega`): `0.82\text{ rad/s}` (counter-clockwise, `\circlearrowleft`)
+  $OA = 150\text{ mm} = 0.15\text{ m}$
+- Angular velocity of the driving crank $\omega_{OA}$:
+  $\omega_{OA} = \frac{2\pi \cdot 30}{60} = \pi \approx 3.142\text{ rad/s}$
+- Relative sliding velocity (`v`): $0.35\text{ m/s}$ (directed outward from `Q` toward `C`)
+- Angular velocity of the slotted guide link $\omega$: $0.82\text{ rad/s}$ (counter-clockwise, $\circlearrowleft$)
 
-#### 2. Calculate the Magnitude of the Coriolis Acceleration (`a_{cr}`)
+#### 2. Calculate the Magnitude of the Coriolis Acceleration ($a_{cr}$)
 
 The magnitude is governed by the cross-coupled velocity formulation:
 
@@ -1414,19 +1440,19 @@ $$a_{cr} = 0.574\text{ m/s}^2$$
 
 #### 3. Determine the Vector Direction
 
-To plot the vector accurately within an acceleration polygon, apply the `90^\circ` spatial rotation rule:
+To plot the vector accurately within an acceleration polygon, apply the $90^\circ$ spatial rotation rule:
 
-##### a. Establish the Relative Velocity Vector (`\mathbf{v}`)
+##### a. Establish the Relative Velocity Vector $\mathbf{v}$
 
 The slider is moving along the slotted lever outward from pivot `Q` toward end `C` (upward and to the left along the lever's instantaneous tilt).
 
-##### b. Identify Guide Rotation (`\omega`)
+##### b. Identify Guide Rotation $\omega$
 
-The slotted lever is rotating **counter-clockwise** (`\circlearrowleft`).
+The slotted lever is rotating **counter-clockwise** $\circlearrowleft$.
 
 ##### c. Execute Rotation
 
-Rotate the upward-pointing relative velocity vector `\mathbf{v}` by exactly **`90^\circ` counter-clockwise**.
+Rotate the upward-pointing relative velocity vector $\mathbf{v}$ by exactly ** $90^\circ$ counter-clockwise**.
 
 <img
   src="https://raw.githubusercontent.com/podummy04/images/main/Mech/KOM/week3/KOM-12.png"
@@ -1505,9 +1531,9 @@ To prevent destructive structural vibrations, mechanical hammering, or catastrop
 Let:
 
 - `h` = Total maximum lift (stroke) of the follower
-- `\theta` = Instantaneous cam rotation angle
-- `\phi_r` = Total angle of cam rotation during the rise (outward) stroke
-- `\omega` = Uniform angular velocity of the cam (`\text{rad/s}`)
+- $\theta$ = Instantaneous cam rotation angle
+- $\phi_r$ = Total angle of cam rotation during the rise (outward) stroke
+- $\omega$ = Uniform angular velocity of the cam $\text{rad/s}$
 - `y, v, a, j` = Follower displacement, velocity, acceleration, and jerk respectively
 
 ### A. Motion Profile 1: Simple Harmonic Motion (SHM)
@@ -1532,11 +1558,11 @@ This profile splits the stroke into two equal halves, providing the lowest possi
 
 #### 1. Displacement (`y`)
 
-##### a. For the first half of rise `\left(0 \le \theta \le \frac{\phi_r}{2}\right)`
+##### a. For the first half of rise $\left(0 \le \theta \le \frac{\phi_r}{2}\right)$
 
 $$y = 2h \left( \frac{\theta}{\phi_r} \right)^2$$
 
-##### b. For the second half of rise `\left(\frac{\phi_r}{2} \le \theta \le \phi_r\right)`
+##### b. For the second half of rise $\left(\frac{\phi_r}{2} \le \theta \le \phi_r\right)$
 
 $$y = h - 2h \left( \frac{\phi_r - \theta}{\phi_r} \right)^2$$
 
@@ -1570,11 +1596,11 @@ $$a = \frac{2\pi \cdot h \cdot \omega^2}{\phi_r^2} \sin\left( \frac{2\pi\theta}{
 
 ## Kinematic Boundary Phenomena
 
-| Motion Profile | Maximum Velocity (`v_{\text{max}}`) | Maximum Acceleration (`a_{\text{max}}`) | Jerk Character at Boundaries (`j = \frac{da}{dt}`) |
+| Motion Profile | Maximum Velocity ($v_{\text{max}}$) | Maximum Acceleration ($a_{\text{max}}$) | Jerk Character at Boundaries ($j = \frac{da}{dt}$) |
 | :--- | :--- | :--- | :--- |
-| **Simple Harmonic** | `\frac{1.571 \cdot h\omega}{\phi_r}` | `\frac{4.935 \cdot h\omega^2}{\phi_r^2}` | **Infinite (`\infty`)** `\longrightarrow` Induces dynamic shock, noise, and localized profile pitting at high speeds. |
-| **Constant Accel/Decel** | `\frac{2 \cdot h\omega}{\phi_r}` | `\frac{4 \cdot h\omega^2}{\phi_r^2}` | **Infinite (`\infty`)** `\longrightarrow` Discontinuous acceleration steps create extreme vibration spikes. |
-| **Cycloidal** | `\frac{2 \cdot h\omega}{\phi_r}` | `\frac{6.283 \cdot h\omega^2}{\phi_r^2}` | **Finite (Smooth)** `\longrightarrow` Acceleration curve starts and ends at zero. Ideal for high-speed valvetrains. |
+| **Simple Harmonic** | $\frac{1.571 \cdot h\omega}{\phi_r}$ | $\frac{4.935 \cdot h\omega^2}{\phi_r^2}$ | **Infinite ($\infty$)** `\longrightarrow` Induces dynamic shock, noise, and localized profile pitting at high speeds. |
+| **Constant Accel/Decel** | $\frac{2 \cdot h\omega}{\phi_r}$ | $\frac{4 \cdot h\omega^2}{\phi_r^2}$ | **Infinite ($\infty$)** $\longrightarrow$ Discontinuous acceleration steps create extreme vibration spikes. |
+| **Cycloidal** | $\frac{2 \cdot h\omega}{\phi_r}$ | $\frac{6.283 \cdot h\omega^2}{\phi_r^2}$ | **Finite (Smooth)** $\longrightarrow$ Acceleration curve starts and ends at zero. Ideal for high-speed valvetrains. |
 
 <img
   src="https://raw.githubusercontent.com/podummy04/images/main/Mech/KOM/week3/KOM-13.png"
@@ -1627,7 +1653,7 @@ A **knife-edge follower** features a sharp, pointed contact tip that tracks the 
 
 For a knife-edge follower, the physical contact tip serves as the absolute **trace point**. Consequently, the follower's physical displacement curve perfectly mirrors the programmed pitch curve of the cam.
 
-The general kinematic relationships for velocity (`v`), acceleration (`a`), and jerk (`j`) are derived using the fundamental time derivatives of the displacement function (`s`), cross-coupled with the cam's uniform angular velocity (`\omega = \frac{d\theta}{dt}`):
+The general kinematic relationships for velocity (`v`), acceleration (`a`), and jerk (`j`) are derived using the fundamental time derivatives of the displacement function (`s`), cross-coupled with the cam's uniform angular velocity ($\omega = \frac{d\theta}{dt}$):
 
 ##### a. Velocity (`v`)
 
@@ -1712,7 +1738,7 @@ A **flat-faced follower** (or mushroom follower if the face is marginally extend
 
 #### 3. Mathematical Formulation: Cycloidal Motion Rise Profile
 
-To prevent infinite boundary jerk in high-speed machinery, flat-faced followers are commonly paired with a cycloidal motion program. Let `h` represent total lift, `\phi` represent the total angle of ascent, and `\theta` represent the instantaneous cam angle:
+To prevent infinite boundary jerk in high-speed machinery, flat-faced followers are commonly paired with a cycloidal motion program. Let `h` represent total lift, $\phi$ represent the total angle of ascent, and `\theta` represent the instantaneous cam angle:
 
 ##### a. Displacement (`s`)
 
@@ -1722,9 +1748,9 @@ $$s = \frac{h}{\pi} \left[ \frac{\pi\theta}{\phi} - \frac{1}{2} \sin\left(\frac{
 
 $$v = \frac{h\omega}{\phi} \left[ 1 - \cos\left(\frac{2\pi\theta}{\phi}\right) \right]$$
 
-##### c. Maximum Linear Velocity (`v_{\text{max}}`)
+##### c. Maximum Linear Velocity $v_{\text{max}}$
 
-The maximum velocity occurs exactly at the midpoint of the lift profile (`\theta = \frac{\phi}{2}`):
+The maximum velocity occurs exactly at the midpoint of the lift profile $\theta = \frac{\phi}{2}$:
 
 $$v_{\text{max}} = \frac{2h\omega}{\phi}$$
 
@@ -1760,34 +1786,34 @@ When designing a camshaft with a roller follower, the center of the roller track
 
 #### 3. Mathematical Formulation
 
-For a knife-edge or flat-faced follower, the prime circle is identical to the base circle. For a roller follower, the radius of the prime circle (`r_p`) must account for the roller geometry:
+For a knife-edge or flat-faced follower, the prime circle is identical to the base circle. For a roller follower, the radius of the prime circle ($r_p$) must account for the roller geometry:
 
 $$r_p = r_c + r_r$$
 
 Where:
 
-- `r_c` = Base circle radius
-- `r_r` = Roller radius
+- $r_c$ = Base circle radius
+- $r_r$ = Roller radius
 
 ### C. Pressure Angle
 
 #### 1. Definition
 
-The **pressure angle** (`\phi`) is the angle between the normal line to the pitch curve at a given point and the instantaneous line of movement of the follower stem.
+The **pressure angle** ($\phi$) is the angle between the normal line to the pitch curve at a given point and the instantaneous line of movement of the follower stem.
 
 #### 2. Operational Significance
 
-The pressure angle continuously varies in magnitude as the cam rotates. Designers must strictly constrain the maximum pressure angle (`\phi_{\text{max}}`)—typically keeping it **under `30^\circ`**. If `\phi_{\text{max}}` exceeds critical limits, the lateral side-thrust forces spike severely, binding or jamming the follower within its linear guide bearings and risking structural failure.
+The pressure angle continuously varies in magnitude as the cam rotates. Designers must strictly constrain the maximum pressure angle ($\phi_{\text{max}}$)—typically keeping it **under $30^\circ$**. If $\phi_{\text{max}}$ exceeds critical limits, the lateral side-thrust forces spike severely, binding or jamming the follower within its linear guide bearings and risking structural failure.
 
 #### 3. Parameters
 
-The pressure angle peaks at the **pitch point**, where the slope of the pitch curve is steepest. `\phi_{\text{max}}` is inversely proportional to the prime circle radius; thus, increasing the size of the prime circle reduces the maximum pressure angle.
+The pressure angle peaks at the **pitch point**, where the slope of the pitch curve is steepest. $\phi_{\text{max}}$ is inversely proportional to the prime circle radius; thus, increasing the size of the prime circle reduces the maximum pressure angle.
 
 ### D. Follower Displacement Diagrams
 
 #### 1. Definition
 
-A kinematic graph used to program the motion profile of the follower across one complete cam revolution (`360^\circ`). The horizontal `x`-axis plots the cam rotation angle (`\theta`), while the vertical `y`-axis tracks the absolute linear or angular displacement (`s`) of the follower.
+A kinematic graph used to program the motion profile of the follower across one complete cam revolution ($360^\circ$). The horizontal `x`-axis plots the cam rotation angle ($\theta$), while the vertical `y`-axis tracks the absolute linear or angular displacement (`s`) of the follower.
 
 #### 2. Operational Significance
 
@@ -1795,7 +1821,7 @@ The diagram maps out consecutive phases: **rise** (outward stroke), **dwell** (p
 
 #### 3. Governing Derivatives
 
-Using the displacement function `s = s(\theta)` and the uniform cam angular velocity `\omega = \frac{d\theta}{dt}`, the physical derivatives are modeled as:
+Using the displacement function $s = s(\theta)$ and the uniform cam angular velocity $\omega = \frac{d\theta}{dt}$, the physical derivatives are modeled as:
 
 ##### a. Linear Velocity (`v`)
 
@@ -1817,11 +1843,11 @@ A motion program where the follower's acceleration and displacement follow a pur
 
 #### 2. Operational Significance
 
-SHM is well-suited for moderate-speed mechanisms. However, at high operating velocities, it experiences an instantaneous step-jump in acceleration from zero to maximum at the boundary edges (`\theta = 0^\circ` and `\theta = \phi_r`). This discontinuity yields an **infinite jerk** profile, causing mechanical shock and loud chattering.
+SHM is well-suited for moderate-speed mechanisms. However, at high operating velocities, it experiences an instantaneous step-jump in acceleration from zero to maximum at the boundary edges ($\theta = 0^\circ$ and $\theta = \phi_r$). This discontinuity yields an **infinite jerk** profile, causing mechanical shock and loud chattering.
 
 #### 3. Kinematic Formulations
 
-Let `h` be the total follower lift and `\phi_r` be the total angle of ascent:
+Let `h` be the total follower lift and $\phi_r$ be the total angle of ascent:
 
 ##### a. Displacement (`s`)
 
@@ -1831,7 +1857,7 @@ $$s = \frac{h}{2} \left[ 1 - \cos\left( \frac{\pi \theta}{\phi_r} \right) \right
 
 $$v = \frac{\pi \cdot h \cdot \omega}{2\phi_r} \sin\left( \frac{\pi \theta}{\phi_r} \right)$$
 
-- **Maximum Velocity (`v_{\text{max}}`):** Occurs precisely at the mid-stroke position (`\theta = \frac{\phi_r}{2}`):
+- **Maximum Velocity ($v_{\text{max}}$):** Occurs precisely at the mid-stroke position ($\theta = \frac{\phi_r}{2}$):
 
 $$v_{\text{max}} = \frac{\pi \cdot h \cdot \omega}{2\phi_r}$$
 
@@ -1839,7 +1865,7 @@ $$v_{\text{max}} = \frac{\pi \cdot h \cdot \omega}{2\phi_r}$$
 
 $$a = \frac{\pi^2 \cdot h \cdot \omega^2}{2\phi_r^2} \cos\left( \frac{\pi \theta}{\phi_r} \right)$$
 
-- **Maximum Acceleration (`a_{\text{max}}`):** Occurs at the start and end of the stroke (`\theta = 0^\circ` or `\theta = \phi_r`):
+- **Maximum Acceleration ($a_{\text{max}}$):** Occurs at the start and end of the stroke ($\theta = 0^\circ$ or $\theta = \phi_r$):
 
 $$a_{\text{max}} = \pm \frac{\pi^2 \cdot h \cdot \omega^2}{2\phi_r^2}$$
 
@@ -1855,7 +1881,7 @@ This is the **most ideal profile for high-speed operation** (such as high-perfor
 
 #### 3. Kinematic Formulations
 
-Let `h` be the total follower lift and `\phi_r` be the total angle of ascent:
+Let `h` be the total follower lift and $\phi_r$ be the total angle of ascent:
 
 ##### a. Displacement (`s`)
 
@@ -1865,7 +1891,7 @@ $$s = h \left[ \frac{\theta}{\phi_r} - \frac{1}{2\pi} \sin\left( \frac{2\pi\thet
 
 $$v = \frac{h\omega}{\phi_r} \left[ 1 - \cos\left( \frac{2\pi\theta}{\phi_r} \right) \right]$$
 
-- **Maximum Velocity (`v_{\text{max}}`):** Occurs at the exact half-stroke position (`\theta = \frac{\phi_r}{2}`):
+- **Maximum Velocity ($v_{\text{max}}$):** Occurs at the exact half-stroke position ($\theta = \frac{\phi_r}{2}$):
 
 $$v_{\text{max}} = \frac{2h\omega}{\phi_r}$$
 
@@ -1873,7 +1899,7 @@ $$v_{\text{max}} = \frac{2h\omega}{\phi_r}$$
 
 $$a = \frac{2\pi \cdot h \cdot \omega^2}{\phi_r^2} \sin\left( \frac{2\pi\theta}{\phi_r} \right)$$
 
-- **Maximum Acceleration (`a_{\text{max}}`):** Occurs at the quarter-stroke and three-quarter stroke positions (`\theta = \frac{\phi_r}{4}` or `\theta = \frac{3\phi_r}{4}`):
+- **Maximum Acceleration ($a_{\text{max}}$):** Occurs at the quarter-stroke and three-quarter stroke positions ($\theta = \frac{\phi_r}{4}$ or $\theta = \frac{3\phi_r}{4}$):
 
 $$a_{\text{max}} = \pm \frac{2\pi \cdot h \cdot \omega^2}{\phi_r^2}$$
 
@@ -1885,7 +1911,7 @@ $$a_{\text{max}} = \pm \frac{2\pi \cdot h \cdot \omega^2}{\phi_r^2}$$
 | :--- | :--- | :--- |
 | **Simple Harmonic Motion** | Texturing Machinery & Reciprocating Pumps | Deployed in low-to-moderate speed chemical dosing pumps where a smooth sinusoidal volumetric output profile is required and inertial shock is negligible. |
 | **Cycloidal Motion** | High-RPM Internal Combustion Valvetrains | Used in high-speed automotive and aerospace engines to actuate overhead valves. The zero-jerk boundary profile prevents valve bounce, spring surge, and high-rpm valvetrain destruction. |
-| **Optimized Pressure Angle** | CNC Indexing Tables & Feed Cams | Kept below `30^\circ` in heavy automatic tool changers to prevent tool-slide binding, minimizing operational driving torque requirements and reducing lateral wear on cylinder walls. |
+| **Optimized Pressure Angle** | CNC Indexing Tables & Feed Cams | Kept below $30^\circ$ in heavy automatic tool changers to prevent tool-slide binding, minimizing operational driving torque requirements and reducing lateral wear on cylinder walls. |
 | **Dwell Phase Programming** | Automated Rotary Bottle Fillers | The flat dwell profile mapped on a displacement diagram synchronizes the exact window of zero follower movement, allowing filling nozzles to deploy and cap bottles before indexing onward. | 
 
 

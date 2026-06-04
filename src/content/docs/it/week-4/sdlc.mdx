@@ -1,0 +1,1709 @@
+---
+title: APIs and REST APIs
+---
+
+## APIs &amp; REST APIs
+
+## Introduction to APIs
+
+### A. What is an API?
+
+API stands for Application Programming Interface.
+
+An API is a set of rules and protocols that allows different software applications to communicate with each other.
+
+Modern applications are made up of multiple components and services. These services need a way to exchange information efficiently. APIs provide a standardized communication mechanism that allows different systems to interact without knowing each other's internal implementation.
+
+Instead of directly accessing another application's database or source code, applications communicate through APIs.
+
+An API acts as a bridge between two software systems.
+
+### B. Why Do We Need APIs?
+
+Without APIs, applications would need direct access to each other's systems, making software development complex and insecure.
+
+APIs provide several benefits:
+
+**Standardized communication**
+
+**Better security**
+
+**Faster development**
+
+**Easier integration**
+
+**Improved scalability**
+
+**Better maintainability**
+
+APIs allow developers to build applications by reusing existing services instead of creating everything from scratch.
+
+### C. Real-World Analogy
+
+Consider a restaurant.
+
+When a customer wants food:
+
+**The customer places an order with the waiter.**
+
+**The waiter carries the order to the kitchen.**
+
+**The kitchen prepares the food.**
+
+**The waiter brings the food back.**
+
+In this example:
+
+**Customer = Client**
+
+**Waiter = API**
+
+**Kitchen = Server**
+
+The customer never directly interacts with the kitchen.
+
+Similarly, software applications communicate through APIs instead of directly accessing internal systems.
+
+### D. Real-World Examples of APIs
+
+#### 1. Google Maps API
+
+Applications such as Uber, Ola, Swiggy, and Zomato use Google Maps APIs to display maps, routes, and navigation information.
+
+#### 2. Payment APIs
+
+Online applications communicate with payment providers using APIs.
+
+Examples:
+
+**Razorpay**
+
+**Stripe**
+
+**PayPal**
+
+When a user makes a payment, the application sends payment details through the API and receives a response indicating whether the transaction was successful.
+
+#### 3. Weather APIs
+
+Weather applications obtain weather information through APIs instead of maintaining their own weather stations.
+
+#### 4. Social Media APIs
+
+Applications can interact with social media platforms using APIs.
+
+Examples:
+
+**Login using Google**
+
+**Login using Facebook**
+
+**Sharing content on social platforms**
+
+## How APIs Work
+
+### A. Basic Communication Flow
+
+A typical API communication follows this sequence:
+
+**Client → API → Server → Database**
+
+The API acts as an intermediary between the client and the server.
+
+### B. Step-by-Step Flow
+
+#### 1. User Initiates a Request
+
+A user performs an action such as:
+
+**Logging in**
+
+**Viewing products**
+
+**Searching for data**
+
+#### 2. Client Sends a Request
+
+The application sends an API request to the server.
+
+#### 3. Server Processes the Request
+
+The server:
+
+**Validates the request**
+
+**Executes business logic**
+
+**Accesses the database if necessary**
+
+#### 4. Server Generates a Response
+
+After processing, the server creates a response.
+
+#### 5. Client Receives the Response
+
+The application receives the response and displays the result to the user.
+
+### C. Example
+
+Suppose a student wants to view his profile.
+
+**Flow:**
+
+**Student opens the application.**
+
+**Application sends a request for student details.**
+
+**API receives the request.**
+
+**Database returns the student's information.**
+
+**API sends the response.**
+
+**Application displays the profile.**
+
+## Request-Response Cycle
+
+Every API interaction follows a Request-Response Cycle.
+
+### A. Request
+
+A request is sent by the client to the server.
+
+The request tells the server:
+
+**What action should be performed**
+
+**What resource is required**
+
+**What data should be processed**
+
+### B. Processing
+
+The server receives the request and processes it.
+
+The server may:
+
+**Retrieve data**
+
+**Create new records**
+
+**Update existing records**
+
+**Delete records**
+
+### C. Response
+
+After processing, the server sends a response.
+
+The response informs the client:
+
+**Whether the operation succeeded**
+
+**Whether an error occurred**
+
+**What data should be returned**
+
+### D. Example
+
+Student requests information.
+
+**Request**
+
+```http
+GET /students/101
+```
+
+Server processes the request and retrieves the student data.
+
+**Response**
+
+```json
+{
+  "id": 101,
+  "name": "Rahul",
+  "course": "Computer Science"
+}
+```
+
+This cycle is repeated for every API interaction.
+
+## HTTP Basics
+
+### A. What is HTTP?
+
+HTTP stands for HyperText Transfer Protocol.
+
+HTTP is the communication protocol used by web applications and APIs to exchange information over the internet.
+
+Whenever a browser loads a webpage or an application communicates with a server, HTTP is used.
+
+Most modern APIs use HTTP as their communication protocol.
+
+### B. Why HTTP is Important?
+
+HTTP provides a common language that both clients and servers understand.
+
+Without HTTP:
+
+**Browsers could not communicate with servers**
+
+**APIs would not have a standardized communication method**
+
+### C. Characteristics of HTTP
+
+#### 1. Client-Server Architecture
+
+**The client sends requests.**
+
+**The server processes requests and returns responses.**
+
+#### 2. Stateless Nature
+
+**Each request is independent.**
+
+**The server does not automatically remember previous requests.**
+
+This concept becomes very important when studying REST APIs.
+
+#### 3. Request-Response Communication
+
+HTTP communication always follows:
+
+**Request → Processing → Response**
+
+### D. HTTP Communication Example
+
+Suppose a user visits:
+
+```text
+https://example.com
+```
+
+The browser sends an HTTP request.
+
+The server processes the request and sends back an HTTP response containing the webpage.
+
+## HTTP Requests
+
+An HTTP Request is sent from a client to a server.
+
+### A. Components of an HTTP Request
+
+#### 1. URL
+
+The URL identifies the resource being requested.
+
+**Example:**
+
+```text
+https://api.example.com/students
+```
+
+#### 2. HTTP Method
+
+The method specifies what action should be performed.
+
+Common methods include:
+
+**GET**
+
+**POST**
+
+**PUT**
+
+**DELETE**
+
+These methods will be discussed in detail later.
+
+#### 3. Headers
+
+Headers provide additional information about the request.
+
+##### a. Content-Type
+
+Specifies the format of data being sent.
+
+**Example:**
+
+```text
+Content-Type: application/json
+```
+
+This tells the server that the request body contains JSON data.
+
+##### b. Authorization
+
+Used for authentication.
+
+**Example:**
+
+```text
+Authorization: Bearer token
+```
+
+This allows the server to verify the user's identity.
+
+##### c. Accept
+
+Specifies the response format expected by the client.
+
+**Example:**
+
+```text
+Accept: application/json
+```
+
+#### 4. Request Body
+
+The request body contains data sent to the server.
+
+Usually used with:
+
+**POST**
+
+**PUT**
+
+**Example:**
+
+```json
+{
+  "name": "Rahul",
+  "course": "Computer Science"
+}
+```
+
+### B. Example HTTP Request
+
+Suppose we want to create a student record.
+
+The request contains:
+
+**URL**
+
+**Method**
+
+**Headers**
+
+**Request Body**
+
+The server processes this information and creates the student record.
+
+## HTTP Responses
+
+After processing a request, the server sends an HTTP Response.
+
+### A. Components of an HTTP Response
+
+#### 1. Status Code
+
+Indicates whether the request was successful.
+
+**Example:**
+
+```text
+200 OK
+```
+
+#### 2. Headers
+
+Provide additional information about the response.
+
+Examples:
+
+**Content-Type**
+
+**Cache-Control**
+
+#### 3. Response Body
+
+Contains the actual data returned by the server.
+
+**Example:**
+
+```json
+{
+  "id": 101,
+  "name": "Rahul",
+  "course": "Computer Science"
+}
+```
+
+### B. Why Responses Are Important
+
+Responses inform the client about:
+
+**Success**
+
+**Failure**
+
+**Returned data**
+
+**Error messages**
+
+Without responses, clients would not know whether operations were completed successfully.
+
+## HTTP Status Codes
+
+HTTP Status Codes indicate the outcome of a request.
+
+They help both developers and applications understand what happened during communication.
+
+### A. 1xx Informational Responses
+
+These indicate that the request has been received and processing is continuing.
+
+**Example:**
+
+```text
+100 Continue
+```
+
+These codes are rarely encountered in everyday API development.
+
+### B. 2xx Success Responses
+
+These indicate successful execution.
+
+#### 1. 200 OK
+
+The request completed successfully.
+
+**Example:**
+
+Student information retrieved successfully.
+
+#### 2. 201 Created
+
+A new resource was successfully created.
+
+**Example:**
+
+A new student record is added to the database.
+
+### C. 3xx Redirection Responses
+
+These indicate that additional action is required.
+
+#### 1. 301 Moved Permanently
+
+The requested resource has permanently moved to a new location.
+
+#### 2. 302 Found
+
+The requested resource has temporarily moved.
+
+### D. 4xx Client Error Responses
+
+These indicate problems caused by the client.
+
+#### 1. 400 Bad Request
+
+The request format is invalid.
+
+**Example:**
+
+Required data is missing.
+
+#### 2. 401 Unauthorized
+
+Authentication is required.
+
+The user has not provided valid credentials.
+
+#### 3. 403 Forbidden
+
+The user is authenticated but does not have permission to access the resource.
+
+#### 4. 404 Not Found
+
+The requested resource does not exist.
+
+**Example:**
+
+Requesting a student ID that does not exist.
+
+### E. 5xx Server Error Responses
+
+These indicate problems on the server side.
+
+#### 1. 500 Internal Server Error
+
+An unexpected server-side error occurred.
+
+#### 2. 503 Service Unavailable
+
+The server is temporarily unavailable.
+
+This may occur during maintenance or heavy traffic.
+
+### F. Commonly Used Status Codes
+
+The most commonly encountered status codes in API development are:
+
+**200 OK**
+
+**201 Created**
+
+**400 Bad Request**
+
+**401 Unauthorized**
+
+**403 Forbidden**
+
+**404 Not Found**
+
+**500 Internal Server Error**
+
+Understanding these status codes is essential because they appear frequently during API development, testing, and debugging.
+
+## API Testing Basics
+
+### A. What is API Testing?
+
+API Testing is the process of verifying whether an API works correctly.
+
+It involves sending requests to an API and validating the responses returned by the server.
+
+Unlike UI testing, API testing focuses on the communication layer between applications.
+
+The goal is to ensure that:
+
+**Requests are processed correctly**
+
+**Responses are accurate**
+
+**Status codes are appropriate**
+
+**Data is handled properly**
+
+**APIs behave as expected**
+
+### B. Why API Testing is Important
+
+APIs act as the backbone of modern applications.
+
+If an API fails:
+
+**Applications may stop working**
+
+**Data may become inconsistent**
+
+**Users may experience errors**
+
+API testing helps identify issues before applications are deployed.
+
+Benefits include:
+
+**Improved reliability**
+
+**Faster bug detection**
+
+**Better performance validation**
+
+**Easier debugging**
+
+### C. What is Tested in an API?
+
+Developers commonly verify:
+
+#### 1. Status Codes
+
+**Example:**
+
+**200 OK**
+
+**201 Created**
+
+**404 Not Found**
+
+#### 2. Response Data
+
+Ensuring that correct information is returned.
+
+#### 3. Response Time
+
+Checking whether the API responds quickly.
+
+#### 4. Error Handling
+
+Verifying how the API behaves when invalid requests are sent.
+
+#### 5. Security
+
+Checking authentication and authorization mechanisms.
+
+### D. Example
+
+**Request:**
+
+```http
+GET /api/students/101
+```
+
+**Expected Response:**
+
+```json
+{
+  "id": 101,
+  "name": "Rahul",
+  "course": "Computer Science"
+}
+```
+
+**Expected Status Code:**
+
+```text
+200 OK
+```
+
+If the API returns incorrect data or an incorrect status code, the test fails.
+
+## Postman Introduction
+
+### A. What is Postman?
+
+Postman is one of the most popular API testing tools.
+
+It allows developers to:
+
+**Send API requests**
+
+**View responses**
+
+**Test endpoints**
+
+**Verify authentication**
+
+**Debug APIs**
+
+Postman provides a user-friendly interface for interacting with APIs without writing code.
+
+### B. Why Postman is Popular
+
+Postman simplifies API testing by providing:
+
+**Easy request creation**
+
+**Response visualization**
+
+**Authentication support**
+
+**Environment management**
+
+**Collection management**
+
+It is widely used by:
+
+**Developers**
+
+**Test Engineers**
+
+**QA Teams**
+
+**Backend Engineers**
+
+### C. Main Components of Postman
+
+#### 1. URL Bar
+
+Used to enter the API endpoint.
+
+**Example:**
+
+```text
+https://api.example.com/students
+```
+
+#### 2. HTTP Method Selector
+
+Used to select:
+
+**GET**
+
+**POST**
+
+**PUT**
+
+**DELETE**
+
+#### 3. Headers Section
+
+Used to configure request headers.
+
+**Example:**
+
+```text
+Content-Type: application/json
+```
+
+#### 4. Body Section
+
+Used to send request data.
+
+**Example:**
+
+```json
+{
+  "name": "Rahul",
+  "course": "Computer Science"
+}
+```
+
+#### 5. Send Button
+
+Sends the request to the server.
+
+#### 6. Response Section
+
+Displays:
+
+**Status Code**
+
+**Response Data**
+
+**Response Time**
+
+### D. Example Using Postman
+
+Suppose we want to retrieve student information.
+
+**Method:**
+
+```text
+GET
+```
+
+**URL:**
+
+```text
+https://api.example.com/students/101
+```
+
+After clicking Send:
+
+The response appears in the response panel.
+
+## Authentication Basics
+
+### A. What is Authentication?
+
+Authentication is the process of verifying a user's identity.
+
+It answers the question:
+
+```text
+"Who are you?"
+```
+
+When a user logs into an application, the system must verify that the provided credentials are correct.
+
+### B. Why Authentication is Needed
+
+Without authentication:
+
+**Anyone could access protected resources**
+
+**Sensitive data could be exposed**
+
+**Security risks would increase**
+
+Authentication helps ensure that only valid users access the system.
+
+### C. Examples of Authentication
+
+Examples include:
+
+**Username and Password**
+
+**OTP Verification**
+
+**Biometric Authentication**
+
+**Social Login**
+
+### D. Authentication vs Authorization
+
+These terms are often confused.
+
+**Authentication:**
+
+Verifies identity
+
+**Authorization:**
+
+Determines permissions
+
+**Example:**
+
+A student logs into a university portal.
+
+Authentication verifies:
+
+**The user is actually Rahul.**
+
+Authorization determines:
+
+**Whether Rahul can access admin features.**
+
+## Sessions
+
+### A. What is a Session?
+
+A Session is a server-side mechanism used to remember users after they log in.
+
+When a user successfully authenticates:
+
+**The server creates a session**
+
+**The session is stored on the server**
+
+**A Session ID is sent to the client**
+
+**The client sends the Session ID with future requests.**
+
+### B. Session Authentication Flow
+
+**Step 1**
+
+User submits credentials.
+
+**Step 2**
+
+Server verifies credentials.
+
+**Step 3**
+
+Server creates a session.
+
+**Step 4**
+
+Server generates a Session ID.
+
+**Step 5**
+
+Session ID is sent to the client.
+
+**Step 6**
+
+Client sends the Session ID with future requests.
+
+### C. Example
+
+User logs into an application.
+
+Server creates:
+
+```text
+Session ID = ABC123
+```
+
+Future requests include:
+
+```text
+Session ID = ABC123
+```
+
+The server identifies the user using the session.
+
+### D. Advantages of Sessions
+
+**Easy implementation**
+
+**Good security**
+
+**Server controls session management**
+
+### E. Limitations of Sessions
+
+**Sessions consume server memory**
+
+**Difficult to scale across multiple servers**
+
+**Session synchronization may be required**
+
+## Tokens
+
+### A. What is a Token?
+
+A Token is a piece of data used to identify and authenticate users.
+
+Unlike sessions, tokens are typically stored on the client side.
+
+After successful login:
+
+**Server generates a token**
+
+**Token is sent to the client**
+
+**Client includes the token in future requests**
+
+### B. Token Authentication Flow
+
+**Step 1**
+
+User logs in.
+
+**Step 2**
+
+Server validates credentials.
+
+**Step 3**
+
+Server generates a token.
+
+**Step 4**
+
+Token is returned to the client.
+
+**Step 5**
+
+Client sends the token with future requests.
+
+### C. Example
+
+Authorization Header:
+
+```text
+Authorization: Bearer token123
+```
+
+The server validates the token and processes the request.
+
+### D. Advantages of Tokens
+
+**Better scalability**
+
+**Reduced server memory usage**
+
+**Suitable for distributed systems**
+
+**Works well with REST APIs**
+
+### E. Sessions vs Tokens
+
+| Sessions | Tokens |
+|----------|--------|
+| Stored on Server | Stored on Client |
+| Requires Server Memory | Minimal Server Storage |
+| Harder to Scale | Easier to Scale |
+| Traditional Web Apps | Modern APIs |
+
+## JWT (JSON Web Token)
+
+### A. What is JWT?
+
+JWT stands for JSON Web Token.
+
+JWT is a standardized format for securely transmitting information between parties.
+
+It is one of the most commonly used authentication mechanisms in modern APIs.
+
+### B. JWT Structure
+
+A JWT consists of three parts:
+
+```text
+Header.Payload.Signature
+```
+
+**Example:**
+
+```text
+xxxxx.yyyyy.zzzzz
+```
+
+### C. Header
+
+The Header contains information about:
+
+**Token Type**
+
+**Signing Algorithm**
+
+### D. Payload
+
+The Payload contains user information.
+
+Examples:
+
+**User ID**
+
+**Username**
+
+**Roles**
+
+**Example:**
+
+```json
+{
+  "id": 101,
+  "username": "rahul"
+}
+```
+
+### E. Signature
+
+The Signature ensures that the token has not been modified.
+
+If someone alters the token, the signature becomes invalid.
+
+### F. JWT Authentication Flow
+
+**Step 1**
+
+User logs in.
+
+**Step 2**
+
+Server validates credentials.
+
+**Step 3**
+
+Server generates JWT.
+
+**Step 4**
+
+JWT is sent to the client.
+
+**Step 5**
+
+Client stores the JWT.
+
+**Step 6**
+
+Future requests include:
+
+```text
+Authorization: Bearer JWT
+```
+
+**Step 7**
+
+Server validates JWT and processes the request.
+
+### G. Why JWT is Popular
+
+JWT is widely used because:
+
+**It supports stateless authentication**
+
+**It scales well**
+
+**It works across multiple servers**
+
+**It is suitable for REST APIs**
+
+### H. Advantages of JWT
+
+**Scalable**
+
+**Portable**
+
+**Stateless**
+
+**Widely supported**
+
+### I. Limitations of JWT
+
+**Cannot be easily invalidated before expiry**
+
+**Larger than Session IDs**
+
+**Requires secure storage**
+
+### J. Sessions vs JWT
+
+| Sessions | JWT |
+|----------|-----|
+| Server Stores User State | Client Stores Token |
+| Stateful | Stateless |
+| Harder to Scale | Easier to Scale |
+| Requires Session Storage | No Session Storage |
+
+Modern REST APIs commonly prefer JWT because REST architecture promotes stateless communication.
+
+---
+
+## Practical API Example – Login API
+
+A Login API is one of the most common APIs used in modern applications.
+
+**Examples:**
+
+- Gmail Login
+- Instagram Login
+- Facebook Login
+- Amazon Login
+
+The purpose of a Login API is to verify a user's credentials and provide authentication.
+
+### A. Endpoint
+
+**POST /api/login**
+
+### B. Why POST is Used
+
+The Login API sends sensitive information such as:
+
+- Username
+- Email
+- Password
+
+Since data is being sent to the server, POST is used.
+
+### C. Request
+
+**Request Body:**
+
+```json
+{
+  "email": "rahul@example.com",
+  "password": "password123"
+}
+```
+
+### D. Server Processing
+
+The server performs the following steps:
+
+#### 1. Validate Request
+
+Checks whether:
+
+- Email is provided
+- Password is provided
+
+#### 2. Search User
+
+The server checks the database for the user.
+
+#### 3. Verify Password
+
+The provided password is compared with the stored password.
+
+#### 4. Generate JWT
+
+If credentials are valid:
+
+- JWT Token is generated
+
+#### 5. Send Response
+
+The token is returned to the client.
+
+### E. Successful Response
+
+**Status Code:**
+
+**200 OK**
+
+**Response:**
+
+```json
+{
+  "message": "Login Successful",
+  "token": "JWT_TOKEN"
+}
+```
+
+### F. Failed Login
+
+If credentials are incorrect:
+
+**Status Code:**
+
+**401 Unauthorized**
+
+**Response:**
+
+```json
+{
+  "message": "Invalid Credentials"
+}
+```
+
+### G. What Happens Next?
+
+After login:
+
+- Client stores JWT.
+- Future requests include JWT.
+- Server validates JWT.
+- User gains access to protected resources.
+
+**Example:**
+
+```
+Authorization: Bearer JWT_TOKEN
+```
+
+This is how most modern applications implement authentication.
+
+---
+
+## Practical API Example – Todo API
+
+A Todo API is a simple application that demonstrates CRUD operations.
+
+A Todo item may contain:
+
+- ID
+- Task Name
+- Status
+
+**Example:**
+
+```json
+{
+  "id": 1,
+  "task": "Complete Assignment",
+  "completed": false
+}
+```
+
+### A. Create Todo
+
+**Endpoint:**
+
+**POST /api/todos**
+
+**Request:**
+
+```json
+{
+  "task": "Complete Assignment"
+}
+```
+
+**Response:**
+
+```json
+{
+  "id": 1,
+  "task": "Complete Assignment",
+  "completed": false
+}
+```
+
+**Status Code:**
+
+**201 Created**
+
+A new todo item is created.
+
+### B. Get All Todos
+
+**Endpoint:**
+
+**GET /api/todos**
+
+**Response:**
+
+```json
+[
+  {
+    "id": 1,
+    "task": "Complete Assignment",
+    "completed": false
+  },
+  {
+    "id": 2,
+    "task": "Study APIs",
+    "completed": true
+  }
+]
+```
+
+**Status Code:**
+
+**200 OK**
+
+The server returns all todo items.
+
+### C. Get Specific Todo
+
+**Endpoint:**
+
+**GET /api/todos/1**
+
+**Response:**
+
+```json
+{
+  "id": 1,
+  "task": "Complete Assignment",
+  "completed": false
+}
+```
+
+**Status Code:**
+
+**200 OK**
+
+The server returns a single todo item.
+
+### D. Update Todo
+
+**Endpoint:**
+
+**PUT /api/todos/1**
+
+**Request:**
+
+```json
+{
+  "task": "Complete Assignment",
+  "completed": true
+}
+```
+
+**Response:**
+
+```json
+{
+  "id": 1,
+  "task": "Complete Assignment",
+  "completed": true
+}
+```
+
+**Status Code:**
+
+**200 OK**
+
+The existing todo item is updated.
+
+### E. Delete Todo
+
+**Endpoint:**
+
+**DELETE /api/todos/1**
+
+**Response:**
+
+```json
+{
+  "message": "Todo Deleted Successfully"
+}
+```
+
+**Status Code:**
+
+**200 OK**
+
+The todo item is removed.
+
+### F. CRUD Mapping in Todo API
+
+| Operation | HTTP Method | Endpoint |
+|-----------|-------------|----------|
+| Create Todo | POST | /api/todos |
+| Get Todos | GET | /api/todos |
+| Get Todo | GET | `/api/todos/{id}` |
+| Update Todo | PUT | `/api/todos/{id}` |
+| Delete Todo | DELETE | `/api/todos/{id}` |
+
+The Todo API is often used to learn REST API fundamentals because it demonstrates all CRUD operations.
+
+---
+
+## Practical API Example – Student CRUD API
+
+A Student Management API is a more realistic example used in educational institutions.
+
+**Student Information:**
+
+- Student ID
+- Name
+- Course
+- Email
+
+**Example:**
+
+```json
+{
+  "id": 101,
+  "name": "Rahul",
+  "course": "Computer Science",
+  "email": "rahul@example.com"
+}
+```
+
+### A. Create Student
+
+**Endpoint:**
+
+**POST /api/students**
+
+**Request:**
+
+```json
+{
+  "name": "Rahul",
+  "course": "Computer Science",
+  "email": "rahul@example.com"
+}
+```
+
+**Response:**
+
+```json
+{
+  "id": 101,
+  "name": "Rahul",
+  "course": "Computer Science",
+  "email": "rahul@example.com"
+}
+```
+
+**Status Code:**
+
+**201 Created**
+
+A new student record is created.
+
+### B. Get All Students
+
+**Endpoint:**
+
+**GET /api/students**
+
+**Response:**
+
+```json
+[
+  {
+    "id": 101,
+    "name": "Rahul"
+  },
+  {
+    "id": 102,
+    "name": "Anita"
+  }
+]
+```
+
+**Status Code:**
+
+**200 OK**
+
+The server returns all student records.
+
+### C. Get Specific Student
+
+**Endpoint:**
+
+**GET /api/students/101**
+
+**Response:**
+
+```json
+{
+  "id": 101,
+  "name": "Rahul",
+  "course": "Computer Science",
+  "email": "rahul@example.com"
+}
+```
+
+**Status Code:**
+
+**200 OK**
+
+The server returns information for student 101.
+
+### D. Update Student
+
+**Endpoint:**
+
+**PUT /api/students/101**
+
+**Request:**
+
+```json
+{
+  "name": "Rahul",
+  "course": "Information Science",
+  "email": "rahul@example.com"
+}
+```
+
+**Response:**
+
+```json
+{
+  "id": 101,
+  "name": "Rahul",
+  "course": "Information Science",
+  "email": "rahul@example.com"
+}
+```
+
+**Status Code:**
+
+**200 OK**
+
+The student's information is updated.
+
+### E. Delete Student
+
+**Endpoint:**
+
+**DELETE /api/students/101**
+
+**Response:**
+
+```json
+{
+  "message": "Student Deleted Successfully"
+}
+```
+
+**Status Code:**
+
+**200 OK**
+
+The student record is removed.
+
+### F. Common Errors in Student APIs
+
+#### 1. Student Not Found
+
+**Request:**
+
+**GET /api/students/999**
+
+**Response:**
+
+```json
+{
+  "message": "Student Not Found"
+}
+```
+
+**Status Code:**
+
+**404 Not Found**
+
+#### 2. Invalid Request
+
+**Request:**
+
+```json
+{
+  "name": ""
+}
+```
+
+**Response:**
+
+```json
+{
+  "message": "Invalid Student Data"
+}
+```
+
+**Status Code:**
+
+**400 Bad Request**
+
+#### 3. Unauthorized Access
+
+**Request without valid JWT:**
+
+**Response:**
+
+```json
+{
+  "message": "Authentication Required"
+}
+```
+
+**Status Code:**
+
+**401 Unauthorized**
+
+---
+
+## Putting Everything Together
+
+Consider the following scenario:
+
+A student logs into a Student Management Application.
+
+##### a. Step 1
+
+Client sends:
+
+**POST /api/login**
+
+with credentials.
+
+##### b. Step 2
+
+Server validates credentials.
+
+##### c. Step 3
+
+Server generates JWT.
+
+##### d. Step 4
+
+JWT is returned to the client.
+
+##### e. Step 5
+
+Client stores JWT.
+
+##### f. Step 6
+
+Client requests student information:
+
+**GET /api/students/101**
+
+along with:
+
+```
+Authorization: Bearer JWT_TOKEN
+```
+
+##### g. Step 7
+
+Server validates JWT.
+
+##### h. Step 8
+
+Database returns student information.
+
+##### i. Step 9
+
+Server sends response:
+
+```json
+{
+  "id": 101,
+  "name": "Rahul",
+  "course": "Computer Science"
+}
+```
+
+**Status Code:**
+
+**200 OK**
+
+This complete flow combines all the concepts covered in this chapter:
+
+- APIs
+- Request-Response Cycle
+- HTTP
+- REST APIs
+- CRUD Operations
+- HTTP Methods
+- API Endpoints
+- Authentication
+- Tokens
+- JWT
+- Status Codes
+
+Together, these concepts form the foundation of modern web API development.

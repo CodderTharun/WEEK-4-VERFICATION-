@@ -1,0 +1,1255 @@
+---
+title: Digital Signal Processing
+---
+## Introduction To Signal
+A **signal** is defined as a physical quantity that conveys information and varies with time, space, or any other independent variables. Signals are the foundational input and output elements processed by systems.
+
+## Basic Elements of a Digital Signal Processing System
+A **Digital Signal Processing (DSP) system** is used to process signals in digital form. It consists of three basic elements: an **A/D converter**, a **Digital Signal Processor (DSP)** and a **D/A converter**. The A/D converter converts the analog input signal into a digital signal, which is then processed by the DSP to perform operations such as filtering, enhancement, and analysis. Finally, the D/A converter converts the processed digital signal back into an analog signal to produce the desired output. DSP systems offer high accuracy, flexibility, and better noise immunity, making them widely used in communication, audio, image, and biomedical applications.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP1.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+### A. Signal Dimensionality
+
+Signals are categorized by the number of independent variables they depend on:
+
+-   **One-dimensional signal:** The physical quantity depends on only one independent variable, such as time. An example is a **speech signal**, where amplitude varies over time.
+-   **Two-dimensional signal:** The physical quantity depends on two independent variables. An **image** is a common example of a two-dimensional signal.
+
+## Primary Types of Signals
+
+Basically, there are two fundamental types of signals based on how they vary with time:
+
+- **Continuous Time (CT) Signal (x(t)):** A signal that has amplitude values for all continuous values of time "t".
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP2.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+- **Discrete Time (DT) Signal (x(n)):** A signal that has amplitudes only for discrete integer values of time "n".
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP3.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+### A. Classification of Signals
+
+Signals can be further classified into different groups based on specific features:
+
+1.  **Continuous time and Discrete time signals**.
+2.  **Periodic and Non-periodic signals:** Periodic signals repeat their waveform at regular intervals (the fundamental period), while non-periodic signals do not.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP4.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+3.  **Even and Odd signals:** Even signals are symmetrical about the vertical axis (x(t)=x(−t)), while odd signals are anti-symmetric (x(t)=−x(−t)).
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP5.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+4.  **Energy and Power signals:** Classified based on whether they have finite energy or finite average power.
+
+The energy $E$ of a signal $x(n)$ is defined as
+
+$$
+E = \sum_{n=-\infty}^{\infty} |x(n)|^2
+$$
+
+where $|x(n)|^2$ represents the magnitude-squared value of the signal.
+
+The average power $P$ of a discrete-time signal $x(n)$ is defined as
+
+$$
+P = \lim_{N \to \infty} \frac{1}{2N + 1}
+\sum_{n=-N}^{N} |x(n)|^2
+$$
+5.  **Deterministic and Random signals:**  **Deterministic signals** behave in a fixed, known way without uncertainty (e.g., sine or cosine waves). **Random signals** have magnitudes that are random and cannot be described by an explicit mathematical formula (e.g., noise).
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP6.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+### B. Elementary Signals
+
+These fundamental signals are used to model nature and construct more complex signals:
+
+- **Unit Impulse Function (δ):**
+The Unit Impulse Function is a signal that has zero value everywhere except at \(t = 0\), where it has an infinitely large amplitude such that its total area is equal to 1.Also known as the "Dirac-delta" for continuous time.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP7.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+- **Unit Step Function (u):** The Unit Step Function is a signal that changes from 0 to 1 at \(t = 0\). It is widely used to represent the switching-on of a signal at a particular instant of time. A signal that switches on at time zero.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP8.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+- **Ramp Function (r):** A Ramp Function is a signal that increases linearly for positive time and remains zero for negative time.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP9.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+-   **Exponential Signals:** Exponential Signals are signals whose amplitude changes exponentially with time. They can be either growing or decaying depending on the value of the exponent.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP10.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+-   **Sinusoidal Signals:** Standard sine and cosine waves.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP11.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+## Basic operations 
+
+Basic operations on signals are primarily classified into operations performed on the independent variable (time) and those performed on the dependent variable (amplitude).
+
+### A. Operations on Independent Variables
+
+These operations modify the time axis (t for continuous-time signals or n for discrete-time signals).
+
+-   **Time Reversal (Folding):** The time variable t or n is replaced by −t or −n. This operation results in a signal that is a **folded version** of the original signal about the vertical axis at t=0 or n=0.
+
+
+Time reversal (or folding) means reversing the signal about the origin. If a signal \(x(n)\) is time-reversed, it becomes \(x(-n)\).
+
+#### Property
+
+If
+
+$$
+x(n) \xleftrightarrow{\mathcal{Z}} X(z)
+$$
+
+with ROC
+
+$$
+r_1 < |z| < r_2
+$$
+
+then
+
+$$
+x(-n) \xleftrightarrow{\mathcal{Z}} X(z^{-1})
+$$
+
+with ROC
+
+$$
+\frac{1}{r_2} < |z| < \frac{1}{r_1}
+$$
+
+
+
+Replacing \(z\) by \(z^{-1}\),
+
+$$
+r_1 < |z^{-1}| < r_2
+$$
+
+Since
+
+$$
+|z^{-1}|=\frac{1}{|z|}
+$$
+
+the ROC becomes
+
+$$
+\frac{1}{r_2} < |z| < \frac{1}{r_1}
+$$
+
+
+
+-   **Time Shifting:** The time variable is replaced by t±k or n±k.
+    -   **Right Shift (Delay):** Replacing t with t−k (e.g., x(t−2)) shifts the signal to the right.
+    -   **Left Shift (Advance):** Replacing t with t+k (e.g., x(t+2)) shifts the signal to the left.
+    -   **Combined Operations:** Signals can be both folded and shifted, such as x(−t−2), which represents a **fold and left shift**, or x(−t+2), which represents a **fold and right shift**.
+   #### Property  
+  
+If  
+  
+$$  
+x(n) \xleftrightarrow{\mathcal{Z}} X(z)  
+$$  
+  
+with ROC \(R\),  
+  
+then  
+  
+$$  
+x(n-n_0)  
+\xleftrightarrow{\mathcal{Z}}  
+z^{-n_0}X(z)  
+$$  
+  
+where \(n_0\) is an integer.  
+ 
+#### Time Delay  
+  
+If \(n_0 > 0\),  
+  
+$$  
+x(n-n_0)  
+\xleftrightarrow{\mathcal{Z}}  
+z^{-n_0}X(z)  
+$$  
+  
+The signal is delayed by \(n_0\) samples.  
+  
+#### Time Advance  
+  
+If \(n_0 > 0\),  
+  
+$$  
+x(n+n_0)  
+\xleftrightarrow{\mathcal{Z}}  
+z^{n_0}X(z)  
+$$
+-   **Time Scaling:** The time variable is multiplied or divided by a constant.
+    -   **Compression:** Replacing t or n with at where a>1 (e.g., x(2t)) compresses the signal. In discrete-time scaling (e.g., x(2n)), only integer values of n are valid; fractional results are ignored.
+    -   **Expansion:** Replacing t or n with t/a (e.g., x(t/2)) expands the signal along the time axis.
+ 
+ $$  
+y(t)=x(at)  
+$$  
+  
+where:  
+  
+- \(a > 1\) : Time Compression  
+- \(0 < a < 1\) : Time Expansion  
+
+  
+#### Time Compression  
+  
+When \(a > 1\),  
+  
+$$  
+y(t)=x(at)  
+$$  
+  
+the signal is compressed in time and appears faster.  
+  
+Example:  
+  
+$$  
+y(t)=x(2t)  
+$$  
+  
+The signal becomes twice as fast.  
+  
+
+  
+#### Time Expansion  
+  
+When \(0 < a < 1\),  
+  
+$$  
+y(t)=x(at)  
+$$  
+  
+the signal is expanded in time and appears slower.  
+  
+Example:  
+  
+$$  
+y(t)=x\left(\frac{t}{2}\right)  
+$$  
+  
+The signal becomes twice as wide.
+
+### B. Operations on Dependent Variables (Amplitude)
+
+The sources also demonstrate several operations performed on the amplitude of signals through various mathematical problems:
+
+-   **Amplitude Scaling:** Multiplying the signal by a constant factor, such as 2x(−n) or 3dtdx(t)​.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP12.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+-   **Addition and Subtraction:** Multiple signals can be added together to form a new signal, such as y6​(t)=x(3t)+x(3t+2) or x(t)=u(t)−u(t−2).
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP13.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+-   **Multiplication:** Two signals can be multiplied point-by-point, for example, x(t)⋅y(t−1).
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP14.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+-   **Differentiation:** Finding the derivative of a signal with respect to time, often resulting in impulse functions (e.g., the derivative of a unit step u(t) is the unit impulse δ(t)).
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP15.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+-   **Integration:** Calculating the area under a signal curve, such as the integration of a unit impulse resulting in a unit step.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP16.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+### C. Signal Decomposition
+
+A signal x(t) can be decomposed into its **even and odd components** using basic operations:
+
+- **Even component ($x_e(t)$):**
+
+$$
+x_e(t)=\frac{x(t)+x(-t)}{2}
+$$
+
+- **Odd component ($x_o(t)$):**
+
+$$
+x_o(t)=\frac{x(t)-x(-t)}{2}
+$$
+
+
+## Fundamentals of Systems
+
+A system is defined as a device that processes an input signal \(x(t)\) or \(x(n)\) to produce an output signal \(y(t)\) or \(y(n)\). The sources detail six key properties used to analyze systems:
+
+1. Memory vs. Memoryless: A system is memoryless (static) if the output at any time depends only on the input at that same time (e.g., \(y(t)=2x(t)\)). It is a memory (dynamic) system if the output depends on past or future input values.
+
+2. Causality: A causal system's output depends only on present and/or past input values. A non-causal system depends on future values (e.g., \(y(t)=x(t+1)\)).
+
+3. Linearity: A system is linear if it satisfies the principle of superposition, meaning the response to a weighted sum of inputs is the weighted sum of the individual responses.
+
+4. Time Invariance: A system is time-invariant if a time shift in the input signal results in an identical time shift in the output signal.
+
+5. Stability: A system is stable (BIBO stable) if a Bounded Input always produces a Bounded Output.
+
+6. Invertibility: A system is invertible if the original input can be recovered from the system's output.
+
+## LTI System 
+
+LTI (Linear Time-Invariant) system is a system that satisfies the properties of linearity and time invariance. Linearity means the system follows the superposition principle, while time invariance means its behavior does not change with time. These properties make the analysis and design of signals and systems much simpler.
+
+## Properties of LTI Systems
+### A. Linearity Property
+
+A system is linear if it obeys:
+
+#### 1. Additivity
+
+
+$$
+x_1(t) \rightarrow y_1(t)
+$$
+
+
+$$
+x_2(t) \rightarrow y_2(t)
+$$
+
+
+$$
+x_1(t)+x_2(t)
+\rightarrow
+y_1(t)+y_2(t)
+$$
+
+This demonstrates the **additivity property** of a linear system.
+
+#### 2. Homogeneity (Scaling)
+
+
+
+
+$$
+x(t) \rightarrow y(t)
+$$
+
+
+$$
+a\,x(t)
+\rightarrow
+a\,y(t)
+$$
+
+where \(a\) is a constant.
+
+This demonstrates the **homogeneity (scaling) property** of a linear system.
+
+#### 3. Superposition Principle
+
+Combining both properties:
+
+$$
+a_1x_1(t)+a_2x_2(t)
+\rightarrow
+a_1y_1(t)+a_2y_2(t)
+$$
+
+
+### B. Time Invariance Property
+
+A system is time-invariant if a delay in the input causes the same delay in the output.
+
+
+
+$$
+x(t) \to y(t)
+$$
+
+
+
+$$
+x(t-t_0) \to y(t-t_0)
+$$
+
+for any time delay \(t_0\).
+
+
+
+### C. Impulse Response
+
+The response of an LTI system to a unit impulse is called the **impulse response**.
+
+
+For continuous-time systems:
+
+$$
+h(t)
+$$
+
+For discrete-time systems:
+
+$$
+h[n]
+$$
+The impulse response completely characterizes an LTI system.
+
+
+
+## Convolution
+
+The output of an LTI system is obtained by convolving the input with the impulse response.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP17.jpg"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+### A. Continuous Time
+
+
+$$
+y(t)=x(t)*h(t)
+$$
+
+$$
+y(t)=\int_{-\infty}^{\infty} x(\tau)\,h(t-\tau)\,d\tau
+$$
+
+### B. Discrete Time
+
+
+$$
+y[n]=x[n]*h[n]
+$$
+
+$$
+y[n]=\sum_{k=-\infty}^{\infty} x[k]\,h[n-k]
+$$
+
+
+#### Properties of Convolution
+
+#### 1. Commutative
+
+$$
+x*h=h*x
+$$
+
+#### 2. Associative
+
+$$
+(x*h_1)*h_2=x*(h_1*h_2)
+$$
+
+#### 3. Distributive
+
+$$
+x*(h_1+h_2)=x*h_1+x*h_2
+$$
+## Z - Transform
+The **Z-Transform (ZT)** is a powerful mathematical tool used to convert discrete-time signals from the **time domain into the Z-domain**. It is primarily used for analyzing Discrete Time (DT) signals and systems.
+
+Key Uses of Z-Transform
+
+-   **Simplifying Convolution:** It converts complicated time-domain convolution (y(n)=x(n)∗h(n)) into simple multiplication.
+$$
+Y(z)=X(z)\cdot H(z)
+$$
+-   **System Analysis:** It provides **pole-zero locations** for DT-LTI systems, which are used to verify **stability**.
+-   **Solving Equations:** It is used to solve **Linear Constant Coefficient Difference Equations (LCCDE)** with initial conditions.
+
+**Mathematical Definition**
+
+The Z-transform of a discrete-time signal x(n) is defined as an infinite power series:  
+$$
+X(z)=\sum_{n=-\infty}^{\infty} x(n)\,z^{-n}
+$$
+Where z is a complex variable represented as z=r⋅ejω (r is the magnitude, ω is the angle).
+
+**The Region of Convergence (ROC)**
+
+The ROC is the set of z values for which the Z-transform X(z) attains a finite value. In the z-plane, the ROC is represented as a **circle or ring centered at the origin**.
+
+**Properties of the ROC:**
+
+1.  **Causal Sequences:** For a causal sequence (right-sided), the ROC is **outside** a circle (`∣z∣>∣a∣`).
+2.  **Non-Causal Sequences:** For a non-causal sequence (left-sided), the ROC is **inside** a circle (`∣z∣<∣a∣`).
+3.  **Two-Sided Sequences:** For a sequence with both causal and non-causal parts, the ROC is a ring **between two circles**.
+4.  **Finite Duration Sequences:** The ROC is the **entire z-plane**, except possibly at z=0 (for right-sided) and/or z=∞ (for left-sided).
+5.  **Pole Relationship:** The ROC **never contains any poles**.
+
+**Poles, Zeros, and Stability**
+
+-   **Poles:** Values of z that make X(z) infinite.
+-   **Zeros:** Values of z that make X(z) zero.
+-   **Stability Condition:** A system is stable if there are **no poles in the ROC**.
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP18.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>
+
+## Types of LTI Systems
+### A. FIR (Finite Impulse Response) System
+
+  
+
+A Linear Time-Invariant (LTI) system whose impulse response has a finite duration is called a Finite Impulse Response (FIR) system.
+
+  
+
+The output of an FIR system is given by
+
+  
+
+
+$$
+y[n]=\sum_{k=0}^{M} h[k]\,x[n-k]
+$$
+
+  
+
+where:
+
+  
+
+- \(h[k]\) is the impulse response.
+
+- \(M\) is the length of the impulse response.
+
+- \(x[n]\) is the input sequence.
+
+- \(y[n]\) is the output sequence.
+### B. IIR (Infinite Impulse Response) System
+
+An LTI system whose impulse response has an infinite duration is called an Infinite Impulse Response (IIR) system.
+
+The output of an IIR system is given by
+
+
+$$
+y[n] = \sum_{k=0}^{M} b_k x[n-k] - \sum_{k=1}^{N} a_k y[n-k]
+$$
+where:
+
+- \(x[n]\) is the input sequence.
+- \(y[n]\) is the output sequence.
+- \(a_k\) and \(b_k\) are constants.
+
+
+
+
+## Discrete-Time Fourier Transform (DTFT)
+
+The Discrete-Time Fourier Transform (DTFT) converts a non-periodic discrete-time signal (x(n)) into the frequency domain.
+
+$$
+X(e^{j\Omega})=\sum_{n=-\infty}^{\infty}x(n)e^{-j\Omega n}
+$$
+## Inverse DTFT (IDTFT)
+
+To recover the original sequence (x(n)),
+
+
+$$
+x(n)=\frac{1}{2\pi}\int_{0}^{2\pi}X(e^{j\Omega})e^{j\Omega n}\,d\Omega
+$$
+
+#### Characteristics
+
+- $X(e^{j\Omega})$ is continuous.
+
+- $X(e^{j\Omega})$ is periodic with fundamental period $2\pi$.
+
+- Used for frequency analysis of non-periodic signals.
+
+- Converts complicated time-domain convolutions into simple multiplications in the frequency domain.
+
+- Since the DTFT is continuous, it cannot be directly analyzed using digital computers.
+    
+
+
+### A. Properties of DTFT
+
+#### 1. Periodicity
+
+
+$$
+X(e^{j\Omega}) = X(e^{j(\Omega+2\pi)})
+$$
+
+The DTFT always has a period of (2\pi).
+
+#### 2. Convolution to Multiplication
+
+Time-domain convolution becomes multiplication in the frequency domain.
+
+$$  
+y(n)=x(n)*h(n)  
+$$
+
+becomes
+$$
+Y(e^{j\Omega}) = X(e^{j\Omega})H(e^{j\Omega})
+$$
+
+#### 3. Time Shifting
+
+A shifted impulse produces a phase shift in the frequency domain.
+
+$$  
+\delta(n-k)  
+\leftrightarrow  
+e^{-j\Omega k}  
+$$
+
+#### 4. Linearity
+
+The DTFT of a sum is the sum of the DTFTs.
+
+Example:
+
+$$  
+u(n)-u(n-6)  
+$$
+
+has a DTFT equal to the difference of the individual DTFTs.
+
+
+
+## Frequency Response of LTI Systems
+
+The frequency response $X(e^{j\Omega})$ describes how a system or signal behaves across different frequencies.
+
+### A. Magnitude Response
+
+For
+
+$$  
+x(n)=a^n u(n)  
+$$
+
+the magnitude response is
+
+
+
+$$ |X(e^{j\Omega})|=\frac{1}{\sqrt{1+a^2-2a\cos\Omega}} $$ 
+### B. Phase Response
+
+For
+
+$$  
+x(n)=a^n u(n)  
+$$
+
+the phase response is
+
+$$ \angle X(e^{j\Omega})=-\tan^{-1}\left(\frac{a\sin\Omega}{1-a\cos\Omega}\right) $$
+
+
+#### DTFT of a Rectangular Pulse
+
+For a rectangular pulse
+
+$$  
+x(n)=1,  
+\qquad |n|\le m  
+$$
+
+the frequency response is
+
+
+$$ X(e^{j\Omega})=\frac{\sin\left(\frac{(2m+1)\Omega}{2}\right)}{\sin\left(\frac{\Omega}{2}\right)} $$
+
+#### Characteristics
+
+-   Sine-ratio form.
+    
+-   Has regularly spaced zero crossings.
+    
+-   Zero crossings occur at
+    
+
+
+$$ \Omega=\frac{2\pi k}{2m+1} $$
+where
+
+$$  
+k=\pm1,\pm2,\pm3,\ldots  
+$$
+
+
+#### Multiplication of Two DFTs  
+  
+Let  
+  
+$$  
+x_1(n)\xrightarrow{DFT}X_1(k)  
+$$  
+  
+and  
+  
+$$  
+x_2(n)\xrightarrow{DFT}X_2(k)  
+$$  
+  
+be two finite-duration sequences of length \(N\).  
+  
+Define  
+  
+$$  
+X_3(k)=X_1(k)X_2(k)  
+$$  
+  
+Taking the IDFT,  
+  
+
+$$
+x_3(n)=\frac{1}{N}\sum_{m=0}^{N-1}x_1(m)x_2((n-m))_N
+$$
+  
+This operation is known as circular convolution.  
+  
+
+  
+## Circular Convolution  
+  
+The circular convolution of two sequences is  
+  
+
+$$
+x_3(n)=x_1(n)\circledast x_2(n)
+$$
+  
+where  
+  
+
+$$
+x_3(n)=\sum_{m=0}^{N-1}x_1(m)x_2((n-m))_N
+$$
+  
+and  
+  
+$$  
+((n-m))_N  
+$$  
+  
+represents modulo-\(N\) arithmetic.  
+
+  
+#### Circular Convolution Property  
+  
+If  
+  
+
+$$
+x_3(n)=x_1(n)\ast_c x_2(n)
+$$
+then  
+  
+
+$$
+DFT[x_3(n)]=X_1(k)X_2(k)
+$$
+  
+Hence,  
+  
+
+$$
+IDFT[X_1(k)X_2(k)]=x_1(n)\circledast x_2(n)
+$$
+  
+#### Multiplication Property  
+  
+If  
+  
+$$  
+x_3(n)=x_1(n)x_2(n)  
+$$  
+  
+then  
+  
+
+$$
+DFT[x_3(n)]=\frac{1}{N}X_1(k)\ast_c X_2(k)
+$$
+  
+Therefore,  
+  
+- Time-domain multiplication corresponds to circular convolution in the frequency domain.  
+- Time-domain circular convolution corresponds to multiplication in the frequency domain.  
+
+## **Analog Butterworth Filters**
+An analog filter takes an analog input with all frequencies and generates an output with a restricted frequency band, such as Low Pass (LPF), High Pass (HPF), Band Pass (BPF) or Band Stop (BSP).
+## Butterworth Filter
+
+### A. Key Properties of Butterworth Filters
+
+The Butterworth filter is known as a **maximally flat frequency response filter**.
+
+#### Characteristics
+
+-   Monotonic magnitude response.
+    
+-   Magnitude decreases smoothly as frequency (\Omega) increases.
+    
+-   No ripples in the passband or stopband.
+    
+-   All-pole filter.
+    
+-   Maximum gain is 1 at (Omega=0).
+    
+-   Gain becomes (0.707) (or (-3) dB) at the cutoff frequency (Omega_c).
+    
+
+
+### B. Mathematical Representation
+
+The magnitude squared frequency response is
+
+
+$$
+|H(j\Omega)|^2=\frac{1}{1+\left(\frac{\Omega}{\Omega_c}\right)^{2n}}
+$$
+where
+
+-   (n) = filter order
+    
+-   (Omega_c) = cutoff frequency (3 dB frequency)
+
+
+### C. Design Procedure
+
+#### Step 1: Determine the Filter Order ((n))
+
+The filter order is calculated using the passband and stopband specifications.
+
+
+$$
+n=\frac{\log(1/k)}{\log(1/d)}
+$$
+
+where
+
+-   (d) = discrimination factor
+    
+-   (k) = selectivity factor
+    
+
+$$  
+k=\frac{\Omega_p}{\Omega_s}  
+$$
+
+(\Omega_p) = passband frequency
+
+(\Omega_s) = stopband frequency
+
+
+
+#### Step 2: Find the Poles
+
+For a normalized Butterworth filter ((\Omega_c=1)), the poles lie on a unit circle in the S-plane.
+
+
+$$
+S_k=e^{j\left[\frac{\pi}{2}+\frac{(2k+1)\pi}{2n}\right]}
+$$
+where
+
+$$  
+k=0,1,2,\ldots,(n-1)  
+$$
+
+Only the poles in the **Left Half Plane (LHP)** are selected to ensure stability.
+
+
+
+#### Step 3: Calculate the Cutoff Frequency
+
+The cutoff frequency is obtained as the average of the passband and stopband cutoff frequencies.
+$$
+\Omega_c=\frac{\Omega_{c1}+\Omega_{c2}}{2}
+$$
+
+#### Step 4: Form the Transfer Function
+
+#### Normalized Butterworth Filter
+
+Using the selected LHP poles,
+
+
+$$
+H_n(s)=\frac{1}{(s-s_0)(s-s_1)\cdots(s-s_{n-1})}
+$$
+
+
+
+#### Desired Butterworth Filter
+
+Apply frequency scaling:
+
+
+$$
+H_d(s)=H_n\left(\frac{s}{\Omega_c}\right)
+$$
+
+This gives the transfer function corresponding to the required cutoff frequency.
+## Analog Chebyshev Filter Design
+
+
+
+Chebyshev Type-I filters are characterized by ripples in the passband and a monotonic response in the stopband.
+
+Compared to Butterworth filters, Chebyshev filters provide a sharper cutoff for the same filter order.
+
+
+
+#### Magnitude Squared Frequency Response
+
+
+$$
+|H(j\Omega)|^2=\frac{1}{1+\epsilon^2[T_n(\Omega)]^2}
+$$
+
+where
+
+-   (\epsilon) = ripple factor
+    
+-   (T_n(\Omega)) = Chebyshev polynomial of order (n)
+
+
+### A. Design Parameters
+
+#### 1. Selectivity Factor
+
+$$  
+k=\frac{\Omega_s}{\Omega_p}  
+$$
+
+where
+
+-   (\Omega_p) = passband frequency
+    
+-   (\Omega_s) = stopband frequency
+    
+
+
+#### 2. Discrimination Factor
+
+$$  
+d=  
+\sqrt{  
+\frac{\delta_s^{-2}-1}  
+{(1-\delta_p)^{-2}-1}  
+}  
+$$
+
+where
+
+-   (\delta_p) = passband ripple
+    
+-   (\delta_s) = stopband attenuation
+    
+
+
+#### 3. Filter Order
+
+$$  
+n=  
+\frac{\cosh^{-1}(1/d)}  
+{\cosh^{-1}(1/k)}  
+$$
+
+The calculated value is rounded to the next higher integer.
+
+
+#### Pole Locations
+
+The poles of a Chebyshev filter lie on an ellipse in the S-plane.
+
+Let
+
+$$  
+S_k=\sigma_k+j\Omega_k  
+$$
+
+for
+
+$$  
+k=1,2,\ldots,n  
+$$
+
+The pole coordinates are
+
+
+$$
+\sigma_k=-a\sin\left(\frac{(2k-1)\pi}{2n}\right)
+$$
+
+
+$$
+\Omega_k=b\cos\left(\frac{(2k-1)\pi}{2n}\right)
+$$
+
+where (a) and (b) are determined from the ripple factor (\epsilon) and order (n).
+
+Only Left Half Plane (LHP) poles are selected.
+
+
+#### Transfer Function Formulation
+
+##### Normalized Transfer Function
+
+
+$$
+H_n(s)=\frac{K_n}{V_n(s)}
+$$
+
+where
+
+-   (V_n(s)) is the polynomial formed using the LHP poles.
+    
+-   (K_n) is the gain constant.
+
+
+#### Calculation of (K_n)
+
+Let
+
+$$  
+b_0=(-s_1)(-s_2)\cdots(-s_n)  
+$$
+
+#### For Odd Order
+
+$$  
+K_n=b_0  
+$$
+
+#### For Even Order
+
+$$  
+K_n=\frac{b_0}{\sqrt{1+\epsilon^2}}  
+$$
+
+
+#### Frequency Scaling
+
+The desired transfer function is obtained by frequency scaling the normalized filter.
+
+
+$$
+H_d(s)=H_n\left(\frac{s}{\Omega_p}\right)
+$$
+where
+
+$$  
+\Omega_p  
+$$
+
+is the passband cutoff frequency.
+
+
+#### Design Example
+
+#### Given Specifications
+
+-   Ripple = 3 dB
+    
+-   (\Omega \le 2) rad/sec (passband)
+    
+-   Attenuation (< 0.1) for (\Omega \ge 4) rad/sec
+    
+
+#### Step 1: Determine Order
+
+Using the Chebyshev design equations,
+
+$$  
+n=3  
+$$
+
+#### Step 2: Obtain Normalized Transfer Function
+
+From the 3 dB Chebyshev table,
+
+
+$$
+H_n(s)=\frac{0.25}{s^3+0.59s^2+0.93s+0.25}
+$$
+
+#### Step 3: Frequency Scaling
+
+Since
+
+$$  
+\Omega_p=2  
+$$
+
+replace
+
+$$  
+s\rightarrow\frac{s}{2}  
+$$
+
+to obtain the desired transfer function
+$$
+H_d(s)=H_n\left(\frac{s}{2}\right)
+$$
+
+## IIR FILTER STRUCTURE
+
+<img
+  src="https://raw.githubusercontent.com/podummy04/images/main/ECE/DSP/week4/DSP19.png"
+  alt="DSP"
+  style={{
+    width: "65%",
+    display: "block",
+    margin: "auto"
+  }}
+/>

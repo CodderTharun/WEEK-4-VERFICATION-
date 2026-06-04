@@ -1,53 +1,1970 @@
 ---
-title: DSA - Week 4
-description: Graphs and Graph Algorithms
+title: DSA
+description: Queues
+---
+
+## Queue
+
+A **Queue** is a linear data structure that follows the **First-In-First-Out (FIFO)** principle, meaning the element inserted first is the first one to be removed. Elements are added at the **rear** of the queue through the **enqueue** operation and removed from the **front** through the **dequeue** operation. Queues are commonly used in scheduling systems, task management, network packet handling, and breadth-first search (BFS) algorithms.
+
+### A. FIFO Mechanism
+
+Think of a queue like a line of people waiting at a ticket counter. The person who joins the line first gets served first. This is called **First-In-First-Out (FIFO)**.
+
+Unlike a stack where insertion and deletion happen at the same end, a queue has two ends:
+
+- **Rear** → where elements are inserted.
+- **Front** → where elements are removed.
+
+You cannot remove an element from the middle of the queue. Every element must wait for all earlier elements to be processed first. This ordering makes queues ideal for scheduling and request processing systems.
+
+A queue is a linear data structure where insertion occurs at the rear and deletion occurs at the front.
+
+Two primary operations:
+
+- **Enqueue** — add an element at the rear.
+- **Dequeue** — remove an element from the front.
+
+Edge cases:
+
+- Dequeuing from an empty queue → **underflow**
+- Enqueuing into a full array-based queue → **overflow**
+
+---
+
+### B. Implementations
+
+- CPU Scheduling: Operating systems maintain a queue of processes waiting for CPU execution. The process that arrives first is typically scheduled first.
+
+- Printer Queue: When multiple users send print jobs, the printer stores them in a queue and processes them in the order they were received.
+
+- Breadth First Search (BFS): Queues are used in BFS traversal to visit graph or tree nodes level by level.
+
+- Network Packet Routing: Routers temporarily store incoming packets in queues before forwarding them to their destinations.
+
+- Customer Service Systems: Call centers, ticket booking systems, and service counters process customers in FIFO order.
+
+- Task Scheduling: Background jobs, message brokers, and event-processing systems use queues to manage and execute tasks efficiently.
+
 ---
 
 
+### C. Simple Queue
 
-## Graphs
+A **Simple Queue** is a linear data structure that follows the **First-In-First-Out (FIFO)** principle, where the first element inserted into the queue is the first element to be removed.
 
-A graph is a collection of vertices (nodes) and edges (connections).
+In a queue, insertion is performed at the **rear** end, while deletion is performed at the **front** end. This ordering ensures that elements are processed in the same sequence in which they arrive.
 
-### Graph Types
+#### Basic Operations
 
-1. **Directed Graph** - Edges have direction
-2. **Undirected Graph** - Edges have no direction
-3. **Weighted Graph** - Edges have weights
-4. **Cyclic/Acyclic** - Contains cycles or not
+A simple queue supports the following operations:
 
-### Graph Representation
+- **Enqueue** – Inserts an element at the rear of the queue.
+- **Dequeue** – Removes an element from the front of the queue.
+- **Front (Peek)** – Returns the front element without removing it.
+- **Rear** – Returns the last element in the queue.
 
-1. **Adjacency Matrix** - 2D array
-   - Space: O(V²)
-   - Dense graphs efficient
+#### Working of a Simple Queue
 
-2. **Adjacency List** - Array of lists
-   - Space: O(V + E)
-   - Sparse graphs efficient
+Consider an initially empty queue:
 
-### Graph Traversal
+> []
 
-1. **Depth-First Search (DFS)**
-   - Uses stack or recursion
-   - Time: O(V + E)
+After inserting `10`:
 
-2. **Breadth-First Search (BFS)**
-   - Uses queue
-   - Time: O(V + E)
-   - Finds shortest path in unweighted graph
+> Front → [10] ← Rear
 
-### This Week
+After inserting `20`:
 
-- Graph representation
-- DFS and BFS implementation
-- Shortest path algorithms (Dijkstra, Bellman-Ford)
-- Cycle detection
-- Topological sorting
+> Front → [10, 20] ← Rear
 
-### Practice Problems
+After inserting `30`:
 
-- Implement graph traversals
-- Find shortest path
-- Detect cycles
-- Topological sort
+> Front → [10, 20, 30] ← Rear
+
+After removing an element from the front:
+
+> Removed: 10
+
+> Front → [20, 30] ← Rear
+
+After inserting `40`:
+
+> Front → [20, 30, 40] ← Rear
+
+This demonstrates the FIFO behavior, where the earliest inserted element is removed first.
+
+#### Characteristics
+
+- Follows the FIFO principle.
+- Insertion occurs only at the rear.
+- Deletion occurs only at the front.
+- Maintains the order of arrival of elements.
+- Simple and efficient for sequential processing tasks.
+
+#### Complexity Analysis
+
+| Operation | Time Complexity |
+|------------|----------------|
+| Enqueue | O(1) |
+| Dequeue | O(1) |
+| Front | O(1) |
+| Rear | O(1) |
+
+#### Key Concept
+
+A simple queue ensures that elements are processed in the exact order in which they are inserted, making it suitable for scheduling, buffering, and task management systems.
+
+---
+
+### D. Circular Queue
+
+A **Circular Queue** is an enhanced version of a simple queue in which the last position of the queue is logically connected to the first position, forming a circular structure.
+
+In a traditional array-based queue, once elements are removed from the front, the freed positions cannot be reused efficiently. As a result, memory is wasted even though empty locations exist in the array.
+
+A circular queue overcomes this limitation by allowing the rear pointer to wrap around to the beginning of the array whenever space becomes available.
+
+#### Working Principle
+
+Instead of treating the array as having a fixed beginning and end, the queue is viewed as a circle.
+
+When the rear reaches the final position of the array, the next insertion is performed at the first available position from the beginning.
+
+The next rear position is calculated using:
+
+> Rear = (Rear + 1) % Size
+
+This modulo operation ensures that the rear pointer continuously cycles through the array.
+
+#### Example
+
+Consider a circular queue of size `5`.
+
+Initial state:
+
+> [_, _, _, _, _]
+
+Both the front and rear point to the first position.
+
+After inserting `10`, `20`, and `30`:
+
+> [10, 20, 30, _, _]
+
+After removing `10` and `20`:
+
+> [_, _, 30, _, _]
+
+The first two positions become available.
+
+Now insert `40`, `50`, and `60`.
+
+Instead of reporting overflow, the queue reuses the empty positions at the beginning:
+
+> [60, _, 30, 40, 50]
+
+The rear wraps around to the start of the array, allowing efficient utilization of memory.
+
+#### Characteristics
+
+- Eliminates memory wastage found in simple array-based queues.
+- Reuses vacant positions created by deletions.
+- Maintains FIFO ordering.
+- Uses modulo arithmetic to achieve circular behavior.
+- Provides efficient insertion and deletion operations.
+
+#### Complexity Analysis
+
+| Operation | Time Complexity |
+|------------|----------------|
+| Enqueue | O(1) |
+| Dequeue | O(1) |
+
+#### Key Concept
+
+A circular queue improves the efficiency of a simple queue by reusing freed memory locations. By connecting the last position of the array back to the first, it ensures optimal space utilization while preserving the FIFO property.
+
+---
+
+
+### E. Deque (Double Ended Queue)
+
+A **Deque (Double Ended Queue)** is a linear data structure that permits insertion and deletion of elements at both the front and the rear ends. It combines the characteristics of both stacks and queues, providing greater flexibility in data manipulation.
+
+In a standard queue, insertion is restricted to the rear and deletion to the front. A deque removes these restrictions, allowing operations to be performed from either end of the structure.
+
+#### Operations Supported by a Deque
+
+A deque supports the following fundamental operations:
+
+- **Insert Front** – Inserts an element at the front of the deque.
+- **Insert Rear** – Inserts an element at the rear of the deque.
+- **Delete Front** – Removes an element from the front of the deque.
+- **Delete Rear** – Removes an element from the rear of the deque.
+
+#### Example
+
+Consider an initially empty deque:
+
+> []
+
+After inserting `10` at the rear:
+
+> [10]
+
+After inserting `20` at the rear:
+
+> [10, 20]
+
+After inserting `5` at the front:
+
+> [5, 10, 20]
+
+After deleting an element from the rear:
+
+> [5, 10]
+
+This demonstrates that both insertion and deletion can occur at either end of the deque.
+
+#### Types of Deque
+
+A deque can be classified into two types based on operational restrictions:
+
+**Input Restricted Deque**
+
+Insertion is permitted at only one end, whereas deletion is allowed at both ends.
+
+**Output Restricted Deque**
+
+Deletion is permitted at only one end, whereas insertion is allowed at both ends.
+
+#### Characteristics of a Deque
+
+- Supports insertion from both ends.
+- Supports deletion from both ends.
+- Provides greater flexibility than a standard queue.
+- Can be used to simulate both stack and queue behavior.
+- Maintains the order of elements while allowing efficient access at the boundaries.
+
+#### Complexity Analysis
+
+| Operation | Time Complexity |
+|------------|----------------|
+| Insert Front | O(1) |
+| Insert Rear | O(1) |
+| Delete Front | O(1) |
+| Delete Rear | O(1) |
+
+Since all operations are performed only at the two ends of the structure, they can be executed in constant time.
+
+#### Key Point
+
+A deque extends the functionality of a conventional queue by allowing insertion and deletion at both ends. This flexibility enables efficient implementation of algorithms that require access to elements from either side while maintaining constant-time performance for all primary operations.
+
+---
+
+### F. Monotonic Queue (Sliding Window Maximum)
+
+#### Problem
+
+Given an array and a window size `k`, find the maximum element in every contiguous subarray (window) of size `k`.
+
+Example:
+
+> Array: [2, 1, 5, 3, 6, 4, 8, 7]  
+> k = 3
+
+Required Output:
+
+> [5, 5, 6, 6, 8, 8]
+
+#### Core Observation
+
+Consider the window:
+
+> [2, 1, 5]
+
+When `5` arrives:
+
+- `2 < 5`
+- `1 < 5`
+
+Both `2` and `1` become useless because `5` is larger and will remain in the window longer.
+
+Therefore, smaller elements are removed immediately.
+
+This is the key idea behind a Monotonic Queue.
+
+#### What is a Monotonic Queue?
+
+A monotonic queue is a deque that maintains elements in a specific order.
+
+For Sliding Window Maximum:
+
+- Front → Largest element
+- Rear → Smallest element
+
+The queue is always maintained in decreasing order.
+
+Valid:
+
+> [8, 6, 4, 2]
+
+Invalid:
+
+> [8, 3, 6, 2]
+
+because `6 > 3` breaks the decreasing order.
+
+#### Rules
+
+**Rule 1:** Remove all smaller elements from the rear before inserting a new element.
+
+Example:
+
+> Queue = [5, 3]  
+> New Element = 6
+
+Remove:
+
+- 3 (because 3 < 6)
+- 5 (because 5 < 6)
+
+Insert 6:
+
+> Queue = [6]
+
+**Rule 2:** Insert the new element at the rear.
+
+Example:
+
+> Queue = [6]  
+> Insert 4
+
+Result:
+
+> Queue = [6, 4]
+
+**Rule 3:** Remove expired elements from the front when they leave the sliding window.
+
+#### Why is the Maximum Always at the Front?
+
+Suppose the deque is:
+
+> [8, 6, 4, 2]
+
+Since the queue is decreasing:
+
+> 8 > 6 > 4 > 2
+
+The front element is always the largest.
+
+Therefore:
+
+- Maximum = Front Element
+- Query Time = O(1)
+
+#### Complexity
+
+Each element:
+
+- Enters the deque once.
+- Leaves the deque once.
+
+Total operations:
+
+> Insertions ≤ n  
+> Removals ≤ n
+
+Therefore:
+
+> Total Work ≤ 2n
+
+Overall Complexity:
+
+> O(n)
+
+#### Key Features
+ - A monotonic queue does not store every element.
+ - It stores only those elements that still have a chance of becoming the maximum in the current or future windows.
+ - The moment an element is dominated by a larger and more recent element, it is permanently removed.
+ - This makes sliding window maximum problems run in **O(n)** instead of **O(n × k)**.
+
+ 
+## Greedy Approach
+
+The **Greedy Approach** is an algorithm design technique that builds a solution step by step by selecting the best possible choice at each stage. The decision made at a particular step is based solely on the current situation without considering future consequences.
+
+The fundamental idea behind a greedy algorithm is:
+
+> Make the locally optimal choice at every step with the hope of obtaining a globally optimal solution.
+
+Unlike other approaches such as Dynamic Programming, once a greedy algorithm makes a choice, it never revisits or modifies that decision.
+
+---
+
+### A. Why is it Called "Greedy"?
+
+The algorithm is called greedy because it always chooses the option that appears most beneficial at the current moment.
+
+It does not attempt to evaluate all possible future outcomes. Instead, it immediately selects the choice that seems best and proceeds to the next step.
+
+For example, if multiple options are available:
+
+> Option A → Gain = 10
+
+> Option B → Gain = 8
+
+> Option C → Gain = 6
+
+A greedy algorithm immediately chooses:
+
+> Option A
+
+because it provides the highest immediate benefit.
+
+---
+
+### B. General Strategy
+
+Most greedy algorithms follow the same pattern:
+
+1. Identify all available choices.
+2. Select the best choice according to a predefined criterion.
+3. Include that choice in the solution.
+4. Reduce the problem size.
+5. Repeat until the solution is complete.
+
+---
+
+### C. Characteristics
+
+##### 1. Local Optimal Choice
+
+At every step, the algorithm selects the best available option.
+
+Example:
+
+If several jobs are available and one provides the highest profit, the algorithm chooses that job immediately.
+
+---
+
+##### 2. Irreversible Decisions
+
+Once a choice is made, it cannot be changed later.
+
+Example:
+
+If a coin is selected while making change, the algorithm does not reconsider that choice even if a better combination exists later.
+
+---
+
+##### 3. Incremental Construction
+
+The solution is built gradually.
+
+Example:
+
+Instead of generating all possible solutions first, the algorithm continuously extends the current solution.
+
+---
+
+##### 4. Fast Execution
+
+Since only one decision is made at each step, greedy algorithms are often much faster than exhaustive search methods.
+
+---
+
+### D. Requirements
+
+A problem can be solved optimally using a greedy approach only if it satisfies two important properties.
+
+##### Greedy Choice Property
+
+A globally optimal solution can be obtained by making locally optimal choices.
+
+In simple terms:
+
+> The best immediate decision must contribute toward the best overall solution.
+
+---
+
+##### Optimal Substructure
+
+An optimal solution to the problem contains optimal solutions to its subproblems.
+
+This means:
+
+> Solving smaller parts optimally helps construct the overall optimal solution.
+
+---
+
+#### Working Example: Coin Change Problem
+
+Suppose we have coin denominations:
+
+> {1, 2, 5, 10}
+
+Amount:
+
+> 18
+
+Goal:
+
+> Use the minimum number of coins.
+
+A greedy algorithm chooses the largest possible coin first.
+
+Step 1:
+
+> Choose 10
+
+Remaining Amount:
+
+> 8
+
+Step 2:
+
+> Choose 5
+
+Remaining Amount:
+
+> 3
+
+Step 3:
+
+> Choose 2
+
+Remaining Amount:
+
+> 1
+
+Step 4:
+
+> Choose 1
+
+Remaining Amount:
+
+> 0
+
+Solution:
+
+> 10 + 5 + 2 + 1
+
+Number of Coins:
+
+> 4
+
+The algorithm repeatedly chooses the largest valid coin available.
+
+---
+
+### E. Advantages
+
+##### Simplicity
+
+Greedy algorithms are usually straightforward to understand and implement.
+
+##### Efficiency
+
+Most greedy algorithms require less computation compared to exhaustive approaches.
+
+##### Lower Memory Usage
+
+Since only current decisions need to be stored, memory requirements are generally small.
+
+##### Fast Execution
+
+Many greedy algorithms run in:
+
+> O(n)
+
+or
+
+> O(n log n)
+
+making them suitable for large datasets.
+
+---
+
+### F. Limitations
+
+##### Not Always Optimal
+
+The biggest drawback is that greedy decisions do not always produce the best overall solution.
+
+Example:
+
+Coin denominations:
+
+> {1, 3, 4}
+
+Amount:
+
+> 6
+
+Greedy Choice:
+
+> 4 + 1 + 1
+
+Coins Used:
+
+> 3
+
+Optimal Solution:
+
+> 3 + 3
+
+Coins Used:
+
+> 2
+
+The greedy approach fails to find the optimal answer.
+
+---
+
+#### Key Concept
+
+The Greedy Approach constructs a solution by repeatedly choosing the best available option at each step. It never revisits previous decisions and focuses only on immediate gains. When a problem satisfies the **Greedy Choice Property** and **Optimal Substructure**, a greedy algorithm can produce an optimal solution efficiently with minimal computational overhead.
+
+---
+
+
+## Travelling Salesman Problem (TSP)
+
+The **Travelling Salesman Problem (TSP)** is one of the most famous optimization problems in Computer Science, Operations Research, and Artificial Intelligence.
+
+The problem describes a travelling salesman who must visit a set of cities exactly once and return to the city from which the journey started. The objective is to determine the route that minimizes the total travel cost or distance.
+
+---
+
+### A. Problem Statement
+
+Given:
+
+- A set of `n` cities.
+- The distance between every pair of cities.
+
+Find:
+
+- A tour that visits every city exactly once.
+- Returns to the starting city.
+- Has the minimum possible total distance.
+
+---
+
+#### Example
+
+Suppose there are four cities:
+
+> A, B, C, D
+
+Distances between cities:
+
+| From | To | Distance |
+|--------|------|----------|
+| A | B | 10 |
+| A | C | 15 |
+| A | D | 20 |
+| B | C | 35 |
+| B | D | 25 |
+| C | D | 30 |
+
+The salesman starts from city A.
+
+Possible tours include:
+
+> A → B → C → D → A
+
+> A → B → D → C → A
+
+> A → C → B → D → A
+
+> A → D → B → C → A
+
+Each route has a different total distance.
+
+The goal is to select the route with the minimum total distance.
+
+---
+
+### B. Why is TSP Difficult?
+
+For a small number of cities, it is easy to examine every possible route.
+
+However, as the number of cities increases, the number of possible tours grows extremely rapidly.
+
+For:
+
+> n cities
+
+Number of possible tours:
+
+> (n − 1)!
+
+Example:
+
+| Cities | Possible Tours |
+|----------|---------------|
+| 4 | 6 |
+| 5 | 24 |
+| 10 | 362,880 |
+| 15 | 87,178,291,200 |
+| 20 | 121,645,100,408,832,000 |
+
+Even modern computers cannot evaluate all possibilities for very large values of `n`.
+
+This rapid growth is called **combinatorial explosion**.
+
+---
+
+#### Graph Representation of TSP
+
+TSP is commonly represented using a weighted graph.
+
+- Cities are represented as vertices.
+- Roads are represented as edges.
+- Distances are represented as edge weights.
+
+Example:
+
+```text
+      B
+     / \
+   10   35
+   /      \
+  A---15---C
+   \      /
+   20   30
+     \ /
+      D
+```
+
+The objective is to find the shortest Hamiltonian Cycle.
+
+---
+
+### D. What is a Hamiltonian Cycle?
+
+A Hamiltonian Cycle is a path that:
+
+- Visits every vertex exactly once.
+- Returns to the starting vertex.
+
+Example:
+
+> A → B → D → C → A
+
+Valid Hamiltonian Cycle.
+
+Example:
+
+> A → B → C → B → D → A
+
+Invalid because city B is visited twice.
+
+TSP seeks the Hamiltonian Cycle with the minimum cost.
+
+---
+
+### E. Brute Force Approach
+
+The simplest method is:
+
+1. Generate all possible tours.
+2. Calculate the distance of each tour.
+3. Select the shortest one.
+
+Example:
+
+Cities:
+
+> A, B, C, D
+
+Possible routes:
+
+> A → B → C → D → A
+
+> A → B → D → C → A
+
+> A → C → B → D → A
+
+> A → C → D → B → A
+
+> A → D → B → C → A
+
+> A → D → C → B → A
+
+Calculate the distance of each route and choose the smallest.
+
+##### Complexity
+
+Number of tours:
+
+> (n−1)!
+
+Time Complexity:
+
+> O(n!)
+
+This becomes impractical very quickly.
+
+---
+
+### F. Dynamic Programming Approach
+
+To avoid evaluating identical subproblems repeatedly, Dynamic Programming can be used.
+
+The idea is:
+
+Instead of remembering complete routes, store:
+
+> Current City
+
+and
+
+> Set of Visited Cities
+
+A DP state is typically represented as:
+
+> DP(Current City, Visited Set)
+
+This significantly reduces repeated calculations.
+
+##### Complexity
+
+Time:
+
+> O(n² × 2ⁿ)
+
+Space:
+
+> O(n × 2ⁿ)
+
+Although much better than O(n!), it still becomes expensive for large values of `n`.
+
+---
+
+### G. Greedy Approach (Nearest Neighbor)
+
+A simple approximation technique is the Nearest Neighbor Algorithm.
+
+##### Algorithm
+
+1. Start from a city.
+2. Visit the nearest unvisited city.
+3. Mark it as visited.
+4. Repeat until all cities are visited.
+5. Return to the starting city.
+
+---
+
+##### Example
+
+Starting City:
+
+> A
+
+Distances:
+
+```text
+A → B = 10
+A → C = 15
+A → D = 20
+```
+
+Nearest city:
+
+> B
+
+Current Route:
+
+> A → B
+
+From B:
+
+```text
+B → C = 35
+B → D = 25
+```
+
+Nearest city:
+
+> D
+
+Current Route:
+
+> A → B → D
+
+Remaining city:
+
+> C
+
+Final Route:
+
+> A → B → D → C → A
+
+This method is very fast but does not always produce the optimal route.
+
+---
+
+### H. Branch and Bound
+
+Branch and Bound improves over brute force by eliminating routes that cannot possibly lead to an optimal solution.
+
+Idea:
+
+- Generate routes gradually.
+- Compute a lower bound on their cost.
+- Discard routes whose lower bound is already worse than the current best solution.
+
+This greatly reduces the search space.
+
+---
+
+### I. Approximation Algorithms
+
+For very large TSP instances, exact solutions become impractical.
+
+Approximation algorithms aim to find near-optimal solutions quickly.
+
+Examples:
+
+- Nearest Neighbor
+- Genetic Algorithms
+- Simulated Annealing
+- Ant Colony Optimization
+
+These methods are widely used in real-world applications.
+
+---
+
+### J. Real-World Applications
+
+
+- **Logistics and Delivery:** Determine the shortest route for delivery vehicles.
+
+- **Airline Route Planning:** Optimize flight schedules and travel paths.
+
+- **Manufacturing:** Minimize tool movement in CNC machines.
+
+- **Robotics:** Plan efficient paths for autonomous robots.
+
+- **Circuit Board Design:** Reduce wiring length in printed circuit boards.
+
+- **Warehouse Optimization:** Determine the shortest picking route for items.
+
+---
+
+### K. Complexity Comparison
+
+| Approach | Time Complexity |
+|------------|----------------|
+| Brute Force | O(n!) |
+| Dynamic Programming | O(n² × 2ⁿ) |
+| Greedy Heuristic | O(n²) |
+| Branch and Bound | Better than O(n!) in practice |
+| Approximation Methods | Depends on technique |
+
+---
+
+### L. Why TSP is Important?
+
+TSP is considered one of the most important optimization problems because many real-world problems can be modeled as finding the most efficient route through a set of locations.
+
+It is also a classic **NP-Hard Problem**, meaning that no polynomial-time algorithm is currently known that always produces the optimal solution.
+
+Because of this, TSP serves as a benchmark problem for studying optimization techniques, graph algorithms, heuristics, and artificial intelligence methods.
+
+
+## Longest Common Subsequence (LCS)
+
+The **Longest Common Subsequence (LCS)** is a classic Dynamic Programming problem that involves finding the longest sequence of characters that appears in the same relative order in two given sequences.
+
+Unlike a substring, the characters of a subsequence do not need to be adjacent. They only need to appear in the same order.
+
+---
+
+### A. Problem Statement
+
+Given:
+
+- Two sequences or strings.
+- Characters may be different in both sequences.
+
+Find:
+
+- The longest subsequence that appears in both sequences.
+- The relative order of characters must remain the same.
+
+---
+
+#### Example
+
+Consider two strings:
+
+| String | Value |
+|---------|---------|
+| X | ABCDGH |
+| Y | AEDFHR |
+
+Common subsequences:
+
+- A
+- AD
+- AH
+- ADH
+
+Longest Common Subsequence (LCS):
+
+> ADH
+
+Length of LCS:
+
+> 3
+
+Or even more professional:
+
+#### Example
+
+| String | Sequence |
+|---------|----------|
+| X | ABCDGH |
+| Y | AEDFHR |
+
+The common subsequences include **A**, **AD**, **AH**, and **ADH**.
+
+Therefore:
+
+- **Longest Common Subsequence (LCS):** ADH
+- **Length of LCS:** 3
+
+---
+
+
+### B. Subsequence vs Substring
+
+A common source of confusion is the difference between a **substring** and a **subsequence**. The key distinction lies in whether the characters must be contiguous.
+
+#### Substring
+
+A substring is a continuous sequence of characters extracted from a string. The characters must appear consecutively without any gaps.
+
+**Example**
+
+String:
+
+> ABCDEF
+
+| Valid Substrings | Reason |
+|------------------|---------|
+| ABC | Consecutive characters |
+| CDE | Consecutive characters |
+| DEF | Consecutive characters |
+
+Invalid Substring:
+
+> ACF
+
+Reason:
+
+> The characters are not adjacent in the original string.
+
+---
+
+#### Subsequence
+
+A subsequence is a sequence of characters that appears in the same relative order as the original string, but the characters do not need to be consecutive.
+
+**Example**
+
+String:
+
+> ABCDEF
+
+| Valid Subsequences | Reason |
+|--------------------|---------|
+| ACE | Order maintained |
+| ADF | Order maintained |
+| BDF | Order maintained |
+
+Characters may be skipped as long as their relative order remains unchanged.
+
+---
+
+#### Key Difference
+
+| Feature | Substring | Subsequence |
+|----------|-----------|------------|
+| Characters Must Be Consecutive | Yes | No |
+| Order Must Be Maintained | Yes | Yes |
+| Gaps Allowed | No | Yes |
+| Example from `ABCDEF` | `ABC` | `ACE` |
+
+---
+
+
+### C. Why is LCS Important?
+
+LCS measures similarity between two sequences.
+
+If two strings share a long common subsequence, they are considered similar.
+
+The longer the LCS:
+
+> Greater the similarity
+
+The shorter the LCS:
+
+> Lesser the similarity
+
+---
+
+
+### D. Brute Force Approach
+
+The most straightforward method for solving the Longest Common Subsequence (LCS) problem is to generate all possible subsequences of one string and then determine which of them also appear in the second string.
+
+The longest subsequence that exists in both strings is selected as the Longest Common Subsequence.
+
+#### Example
+
+Consider the string:
+
+> ABCD
+
+Some possible subsequences are:
+
+| Length 1 | Length 2 | Length 3 | Length 4 |
+|-----------|-----------|-----------|-----------|
+| A | AB | ABC | ABCD |
+| B | AC | ABD | |
+| C | AD | ACD | |
+| D | BC | BCD | |
+| | BD | | |
+| | CD | | |
+
+For a string of length `n`, each character can either:
+
+- Be included in a subsequence.
+- Be excluded from a subsequence.
+
+Therefore, the total number of possible subsequences is:
+
+> 2ⁿ
+
+As the length of the string increases, the number of subsequences grows exponentially.
+
+#### Why is it Expensive?
+
+For a string of length:
+
+| n | Number of Subsequences |
+|---|-----------------------|
+| 4 | 16 |
+| 10 | 1,024 |
+| 20 | 1,048,576 |
+| 30 | 1,073,741,824 |
+
+This rapid growth makes it computationally expensive to generate and compare every subsequence.
+
+#### Complexity
+
+| Metric | Complexity |
+|----------|-----------|
+| Time Complexity | O(2ⁿ) |
+| Space Complexity | O(n) |
+
+Because of its exponential time complexity, the brute force approach is not practical for large strings and is mainly used for understanding the problem rather than solving real-world instances efficiently.
+
+---
+
+### E. Dynamic Programming Approach
+
+The LCS problem contains many overlapping subproblems.
+
+Instead of solving the same problem repeatedly, Dynamic Programming stores previously computed results.
+
+The idea is:
+
+For every pair of positions in the two strings, determine the length of the LCS up to that point.
+
+
+#### Recurrence Relation
+
+Let:
+
+- `X[i]` represent the current character in the first string.
+- `Y[j]` represent the current character in the second string.
+
+The solution depends on whether the current characters match.
+
+##### Case 1: Characters Match
+
+If the current characters are equal,
+
+> X[i] = Y[j]
+
+then the character contributes to the Longest Common Subsequence. Therefore, the LCS length increases by one, and the problem is reduced to the remaining portions of both strings.
+
+$$
+LCS(i,j) = 1 + LCS(i-1,j-1)
+$$
+
+##### Case 2: Characters Do Not Match
+
+If the current characters are different,
+
+> X[i] ≠ Y[j]
+
+then at least one of the characters cannot be part of the LCS. The optimal solution is obtained by considering both possibilities and selecting the larger result.
+
+$$
+LCS(i,j) = \max\big(LCS(i-1,j),\; LCS(i,j-1)\big)
+$$
+
+These two recurrence relations form the foundation of the Dynamic Programming solution for the Longest Common Subsequence problem.
+
+
+---
+
+### F. DP Table Construction
+
+
+Consider the following strings:
+
+| String | Sequence |
+|---------|----------|
+| X | ABCDGH |
+| Y | AEDFHR |
+
+To solve the LCS problem using Dynamic Programming, a table is constructed where:
+
+- Rows represent the characters of string **X**.
+- Columns represent the characters of string **Y**.
+- Each cell stores the length of the Longest Common Subsequence obtained by considering the corresponding prefixes of both strings.
+
+The table is filled systematically using the LCS recurrence relations:
+
+- If the characters match, the value is obtained from the diagonal cell plus one.
+- If the characters do not match, the maximum value from the top or left cell is selected.
+
+As the table is filled, each cell represents the optimal solution for a smaller subproblem.
+
+The final LCS length is obtained from the **bottom-right cell** of the DP table, which represents the solution for the complete strings.
+
+
+#### Example Walkthrough
+
+
+Consider the following strings:
+
+| String | Sequence |
+|---------|----------|
+| X | ABCD |
+| Y | ACD |
+
+The comparison begins from the first character of both strings.
+
+| Comparison | Result | LCS Length |
+|------------|--------|------------|
+| A vs A | Match | 1 |
+| B vs C | No Match | Take maximum of neighboring values |
+| C vs C | Match | Length increases |
+| D vs D | Match | Length increases |
+
+After processing all characters, the Longest Common Subsequence obtained is:
+
+> ACD
+
+Length of LCS:
+
+> 3
+
+This example demonstrates how matching characters contribute to the subsequence, while non-matching characters are handled by selecting the best solution from previously solved subproblems.
+
+---
+
+### G. Reconstructing the LCS
+
+The Dynamic Programming table provides the length of the Longest Common Subsequence. To determine the actual subsequence, a **backtracking** process is performed starting from the bottom-right cell of the table.
+
+#### Backtracking Procedure
+
+- If the current characters match, include the character in the LCS and move diagonally to the previous row and column.
+- If the characters do not match, move to the neighboring cell with the larger value.
+- Continue this process until the first row or first column is reached.
+
+By following this path, the characters that form the Longest Common Subsequence can be identified.
+
+#### Example
+
+| String | Sequence |
+|---------|----------|
+| X | ABCDGH |
+| Y | AEDFHR |
+
+Starting from the bottom-right cell and tracing back through the DP table produces:
+
+> ADH
+
+Therefore:
+
+- **Longest Common Subsequence:** ADH
+- **Length of LCS:** 3
+
+The backtracking process reconstructs the optimal subsequence using the information stored in the Dynamic Programming table.
+
+
+---
+
+### H. Applications
+
+
+- **File Comparison Tools:** Used in tools such as Git and Diff to identify changes between files.
+
+- **Version Control Systems:** Detects additions, deletions, and modifications between document versions.
+
+- **DNA Sequence Analysis:** Compares genetic sequences to identify similarities and evolutionary relationships.
+
+- **Text Similarity Detection:** Measures similarity between documents and textual data.
+
+- **Plagiarism Detection:** Identifies common sequences between documents.
+
+- **Bioinformatics:** Used extensively for protein and genome sequence alignment.
+
+---
+
+### I. Complexity Analysis
+
+| Approach | Time Complexity |
+|------------|----------------|
+| Brute Force | O(2ⁿ) |
+| Dynamic Programming | O(m × n) |
+
+Where:
+
+- `m` = length of first string.
+- `n` = length of second string.
+
+#### Space Complexity
+
+DP Table:
+
+> O(m × n)
+
+---
+
+### J. Why Dynamic Programming Works?
+
+LCS satisfies:
+
+**1. Optimal Substructure**
+
+The optimal solution can be built from optimal solutions of smaller subproblems.
+
+**2. Overlapping Subproblems**
+
+The same character combinations are evaluated repeatedly.
+
+Dynamic Programming stores these results and avoids redundant calculations.
+
+---
+
+
+## Longest Increasing Subsequence (LIS)
+
+The **Longest Increasing Subsequence (LIS)** is a classic Dynamic Programming problem that involves finding the longest subsequence of a sequence such that all elements appear in strictly increasing order.
+
+A subsequence does not require elements to be adjacent; however, the relative order of elements must be preserved.
+
+---
+
+### A. Problem Statement
+
+Given:
+
+- A sequence of numbers.
+
+Find:
+
+- The longest subsequence whose elements are in strictly increasing order.
+
+---
+
+#### Example
+
+Consider the following sequence:
+
+> [10, 22, 9, 33, 21, 50, 41, 60]
+
+Some increasing subsequences are:
+
+> [10, 22]
+
+> [10, 22, 33]
+
+> [10, 22, 33, 50]
+
+> [10, 22, 33, 50, 60]
+
+The longest increasing subsequence is:
+
+> [10, 22, 33, 50, 60]
+
+Length:
+
+> 5
+
+---
+
+### B. Subsequence vs Increasing Subsequence
+
+
+A **subsequence** is a sequence derived from another sequence by deleting zero or more elements without altering the relative order of the remaining elements.
+
+An **increasing subsequence** is a special type of subsequence in which every element is strictly greater than the element preceding it.
+
+#### Example
+
+Consider the sequence:
+
+> [10, 22, 9, 33]
+
+The following subsequences can be formed:
+
+| Subsequence | Type |
+|-------------|------|
+| [10, 9] | Subsequence |
+| [22, 33] | Increasing Subsequence |
+| [10, 22, 33] | Increasing Subsequence |
+
+The subsequence:
+
+> [10, 9]
+
+is a valid subsequence because the relative order of elements is preserved. However, it is not an increasing subsequence since:
+
+> 9 < 10
+
+The subsequences:
+
+> [22, 33]
+
+and
+
+> [10, 22, 33]
+
+are increasing subsequences because each element is greater than the preceding element.
+
+#### Key Difference
+
+| Feature | Subsequence | Increasing Subsequence |
+|----------|------------|----------------------|
+| Relative Order Preserved | Yes | Yes |
+| Consecutive Elements Required | No | No |
+| Strictly Increasing Order Required | No | Yes |
+| Example | [10, 9] | [10, 22, 33] |
+
+---
+
+### C. Why is LIS Important?
+
+The LIS problem is used to identify increasing patterns within a sequence.
+
+A longer LIS generally indicates a stronger increasing trend within the data.
+
+---
+
+### D. Brute Force Approach
+
+The most straightforward approach to solving the Longest Increasing Subsequence (LIS) problem is to generate all possible subsequences of the given sequence and determine which of them satisfy the increasing order property.
+
+A subsequence is considered valid for LIS if every element is strictly greater than its preceding element.
+
+#### Example
+
+Consider the sequence:
+
+> [10, 22, 9, 33]
+
+Some possible subsequences are:
+
+| Length 1 | Length 2 | Length 3 | Length 4 |
+|-----------|-----------|-----------|-----------|
+| [10] | [10, 22] | [10, 22, 33] | [10, 22, 9, 33] |
+| [22] | [10, 9] | [10, 9, 33] | |
+| [9] | [10, 33] | [22, 9, 33] | |
+| [33] | [22, 9] | [22, 33] | |
+| | [22, 33] | | |
+| | [9, 33] | | |
+
+Among these, the increasing subsequences include:
+
+> [10, 22]
+
+> [10, 33]
+
+> [22, 33]
+
+> [9, 33]
+
+> [10, 22, 33]
+
+The longest increasing subsequence is:
+
+> [10, 22, 33]
+
+Length:
+
+> 3
+
+#### Why is it Expensive?
+
+For a sequence of length `n`, each element has two possibilities:
+
+- Included in the subsequence.
+- Excluded from the subsequence.
+
+Therefore, the total number of possible subsequences is:
+
+> 2ⁿ
+
+As the value of `n` increases, the number of subsequences grows exponentially.
+
+| n | Number of Subsequences |
+|---|-----------------------|
+| 4 | 16 |
+| 10 | 1,024 |
+| 20 | 1,048,576 |
+| 30 | 1,073,741,824 |
+
+Each generated subsequence must also be checked to verify whether it is strictly increasing, resulting in a significant computational cost.
+
+#### Complexity
+
+| Metric | Complexity |
+|----------|-----------|
+| Time Complexity | O(2ⁿ) |
+| Space Complexity | O(n) |
+
+Due to its exponential time complexity, the brute force approach is suitable only for small sequences and is primarily used for understanding the problem rather than solving practical instances efficiently.
+
+---
+
+### E. Dynamic Programming Approach
+
+
+The Dynamic Programming approach improves upon the brute force method by storing solutions to previously solved subproblems, thereby avoiding redundant computations.
+
+The central idea is to determine, for each element in the sequence, the length of the **Longest Increasing Subsequence ending at that element**.
+
+Instead of generating all possible subsequences, the algorithm builds the solution incrementally by utilizing information computed for earlier elements.
+
+#### Principle
+
+For every element in the sequence:
+
+> Determine the length of the longest increasing subsequence that terminates at that element.
+
+If a previous element is smaller than the current element, the current element can extend the increasing subsequence ending at that previous element.
+
+By evaluating all such possibilities, the best subsequence length ending at the current position can be determined.
+
+#### Example
+
+Consider the sequence:
+
+> [10, 22, 9, 33]
+
+The LIS lengths computed for each position are:
+
+| Element | LIS Length Ending at Element |
+|----------|-----------------------------|
+| 10 | 1 |
+| 22 | 2 |
+| 9 | 1 |
+| 33 | 3 |
+
+Thus, the corresponding DP array becomes:
+
+> [1, 2, 1, 3]
+
+Each value represents the length of the longest increasing subsequence ending at that position.
+
+The maximum value in the DP array represents the length of the overall Longest Increasing Subsequence.
+
+Therefore:
+
+> LIS Length = 3
+
+#### Key Observation
+
+The longest increasing subsequence does not necessarily end at the last element of the sequence. Therefore, after computing LIS lengths for all positions, the maximum value among them is selected as the final answer.
+
+This approach significantly reduces the computational effort compared to the brute force method by reusing solutions to previously solved subproblems.
+
+---
+
+#### Recurrence Relation
+
+
+#### Recurrence Relation
+
+Let:
+
+> LIS(i)
+
+denote the length of the Longest Increasing Subsequence ending at index `i`.
+
+To compute `LIS(i)`, all previous elements are examined.
+
+For every element:
+
+> arr[j], where j < i
+
+if:
+
+> arr[j] < arr[i]
+
+then the current element can extend the increasing subsequence ending at index `j`.
+
+The length of the LIS ending at index `i` is therefore given by:
+
+$$
+LIS(i) = 1 + \max(LIS(j))
+$$
+
+subject to:
+
+$$
+j < i \quad \text{and} \quad arr[j] < arr[i]
+$$
+
+If no previous element satisfies the condition, the current element forms an increasing subsequence by itself.
+
+Hence:
+
+$$
+LIS(i) = 1
+$$
+
+#### Interpretation
+
+- `LIS(i)` represents the best increasing subsequence ending at index `i`.
+- The value is obtained by extending the longest valid increasing subsequence among all smaller preceding elements.
+- If no smaller preceding element exists, the subsequence consists only of the current element.
+
+These recurrence relations form the foundation of the Dynamic Programming solution for the Longest Increasing Subsequence problem.
+
+---
+
+
+### F. DP Table Construction
+
+Consider the sequence:
+
+> [10, 22, 9, 33, 21, 50, 41, 60]
+
+To solve the Longest Increasing Subsequence problem using Dynamic Programming, a DP array is maintained in which:
+
+- Each index corresponds to an element in the sequence.
+- Each value stores the length of the Longest Increasing Subsequence ending at that position.
+
+Initially, every element can form an increasing subsequence of length `1` by itself.
+
+Therefore:
+
+> DP = [1, 1, 1, 1, 1, 1, 1, 1]
+
+The DP array is then updated by comparing each element with all preceding elements and applying the LIS recurrence relation.
+
+After processing the entire sequence, the DP array becomes:
+
+> DP = [1, 2, 1, 3, 2, 4, 4, 5]
+
+| Element | 10 | 22 | 9 | 33 | 21 | 50 | 41 | 60 |
+|----------|----|----|----|----|----|----|----|----|
+| LIS Length | 1 | 2 | 1 | 3 | 2 | 4 | 4 | 5 |
+
+The maximum value present in the DP array represents the length of the Longest Increasing Subsequence.
+
+Therefore:
+
+> LIS Length = 5
+
+---
+
+#### Example Walkthrough
+
+Consider the sequence:
+
+> [10, 22, 9, 33]
+
+Initially:
+
+> DP = [1, 1, 1, 1]
+
+Since `22` is greater than `10`, the subsequence ending at `10` can be extended.
+
+| Element | 10 | 22 | 9 | 33 |
+|----------|----|----|----|----|
+| DP Value | 1 | 2 | 1 | 1 |
+
+Current DP:
+
+> [1, 2, 1, 1]
+
+For the element `9`, no preceding element can extend an increasing subsequence ending at `9`.
+
+Therefore, its LIS length remains:
+
+> 1
+
+Current DP:
+
+> [1, 2, 1, 1]
+
+For the element `33`, both `10` and `22` are smaller than `33`.
+
+The longest valid subsequence before `33` has length:
+
+> 2
+
+Hence:
+
+> DP[3] = 1 + 2 = 3
+
+Final DP array:
+
+> [1, 2, 1, 3]
+
+| Element | 10 | 22 | 9 | 33 |
+|----------|----|----|----|----|
+| DP Value | 1 | 2 | 1 | 3 |
+
+The maximum value in the DP array gives the length of the Longest Increasing Subsequence.
+
+Therefore:
+
+> LIS Length = 3
+
+---
+
+### G. Reconstructing the LIS
+
+The Dynamic Programming array provides the length of the Longest Increasing Subsequence ending at each position. However, it does not directly reveal the elements that constitute the subsequence.
+
+To obtain the actual Longest Increasing Subsequence, a backtracking process is performed using the values stored in the DP array.
+
+#### Backtracking Procedure
+
+- Identify the position containing the maximum LIS value.
+- Include the corresponding element in the subsequence.
+- Move backward through the sequence.
+- Select an element that:
+  - Is smaller than the current element.
+  - Has an LIS value exactly one less than the current LIS value.
+- Continue this process until the beginning of the sequence is reached.
+
+The selected elements, when arranged in the correct order, form the Longest Increasing Subsequence.
+
+#### Example
+
+Consider the sequence:
+
+> [10, 22, 9, 33, 21, 50, 41, 60]
+
+The corresponding DP array is:
+
+> [1, 2, 1, 3, 2, 4, 4, 5]
+
+| Element | 10 | 22 | 9 | 33 | 21 | 50 | 41 | 60 |
+|----------|----|----|----|----|----|----|----|----|
+| LIS Length | 1 | 2 | 1 | 3 | 2 | 4 | 4 | 5 |
+
+The maximum LIS value is:
+
+> 5
+
+Starting from the element `60`, backtracking identifies the preceding elements that satisfy the reconstruction conditions.
+
+The resulting subsequence is:
+
+> [10, 22, 33, 50, 60]
+
+Therefore:
+
+- **Longest Increasing Subsequence (LIS):** [10, 22, 33, 50, 60]
+- **Length of LIS:** 5
+
+The reconstruction phase utilizes the information stored in the DP array to recover the actual subsequence after its length has been computed.
+
+---
+
+### H. Applications
+
+- **Stock Market Analysis:** Identifying increasing trends in stock prices.
+- **Data Mining:** Discovering ordered patterns in datasets.
+- **Bioinformatics:** Analyzing biological sequences.
+- **Pattern Recognition:** Detecting ordered structures in data.
+- **Signal Processing:** Identifying increasing signal patterns.
+
+---
+
+### I. Complexity Analysis
+
+| Approach | Time Complexity |
+|------------|----------------|
+| Brute Force | O(2ⁿ) |
+| Dynamic Programming | O(n²) |
+| Binary Search Optimization | O(n log n) |
+
+#### Space Complexity
+
+| Approach | Space Complexity |
+|------------|----------------|
+| Dynamic Programming | O(n) |
+
+---
+
+### J. Why Dynamic Programming Works?
+
+LIS satisfies two important properties:
+
+**2. Optimal Substructure**
+
+The optimal solution can be constructed from optimal solutions of smaller subsequences.
+
+**1. Overlapping Subproblems**
+
+The same LIS values are repeatedly required while processing later elements.
+Dynamic Programming stores these values and avoids redundant calculations.
+
+---
+
+## LeetCode Practice Problems
+
+<div className="leetcode-grid">
+
+<a className="leetcode-card" href="https://leetcode.com/problems/valid-parentheses/" target="_blank">
+	<h3>20. Valid Parentheses</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/min-stack/" target="_blank">
+	<h3>155. Min Stack</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/evaluate-reverse-polish-notation/" target="_blank">
+	<h3>150. Evaluate Reverse Polish Notation</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/daily-temperatures/" target="_blank">
+	<h3>739. Daily Temperatures</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/largest-rectangle-in-histogram/" target="_blank">
+	<h3>84. Largest Rectangle in Histogram</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/implement-queue-using-stacks/" target="_blank">
+	<h3>232. Implement Queue Using Stacks</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/design-circular-queue/" target="_blank">
+	<h3>622. Design Circular Queue</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/design-circular-deque/" target="_blank">
+	<h3>641. Design Circular Deque</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/number-of-recent-calls/" target="_blank">
+	<h3>933. Number of Recent Calls</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank">
+	<h3>239. Sliding Window Maximum</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/" target="_blank">
+	<h3>862. Shortest Subarray with Sum at Least K</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/assign-cookies/" target="_blank">
+	<h3>455. Assign Cookies</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/jump-game/" target="_blank">
+	<h3>55. Jump Game</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/jump-game-ii/" target="_blank">
+	<h3>45. Jump Game II</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/partition-labels/" target="_blank">
+	<h3>763. Partition Labels</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/gas-station/" target="_blank">
+	<h3>134. Gas Station</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/longest-common-subsequence/" target="_blank">
+	<h3>1143. Longest Common Subsequence</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/delete-operation-for-two-strings/" target="_blank">
+	<h3>583. Delete Operation for Two Strings</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/longest-increasing-subsequence/" target="_blank">
+	<h3>300. Longest Increasing Subsequence</h3>
+</a>
+
+<a className="leetcode-card" href="https://leetcode.com/problems/number-of-longest-increasing-subsequence/" target="_blank">
+	<h3>673. Number of Longest Increasing Subsequence</h3>
+</a>
+
+</div>
+
+<style>
+{`
+.leetcode-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 16px;
+	margin-top: 20px;
+}
+
+.leetcode-card {
+	display: block;
+	padding: 18px;
+	border-radius: 14px;
+	background: var(--sl-color-bg);
+	border: 1px solid var(--sl-color-gray-5);
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.leetcode-card h3 {
+	margin: 0;
+	font-size: 16px;
+	color: var(--sl-color-text-accent);
+}
+
+.leetcode-card:hover {
+	background: var(--sl-color-bg-nav);
+	transform: translateY(-5px);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+	border-color: var(--sl-color-accent);
+}
+
+.leetcode-card:hover h3 {
+	color: var(--sl-color-white);
+}
+`}
+</style>
+
+---

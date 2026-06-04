@@ -1,0 +1,824 @@
+---
+title: Embeded C
+description: AC machines and induction motors
+---
+
+## Basic C Program Structure
+
+### A. Program Template
+
+```c
+#include "STM32L1xx.h"
+
+int count, bob;
+
+int function1(char x)
+{
+    int i, j;
+
+    i = 0;
+    j = 0;
+
+    for(i = 0; i < x; i++)
+    {
+        j += i;
+    }
+
+    return j;
+}
+
+void main(void)
+{
+    unsigned char sw1;
+    int k;
+
+    count = 0;
+    bob = 0;
+
+    while(1)
+    {
+        sw1 = 1;
+        k = function1(sw1);
+        count = k;
+    }
+}
+```
+#### 1. User-Defined Function
+
+```c
+int function1(char x)
+```
+
+A function is a reusable block of code that performs a specific task.
+
+##### Components
+- **Return Type:** `int`
+- **Function Name:** `function1`
+- **Parameter:** `char x`
+
+##### Purpose
+- Processes input data
+- Returns a computed result to the caller
+
+---
+
+#### 2. Local Variables
+
+```c
+int i, j;
+```
+
+Local variables exist only inside the function where they are declared.
+
+### Characteristics
+- Temporary storage
+- Created when the function starts
+- Destroyed when the function ends
+
+---
+
+#### 3. Main Function
+
+```c
+void main(void)
+```
+
+The main function is the entry point of the embedded application. Execution begins here after the microcontroller is powered on or reset.
+
+### Responsibilities
+- Initialize hardware
+- Configure peripherals
+- Control program execution
+
+---
+
+#### 4. Initialization Section
+
+```c
+/* Initialization section */
+```
+
+This section prepares the microcontroller before entering normal operation.
+
+### Typical Tasks
+- Configure GPIO pins
+- Initialize timers
+- Set up communication interfaces
+- Initialize variables
+
+---
+
+#### 5. Endless Loop
+
+```c
+while(1)
+{
+}
+```
+
+Embedded systems usually run continuously. The infinite loop ensures that the microcontroller repeatedly executes application tasks.
+
+##### Purpose
+- Monitor inputs
+- Process data
+- Control outputs
+- Perform real-time operations
+
+---
+
+#### 6. Function Call
+
+```c
+k = function1(sw1);
+```
+
+The main function calls `function1`, passes an argument, and stores the returned value.
+
+##### Flow
+1. Pass input parameter
+2. Execute function
+3. Return result
+4. Store result in a variable
+
+---
+
+#### 7. Memory Usage
+
+| Component | Memory Location |
+|------------|----------------|
+| Global Variables | RAM (Data Segment) |
+| Local Variables | Stack/Register |
+| Functions | Flash Memory (Program Memory) |
+| Header Definitions | Program Compilation Stage |
+
+---
+
+#### Program Structure
+
+```text
+Function Definitions
+     ↓
+Local Variables
+     ↓
+Main Function
+     ↓
+Initialization
+     ↓
+Infinite Loop
+     ↓
+Function Calls & Processing
+```
+
+---
+
+## Microcontroller Header File
+
+### A. Overview
+
+* Keil MDK-ARM provides a derivative-specific **header file** for each microcontroller
+* Defines memory addresses and symbolic labels for CPU and peripheral function register addresses
+
+### B. Example
+
+```c
+#include "STM32L1xx.h" /* target uC information */
+
+// GPIOA configuration/data register addresses are defined in STM32L1xx.h
+
+void main(void) {
+
+    uint16_t PAval; //16-bit unsigned variable
+
+    GPIOA->MODER &= ~(0x00000003); // Set GPIOA pin PA0 as input
+
+    PAval = GPIOA->IDR; // Set PAval to 16-bits from GPIOA
+
+    for(;;) {} /* execute forever */
+}
+```
+
+---
+
+## C Compiler Data Types
+
+### A. Key Principles
+
+* Always **match data type to data characteristics**
+* Variable type indicates how data is represented:
+  * **`#bits`** determines range of numeric values
+  * **`signed/unsigned`** determines which arithmetic/relational operators are used by the compiler
+  * **Non-numeric** data should be `unsigned`
+* Header file `stdint.h` defines alternate type names for standard C data types
+  * Eliminates ambiguity regarding `#bits`
+  * Eliminates ambiguity regarding `signed/unsigned`
+
+### B. Data Type Table
+
+| Data Type Declaration | Number of Bits | Range of Values |
+|-----------------------|---------------|-----------------|
+| `char k;` `unsigned char k;` `uint8_t k;` | 8 | 0..255 |
+| `signed char k;` `int8_t k;` | 8 | -128..+127 |
+| `short k;` `signed short k;` `int16_t k;` | 16 | -32768..+32767 |
+| `unsigned short k;` `uint16_t k;` | 16 | 0..65535 |
+| `int k;` `signed int k;` `int32_t k;` | 32 | -2147483648..+2147483647 |
+| `unsigned int k;` `uint32_t k;` | 32 | 0..4294967295 |
+
+### C. Data Type Examples
+
+#### 1. Read bits from GPIOA (16 bits, non-numeric)
+
+```c
+uint16_t n; n = GPIOA->IDR; //or: unsigned short n;
+```
+
+#### 2. Write TIM2 prescale value (16-bit unsigned)
+
+```c
+uint16_t t; TIM2->PSC = t; //or: unsigned short t;
+```
+
+#### 3. Read 32-bit value from ADC (unsigned)
+
+```c
+uint32_t a; a = ADC; //or: unsigned int a;
+```
+
+#### 4. System control value range [-1000…+1000]
+
+```c
+int32_t ctrl; ctrl = (x + y)*z; //or: int ctrl;
+```
+
+#### 5. Loop counter for 100 program loops (unsigned)
+
+```c
+uint8_t cnt; //or: unsigned char cnt;
+for (cnt = 0; cnt < 20; cnt++) { }
+```
+
+---
+
+## Constant and Literal Values
+
+### A. Decimal (Default)
+
+```c
+int m, n; //16-bit signed numbers
+m = 453; n = -25;
+```
+
+### B. Hexadecimal
+
+* Preface value with `0x` or `0X`
+
+```c
+m = 0xF312; n = -0x12E4;
+```
+
+### C. Octal
+
+* Preface value with zero `0`
+
+```c
+m = 0453; n = -023;
+```
+
+* **Warning:** Do not use leading zeros on decimal values — they will be interpreted as octal
+
+### D. Character
+
+* Character in single quotes, or ASCII value following `\`
+
+```c
+m = 'a';   //ASCII value 0x61
+n = '\13'; //ASCII value 13 is the "return" character
+```
+
+### E. String (Array) of Characters
+
+```c
+unsigned char k[7];
+strcpy(m, "hello\n");
+// k[0]='h', k[1]='e', k[2]='l', k[3]='l', k[4]='o',
+// k[5]=13 or '\n' (ASCII new line character),
+// k[6]=0 or '\0' (null character – end of string)
+```
+
+---
+
+## Program Variables
+
+### A. Overview
+
+* A variable is an **addressable storage location** for information to be used by the program
+* Each variable must be declared to indicate:
+  * Size and type of information to be stored
+  * Name to be used to reference the information
+
+```c
+int x, y, z; //declares 3 variables of type "int"
+char a, b;   //declares 2 variables of type "char"
+```
+
+* Space for variables may be allocated in **registers**, **RAM**, or **ROM/Flash** (for constants)
+* Variables can be **automatic** or **static**
+
+---
+
+## Variable Arrays
+
+### A. Definition
+
+* An array is a set of data stored in **consecutive memory locations**, beginning at a named address
+* Declare array name and number of data elements `N`
+* Elements are **indexed**, with indices `[0 .. N-1]`
+
+```c
+int n[5]; //declare array of 5 "int" values
+n[3] = 5; //set value of 4th array element
+```
+
+### B. Memory Layout
+
+```
+Address:
+n      → n[0]
+n + 4  → n[1]
+n + 8  → n[2]
+n + 12 → n[3]
+n + 16 → n[4]
+```
+
+* **Note:** Index of first element is always `0`
+
+---
+
+## Automatic Variables
+
+### A. Characteristics
+
+* Declared **within a function/procedure**
+* Variable is visible (has **scope**) only within that function
+* Space is allocated on the **system stack** when the procedure is entered
+  * Deallocated to be re-used when the procedure is exited
+* If only 1 or 2 variables, the compiler may allocate them to **registers** instead of memory
+* **Values are not retained** between procedure calls
+
+### B. Example
+
+```c
+void delay() {
+    int i, j; // automatic variables – visible only within delay()
+
+    for (i = 0; i < 100; i++) {           // outer loop
+        for (j = 0; j < 200000; j++) {    // inner loop
+            // do nothing
+        }
+    }
+}
+```
+
+---
+
+## Static Variables
+
+### A. Characteristics
+
+* **Retained throughout the program** in RAM locations that are not reallocated during execution
+* Can be declared either within or outside a function:
+
+#### 1. Outside a function (Global scope)
+
+* Known to **all functions** of the program
+* Use normal declarations
+
+```c
+int count;
+```
+
+#### 2. Inside a function (Local scope)
+
+* Known **only within that function**
+* Use `static` keyword
+
+```c
+static unsigned char bob;
+static int pressure[10];
+```
+
+### B. Example
+
+```c
+unsigned char count; //global variable is static – allocated a fixed RAM location
+                     //count can be referenced by any function
+
+void math_op() {
+    int i;        //automatic variable – allocated space on stack when function entered
+    static int j; //static variable – allocated a fixed RAM location to maintain the value
+
+    if (count == 0) //test value of global variable count
+        j = 0;      //initialize static variable j first time math_op() entered
+
+    i = count;  //initialize automatic variable i each time math_op() entered
+    j = j + i;  //change static variable j – value kept for next function call
+}               //return & deallocate space used by automatic variable i
+
+void main(void) {
+    count = 0; //initialize global variable count
+    while (1) {
+        math_op();
+        count++; //increment global variable count
+    }
+}
+```
+
+---
+
+## C Statement Types
+
+### A. Categories
+
+* **Simple variable assignments** — includes input/output data transfers
+* **Arithmetic operations**
+* **Logical/shift operations**
+* **Control structures** — IF, WHEN, FOR, SELECT
+* **Function calls** — user-defined and/or library functions
+
+---
+
+## Arithmetic Operations
+
+### A. Standard Operators
+
+```c
+int i, j, k;    // 32-bit signed integers
+uint8_t m, n, p; // 8-bit unsigned numbers
+
+i = j + k;           // add 32-bit integers
+m = n - 5;           // subtract 8-bit numbers
+j = i * k;           // multiply 32-bit integers
+m = n / p;           // quotient of 8-bit divide
+m = n % p;           // remainder of 8-bit divide
+i = (j + k) * (i - 2); // arithmetic expression
+```
+
+### B. Operator Precedence
+
+* `*`, `/`, `%` are **higher precedence** than `+`, `-` (higher precedence applied first)
+* **Example:** `j * k + m / n` = `(j * k) + (m / n)`
+
+* **Note:** Floating-point formats are not directly supported by Cortex-M3 CPUs
+
+---
+
+## Bit-Parallel Logical Operators
+
+### A. Overview
+
+* Bit-parallel (bitwise) logical operators produce **n-bit results**
+* Operators: `&` (AND) `|` (OR) `^` (XOR) `~` (Complement)
+
+### B. Operator Examples
+
+#### 1. AND
+
+```
+C = A & B;
+A   0 1 1 0 0 1 1 0
+B   1 0 1 1 0 0 1 1
+    -------------------
+C   0 0 1 0 0 0 1 0
+```
+
+#### 2. OR
+
+```
+C = A | B;
+A   0 1 1 0 0 1 0 0
+B   0 0 0 1 0 0 0 0
+    -------------------
+C   0 1 1 1 0 1 0 0
+```
+
+#### 3. XOR
+
+```
+C = A ^ B;
+A   0 1 1 0 0 1 0 0
+B   1 0 1 1 0 0 1 1
+    -------------------
+C   1 1 0 1 0 1 1 1
+```
+
+#### 4. Complement
+
+```
+B = ~A;
+A   0 1 1 0 0 1 0 0
+    -------------------
+B   1 0 0 1 1 0 1 1
+```
+
+---
+
+## Bit Set / Reset / Complement / Test
+
+### A. Masking Technique
+
+* Use a **mask** to select bit(s) to be altered
+
+#### 1. Clear a selected bit
+
+```
+C = A & 0xFE;
+A     a b c d e f g h
+0xFE  1 1 1 1 1 1 1 0
+      ---------------------
+C     a b c d e f g 0
+```
+
+#### 2. Clear all but a selected bit
+
+```
+C = A & 0x01;
+A     a b c d e f g h
+0x01  0 0 0 0 0 0 0 1
+      ---------------------
+C     0 0 0 0 0 0 0 h
+```
+
+#### 3. Set a selected bit
+
+```
+C = A | 0x01;
+A     a b c d e f g h
+0x01  0 0 0 0 0 0 0 1
+      ---------------------
+C     a b c d e f g 1
+```
+
+#### 4. Complement a selected bit
+
+```
+C = A ^ 0x01;
+A     a b c d e f g h
+0x01  0 0 0 0 0 0 0 1
+      ---------------------
+C     a b c d e f g h'
+```
+
+### B. I/O Bit Examples
+
+#### 1. Create a pulse on bit 0 of PORTA (assume bit initially 0)
+
+```c
+PORTA = PORTA | 0x01; //Force bit 0 to 1
+PORTA = PORTA & 0xFE; //Force bit 0 to 0
+```
+
+#### 2. Additional Examples
+
+```c
+if ((PORTA & 0x80) != 0)   //Or: ((PORTA & 0x80) == 0x80)
+    bob();                  // call bob() if bit 7 of PORTA is 1
+
+c = PORTB & 0x04;           // mask all but bit 2 of PORTB value
+
+if ((PORTA & 0x01) == 0)    // test bit 0 of PORTA
+    PORTA = c | 0x01;       // write c to PORTA with bit 0 set to 1
+```
+
+---
+
+## C Control Structures
+
+### A. Overview
+
+* Control the **order** in which instructions are executed (program flow)
+* Types:
+
+#### 1. Conditional Execution
+
+* Execute a set of statements if some condition is met
+* Select one set of statements from several options based on one or more conditions
+
+#### 2. Iterative Execution
+
+* Repeated execution of a set of statements:
+  * A specified number of times, **or**
+  * Until some condition is met, **or**
+  * While some condition is true
+
+---
+
+## IF-THEN Structure
+
+### A. Definition
+
+* Execute a set of statements **if and only if** some condition is met
+
+```c
+if (a < b)
+{
+    statement s1;
+    statement s2;
+    ....
+}
+```
+
+---
+
+## Boolean Operators
+
+### A. Overview
+
+* `&&` (AND) and `||` (OR) produce **TRUE/FALSE** results when testing multiple conditions
+
+```c
+if ((n > 1) && (n < 5))       //test for n between 1 and 5
+if ((c == 'q') || (c == 'Q')) //test c = lower or upper case Q
+```
+
+### B. Boolean vs Bitwise
+
+* **Boolean operators:** `&&`, `||`
+* **Bitwise logical operators:** `&`, `|`
+
+```c
+if (k && m) //test if k and m both TRUE (non-zero values)
+if (k & m)  //compute bitwise AND between m and n,
+            //then test whether the result is non-zero (TRUE)
+```
+
+---
+
+## Common Error
+
+### A. Assignment vs Equality
+
+* `==` is a **relational operator**
+* `=` is an **assignment operator**
+
+```c
+if (m == n) //tests equality of values of variables m and n
+
+if (m = n)  //assigns value of n to variable m, and then
+            //tests whether that value is TRUE (non-zero)
+```
+
+* **Warning:** The second form is a common error — omitting the second `=` — and usually produces unexpected results:
+  * **TRUE** condition if `n` is 0
+  * **FALSE** if `n` is non-zero
+
+---
+
+## IF-THEN-ELSE Structure
+
+### A. Definition
+
+* Execute one set of statements if a condition is met and an **alternate set** if the condition is not met
+
+```c
+if (a == 0)
+{
+    statement s1;
+    statement s2;
+}
+else
+{
+    statement s3;
+    statement s4;
+}
+```
+
+---
+
+## SWITCH Statement
+
+### A. Definition
+
+* Compact alternative to ELSE-IF structure for **multiway decisions**
+* Tests one variable or expression for a number of constant values
+
+```c
+switch (n) {        // n is the variable to be tested
+
+    case 0:
+        statement1; // do if n == 0
+        break;
+
+    case 1:
+        statement2; // do if n == 1
+        break;
+
+    case 2:
+        statement3; // do if n == 2
+        break;
+
+    default:
+        statement4; // for any other n value
+}
+
+/* Any "statement" above can be replaced with a set of statements:
+   { s1; s2; s3; ... }
+*/
+```
+
+---
+
+## WHILE Loop Structure
+
+### A. Definition
+
+* Repeat a set of statements **as long as** some condition is met
+
+```c
+while (a < b)
+{
+    statement s1;
+    statement s2;
+    ....
+}
+```
+
+---
+
+## DO-WHILE Loop Structure
+
+### A. Definition
+
+* Repeat a set of statements **until** some condition is met
+
+```c
+do
+{
+    statement s1;
+    statement s2;
+    ....
+}
+while (a < b);
+```
+
+---
+
+## FOR Loop Structure
+
+### A. Definition
+
+* A more **compact form** of the WHILE loop structure
+
+```c
+/* equivalent WHILE loop */
+
+m = 0;              // initial action(s)
+
+while (m < 200)     // condition test
+{
+    statement s1;
+    statement s2;
+
+    m = m + 1;      // end of loop action
+}
+```
+
+---
+
+## C Functions
+
+### A. Purpose
+
+* Functions **partition large programs** into smaller tasks
+* Benefits:
+  * Helps manage program complexity
+  * Smaller tasks are easier to design and debug
+  * Functions can often be **reused** instead of starting over
+  * Allows use of **libraries** of functions developed by third parties
+
+### B. Behavior
+
+* A function is **called** by another program to perform a task
+* The function may **return a result** to the caller
+* One or more **arguments** may be passed to the function
+
+---
+
+## Function Arguments
+
+### A. Passing Methods
+
+* Calling program can pass information to a function in two ways:
+
+#### 1. By Value
+
+* Pass a constant or a variable value
+* Function can **use, but not modify** the value
+
+#### 2. By Reference
+
+* Pass the **address** of the variable
+* Function can both **read and update** the variable
+
+### B. Mechanics
+
+* Values/addresses are typically passed to the function by **pushing them onto the system stack**
+* Function retrieves the information **from the stack**

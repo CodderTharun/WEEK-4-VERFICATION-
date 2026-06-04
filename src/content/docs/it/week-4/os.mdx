@@ -1,62 +1,434 @@
 ---
-title: OS - Week 4
-description: File Systems and I/O Management
+title: Operating System
 ---
 
+## File System
+ 
+* The file system is the most visible aspect of an operating system. It provides the mechanism for on-line storage of and access to both data and programs of the operating system and all the users of the computer system.
+ 
+* The file system consists of two distinct parts, a collection of files each storing related data, and a directory structure which organizes and provides information about all the files in the system.
+ 
+## File Concept
+ 
+* Computers can store information on various storage media.
+ 
+* The operating system provides a uniform logical view of information storage. This logical storage unit is called a file.
+ 
+* Files are mapped by the operating system onto physical devices. These storage devices are nonvolatile, so contents are persistent through power failures and system reboots.
+ 
+* File is a named collection of related information that is recorded on secondary storage. Files represent both the program and the data. Data can be numeric, alphanumeric, alphabetic or binary.
+ 
+* Many different types of information like source programs, object programs, executable programs, numeric data, payroll recorder, graphic images, and sound recordings and so on can be stored on a file.
+ 
+* A file has a certain defined structure according to its type.
+ 
+    * **Text file:** Text file is a sequence of characters organized into lines.
+    * **Object file:** Object file is a sequence of bytes organized into blocks understandable by the system's linker.
+    * **Executable file:** Executable file is a series of code section that the loader can bring into memory and execute.
+    * **Source File:** Source file is a sequence of subroutines and functions, each of which are further organized as a declaration followed by executable statements.
+### A. File Attributes
+ 
+File attributes vary from one OS to another. The common file attributes are:
+ 
+* **Name:** The symbolic file name is the only information kept in human readable form.
+* **Identifier:** The unique tag, usually a number, identifies the file within the file system. It is the non-readable name for a file.
+* **Type:** This information is needed for systems that support different types.
+* **Location:** This information is a pointer to a device and to the location of the file on that device.
+* **Size:** The current size of the file and possibly the maximum allowed size are included in this attribute.
+* **Protection:** Access control information determines who can do reading, writing, executing and so on.
+* **Time, data and User Identification:** This information must be kept for creation, last modification and last use. These data are useful for protection, security and usage monitoring.
 
+### B. File Operations
+ 
+File is an abstract data type. To define a file we need to consider the operation that can be performed on the file. Basic operations of files are:
+ 
+* **Creating a file:** Two steps are necessary to create a file. First, space in the file system for files is found. Second, an entry for the new file must be made in the directory.
+* **Writing a file:** System call is mainly used for writing into the file. System call specifies the name of the file and the information to be written to the file. Given the name the system searches the entire directory for the file. The system must keep a write pointer to the location in the file where the next write to be taken place.
+* **Reading a file:** To read a file, system call is used. It requires the name of the file and the memory address from where the next block of the file should be put. Again, the directory is searched for the associated directory and the system must maintain a read pointer to the location in the file where the next read is to take place.
+* **Delete a file:** System will search the directory for the file to be deleted. If entry is found it releases all free space. That free space can be reused by another file.
+* **Truncating the file:** The user may want to erase the contents of the file but keep its attributes. Rather than forcing the user to delete a file and then recreate it, truncation allows all attributes to remain unchanged except for file length.
+* **Repositioning within a file:** The directory is searched for appropriate entry and the current file position is set to a given value. Repositioning within a file does not need to involve actual I/O. This file operation is also known as seek.
+* Several pieces of information are associated with an open file:
+    * **File pointer:** On systems that do not include offset as part of the read and write system calls, the system must track the last read-write location as the current file position pointer. This pointer is unique to each process operating on a file.
+    * **File open count:** It keeps the count of open files. As the files are closed, the OS must reuse its open file table entries, or it could run out of space in the table. Because multiple processes may open a file, the system must wait for the last file to close before removing the open file table entry. The counter tracks the number of copies open and closes and reaches zero to last close.
+    * **Disk location of the file:** The information needed to locate the file on the disk is kept in memory to avoid having to read it from the disk for each operation.
+    * **Access rights:** Each process opens a file in an access mode. This information is stored on a per-process table, then the OS can allow or deny subsequent I/O requests.
 
-## File Systems
+### C. File Types
+ 
+* File type is included as a part of the filename. File name is split into two parts- a name and extension separated by a period character.
+* The system uses the extension to indicate the type of the file and the type of operations that can be done on that file.
+* For example, only a file with a `.com`, `.exe`, or `.bat` extension can be executed. The `.com` and `.exe` files are two forms of binary executable files, whereas `.bat` file is a batch file containing commands in ASCII format to the operating system.
+ <img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.1.png?raw=true" height="500" width="500" />
 
-File system manages how data is stored and retrieved.
+### D. File Structures
+ 
+* File types can be used to indicate the internal structure of the file. Certain files must match to a required structure that is understood by the operating system.
+* For example, the operating system requires that an executable file have a specific structure so that it can determine where in memory to load the file and what the location of the first instruction is.
+* Some operating systems extend this idea into a set of system-supported file structures, with sets of special operations for manipulating files with those structures. This is one disadvantage where the resulting size of the operating system is cumbersome.
+* Some operating systems impose and support a minimal number of file structures. Too few structures make programming inconvenient, whereas too many cause operating-systems to expand and confuse programmers.
+ 
+### E. Internal File Structure
+ 
+* Locating an offset within a file can be complicated for the operating system.
+* Disk systems have a well-defined block size determined by the size of a sector. All disk I/O is performed in units of one block and all blocks are the same size. It is not sure that the physical record size will exactly match the length of the desired logical record. Logical records may even vary in length.
+* Packing a number of logical records into physical blocks is a common solution to this problem. The logical record size, physical block size, and packing technique determine how many logical records are in each physical block. The packing can be done either by the user's application program or by the operating system. In either case, the file may be considered a sequence of blocks.
+* All the basic I/O functions operate in terms of blocks. The conversion from logical records to physical blocks is a relatively simple software problem.
+* Because disk space is always allocated in blocks, some portion of the last block of each file is wasted. The waste incurred to keep everything in units of blocks is internal fragmentation.
+* All file systems suffer from internal fragmentation; the larger the block size, the greater the internal fragmentation.
+ 
+## Access Methods
+ 
+The information in the file can be accessed in several ways. The different file access methods are:
+ 
+### A. Sequential Access
+ 
+* Sequential access is the simplest access method. Information in the file is processed in order, one record after another. Editors and compilers access the files in this fashion.
+* A read operation reads the next portion of the file and automatically advances a file pointer, which tracks the next I/O location. The write operation write next appends to the end of the file and advances to the end of the newly written material.
+* Such a file can be reset to the beginning and on some systems a program may be able to skip forward or backward n records for some integer n, where $n = 1$.
+* Sequential access is based on a tape model of a file and works well on sequential-access devices as it does on random-access ones.
+ 
+### B. Direct Access
+ 
+* A file is made up of fixed length logical records. It allows the program to read and write records rapidly in any order.
+* Direct access allows random access to any file block. This method is based on the disk model of a file.
+* For direct access, the file is viewed as a numbered sequence of blocks or records. Thus, we may read block 14, then read block 53, and then write block 7. 
+* The direct access method is suitable for searching the records in large amounts of information. For example, on an airline-reservation system, we might store all the information about a particular flight (for example, flight 713) in the block identified by the flight number. Thus, the number of available seats for flight 713 is stored in block 713 of the reservation file.
+* The file operations must be modified to include the block number as a parameter. Thus, we have read n, where n is the block number, rather than read next, and write n rather than write next.
+* The block number provided by the user to the operating system is normally a relative block number. A relative block number is an index to the beginning of the file.
+* We can easily simulate sequential access on a direct-access file by simply keeping a variable $cp$ that defines current position whereas simulating a direct-access file on a sequential-access file is extremely inefficient and clumsy.
+ 
+## Directory Structure
+ 
+The file systems can be very large. Some systems store millions of files on the disk. To manage all this data we need to organize them. This organization involves the use of directories.
+ 
+### A. Single-level directory
+ 
+This is the simplest directory structure. All the files are contained in the same directory which is easy to support and understand.
+ <img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.2.png?raw=true" height="500" width="500" />
+The disadvantages are,
+ 
+  * Not suitable for a large number of files and more than one user.
+  * Because of single directory files, files require unique file names.
+  * Difficult to remember names of all the files as the number of files increases.
 
-### File System Components
+### B. Two-level directory
+ 
+* A single level directory often leads to the confusion of file names between different users. The solution here is to create a separate directory for each user.
+* In two level directories each user has its own directory. It is called the User File Directory (UFD). Each UFD has a similar structure, but lists only the files of a single user.
+* When a user job starts or users logs in, the system's Master File Directory (MFD) is searched. The MFD is indexed by the user name or account number and each entry points to the UFD for that user.
+<img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.3.png?raw=true" height="500" width="500" />
+* When a user refers to a particular file, only his own UFD is searched. Thus different users may have files with the same name.
+* To create a file for a user, OS searches only that user UFD to check whether another file of that name exists.
+* To delete a file OS checks in the local UFD, so that it cannot accidentally delete another user's file with the same name.
+* Although two-level directories solve the name collision problem, it still has some disadvantages.
+* This structure isolates one user from another and this isolation is an advantage when the users are independent, but disadvantage when some users want to co-operate on some task and to access one another's file.
+* If access is to be permitted, one user must have the ability to name a file in another user's directory. To name a particular file we must give both the user name and the file name.
+* A two-level directory is like a tree, or an inverted tree of height 2. The root of the tree is the MFD. Its direct descendants are the UFDs. The descendants of the UFDs are the files. The files are the leaves of the tree. A user name and a file name define a path name.
+* To access the system files the appropriate commands are given to the operating system and these files are read by the loader and executed. This file name would be searched in the current UFD. The sequence of directories searched when a file is named is called the search path.
+ 
+### C. Tree-structured directories
+ 
+* The two level directory structures can be extended to a tree of arbitrary height.
+<img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.4.png?raw=true" height="500" width="500" />
+* It allows users to create their own subdirectories and to organize their files accordingly. A subdirectory contains a set of files or subdirectories. A directory is simply another file, but it is treated in a special way.
+* The entire directory will have the same internal format. One bit in each entry defines the entry as a file (0) and as a subdirectory (1). Special system calls are used to create and delete directories.
+* Each process has a current directory and it should contain most of the files that are of the current interest to the process. When a reference is made to a file the current directory is searched. If the needed file is not in the current directory then the user must specify the path name or change the current directory.
+* Path names can be of two types.
+  * **Absolute path name:** Begins at the root and follows a path down to the specified file, giving the directory names on the path.
+  * **Relative path name:** Defines a path from the current directory.
+* One important task is how to handle the deletion of a directory. If a directory is empty, its entry can simply be deleted. If a directory is not empty, one of the two approaches can be used.
+ 
+  * In MS-DOS, the directory is not deleted until it becomes empty.
+  * In UNIX, rm command is used, where all directory's files and subdirectories are also deleted before deleting a directory.
+* With a tree-structured directory system, users can be allowed to access their files, and also the files of other users. Alternatively, the user can change the current directory to another user's directory and access the file by its file names.
+* A path to a file in a tree-structured directory can be longer than a path in a two-level directory.
+ 
+### D. Acyclic graph directories
+ 
+* A tree structure prohibits the sharing of files or directories.
+* An acyclic graph is a graph with no cycles that allows directories to share subdirectories and files. The same file or subdirectory may be in two different directories.
+<img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.5.png?raw=true" height="500" width="500" />
+* The acyclic graph is a natural generalization of the tree-structured directory scheme. With a shared file, only one actual file exists, so any changes made by one person are immediately visible to the other.
+* Sharing is mainly important for subdirectories; a new file created by one person will automatically appear in all the shared subdirectories.
+* Shared files and subdirectories can be implemented by using links. A link is a pointer to another file or a subdirectory. Another approach to implementing shared files is simply to duplicate all information about them in both sharing directories. Thus, both entries are identical and equal.
+* An acyclic graph directory structure is more flexible than a simple tree structure but sometimes it is more complex.
+* Some of the problems are, a file may now have multiple absolute path names and distinct file names may refer to the same file.
+* Another problem involved is in deletion. There are two approaches to decide when the space allocated to a shared file can be deallocated and reused.
+* One possibility is to remove the file whenever anyone deletes it, but this action may leave dangling pointers to the nonexistent file.
+* Another approach is to preserve the file until all references to it are deleted. To implement this approach, we could keep a list of all references to a file (directory entries or symbolic links). When a link or a copy of the directory entry is established, a new entry is added to the file-reference list. When a link or directory entry is deleted, we remove its entry on the list. The file is deleted when its file-reference list is empty. The trouble with this approach is the variable and potentially large size of the file-reference list. So we need to keep only the count of the number of references, and when the count is 0, the file can be deleted.
+* This is done through hard link count in UNIX OS.
+ 
+### E. General Graph Directory
+ 
+* The problem with using an acyclic-graph structure is ensuring that there are no cycles. When we add links, the tree structure is destroyed, resulting in a simple graph structure.
+* The advantage of an acyclic graph is the simplicity of the algorithms to traverse the graph and to determine when there are no more references to a file.
+<img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.6.png?raw=true" height="500" width="500" />
+* A poorly designed algorithm might result in an infinite loop continually searching through the cycle and never terminating. One solution is to limit the number of directories that will be accessed during a search.
+* A problem exists when we are trying to determine when a file can be deleted. When cycles exist, the reference count may not be 0 even when it is no longer possible to refer to a directory or file. So a garbage-collection scheme is used.
+* Garbage collection involves traversing the entire file system, marking everything that can be accessed but it is time consuming. Thus, an acyclic-graph structure is much easier to work than general graph structure. The difficulty is to avoid cycles as new links are added to the structure. There are algorithms to detect cycles in graphs but they are computationally expensive, hence cycles must be avoided.
+ 
+## File Sharing in OS
+ 
+File Sharing in an Operating System (OS) denotes how information and files are shared between different users, computers, or devices on a network; and files are units of data that are stored in a computer in the form of documents/images/videos or any other types of information needed.
+ 
+### Primary Terminology Related to File Sharing
+ 
+* **Folder/Directory:** It is basically like a container for all of our files on a computer. The folder can contain files and even other folders maintaining a hierarchical structure for organizing data.
+* **Networking:** It is involved in connecting computers or devices where we need to share the resources. Networks can be local (LAN) or global (Internet).
+* **IP Address:** It is numerical data given to every connected device on the network.
+* **Protocol:** It is given as the set of rules which drives the communication between devices on a network. In the context of file sharing, protocols define how files are transferred between computers.
+* **File Transfer Protocol (FTP):** FTP is a standard network protocol used to transfer files between a client and a server on a computer network.
+### Various Ways to Achieve File Sharing
+ 
+#### 1. Server Message Block (SMB)
+ 
+SMB is like a network based file sharing protocol mainly used in windows operating systems. It allows our computer to share files/printers on a network. SMB is now the standard way for seamless file transfer method and printer sharing.
+ 
+#### 2. Network File System (NFS)
+ 
+NFS is a distributed file sharing protocol mainly used in Linux/Unix based operating systems. It allows a computer to share files over a network as if they were local. It provides an efficient way of transfer of files between servers and clients.
+ 
+#### 3. File Transfer Protocol (FTP)
+ 
+It is the most common standard protocol for transferring of the files between a client and a server on a computer network. FTPs support both uploading and downloading of the files, here we can download, upload and transfer files from Computer A to Computer B over the internet or between computer systems.
+ 
+#### 4. Cloud-Based File Sharing
+ 
+It involves the famous ways of using online services like Google Drive, DropBox, One Drive, etc. Any user can store files over these cloud services and they can share that with others, and provide access from many users. It includes collaboration in realtime file sharing and version control access.
+ 
+## Protection in File System
+ 
+In computer systems, a lot of user's information is stored, the objective of the operating system is to keep the data of the user safe from improper access to the system. Protection can be provided in a number of ways. For a single laptop system, we might provide protection by locking the computer in a desk drawer or file cabinet. For multi-user systems, different mechanisms are used for the protection.
+ 
+### A. Types of Access
+ 
+The files which have direct access to any user have the need of protection. The files which are not accessible to other users don't require any kind of protection. The mechanism of the protection provides the facility of the controlled access by just limiting the types of access to the file. Access can be given or not given to any user depending on several factors, one of which is the type of access required. Several different types of operations can be controlled:
+ 
+* **Read** - Reading from a file.
+* **Write** - Writing or rewriting the file.
+* **Execute** - Loading the file and after loading the execution process starts.
+* **Append** - Writing the new information to the already existing file, editing must be ended at the end of the existing file.
+* **Delete** - Deleting the file which is of no use and using its space for the other data.
+* **List** - List the name and attributes of the file.
+Operations like renaming, editing the existing file, copying; these can also be controlled. There are many protection mechanisms. Each of these mechanisms have different advantages and disadvantages and must be appropriate for the intended application.
+ 
+### B. Access Control
+ 
+There are different methods used by different users to access any file. The general way of protection is to associate identity-dependent access with all the files and directories in a list called access-control list (ACL) which specify the names of the users and the types of access associated with each of the users. The main problem with the access list is their length. If we want to allow everyone to read a file, we must list all the users with the read access. This technique has two undesirable consequences:
+ 
+  * Constructing such a list may be a tedious and unrewarding task, especially if we do not know in advance the list of the users in the system.
+  * Previously, the entry of any directory is of the fixed size but now it changes to the variable size which results in the complicated space management.
+  * These problems can be resolved by use of a condensed version of the access list. To condense the length of the access-control list, many systems recognize three classification of users in connection with each file:
+ 
+    * **Owner** - Owner is the user who has created the file.
+    * **Group** - A group is a set of members who have similar needs and they are sharing the same file.
+    * **Universe** - In the system, all other users are under the category called universe.
+  * The most common recent approach is to combine access-control lists with the normal general owner, group, and universe access control scheme. For example: Solaris uses the three categories of access by default but allows access-control lists to be added to specific files and directories when more fine-grained access control is desired.
+ 
+### C. Other Protection Approaches
+ 
+The access to any system is also controlled by the password. If the use of password is random and it is changed often, this may result in limiting the effective access to a file.
+ 
+The use of passwords has a few disadvantages:
+ 
+  * The number of passwords is very large so it is difficult to remember the large passwords.
+  * If one password is used for all the files, then once it is discovered, all files are accessible; protection is on all-or-none basis.
+## File System Implementation in Operating System
+ 
+File system implementation is a critical aspect of an operating system as it directly impacts the performance, reliability, and security of the system. Different operating systems use different file system implementations based on the specific needs of the system and the intended use cases. Some common file systems used in operating systems include NTFS and FAT in Windows, and ext4 and XFS in Linux.
+ 
+### A. Different Types of File Systems
+ 
+There are several types of file systems, each designed for specific purposes and compatible with different operating systems. Some common file system types include:
+ 
+* **FAT32 (File Allocation Table 32):** Commonly used in older versions of Windows and compatible with various operating systems.
+* **NTFS (New Technology File System):** Used in modern Windows operating systems, offering improved performance, reliability, and security features.
+* **ext4 (Fourth Extended File System):** Used in Linux distributions, providing features such as journaling, large file support, and extended file attributes.
+* **HFS+ (Hierarchical File System Plus):** Used in macOS systems prior to macOS High Sierra, offering support for journaling and case-insensitive file names.
+* **APFS (Apple File System):** Introduced in macOS High Sierra and the default file system for macOS and iOS devices, featuring enhanced performance, security, and snapshot capabilities.
+* **ZFS (Zettabyte File System):** A high-performance file system known for its advanced features, including data integrity, volume management, and efficient snapshots.
+### B. Layers in File System
+ 
+* **Application Programs:** This is the topmost layer where users interact with files through applications. It provides the user interface for file operations like creating, deleting, reading, writing, and modifying files. Examples include text editors, file browsers, and command-line interfaces.
+* **Logical File system** - It manages metadata information about a file i.e includes all details about a file except the actual contents of the file. It also maintains via file control blocks. File control block (FCB) has information about a file - owner, size, permissions, and location of file contents.
+* **File Organization Module** - It has information about files, the location of files and their logical and physical blocks. Physical blocks do not match with logical numbers of logical blocks numbered from 0 to N. It also has a free space that tracks unallocated blocks.
+* **Basic File system** - It issues general commands to the device driver to read and write physical blocks on disk. It manages the memory buffers and caches. A block in the buffer can hold the contents of the disk block and the cache stores frequently used file system metadata.
+* **I/O Control level** - Device drivers act as an interface between devices and OS, they help to transfer data between disk and main memory. It takes block number as input and as output, it gives low-level hardware-specific instruction.
+* **Devices Layer:** The bottommost layer, consisting of the actual hardware devices. It performs the actual reading and writing of data to the physical storage medium. This includes hard drives, SSDs, optical disks, and other storage devices.
+### C. Components of File System Implementation
+ 
+* **File System Structure:** The file system structure refers to how the files and directories are organized and stored on the physical storage device. This includes the layout of file systems data structures such as the directory structure, file allocation table, and inodes.
+* **File Allocation:** The file allocation mechanism determines how files are allocated on the storage device. This can include allocation techniques such as contiguous allocation, linked allocation, indexed allocation, or a combination of these techniques.
+* **Data Retrieval:** The file system implementation determines how the data is read from and written to the physical storage device. This includes strategies such as buffering and caching to optimize file I/O performance.
+* **Security and Permissions:** The file system implementation includes features for managing file security and permissions. This includes access control lists (ACLs), file permissions, and ownership management.
+* **Recovery and Fault Tolerance:** The file system implementation includes features for recovering from system failures and maintaining data integrity. This includes techniques such as journaling and file system snapshots.
+### D. Key Steps Involved in File System Implementation
+ 
+* **Partitioning The Storage Device:** The first step in file system implementation is to partition the physical storage device into one or more logical partitions. Each partition is formatted with a specific file system that defines the way files and directories are organized and stored.
+* **File System Structures:** File system structures are the data structures used by the operating system to manage files and directories. Some of the key file system structures include the superblock, inode table, directory structure, and file allocation table.
+* **Allocation of Storage Space:** The file system must allocate storage space for each file and directory on the storage device. There are several methods for allocating storage space, including contiguous, linked, and indexed allocation.
+* **File Operations:** The file system provides a set of operations that can be performed on files and directories, including create, delete, read, write, open, close, and seek. These operations are implemented using the file system structures and the storage allocation methods.
+* **File System Security:** The file system must provide security mechanisms to protect files and directories from unauthorized access or modification. This can be done by setting file permissions, access control lists, or encryption.
+* **File System Maintenance:** The file system must be maintained to ensure efficient and reliable operation. This includes tasks such as disk defragmentation, disk checking, and backup and recovery.
+### E. Implementation Issues
+ 
+* **Management of Disc Space:** To prevent space wastage and to guarantee that files can always be stored in contiguous blocks, file systems must manage disc space effectively. Free space management, fragmentation prevention, and garbage collection are methods for managing disc space.
+* **Checking for Consistency and Repairing Errors:** The consistency and error-free operation of files and directories must be guaranteed by file systems. Journaling, checksumming, and redundancy are methods for consistency checking and error recovery. File systems may need to perform recovery operations if errors happen in order to restore lost or damaged data.
+* **Locking Files and Managing Concurrency:** To prevent conflicts and guarantee data integrity, file systems must control how many processes or users can access a file at once. File locking, semaphore, and other concurrency-controlling methods are available.
+* **Performance Optimization:** File systems need to optimize performance by reducing file access times, increasing throughput, and minimizing system overhead. Caching, buffering, prefetching, and parallel processing are methods for improving performance.
+## Directory Implementation in Operating System
+ 
+Directory implementation in the operating system can be done using Singly Linked List and Hash table. The efficiency, reliability, and performance of a file system are greatly affected by the selection of directory-allocation and directory-management algorithms.
+ 
+The below are two ways of implementing the directory in the operating system:
+ 
+* Directory Implementation using Singly Linked List
+* Directory Implementation using Hash Table
+### A. Directory Implementation using Singly Linked List
 
-- **File** - Named collection of data
-- **Directory** - Container for files and subdirectories
-- **Partition** - Logical division of disk
-- **Volume** - Mountable file system
+<img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.7.png?raw=true" height="500" width="500" /> 
+* To create a new file the entire list has to be checked such that the new directory does not exist previously.
+* The new directory then can be added to the end of the list or at the beginning of the list.
+* In order to delete a file, we first search the directory with the name of the file to be deleted. After searching we can delete that file by releasing the space allocated to it.
+* To reuse the directory entry we can mark that entry as unused or we can append it to the list of free directories.
+* To delete a file linked list is the best choice as it takes less time.
+#### Advantages
+ 
+* **Simple Implementation:** Easy to implement with low memory overhead.
+* **Dynamic Structure:** Grows or shrinks as needed without fixed size constraints.
+* **Efficient for Small Directories:** Works well when the number of files is small and manageable.
+* **Low Complexity:** No need for collision handling or resizing, making it simpler.
+#### Disadvantages
+ 
+* **Lookup Time:** File lookup requires a linear search, which can be time-consuming.
+* **Impact of Frequent Access:** Directory information is accessed frequently, leading to slow access times with larger directories.
+* **Solution: Caching:** Operating systems maintain a cache of recently accessed entries to enable quicker access without full traversal.
+### B. Direc<img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.8.png?raw=true" height="500" width="500" />tory Implementation using Hash Table
+ 
 
-### File Organization
-
-1. **Sequential File** - Records in order
-2. **Direct File** - Accessed by key
-3. **Indexed Sequential** - Index for access
-
-## Disk Scheduling
-
-Determines order of disk access requests.
-
-### Disk Scheduling Algorithms
-
-1. **FCFS** - First Come First Served
-   - Simple but inefficient
-
-2. **SSTF** - Shortest Seek Time First
-   - Minimizes head movement
-
-3. **SCAN (Elevator Algorithm)**
-   - Head moves back and forth
-   - Fair and efficient
-
-4. **C-SCAN** - Circular SCAN
-   - Head returns to end after reaching limit
-
-### Disk Allocation Methods
-
-- **Contiguous** - Blocks allocated contiguously
-- **Linked** - Linked list of blocks
-- **Indexed** - Index blocks
-
-### This Week
-
-- File system structure
-- Directory management
-- Disk scheduling algorithms
-- File allocation strategies
-- Free space management
-
-### Practice
-
-- Analyze scheduling algorithms
-- Calculate seek time
-- Design file systems
+* Combine a hash table with a linked list to implement the directory structure.
+* Generate a key-value pair for each file using a hash function on the file name.
+* Insert the file into the linked list and store the key-pointer pair in the hash table.
+* To search, compute the key using the file name and look it up in the hash table.
+* Fetch the file directly using the pointer from the hash table, avoiding full list traversal.
+* This hybrid method significantly reduces search time and improves efficiency.
+#### Advantages
+ 
+* **Fast File Lookup:** Provides average $O(1)$ time complexity for quick search and retrieval.
+* **Efficient for Large Directories:** Handles large directories with many files without significant performance loss.
+* **Scalable:** Easily accommodates an increasing number of files without degrading access speed.
+* **Reduced Search Time:** Eliminates the need for full traversal, making directory operations faster.
+#### Disadvantages
+ 
+* **Fixed Size:** Limited scalability due to a fixed size, affecting performance as data grows.
+* **Size Dependent Performance:** Performance degrades as the table becomes full (high load factor).
+* **Collision Handling Complexity:** Collisions add complexity and can slow down performance.
+* **Performance Trade off:** Despite drawbacks, hash tables are faster than linked lists for lookups.
+### Comparison of Singly Linked List and a Hash Table Directory Implementation
+ 
+| Feature | Singly Linked List | Hash Table |
+|---|---|---|
+| Search Efficiency | Slow to find something, you need to check each item one by one $O(n)$. | Fast, you can quickly find things because of how it's organized ($O(1)$ on average). |
+| Insertion | Fast and easy, you can add items at the beginning or end easily $O(1)$. | Also fast $O(1)$, usually takes constant time, but can be slower if collisions happen. |
+| Memory Usage | Low, it only stores the data and pointers. | Higher, uses more memory because it stores both data and additional space for handling collisions or empty slots. |
+| Scalability | Not great for large data, as the list gets bigger, searching takes longer. | Good for large data, even as the data grows, it remains fast at finding things. |
+| Implementation Complexity | Simple, easy to build and use. | More complex, you need to manage how data is hashed and handle collisions. |
+| Collision Handling | Not needed, each element has its own place. | Needed, when two elements hash to the same spot, you need a way to handle it. |
+| Adaptability | Easy to expand, just keep adding elements. | Not as flexible, resizing and rehashing can be costly if the table gets too full. |
+| Best Use Case | Small lists with not too many elements. | Large lists or databases where speed is important. |
+| Example Use | Small systems with limited memory (like embedded devices). | Large databases, file systems, or applications needing fast lookups. |
+ 
+## File Allocation Methods
+ 
+The allocation methods define how the files are stored in the disk blocks. There are three main disk space or file allocation methods.
+ 
+* Contiguous Allocation
+* Linked Allocation
+* Indexed Allocation
+### A. Contiguous Allocation
+ 
+In this scheme, each file occupies a contiguous set of blocks on the disk. This means that given the starting block address and the length of the file (in terms of blocks required), we can determine the blocks occupied by the file. The directory entry for a file with contiguous allocation contains:
+<img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.9.png?raw=true" height="500" width="500" />
+#### Advantages
+ 
+* Both the Sequential and Direct Accesses are supported by this. For direct access, the address of the $k$th block of the file which starts at block $b$ can easily be obtained as $(b+k)$.
+* This is extremely fast since the number of seeks are minimal because of contiguous allocation of file blocks.
+#### Disadvantages
+ 
+* This method suffers from both internal and external fragmentation. This makes it inefficient in terms of memory utilization.
+* Increasing file size is difficult because it depends on the availability of contiguous memory at a particular instance.
+### B. Linked Allocation
+ 
+* In this scheme, each file is a linked list of disk blocks which need not be contiguous.
+* The disk blocks can be scattered anywhere on the disk. The directory entry contains a pointer to the starting and the ending file block.
+* Each block contains a pointer to the next block occupied by the file.
+<img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.10.png?raw=true" height="500" width="500" /> 
+#### Advantages
+ 
+* This is very flexible in terms of file size. File size can be increased easily since the system does not have to look for a contiguous chunk of memory.
+* This method does not suffer from external fragmentation. This makes it relatively better in terms of memory utilization.
+#### Disadvantages
+ 
+* Because the file blocks are distributed randomly on the disk, a large number of seeks are needed to access every block individually. This makes linked allocation slower.
+* It does not support random or direct access. We can not directly access the blocks of a file. A block $k$ of a file can be accessed by traversing $k$ blocks sequentially (sequential access) from the starting block of the file via block pointers.
+* Pointers required in the linked allocation incur some extra overhead.
+### C. Indexed Allocation
+ 
+In this scheme, a special block known as the Index block contains the pointers to all the blocks occupied by a file. Here,
+ 
+* Each file has its own index block.
+* The $i$th entry in the index block contains the disk address of the $i$th file block.
+<img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.11.png?raw=true" height="500" width="500" />
+#### Advantages
+ 
+* This supports direct access to the blocks occupied by the file and therefore provides fast access to the file blocks.
+* It overcomes the problem of external fragmentation.
+#### Disadvantages
+ 
+* The pointer overhead for indexed allocation is greater than linked allocation.
+* For very small files, say files that expand only 2-3 blocks, the indexed allocation would keep one entire block (index block) for the pointers which is inefficient in terms of memory utilization. However, in linked allocation we lose the space of only 1 pointer per block.
+## Free Space Management in Operating System
+ 
+Free space management involves managing the available storage space on the hard disk or other secondary storage devices. To reuse the space released from deleting the files, a free space list is maintained. The free space list can be implemented mainly as:
+<img src="https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/IT/os4.12.png?raw=true" height="500" width="500" />
+### A. Bitmap or Bit vector
+ 
+In this approach, a Bitmap or Bit Vector is a series or collection of bits where each bit corresponds to a disk block. The bit can take two values 0 and 1:
+ 
+* **0** indicates that the block is free and **1** indicates an allocated block.
+* For example: A given instance of disk blocks on the disk can be represented by a bitmap of 16 bits as: `1111000111111001`.
+#### Advantages
+ 
+* Simple to understand.
+* Finding the first free block is efficient. It requires scanning the words (a group of 8 bits) in a bitmap for a non-zero word. (A 0-valued word has all bits 0).
+* The first free block is then found by scanning for the first 1 bit in the non-zero word.
+#### Disadvantages
+ 
+* For finding a free block, the Operating System needs to iterate all the blocks which is time consuming.
+* The efficiency of this method reduces as the disk size increases.
+### B. Linked List
+ 
+In this approach, Free blocks are linked together in a list. Each free block stores the address of the next free block. The list is maintained dynamically as blocks are allocated and freed.
+ 
+#### Advantages
+ 
+* The total available space is used efficiently using this method.
+* Dynamic allocation in Linked List is easy, thus can add the space as per the requirement dynamically.
+#### Disadvantages
+ 
+* When the size of Linked List increases, the headache of maintaining pointers is also increases.
+* This method is not efficient during iteration of each block of memory.
+* I/O is required for free space list traversal.
+### C. Free List
+ 
+In this approach, The free blocks are maintained in a list (array or linked list). Each entry in the free list points directly to a free block on disk.
+ 
+#### Advantages
+ 
+* Fast allocation as free blocks are known upfront.
+* Easy to traverse and maintain.
+#### Disadvantages
+ 
+* Extra memory needed to store the list.
+* May suffer from fragmentation over time.

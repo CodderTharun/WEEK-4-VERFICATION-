@@ -1,52 +1,666 @@
 ---
-title: Power Systems - Week 4
+title: Power Systems 
 description: Faults and protection
 ---
 
+## Representation of Power System Components
 
+A power system consists of generators, transformers, transmission lines, and loads. For analysis, we simplify real systems into equivalent circuit models.
 
-## Fault Analysis
+### A. Transmission Line Model
 
-### Fault Types
-- Single Line to Ground (SLG)
-- Line to Line (LL)
-- Double Line to Ground (DLG)
-- Three-phase (3LG)
+A transmission line has four parameters:
 
-### Symmetrical Components
-- Positive, negative, zero sequences
+* Resistance (R)
+* Inductance (L)
+* Capacitance (C)
+* Conductance (G)
 
-### Fault Calculations
-- Using symmetrical components
-- Fault impedance
+#### 1. Types of Models
 
-## Protection Systems
+##### a. Short Line (< 80 km)
 
-### Relays
-- Overcurrent protection
-- Distance protection
-- Directional protection
-- Differential protection
+* Capacitance neglected
+* Only R and L considered
+* Represented as series impedance:
 
-### Circuit Breakers
-- Automatic operation
-- Coordination between breakers
+$$Z = R + j\omega L$$
 
-### Fuses
-- Fast protection
-- Single-use
+##### b. Medium Line (80–250 km)
 
-### This Week
+* Capacitance included
+* Models:
+  * π (pi) model
+  * T model
 
-- Fault types and calculation
-- Protection coordination
-- Relay setting
-- Breaker selection
-- System reliability
-- Maintenance
+##### c. Long Line (> 250 km)
 
-### Practice
+* Parameters distributed
+* Solved using hyperbolic equations
 
-- Calculate fault currents
-- Design protection schemes
-- Coordinate relays
+### B. Synchronous Machine Model
+
+A synchronous generator is modeled as:
+
+* Internal generated EMF (E)
+* Series impedance (Ra + jXs)
+* Equation:
+
+$$E = V + I(R_a + jX_s)$$
+
+Where:
+* $E$ = Generated EMF
+* $V$ = Terminal voltage
+* $X_s$ = Synchronous reactance
+
+### C. Transformer Model
+
+A transformer is represented by:
+
+* Primary resistance & reactance: $R_1, X_1$
+* Secondary resistance & reactance: $R_2, X_2$
+* Magnetizing branch: $R_c, X_m$
+
+* **Approximate Model:** All parameters referred to one side (usually primary)
+
+### D. Load Model
+
+Load is represented as:
+
+* Constant impedance load (Z)
+* Constant current load (I)
+* Constant power load (P)
+
+Most common representation:
+
+$$S = P + jQ$$
+
+---
+
+## Single Line Diagram (SLD)
+
+A Single Line Diagram represents a 3-phase system using one line.
+![](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/EEE/PSA1.png?raw=true)
+* **Features:**
+  * Simplifies complex networks
+  * Uses standard symbols
+  * Shows: Generators, Transformers, Lines, Loads
+
+---
+
+## Per Unit System
+
+The per-unit system expresses quantities as fractions of base values.
+
+$$\text{Per Unit Value} = \frac{\text{Actual Value}}{\text{Base Value}}$$
+
+* **Base Quantities:**
+  * Base Power (MVA)
+  * Base Voltage (kV)
+* **Derived:**
+
+$$Z_{base} = \frac{V_{base}^2}{S_{base}}$$
+
+* **Advantages:**
+  * Simplifies calculations
+  * Eliminates transformer ratio complexity
+  * Uniform comparison
+
+* **Per Unit Impedance Diagram:**
+  * Convert all components into per-unit
+  * Draw system with p.u. values
+
+---
+
+## Symmetrical Components
+
+Used to analyze unbalanced systems.
+
+Any unbalanced 3-phase system is resolved into:
+
+* Positive Sequence (balanced, normal rotation)
+* Negative Sequence (reverse rotation)
+* Zero Sequence (in phase)
+
+### A. Power in Symmetrical Components
+
+Total power:
+
+$$S = V_a I_a^* + V_b I_b^* + V_c I_c^*$$
+
+In symmetrical components:
+
+$$S = 3 (V_1 I_1^* + V_2 I_2^* + V_0 I_0^*)$$
+
+* **Key Insight:**
+  * Only positive sequence contributes useful power
+  * Negative & zero → losses/disturbances
+
+---
+
+## Sequence Impedances of Power System Elements
+
+Sequence impedance is the opposition offered by system elements to sequence currents (positive, negative, zero).
+
+### A. Alternator (Synchronous Generator)
+
+#### 1. Positive Sequence Impedance (Z₁)
+
+* Represents normal balanced operation
+* Equal to synchronous impedance:
+
+$$Z_1 = R_a + jX_d$$
+
+#### 2. Negative Sequence Impedance (Z₂)
+
+* Opposes reverse rotating magnetic field
+* Causes heating in rotor
+* Usually:
+
+$$Z_2 \approx Z_1$$
+
+#### 3. Zero Sequence Impedance (Z₀)
+
+* Depends on neutral grounding
+* If neutral grounded → current flows
+* If ungrounded → Z₀ = ∞
+
+### B. Transformer Sequence Impedance
+
+* **Key Points:**
+  * Z₁ = Z₂ (same leakage impedance)
+  * Z₀ depends on winding connection
+* **Cases:**
+  * Star grounded → allows zero sequence current
+  * Delta → blocks zero sequence current
+
+### C. Transmission Line
+
+* $Z_1 = Z_2$
+* $Z_0 > Z_1$ due to earth return path
+
+---
+
+## Sequence Networks
+
+Sequence networks represent system behavior for each sequence separately.
+
+### A. Positive Sequence Network
+
+* Normal system representation
+* Includes generator, transformer, line
+
+### B. Negative Sequence Network
+
+* Same as positive network
+* But no sources (only impedance)
+
+### C. Zero Sequence Network
+
+* Depends on grounding and transformer connections
+* Complex network
+
+---
+
+## Reactance of Synchronous Machine
+
+### A. Types
+
+##### a. Subtransient Reactance (X″d)
+
+* Very fast (first few cycles)
+* Used in initial fault current
+
+##### b. Transient Reactance (X′d)
+
+* After few cycles
+
+##### c. Synchronous Reactance (Xd)
+
+* Steady state
+
+* **On Load vs No Load:**
+  * On load: internal voltage affected
+  * No load: simple calculation
+
+---
+
+## Symmetrical Fault (3-Phase Fault)
+
+* **Characteristics:**
+  * Balanced fault
+  * Rare but most severe
+
+### A. Thevenin's Theorem Method
+
+Replace network with:
+* Equivalent voltage $V_{th}$
+* Equivalent impedance $Z_{th}$
+
+* **Fault Current:**
+
+$$I_f = \frac{V_{th}}{Z_{th} + Z_f}$$
+
+Where: $Z_f$ = fault impedance
+
+---
+
+## Unsymmetrical Faults
+
+### A. LG Fault (Line to Ground)
+![](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/EEE/PSA2.png?raw=true)
+* **Key:** All three sequence networks connected in series
+* **Fault Current:**
+
+$$I_f = \frac{3V}{Z_1 + Z_2 + Z_0 + 3Z_f}$$
+
+### B. LL Fault (Line to Line)
+![](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/EEE/PSA3.png?raw=true)
+* **Key:**
+  * Zero sequence absent
+  * Positive & negative in parallel
+
+### C. LLG Fault (Double Line to Ground)
+![](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/EEE/PSA4.png?raw=true)
+* **Key:**
+  * All sequence networks involved
+  * Complex calculation
+
+---
+
+## Faults with and without Fault Impedance
+
+In power systems, faults may occur either as solid (bolted) faults or faults with impedance. A solid fault is one in which the fault occurs with zero impedance (Zf = 0), resulting in maximum fault current because the only opposition to current is the system impedance. These faults are highly severe and produce maximum thermal and mechanical stress on equipment such as generators, transformers, and circuit breakers.
+
+However, in practical situations, most faults are not solid and involve some impedance due to arc resistance, contact resistance, or earth resistance. This is called fault impedance (Zf). When fault impedance is present, the total impedance in the fault path increases, thereby reducing the magnitude of fault current. The general expression for fault current becomes:
+
+$$I_f = \frac{V}{Z_{system} + Z_f}$$
+
+Thus, as $Z_f$ increases, $I_f$ decreases. Although fault impedance reduces fault current, it makes fault detection more difficult, especially in protection systems, because the current may not be high enough to trigger relays quickly. Therefore, understanding faults with and without impedance is important for protection coordination and relay design.
+
+---
+
+## Unsymmetrical Faults on Power System (with and without impedance)
+
+Unsymmetrical faults are the most common type of faults in power systems and include single line-to-ground (LG), line-to-line (LL), and double line-to-ground (LLG) faults. These faults cause unbalanced currents and voltages, making direct analysis difficult. To simplify the analysis, the method of symmetrical components is used, where the system is decomposed into positive, negative, and zero sequence networks.
+
+The procedure for analyzing unsymmetrical faults is systematic:
+
+* Convert all system components into their sequence impedances (Z₁, Z₂, Z₀)
+* Draw the individual sequence networks
+* Interconnect the networks based on the type of fault:
+  * LG fault → all three networks in series
+  * LL fault → only positive and negative in parallel
+  * LLG fault → all three networks interconnected (complex combination)
+* Solve the network to find fault current and voltages
+
+When fault impedance is absent, the fault current is maximum and equations are simpler. When fault impedance is present, it is added to the network (usually in the zero-sequence path for ground faults), which reduces the fault current and modifies the voltage distribution.
+
+This method is extremely important because it allows a complex unbalanced system to be analyzed using balanced networks, making calculations easier and more structured.
+
+---
+
+## Open Conductor Faults in Power Systems
+
+Open conductor faults occur when one or more conductors in a transmission or distribution system break or become disconnected, resulting in an open circuit condition rather than a short circuit. These faults are less severe in terms of current magnitude compared to short circuit faults, but they create serious voltage unbalance, which can damage sensitive equipment such as motors.
+
+* **Types:**
+  * Single conductor open fault (one phase open)
+  * Two conductors open fault
+
+In these faults, the current in the open phase becomes zero, but the remaining phases continue to carry current, leading to unbalanced operation. This causes:
+
+* Voltage imbalance
+* Increased heating in machines
+* Poor performance of motors (vibration, torque pulsations)
+
+Open conductor faults are analyzed using symmetrical components, similar to unsymmetrical faults, but the boundary conditions differ (current in open conductor is zero instead of voltage being zero). The sequence networks are interconnected accordingly to determine voltages and currents.
+
+Although these faults do not produce high fault currents, they are dangerous because they may go undetected and lead to prolonged abnormal operation of the system.
+
+---
+
+## Network Matrices
+
+Power systems consist of a large number of interconnected components such as generators, transformers, and transmission lines. Direct analysis of such systems using conventional methods becomes difficult due to complexity. Therefore, matrix methods are used to represent the network in a compact mathematical form.
+
+### A. Primitive Impedance and Admittance Matrices
+
+The primitive network refers to the representation of all system elements (branches) before considering their interconnections at buses. In this representation, each element is treated independently.
+
+The primitive impedance matrix [Zprimitive] is a square matrix that contains the impedance of each branch of the network. If there are n elements, then it is an n × n matrix. In the absence of mutual coupling, this matrix is diagonal, where each diagonal element represents the impedance of a branch, and off-diagonal elements are zero. When mutual coupling exists (such as between parallel transmission lines), off-diagonal elements represent mutual impedances.
+
+The relation is given by:
+
+$$[V] = [Z_{primitive}] [I]$$
+
+Similarly, the primitive admittance matrix [Yprimitive] is the inverse of the impedance matrix:
+
+$$[Y_{primitive}] = [Z_{primitive}]^{-1}$$
+
+This matrix is useful in forming the bus admittance matrix and is widely used in network analysis. Primitive matrices form the foundation of power system modeling, as they allow systematic transformation into bus-based matrices.
+
+### B. Formation of Bus Admittance Matrix (Ybus)
+
+The Bus Admittance Matrix (Ybus) is the most important matrix in power system studies. It relates bus currents to bus voltages:
+
+$$[I] = [Y_{bus}] [V]$$
+
+Ybus is formed by applying Kirchhoff's Current Law (KCL) at each bus.
+
+#### 1. Formation Methods
+
+##### a. Direct Inspection Method
+
+* Diagonal elements: sum of admittances connected to the bus
+* Off-diagonal elements: negative of admittance between buses
+
+##### b. Singular Transformation Method
+
+* Uses primitive matrices and incidence matrix
+* General expression:
+
+$$[Y_{bus}] = [A]^T [Y_{primitive}] [A]$$
+
+#### 2. Properties of Ybus
+
+* Square and symmetrical matrix
+* Sparse matrix (many zero elements)
+* Diagonal dominance
+
+#### 3. Importance
+
+Ybus is widely used in:
+* Load flow analysis
+* Fault analysis
+* Stability studies
+
+### C. Bus Impedance Matrix (Zbus)
+
+The Bus Impedance Matrix (Zbus) is the inverse of Ybus and relates bus voltages to currents:
+
+$$[V] = [Z_{bus}] [I]$$
+
+Zbus is generally formed using a building algorithm, where the matrix is constructed step by step by adding elements such as:
+
+* Branches
+* Links
+* Mutual coupling
+
+#### 1. With and Without Mutual Coupling
+
+* **Without mutual coupling:** Only self-impedance is considered, making calculations simpler
+* **With mutual coupling:** Mutual impedance between elements is included, affecting off-diagonal terms
+
+#### 2. Importance
+
+* Used in fault analysis
+* Helps determine driving point impedance
+
+---
+
+## Classification of Buses
+
+Power system buses are classified based on known and unknown quantities:
+
+### A. Slack Bus
+
+* Voltage magnitude and angle are specified
+* Supplies system losses
+* Only one slack bus exists
+
+### B. PV Bus (Generator Bus)
+
+* Active power (P) and voltage magnitude (V) known
+* Reactive power (Q) is calculated
+
+### C. PQ Bus (Load Bus)
+
+* Active and reactive power known
+* Voltage magnitude and angle unknown
+
+* **Importance:** This classification reduces unknown variables and simplifies calculations.
+
+---
+
+## Gauss-Seidel Method
+
+The Gauss-Seidel method is an iterative numerical technique used to solve power flow equations.
+![](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/EEE/PSA5.png?raw=true)
+### A. Working Principle
+
+* Assume initial voltages
+* Update voltages sequentially
+* Continue until convergence
+
+### B. Algorithm
+
+* Assume initial voltages (usually 1∠0°)
+* For each bus, compute updated voltage
+* Use latest values for next calculations
+* Repeat until mismatch is minimum
+
+### C. Acceleration Factor
+
+* Used to improve convergence speed
+* Value: 1.3 to 1.6
+
+### D. Advantages
+
+* Simple
+* Easy to implement
+
+### E. Disadvantages
+
+* Slow convergence
+* Not suitable for large systems
+
+---
+
+## Newton-Raphson Method (Polar Form)
+![](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/EEE/PSA6.png?raw=true)
+The Newton-Raphson method is a powerful iterative method used for solving nonlinear equations.
+
+### A. Working Principle
+
+* Uses Taylor series expansion
+* Linearizes equations around operating point
+
+### B. Algorithm
+
+* Assume initial voltage values
+* Calculate power mismatches (ΔP, ΔQ)
+* Form Jacobian matrix
+* Solve for corrections (ΔV, Δδ)
+* Update values
+* Repeat until convergence
+
+### C. Advantages
+
+* Very fast convergence
+* High accuracy
+
+### D. Disadvantages
+
+* Complex calculations
+* Requires more memory
+
+---
+
+## Off-Nominal Tap Ratio Transformer
+
+An off-nominal tap transformer has a turns ratio different from unity and is used to control voltage levels in power systems.
+
+### A. Effects
+
+* Regulates voltage magnitude
+* Controls reactive power flow
+* Improves system stability
+
+### B. Representation
+
+* Modified admittance values in Ybus
+* Introduces asymmetry in matrix
+
+### C. Importance
+
+* Essential in voltage control
+* Used in load flow analysis
+
+---
+
+## Introduction to Economic Dispatch
+
+Economic Dispatch (ED) is the process of determining the optimal power output of multiple generating units such that the total operating cost is minimum, while satisfying the total system demand and operational constraints. In a power system, several generators operate in parallel, each having different fuel costs and efficiencies. If all generators are not scheduled properly, the overall cost of generation increases significantly. Therefore, ED ensures that the load demand is shared among generators in such a way that the total fuel cost is minimized without violating system constraints.
+
+The fundamental objective of economic dispatch can be expressed as:
+
+$$\text{Minimize } C = \sum_{i=1}^{n} C_i(P_i)$$
+
+subject to:
+
+$$\sum_{i=1}^{n} P_i = P_D$$
+
+Where:
+* $C_i$ = cost of ith generator
+* $P_i$ = power output
+* $P_D$ = total load demand
+
+Thus, economic dispatch is essential for efficient operation, cost reduction, and optimal utilization of available resources in a power system.
+
+---
+
+## Performance Curves
+
+### A. Input–Output Curve
+![](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/EEE/PSA7.png?raw=true)
+The input-output curve shows the relationship between the fuel input (in kcal/hr or BTU/hr) and the electrical power output (MW) of a generating unit. Ideally, this relationship would be linear, but in practice, it is non-linear due to generator inefficiencies, friction losses, and varying operating conditions.
+
+At low loads, a relatively large amount of fuel is required just to keep the generator running, resulting in poor efficiency. As the output increases, the efficiency improves, and the curve becomes smoother. However, at higher loads, losses again increase due to heating and saturation effects.
+
+Thus, the input-output curve helps in understanding how much fuel is required for a given power output and forms the basis for deriving cost characteristics.
+
+### B. Heat Rate Curve
+![](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/EEE/PSA8.png?raw=true)
+The heat rate curve represents the efficiency of a power plant and is defined as the ratio of fuel input to power output:
+
+$$\text{Heat Rate} = \frac{\text{Fuel Input}}{\text{Power Output}}$$
+
+It is usually expressed in kcal/kWh or BTU/kWh.
+
+A lower heat rate indicates higher efficiency, while a higher heat rate indicates poor performance. The curve typically decreases initially as load increases (efficiency improves), reaches a minimum point (maximum efficiency), and then slightly increases again at higher loads due to increased losses.
+
+This curve is very important because it helps identify the optimal operating point of the generator where efficiency is maximum. It also helps in comparing different generating units.
+
+### C. Fuel Cost Curve
+![](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/EEE/PSA9.png?raw=true)
+The fuel cost curve shows the relationship between the cost of fuel (₹/hr) and the power output (MW). It is generally expressed as a quadratic equation:
+
+$$C = a + bP + cP^2$$
+
+This curve is non-linear because fuel consumption does not increase linearly with output. At low loads, cost per unit is high, while at moderate loads, cost efficiency improves. At very high loads, costs increase rapidly due to inefficiencies.
+
+The fuel cost curve is the most important curve in economic dispatch, as the objective is to minimize total generation cost.
+
+### D. Incremental Cost Curve
+![](https://github.com/CodderTharun/-WEEK-2-IMAGES/blob/main/EEE/PSA10.png?raw=true)
+The incremental cost curve represents the rate of change of cost with respect to power output, i.e., the cost of producing one additional unit of power.
+
+$$\frac{dC}{dP} = b + 2cP$$
+
+This curve is obtained by differentiating the fuel cost curve and is generally a straight line (linear) when the cost function is quadratic.
+
+* **Physical Meaning:**
+  * It tells how much extra cost is incurred for increasing output by 1 MW
+  * It is also called marginal cost
+
+---
+
+## Stability Studies
+
+Stability of a power system refers to the ability of the system to maintain synchronism when subjected to a disturbance such as faults, sudden load changes, or switching operations. In an interconnected system, all synchronous machines must operate in synchronism, meaning their rotors rotate at the same speed and maintain a constant phase relationship.
+
+When a disturbance occurs, generators may accelerate or decelerate. If the system is able to restore equilibrium, it is said to be stable; otherwise, it becomes unstable and may lead to system collapse or blackout.
+
+### A. Types of Stability
+
+#### 1. Steady-State Stability
+
+Steady-state stability refers to the ability of the power system to maintain synchronism under small and gradual disturbances, such as minor load variations. In this case, the system operates near its equilibrium point, and the rotor angle changes are small.
+
+The stability is determined using the power-angle curve, which shows the relationship between electrical power output and rotor angle. If the operating point lies on the stable region of the curve, the system remains stable.
+
+#### 2. Transient Stability
+
+Transient stability refers to the ability of the system to maintain synchronism after large disturbances, such as:
+
+* Short circuits
+* Sudden loss of generation
+* Switching operations
+
+During such disturbances, rotor angles change rapidly. The system must regain synchronism within a few seconds; otherwise, instability occurs.
+
+---
+
+## Rotor Dynamics and Swing Equation
+
+The swing equation describes the dynamic behavior of a synchronous machine rotor during disturbances. It is based on Newton's second law applied to rotational motion.
+
+$$M \frac{d^2 \delta}{dt^2} = P_m - P_e$$
+
+Where:
+* $M$ = inertia constant
+* $\delta$ = rotor angle
+* $P_m$ = mechanical input power
+* $P_e$ = electrical output power
+
+### A. Interpretation
+
+* If $P_m > P_e$ → rotor accelerates
+* If $P_m < P_e$ → rotor decelerates
+* This difference is called accelerating power.
+
+### B. Importance
+
+Swing equation is fundamental for:
+* Transient stability analysis
+* Rotor angle prediction
+
+---
+
+## Power-Angle Equation
+
+### A. Non-Salient Pole Machine
+
+The power-angle equation gives the relationship between electrical power output and rotor angle.
+
+$$P_e = \frac{EV}{X} \sin \delta$$
+
+This shows that power transfer depends on the sine of the rotor angle. The curve is sinusoidal, and maximum power occurs at $\delta = 90°$.
+
+If the rotor angle exceeds this limit, the system becomes unstable because electrical power decreases while mechanical power remains constant, leading to continuous acceleration.
+
+### B. Salient Pole Machine
+
+$$P_e = \frac{EV}{X_d} \sin \delta + \frac{V^2 (X_d - X_q)}{2X_d X_q} \sin 2\delta$$
+
+In this case, an additional term called reluctance power is present. This increases the maximum power transfer capability of the machine.
+
+---
+
+## Equal Area Criterion
+
+The equal area criterion is the most commonly asked concept in transient stability (especially numericals + diagrams).
+
+It is a graphical method used to determine whether a system will remain stable after a disturbance.
+
+* **Concept:**
+  * When a fault occurs → $P_m > P_e$ → rotor accelerates → Area A₁
+  * After fault clearing → $P_e > P_m$ → rotor decelerates → Area A₂
+
+* **Stability Condition:**
+
+$$A_1 = A_2$$
+
+* If $A_1 < A_2$ → Stable
+* If $A_1 > A_2$ → Unstable

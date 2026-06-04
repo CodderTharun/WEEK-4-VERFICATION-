@@ -66,18 +66,15 @@ export default defineConfig({
                 { label: "Logical and Analytical Reasoning", link: "/aptitude/week-3/logicalreasoning" },
               ],
             },
-            // {
-            //   label: "Week 4",
-            //   collapsed: true,
-            //   items: [
-            //     { label: "Overview", link: "/aptitude/week-4/" },
-            //     { label: "Quantitative Ability", link: "/aptitude/week-4/quantitative-ability" },
-            //     { label: "Logical Reasoning", link: "/aptitude/week-4/logical-reasoning" },
-            //     { label: "Verbal Reasoning", link: "/aptitude/week-4/verbal-reasoning" },
-            //     { label: "Data Interpretation", link: "/aptitude/week-4/data-interpretation" },
-            //     { label: "Problem Solving", link: "/aptitude/week-4/problem-solving" },
-            //   ],
-            // },
+             {
+               label: "Week 4",
+               collapsed: true,
+               items: [
+            
+                 { label: "Quantitative Ability", link: "/aptitude/week-4/quantitative-ability" },
+            
+            ],
+            },
             // {
             //   label: "Week 5",
             //   collapsed: true,
@@ -114,7 +111,7 @@ items: [
     items: [
       { label: "Week 1", link: "/ece/week-1/cprogramming" },
       { label: "Week 2", link: "/ece/week-2/cprogramming" },
-      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      { label: "Week 3", link: "/ece/week-3/cprogramming" },
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
     ],
@@ -131,7 +128,37 @@ items: [
       //{ label: "Week 5", link: "/ece/week-1/digital-logic" },
     ],
   },
-
+{
+    label: "Communications",
+    collapsed: true,
+    items: [
+      { label: "Week 4", link: "/ece/week-4/communications" },
+      //{ label: "Week 2", link: "/ece/week-1/digital-logic" },
+      //{ label: "Week 3", link: "/ece/week-1/digital-logic" },
+      //{ label: "Week 4", link: "/ece/week-1/digital-logic" },
+      //{ label: "Week 5", link: "/ece/week-1/digital-logic" },
+    ],
+  },
+  {
+    label: "Embedded C",
+    collapsed: true,
+    items: [
+      { label: "Week 4", link: "/eee/week-3/embededc" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+    ],
+  },
+  {
+    label: "Control Sytems",
+    collapsed: true,
+    items: [
+      { label: "Week 4", link: "/eee/week-3/control-systems" },
+      //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
+    ],
+  },
   {
     label: "Network Analysis",
     collapsed: true,
@@ -229,7 +256,33 @@ items: [
       //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
     ],
   },
-
+     {
+    label: "Embedded C",
+    collapsed: true,
+    items: [
+      { label: "Week 3", link: "/eee/week-3/embededc" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+    ],
+  },
+  {
+    label: "Power Systems",
+    collapsed: true,
+    items: [
+      { label: "Week 4", link: "/eee/week-4/power-systems" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+    ],
+  },
+{
+    label: "Electrical Vehicles",
+    collapsed: true,
+    items: [
+      { label: "Week 4", link: "/eee/week-4/electrical-vehicles" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+      //{ label: "Week 1", link: "/ece/week-1/cprogramming" },
+    ],
+  },
   {
     label: "Digital Electronics",
     collapsed: true,
@@ -280,6 +333,18 @@ items: [
     collapsed: true,
     items: [
       { label: "Week 2", link: "/eee/week-2/electrical-machines" },
+      //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
+      //{ label: "Week 5", link: "/ece/week-1/networkanalysis" },
+    ],
+  },
+  
+  {
+    label: "VLSI",
+    collapsed: true,
+    items: [
+      { label: "Week 4", link: "/eee/week-4/vlsi" },
       //{ label: "Week 2", link: "/ece/week-1/networkanalysis" },
       //{ label: "Week 3", link: "/ece/week-1/networkanalysis" },
       //{ label: "Week 4", link: "/ece/week-1/networkanalysis" },
@@ -344,7 +409,7 @@ items: [
       { label: "Week 1", link: "/it/week-1/aiml" },
       { label: "Week 2", link: "/it/week-2/aiml" },
       { label: "Week 3", link: "/it/week-3/aiml" },
-      //{ label: "Week 4", link: "/it/week-1/aiml" },
+      { label: "Week 4", link: "/it/week-4/aiml" },
       //{ label: "Week 5", link: "/it/week-1/aiml" },
     ],
   },
@@ -355,7 +420,7 @@ items: [
       { label: "Week 1", link: "/it/week-1/cn" },
       { label: "Week 2", link: "/it/week-2/cn" },
       { label: "Week 3", link: "/it/week-3/cn" },
-      //{ label: "Week 4", link: "/it/week-1/cn" },
+      { label: "Week 4", link: "/it/week-4/cn" },
       //{ label: "Week 5", link: "/it/week-1/cn" },
     ],
   },
@@ -366,7 +431,7 @@ items: [
       { label: "Week 1", link: "/it/week-1/dbms" },
       { label: "Week 2", link: "/it/week-2/dbms" },
       { label: "Week 3", link: "/it/week-3/dbms" },
-      //{ label: "Week 4", link: "/it/week-1/dbms" },
+      { label: "Week 4", link: "/it/week-4/dbms" },
       //{ label: "Week 5", link: "/it/week-1/dbms" },
     ],
   },  
@@ -377,7 +442,7 @@ items: [
       { label: "Week 1", link: "/it/week-1/dsa" },
       { label: "Week 2", link: "/it/week-2/dsa" },
       { label: "Week 3", link: "/it/week-3/dsa" },
-      //{ label: "Week 4", link: "/it/week-1/dbms" },
+      { label: "Week 4", link: "/it/week-4/dsa" },
       //{ label: "Week 5", link: "/it/week-1/dbms" },
     ],
   },  
@@ -410,7 +475,7 @@ items: [
       { label: "Week 1", link: "/it/week-1/os" },
       { label: "Week 2", link: "/it/week-2/os" },
       { label: "Week 3", link: "/it/week-3/os" },
-      //{ label: "Week 1", link: "/it/week-1/os" },
+      { label: "Week 4", link: "/it/week-4/os" },
       //{ label: "Week 1", link: "/it/week-1/os" },
     ],
   }, 
@@ -420,7 +485,7 @@ items: [
     items: [
       { label: "Week 2", link: "/it/week-2/sdlc" },
       { label: "Week 3", link: "/it/week-3/sdlc" },
-      //{ label: "Week 4", link: "/it/week-1/sdlc" },
+      { label: "Week 4", link: "/it/week-4/sdlc" },
       //{ label: "Week ", link: "/it/week-1/sdlc" },
     ],
   },
@@ -466,6 +531,17 @@ items: [
                 //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
               ],
             },
+             {
+              label: "Heat and Mass Transfer",
+              collapsed: true,
+              items: [
+                { label: "Week 4", link: "/mech/week-4/heat-mass-transfer" },
+                //{ label: "Week 2", link: "/mech/week-2/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+              ],
+            },
             {
               label: "Applied Thermodynamics",
               collapsed: true,
@@ -486,6 +562,25 @@ items: [
                 //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
                 //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
                 //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+              ],
+            },
+            {
+              label: "Manufacturing Process",
+              collapsed: true,
+              items: [
+                { label: "Week 4", link: "/mech/week-4/manufacturing-process" },
+                //{ label: "Week 2", link: "/mech/week-2/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+                //{ label: "Strength of Materials", link: "/mech/week-1/strength-materials" },
+              ],
+            },
+            {
+              label: "Theory of Machines",
+              collapsed: true,
+              items: [
+                { label: "Week 4", link: "/mech/week-4/theory-of-machines" },
+                 //{ label: "Week 1", link: "/mech/week-1/thermodynamics" },
               ],
             },
             {
@@ -510,7 +605,7 @@ items: [
         label: "IT",
         items: [
        { label: "Week 1", link: "/answer-keys/it/week-1" },
-                //{ label: "Week 2", link: "/answer-keys/it/week-2" },
+                { label: "Week 2", link: "/answer-keys/it/week-2" },
                 //{ label: "Week 3", link: "/answer-keys/it/week-3" },
                 //{ label: "Week 4", link: "/answer-keys/it/week-4" },
                 //{ label: "Week 5", link: "/answer-keys/it/week-5" },
@@ -520,7 +615,7 @@ items: [
          label: "ECE",
         items: [
         { label: "Week 1", link: "/answer-keys/ece/week-1" },
-                //{ label: "Week 2", link: "/answer-keys/ece/week-2" },
+                { label: "Week 2", link: "/answer-keys/ece/week-2" },
                 //{ label: "Week 3", link: "/answer-keys/ece/week-3" },
                 //{ label: "Week 4", link: "/answer-keys/ece/week-4" },
                 //{ label: "Week 5", link: "/answer-keys/ece/week-5" },
@@ -530,7 +625,7 @@ items: [
               label: "EEE",
              items: [
           { label: "Week 1", link: "/answer-keys/eee/week-1" },
-                //{ label: "Week 2", link: "/answer-keys/eee/week-2" },
+                { label: "Week 2", link: "/answer-keys/eee/week-2" },
                 //{ label: "Week 3", link: "/answer-keys/eee/week-3" },
                 //{ label: "Week 4", link: "/answer-keys/eee/week-4" },
                 //{ label: "Week 5", link: "/answer-keys/eee/week-5" },
@@ -540,7 +635,7 @@ items: [
              label: "Mechanical",
             items: [
           { label: "Week 1", link: "/answer-keys/mech/week-1" },
-                //{ label: "Week 2", link: "/answer-keys/mech/week-2" },
+                { label: "Week 2", link: "/answer-keys/mech/week-2" },
                 //{ label: "Week 3", link: "/answer-keys/mech/week-3" },
                 //{ label: "Week 4", link: "/answer-keys/mech/week-4" },
                 //{ label: "Week 5", link: "/answer-keys/mech/week-5" },
