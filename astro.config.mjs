@@ -656,4 +656,7 @@ items: [
 		}
     ),
   ],
+    markdown: {
+    gfm: true
+  }
 });
