@@ -227,6 +227,14 @@ items: [
       
     ],
   },
+  {
+    label: "Digital Signal Processing",
+    collapsed: true,
+    items: [
+      { label: "Week 3", link: "/ece/week-4/dsp" },
+      
+    ],
+  },
 ],
         },
 
